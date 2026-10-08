@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-08T22:42:10.940Z",
+ "generatedAt": "2026-10-08T22:53:07.844Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
@@ -37,7 +37,7 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA Network",
+    "broadcaster": "TNT Sports",
     "channels": [
      "TNT Sports 1"
     ],
@@ -45,11 +45,10 @@
      "TNT Sports Ultimate",
      "HBO Max"
     ],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -68,15 +67,13 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA Network",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "Not shown live on UK TV (3pm blackout)",
     "conflict": false,
-    "sources": [
-     "official"
-    ]
+    "sources": []
    }
   },
   {
@@ -93,15 +90,13 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Peacock",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "Not shown live on UK TV (3pm blackout)",
     "conflict": false,
-    "sources": [
-     "official"
-    ]
+    "sources": []
    }
   },
   {
@@ -118,15 +113,13 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Peacock",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "Not shown live on UK TV (3pm blackout)",
     "conflict": false,
-    "sources": [
-     "official"
-    ]
+    "sources": []
    }
   },
   {
@@ -143,15 +136,13 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Peacock",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "Not shown live on UK TV (3pm blackout)",
     "conflict": false,
-    "sources": [
-     "official"
-    ]
+    "sources": []
    }
   },
   {
@@ -168,7 +159,7 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "NBC",
+    "broadcaster": "Sky Sports",
     "channels": [
      "Sky Sports Main Event",
      "Sky Sports Premier League"
@@ -176,11 +167,10 @@
     "alsoOn": [
      "Sky Sports Ultra HDR"
     ],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -199,18 +189,17 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Universo",
+    "broadcaster": "Sky Sports",
     "channels": [
      "Sky Sports Main Event"
     ],
     "alsoOn": [
      "Sky Sports Ultra HDR"
     ],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -229,16 +218,15 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Peacock",
+    "broadcaster": "Sky Sports",
     "channels": [
      "Sky Sports Premier League"
     ],
     "alsoOn": [],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -257,7 +245,7 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA - Telemundo",
+    "broadcaster": "Sky Sports",
     "channels": [
      "Sky Sports Main Event",
      "Sky Sports Premier League"
@@ -265,11 +253,10 @@
     "alsoOn": [
      "Sky Sports Ultra HDR"
     ],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -288,7 +275,7 @@
    "awayScore": null,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "USA Network",
+    "broadcaster": "Sky Sports",
     "channels": [
      "Sky Sports Main Event",
      "Sky Sports Premier League"
@@ -296,11 +283,10 @@
     "alsoOn": [
      "Sky Sports Ultra HDR"
     ],
-    "confirmed": false,
+    "confirmed": true,
     "note": null,
-    "conflict": true,
+    "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }

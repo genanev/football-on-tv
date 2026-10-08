@@ -185,6 +185,22 @@ async function fetchPremierLeague(now) {
   return all;
 }
 
+/**
+ * Is this channel a UK one? The Premier League feed answers with the broadcasters for the
+ * country the request comes from (GitHub's servers are in the US), so US channels such as
+ * NBC or Peacock must be thrown away. Each channel says which countries it covers.
+ */
+export function isUkChannel(c) {
+  const countries = [
+    ...(c.info?.broadcaster?.restrictedCountries || []),
+    ...(c.restrictedCountries || []),
+  ];
+  const regions = [...(c.restrictedRegions || []), ...(c.info?.broadcaster?.restrictedRegions || [])].map(r => r?.name);
+  if (countries.length || regions.length) return countries.includes('GB') || regions.includes('UK') || regions.includes('England');
+  // No country info: only trust names that are clearly UK broadcasters.
+  return /^(sky|tnt|amazon|prime video|bbc|itv|channel 4)/i.test(c.info?.name || '');
+}
+
 /** Official PL broadcaster per match: { [matchId]: ['Sky Sports', ...] } (UK video channels only). */
 export function mapPlBroadcasts(content) {
   const out = {};
@@ -193,6 +209,7 @@ export function mapPlBroadcasts(content) {
     if (!id) continue;
     const names = (ev.channels || [])
       .filter(c => (c.info?.channelTypes || []).some(t => t.mediaType === 'VIDEO'))
+      .filter(isUkChannel)
       .map(c => c.info?.name)
       .filter(Boolean);
     out[id] = [...new Set(names)];

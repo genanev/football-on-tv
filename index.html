@@ -118,11 +118,12 @@
     position: sticky; top: 0; z-index: 5; background: var(--bg);
     padding: 8px 0 10px; margin: 0 -16px; padding-left: 16px; padding-right: 16px;
   }
-  .seg { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
+  .seg { display: grid; grid-template-columns: 0.45fr 1fr 1fr; background: var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
   .seg button {
     border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
     padding: 8px 4px; border-radius: 9px; cursor: pointer; white-space: nowrap;
   }
+  @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 2px; padding-right: 2px; } }
   .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 
   .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 4px 0 8px; }
@@ -183,7 +184,7 @@
     <div class="seg" role="group" aria-label="Competition">
       <button data-f="ALL" aria-pressed="true">All</button>
       <button data-f="PL" aria-pressed="false">Premier League</button>
-      <button data-f="UCL" aria-pressed="false">UCL</button>
+      <button data-f="UCL" aria-pressed="false">Champions League</button>
     </div>
   </div>
 
@@ -344,33 +345,27 @@
   }));
   $('#refresh').addEventListener('click', load);
 
-  // Colour theme: Auto (follow the phone) -> Light -> Dark -> Auto
+  // Colour theme: Light / Dark. First visit matches the phone; after that your choice is remembered.
   const THEMES = {
-    auto: { label: 'Auto', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>' },
     light: { label: 'Light', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>' },
     dark: { label: 'Dark', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>' },
   };
-  const ORDER = ['auto', 'light', 'dark'];
-  let theme = 'auto';
-  try { theme = localStorage.getItem('theme') || 'auto'; } catch (e) {}
-  if (!THEMES[theme]) theme = 'auto';
-  const darkMq = matchMedia('(prefers-color-scheme: dark)');
+  let theme = null;
+  try { theme = localStorage.getItem('theme'); } catch (e) {}
+  if (!THEMES[theme]) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   function applyTheme() {
-    const root = document.documentElement;
-    if (theme === 'auto') delete root.dataset.theme; else root.dataset.theme = theme;
+    document.documentElement.dataset.theme = theme;
     const t = THEMES[theme];
     const btn = $('#theme');
     btn.innerHTML = `${t.icon}<span>${t.label}</span>`;
-    btn.title = theme === 'auto' ? 'Following your phone. Tap to change.' : `${t.label} mode. Tap to change.`;
-    const isDark = theme === 'dark' || (theme === 'auto' && darkMq.matches);
-    document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = isDark ? '#111412' : '#f4f5f2'; });
+    btn.title = `${t.label} mode. Tap to switch.`;
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = theme === 'dark' ? '#111412' : '#f4f5f2'; });
   }
   $('#theme').addEventListener('click', () => {
-    theme = ORDER[(ORDER.indexOf(theme) + 1) % ORDER.length];
-    try { if (theme === 'auto') localStorage.removeItem('theme'); else localStorage.setItem('theme', theme); } catch (e) {}
+    theme = theme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', theme); } catch (e) {}
     applyTheme();
   });
-  darkMq.addEventListener?.('change', applyTheme);
   applyTheme();
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
   setInterval(render, 60000);

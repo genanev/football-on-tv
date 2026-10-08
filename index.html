@@ -14,6 +14,9 @@
 <meta name="apple-mobile-web-app-title" content="Football TV">
 <meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111412" media="(prefers-color-scheme: dark)">
+<script>
+  try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 <style>
   :root {
     --bg: #f4f5f2;
@@ -25,7 +28,7 @@
     --accent: #0b6b3a;
     --pl: #3d195b;
     --ucl: #0d47a1;
-    --sky: #d0021b;
+    --sky: #d35400;
     --tnt: #b4169e;
     --prime: #0084b4;
     --bbc: #222;
@@ -34,10 +37,14 @@
     --warn-text: #7a5300;
     --live: #c62828;
     --radius: 14px;
+    --pill-text: #fff;
+    color-scheme: light;
   }
+  /* Dark colours: used when the phone is in dark mode (unless Light is picked in the app), or when Dark is picked */
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #111412;
+      color-scheme: dark;
       --surface: #1b201d;
       --text: #eef1ee;
       --muted: #a3aca8;
@@ -46,7 +53,7 @@
       --accent: #4cc283;
       --pl: #b98be0;
       --ucl: #7fb0ff;
-      --sky: #ff5a6e;
+      --sky: #ff9a4d;
       --tnt: #f06ae0;
       --prime: #38c3f2;
       --bbc: #e6e6e6;
@@ -54,7 +61,29 @@
       --warn-bg: #3a3014;
       --warn-text: #f3d48a;
       --live: #ff6b6b;
+      --pill-text: #111412;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111412;
+    color-scheme: dark;
+    --surface: #1b201d;
+    --text: #eef1ee;
+    --muted: #a3aca8;
+    --faint: #7b8580;
+    --line: #2a312d;
+    --accent: #4cc283;
+    --pl: #b98be0;
+    --ucl: #7fb0ff;
+    --sky: #ff9a4d;
+    --tnt: #f06ae0;
+    --prime: #38c3f2;
+    --bbc: #e6e6e6;
+    --other: #b5c0bc;
+    --warn-bg: #3a3014;
+    --warn-text: #f3d48a;
+    --live: #ff6b6b;
+    --pill-text: #111412;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -75,6 +104,13 @@
     border-radius: 999px; width: 40px; height: 40px; display: grid; place-items: center; cursor: pointer; flex: none;
   }
   .refresh svg { width: 18px; height: 18px; }
+  .actions { display: flex; gap: 8px; flex: none; }
+  .theme {
+    border: 1px solid var(--line); background: var(--surface); color: var(--text);
+    border-radius: 999px; height: 40px; padding: 0 12px 0 10px; display: flex; align-items: center; gap: 6px;
+    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .theme svg { width: 18px; height: 18px; }
   .refresh.spin svg { animation: spin .8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -93,7 +129,7 @@
 
   .day { margin-top: 14px; }
   .day h2 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+    font-size: 16px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
     margin: 0 0 8px 2px; font-weight: 700;
   }
   .day h2 .today { color: var(--accent); }
@@ -113,8 +149,7 @@
   .comp { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; }
   .comp.PL { color: var(--pl); }
   .comp.UCL { color: var(--ucl); }
-  .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: #fff; background: var(--other); white-space: nowrap; }
-  @media (prefers-color-scheme: dark) { .pill { color: #111412; } }
+  .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); white-space: nowrap; }
   .pill.sky { background: var(--sky); }
   .pill.tnt { background: var(--tnt); }
   .pill.prime { background: var(--prime); }
@@ -134,18 +169,21 @@
   <header>
     <div>
       <h1>Football on TV</h1>
-      <div class="sub" id="updated">UK kick-off times</div>
+      <div class="sub" id="updated">UK times</div>
     </div>
+    <div class="actions">
+    <button class="theme" id="theme" aria-label="Colour theme"></button>
     <button class="refresh" id="refresh" aria-label="Refresh">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
     </button>
+    </div>
   </header>
 
   <div class="filters">
     <div class="seg" role="group" aria-label="Competition">
       <button data-f="ALL" aria-pressed="true">All</button>
       <button data-f="PL" aria-pressed="false">Premier League</button>
-      <button data-f="UCL" aria-pressed="false">Champions Lg</button>
+      <button data-f="UCL" aria-pressed="false">UCL</button>
     </div>
   </div>
 
@@ -154,8 +192,7 @@
 
   <footer>
     Fixtures from premierleague.com and uefa.com. Channels from the Premier League's broadcast listings and
-    live-footballontv.com. Saturday 3pm Premier League games aren't shown live in the UK.
-    Always worth a quick check before kick-off, as TV picks can change.
+    live-footballontv.com.
   </footer>
 </div>
 
@@ -245,7 +282,7 @@
     document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === filter)));
     if (!data) return;
 
-    $('#updated').textContent = `UK kick-off times · updated ${ago(data.generatedAt)}`;
+    $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
 
     const banners = [];
     const ageH = (Date.now() - Date.parse(data.generatedAt)) / 3600000;
@@ -268,19 +305,16 @@
       (byDay[ukKey(new Date(m.kickoff))] ||= []).push(m);
     }
 
+    const none = filter === 'PL' ? 'No scheduled PL games' : filter === 'UCL' ? 'No scheduled UCL games' : 'No scheduled PL / UCL games';
     let html = '';
-    let any = false;
     for (const d of days) {
       const list = byDay[d.key];
-      if (!list && d.i > 0) continue;
       const label = d.i === 0 ? `<span class="today">Today</span> · ${fDay.format(d.date)}`
         : d.i === 1 ? `Tomorrow · ${fDay.format(d.date)}` : fDay.format(d.date);
       html += `<section class="day"><h2>${label}</h2>`;
-      if (list) { any = true; html += `<div class="list">${list.map(matchHtml).join('')}</div>`; }
-      else html += `<div class="empty">No ${filter === 'PL' ? 'Premier League ' : filter === 'UCL' ? 'Champions League ' : ''}games today.</div>`;
+      html += list ? `<div class="list">${list.map(matchHtml).join('')}</div>` : `<div class="empty">${none}</div>`;
       html += '</section>';
     }
-    if (!any) html += `<div class="empty" style="margin-top:16px">Nothing else in the next 7 days – probably an international break.</div>`;
     $('#main').innerHTML = html;
   }
 
@@ -309,6 +343,35 @@
     render();
   }));
   $('#refresh').addEventListener('click', load);
+
+  // Colour theme: Auto (follow the phone) -> Light -> Dark -> Auto
+  const THEMES = {
+    auto: { label: 'Auto', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>' },
+    light: { label: 'Light', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>' },
+    dark: { label: 'Dark', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>' },
+  };
+  const ORDER = ['auto', 'light', 'dark'];
+  let theme = 'auto';
+  try { theme = localStorage.getItem('theme') || 'auto'; } catch (e) {}
+  if (!THEMES[theme]) theme = 'auto';
+  const darkMq = matchMedia('(prefers-color-scheme: dark)');
+  function applyTheme() {
+    const root = document.documentElement;
+    if (theme === 'auto') delete root.dataset.theme; else root.dataset.theme = theme;
+    const t = THEMES[theme];
+    const btn = $('#theme');
+    btn.innerHTML = `${t.icon}<span>${t.label}</span>`;
+    btn.title = theme === 'auto' ? 'Following your phone. Tap to change.' : `${t.label} mode. Tap to change.`;
+    const isDark = theme === 'dark' || (theme === 'auto' && darkMq.matches);
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = isDark ? '#111412' : '#f4f5f2'; });
+  }
+  $('#theme').addEventListener('click', () => {
+    theme = ORDER[(ORDER.indexOf(theme) + 1) % ORDER.length];
+    try { if (theme === 'auto') localStorage.removeItem('theme'); else localStorage.setItem('theme', theme); } catch (e) {}
+    applyTheme();
+  });
+  darkMq.addEventListener?.('change', applyTheme);
+  applyTheme();
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
   setInterval(render, 60000);
   load();

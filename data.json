@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-08T22:53:07.844Z",
+ "generatedAt": "2026-10-09T06:09:30.747Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
    "ok": true,
-   "matches": 10
+   "matches": 15
   },
   "championsLeague": {
    "ok": true,
@@ -18,9 +18,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 10
+   "matches": 15
   },
-  "crossReferenced": "24/28"
+  "crossReferenced": "26/33"
  },
  "matches": [
   {
@@ -825,6 +825,135 @@
     ],
     "alsoOn": [
      "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645258",
+   "comp": "PL",
+   "kickoff": "2026-10-17T11:30:00.000Z",
+   "home": "Everton",
+   "away": "Chelsea",
+   "homeShort": "Everton",
+   "awayShort": "Chelsea",
+   "venue": "Hill Dickinson Stadium, Liverpool",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports Ultimate",
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645256",
+   "comp": "PL",
+   "kickoff": "2026-10-17T14:00:00.000Z",
+   "home": "Brentford",
+   "away": "Liverpool",
+   "homeShort": "Brentford",
+   "awayShort": "Liverpool",
+   "venue": "Gtech Community Stadium, Brentford",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV (3pm blackout)",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645259",
+   "comp": "PL",
+   "kickoff": "2026-10-17T14:00:00.000Z",
+   "home": "Fulham",
+   "away": "Hull City",
+   "homeShort": "Fulham",
+   "awayShort": "Hull",
+   "venue": "Craven Cottage, London",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV (3pm blackout)",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645261",
+   "comp": "PL",
+   "kickoff": "2026-10-17T14:00:00.000Z",
+   "home": "Manchester City",
+   "away": "Ipswich Town",
+   "homeShort": "Man City",
+   "awayShort": "Ipswich",
+   "venue": "Etihad Stadium, Manchester",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV (3pm blackout)",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645262",
+   "comp": "PL",
+   "kickoff": "2026-10-17T16:30:00.000Z",
+   "home": "Newcastle United",
+   "away": "Aston Villa",
+   "homeShort": "Newcastle",
+   "awayShort": "Aston Villa",
+   "venue": "St. James' Park, Newcastle",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Main Event",
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
     ],
     "confirmed": true,
     "note": null,

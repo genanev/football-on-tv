@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-09T06:09:30.747Z",
+ "generatedAt": "2026-10-09T13:18:02.368Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
@@ -222,7 +222,9 @@
     "channels": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

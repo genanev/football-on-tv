@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-10T17:21:01.746Z",
+ "generatedAt": "2026-10-10T21:45:06.764Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
@@ -12,7 +12,7 @@
   },
   "tvListings": {
    "ok": true,
-   "premierLeague": 78,
+   "premierLeague": 76,
    "championsLeague": 126,
    "errors": []
   },
@@ -20,7 +20,7 @@
    "ok": true,
    "matches": 19
   },
-  "crossReferenced": "30/37"
+  "crossReferenced": "28/37"
  },
  "matches": [
   {
@@ -37,20 +37,13 @@
    "awayScore": 1,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "TNT Sports",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports Ultimate",
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "listings"
-    ]
+    "sources": []
    }
   },
   {
@@ -154,25 +147,18 @@
    "homeShort": "Man Utd",
    "awayShort": "Spurs",
    "venue": "Old Trafford, Manchester",
-   "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Matchweek 6",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [
-     "Sky Sports Main Event",
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [
-     "Sky Sports Ultra HDR"
-    ],
-    "confirmed": true,
-    "note": null,
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "listings"
-    ]
+    "sources": []
    }
   },
   {

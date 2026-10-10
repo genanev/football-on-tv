@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-09T20:06:47.704Z",
+ "generatedAt": "2026-10-10T00:51:59.822Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
    "ok": true,
-   "matches": 15
+   "matches": 19
   },
   "championsLeague": {
    "ok": true,
@@ -18,9 +18,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 15
+   "matches": 19
   },
-  "crossReferenced": "26/33"
+  "crossReferenced": "30/37"
  },
  "matches": [
   {
@@ -944,6 +944,119 @@
    "homeShort": "Newcastle",
    "awayShort": "Aston Villa",
    "venue": "St. James' Park, Newcastle",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Main Event",
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645255",
+   "comp": "PL",
+   "kickoff": "2026-10-18T13:00:00.000Z",
+   "home": "Bournemouth",
+   "away": "Sunderland",
+   "homeShort": "Bournemouth",
+   "awayShort": "Sunderland",
+   "venue": "Vitality Stadium, Bournemouth",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645257",
+   "comp": "PL",
+   "kickoff": "2026-10-18T13:00:00.000Z",
+   "home": "Brighton and Hove Albion",
+   "away": "Crystal Palace",
+   "homeShort": "Brighton",
+   "awayShort": "Crystal Palace",
+   "venue": "American Express Stadium, Falmer",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645260",
+   "comp": "PL",
+   "kickoff": "2026-10-18T13:00:00.000Z",
+   "home": "Leeds United",
+   "away": "Manchester United",
+   "homeShort": "Leeds",
+   "awayShort": "Man Utd",
+   "venue": "Elland Road, Leeds",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645263",
+   "comp": "PL",
+   "kickoff": "2026-10-18T15:30:00.000Z",
+   "home": "Nottingham Forest",
+   "away": "Arsenal",
+   "homeShort": "Nott'm Forest",
+   "awayShort": "Arsenal",
+   "venue": "The City Ground, Nottingham",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

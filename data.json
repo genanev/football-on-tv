@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-10T21:45:06.764Z",
+ "generatedAt": "2026-10-11T05:47:27.532Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
    "ok": true,
-   "matches": 19
+   "matches": 14
   },
   "championsLeague": {
    "ok": true,
@@ -18,149 +18,11 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 19
+   "matches": 14
   },
-  "crossReferenced": "28/37"
+  "crossReferenced": "29/32"
  },
  "matches": [
-  {
-   "id": "pl-2645245",
-   "comp": "PL",
-   "kickoff": "2026-10-10T11:30:00.000Z",
-   "home": "Arsenal",
-   "away": "Leeds United",
-   "homeShort": "Arsenal",
-   "awayShort": "Leeds",
-   "venue": "Emirates Stadium, London",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645246",
-   "comp": "PL",
-   "kickoff": "2026-10-10T14:00:00.000Z",
-   "home": "Aston Villa",
-   "away": "Brentford",
-   "homeShort": "Aston Villa",
-   "awayShort": "Brentford",
-   "venue": "Villa Park, Birmingham",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 2,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV (3pm blackout)",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645247",
-   "comp": "PL",
-   "kickoff": "2026-10-10T14:00:00.000Z",
-   "home": "Chelsea",
-   "away": "Bournemouth",
-   "homeShort": "Chelsea",
-   "awayShort": "Bournemouth",
-   "venue": "Stamford Bridge, London",
-   "status": "finished",
-   "homeScore": 5,
-   "awayScore": 1,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV (3pm blackout)",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645251",
-   "comp": "PL",
-   "kickoff": "2026-10-10T14:00:00.000Z",
-   "home": "Ipswich Town",
-   "away": "Fulham",
-   "homeShort": "Ipswich",
-   "awayShort": "Fulham",
-   "venue": "Portman Road, Ipswich",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV (3pm blackout)",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645254",
-   "comp": "PL",
-   "kickoff": "2026-10-10T14:00:00.000Z",
-   "home": "Sunderland",
-   "away": "Brighton and Hove Albion",
-   "homeShort": "Sunderland",
-   "awayShort": "Brighton",
-   "venue": "Stadium of Light, Sunderland",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 2,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV (3pm blackout)",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645253",
-   "comp": "PL",
-   "kickoff": "2026-10-10T16:30:00.000Z",
-   "home": "Manchester United",
-   "away": "Tottenham Hotspur",
-   "homeShort": "Man Utd",
-   "awayShort": "Spurs",
-   "venue": "Old Trafford, Manchester",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 1,
-   "round": "Matchweek 6",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
   {
    "id": "pl-2645249",
    "comp": "PL",
@@ -1043,6 +905,36 @@
    "homeShort": "Nott'm Forest",
    "awayShort": "Arsenal",
    "venue": "The City Ground, Nottingham",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 7",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Main Event",
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645264",
+   "comp": "PL",
+   "kickoff": "2026-10-19T19:00:00.000Z",
+   "home": "Tottenham Hotspur",
+   "away": "Coventry City",
+   "homeShort": "Spurs",
+   "awayShort": "Coventry",
+   "venue": "Tottenham Hotspur Stadium, London",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

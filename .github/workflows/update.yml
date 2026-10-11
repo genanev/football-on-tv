@@ -2,8 +2,8 @@ name: Update fixtures
 
 on:
   schedule:
-    # Every 3 hours (times are UTC). GitHub sometimes runs these a little late.
-    - cron: "17 */3 * * *"
+    # Every hour. GitHub often runs these late or skips some, so hourly keeps data fresh.
+    - cron: "17 * * * *"
   workflow_dispatch: {} # adds a "Run workflow" button on the Actions tab
 
 permissions:

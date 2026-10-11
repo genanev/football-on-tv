@@ -99,11 +99,6 @@
   header { padding: 20px 0 12px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
   h1 { font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
   .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
-  .refresh {
-    border: 1px solid var(--line); background: var(--surface); color: var(--text);
-    border-radius: 999px; width: 40px; height: 40px; display: grid; place-items: center; cursor: pointer; flex: none;
-  }
-  .refresh svg { width: 18px; height: 18px; }
   .actions { display: flex; gap: 8px; flex: none; }
   .theme {
     border: 1px solid var(--line); background: var(--surface); color: var(--text);
@@ -111,8 +106,6 @@
     font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
   }
   .theme svg { width: 18px; height: 18px; }
-  .refresh.spin svg { animation: spin .8s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
 
   .filters {
     position: sticky; top: 0; z-index: 5; background: var(--bg);
@@ -174,9 +167,6 @@
     </div>
     <div class="actions">
     <button class="theme" id="theme" aria-label="Colour theme"></button>
-    <button class="refresh" id="refresh" aria-label="Refresh">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
-    </button>
     </div>
   </header>
 
@@ -320,8 +310,6 @@
   }
 
   async function load() {
-    const btn = $('#refresh');
-    btn.classList.add('spin');
     let lastErr;
     for (const url of dataUrls()) {
       try {
@@ -333,8 +321,7 @@
         break;
       } catch (e) { lastErr = e; }
     }
-    btn.classList.remove('spin');
-    if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Pull to refresh or try again shortly.</div>`;
+    if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please try again shortly.</div>`;
     render();
   }
 
@@ -343,7 +330,6 @@
     try { localStorage.setItem('filter', filter); } catch (e) {}
     render();
   }));
-  $('#refresh').addEventListener('click', load);
 
   // Colour theme: Light / Dark. First visit matches the phone; after that your choice is remembered.
   const THEMES = {

@@ -5,7 +5,7 @@ A personal phone web app for George: Premier League (PL) and Champions League (U
 ## How it works
 
 - `scripts/build.mjs` (Node 24, no dependencies) fetches the data and writes `data.json`.
-- `.github/workflows/update.yml` runs it every 3 hours (and on demand from the Actions tab), then commits `data.json`. Each run commits because `generatedAt` changes, which also stops GitHub pausing the schedule for inactivity.
+- `.github/workflows/update.yml` runs it every hour (GitHub often starts these late or skips some) (and on demand from the Actions tab), then commits `data.json`. Each run commits because `generatedAt` changes, which also stops GitHub pausing the schedule for inactivity.
 - `index.html` is the whole app (inline CSS/JS). On `*.github.io` it reads `data.json` from `raw.githubusercontent.com/<user>/<repo>/main/` so updates show within minutes, and falls back to the local `data.json`.
 - `test/run-test.mjs` is an offline test that replays real response shapes captured on 8 Oct 2026: `node test/run-test.mjs`. Run it after any change to `build.mjs`. `--write-sample` rewrites `data.json` from the fixtures (don't commit that over live data).
 
@@ -29,5 +29,6 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 - Day/date headings are 16px, uppercase.
 - Channel pills: TNT magenta, Amazon blue, **Sky Sports orange** (`#d35400`, not red). White text in light mode; dark text on lighter pills in dark mode.
 - Theme toggle shows **Light / Dark only** (no Auto). The first visit follows the phone's setting; after that the choice is saved in localStorage.
+- No refresh button: the app reloads data on open and when you switch back to it.
 - Footer: only the two "Fixtures from… / Channels from…" sentences.
 - All times are shown in Europe/London time.

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-11T12:50:57.438Z",
+ "generatedAt": "2026-10-11T19:33:50.133Z",
  "windowDays": 8,
  "report": {
   "premierLeague": {
@@ -32,9 +32,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Nott'm Forest",
    "venue": "Selhurst Park, London",
-   "status": "upcoming",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "Matchweek 6",
    "tv": {
     "broadcaster": "Sky Sports",
@@ -61,9 +61,9 @@
    "homeShort": "Hull",
    "awayShort": "Everton",
    "venue": "MKM Stadium, Hull",
-   "status": "upcoming",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 2,
    "round": "Matchweek 6",
    "tv": {
     "broadcaster": "Sky Sports",
@@ -90,9 +90,9 @@
    "homeShort": "Liverpool",
    "awayShort": "Man City",
    "venue": "Anfield, Liverpool",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 0,
+   "awayScore": 3,
    "round": "Matchweek 6",
    "tv": {
     "broadcaster": "Sky Sports",

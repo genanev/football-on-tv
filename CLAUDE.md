@@ -20,7 +20,7 @@ A personal phone web app for George: Premier League (PL) and Champions League (U
 
 Listings are matched to official fixtures by UK date plus fuzzy team names (`normTeam`/`teamSim` and an `ALIASES` map: e.g. Atleti → Atlético Madrid, Paris → PSG). If a new team fails to match, add an alias. For UCL the UK listing names are shown instead of UEFA's short names.
 
-Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV (3pm blackout)". Otherwise, a game with no channel shows "TV channel to be confirmed". UK rights for 2026/27: PL is on Sky Sports and TNT Sports. UCL is on TNT Sports, plus Amazon Prime Video for one Tuesday pick; Paramount+ takes over from 2027/28. Each source can fail independently; the app shows a yellow banner when it does.
+Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". Otherwise, a game with no channel shows "TV channel to be confirmed". UK rights for 2026/27: PL is on Sky Sports and TNT Sports. UCL is on TNT Sports, plus Amazon Prime Video for one Tuesday pick; Paramount+ takes over from 2027/28. Each source can fail independently; the app shows a yellow banner when it does.
 
 ## UI decisions George has made (keep these)
 

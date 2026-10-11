@@ -406,7 +406,7 @@ export function resolveTv(match, officialBrands, listing) {
   if (!tv.broadcaster && !tv.channels.length) {
     const p = londonParts(ts);
     const isSat3pm = ukWeekday(ts) === 'Sat' && p.hh === 15 && p.mm === 0;
-    if (match.comp === 'PL' && isSat3pm) tv.note = 'Not shown live on UK TV (3pm blackout)';
+    if (match.comp === 'PL' && isSat3pm) tv.note = 'Not shown live on UK TV';
     else tv.note = 'TV channel to be confirmed';
   } else if (!tv.channels.length) {
     tv.note = 'Exact channel to be confirmed';

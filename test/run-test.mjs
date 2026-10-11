@@ -107,7 +107,7 @@ assert.equal(data.matches.filter(m => m.comp === 'UCL').length, 18);
 assert.equal(data.report.crossReferenced, '24/26');
 assert.deepEqual(by('Arsenal').tv.channels, ['TNT Sports 1']);
 assert.equal(by('Arsenal').tv.broadcaster, 'TNT Sports');
-assert.match(by('Aston Villa').tv.note, /blackout/);
+assert.match(by('Aston Villa').tv.note, /Not shown live on UK TV/);
 assert.deepEqual(data.matches.find(m => m.homeShort === 'Atleti').tv.channels, ['Amazon Prime Video']);
 assert.deepEqual(data.matches.find(m => m.homeShort === 'Man City').tv.channels, ['TNT Sports 1']);
 assert.equal(data.matches.find(m => m.homeShort === 'Man City').kickoff, '2026-10-14T19:00:00.000Z');
@@ -118,7 +118,7 @@ const later = await build(Date.parse('2026-10-12T09:00:00Z'));
 const bour = later.matches.find(m => m.home === 'Bournemouth');
 assert.equal(bour.tv.broadcaster, 'Sky Sports');
 assert.equal(bour.tv.note, 'Exact channel to be confirmed');
-assert.match(later.matches.find(m => m.home === 'Brentford').tv.note, /blackout/);
+assert.match(later.matches.find(m => m.home === 'Brentford').tv.note, /Not shown live on UK TV/);
 
 // a failing source must not break the rest
 const realFetch = globalThis.fetch;

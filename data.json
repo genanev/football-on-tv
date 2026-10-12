@@ -1,7 +1,13 @@
 {
- "generatedAt": "2026-10-11T23:20:31.366Z",
+ "generatedAt": "2026-10-12T06:08:18.061Z",
  "windowDays": 8,
  "report": {
+  "tvGuide": {
+   "ok": true,
+   "days": 9,
+   "programmes": 2442,
+   "errors": []
+  },
   "premierLeague": {
    "ok": true,
    "matches": 11
@@ -12,7 +18,7 @@
   },
   "tvListings": {
    "ok": true,
-   "premierLeague": 76,
+   "premierLeague": 73,
    "championsLeague": 126,
    "errors": []
   },
@@ -20,9 +26,22 @@
    "ok": true,
    "matches": 11
   },
-  "crossReferenced": "35/38"
+  "crossReferenced": "35/38",
+  "formula1": {
+   "ok": true,
+   "sessions": 0
+  },
+  "formula2": {
+   "ok": true,
+   "sessions": 0
+  },
+  "darts": {
+   "ok": true,
+   "tournaments": [],
+   "sessions": 0
+  }
  },
- "matches": [
+ "events": [
   {
    "id": "pl-2645248",
    "comp": "PL",
@@ -36,6 +55,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 6",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -67,6 +88,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -97,6 +120,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -127,6 +152,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -158,6 +185,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "Amazon Prime Video",
     "channels": [
@@ -186,6 +215,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -217,6 +248,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -247,6 +280,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -277,6 +312,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -308,6 +345,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -338,6 +377,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -368,6 +409,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -398,6 +441,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -428,6 +473,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -458,6 +505,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -489,6 +538,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -519,6 +570,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -550,6 +603,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -580,6 +635,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -609,6 +666,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -639,6 +698,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": null,
     "channels": [],
@@ -662,6 +723,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": null,
     "channels": [],
@@ -685,6 +748,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": null,
     "channels": [],
@@ -708,6 +773,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -738,6 +805,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -765,6 +834,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -792,6 +863,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -821,6 +894,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -851,6 +926,8 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Matchweek 7",
+   "kind": "match",
+   "source": "premierleague.com",
    "tv": {
     "broadcaster": "Sky Sports",
     "channels": [
@@ -882,6 +959,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -912,6 +991,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -942,6 +1023,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -972,6 +1055,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "Amazon Prime Video",
     "channels": [
@@ -1000,6 +1085,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -1031,6 +1118,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -1061,6 +1150,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -1092,6 +1183,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [
@@ -1122,6 +1215,8 @@
    "awayScore": null,
    "round": "League phase",
    "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
    "tv": {
     "broadcaster": "TNT Sports",
     "channels": [

@@ -17,7 +17,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { build } from '../scripts/build.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName } from '../scripts/sources/darts.mjs';
-import { seriesOf } from '../scripts/sources/motorsport.mjs';
+import { seriesOf, motorsportTv } from '../scripts/sources/motorsport.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -34,8 +34,7 @@ const prog = (sid, date, hhmm, mins, t, sy = '') => {
   return { sid, ev: { st: ukToUtc(y, m, d, hh, mm) / 1000, d: mins * 60, eid: `E${(++eid).toString(16)}`, t, sy, eg: 7, esg: 11, s: true, hd: true, new: false } };
 };
 const GUIDE = [
-  prog(SKY_F1, '2026-09-24', '10:55', 30, 'Live Formula 2: Qualifying 1', 'Qualifying for the Formula 2 races in Baku.'),
-  // (no programme for F2 Qualifying 2 at 11:30, to check the fallback)
+  prog(SKY_F1, '2026-09-24', '10:55', 60, 'Live Formula 2: Qualifying', 'Both qualifying sessions for the Formula 2 races in Baku.'),
   prog(SKY_F1, '2026-09-24', '20:00', 60, 'Ted\'s Notebook: Azerbaijan', 'Ted Kravitz is live in the paddock.'),
   prog(SKY_F1, '2026-09-25', '05:05', 65, 'Live F2: Sprint Race', 'The Formula 2 sprint race from Baku City Circuit.'),
   prog(SKY_F1, '2026-09-25', '11:05', 80, 'Live Formula 2: Feature Race 1', ''),
@@ -118,9 +117,13 @@ assert.equal(find(f1, 'Race').tv.confirmed, true);
 assert.deepEqual(f2.map(e => e.session), ['Qualifying 1', 'Qualifying 2', 'Sprint Race', 'Feature Race 1', 'Feature Race 2']);
 assert.equal(f2[0].title, 'Azerbaijan');
 assert.deepEqual(find(f2, 'Qualifying 1').tv.channels, ['Sky Sports F1']);
-assert.deepEqual(find(f2, 'Qualifying 2').tv.channels, []);
-assert.equal(find(f2, 'Qualifying 2').tv.broadcaster, 'Sky Sports F1');
-assert.equal(find(f2, 'Qualifying 2').tv.note, 'Not yet confirmed in the TV guide');
+assert.deepEqual(find(f2, 'Qualifying 2').tv.channels, ['Sky Sports F1']); // same programme covers both
+
+// A session the guide has no live programme for falls back to the rights holder
+const noProg = motorsportTv({ comp: 'F2', kickoff: '2026-09-24T10:30:00.000Z' }, { programmes: [], coveredDates: ['2026-09-24'] });
+assert.deepEqual(noProg.channels, []);
+assert.equal(noProg.broadcaster, 'Sky Sports F1');
+assert.equal(noProg.note, 'Not yet confirmed in the TV guide');
 assert.deepEqual(find(f2, 'Sprint Race').tv.channels, ['Sky Sports F1']);
 assert.ok(f2.every(e => e.status === 'finished' && !e.timeTbc));
 

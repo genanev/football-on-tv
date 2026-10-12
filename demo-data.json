@@ -40,6 +40,18 @@
     "World Grand Prix"
    ],
    "sessions": 5
+  },
+  "golf": {
+   "ok": false,
+   "error": "HTTP 404 for https://orchestrator.pgatour.com/graphql"
+  },
+  "snooker": {
+   "ok": false,
+   "error": "HTTP 404 for https://tournaments.snooker.web.gc.wstservices.co.uk/v2/?season=2025"
+  },
+  "cricket": {
+   "ok": false,
+   "error": "HTTP 404 for https://assets-icc.sportz.io/cricket/v1/schedule?client_id=tPZJbRgIub3Vua93%2FDWtyQ%3D%3D&feed_format=json&lang=en&league_ids=1&is_deleted=false&is_live=true&is_recent=true&is_upcoming=true&pagination=true&page_size=100&page_number=1&from_date=20260918&to_date=20261002&timezone=0000"
   }
  },
  "events": [
@@ -84,13 +96,16 @@
    "source": "fiaformula2.com",
    "tv": {
     "broadcaster": "Sky Sports F1",
-    "channels": [],
+    "channels": [
+     "Sky Sports F1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not yet confirmed in the TV guide",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "uk-rights"
+     "uk-rights",
+     "sky-guide"
     ]
    }
   },

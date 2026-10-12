@@ -1,0 +1,512 @@
+{
+ "data": [
+  {
+   "type": "tournament",
+   "id": "10868",
+   "attributes": {
+    "name": "2026 World Series of Darts Finals",
+    "venue": "AFAS Live, Amsterdam",
+    "city": "Amsterdam",
+    "seasonID": 2026,
+    "tournamentTypeID": "18",
+    "tournamentCategoryID": "2",
+    "informationPage": "/tournaments/world-series-of-darts-finals",
+    "startDate": "2026-09-17",
+    "endDate": "2026-09-20",
+    "isRanked": false,
+    "isTelevised": true,
+    "fixtureCount": 31
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10868"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10787",
+   "attributes": {
+    "name": "2026 Players Championship 29",
+    "venue": "Maassport Den Bosch",
+    "city": "Den Bosch",
+    "seasonID": 2026,
+    "tournamentTypeID": "29",
+    "tournamentCategoryID": "4",
+    "informationPage": "/tournaments/pdc-protour/players-championship",
+    "startDate": "2026-09-22",
+    "endDate": "2026-09-22",
+    "isRanked": true,
+    "isTelevised": false,
+    "fixtureCount": 127
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10787"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10788",
+   "attributes": {
+    "name": "2026 Players Championship 30",
+    "venue": "Maassport Den Bosch",
+    "city": "Den Bosch",
+    "seasonID": 2026,
+    "tournamentTypeID": "29",
+    "tournamentCategoryID": "4",
+    "informationPage": "/tournaments/pdc-protour/players-championship",
+    "startDate": "2026-09-23",
+    "endDate": "2026-09-23",
+    "isRanked": true,
+    "isTelevised": false,
+    "fixtureCount": 127
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10788"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10789",
+   "attributes": {
+    "name": "2026 ET15 Tour Card Holder Qualifier",
+    "venue": "Maassport Den Bosch",
+    "city": "Den Bosch",
+    "seasonID": 2026,
+    "tournamentTypeID": "13",
+    "tournamentCategoryID": "5",
+    "informationPage": "/tournaments/pdc-protour/european-tour",
+    "startDate": "2026-09-24",
+    "endDate": "2026-09-24",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 64
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10789"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10675",
+   "attributes": {
+    "name": "2026 Winmau Challenge Tour 21",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "32",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-challenge-tour",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-26",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 166
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10675"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10676",
+   "attributes": {
+    "name": "2026 Winmau Challenge Tour 22",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "32",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-challenge-tour",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-26",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 166
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10676"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10677",
+   "attributes": {
+    "name": "2026 Winmau Challenge Tour 23",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "32",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-challenge-tour",
+    "startDate": "2026-09-27",
+    "endDate": "2026-09-27",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 168
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10677"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10678",
+   "attributes": {
+    "name": "2026 Winmau Challenge Tour 24",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "32",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-challenge-tour",
+    "startDate": "2026-09-27",
+    "endDate": "2026-09-27",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 167
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10678"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10869",
+   "attributes": {
+    "name": "2026 World Grand Prix",
+    "venue": "Mattioli Arena, Leicester",
+    "city": "Leicester",
+    "seasonID": 2026,
+    "tournamentTypeID": "6",
+    "tournamentCategoryID": "2",
+    "informationPage": "/tournaments/boyle-sports-world-grand-prix",
+    "startDate": "2026-09-28",
+    "endDate": "2026-10-04",
+    "isRanked": true,
+    "isTelevised": true,
+    "fixtureCount": 31
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10869"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10874",
+   "attributes": {
+    "name": "2026/27 PDC UK&IRE TC Holder & AM World Championship Qualifier",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "13",
+    "tournamentCategoryID": "5",
+    "informationPage": null,
+    "startDate": "2026-09-28",
+    "endDate": "2026-09-28",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 127
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10874"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10695",
+   "attributes": {
+    "name": "2026 Winmau Development Tour 21",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "86",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-development-tour",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 391
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10695"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10696",
+   "attributes": {
+    "name": "2026 Winmau Development Tour 22",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "86",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-development-tour",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 397
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10696"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10697",
+   "attributes": {
+    "name": "2026 Winmau Development Tour 23",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "86",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-development-tour",
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-04",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 387
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10697"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10698",
+   "attributes": {
+    "name": "2026 Winmau Development Tour 24",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "86",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-development-tour",
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-04",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 383
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10698"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10699",
+   "attributes": {
+    "name": "2026 World Youth Championship",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "11",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/winmau-world-youth-championship",
+    "startDate": "2026-10-05",
+    "endDate": "2026-10-05",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 75
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10699"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10853",
+   "attributes": {
+    "name": "2026 European Tour 14 (Basel) Host Nation Qualifier",
+    "venue": "St. Jakobshalle, Basel",
+    "city": "Basel",
+    "seasonID": 2026,
+    "tournamentTypeID": "13",
+    "tournamentCategoryID": "5",
+    "informationPage": "/tournaments/pdc-protour/european-tour",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 70
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10853"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10823",
+   "attributes": {
+    "name": "2026 ET14 - Swiss Darts Trophy",
+    "venue": "St. Jakobshalle, Basel",
+    "city": "Basel",
+    "seasonID": 2026,
+    "tournamentTypeID": "14",
+    "tournamentCategoryID": "4",
+    "informationPage": "https://www.pdc-europe.tv/tournaments/et-2026-en/swiss-darts-trophy-2026/",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-11",
+    "isRanked": true,
+    "isTelevised": false,
+    "fixtureCount": 208
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10823"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10739",
+   "attributes": {
+    "name": "2026 Women's Series 21",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "84",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/womens-series",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 84
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10739"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10740",
+   "attributes": {
+    "name": "2026 Women's Series 22",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "84",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/womens-series",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 84
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10740"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10741",
+   "attributes": {
+    "name": "2026 Women's Series 23",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "84",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/womens-series",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 84
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10741"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10742",
+   "attributes": {
+    "name": "2026 Women's Series 24",
+    "venue": "Robin Park Tennis Centre, Wigan",
+    "city": "Wigan",
+    "seasonID": 2026,
+    "tournamentTypeID": "84",
+    "tournamentCategoryID": "6",
+    "informationPage": "/tournaments/womens-series",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 83
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10742"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10854",
+   "attributes": {
+    "name": "2026 European Tour 15 (Maastricht) Host Nation Qualifier",
+    "venue": "MECC, Maastricht",
+    "city": "Maastricht",
+    "seasonID": 2026,
+    "tournamentTypeID": "13",
+    "tournamentCategoryID": "5",
+    "informationPage": "/tournaments/pdc-protour/european-tour",
+    "startDate": "2026-10-15",
+    "endDate": "2026-10-15",
+    "isRanked": false,
+    "isTelevised": false,
+    "fixtureCount": 0
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10854"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10824",
+   "attributes": {
+    "name": "2026 ET15 - Dutch Darts Championship",
+    "venue": "MECC, Maastricht",
+    "city": "Maastricht",
+    "seasonID": 2026,
+    "tournamentTypeID": "14",
+    "tournamentCategoryID": "4",
+    "informationPage": "https://www.pdc-europe.tv/tournaments/et-2026-en/dutch-darts-championship-2026/",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-18",
+    "isRanked": true,
+    "isTelevised": false,
+    "fixtureCount": 0
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10824"
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "10870",
+   "attributes": {
+    "name": "2026 European Championship",
+    "venue": "Westfalenhalle, Dortmund",
+    "city": "Dortmund",
+    "seasonID": 2026,
+    "tournamentTypeID": "7",
+    "tournamentCategoryID": "2",
+    "informationPage": "/tournaments/machineseeker-european-championship",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-25",
+    "isRanked": true,
+    "isTelevised": true,
+    "fixtureCount": 0
+   },
+   "links": {
+    "self": "https://tournaments.darts.web.gc.pdcservices.co.uk/v2/10870"
+   }
+  }
+ ],
+ "meta": {
+  "totalCount": 24,
+  "count": 24
+ }
+}

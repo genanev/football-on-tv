@@ -1,0 +1,88 @@
+{
+ "fomRaceId": "1295",
+ "seasonContext": {
+  "seasonYear": "2026",
+  "currentOrNextMeetingKey": "1295",
+  "timetables": [
+   {
+    "session": "p1",
+    "shortName": "FP1",
+    "description": "Practice 1",
+    "startTime": "2026-09-24T12:30:00",
+    "endTime": "2026-09-24T13:30:00",
+    "gmtOffset": "+04:00",
+    "state": "completed",
+    "sessionType": "Practice",
+    "sessionNumber": 1,
+    "meetingSessionKey": 11370,
+    "timezone": "Asia/Baku"
+   },
+   {
+    "session": "p2",
+    "shortName": "FP2",
+    "description": "Practice 2",
+    "startTime": "2026-09-24T16:00:00",
+    "endTime": "2026-09-24T17:00:00",
+    "gmtOffset": "+04:00",
+    "state": "completed",
+    "sessionType": "Practice",
+    "sessionNumber": 2,
+    "meetingSessionKey": 11371,
+    "timezone": "Asia/Baku"
+   },
+   {
+    "session": "p3",
+    "shortName": "FP3",
+    "description": "Practice 3",
+    "startTime": "2026-09-25T12:30:00",
+    "endTime": "2026-09-25T13:30:00",
+    "gmtOffset": "+04:00",
+    "state": "completed",
+    "sessionType": "Practice",
+    "sessionNumber": 3,
+    "meetingSessionKey": 11372,
+    "timezone": "Asia/Baku"
+   },
+   {
+    "session": "q",
+    "shortName": "Qualifying",
+    "description": "Qualifying",
+    "startTime": "2026-09-25T16:00:00",
+    "endTime": "2026-09-25T17:00:00",
+    "gmtOffset": "+04:00",
+    "state": "completed",
+    "sessionType": "Qualifying",
+    "sessionNumber": 0,
+    "meetingSessionKey": 11373,
+    "timezone": "Asia/Baku"
+   },
+   {
+    "session": "r",
+    "shortName": "Race",
+    "description": "Race",
+    "startTime": "2026-09-26T15:00:00",
+    "endTime": "2026-09-26T17:00:00",
+    "gmtOffset": "+04:00",
+    "state": "completed",
+    "sessionType": "Race",
+    "sessionNumber": 0,
+    "meetingSessionKey": 11377,
+    "timezone": "Asia/Baku"
+   }
+  ]
+ },
+ "race": {
+  "meetingName": "Azerbaijan Grand Prix",
+  "meetingLocation": "Baku",
+  "meetingCountryName": "Azerbaijan",
+  "meetingCountryCode": "AZE",
+  "meetingOfficialName": "FORMULA 1 QATAR AIRWAYS AZERBAIJAN GRAND PRIX 2026",
+  "meetingTimezone": "Asia/Baku",
+  "url": "/en/racing/2026/azerbaijan",
+  "isTestEvent": false,
+  "roundText": "R15",
+  "circuitShortName": "Baku",
+  "meetingStartDate": "2026-09-24T08:30:00.000Z",
+  "meetingEndDate": "2026-09-26T13:00:00.000Z"
+ }
+}

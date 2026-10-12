@@ -96,37 +96,37 @@ assert.deepEqual(parsed.find(p => p.home === 'Liverpool'), { date: '2026-10-11',
 
 // ---------- full build, "now" = Thu 8 Oct 2026 10:00 UK
 const data = await build(Date.parse('2026-10-08T09:00:00Z'));
-const by = (h) => data.matches.find(m => m.home === h || m.homeShort === h);
+const by = (h) => data.events.find(m => m.home === h || m.homeShort === h);
 console.log(JSON.stringify(data.report, null, 1));
-for (const m of data.matches) {
+for (const m of data.events) {
   const t = new Date(m.kickoff).toLocaleString('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit' });
   console.log(m.comp.padEnd(4), t.padEnd(10), `${m.home} v ${m.away}`.padEnd(42), (m.tv.channels.join(', ') || m.tv.broadcaster || '-').padEnd(40), m.tv.note || '', m.tv.conflict ? 'CONFLICT' : '');
 }
-assert.equal(data.matches.filter(m => m.comp === 'PL').length, 8);  // window ends before 17 Oct
-assert.equal(data.matches.filter(m => m.comp === 'UCL').length, 18);
+assert.equal(data.events.filter(m => m.comp === 'PL').length, 8);  // window ends before 17 Oct
+assert.equal(data.events.filter(m => m.comp === 'UCL').length, 18);
 assert.equal(data.report.crossReferenced, '24/26');
 assert.deepEqual(by('Arsenal').tv.channels, ['TNT Sports 1']);
 assert.equal(by('Arsenal').tv.broadcaster, 'TNT Sports');
 assert.match(by('Aston Villa').tv.note, /Not shown live on UK TV/);
-assert.deepEqual(data.matches.find(m => m.homeShort === 'Atleti').tv.channels, ['Amazon Prime Video']);
-assert.deepEqual(data.matches.find(m => m.homeShort === 'Man City').tv.channels, ['TNT Sports 1']);
-assert.equal(data.matches.find(m => m.homeShort === 'Man City').kickoff, '2026-10-14T19:00:00.000Z');
-assert.ok(data.matches.every(m => !m.tv.conflict));
+assert.deepEqual(data.events.find(m => m.homeShort === 'Atleti').tv.channels, ['Amazon Prime Video']);
+assert.deepEqual(data.events.find(m => m.homeShort === 'Man City').tv.channels, ['TNT Sports 1']);
+assert.equal(data.events.find(m => m.homeShort === 'Man City').kickoff, '2026-10-14T19:00:00.000Z');
+assert.ok(data.events.every(m => !m.tv.conflict));
 
 // later in the week: TBC entries and Sky brand only
 const later = await build(Date.parse('2026-10-12T09:00:00Z'));
-const bour = later.matches.find(m => m.home === 'Bournemouth');
+const bour = later.events.find(m => m.home === 'Bournemouth');
 assert.equal(bour.tv.broadcaster, 'Sky Sports');
 assert.equal(bour.tv.note, 'Exact channel to be confirmed');
-assert.match(later.matches.find(m => m.home === 'Brentford').tv.note, /Not shown live on UK TV/);
+assert.match(later.events.find(m => m.home === 'Brentford').tv.note, /Not shown live on UK TV/);
 
 // a failing source must not break the rest
 const realFetch = globalThis.fetch;
 globalThis.fetch = async (url) => (url.includes('live-footballontv') ? { ok: false, status: 403 } : realFetch(url));
 const degraded = await build(Date.parse('2026-10-08T09:00:00Z'));
 assert.equal(degraded.report.tvListings.ok, false);
-assert.equal(degraded.matches.find(m => m.home === 'Arsenal' && m.comp === 'PL').tv.broadcaster, 'TNT Sports');
-assert.match(degraded.matches.find(m => m.homeShort === 'Atleti').tv.note, /to be confirmed/);
+assert.equal(degraded.events.find(m => m.home === 'Arsenal' && m.comp === 'PL').tv.broadcaster, 'TNT Sports');
+assert.match(degraded.events.find(m => m.homeShort === 'Atleti').tv.note, /to be confirmed/);
 console.log('\nAll tests passed');
 
 // Save a sample data.json so the app has something to show before the first live update

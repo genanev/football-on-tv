@@ -1,13 +1,15 @@
 # Football on TV – project notes for Claude
 
-A personal phone web app for George: Premier League (PL) and Champions League (UCL) games for **today + the next 7 days**, with **UK kick-off times** and the **UK TV channel**. It's hosted on GitHub Pages and added to his phone's home screen. Keep the app simple; George is not a developer, so explain any steps he has to do on GitHub in plain language.
+A personal phone web app for George: what's on UK TV for **today + the next 7 days**, with **UK times** and the **UK TV channel**. It covers Premier League (PL) and Champions League (UCL) football, Formula 1, Formula 2 and televised PDC darts. It's hosted on GitHub Pages and added to his phone's home screen. Keep the app simple; George is not a developer, so explain any steps he has to do on GitHub in plain language. He is building it to learn, so keep it close to how a commercial app would be built: data from the official ("golden") source wherever possible, one module per source, offline tests, and each source failing independently.
 
 ## How it works
 
-- `scripts/build.mjs` (Node 24, no dependencies) fetches the data and writes `data.json`.
-- `.github/workflows/update.yml` runs it every hour (GitHub often starts these late or skips some) (and on demand from the Actions tab), then commits `data.json`. Each run commits because `generatedAt` changes, which also stops GitHub pausing the schedule for inactivity.
-- `index.html` is the whole app (inline CSS/JS). On `*.github.io` it reads `data.json` from `raw.githubusercontent.com/<user>/<repo>/main/` so updates show within minutes, and falls back to the local `data.json`.
-- `test/run-test.mjs` is an offline test that replays real response shapes captured on 8 Oct 2026: `node test/run-test.mjs`. Run it after any change to `build.mjs`. `--write-sample` rewrites `data.json` from the fixtures (don't commit that over live data).
+- `scripts/build.mjs` (Node 24, no dependencies) fetches everything and writes `data.json`: `{ generatedAt, windowDays, report, events[] }`. Each event has `comp` (`PL`/`UCL`/`F1`/`F2`/`DARTS`), `kind` (`match` for football, `session` for the rest), `kickoff` (ISO UTC), `source` (where the schedule came from) and `tv` (`broadcaster`, `channels`, `alsoOn`, `confirmed`, `note`, `sources`). Sessions also have `title`, `session`, `end`, `timeTbc`, `allDay`. `report` has one entry per source with `ok`.
+- Source modules: `scripts/sources/football.mjs`, `motorsport.mjs` (F1 + F2), `darts.mjs`, `skyGuide.mjs` (UK TV guide). Shared helpers in `scripts/lib/util.mjs`.
+- `.github/workflows/update.yml` runs the build every hour (GitHub often starts these late or skips some) and on demand from the Actions tab, then commits `data.json`. Each run commits because `generatedAt` changes, which also stops GitHub pausing the schedule for inactivity.
+- `.github/workflows/check.yml` runs on pushes to any branch except `main`: both offline tests, then a live build (not saved) that fails if any source didn't answer from GitHub's US servers.
+- `index.html` is the whole app (inline CSS/JS). On `*.github.io` it reads `data.json` from `raw.githubusercontent.com/<user>/<repo>/main/` so updates show within minutes, and falls back to the local `data.json`. `?demo` loads `demo-data.json` (a recorded week with F1, F2 and darts) and pretends it's that week.
+- Tests (run after any change to the build): `node test/run-test.mjs` (football, response shapes captured 8 Oct 2026; `--write-sample` rewrites `data.json` from the fixtures – don't commit that over live data) and `node test/run-sports-test.mjs` (F1/F2/darts, real data captured 12 Oct 2026 for the Baku weekend 24–26 Sept and the World Grand Prix darts; `--write-demo` rewrites `demo-data.json`). Fixtures are in `test/fixtures/`.
 
 ## Data sources (all unofficial, undocumented endpoints)
 
@@ -16,16 +18,27 @@ A personal phone web app for George: Premier League (PL) and Champions League (U
 | PL fixtures | `sdp-prem-prod.premier-league-prod.pulselive.com/api/v2/matches?competition=8&season=<YYYY>&matchweek=<n>`; current matchweek from `resources.premierleague.com/premierleague25/config/current-gameweek.json`. `kickoff` is UK local time, labelled by `kickoffTimezone` (BST/GMT). |
 | PL broadcaster | `api.premierleague.com/broadcasting/match-events?sportDataId=<ids>`. Answers for the **requester's country by IP** (no query parameter overrides it). GitHub runners are in the US, so it returns NBC/Peacock etc.; `isUkChannel()` keeps only channels whose `restrictedCountries` include `GB`. In practice it adds nothing when run on GitHub. |
 | UCL fixtures | `match.uefa.com/v5/matches?competitionId=1&fromDate=&toDate=` (kick-off times in real UTC). UEFA doesn't publish UK channels. |
-| Exact UK channels (both comps) | live-footballontv.com: `/live-premier-league-football-on-tv.html` and `/live-champions-league-football-on-tv.html`. Server-rendered HTML: `.fixture-date` headers followed by `.fixture` blocks (`.fixture__time`, `.fixture__teams` "Home v Away", `.channel-pill`). It shows "Sky Sports TBC" before picks are announced. |
+| Exact UK channels (football) | live-footballontv.com: `/live-premier-league-football-on-tv.html` and `/live-champions-league-football-on-tv.html`. Server-rendered HTML: `.fixture-date` headers followed by `.fixture` blocks (`.fixture__time`, `.fixture__teams` "Home v Away", `.channel-pill`). It shows "Sky Sports TBC" before picks are announced. |
+| F1 sessions | `api.formula1.com/v1/event-tracker` with header `apikey` = formula1.com's public web key. Returns the **current or next** weekend only: `seasonContext.timetables` (local `startTime` + `gmtOffset`) and `race`. `/v1/event-tracker/meeting/<meetingKey>` gives any weekend (used to capture test data). |
+| F2 sessions | `api.formula1.com/v1/core-event-tracker/f2` with fiaformula2.com's public web key. Current or next weekend: `race.meetingSessions`. `sessionStatus: "TBC"` = provisional times. Meeting keys are shared with F1. |
+| Darts | PDC feed behind pdc.tv: `tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=<YYYY>&page.size=300` (JSON:API style). `isTelevised` picks the TV events. It has **no session start times** (those are only in PDC news articles), so sessions come from the TV guide. `fixtures.darts.web…/v2/` has matches with actual start times after they're played. |
+| UK TV guide | Sky EPG: `awk.epgsky.com/hawk/linear/schedule/<YYYYMMDD>/<sid,sid,…>`; channel list from `/hawk/linear/services/4101/1`. Covers all Sky-platform channels (Sky Sports, TNT, ITV, Channel 4) from **today to ~8 days ahead, no past days**. Live programmes have titles starting "Live". Used for F1/F2/darts. |
 
-Listings are matched to official fixtures by UK date plus fuzzy team names (`normTeam`/`teamSim` and an `ALIASES` map: e.g. Atleti → Atlético Madrid, Paris → PSG). If a new team fails to match, add an alias. For UCL the UK listing names are shown instead of UEFA's short names.
+The F1/F2 API keys are the ones each website sends from every visitor's browser. If one starts returning 401, find the new one in the site's JavaScript (search for `apikey`).
 
-Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". Otherwise, a game with no channel shows "TV channel to be confirmed". UK rights for 2026/27: PL is on Sky Sports and TNT Sports. UCL is on TNT Sports, plus Amazon Prime Video for one Tuesday pick; Paramount+ takes over from 2027/28. Each source can fail independently; the app shows a yellow banner when it does.
+Football: listings are matched to official fixtures by UK date plus fuzzy team names (`normTeam`/`teamSim` and an `ALIASES` map: e.g. Atleti → Atlético Madrid, Paris → PSG). If a new team fails to match, add an alias. For UCL the UK listing names are shown instead of UEFA's short names.
+
+Motorsport: practice sessions are skipped. A session's channel is confirmed when a live programme on Sky Sports F1 / Main Event / Sky Sports+ / Channel 4 covers its start and is about the same series (`seriesOf`). Otherwise it shows "Sky Sports F1" (the UK rights holder) with "Not yet confirmed in the TV guide".
+
+Darts: each live darts programme in the guide on a televised tournament day becomes a session (simulcasts and back-to-back parts merge; before 17:00 = "Afternoon session", otherwise "Evening session"). A tournament day with nothing in the guide shows one "TBC" entry with "TV times to be confirmed".
+
+Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". Otherwise, a game with no channel shows "TV channel to be confirmed". UK rights for 2026/27: PL is on Sky Sports and TNT Sports. UCL is on TNT Sports, plus Amazon Prime Video for one Tuesday pick; Paramount+ takes over from 2027/28. F1 and F2 are on Sky Sports F1 (Channel 4 shows the British GP live). PDC darts is on Sky Sports, with some events on ITV. Each source can fail independently; the app shows a yellow banner when it does.
 
 ## UI decisions George has made (keep these)
 
-- Tabs: **All** (narrower) · **Premier League** · **Champions League**, full names.
-- Every day of the 8-day window is listed. An empty day says "No scheduled PL / UCL games" (or "No scheduled PL games" / "No scheduled UCL games" when filtered).
+- Tabs, two rows: **All** (narrower) · **Premier League** · **Champions League**, then **Formula 1** · **Formula 2** · **Darts**, full names. **All** shows all five.
+- Every day of the 8-day window is listed. An empty day says "No scheduled PL / UCL / F1 / F2 / darts" under All, or "No scheduled PL games" / "No scheduled UCL games" / "No F1 sessions" / "No F2 sessions" / "No televised darts" when filtered.
+- F1/F2: qualifying, sprint and race sessions only (no practice). Darts: TV events only, one entry per session.
 - Day/date headings are 16px, uppercase.
 - Channel pills: TNT magenta, Amazon blue, **Sky Sports orange** (`#d35400`, not red). White text in light mode; dark text on lighter pills in dark mode.
 - Theme toggle shows **Light / Dark only** (no Auto). The first visit follows the phone's setting; after that the choice is saved in localStorage.

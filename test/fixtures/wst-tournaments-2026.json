@@ -1,0 +1,221 @@
+{
+ "data": [
+  {
+   "type": "tournament",
+   "id": "3b8c45ee-733a-4de4-bca0-eccb5cdb1aaa",
+   "attributes": {
+    "name": "Unibet British Open 2026",
+    "startDate": "2026-08-31",
+    "endDate": "2026-09-06",
+    "venue": null,
+    "city": "Cheltenham",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 79
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "ae0e624d-9475-491f-9219-70b5d0f4e13a",
+   "attributes": {
+    "name": "BetVictor English Open 2026",
+    "startDate": "2026-09-07",
+    "endDate": "2026-09-13",
+    "venue": null,
+    "city": "Brentwood",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 94
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "ad558c56-6f6f-47ce-bf08-e054c51f53f3",
+   "attributes": {
+    "name": "BetVictor Northern Ireland Open 2026 Qualifiers",
+    "startDate": "2026-09-13",
+    "endDate": "2026-09-16",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 64
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "8a0d7890-33a8-4dbf-960d-2f822e9d948a",
+   "attributes": {
+    "name": "International Championship 2026 Qualifiers",
+    "startDate": "2026-09-17",
+    "endDate": "2026-09-19",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 67
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "00e0be79-38cd-45e3-9ac7-0baf17bfff29",
+   "attributes": {
+    "name": "BetVictor Scottish Open 2026 Qualifiers",
+    "startDate": "2026-09-20",
+    "endDate": "2026-09-23",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 64
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "07497d0d-1558-408c-82d8-2c42f2876007",
+   "attributes": {
+    "name": "Shenzhen Open 2026",
+    "startDate": "2026-09-28",
+    "endDate": "2026-10-04",
+    "venue": null,
+    "city": "Shenzhen",
+    "country": "China ",
+    "scheduleArticleURL": null,
+    "matchCount": 51
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "b4533c9e-8d2c-4ecc-8dfd-c6b284705578",
+   "attributes": {
+    "name": "BetVictor Northern Ireland Open 2026",
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-25",
+    "venue": null,
+    "city": "Belfast",
+    "country": "Northern Ireland",
+    "scheduleArticleURL": null,
+    "matchCount": 63
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "7adc8423-9137-4dae-b89f-8b48620560bf",
+   "attributes": {
+    "name": "International Championship 2026",
+    "startDate": "2026-10-31",
+    "endDate": "2026-11-07",
+    "venue": null,
+    "city": "Nanjing",
+    "country": "China ",
+    "scheduleArticleURL": null,
+    "matchCount": 73
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "31cd828e-2ab7-42b2-8e02-5141bb0d61b7",
+   "attributes": {
+    "name": "Champion of Champions 2026",
+    "startDate": "2026-11-09",
+    "endDate": "2026-11-15",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "ca344b1b-8d34-4930-bdf7-80d6446fe231",
+   "attributes": {
+    "name": "MachineSeeker German Masters 2027 Qualifiers",
+    "startDate": "2026-11-16",
+    "endDate": "2026-11-19",
+    "venue": null,
+    "city": "Wigan",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "f884c892-ad0b-404c-b3aa-b85a8f5713d7",
+   "attributes": {
+    "name": "UK Championship 2026 Qualifiers",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-26",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "0927fcad-18aa-4b62-bea9-2fdf915d15f5",
+   "attributes": {
+    "name": "UK Championship 2026",
+    "startDate": "2026-11-28",
+    "endDate": "2026-12-06",
+    "venue": null,
+    "city": "York",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "64c10dcb-0337-445a-a0b2-c3f2e42cd0b9",
+   "attributes": {
+    "name": "TAOM Shoot Out 2026",
+    "startDate": "2026-12-09",
+    "endDate": "2026-12-12",
+    "venue": null,
+    "city": "Blackpool",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "df07011a-74f7-490b-b5d0-0f682987c12c",
+   "attributes": {
+    "name": "BetVictor Scottish Open 2026",
+    "startDate": "2026-12-14",
+    "endDate": "2026-12-20",
+    "venue": null,
+    "city": "Edinburgh",
+    "country": "Scotland",
+    "scheduleArticleURL": null,
+    "matchCount": 63
+   }
+  },
+  {
+   "type": "tournament",
+   "id": "5176be0f-daac-449a-99a2-c7f514a9d155",
+   "attributes": {
+    "name": "BetVictor Championship League Snooker Invitational 2027 (Group 1)",
+    "startDate": "2026-12-21",
+    "endDate": "2026-12-22",
+    "venue": null,
+    "city": "Leicester",
+    "country": "England",
+    "scheduleArticleURL": null,
+    "matchCount": 0
+   }
+  }
+ ],
+ "meta": {
+  "totalCount": 15,
+  "count": 15
+ },
+ "links": {
+  "self": "https://tournaments.snooker.web.gc.wstservices.co.uk/v2/?season=2026"
+ }
+}

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-12T06:08:18.061Z",
+ "generatedAt": "2026-10-12T15:41:03.310Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 2442,
+   "programmes": 2485,
    "errors": []
   },
   "premierLeague": {
@@ -306,7 +306,7 @@
    "away": "Bayern Munich",
    "homeShort": "Viking",
    "awayShort": "Bayern München",
-   "venue": "Viking stadion",
+   "venue": "Viking Stadion",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

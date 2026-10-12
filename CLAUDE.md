@@ -30,6 +30,8 @@ A personal phone web app for George: what's on UK TV for **today + the next 7 da
 
 The F1/F2/PGA Tour API keys (and the ICC client id) are the ones each website sends from every visitor's browser. If one starts returning 401, find the new one in the site's JavaScript (search for `apikey`).
 
+Every update reads the previous `data.json` and, when a source no longer gives an event a channel, keeps the channel it had (`keepKnownChannels`): live-footballontv.com drops matches once played. The app hides "…to be confirmed" notes for events that are over.
+
 Football: listings are matched to official fixtures by UK date plus fuzzy team names (`normTeam`/`teamSim` and an `ALIASES` map: e.g. Atleti → Atlético Madrid, Paris → PSG). If a new team fails to match, add an alias. For UCL the UK listing names are shown instead of UEFA's short names.
 
 Motorsport: practice sessions are skipped. A session's channel is confirmed when a live programme on Sky Sports F1 / Main Event / Sky Sports+ / Channel 4 covers its start and is about the same series (`seriesOf`). Otherwise it shows "Sky Sports F1" (the UK rights holder) with "Expected – To Be Confirmed" (George's wording; keep it short).

@@ -127,6 +127,14 @@ const degraded = await build(Date.parse('2026-10-08T09:00:00Z'));
 assert.equal(degraded.report.tvListings.ok, false);
 assert.equal(degraded.events.find(m => m.home === 'Arsenal' && m.comp === 'PL').tv.broadcaster, 'TNT Sports');
 assert.match(degraded.events.find(m => m.homeShort === 'Atleti').tv.note, /to be confirmed/);
+
+// ...but with the previous update to hand, a match the listings no longer show keeps its channel
+// (the listings site drops matches once they've been played)
+const withPrevious = await build(Date.parse('2026-10-08T09:00:00Z'), data);
+const atleti = withPrevious.events.find(m => m.homeShort === 'Atleti');
+assert.deepEqual(atleti.tv.channels, ['Amazon Prime Video']);
+assert.equal(atleti.tv.note, null);
+assert.ok(atleti.tv.sources.includes('previous-update'));
 console.log('\nAll tests passed');
 
 // Save a sample data.json so the app has something to show before the first live update

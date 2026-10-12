@@ -13,7 +13,7 @@
 // Each source is optional - if one fails, the others still produce output and the
 // report says which failed (the app shows a banner for it).
 
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { ukDate, ukMidnight } from './lib/util.mjs';
 import { fetchPremierLeague, fetchPlBroadcasts, fetchChampionsLeague, fetchListings, findListing, resolveTv } from './sources/football.mjs';
 import { fetchF1, fetchF2, motorsportTv } from './sources/motorsport.mjs';
@@ -32,7 +32,23 @@ export const DAYS_AHEAD = 8; // a little over 7 so the app still has a full week
 const ok = (r) => r.status === 'fulfilled';
 const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason) });
 
-export async function build(now = Date.now()) {
+/**
+ * Keep the channel from the previous update when a source stops listing an event. The football
+ * listings site drops matches once they've been played, which would otherwise leave a finished
+ * match with "TV channel to be confirmed".
+ */
+export function keepKnownChannels(events, previous) {
+  const before = new Map((previous?.events || previous?.matches || []).map(e => [e.id, e]));
+  for (const e of events) {
+    const old = before.get(e.id);
+    if (!e.tv?.channels?.length && old?.tv?.channels?.length) {
+      e.tv = { ...old.tv, sources: [...new Set([...(old.tv.sources || []), 'previous-update'])] };
+    }
+  }
+  return events;
+}
+
+export async function build(now = Date.now(), previous = null) {
   const report = {};
   const today = ukDate(now);
   const windowStart = ukMidnight(today);
@@ -123,13 +139,16 @@ export async function build(now = Date.now()) {
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
+  keepKnownChannels(events, previous);
   return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events };
 }
 
 const isMain = import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('build.mjs');
 if (isMain) {
   const out = process.argv[2] || 'data.json';
-  const data = await build();
+  let previous = null;
+  try { previous = JSON.parse(await readFile(out, 'utf8')); } catch { /* first run */ }
+  const data = await build(Date.now(), previous);
   console.log(JSON.stringify(data.report, null, 2));
   const scheduleOk = ['premierLeague', 'championsLeague', 'formula1', 'formula2', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {

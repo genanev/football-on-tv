@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Football on TV</title>
-<meta name="description" content="Premier League and Champions League games for the next 7 days, with UK kick-off times and TV channels.">
+<meta name="description" content="Football, motorsport, golf, cricket, darts, snooker and big events on UK TV for the next 7 days, with UK times and TV channels.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -28,12 +28,19 @@
     --accent: #0b6b3a;
     --pl: #3d195b;
     --ucl: #0d47a1;
+    --uel: #d84300;
+    --fac: #b71c1c;
+    --efl: #00695c;
     --f1: #d50000;
     --f2: #00838f;
+    --f3: #6a1b9a;
+    --motogp: #37474f;
     --darts: #8a6d00;
     --golf: #2e7d32;
+    --pga: #1a4d8f;
     --snooker: #6d4c41;
     --cricket: #3949ab;
+    --special: #ad1457;
     --sky: #d35400;
     --tnt: #b4169e;
     --prime: #0084b4;
@@ -59,12 +66,19 @@
       --accent: #4cc283;
       --pl: #b98be0;
       --ucl: #7fb0ff;
+      --uel: #ffab6e;
+      --fac: #ff8a80;
+      --efl: #4dd0b4;
       --f1: #ff6e64;
       --f2: #4dd0e1;
+      --f3: #ce93d8;
+      --motogp: #b0bec5;
       --darts: #e8c55a;
       --golf: #81c784;
+      --pga: #8fb4ef;
       --snooker: #d7a98c;
       --cricket: #9fa8da;
+      --special: #f48fb1;
       --sky: #ff9a4d;
       --tnt: #f06ae0;
       --prime: #38c3f2;
@@ -87,12 +101,19 @@
     --accent: #4cc283;
     --pl: #b98be0;
     --ucl: #7fb0ff;
+    --uel: #ffab6e;
+    --fac: #ff8a80;
+    --efl: #4dd0b4;
     --f1: #ff6e64;
     --f2: #4dd0e1;
+    --f3: #ce93d8;
+    --motogp: #b0bec5;
     --darts: #e8c55a;
     --golf: #81c784;
+    --pga: #8fb4ef;
     --snooker: #d7a98c;
     --cricket: #9fa8da;
+    --special: #f48fb1;
     --sky: #ff9a4d;
     --tnt: #f06ae0;
     --prime: #38c3f2;
@@ -112,6 +133,7 @@
     font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
+  button { -webkit-tap-highlight-color: transparent; }
   .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 40px; }
 
   header { padding: 20px 0 12px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
@@ -125,24 +147,40 @@
   }
   .theme svg { width: 18px; height: 18px; }
 
+  /* Sticky navigation: one tab per sport you follow. Swipe the list left/right to move between them. */
   .filters {
     position: sticky; top: 0; z-index: 5; background: var(--bg);
-    padding: 8px 0 10px; margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+    margin: 0 -16px; padding-top: 2px; border-bottom: 1px solid var(--line);
   }
-  .seg { display: grid; grid-template-columns: 0.45fr 1fr 1fr; background: var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
-  .seg button {
-    border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
-    padding: 8px 10px; border-radius: 9px; cursor: pointer; white-space: nowrap;
+  .tabbar { display: flex; align-items: stretch; }
+  .tabs { flex: 1; min-width: 0; display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 6px; scroll-padding: 0 48px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs.fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); }
+  .tabs.fade-l { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 36px), transparent); }
+  .tabs.fade-l.fade-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 36px, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, transparent, #000 36px, #000 calc(100% - 36px), transparent); }
+  .tab {
+    flex: none; border: 0; background: none; color: var(--muted); font: inherit; font-size: 15px; font-weight: 600;
+    padding: 10px 10px 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; position: relative; white-space: nowrap;
   }
-  @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 6px; padding-right: 6px; } }
-  /* The two tab rows share one set of columns, so the tabs line up one under the other.
-     Split 28 / 44 / 28, but never narrower than the longest name in the column (small phones). */
-  .tabs { display: grid; grid-template-columns: minmax(max-content, 28fr) minmax(max-content, 44fr) minmax(max-content, 28fr); row-gap: 6px; }
-  .tabs .seg { grid-column: 1 / -1; }
-  @supports (grid-template-columns: subgrid) { .tabs .seg { grid-template-columns: subgrid; } }
-  .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+  .tab svg { width: 20px; height: 20px; color: var(--sc); flex: none; }
+  .tab[aria-selected="true"] { color: var(--text); font-weight: 700; }
+  .tab[aria-selected="true"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: -1px; height: 3px; border-radius: 3px 3px 0 0; background: var(--sc); }
+  .edit { flex: none; width: 52px; border: 0; border-left: 1px solid var(--line); background: var(--bg); color: var(--text); display: grid; place-items: center; cursor: pointer; }
+  .edit svg { width: 22px; height: 22px; }
+  .hint { text-align: center; font-size: 12px; color: var(--faint); padding: 8px 0 0; }
 
-  .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 4px 0 8px; }
+  /* The list follows your finger while swiping, then slides in from the side */
+  #pages { touch-action: pan-y; overflow-x: clip; }
+  #main { transition: transform .2s ease-out; }
+  #main.dragging { transition: none; }
+  #main.from-r { animation: fromR .22s ease-out; }
+  #main.from-l { animation: fromL .22s ease-out; }
+  @keyframes fromR { from { transform: translateX(56px); opacity: .25; } to { transform: none; opacity: 1; } }
+  @keyframes fromL { from { transform: translateX(-56px); opacity: .25; } to { transform: none; opacity: 1; } }
+
+  .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 10px 0 8px; }
+  .banner.info { background: var(--surface); color: var(--muted); border: 1px dashed var(--line); }
+  .banner button { font: inherit; font-weight: 700; color: var(--text); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 
   .day { margin-top: 14px; }
   .day h2 {
@@ -153,7 +191,7 @@
   .empty { color: var(--faint); font-size: 14px; padding: 4px 2px 6px; }
 
   .list { background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
-  .match { display: grid; grid-template-columns: 56px 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
+  .match { display: grid; grid-template-columns: 56px 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); box-shadow: inset 4px 0 0 var(--sc, transparent); }
   .match:first-child { border-top: 0; }
   .match.past { opacity: .55; }
   .time { font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; padding-top: 1px; }
@@ -163,15 +201,8 @@
   .teams .v { color: var(--faint); font-weight: 400; padding: 0 2px; }
   .score { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 700; margin-left: 6px; }
   .meta { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 2px; }
-  .comp { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; }
-  .comp.PL { color: var(--pl); }
-  .comp.UCL { color: var(--ucl); }
-  .comp.F1 { color: var(--f1); }
-  .comp.F2 { color: var(--f2); }
-  .comp.DARTS { color: var(--darts); }
-  .comp.GOLF { color: var(--golf); }
-  .comp.SNOOKER { color: var(--snooker); }
-  .comp.CRICKET { color: var(--cricket); }
+  .comp { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
+  .comp.sample { color: var(--faint); border-style: dashed; }
   .teams .sess { color: var(--muted); font-weight: 500; }
   .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); white-space: nowrap; }
   .pill.sky { background: var(--sky); }
@@ -186,6 +217,51 @@
   footer { color: var(--faint); font-size: 12px; margin-top: 28px; line-height: 1.5; }
   footer a { color: inherit; }
   .loading { color: var(--muted); padding: 40px 0; text-align: center; }
+
+  /* "What do you watch?": a full screen shown on the first visit and from the sliders button */
+  .setup { position: fixed; inset: 0; z-index: 20; background: var(--bg); overflow-y: auto; display: none; }
+  .setup.open { display: block; animation: fadein .2s ease-out; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .setup-in { max-width: 640px; margin: 0 auto; padding: calc(28px + env(safe-area-inset-top)) 16px calc(110px + env(safe-area-inset-bottom)); }
+  .setup h2 { font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .setup .lead { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  .setup .inl svg { width: 17px; height: 17px; vertical-align: -3px; color: var(--text); }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tile {
+    position: relative; text-align: left; border: 2px solid var(--line); background: var(--surface); color: var(--text);
+    border-radius: 18px; padding: 14px; font: inherit; cursor: pointer; min-height: 138px;
+    display: flex; flex-direction: column; gap: 8px; transition: border-color .15s, background .15s;
+  }
+  .tile .ic { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; color: var(--sc); background: color-mix(in srgb, var(--sc) 13%, transparent); transition: background .15s, color .15s; }
+  .tile .ic svg { width: 28px; height: 28px; }
+  .tile .nm { font-weight: 700; font-size: 17px; }
+  .tile .cs { font-size: 12px; color: var(--muted); line-height: 1.35; }
+  .tile .tick {
+    position: absolute; top: 12px; right: 12px; min-width: 26px; height: 26px; border-radius: 999px; border: 2px solid var(--line);
+    display: grid; place-items: center; font-size: 12px; font-weight: 800; color: transparent; padding: 0 6px;
+  }
+  .tile[aria-pressed="true"] { border-color: var(--sc); background: color-mix(in srgb, var(--sc) 7%, var(--surface)); }
+  .tile[aria-pressed="true"] .ic { background: var(--sc); color: var(--pill-text); }
+  .tile[aria-pressed="true"] .tick { background: var(--sc); border-color: var(--sc); color: var(--pill-text); }
+  .fine h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 26px 0 2px; }
+  .fine > p { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
+  .fine-row { margin-bottom: 14px; --sc: var(--accent); }
+  .fine-row .lbl { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .fine-row .lbl svg { width: 18px; height: 18px; color: var(--sc); }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .opt {
+    border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px;
+    padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .opt::before { content: "+ "; }
+  .opt[aria-pressed="true"] { background: color-mix(in srgb, var(--sc) 14%, transparent); border-color: var(--sc); color: var(--text); }
+  .opt[aria-pressed="true"]::before { content: "✓ "; color: var(--sc); }
+  .opt .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 4px; }
+  .setup-go { position: fixed; left: 0; right: 0; bottom: 0; padding: 22px 16px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--bg) 26px); }
+  .setup-go .inner { max-width: 608px; margin: 0 auto; display: flex; gap: 14px; align-items: center; }
+  .go { flex: 1; border: 0; border-radius: 14px; background: var(--accent); color: var(--pill-text); font: inherit; font-weight: 700; font-size: 17px; padding: 14px; cursor: pointer; }
+  .go:disabled { opacity: .4; cursor: default; }
+  .skip { flex: none; border: 0; background: none; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -200,31 +276,33 @@
     </div>
   </header>
 
-  <div class="filters tabs">
-    <div class="seg" role="group" aria-label="Competition">
-      <button data-f="ALL" aria-pressed="true">All</button>
-      <button data-f="PL" aria-pressed="false">Premier League</button>
-      <button data-f="UCL" aria-pressed="false">Champions League</button>
-    </div>
-    <div class="seg" role="group" aria-label="Motorsport and darts">
-      <button data-f="F1" aria-pressed="false">Formula 1</button>
-      <button data-f="F2" aria-pressed="false">Formula 2</button>
-      <button data-f="DARTS" aria-pressed="false">Darts</button>
-    </div>
-    <div class="seg" role="group" aria-label="Golf, snooker and cricket">
-      <button data-f="GOLF" aria-pressed="false">Golf</button>
-      <button data-f="SNOOKER" aria-pressed="false">Snooker</button>
-      <button data-f="CRICKET" aria-pressed="false">Cricket</button>
+  <div class="filters" id="filters">
+    <div class="tabbar">
+      <nav class="tabs" id="tabs" role="tablist" aria-label="Your sports"></nav>
+      <button class="edit" id="edit" aria-label="Choose your sports" title="Choose your sports"></button>
     </div>
   </div>
 
-  <div id="banner"></div>
-  <main id="main"><div class="loading">Loading fixtures…</div></main>
+  <div id="pages">
+    <div id="hint"></div>
+    <div id="banner"></div>
+    <main id="main"><div class="loading">Loading fixtures…</div></main>
+  </div>
 
   <footer>
     Fixtures from premierleague.com, uefa.com, formula1.com, fiaformula2.com, pdc.tv, pgatour.com, europeantour.com, wst.tv
     and icc-cricket.com. Channels from the Sky TV guide, the Premier League's broadcast listings and live-footballontv.com.
   </footer>
+</div>
+
+<div class="setup" id="setup" role="dialog" aria-modal="true" aria-labelledby="setup-title">
+  <div class="setup-in">
+    <h2 id="setup-title">What do you watch?</h2>
+    <p class="lead">Tap the sports you follow. Each one gets its own tab, and <b>My TV</b> shows them all together. You can change this any time with the <span class="inl" id="inl-edit" aria-hidden="true"></span> button next to the tabs.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="fine" id="fine"></div>
+  </div>
+  <div class="setup-go"><div class="inner"><button class="skip" id="skip">Show everything</button><button class="go" id="go">Done</button></div></div>
 </div>
 
 <script>
@@ -236,14 +314,16 @@
   // Where data.json lives. On GitHub Pages we read it straight from the repo so
   // updates show up within minutes; elsewhere (or if that fails) use the copy next to this page.
   // ?demo shows demo-data.json (a recorded week with F1, F2 and darts) as if it were that week;
-  // ?demo=2 shows demo-data-2.json (golf, snooker and cricket).
+  // ?demo=2 shows demo-data-2.json (golf, snooker and cricket); ?demo=3 shows preview-data.json
+  // (the 12 Oct 2026 week plus made-up sample events for competitions that aren't connected yet).
   const DEMO_ARG = new URLSearchParams(location.search).get('demo');
   const DEMO = DEMO_ARG !== null;
+  const DEMO_FILE = { 2: 'demo-data-2.json', 3: 'preview-data.json' }[DEMO_ARG] || 'demo-data.json';
   let demoNow = null;
   const nowMs = () => demoNow ?? Date.now();
 
   function dataUrls() {
-    if (DEMO) return [DEMO_ARG === '2' ? 'demo-data-2.json' : 'demo-data.json'];
+    if (DEMO) return [DEMO_FILE];
     const urls = [];
     const host = location.hostname;
     const m = /^([^.]+)\.github\.io$/i.exec(host);
@@ -255,14 +335,87 @@
     return urls;
   }
 
+  // Line icons (24×24, drawn in the current text colour)
+  const svg = (body) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+  const ICON = {
+    mine: svg('<path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/>'),
+    football: svg('<circle cx="12" cy="12" r="9"/><path d="M12 8l3.8 2.8-1.5 4.4H9.7l-1.5-4.4z"/><path d="M12 3v5M15.8 10.8l4.6-1.6M14.3 15.2l2.8 3.9M9.7 15.2l-2.8 3.9M8.2 10.8L3.6 9.2"/>'),
+    motor: svg('<path d="M5 21V3.5"/><rect x="5" y="4" width="14" height="9" rx=".5"/><path d="M5 4h4.7v4.5H5zM14.3 4H19v4.5h-4.7zM9.7 8.5h4.6V13H9.7z" fill="currentColor" stroke="none"/>'),
+    golf: svg('<path d="M8 20V3l9 4-9 4"/><ellipse cx="8" cy="20" rx="5" ry="1.4"/><circle cx="17" cy="17.5" r="1.4"/>'),
+    cricket: svg('<g transform="rotate(-35 12 12)"><path d="M9.8 9.5h4.4v10a1.5 1.5 0 0 1-1.5 1.5h-1.4a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M12 9.5V3"/></g><circle cx="6" cy="18" r="2.2"/>'),
+    others: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>'),
+    specials: svg('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 5.5H5.5v1a3 3 0 0 0 3 3M16 5.5h2.5v1a3 3 0 0 1-3 3"/><path d="M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/>'),
+    edit: svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
+  };
+
+  // Sports and their competitions. `soon` = not connected to a data source yet.
+  // `tag` is the short label on each listing; `none` is what an empty day says.
+  const SPORTS = [
+    { id: 'football', name: 'Football', blurb: 'Premier League, Champions League, Europa League, FA Cup, EFL Cup', color: 'var(--pl)', none: 'No televised football', comps: [
+      { id: 'PL', name: 'Premier League', tag: 'PL', color: 'var(--pl)', none: 'No scheduled PL games' },
+      { id: 'UCL', name: 'Champions League', tag: 'UCL', color: 'var(--ucl)', none: 'No scheduled UCL games' },
+      { id: 'UEL', name: 'Europa League', tag: 'UEL', color: 'var(--uel)', none: 'No scheduled Europa League games', soon: true },
+      { id: 'FAC', name: 'FA Cup', tag: 'FA Cup', color: 'var(--fac)', none: 'No scheduled FA Cup games', soon: true },
+      { id: 'EFL', name: 'EFL Cup', tag: 'EFL Cup', color: 'var(--efl)', none: 'No scheduled EFL Cup games', soon: true },
+    ] },
+    { id: 'motor', name: 'Motorsport', blurb: 'F1, F2, F3, MotoGP', color: 'var(--f1)', none: 'No motorsport sessions', comps: [
+      { id: 'F1', name: 'Formula 1', tag: 'F1', color: 'var(--f1)', none: 'No F1 sessions' },
+      { id: 'F2', name: 'Formula 2', tag: 'F2', color: 'var(--f2)', none: 'No F2 sessions' },
+      { id: 'F3', name: 'Formula 3', tag: 'F3', color: 'var(--f3)', none: 'No F3 sessions', soon: true },
+      { id: 'MOTOGP', name: 'MotoGP', tag: 'MotoGP', color: 'var(--motogp)', none: 'No MotoGP sessions', soon: true },
+    ] },
+    { id: 'golf', name: 'Golf', blurb: 'PGA Tour, DP World Tour', color: 'var(--golf)', none: 'No televised golf', comps: [
+      { id: 'PGA', name: 'PGA Tour', tag: 'PGA Tour', color: 'var(--pga)', none: 'No PGA Tour golf on TV' },
+      { id: 'DPWT', name: 'DP World Tour', tag: 'DP World', color: 'var(--golf)', none: 'No DP World Tour golf on TV' },
+    ] },
+    { id: 'cricket', name: 'Cricket', blurb: 'England and international Tests, ODIs, T20s', color: 'var(--cricket)', none: 'No international cricket on TV', comps: [
+      { id: 'TEST', name: 'Tests', tag: 'Test', color: 'var(--cricket)', none: 'No Test cricket on TV' },
+      { id: 'ODI', name: 'ODIs', tag: 'ODI', color: 'var(--cricket)', none: 'No ODIs on TV' },
+      { id: 'T20I', name: 'T20 internationals', tag: 'T20I', color: 'var(--cricket)', none: 'No T20 internationals on TV' },
+    ] },
+    { id: 'others', name: 'Others', blurb: 'Darts, snooker', color: 'var(--darts)', none: 'No televised darts or snooker', comps: [
+      { id: 'DARTS', name: 'Darts', tag: 'Darts', color: 'var(--darts)', none: 'No televised darts' },
+      { id: 'SNOOKER', name: 'Snooker', tag: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker' },
+    ] },
+    { id: 'specials', name: 'Specials', blurb: 'Wimbledon, Tour de France, athletics and other big events', color: 'var(--special)', none: 'No big events on TV', comps: [
+      { id: 'SPECIAL_TENNIS', name: 'Wimbledon & tennis', tag: 'Tennis', color: 'var(--special)', none: 'No big tennis on TV', soon: true },
+      { id: 'SPECIAL_CYCLING', name: 'Tour de France', tag: 'Cycling', color: 'var(--special)', none: 'No Tour de France on TV', soon: true },
+      { id: 'SPECIAL_ATHLETICS', name: 'Athletics championships', tag: 'Athletics', color: 'var(--special)', none: 'No athletics championships on TV', soon: true },
+      { id: 'SPECIAL_OTHER', name: 'Other big events', tag: 'Special', color: 'var(--special)', none: 'No other big events on TV', soon: true },
+    ] },
+  ];
+  const COMP = {}, SPORT_OF = {}, SPORT = {};
+  for (const s of SPORTS) { SPORT[s.id] = s; for (const c of s.comps) { COMP[c.id] = c; SPORT_OF[c.id] = s.id; } }
+  const ALL_COMPS = Object.keys(COMP);
+
+  // The data has one `comp` per sport for golf and cricket; split them into tours / formats here.
+  function compOf(e) {
+    if (e.comp === 'GOLF') return /pgatour/.test(e.source || '') ? 'PGA' : 'DPWT';
+    if (e.comp === 'CRICKET') { const s = e.session || ''; return /Test/.test(s) ? 'TEST' : /T20/.test(s) ? 'T20I' : 'ODI'; }
+    return e.comp;
+  }
+
+  // The competitions you follow, picked on the "What do you watch?" screen (shown on the first visit).
+  // A sport you follow any of gets a tab; My TV shows them all together.
+  let picks = new Set();
+  let firstVisit = true;
+  try {
+    const saved = JSON.parse(localStorage.getItem('myComps'));
+    if (Array.isArray(saved)) { picks = new Set(saved.filter(c => COMP[c])); firstVisit = false; }
+  } catch (e) {}
+  const savePicks = () => { try { localStorage.setItem('myComps', JSON.stringify([...picks])); } catch (e) {} };
+
+  // Which tab is showing: 'mine' (My TV) or a sport. The app always opens on My TV.
+  let tab = 'mine';
+  const followed = () => SPORTS.filter(s => s.comps.some(c => picks.has(c.id)));
+  const tabList = () => [{ id: 'mine', name: 'My TV', color: 'var(--accent)' }, ...followed()];
+
   const fmt = (opts) => new Intl.DateTimeFormat('en-GB', { timeZone: TZ, ...opts });
   const fDate = fmt({ year: 'numeric', month: '2-digit', day: '2-digit' });
   const fTime = fmt({ hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   const fDay = fmt({ weekday: 'long', day: 'numeric', month: 'short' });
   const ukKey = (d) => fDate.formatToParts(d).filter(p => p.type !== 'literal').map(p => p.value).reverse().join('-');
 
-  let filter = 'ALL';
-  try { filter = localStorage.getItem('filter') || 'ALL'; } catch (e) {}
   let data = null;
 
   function esc(s) {
@@ -286,8 +439,6 @@
     if (h < 48) return `${h} hour${h === 1 ? '' : 's'} ago`;
     return `${Math.round(h / 24)} days ago`;
   }
-
-  const COMP_LABEL = { PL: 'PL', UCL: 'UCL', F1: 'F1', F2: 'F2', DARTS: 'Darts', GOLF: 'Golf', SNOOKER: 'Snooker', CRICKET: 'Cricket' };
 
   function matchHtml(m) {
     const ko = new Date(m.kickoff);
@@ -332,39 +483,63 @@
 
     const also = tv.alsoOn && tv.alsoOn.length ? `<div class="also">Also on ${esc(tv.alsoOn.join(', '))}</div>` : '';
     const warn = tv.conflict ? `<div class="warn">Sources disagree – the Premier League lists ${esc(tv.broadcaster)}. Double-check before kick-off.</div>` : '';
+    const c = COMP[compOf(m)];
+    const tag = `<span class="comp" style="color:${c ? c.color : 'var(--other)'}">${esc(m.label || (c ? c.tag : m.comp))}</span>`;
+    const sample = m.sample ? '<span class="comp sample">SAMPLE</span>' : '';
 
-    return `<div class="match${past ? ' past' : ''}">
+    const sport = SPORT[SPORT_OF[compOf(m)]];
+    return `<div class="match${past ? ' past' : ''}" style="--sc:${sport ? sport.color : 'transparent'}">
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}</div>
       <div class="teams">${headline}</div>
-      <div class="meta"><span class="comp ${esc(m.comp)}">${COMP_LABEL[m.comp] || esc(m.comp)}</span>${tvHtml}</div>
+      <div class="meta">${tag}${sample}${tvHtml}</div>
       ${also}${warn}
     </div>`;
   }
 
+  const inView = (cid) => picks.has(cid) && (tab === 'mine' || SPORT_OF[cid] === tab);
+
+  function renderNav() {
+    const tabs = tabList();
+    if (!tabs.some(t => t.id === tab)) tab = 'mine';
+    $('#tabs').innerHTML = tabs.map(t => `<button class="tab" role="tab" data-s="${t.id}" aria-selected="${tab === t.id}" style="--sc:${t.color}">${ICON[t.id]}<span>${esc(t.name)}</span></button>`).join('');
+    const on = $('.tab[aria-selected="true"]');
+    if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    updateFades();
+    let swiped = false;
+    try { swiped = localStorage.getItem('swiped') === '1'; } catch (e) {}
+    $('#hint').innerHTML = tabs.length > 1 && !swiped ? '<div class="hint">‹ Swipe left or right to switch between your sports ›</div>' : '';
+  }
+
   function render() {
-    document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === filter)));
     if (!data) return;
 
     $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
 
     const banners = [];
     const ageH = (nowMs() - Date.parse(data.generatedAt)) / 3600000;
-    if (DEMO) banners.push(DEMO_ARG === '2' ? 'Demo: a recorded week (12 Oct 2026) to show how golf, snooker and cricket look.'
-      : 'Demo: a recorded week (24 Sept 2026) to show how F1, F2 and darts look.');
+    if (DEMO) banners.push({
+      2: 'Demo: a recorded week (12 Oct 2026) to show how golf, snooker and cricket look.',
+      3: 'Design preview: the real week of 13 Oct 2026, plus made-up games marked SAMPLE for competitions that aren’t connected yet.',
+    }[DEMO_ARG] || 'Demo: a recorded week (24 Sept 2026) to show how F1, F2 and darts look.');
     if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
-    const r = DEMO ? {} : data.report || {}; // the demo week has no football recorded
-    const show = (f) => filter === 'ALL' || filter === f;
-    if (r.tvListings && r.tvListings.ok === false && (show('PL') || show('UCL'))) banners.push('The TV listings site couldn’t be read on the last update, so some exact channels are missing.');
-    if (r.tvGuide && r.tvGuide.ok === false && ['F1', 'F2', 'DARTS', 'GOLF', 'SNOOKER', 'CRICKET'].some(show)) banners.push('The Sky TV guide couldn’t be read on the last update, so channels and times for F1, F2, darts, golf, snooker and cricket aren’t confirmed.');
+    const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
+    const show = (...ids) => ids.some(inView);
+    const GUIDE = ['F1', 'F2', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
+    if (r.tvListings && r.tvListings.ok === false && show('PL', 'UCL')) banners.push('The TV listings site couldn’t be read on the last update, so some exact channels are missing.');
+    if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so channels and times for F1, F2, darts, golf, snooker and cricket aren’t confirmed.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push('Formula 1 sessions couldn’t be loaded on the last update.');
     if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push('Formula 2 sessions couldn’t be loaded on the last update.');
     if (r.darts && r.darts.ok === false && show('DARTS')) banners.push('Darts events couldn’t be loaded on the last update.');
-    if (r.golf && r.golf.ok === false && show('GOLF')) banners.push('Golf tournaments couldn’t be loaded on the last update.');
+    if (r.golf && r.golf.ok === false && show('PGA', 'DPWT')) banners.push('Golf tournaments couldn’t be loaded on the last update.');
     if (r.snooker && r.snooker.ok === false && show('SNOOKER')) banners.push('Snooker tournaments couldn’t be loaded on the last update.');
-    if (r.cricket && r.cricket.ok === false && show('CRICKET')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
-    $('#banner').innerHTML = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
+    if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
+    let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
+    // Competitions you follow that have no data source yet (on their sport's tab)
+    const soon = tab === 'mine' || DEMO_ARG === '3' ? [] : SPORT[tab].comps.filter(c => c.soon && picks.has(c.id)).map(c => c.name);
+    if (soon.length) bannerHtml += `<div class="banner info">${esc(soon.length > 1 ? `${soon.slice(0, -1).join(', ')} and ${soon.at(-1)} aren’t` : `${soon[0]} isn’t`)} connected yet. ${soon.length > 1 ? 'They' : 'It'}’ll appear here once ${soon.length > 1 ? 'they are' : 'it is'}.</div>`;
+    $('#banner').innerHTML = bannerHtml;
 
     const now = new Date(nowMs());
     const days = [];
@@ -374,21 +549,11 @@
     }
     const byDay = {};
     for (const m of data.events || data.matches || []) {
-      if (filter !== 'ALL' && m.comp !== filter) continue;
+      if (!inView(compOf(m))) continue;
       (byDay[ukKey(new Date(m.kickoff))] ||= []).push(m);
     }
 
-    const none = {
-      ALL: 'No scheduled PL / UCL / F1 / F2 / Darts / Golf / Snooker / Cricket',
-      PL: 'No scheduled PL games',
-      UCL: 'No scheduled UCL games',
-      F1: 'No F1 sessions',
-      F2: 'No F2 sessions',
-      DARTS: 'No televised darts',
-      GOLF: 'No televised golf',
-      SNOOKER: 'No televised snooker',
-      CRICKET: 'No international cricket on TV',
-    }[filter] || 'Nothing scheduled';
+    const none = tab === 'mine' ? 'Nothing on TV from your sports' : SPORT[tab].none;
     let html = '';
     for (const d of days) {
       const list = byDay[d.key];
@@ -418,11 +583,114 @@
     render();
   }
 
-  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
-    filter = b.dataset.f;
-    try { localStorage.setItem('filter', filter); } catch (e) {}
+  // Navigation: tap a tab, or swipe the list sideways for the next / previous one
+  function go(next, dir = 0) {
+    tab = next;
+    renderNav();
     render();
-  }));
+    const top = $('#filters').offsetTop;
+    if (window.scrollY > top) window.scrollTo({ top });
+    const m = $('#main');
+    m.classList.remove('from-l', 'from-r');
+    if (dir) { void m.offsetWidth; m.classList.add(dir > 0 ? 'from-r' : 'from-l'); }
+  }
+  function step(dir) {
+    const tabs = tabList();
+    const j = tabs.findIndex(t => t.id === tab) + dir;
+    if (j < 0 || j >= tabs.length) return;
+    try { localStorage.setItem('swiped', '1'); } catch (e) {}
+    go(tabs[j].id, dir);
+  }
+  $('#tabs').addEventListener('click', (ev) => {
+    const b = ev.target.closest('.tab');
+    if (!b || b.dataset.s === tab) return;
+    const ids = tabList().map(t => t.id);
+    go(b.dataset.s, Math.sign(ids.indexOf(b.dataset.s) - ids.indexOf(tab)));
+  });
+  let touch = null;
+  $('#pages').addEventListener('touchstart', (ev) => {
+    touch = ev.touches.length === 1 ? { x: ev.touches[0].clientX, y: ev.touches[0].clientY, dir: null } : null;
+  }, { passive: true });
+  $('#pages').addEventListener('touchmove', (ev) => {
+    if (!touch) return;
+    const dx = ev.touches[0].clientX - touch.x, dy = ev.touches[0].clientY - touch.y;
+    if (!touch.dir && Math.hypot(dx, dy) > 10) touch.dir = Math.abs(dx) > Math.abs(dy) * 1.2 ? 'x' : 'y';
+    if (touch.dir !== 'x') return;
+    const tabs = tabList(), i = tabs.findIndex(t => t.id === tab);
+    const atEdge = (dx > 0 && i === 0) || (dx < 0 && i === tabs.length - 1);
+    const m = $('#main');
+    m.classList.add('dragging');
+    m.style.transform = `translateX(${dx * (atEdge ? 0.12 : 0.45)}px)`;
+  }, { passive: true });
+  const endTouch = (ev) => {
+    if (!touch) return;
+    const m = $('#main');
+    m.classList.remove('dragging');
+    m.style.transform = '';
+    const dx = ev.changedTouches[0].clientX - touch.x;
+    if (touch.dir === 'x' && Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+    touch = null;
+  };
+  $('#pages').addEventListener('touchend', endTouch);
+  $('#pages').addEventListener('touchcancel', endTouch);
+
+  // "What do you watch?": a tile per sport, then competitions to untick for the sports you follow
+  function renderSetup() {
+    $('#tiles').innerHTML = SPORTS.map(s => {
+      const on = s.comps.filter(c => picks.has(c.id)).length;
+      return `<button class="tile" data-sport="${s.id}" aria-pressed="${on > 0}" style="--sc:${s.color}">
+        <span class="tick">${on === s.comps.length ? '✓' : on ? `${on}/${s.comps.length}` : ''}</span>
+        <span class="ic">${ICON[s.id]}</span><span class="nm">${esc(s.name)}</span><span class="cs">${esc(s.blurb)}</span></button>`;
+    }).join('');
+    const f = followed();
+    $('#fine').innerHTML = f.length ? `<h3>Fine-tune</h3><p>Untick any competitions you don’t want.</p>` + f.map(s => `<div class="fine-row" style="--sc:${s.color}">
+        <div class="lbl">${ICON[s.id]}${esc(s.name)}</div>
+        <div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>
+      </div>`).join('') : '';
+    const go = $('#go');
+    go.disabled = !picks.size;
+    go.textContent = picks.size ? `Show my TV · ${f.length} sport${f.length === 1 ? '' : 's'}` : 'Pick at least one sport';
+  }
+  function openSetup() {
+    renderSetup();
+    $('#setup').classList.add('open');
+    $('#setup').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSetup() {
+    savePicks();
+    $('#setup').classList.remove('open');
+    document.body.style.overflow = '';
+    go('mine');
+  }
+  $('#tiles').addEventListener('click', (ev) => {
+    const t = ev.target.closest('.tile');
+    if (!t) return;
+    const s = SPORT[t.dataset.sport];
+    const any = s.comps.some(c => picks.has(c.id));
+    for (const c of s.comps) any ? picks.delete(c.id) : picks.add(c.id);
+    renderSetup();
+  });
+  $('#fine').addEventListener('click', (ev) => {
+    const o = ev.target.closest('.opt');
+    if (!o) return;
+    picks.has(o.dataset.c) ? picks.delete(o.dataset.c) : picks.add(o.dataset.c);
+    renderSetup();
+  });
+  $('#go').addEventListener('click', closeSetup);
+  $('#skip').addEventListener('click', () => { picks = new Set(ALL_COMPS); closeSetup(); });
+  $('#edit').innerHTML = ICON.edit;
+  $('#inl-edit').innerHTML = ICON.edit;
+
+  // Fade the edge of the tab bar when more tabs are hidden that way
+  function updateFades() {
+    const t = $('#tabs');
+    t.classList.toggle('fade-l', t.scrollLeft > 4);
+    t.classList.toggle('fade-r', t.scrollLeft + t.clientWidth < t.scrollWidth - 4);
+  }
+  $('#tabs').addEventListener('scroll', updateFades, { passive: true });
+  addEventListener('resize', updateFades);
+  $('#edit').addEventListener('click', openSetup);
 
   // Colour theme: Light / Dark. First visit matches the phone; after that your choice is remembered.
   const THEMES = {
@@ -446,8 +714,11 @@
     applyTheme();
   });
   applyTheme();
+  try { localStorage.removeItem('filter'); } catch (e) {} // the old single-tab choice, replaced by My TV
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
   setInterval(render, 60000);
+  renderNav();
+  if (firstVisit) openSetup();
   load();
 })();
 </script>

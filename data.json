@@ -1,20 +1,20 @@
 {
- "generatedAt": "2026-10-12T22:56:48.137Z",
+ "generatedAt": "2026-10-12T23:03:19.330Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4478,
+   "programmes": 4200,
    "errors": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
   "championsLeague": {
    "ok": true,
-   "matches": 27
+   "matches": 36
   },
   "tvListings": {
    "ok": true,
@@ -24,9 +24,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
-  "crossReferenced": "34/38",
+  "crossReferenced": "43/46",
   "formula1": {
    "ok": true,
    "sessions": 0
@@ -53,76 +53,14 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 6
+   "sessions": 8
   },
   "cricket": {
    "ok": true,
-   "matches": 9
+   "matches": 8
   }
  },
  "events": [
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "South Africa v Australia",
-   "venue": "Kingsmead, Durban",
-   "series": "Australia in South Africa, 3 Test Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-269790-d4",
-   "kickoff": "2026-10-12T07:30:00.000Z",
-   "end": "2026-10-12T14:30:00.000Z",
-   "session": "1st Test, Day 4",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Cricket",
-    "channels": [
-     "Sky Sports Cricket"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "pl-2645248",
-   "comp": "PL",
-   "kickoff": "2026-10-12T19:00:00.000Z",
-   "home": "Coventry City",
-   "away": "Newcastle United",
-   "homeShort": "Coventry",
-   "awayShort": "Newcastle",
-   "venue": "Coventry Building Society Arena, Coventry",
-   "status": "finished",
-   "homeScore": 4,
-   "awayScore": 1,
-   "round": "Matchweek 6",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [
-     "Sky Sports Main Event",
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [
-     "Sky Sports Ultra HDR"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "listings",
-     "previous-update"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",
@@ -870,7 +808,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1007,7 +944,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1119,7 +1055,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1149,7 +1084,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1181,7 +1115,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1214,7 +1147,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1360,7 +1292,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -1777,6 +1708,352 @@
     "broadcaster": "TNT Sports",
     "channels": [
      "TNT Sports 6"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792573200",
+   "kickoff": "2026-10-21T09:00:00.000Z",
+   "end": "2026-10-21T11:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792584000",
+   "kickoff": "2026-10-21T12:00:00.000Z",
+   "end": "2026-10-21T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049606",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T16:45:00.000Z",
+   "home": "Como",
+   "away": "Manchester United",
+   "homeShort": "Como",
+   "awayShort": "Man Utd",
+   "venue": "Giuseppe Sinigaglia",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049605",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T16:45:00.000Z",
+   "home": "Lille",
+   "away": "Galatasaray",
+   "homeShort": "Lille",
+   "awayShort": "Galatasaray",
+   "venue": "Stade Pierre Mauroy",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049602",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Aston Villa",
+   "away": "VIking FK",
+   "homeShort": "Aston Villa",
+   "awayShort": "Viking",
+   "venue": "Villa Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 2",
+     "TNT Sports 9"
+    ],
+    "alsoOn": [
+     "TNT Sports Ultimate",
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049598",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Bayern Munich",
+   "away": "Arsenal",
+   "homeShort": "Bayern München",
+   "awayShort": "Arsenal",
+   "venue": "Fußball Arena München",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049603",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Club Brugge",
+   "away": "RC Lens",
+   "homeShort": "Club Brugge",
+   "awayShort": "Lens",
+   "venue": "Jan Breydelstadion",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 7"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049600",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Inter Milan",
+   "away": "Shakhtar Donetsk",
+   "homeShort": "Inter",
+   "awayShort": "Shakhtar",
+   "venue": "Stadio San Siro",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 5"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049604",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Real Betis",
+   "away": "Feyenoord",
+   "homeShort": "Real Betis",
+   "awayShort": "Feyenoord",
+   "venue": " La Cartuja de Sevilla",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 6"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049599",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Real Madrid",
+   "away": "RB Leipzig",
+   "homeShort": "Real Madrid",
+   "awayShort": "Leipzig",
+   "venue": "Estadio Santiago Bernabéu",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "listings"
+    ]
+   }
+  },
+  {
+   "id": "ucl-2049601",
+   "comp": "UCL",
+   "kickoff": "2026-10-21T19:00:00.000Z",
+   "home": "Sporting CP",
+   "away": "LASK",
+   "homeShort": "Sporting CP",
+   "awayShort": "LASK",
+   "venue": "Estádio José Alvalade",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League phase",
+   "placeholder": false,
+   "kind": "match",
+   "source": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports",
+    "channels": [
+     "TNT Sports 8"
     ],
     "alsoOn": [
      "HBO Max"

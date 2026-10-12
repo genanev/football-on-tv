@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-12T22:52:01.151Z",
+ "generatedAt": "2026-10-12T22:56:48.137Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -106,13 +106,21 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports",
+    "channels": [
+     "Sky Sports Main Event",
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [
+     "Sky Sports Ultra HDR"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "listings",
+     "previous-update"
+    ]
    }
   },
   {
@@ -862,6 +870,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -998,6 +1007,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -1109,6 +1119,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -1138,6 +1149,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -1169,6 +1181,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -1201,6 +1214,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }
@@ -1346,6 +1360,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "official",
      "listings"
     ]
    }

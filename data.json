@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-12T15:41:03.310Z",
+ "generatedAt": "2026-10-12T20:13:26.657Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 2485,
+   "programmes": 2484,
    "errors": []
   },
   "premierLeague": {
@@ -51,9 +51,9 @@
    "homeShort": "Coventry",
    "awayShort": "Newcastle",
    "venue": "Coventry Building Society Arena, Coventry",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "Matchweek 6",
    "kind": "match",
    "source": "premierleague.com",

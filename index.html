@@ -126,9 +126,9 @@
     padding: 8px 10px; border-radius: 9px; cursor: pointer; white-space: nowrap;
   }
   @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 6px; padding-right: 6px; } }
-  /* The two tab rows share one set of columns, so the tabs line up one under the other:
-     the outer columns are as wide as their longest name, the middle one takes the rest. */
-  .tabs { display: grid; grid-template-columns: max-content 1fr max-content; row-gap: 6px; }
+  /* The two tab rows share one set of columns, so the tabs line up one under the other.
+     Split 28 / 44 / 28, but never narrower than the longest name in the column (small phones). */
+  .tabs { display: grid; grid-template-columns: minmax(max-content, 28fr) minmax(max-content, 44fr) minmax(max-content, 28fr); row-gap: 6px; }
   .tabs .seg { grid-column: 1 / -1; }
   @supports (grid-template-columns: subgrid) { .tabs .seg { grid-template-columns: subgrid; } }
   .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
@@ -285,8 +285,12 @@
       else if (m.timeTbc && !m.allDay) status = '<span class="status">TBC</span>';
       headline = `${esc(m.title)}${m.session ? ` <span class="v">·</span> <span class="sess">${esc(m.session)}</span>` : ''}`;
     } else {
-      past = m.status === 'finished' || (m.status !== 'live' && now > ko.getTime() + 115 * 60000);
-      if (m.status === 'live') status = '<span class="status live">LIVE</span>';
+      // LIVE follows the phone's clock (kick-off to ~1h55 later), like F1/F2/darts;
+      // the feed's own "live" (from the last hourly update) also counts, e.g. for extra time.
+      const end = ko.getTime() + 115 * 60000;
+      const onNow = m.status !== 'finished' && m.status !== 'postponed' && (m.status === 'live' || (now >= ko.getTime() && now < end));
+      past = m.status === 'finished' || (!onNow && now >= end);
+      if (onNow) status = '<span class="status live">LIVE</span>';
       else if (m.status === 'finished') status = '<span class="status">FT</span>';
       else if (m.status === 'postponed') status = '<span class="status">P–P</span>';
       const hasScore = m.homeScore != null && m.awayScore != null && m.status !== 'upcoming';
@@ -347,7 +351,7 @@
     }
 
     const none = {
-      ALL: 'No scheduled PL / UCL / F1 / F2 / darts',
+      ALL: 'No scheduled PL / UCL / F1 / F2 / Darts',
       PL: 'No scheduled PL games',
       UCL: 'No scheduled UCL games',
       F1: 'No F1 sessions',

@@ -36,8 +36,8 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 
 ## UI decisions George has made (keep these)
 
-- Tabs, two rows: **All** (narrower) · **Premier League** · **Champions League**, then **Formula 1** · **Formula 2** · **Darts**, full names. **All** shows all five. The rows share columns so the tabs line up one under the other (outer columns fit their longest name, the middle one takes the rest).
-- Every day of the 8-day window is listed. An empty day says "No scheduled PL / UCL / F1 / F2 / darts" under All, or "No scheduled PL games" / "No scheduled UCL games" / "No F1 sessions" / "No F2 sessions" / "No televised darts" when filtered.
+- Tabs, two rows: **All** (narrower) · **Premier League** · **Champions League**, then **Formula 1** · **Formula 2** · **Darts**, full names. **All** shows all five. The rows share columns so the tabs line up one under the other, split 28 / 44 / 28 (outer columns never narrower than their longest name).
+- Every day of the 8-day window is listed. An empty day says "No scheduled PL / UCL / F1 / F2 / Darts" under All, or "No scheduled PL games" / "No scheduled UCL games" / "No F1 sessions" / "No F2 sessions" / "No televised darts" when filtered.
 - F1/F2: qualifying, sprint and race sessions only (no practice). Darts: TV events only, one entry per session.
 - Day/date headings are 16px, uppercase.
 - Channel pills: TNT magenta, Amazon blue, **Sky Sports orange** (`#d35400`, not red). White text in light mode; dark text on lighter pills in dark mode.
@@ -45,3 +45,4 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 - No refresh button: the app reloads data on open and when you switch back to it.
 - Footer: only the two "Fixtures from… / Channels from…" sentences.
 - All times are shown in Europe/London time.
+- LIVE follows the phone's clock for every sport (it compares exact moments, so it is right in any time zone): sessions between their start and end, football from kick-off to ~1h55 later (or while the feed says live).

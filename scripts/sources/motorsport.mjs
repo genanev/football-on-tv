@@ -12,7 +12,7 @@
 // UK TV: Sky Sports F1 holds the UK rights to F1 and F2 (Channel 4 shows the British GP
 // live). The channel is confirmed from Sky's TV guide when a live programme covers the session.
 
-import { getJSON, parseWithOffset, ukDate } from '../lib/util.mjs';
+import { getJSON, parseWithOffset } from '../lib/util.mjs';
 import { SPORT_CHANNELS, channelList, liveAt } from './skyGuide.mjs';
 
 const F1_URL = 'https://api.formula1.com/v1/event-tracker';
@@ -88,8 +88,7 @@ export function motorsportTv(ev, guide) {
     tv.sources.push('sky-guide');
   } else {
     tv.broadcaster = 'Sky Sports F1';
-    const listed = guide?.coveredDates?.includes(ukDate(start));
-    tv.note = listed ? 'Not yet confirmed in the TV guide' : 'Expected – TV guide not available yet';
+    tv.note = 'Expected – To Be Confirmed';
   }
   return tv;
 }

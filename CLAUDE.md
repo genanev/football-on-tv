@@ -32,7 +32,7 @@ The F1/F2/PGA Tour API keys (and the ICC client id) are the ones each website se
 
 Football: listings are matched to official fixtures by UK date plus fuzzy team names (`normTeam`/`teamSim` and an `ALIASES` map: e.g. Atleti → Atlético Madrid, Paris → PSG). If a new team fails to match, add an alias. For UCL the UK listing names are shown instead of UEFA's short names.
 
-Motorsport: practice sessions are skipped. A session's channel is confirmed when a live programme on Sky Sports F1 / Main Event / Sky Sports+ / Channel 4 covers its start and is about the same series (`seriesOf`). Otherwise it shows "Sky Sports F1" (the UK rights holder) with "Not yet confirmed in the TV guide".
+Motorsport: practice sessions are skipped. A session's channel is confirmed when a live programme on Sky Sports F1 / Main Event / Sky Sports+ / Channel 4 covers its start and is about the same series (`seriesOf`). Otherwise it shows "Sky Sports F1" (the UK rights holder) with "Expected – To Be Confirmed" (George's wording; keep it short).
 
 Darts and snooker: each live programme in the guide on a tournament day becomes a session (simulcasts and back-to-back parts on one channel merge; before 12:00 = "Morning session", before 17:00 = "Afternoon session", otherwise "Evening session"). A televised darts day with nothing in the guide shows one "TBC" entry with "TV times to be confirmed"; snooker and golf days are only listed when the guide shows them (or, if the guide is unavailable for that day, as "TBC").
 

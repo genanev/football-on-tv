@@ -123,7 +123,7 @@ assert.deepEqual(find(f2, 'Qualifying 2').tv.channels, ['Sky Sports F1']); // sa
 const noProg = motorsportTv({ comp: 'F2', kickoff: '2026-09-24T10:30:00.000Z' }, { programmes: [], coveredDates: ['2026-09-24'] });
 assert.deepEqual(noProg.channels, []);
 assert.equal(noProg.broadcaster, 'Sky Sports F1');
-assert.equal(noProg.note, 'Not yet confirmed in the TV guide');
+assert.equal(noProg.note, 'Expected – To Be Confirmed');
 assert.deepEqual(find(f2, 'Sprint Race').tv.channels, ['Sky Sports F1']);
 assert.ok(f2.every(e => e.status === 'finished' && !e.timeTbc));
 
@@ -146,7 +146,7 @@ const noGuide = await build(NOW);
 guideDown = false;
 assert.equal(noGuide.report.tvGuide.ok, false);
 assert.equal(noGuide.events.filter(e => e.comp === 'F1').length, 2);
-assert.ok(noGuide.events.filter(e => e.comp === 'F1').every(e => e.tv.broadcaster === 'Sky Sports F1' && /not available/.test(e.tv.note)));
+assert.ok(noGuide.events.filter(e => e.comp === 'F1').every(e => e.tv.broadcaster === 'Sky Sports F1' && e.tv.note === 'Expected – To Be Confirmed'));
 assert.ok(noGuide.events.filter(e => e.comp === 'DARTS').every(e => e.allDay));
 
 // Today's real F2 answer (next round Qatar, 27-29 Nov): nothing in a 12 Oct window, and provisional times are flagged

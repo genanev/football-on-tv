@@ -30,6 +30,7 @@ export const CHANNELS = {
   6504: 'ITV1',
   6534: 'ITV4',
   4075: 'Channel 4',
+  4058: 'Channel 5',
 };
 
 /** Channels searched for each sport, most likely first (that order picks the main channel). */
@@ -37,7 +38,7 @@ export const SPORT_CHANNELS = {
   motorsport: [3835, 4002, 3940, 4075],
   darts: [4002, 3940, 4090, 4081, 3939, 4010, 6534, 6504],
   golf: [4026, 4002, 3940, 4090, 2075, 3000],
-  snooker: [3625, 3627, 3629, 4040, 3000, 2075, 2086, 6534, 6504],
+  snooker: [3625, 3627, 3629, 4040, 3000, 2075, 2086, 4058, 6534, 6504],
   cricket: [4081, 4002, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075],
 };
 

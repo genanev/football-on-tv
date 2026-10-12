@@ -16,7 +16,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { build } from '../scripts/build.mjs';
 import { mapPgaSchedule, parseDpwtSchedule, mergeTours, tourOf } from '../scripts/sources/golf.mjs';
 import { mapMatch, parseGmt } from '../scripts/sources/cricket.mjs';
-import { cleanName } from '../scripts/sources/snooker.mjs';
+import { cleanName, snookerEvents } from '../scripts/sources/snooker.mjs';
 import { sessionLabel } from '../scripts/sources/skyGuide.mjs';
 
 const fx = (name) => readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8');
@@ -113,6 +113,13 @@ assert.deepEqual(eng.tv.alsoOn, ['Sky Sports Main Event']); // not TNT's "The Br
 assert.equal(by('South Africa v Australia', '2nd Test, Day 1').kickoff, '2026-10-18T08:00:00.000Z');
 assert.ok(!cricket.some(e => /Bangladesh|Zimbabwe|Afghanistan/.test(e.title))); // not on UK TV
 assert.ok(!cricket.some(e => e.title === 'Pakistan v Sri Lanka' && /T20I/.test(e.session))); // 13 Oct, not on UK TV
+
+// Channel 5 shows some WST events (Players Championship, Tour Championship, British Open)
+const c5 = snookerEvents(
+  [{ id: 'pc', name: 'Players Championship', venue: 'Telford', startDate: '2027-02-15', endDate: '2027-02-21' }],
+  { coveredDates: ['2027-02-16'], programmes: [{ sid: 4058, channel: 'Channel 5', live: true, title: 'Live Snooker: Players Championship', synopsis: '', start: Date.parse('2027-02-16T13:00:00Z'), end: Date.parse('2027-02-16T17:00:00Z') }] },
+  '2027-02-16', 1);
+assert.deepEqual(c5.map(e => [e.session, e.tv.channels[0]]), [['Afternoon session', 'Channel 5']]);
 
 // DP World Tour site unreachable: the PGA Tour list still works, and the report says what failed
 dpwtDown = true;

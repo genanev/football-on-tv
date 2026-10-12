@@ -1,0 +1,40 @@
+name: Check
+
+# Runs on every push to a branch other than main: the offline tests, then a live
+# build (not saved) to check every data source still answers from GitHub's servers.
+
+on:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Offline tests
+        run: |
+          node test/run-test.mjs
+          node test/run-sports-test.mjs
+
+      - name: Live build (not saved)
+        run: node scripts/build.mjs /tmp/data.json
+
+      - name: Every source answered
+        run: |
+          node -e '
+            const r = require("/tmp/data.json").report;
+            let bad = 0;
+            for (const [k, v] of Object.entries(r)) {
+              if (v && typeof v === "object" && v.ok === false) { bad++; console.log(`::error title=${k} failed::${v.error || (v.errors || []).join("; ")}`); }
+            }
+            console.log(`::notice title=Report::${JSON.stringify(r)}`);
+            process.exit(bad ? 1 : 0);
+          '

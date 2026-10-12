@@ -1,0 +1,364 @@
+{
+ "generatedAt": "2026-09-24T06:00:00.000Z",
+ "windowDays": 8,
+ "report": {
+  "tvGuide": {
+   "ok": true,
+   "days": 9,
+   "programmes": 24,
+   "errors": []
+  },
+  "premierLeague": {
+   "ok": false,
+   "error": "HTTP 404 for https://sdp-prem-prod.premier-league-prod.pulselive.com/api/v2/matches?competition=8&season=2026&matchweek=1&_limit=50"
+  },
+  "championsLeague": {
+   "ok": false,
+   "error": "HTTP 404 for https://match.uefa.com/v5/matches?competitionId=1&fromDate=2026-09-23&toDate=2026-10-03&order=ASC&offset=0&limit=100"
+  },
+  "tvListings": {
+   "ok": false,
+   "premierLeague": 0,
+   "championsLeague": 0,
+   "errors": [
+    "PL listings: HTTP 404 for https://www.live-footballontv.com/live-premier-league-football-on-tv.html",
+    "UCL listings: HTTP 404 for https://www.live-footballontv.com/live-champions-league-football-on-tv.html"
+   ]
+  },
+  "crossReferenced": "0/0",
+  "formula1": {
+   "ok": true,
+   "sessions": 2
+  },
+  "formula2": {
+   "ok": true,
+   "sessions": 5
+  },
+  "darts": {
+   "ok": true,
+   "tournaments": [
+    "World Grand Prix"
+   ],
+   "sessions": 5
+  }
+ },
+ "events": [
+  {
+   "id": "f2-11640",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-09-24T10:00:00.000Z",
+   "end": "2026-09-24T10:20:00.000Z",
+   "title": "Azerbaijan",
+   "session": "Qualifying 1",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f2-11736",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-09-24T10:30:00.000Z",
+   "end": "2026-09-24T10:50:00.000Z",
+   "title": "Azerbaijan",
+   "session": "Qualifying 2",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not yet confirmed in the TV guide",
+    "conflict": false,
+    "sources": [
+     "uk-rights"
+    ]
+   }
+  },
+  {
+   "id": "f2-11641",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-09-25T04:15:00.000Z",
+   "end": "2026-09-25T05:05:00.000Z",
+   "title": "Azerbaijan",
+   "session": "Sprint Race",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f2-11642",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-09-25T10:15:00.000Z",
+   "end": "2026-09-25T11:20:00.000Z",
+   "title": "Azerbaijan",
+   "session": "Feature Race 1",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f1-11373",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-09-25T12:00:00.000Z",
+   "end": "2026-09-25T13:00:00.000Z",
+   "title": "Azerbaijan Grand Prix",
+   "session": "Qualifying",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f2-11737",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-09-26T07:00:00.000Z",
+   "end": "2026-09-26T08:05:00.000Z",
+   "title": "Azerbaijan",
+   "session": "Feature Race 2",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f1-11377",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-09-26T11:00:00.000Z",
+   "end": "2026-09-26T13:00:00.000Z",
+   "title": "Azerbaijan Grand Prix",
+   "session": "Race",
+   "venue": "Baku",
+   "status": "finished",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "uk-rights",
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "World Grand Prix",
+   "venue": "Mattioli Arena, Leicester",
+   "source": "pdc.tv",
+   "id": "darts-10869-1790611200",
+   "kickoff": "2026-09-28T16:00:00.000Z",
+   "end": "2026-09-28T22:00:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "World Grand Prix",
+   "venue": "Mattioli Arena, Leicester",
+   "source": "pdc.tv",
+   "id": "darts-10869-1790697600",
+   "kickoff": "2026-09-29T16:00:00.000Z",
+   "end": "2026-09-29T22:00:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "World Grand Prix",
+   "venue": "Mattioli Arena, Leicester",
+   "source": "pdc.tv",
+   "id": "darts-10869-1790787600",
+   "kickoff": "2026-09-30T17:00:00.000Z",
+   "end": "2026-09-30T22:00:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "World Grand Prix",
+   "venue": "Mattioli Arena, Leicester",
+   "source": "pdc.tv",
+   "id": "darts-10869-1790874000",
+   "kickoff": "2026-10-01T17:00:00.000Z",
+   "end": "2026-10-01T22:00:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "World Grand Prix",
+   "venue": "Mattioli Arena, Leicester",
+   "source": "pdc.tv",
+   "id": "darts-10869-2026-10-02",
+   "kickoff": "2026-10-02T11:00:00.000Z",
+   "end": null,
+   "session": null,
+   "status": "upcoming",
+   "timeTbc": true,
+   "allDay": true,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV times to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  }
+ ]
+}

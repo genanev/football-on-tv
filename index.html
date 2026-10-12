@@ -123,10 +123,14 @@
   .seg { display: grid; grid-template-columns: 0.45fr 1fr 1fr; background: var(--line); border-radius: 12px; padding: 3px; gap: 3px; }
   .seg button {
     border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
-    padding: 8px 4px; border-radius: 9px; cursor: pointer; white-space: nowrap;
+    padding: 8px 10px; border-radius: 9px; cursor: pointer; white-space: nowrap;
   }
-  @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 2px; padding-right: 2px; } }
-  .seg + .seg { margin-top: 6px; grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 6px; padding-right: 6px; } }
+  /* The two tab rows share one set of columns, so the tabs line up one under the other:
+     the outer columns are as wide as their longest name, the middle one takes the rest. */
+  .tabs { display: grid; grid-template-columns: max-content 1fr max-content; row-gap: 6px; }
+  .tabs .seg { grid-column: 1 / -1; }
+  @supports (grid-template-columns: subgrid) { .tabs .seg { grid-template-columns: subgrid; } }
   .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 
   .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 4px 0 8px; }
@@ -184,7 +188,7 @@
     </div>
   </header>
 
-  <div class="filters">
+  <div class="filters tabs">
     <div class="seg" role="group" aria-label="Competition">
       <button data-f="ALL" aria-pressed="true">All</button>
       <button data-f="PL" aria-pressed="false">Premier League</button>

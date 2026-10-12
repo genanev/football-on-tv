@@ -54,4 +54,4 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 - No refresh button: the app reloads data on open and when you switch back to it.
 - Footer: only the two "Fixtures from… / Channels from…" sentences.
 - All times are shown in Europe/London time.
-- LIVE follows the phone's clock for every sport (it compares exact moments, so it is right in any time zone): sessions between their start and end, football from kick-off to ~1h55 later (or while the feed says live).
+- LIVE follows the phone's clock for every sport (it compares exact moments, so it is right in any time zone): sessions between their start and end, football from kick-off to ~1h55 later; the feed's "live" can stretch that to at most 2h45 after kick-off (updates can be hours apart, so an old "live" must not stick; its stale score is hidden).

@@ -304,15 +304,19 @@
       else if (m.timeTbc && !m.allDay) status = '<span class="status">TBC</span>';
       headline = `${esc(m.title)}${m.session ? ` <span class="v">·</span> <span class="sess">${esc(m.session)}</span>` : ''}`;
     } else {
-      // LIVE follows the phone's clock (kick-off to ~1h55 later), like F1/F2/darts;
-      // the feed's own "live" (from the last hourly update) also counts, e.g. for extra time.
+      // LIVE follows the phone's clock (kick-off to ~1h55 later), like F1/F2/darts. The feed's own
+      // "live" (from the last update) can stretch that for stoppage/extra time, but only up to 2h45
+      // after kick-off: updates can be hours apart, so an old "live" must not stick.
       const end = ko.getTime() + 115 * 60000;
-      const onNow = m.status !== 'finished' && m.status !== 'postponed' && (m.status === 'live' || (now >= ko.getTime() && now < end));
+      const maxEnd = ko.getTime() + 165 * 60000;
+      const playing = m.status !== 'finished' && m.status !== 'postponed';
+      const onNow = playing && now >= ko.getTime() && (now < end || (m.status === 'live' && now < maxEnd));
+      const staleLive = m.status === 'live' && !onNow && now >= end; // over, but the result isn't in yet
       past = m.status === 'finished' || (!onNow && now >= end);
       if (onNow) status = '<span class="status live">LIVE</span>';
       else if (m.status === 'finished') status = '<span class="status">FT</span>';
       else if (m.status === 'postponed') status = '<span class="status">P–P</span>';
-      const hasScore = m.homeScore != null && m.awayScore != null && m.status !== 'upcoming';
+      const hasScore = m.homeScore != null && m.awayScore != null && m.status !== 'upcoming' && !staleLive;
       const score = hasScore ? `<span class="score">${m.homeScore}–${m.awayScore}</span>` : '';
       headline = `${esc(m.home)} <span class="v">v</span> ${esc(m.away)}${score}`;
     }

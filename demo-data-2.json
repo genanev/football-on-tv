@@ -1,0 +1,592 @@
+{
+ "generatedAt": "2026-10-12T21:00:00.000Z",
+ "windowDays": 8,
+ "report": {
+  "tvGuide": {
+   "ok": true,
+   "days": 9,
+   "programmes": 825,
+   "errors": []
+  },
+  "premierLeague": {
+   "ok": false,
+   "error": "HTTP 404 for https://sdp-prem-prod.premier-league-prod.pulselive.com/api/v2/matches?competition=8&season=2026&matchweek=1&_limit=50"
+  },
+  "championsLeague": {
+   "ok": false,
+   "error": "HTTP 404 for https://match.uefa.com/v5/matches?competitionId=1&fromDate=2026-10-11&toDate=2026-10-21&order=ASC&offset=0&limit=100"
+  },
+  "tvListings": {
+   "ok": false,
+   "premierLeague": 0,
+   "championsLeague": 0,
+   "errors": [
+    "PL listings: HTTP 404 for https://www.live-footballontv.com/live-premier-league-football-on-tv.html",
+    "UCL listings: HTTP 404 for https://www.live-footballontv.com/live-champions-league-football-on-tv.html"
+   ]
+  },
+  "crossReferenced": "0/0",
+  "formula1": {
+   "ok": false,
+   "error": "HTTP 404 for https://api.formula1.com/v1/event-tracker"
+  },
+  "formula2": {
+   "ok": false,
+   "error": "HTTP 404 for https://api.formula1.com/v1/core-event-tracker/f2"
+  },
+  "darts": {
+   "ok": false,
+   "error": "HTTP 404 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
+  },
+  "golf": {
+   "ok": true,
+   "tournaments": [
+    "DP World India Championship"
+   ],
+   "rounds": 4,
+   "errors": []
+  },
+  "snooker": {
+   "ok": true,
+   "tournaments": [
+    "BetVictor Northern Ireland Open"
+   ],
+   "sessions": 6
+  },
+  "cricket": {
+   "ok": true,
+   "matches": 9
+  }
+ },
+ "events": [
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "Kingsmead, Durban",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269790-d4",
+   "kickoff": "2026-10-12T07:30:00.000Z",
+   "end": "2026-10-12T14:30:00.000Z",
+   "session": "1st Test, Day 4",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "Kingsmead, Durban",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269790-d5",
+   "kickoff": "2026-10-13T07:30:00.000Z",
+   "end": "2026-10-13T14:30:00.000Z",
+   "session": "1st Test, Day 5",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "India v West Indies",
+   "venue": "Rajiv Gandhi International Stadium, Hyderabad",
+   "series": "West Indies in India, 5 T20I Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-270276",
+   "kickoff": "2026-10-14T13:30:00.000Z",
+   "end": "2026-10-14T17:30:00.000Z",
+   "session": "4th T20I",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "DP World India Championship",
+   "venue": "Delhi GC",
+   "source": "europeantour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-15",
+   "kickoff": "2026-10-15T05:30:00.000Z",
+   "end": "2026-10-15T11:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "DP World India Championship",
+   "venue": "Delhi GC",
+   "source": "europeantour.com",
+   "session": "Round 2",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-16",
+   "kickoff": "2026-10-16T06:30:00.000Z",
+   "end": "2026-10-16T11:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "DP World India Championship",
+   "venue": "Delhi GC",
+   "source": "europeantour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-17",
+   "kickoff": "2026-10-17T06:30:00.000Z",
+   "end": "2026-10-17T11:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "India v West Indies",
+   "venue": "M.Chinnaswamy Stadium, Bengaluru",
+   "series": "West Indies in India, 5 T20I Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-270278",
+   "kickoff": "2026-10-17T13:30:00.000Z",
+   "end": "2026-10-17T17:30:00.000Z",
+   "session": "5th T20I",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [
+     "TNT Sports 1"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "DP World India Championship",
+   "venue": "Delhi GC",
+   "source": "europeantour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-18",
+   "kickoff": "2026-10-18T06:00:00.000Z",
+   "end": "2026-10-18T11:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Pakistan v Sri Lanka",
+   "venue": "Rawalpindi Cricket Stadium, Rawalpindi",
+   "series": "ODI Tri-Series in Pakistan, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-274142",
+   "kickoff": "2026-10-18T08:00:00.000Z",
+   "end": "2026-10-18T16:00:00.000Z",
+   "session": "Match 1 (ODI)",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "St George's Park, Gqeberha",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269791-d1",
+   "kickoff": "2026-10-18T08:00:00.000Z",
+   "end": "2026-10-18T15:00:00.000Z",
+   "session": "2nd Test, Day 1",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "St George's Park, Gqeberha",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269791-d2",
+   "kickoff": "2026-10-19T08:00:00.000Z",
+   "end": "2026-10-19T15:00:00.000Z",
+   "session": "2nd Test, Day 2",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792400400",
+   "kickoff": "2026-10-19T09:00:00.000Z",
+   "end": "2026-10-19T11:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792411200",
+   "kickoff": "2026-10-19T12:00:00.000Z",
+   "end": "2026-10-19T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792432800",
+   "kickoff": "2026-10-19T18:00:00.000Z",
+   "end": "2026-10-19T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Pakistan v England",
+   "venue": "Rawalpindi Cricket Stadium, Rawalpindi",
+   "series": "ODI Tri-Series in Pakistan, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-274143",
+   "kickoff": "2026-10-20T08:00:00.000Z",
+   "end": "2026-10-20T16:00:00.000Z",
+   "session": "Match 2 (ODI)",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "St George's Park, Gqeberha",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269791-d3",
+   "kickoff": "2026-10-20T08:00:00.000Z",
+   "end": "2026-10-20T15:00:00.000Z",
+   "session": "2nd Test, Day 3",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792486800",
+   "kickoff": "2026-10-20T09:00:00.000Z",
+   "end": "2026-10-20T11:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792497600",
+   "kickoff": "2026-10-20T12:00:00.000Z",
+   "end": "2026-10-20T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792519200",
+   "kickoff": "2026-10-20T18:00:00.000Z",
+   "end": "2026-10-20T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  }
+ ]
+}

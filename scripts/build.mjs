@@ -4,7 +4,10 @@
 //   Premier League, Champions League   sources/football.mjs
 //   Formula 1, Formula 2               sources/motorsport.mjs
 //   Darts (televised PDC events)       sources/darts.mjs
-//   UK TV guide (Sky, TNT, ITV, C4)    sources/skyGuide.mjs
+//   Golf (PGA Tour, DP World Tour)     sources/golf.mjs
+//   Snooker (World Snooker Tour)       sources/snooker.mjs
+//   Cricket (men's internationals)     sources/cricket.mjs
+//   UK TV guide (Sky, TNT, BBC, ITV)   sources/skyGuide.mjs
 //
 // Runs on Node 18+ with no dependencies:  node scripts/build.mjs
 // Each source is optional - if one fails, the others still produce output and the
@@ -14,7 +17,10 @@ import { writeFile } from 'node:fs/promises';
 import { ukDate, ukMidnight } from './lib/util.mjs';
 import { fetchPremierLeague, fetchPlBroadcasts, fetchChampionsLeague, fetchListings, findListing, resolveTv } from './sources/football.mjs';
 import { fetchF1, fetchF2, motorsportTv } from './sources/motorsport.mjs';
-import { fetchTournaments, dartsEvents } from './sources/darts.mjs';
+import { fetchTournaments as fetchDarts, dartsEvents } from './sources/darts.mjs';
+import { fetchGolf, golfEvents } from './sources/golf.mjs';
+import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snooker.mjs';
+import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 
 // Re-exported so the tests can reach them in one place.
@@ -34,12 +40,14 @@ export async function build(now = Date.now()) {
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
 
-  const [plRes, uclRes, listRes, f1Res, f2Res, dartsRes, guideRes] = await Promise.allSettled([
+  const [plRes, uclRes, listRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes] = await Promise.allSettled([
     fetchPremierLeague(now), fetchChampionsLeague(now, DAYS_AHEAD), fetchListings(),
-    fetchF1(), fetchF2(), fetchTournaments(today, lastDay), fetchGuide(today, DAYS_AHEAD + 1),
+    fetchF1(), fetchF2(), fetchDarts(today, lastDay),
+    fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
+    fetchGuide(today, DAYS_AHEAD + 1),
   ]);
 
-  // ---- UK TV guide (used by F1, F2 and darts)
+  // ---- UK TV guide (used by every sport except football)
   const guide = ok(guideRes) ? guideRes.value : null;
   report.tvGuide = guide ? { ok: true, days: guide.coveredDates.length, programmes: guide.programmes.length, errors: guide.errors } : fail(guideRes);
 
@@ -93,6 +101,25 @@ export async function build(now = Date.now()) {
     report.darts = fail(dartsRes);
   }
 
+  // ---- golf / snooker / cricket
+  if (ok(golfRes)) {
+    const golf = golfEvents(golfRes.value.tournaments, guide, today, DAYS_AHEAD + 1).filter(inWindow);
+    report.golf = { ok: true, tournaments: golfRes.value.tournaments.map(t => t.name), rounds: golf.length, errors: golfRes.value.errors };
+    events.push(...golf);
+  } else report.golf = fail(golfRes);
+
+  if (ok(snookerRes)) {
+    const snooker = snookerEvents(snookerRes.value, guide, today, DAYS_AHEAD + 1).filter(inWindow);
+    report.snooker = { ok: true, tournaments: snookerRes.value.map(t => t.name), sessions: snooker.length };
+    events.push(...snooker);
+  } else report.snooker = fail(snookerRes);
+
+  if (ok(cricketRes)) {
+    const cricket = cricketEvents(cricketRes.value.filter(inWindow), guide);
+    report.cricket = { ok: true, matches: cricket.length };
+    events.push(...cricket);
+  } else report.cricket = fail(cricketRes);
+
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
@@ -104,7 +131,7 @@ if (isMain) {
   const out = process.argv[2] || 'data.json';
   const data = await build();
   console.log(JSON.stringify(data.report, null, 2));
-  const scheduleOk = ['premierLeague', 'championsLeague', 'formula1', 'formula2', 'darts'].some(k => data.report[k]?.ok);
+  const scheduleOk = ['premierLeague', 'championsLeague', 'formula1', 'formula2', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {
     console.error('Every fixture source failed - keeping the previous data.json');
     process.exit(1);

@@ -9,7 +9,7 @@
 //                        a tournament day becomes one session.
 
 import { getJSON, ukDate, ukMidnight } from '../lib/util.mjs';
-import { SPORT_CHANNELS, channelList } from './skyGuide.mjs';
+import { SPORT_CHANNELS, groupSessions, guideTv, nameScore, sessionLabel, windowDates } from './skyGuide.mjs';
 
 const PDC_URL = 'https://tournaments.darts.web.gc.pdcservices.co.uk/v2/';
 
@@ -47,27 +47,6 @@ export async function fetchTournaments(fromDate, toDate) {
 
 const isDarts = (p) => /\bdarts?\b/i.test(p.title) || /\bdarts?\b/i.test(p.synopsis);
 
-/** How well a programme's text mentions the tournament name (for days with two tournaments). */
-function nameScore(p, t) {
-  const words = t.name.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-  const text = `${p.title} ${p.synopsis}`.toLowerCase();
-  return words.filter(w => text.includes(w)).length;
-}
-
-/** Group programmes into sessions: simulcasts (same start) and back-to-back parts on one channel merge. */
-function groupSessions(progs) {
-  const sessions = [];
-  for (const p of [...progs].sort((a, b) => a.start - b.start)) {
-    const s = sessions.find(s => Math.abs(s.start - p.start) <= 10 * 60000 ||
-      (s.progs.some(q => q.sid === p.sid && p.start - q.end <= 5 * 60000 && p.start >= q.start)));
-    if (s) { s.progs.push(p); s.end = Math.max(s.end, p.end); }
-    else sessions.push({ start: p.start, end: p.end, progs: [p] });
-  }
-  return sessions;
-}
-
-const sessionLabel = (ts) => (+new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: '2-digit', hourCycle: 'h23' }).format(new Date(ts)) < 17
-  ? 'Afternoon session' : 'Evening session');
 
 /**
  * Build darts events for the window: one per live TV session, or one "times to be confirmed"
@@ -77,14 +56,13 @@ export function dartsEvents(tournaments, guide, fromDate, days) {
   const sids = SPORT_CHANNELS.darts;
   const live = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid) && isDarts(p));
   const events = [];
-  for (let i = 0; i < days; i++) {
-    const date = ukDate(ukMidnight(fromDate) + i * 86400000 + 3 * 3600000);
+  for (const date of windowDates(fromDate, days)) {
     const today = tournaments.filter(t => t.startDate <= date && t.endDate >= date);
     if (!today.length) continue;
     const progs = live.filter(p => ukDate(p.start) === date);
     for (const t of today) {
       const mine = today.length === 1 ? progs
-        : progs.filter(p => nameScore(p, t) === Math.max(...today.map(o => nameScore(p, o))) && nameScore(p, t) > 0);
+        : progs.filter(p => nameScore(p, t.name) === Math.max(...today.map(o => nameScore(p, o.name))) && nameScore(p, t.name) > 0);
       const base = { comp: 'DARTS', kind: 'session', title: t.name, venue: t.venue, source: 'pdc.tv' };
       if (!mine.length) {
         events.push({
@@ -95,11 +73,9 @@ export function dartsEvents(tournaments, guide, fromDate, days) {
         continue;
       }
       for (const s of groupSessions(mine)) {
-        const chans = channelList(s.progs, sids);
         events.push({
           ...base, id: `darts-${t.id}-${s.start / 1000}`, kickoff: new Date(s.start).toISOString(), end: new Date(s.end).toISOString(),
-          session: sessionLabel(s.start), status: 'upcoming', timeTbc: false,
-          tv: { broadcaster: chans[0], channels: [chans[0]], alsoOn: chans.slice(1), confirmed: true, note: null, conflict: false, sources: ['sky-guide'] },
+          session: sessionLabel(s.start), status: 'upcoming', timeTbc: false, tv: guideTv(s.progs, sids),
         });
       }
     }

@@ -376,7 +376,9 @@
     const r = DEMO ? {} : data.report || {}; // the demo week has no football recorded
     const show = (f) => filter === 'ALL' || filter === f;
     if (r.tvListings && r.tvListings.ok === false && (show('PL') || show('UCL'))) banners.push('The TV listings site couldn’t be read on the last update, so some exact channels are missing.');
-    if (r.tvGuide && r.tvGuide.ok === false && ['F1', 'F2', 'DARTS', 'GOLF', 'SNOOKER', 'CRICKET'].some(show)) banners.push('The Sky TV guide couldn’t be read on the last update, so channels and times for F1, F2, darts, golf, snooker and cricket aren’t confirmed.');
+    if (r.tvGuide && r.tvGuide.ok === false && ['UEL', 'CHAMP', 'CUPS', 'F1', 'F2', 'DARTS', 'GOLF', 'SNOOKER', 'CRICKET'].some(show)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('UEL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.skyListings && r.skyListings.ok === false && ['CHAMP', 'CUPS', 'F1', 'F2'].some(show)) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');

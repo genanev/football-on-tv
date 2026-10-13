@@ -29,6 +29,7 @@ const SKY_F1 = await fx('skysports-f1-on-sky-2026-10-13.html');
 const TNT_THU = JSON.parse(await fx('tnt-schedule-2026-10-15.json'));
 
 // ---------- mock fetch
+let tntDown = false;
 globalThis.fetch = async (url) => {
   const json = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => JSON.stringify(b) });
   if (url.includes('match.uefa.com')) return json(/competitionId=14\b/.test(url) ? UEL : []);
@@ -37,6 +38,7 @@ globalThis.fetch = async (url) => {
   if (url.includes('skysports.com/watch/football-on-sky')) return { ok: true, status: 200, text: async () => SKY_FOOTBALL };
   if (url.includes('skysports.com/watch/f1-on-sky')) return { ok: true, status: 200, text: async () => SKY_F1 };
   if (url.includes('netsport.eurosport.io')) {
+    if (tntDown) return { ok: false, status: 500 };
     const date = JSON.parse(new URL(url).searchParams.get('variables')).date;
     return json(date === '2026-10-14T23:00:00.000Z' ? TNT_THU : { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
   }
@@ -125,5 +127,20 @@ assert.equal(fa[0].kickoff, '2026-10-17T11:30:00.000Z'); // 12:30 UK
 assert.equal(fa[0].round, 'Fourth Round Qualifying');
 assert.deepEqual(fa[0].tv.channels, ['BBC Sport']);
 assert.ok(fa[0].tv.sources.includes('thefa.com'));
+
+// TNT's schedule unreachable: every Europa League game is still listed (fixtures come from UEFA);
+// games on TNT's TV channels keep their channel from the Sky guide, HBO Max-only games say
+// "TV channel to be confirmed" - unless an earlier update already confirmed them
+tntDown = true;
+const noTnt = await build(Date.parse('2026-10-13T09:00:00Z'));
+const withPrevious = await build(Date.parse('2026-10-13T09:00:00Z'), data);
+tntDown = false;
+assert.equal(noTnt.report.tntSchedule.ok, false);
+const uel = (d, home) => d.events.find(e => e.comp === 'UEL' && e.home === home);
+assert.equal(noTnt.events.filter(e => e.comp === 'UEL').length, 18);
+assert.deepEqual(uel(noTnt, 'Lyon').tv.channels, ['TNT Sports 1']);
+assert.deepEqual(uel(noTnt, 'Celta').tv.channels, []);
+assert.equal(uel(noTnt, 'Celta').tv.note, 'TV channel to be confirmed');
+assert.deepEqual(uel(withPrevious, 'Celta').tv.channels, ['HBO Max']);
 
 console.log('\nAll Europa League, Championship and cup tests passed');

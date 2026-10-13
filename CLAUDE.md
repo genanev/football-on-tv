@@ -32,7 +32,7 @@ A personal phone web app for George: what's on UK TV for **today + the next 7 da
 
 The F1/F2/PGA Tour API keys (and the ICC client id) are the ones each website sends from every visitor's browser. If one starts returning 401, find the new one in the site's JavaScript (search for `apikey`).
 
-Every update reads the previous `data.json` and, when a source no longer gives an event a channel, keeps the channel it had (`keepKnownChannels`): live-footballontv.com drops matches once played. The app hides "…to be confirmed" notes for events that are over.
+Every update reads the previous `data.json` and, when a source no longer gives an event a channel, keeps the channel it had (`keepKnownChannels`): live-footballontv.com drops matches once played. The app hides "…to be confirmed" notes (incl. "Expected – To Be Confirmed") once an event has started (George: a LIVE NOW game showing "expected" looks wrong).
 
 Football (UEL, Championship, cups): a match gets its channel from a live guide programme on a football channel that is on air at kick-off and names both teams (`guideTeams` + `teamSim`). Europa League: all matches; not in the guide = "TNT Sports" + "Expected – To Be Confirmed" (TNT holds the rights; the rest stream on HBO Max). Championship: all matches; Saturday 15:00 = "Not shown live on UK TV"; otherwise not in the guide = "Sky Sports+" + "Expected – To Be Confirmed". Cups tab: televised ties only – League Cup ties when in the guide, FA Cup ties the FA marks "Live on …" (exact channel from the guide if listed, else the FA's wording, e.g. "BBC Sport").
 

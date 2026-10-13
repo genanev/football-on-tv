@@ -345,8 +345,10 @@
     } else if (tv.broadcaster) {
       tvHtml = `<span class="pill ${brandClass(tv.broadcaster)}">${esc(tv.broadcaster)}</span>`;
     }
-    // "...to be confirmed" means nothing once the event is over, so it's only shown before then.
-    if (tv.note && !(past && /confirm/i.test(tv.note))) tvHtml += `<span class="note ${/confirm/i.test(tv.note) ? 'tbc' : ''}">${esc(tv.note)}</span>`;
+    // "...to be confirmed" means nothing once the event has started, so it's only shown before then
+    // (all-day "TBC" entries keep it: their time is a placeholder).
+    const started = past || (!m.allDay && now >= ko.getTime());
+    if (tv.note && !(started && /confirm/i.test(tv.note))) tvHtml += `<span class="note ${/confirm/i.test(tv.note) ? 'tbc' : ''}">${esc(tv.note)}</span>`;
 
     const also = tv.alsoOn && tv.alsoOn.length ? `<div class="also">Also on ${esc(tv.alsoOn.join(', '))}</div>` : '';
     const warn = tv.conflict ? `<div class="warn">Sources disagree – the Premier League lists ${esc(tv.broadcaster)}. Double-check before kick-off.</div>` : '';

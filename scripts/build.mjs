@@ -31,6 +31,7 @@ import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
 import { fetchTntSchedule } from './sources/tntSchedule.mjs';
+import { fetchPrimeUcl } from './sources/amazonPrime.mjs';
 
 // Re-exported so the tests can reach them in one place.
 export { ukToUtc, ukDate } from './lib/util.mjs';
@@ -66,12 +67,12 @@ export async function build(now = Date.now(), previous = null) {
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
 
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes] = await Promise.allSettled([
     fetchPremierLeague(now), fetchChampionsLeague(now, DAYS_AHEAD),
     fetchUefa(now, DAYS_AHEAD, 'UEL'), fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
     fetchF1(), fetchF2(), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
-    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1),
+    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now),
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -83,6 +84,9 @@ export async function build(now = Date.now(), previous = null) {
   // TNT Sports' own schedule: its channels plus events streamed only on HBO Max
   const tnt = ok(tntRes) ? tntRes.value : null;
   report.tntSchedule = tnt ? { ok: true, programmes: tnt.programmes.length, errors: tnt.errors } : fail(tntRes);
+  // Prime Video's Champions League page: Amazon's own picks
+  const prime = ok(primeRes) ? primeRes.value : null;
+  report.primeVideo = prime ? { ok: true, events: prime.cards.length, amazonPicks: prime.cards.filter(c => c.provider === 'Prime').map(c => c.title) } : fail(primeRes);
 
   // ---- football
   const pl = ok(plRes) ? plRes.value.filter(inWindow) : [];
@@ -108,7 +112,7 @@ export async function build(now = Date.now(), previous = null) {
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
   for (const m of [...pl, ...ucl, ...uel]) {
-    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, plBrands: m.comp === 'PL' ? plTv[m.sourceId] : null });
+    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, plBrands: m.comp === 'PL' ? plTv[m.sourceId] : null });
     const { sourceId, homeAlt, awayAlt, ...rest } = m;
     // UEFA uses short international names ("Atleti", "Paris"); TNT's names read better.
     if (m.comp !== 'PL' && tntNames) { rest.home = tntNames[0]; rest.away = tntNames[1]; }

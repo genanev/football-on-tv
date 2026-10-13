@@ -8,6 +8,7 @@
 //   fixtures/sky-guide-football-2026-10-13.json         Sky TV guide 13-21 Oct, football channels
 //   fixtures/skysports-football-on-sky-2026-10-13.html  skysports.com "Football on Sky" (listings only)
 //   fixtures/tnt-schedule-football-2026-10-13.json      TNT Sports' schedule 13-21 Oct (football only)
+//   fixtures/primevideo-ucl-tournament-2026-10-13.html  Prime Video's Champions League page (event cards)
 // The Premier League's broadcaster feed answers by the requester's country; from GitHub (US) it
 // gives no UK channels, so it's mocked as empty here and checked on its own below.
 //
@@ -27,6 +28,7 @@ const UCL = JSON.parse(await fx('uefa-champions-league-2026-10-13.json'));
 const GUIDE = JSON.parse(await fx('sky-guide-football-2026-10-13.json'));
 const SKY_FOOTBALL = await fx('skysports-football-on-sky-2026-10-13.html');
 const TNT = JSON.parse(await fx('tnt-schedule-football-2026-10-13.json'));
+const PRIME = await fx('primevideo-ucl-tournament-2026-10-13.html');
 
 // ---------- mock fetch
 let down = null; // a source to make fail
@@ -45,6 +47,7 @@ globalThis.fetch = async (url) => {
     return json(day ? { ...day, schedule: day.schedule.filter(s => want.has(String(s.sid))) } : { date: ymd, schedule: [] });
   }
   if (url.includes('skysports.com/watch/football-on-sky')) return html(SKY_FOOTBALL);
+  if (url.includes('primevideo.com/tournament')) return html(PRIME);
   if (url.includes('netsport.eurosport.io')) {
     const date = JSON.parse(new URL(url).searchParams.get('variables')).date;
     return json(TNT[date] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
@@ -107,8 +110,8 @@ for (const home of ['Brentford', 'Fulham', 'Manchester City']) {
 }
 assert.ok(data.events.every(e => !e.tv.sources.includes('listings')));
 
-// Champions League: TNT's TV channels from the guide + TNT, HBO Max streams from TNT's schedule;
-// Amazon's Tuesday pick has no official source, so it's not guessed
+// Champions League: TNT's TV channels from the guide + TNT, HBO Max streams from TNT's schedule,
+// Amazon's Tuesday pick from Prime Video's own Champions League page
 assert.equal(ucl.length, 36);
 const arsenal = ucl.find(e => e.home === 'Arsenal' && e.away === 'Lille');
 assert.deepEqual(arsenal.tv.channels, ['TNT Sports 1']);
@@ -116,11 +119,16 @@ assert.deepEqual(arsenal.tv.alsoOn, ['HBO Max']);
 assert.deepEqual(find('UCL', 'Villarreal').tv.channels, ['HBO Max']);
 assert.deepEqual(find('UCL', 'Villarreal').tv.sources, ['tntsports.co.uk']);
 const atleti = ucl.find(e => e.kickoff === '2026-10-13T19:00:00.000Z' && /Atl/.test(e.home));
-assert.deepEqual(atleti.tv.channels, []);
-assert.equal(atleti.tv.note, 'TV channel to be confirmed');
+assert.deepEqual(atleti.tv.channels, ['Amazon Prime Video']);
+assert.deepEqual(atleti.tv.sources, ['primevideo.com']);
+assert.equal(`${atleti.home} v ${atleti.away}`, 'Atlético Madrid v Manchester United'); // Amazon's names, not UEFA's "Atleti v Man Utd"
+assert.deepEqual(ucl.find(e => e.home === 'Liverpool' && e.away === 'Villarreal').tv.channels, ['Amazon Prime Video']);
+// TNT's games that Prime Video resells through the TNT Sports channel are not Amazon's
+assert.ok(!ucl.some(e => e.home === 'LASK' && e.tv.channels.includes('Amazon Prime Video')));
+assert.deepEqual(data.report.primeVideo.amazonPicks.slice(0, 2), ['Liverpool vs. Villarreal', 'Manchester United vs. Roma']);
 // TNT's team names read better than UEFA's short ones
 assert.ok(ucl.some(e => e.home === 'Manchester City' && e.away === 'Paris Saint-Germain'));
-assert.equal(data.report.footballChannels, '41/46 PL+UCL matches with a confirmed channel');
+assert.equal(data.report.footballChannels, '43/46 PL+UCL matches with a confirmed channel'); // the other 3: Saturday 15:00
 
 // A failing source must not break the rest: TNT's schedule down -> TNT channel games still come
 // from the guide, HBO Max-only games say "TV channel to be confirmed"
@@ -130,6 +138,16 @@ down = null;
 assert.equal(noTnt.report.tntSchedule.ok, false);
 assert.deepEqual(noTnt.events.find(e => e.comp === 'PL' && e.home === 'Everton').tv.channels, ['TNT Sports 1']);
 assert.equal(noTnt.events.find(e => e.comp === 'UCL' && e.home === 'Villarreal').tv.note, 'TV channel to be confirmed');
+
+// Prime Video's page down: Amazon's game says "TV channel to be confirmed" (no guess)...
+down = 'primevideo.com';
+const noPrime = await build(Date.parse('2026-10-13T09:00:00Z'));
+down = null;
+assert.equal(noPrime.report.primeVideo.ok, false);
+assert.equal(noPrime.events.find(e => e.comp === 'UCL' && e.home === 'Liverpool' && e.away === 'Villarreal').tv.note, 'TV channel to be confirmed');
+// ...unless an earlier update found it: it then stays until the end of the match day
+const primeKept = await build(Date.parse('2026-10-13T09:00:00Z'), data);
+assert.deepEqual(primeKept.events.find(e => e.comp === 'UCL' && e.home === 'Liverpool' && e.away === 'Villarreal').tv.channels, ['Amazon Prime Video']);
 
 // ...and with the previous update to hand, a confirmed channel is kept - but never one that came
 // from the old fan-site listings

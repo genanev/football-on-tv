@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-13T03:37:12.393Z",
+ "generatedAt": "2026-10-13T11:54:03.194Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4448,
+   "programmes": 4461,
    "errors": []
   },
   "premierLeague": {
@@ -57,7 +57,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 8
+   "matches": 9
   }
  },
  "events": [
@@ -70,7 +70,7 @@
    "source": "icc-cricket.com",
    "id": "cricket-269790-d5",
    "kickoff": "2026-10-13T07:30:00.000Z",
-   "end": "2026-10-13T14:30:00.000Z",
+   "end": "2026-10-13T13:30:00.000Z",
    "session": "1st Test, Day 5",
    "status": "upcoming",
    "timeTbc": false,
@@ -1717,6 +1717,35 @@
     "conflict": false,
     "sources": [
      "listings"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "St George's Park, Gqeberha",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269791-d4",
+   "kickoff": "2026-10-21T08:00:00.000Z",
+   "end": "2026-10-21T15:00:00.000Z",
+   "session": "2nd Test, Day 4",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

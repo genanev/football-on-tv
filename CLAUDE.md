@@ -58,6 +58,7 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 - Channel pills: TNT magenta, Amazon blue, **Sky Sports orange** (`#d35400`, not red). White text in light mode; dark text on lighter pills in dark mode.
 - Theme toggle shows **Light / Dark only** (no Auto). The first visit follows the phone's setting; after that the choice is saved in localStorage.
 - No refresh button: the app reloads data on open and when you switch back to it.
+- **A channel pill and a note never appear together** (George's rule): a note only explains a missing channel ("Not shown live on UK TV", "TV channel to be confirmed", "TV times to be confirmed"). So "Expected – To Be Confirmed" / "Exact channel to be confirmed" are still written to `data.json` but never shown when a pill is. "…to be confirmed" notes are also hidden once an event has started.
 - Footer: only the two "Fixtures from… / Channels from…" sentences.
 - All times are shown in Europe/London time.
 - The live label reads **LIVE NOW** (one line, under the time). It follows the phone's clock for every sport (it compares exact moments, so it is right in any time zone): sessions between their start and end, football from kick-off to ~1h55 later; the feed's "live" can stretch that to at most 2h45 after kick-off (updates can be hours apart, so an old "live" must not stick; its stale score is hidden).

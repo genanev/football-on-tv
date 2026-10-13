@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-12T23:03:19.330Z",
+ "generatedAt": "2026-10-13T03:37:12.393Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4200,
+   "programmes": 4448,
    "errors": []
   },
   "premierLeague": {

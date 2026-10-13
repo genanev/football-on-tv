@@ -1,10 +1,13 @@
-// Football: Premier League + Champions League fixtures and their UK TV channels.
+// Football: Premier League, Champions League and Europa League fixtures and their UK TV channels,
+// plus the TV-guide matching shared with the EFL and FA Cup modules.
 //
 // Sources
 //   Premier League schedule   official premierleague.com data feed
 //   Premier League TV (brand) official premierleague.com broadcast feed
 //   Champions League schedule official uefa.com data feed
-//   Exact TV channel          live-footballontv.com listings (cross-reference)
+//   Europa League schedule    official uefa.com data feed (same feed, competition 14)
+//   Exact TV channel (PL/UCL) live-footballontv.com listings (cross-reference)
+//   Exact TV channel (UEL)    Sky's TV guide ("Live UEL: Lyon v Crystal Palace")
 
 import { getJSON, getText, londonParts, ukToUtc, ukDate, ukHHMM, ukWeekday } from '../lib/util.mjs';
 
@@ -166,11 +169,11 @@ export async function fetchPlBroadcasts(ids) {
   return out;
 }
 
-// -------------------------------------------------- Champions League (official)
+// ------------------------------------------ Champions / Europa League (official)
 
 const UEFA_STATUS = { UPCOMING: 'upcoming', LIVE: 'live', FINISHED: 'finished', POSTPONED: 'postponed', CANCELLED: 'postponed', ABANDONED: 'postponed' };
 
-export function mapUefaMatch(m) {
+export function mapUefaMatch(m, comp = 'UCL') {
   const iso = m?.kickOffTime?.dateTime;
   if (!iso) return null;
   const ts = Date.parse(iso);
@@ -178,9 +181,9 @@ export function mapUefaMatch(m) {
   const name = (t) => t?.translations?.displayName?.EN || t?.internationalName;
   const total = m.score?.total;
   return {
-    id: `ucl-${m.id}`,
+    id: `${comp.toLowerCase()}-${m.id}`,
     sourceId: String(m.id),
-    comp: 'UCL',
+    comp,
     kickoff: new Date(ts).toISOString(),
     home: m.homeTeam?.internationalName || name(m.homeTeam),
     away: m.awayTeam?.internationalName || name(m.awayTeam),
@@ -197,12 +200,43 @@ export function mapUefaMatch(m) {
   };
 }
 
-export async function fetchChampionsLeague(now, daysAhead) {
+const UEFA_COMPETITION = { UCL: 1, UEL: 14 };
+
+export async function fetchUefa(now, daysAhead, comp = 'UCL') {
   const from = ukDate(now - 86400000);
   const to = ukDate(now + (daysAhead + 1) * 86400000);
-  const url = `https://match.uefa.com/v5/matches?competitionId=1&fromDate=${from}&toDate=${to}&order=ASC&offset=0&limit=100`;
+  const url = `https://match.uefa.com/v5/matches?competitionId=${UEFA_COMPETITION[comp]}&fromDate=${from}&toDate=${to}&order=ASC&offset=0&limit=100`;
   const j = await getJSON(url, UEFA_HEADERS);
-  return (Array.isArray(j) ? j : j.data || []).map(mapUefaMatch).filter(Boolean);
+  return (Array.isArray(j) ? j : j.data || []).map(m => mapUefaMatch(m, comp)).filter(Boolean);
+}
+
+export const fetchChampionsLeague = (now, daysAhead) => fetchUefa(now, daysAhead, 'UCL');
+
+// ------------------------------------------------ TV guide (Sky EPG) matching
+
+/** "Live UEL: Lyon v Crystal Palace" -> ['Lyon', 'Crystal Palace']; null if the title isn't a match. */
+export function guideTeams(title) {
+  const t = String(title || '').replace(/^live\b[:\s-]*/i, '');
+  const part = t.includes(':') ? t.slice(t.lastIndexOf(':') + 1) : t;
+  const m = /^\s*(.+?)\s+v\s+(.+?)\s*$/i.exec(part);
+  return m ? [m[1], m[2]] : null;
+}
+
+/**
+ * Live programmes showing this match: on air at kick-off (or starting up to 2h before it) on a
+ * football channel, with both team names in the title (fuzzy, so "Oxford Utd" = "Oxford United").
+ */
+export function guideProgrammesFor(match, programmes, sids) {
+  const ko = Date.parse(match.kickoff);
+  const names = (side) => [match[side], match[`${side}Short`], match[`${side}Alt`]].filter(Boolean);
+  return programmes.filter(p => {
+    if (!p.live || !sids.includes(p.sid)) return false;
+    if (!(p.start <= ko + 15 * 60000 && p.end > ko + 15 * 60000 && p.start >= ko - 2 * 3600000)) return false;
+    const teams = guideTeams(p.title);
+    if (!teams) return false;
+    const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
+    return sim('home', teams[0]) >= 0.5 && sim('away', teams[1]) >= 0.5;
+  });
 }
 
 // ---------------------------------------------- TV listings (live-footballontv)

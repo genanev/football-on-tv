@@ -24,6 +24,7 @@ jobs:
           node test/run-test.mjs
           node test/run-sports-test.mjs
           node test/run-golf-snooker-cricket-test.mjs
+          node test/run-more-football-test.mjs
 
       - name: Live build (not saved)
         run: node scripts/build.mjs /tmp/data.json

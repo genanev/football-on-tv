@@ -1,0 +1,1694 @@
+[
+ {
+  "id": "2050076",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "5312",
+   "internationalName": "Lyon",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lyon"
+    },
+    "displayOfficialName": {
+     "EN": "Olympique Lyonnais"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52916",
+   "internationalName": "Crystal Palace",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Crystal Palace"
+    },
+    "displayOfficialName": {
+     "EN": "Crystal Palace F.C."
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "OL Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050077",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "52327",
+   "internationalName": "AZ Alkmaar",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "AZ Alkmaar"
+    },
+    "displayOfficialName": {
+     "EN": "AZ Alkmaar"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "59340",
+   "internationalName": "H. Beer-Sheva",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "H. Beer-Sheva"
+    },
+    "displayOfficialName": {
+     "EN": "Hapoel Beer-Sheva FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "AZ Stadion"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050080",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "64125",
+   "internationalName": "Union SG",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Union SG"
+    },
+    "displayOfficialName": {
+     "EN": "R. Union Saint-Gilloise"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50123",
+   "internationalName": "Real Sociedad",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Real Sociedad"
+    },
+    "displayOfficialName": {
+     "EN": "Real Sociedad de Fútbol"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Den Dreef"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050082",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "50030",
+   "internationalName": "Salzburg",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Salzburg"
+    },
+    "displayOfficialName": {
+     "EN": "FC Salzburg"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50058",
+   "internationalName": "Milan",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Milan"
+    },
+    "displayOfficialName": {
+     "EN": "AC Milan"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Salzburg"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050083",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "50033",
+   "internationalName": "Sparta Praha",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sparta Praha"
+    },
+    "displayOfficialName": {
+     "EN": "AC Sparta Praha"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52314",
+   "internationalName": "Lillestrøm",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lillestrøm"
+    },
+    "displayOfficialName": {
+     "EN": "Lillestrøm SK"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Letná"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050085",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "64227",
+   "internationalName": "Lech Poznań",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lech Poznań"
+    },
+    "displayOfficialName": {
+     "EN": "KKS Lech Poznań"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50109",
+   "internationalName": "Leverkusen",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Leverkusen"
+    },
+    "displayOfficialName": {
+     "EN": "Bayer 04 Leverkusen"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Poznan Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050087",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "59030",
+   "internationalName": "Celje",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celje"
+    },
+    "displayOfficialName": {
+     "EN": "NK Celje"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50077",
+   "internationalName": "Omonia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Omonia"
+    },
+    "displayOfficialName": {
+     "EN": "Omonia FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Celje"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050091",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "2603107",
+   "internationalName": "Torreense",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Torreense"
+    },
+    "displayOfficialName": {
+     "EN": "SCU Torreense"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "53360",
+   "internationalName": "Sunderland",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sunderland"
+    },
+    "displayOfficialName": {
+     "EN": "Sunderland AFC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Estádio Municipal de Leiria - Dr. Magalhães Pessoa"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050075",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "50147",
+   "internationalName": "Benfica",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Benfica"
+    },
+    "displayOfficialName": {
+     "EN": "SL Benfica"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50050",
+   "internationalName": "Celtic",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celtic"
+    },
+    "displayOfficialName": {
+     "EN": "Celtic FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Estádio do SL Benfica"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050078",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "52748",
+   "internationalName": "Marseille",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Marseille"
+    },
+    "displayOfficialName": {
+     "EN": "Olympique de Marseille"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "2610",
+   "internationalName": "Olympiacos",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Olympiacos"
+    },
+    "displayOfficialName": {
+     "EN": "Olympiacos FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stade Vélodrome"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050079",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "52298",
+   "internationalName": "Ferencváros",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Ferencváros"
+    },
+    "displayOfficialName": {
+     "EN": "Ferencvárosi TC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "64388",
+   "internationalName": "Viktoria Plzeň",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Viktoria Plzeň"
+    },
+    "displayOfficialName": {
+     "EN": "FC Viktoria Plzeň"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Ferencváros Stadion"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050081",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "50164",
+   "internationalName": "GNK Dinamo",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "GNK Dinamo"
+    },
+    "displayOfficialName": {
+     "EN": "GNK Dinamo"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50074",
+   "internationalName": "Anderlecht",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Anderlecht"
+    },
+    "displayOfficialName": {
+     "EN": "RSC Anderlecht"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Maksimir"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050084",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "55031",
+   "internationalName": "Rennes",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Rennes"
+    },
+    "displayOfficialName": {
+     "EN": "Stade Rennais FC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52953",
+   "internationalName": "OFI Crete",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "OFI Crete"
+    },
+    "displayOfficialName": {
+     "EN": "OFI Crete FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Roazhon Park"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050086",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2601124",
+   "internationalName": "Bournemouth",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Bournemouth"
+    },
+    "displayOfficialName": {
+     "EN": "AFC Bournemouth"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50111",
+   "internationalName": "Sturm Graz",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sturm Graz"
+    },
+    "displayOfficialName": {
+     "EN": "SK Sturm Graz"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Bournemouth Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050088",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2600277",
+   "internationalName": "Jagiellonia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Jagiellonia"
+    },
+    "displayOfficialName": {
+     "EN": "Jagiellonia Białystok"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "2610304",
+   "internationalName": "Ararat-Armenia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Ararat-Armenia"
+    },
+    "displayOfficialName": {
+     "EN": "FC Ararat-Armenia"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Municipal Stadium in Bialystok"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050089",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "53043",
+   "internationalName": "Celta",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celta"
+    },
+    "displayOfficialName": {
+     "EN": "Real Club Celta"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50139",
+   "internationalName": "Juventus",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Juventus"
+    },
+    "displayOfficialName": {
+     "EN": "Juventus"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Estadio Balaidos"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050090",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2600431",
+   "internationalName": "Hoffenheim",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Hoffenheim"
+    },
+    "displayOfficialName": {
+     "EN": "TSG 1899 Hoffenheim"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50157",
+   "internationalName": "Beşiktaş",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Beşiktaş"
+    },
+    "displayOfficialName": {
+     "EN": "Beşiktaş JK"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Rhein-Neckar-Arena"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050092",
+  "kickOffTime": {
+   "dateTime": "2026-10-15T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "52330",
+   "internationalName": "N.E.C.",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "N.E.C."
+    },
+    "displayOfficialName": {
+     "EN": "N.E.C. Nijmegen"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50044",
+   "internationalName": "Levski Sofia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Levski Sofia"
+    },
+    "displayOfficialName": {
+     "EN": "PFC Levski Sofia"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Goffertstadion"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050093",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "50139",
+   "internationalName": "Juventus",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Juventus"
+    },
+    "displayOfficialName": {
+     "EN": "Juventus"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "55031",
+   "internationalName": "Rennes",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Rennes"
+    },
+    "displayOfficialName": {
+     "EN": "Stade Rennais FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Juventus Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050095",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "52298",
+   "internationalName": "Ferencváros",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Ferencváros"
+    },
+    "displayOfficialName": {
+     "EN": "Ferencvárosi TC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "2603107",
+   "internationalName": "Torreense",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Torreense"
+    },
+    "displayOfficialName": {
+     "EN": "SCU Torreense"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Ferencváros Stadion"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050097",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "64125",
+   "internationalName": "Union SG",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Union SG"
+    },
+    "displayOfficialName": {
+     "EN": "R. Union Saint-Gilloise"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "59340",
+   "internationalName": "H. Beer-Sheva",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "H. Beer-Sheva"
+    },
+    "displayOfficialName": {
+     "EN": "Hapoel Beer-Sheva FC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Düsseldorf Arena"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050098",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "50164",
+   "internationalName": "GNK Dinamo",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "GNK Dinamo"
+    },
+    "displayOfficialName": {
+     "EN": "GNK Dinamo"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52330",
+   "internationalName": "N.E.C.",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "N.E.C."
+    },
+    "displayOfficialName": {
+     "EN": "N.E.C. Nijmegen"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Maksimir"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050100",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "50111",
+   "internationalName": "Sturm Graz",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sturm Graz"
+    },
+    "displayOfficialName": {
+     "EN": "SK Sturm Graz"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52748",
+   "internationalName": "Marseille",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Marseille"
+    },
+    "displayOfficialName": {
+     "EN": "Olympique de Marseille"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadium Graz Liebenau"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050101",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "64227",
+   "internationalName": "Lech Poznań",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lech Poznań"
+    },
+    "displayOfficialName": {
+     "EN": "KKS Lech Poznań"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "53360",
+   "internationalName": "Sunderland",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sunderland"
+    },
+    "displayOfficialName": {
+     "EN": "Sunderland AFC"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Poznan Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050108",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "52953",
+   "internationalName": "OFI Crete",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "OFI Crete"
+    },
+    "displayOfficialName": {
+     "EN": "OFI Crete FC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50109",
+   "internationalName": "Leverkusen",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Leverkusen"
+    },
+    "displayOfficialName": {
+     "EN": "Bayer 04 Leverkusen"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Pankritio "
+    }
+   }
+  }
+ },
+ {
+  "id": "2050110",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T16:45:00Z"
+  },
+  "homeTeam": {
+   "id": "2610304",
+   "internationalName": "Ararat-Armenia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Ararat-Armenia"
+    },
+    "displayOfficialName": {
+     "EN": "FC Ararat-Armenia"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52327",
+   "internationalName": "AZ Alkmaar",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "AZ Alkmaar"
+    },
+    "displayOfficialName": {
+     "EN": "AZ Alkmaar"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Republican Stadium after Vazgen Sargsyan"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050094",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2610",
+   "internationalName": "Olympiacos",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Olympiacos"
+    },
+    "displayOfficialName": {
+     "EN": "Olympiacos FC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50033",
+   "internationalName": "Sparta Praha",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Sparta Praha"
+    },
+    "displayOfficialName": {
+     "EN": "AC Sparta Praha"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadio Georgios Karaiskakis"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050096",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "64388",
+   "internationalName": "Viktoria Plzeň",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Viktoria Plzeň"
+    },
+    "displayOfficialName": {
+     "EN": "FC Viktoria Plzeň"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50044",
+   "internationalName": "Levski Sofia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Levski Sofia"
+    },
+    "displayOfficialName": {
+     "EN": "PFC Levski Sofia"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion města Plzně"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050099",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "50050",
+   "internationalName": "Celtic",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celtic"
+    },
+    "displayOfficialName": {
+     "EN": "Celtic FC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "53043",
+   "internationalName": "Celta",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celta"
+    },
+    "displayOfficialName": {
+     "EN": "Real Club Celta"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Celtic Park"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050102",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2601124",
+   "internationalName": "Bournemouth",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Bournemouth"
+    },
+    "displayOfficialName": {
+     "EN": "AFC Bournemouth"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50058",
+   "internationalName": "Milan",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Milan"
+    },
+    "displayOfficialName": {
+     "EN": "AC Milan"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Bournemouth Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050103",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "59030",
+   "internationalName": "Celje",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Celje"
+    },
+    "displayOfficialName": {
+     "EN": "NK Celje"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50030",
+   "internationalName": "Salzburg",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Salzburg"
+    },
+    "displayOfficialName": {
+     "EN": "FC Salzburg"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Stadion Celje"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050104",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2600277",
+   "internationalName": "Jagiellonia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Jagiellonia"
+    },
+    "displayOfficialName": {
+     "EN": "Jagiellonia Białystok"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50074",
+   "internationalName": "Anderlecht",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Anderlecht"
+    },
+    "displayOfficialName": {
+     "EN": "RSC Anderlecht"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Municipal Stadium in Bialystok"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050105",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "50077",
+   "internationalName": "Omonia",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Omonia"
+    },
+    "displayOfficialName": {
+     "EN": "Omonia FC"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50147",
+   "internationalName": "Benfica",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Benfica"
+    },
+    "displayOfficialName": {
+     "EN": "SL Benfica"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "GSP"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050106",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "2600431",
+   "internationalName": "Hoffenheim",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Hoffenheim"
+    },
+    "displayOfficialName": {
+     "EN": "TSG 1899 Hoffenheim"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "5312",
+   "internationalName": "Lyon",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lyon"
+    },
+    "displayOfficialName": {
+     "EN": "Olympique Lyonnais"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Rhein-Neckar-Arena"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050107",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "50157",
+   "internationalName": "Beşiktaş",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Beşiktaş"
+    },
+    "displayOfficialName": {
+     "EN": "Beşiktaş JK"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "52916",
+   "internationalName": "Crystal Palace",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Crystal Palace"
+    },
+    "displayOfficialName": {
+     "EN": "Crystal Palace F.C."
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Beşiktaş Stadium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2050109",
+  "kickOffTime": {
+   "dateTime": "2026-10-22T19:00:00Z"
+  },
+  "homeTeam": {
+   "id": "52314",
+   "internationalName": "Lillestrøm",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Lillestrøm"
+    },
+    "displayOfficialName": {
+     "EN": "Lillestrøm SK"
+    }
+   }
+  },
+  "awayTeam": {
+   "id": "50123",
+   "internationalName": "Real Sociedad",
+   "isPlaceHolder": false,
+   "translations": {
+    "displayName": {
+     "EN": "Real Sociedad"
+    },
+    "displayOfficialName": {
+     "EN": "Real Sociedad de Fútbol"
+    }
+   }
+  },
+  "status": "UPCOMING",
+  "round": {
+   "translations": {
+    "name": {
+     "EN": "League phase"
+    }
+   }
+  },
+  "stadium": {
+   "translations": {
+    "name": {
+     "EN": "Åråsen"
+    }
+   }
+  }
+ }
+]

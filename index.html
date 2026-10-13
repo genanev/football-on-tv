@@ -34,6 +34,9 @@
     --golf: #2e7d32;
     --snooker: #6d4c41;
     --cricket: #3949ab;
+    --uel: #e65100;
+    --champ: #546e7a;
+    --cups: #c2185b;
     --sky: #d35400;
     --tnt: #b4169e;
     --prime: #0084b4;
@@ -65,6 +68,9 @@
       --golf: #81c784;
       --snooker: #d7a98c;
       --cricket: #9fa8da;
+      --uel: #ffb74d;
+      --champ: #b0bec5;
+      --cups: #f48fb1;
       --sky: #ff9a4d;
       --tnt: #f06ae0;
       --prime: #38c3f2;
@@ -93,6 +99,9 @@
     --golf: #81c784;
     --snooker: #d7a98c;
     --cricket: #9fa8da;
+    --uel: #ffb74d;
+    --champ: #b0bec5;
+    --cups: #f48fb1;
     --sky: #ff9a4d;
     --tnt: #f06ae0;
     --prime: #38c3f2;
@@ -134,7 +143,8 @@
     border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
     padding: 8px 10px; border-radius: 9px; cursor: pointer; white-space: nowrap;
   }
-  @media (max-width: 374px) { .seg button { font-size: 13px; padding-left: 6px; padding-right: 6px; } }
+  @media (max-width: 409px) { .seg button { font-size: 13px; padding-left: 6px; padding-right: 6px; } }
+  @media (max-width: 364px) { .seg button { font-size: 12px; padding-left: 4px; padding-right: 4px; } }
   /* The two tab rows share one set of columns, so the tabs line up one under the other.
      Split 28 / 44 / 28, but never narrower than the longest name in the column (small phones). */
   .tabs { display: grid; grid-template-columns: minmax(max-content, 28fr) minmax(max-content, 44fr) minmax(max-content, 28fr); row-gap: 6px; }
@@ -172,6 +182,9 @@
   .comp.GOLF { color: var(--golf); }
   .comp.SNOOKER { color: var(--snooker); }
   .comp.CRICKET { color: var(--cricket); }
+  .comp.UEL { color: var(--uel); }
+  .comp.CHAMP { color: var(--champ); }
+  .comp.CUPS { color: var(--cups); }
   .teams .sess { color: var(--muted); font-weight: 500; }
   .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); white-space: nowrap; }
   .pill.sky { background: var(--sky); }
@@ -206,6 +219,11 @@
       <button data-f="PL" aria-pressed="false">Premier League</button>
       <button data-f="UCL" aria-pressed="false">Champions League</button>
     </div>
+    <div class="seg" role="group" aria-label="More football">
+      <button data-f="CUPS" aria-pressed="false">EFL / FA Cups</button>
+      <button data-f="CHAMP" aria-pressed="false">Championship</button>
+      <button data-f="UEL" aria-pressed="false">Europa League</button>
+    </div>
     <div class="seg" role="group" aria-label="Motorsport and darts">
       <button data-f="F1" aria-pressed="false">Formula 1</button>
       <button data-f="F2" aria-pressed="false">Formula 2</button>
@@ -222,8 +240,8 @@
   <main id="main"><div class="loading">Loading fixtures…</div></main>
 
   <footer>
-    Fixtures from premierleague.com, uefa.com, formula1.com, fiaformula2.com, pdc.tv, pgatour.com, europeantour.com, wst.tv
-    and icc-cricket.com. Channels from the Sky TV guide, the Premier League's broadcast listings and live-footballontv.com.
+    Fixtures from premierleague.com, uefa.com, formula1.com, fiaformula2.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
+    icc-cricket.com, efl.com and thefa.com. Channels from the Sky TV guide, the Premier League's broadcast listings and live-footballontv.com.
   </footer>
 </div>
 
@@ -287,7 +305,7 @@
     return `${Math.round(h / 24)} days ago`;
   }
 
-  const COMP_LABEL = { PL: 'PL', UCL: 'UCL', F1: 'F1', F2: 'F2', DARTS: 'Darts', GOLF: 'Golf', SNOOKER: 'Snooker', CRICKET: 'Cricket' };
+  const COMP_LABEL = { PL: 'PL', UCL: 'UCL', UEL: 'UEL', CHAMP: 'Champ', CUPS: 'Cup', F1: 'F1', F2: 'F2', DARTS: 'Darts', GOLF: 'Golf', SNOOKER: 'Snooker', CRICKET: 'Cricket' };
 
   function matchHtml(m) {
     const ko = new Date(m.kickoff);
@@ -327,8 +345,11 @@
     } else if (tv.broadcaster) {
       tvHtml = `<span class="pill ${brandClass(tv.broadcaster)}">${esc(tv.broadcaster)}</span>`;
     }
-    // "...to be confirmed" means nothing once the event is over, so it's only shown before then.
-    if (tv.note && !(past && /confirm/i.test(tv.note))) tvHtml += `<span class="note ${/confirm/i.test(tv.note) ? 'tbc' : ''}">${esc(tv.note)}</span>`;
+    // George's rule: a channel pill and a note never appear together - a note only explains a
+    // missing channel. "...to be confirmed" also means nothing once the event has started
+    // (all-day "TBC" entries keep it: their time is a placeholder).
+    const started = past || (!m.allDay && now >= ko.getTime());
+    if (tv.note && !tvHtml && !(started && /confirm/i.test(tv.note))) tvHtml += `<span class="note ${/confirm/i.test(tv.note) ? 'tbc' : ''}">${esc(tv.note)}</span>`;
 
     const also = tv.alsoOn && tv.alsoOn.length ? `<div class="also">Also on ${esc(tv.alsoOn.join(', '))}</div>` : '';
     const warn = tv.conflict ? `<div class="warn">Sources disagree – the Premier League lists ${esc(tv.broadcaster)}. Double-check before kick-off.</div>` : '';
@@ -336,7 +357,7 @@
     return `<div class="match${past ? ' past' : ''}">
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}</div>
       <div class="teams">${headline}</div>
-      <div class="meta"><span class="comp ${esc(m.comp)}">${COMP_LABEL[m.comp] || esc(m.comp)}</span>${tvHtml}</div>
+      <div class="meta"><span class="comp ${esc(m.comp)}">${esc(m.label || COMP_LABEL[m.comp] || m.comp)}</span>${tvHtml}</div>
       ${also}${warn}
     </div>`;
   }
@@ -355,9 +376,14 @@
     const r = DEMO ? {} : data.report || {}; // the demo week has no football recorded
     const show = (f) => filter === 'ALL' || filter === f;
     if (r.tvListings && r.tvListings.ok === false && (show('PL') || show('UCL'))) banners.push('The TV listings site couldn’t be read on the last update, so some exact channels are missing.');
-    if (r.tvGuide && r.tvGuide.ok === false && ['F1', 'F2', 'DARTS', 'GOLF', 'SNOOKER', 'CRICKET'].some(show)) banners.push('The Sky TV guide couldn’t be read on the last update, so channels and times for F1, F2, darts, golf, snooker and cricket aren’t confirmed.');
+    if (r.tvGuide && r.tvGuide.ok === false && ['UEL', 'CHAMP', 'CUPS', 'F1', 'F2', 'DARTS', 'GOLF', 'SNOOKER', 'CRICKET'].some(show)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('UEL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.skyListings && r.skyListings.ok === false && ['CHAMP', 'CUPS', 'F1', 'F2'].some(show)) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
+    if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');
+    if (r.efl && r.efl.ok === false && (show('CHAMP') || show('CUPS'))) banners.push('Championship and League Cup fixtures couldn’t be loaded on the last update.');
+    if (r.faCup && r.faCup.ok === false && show('CUPS')) banners.push('FA Cup ties couldn’t be loaded on the last update.');
     if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push('Formula 1 sessions couldn’t be loaded on the last update.');
     if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push('Formula 2 sessions couldn’t be loaded on the last update.');
     if (r.darts && r.darts.ok === false && show('DARTS')) banners.push('Darts events couldn’t be loaded on the last update.');
@@ -379,7 +405,10 @@
     }
 
     const none = {
-      ALL: 'No scheduled PL / UCL / F1 / F2 / Darts / Golf / Snooker / Cricket',
+      ALL: 'No scheduled PL / UCL / UEL / Championship / Cups / F1 / F2 / Darts / Golf / Snooker / Cricket',
+      UEL: 'No scheduled UEL games',
+      CHAMP: 'No scheduled Championship games',
+      CUPS: 'No televised cup ties',
       PL: 'No scheduled PL games',
       UCL: 'No scheduled UCL games',
       F1: 'No F1 sessions',

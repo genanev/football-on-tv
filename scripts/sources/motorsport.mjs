@@ -9,10 +9,11 @@
 // Known limit: only the current-or-next weekend is returned, so on a race Sunday a
 // back-to-back weekend 5-6 days later appears once the current weekend has finished.
 //
-// UK TV: Sky Sports F1 holds the UK rights to F1 and F2 (Channel 4 shows the British GP
-// live). The channel is confirmed from Sky's TV guide when a live programme covers the session.
+// UK TV: from Sky's TV guide when a live programme covers the session, else from Sky's own
+// "F1 on Sky" page; otherwise "TV channel to be confirmed" (no guessing from who holds the rights).
 
-import { getJSON, parseWithOffset } from '../lib/util.mjs';
+import { getJSON, parseWithOffset, ukDate } from '../lib/util.mjs';
+import { listingTv } from './skyListings.mjs';
 import { SPORT_CHANNELS, channelList, liveAt } from './skyGuide.mjs';
 
 const F1_URL = 'https://api.formula1.com/v1/event-tracker';
@@ -73,12 +74,25 @@ export function seriesOf(p) {
   return classify(p.title) || classify(p.synopsis) || 'unknown';
 }
 
-/** UK TV for an F1/F2 session, confirmed from the Sky guide where possible. */
-export function motorsportTv(ev, guide) {
+/** Does a Sky "F1 on Sky" title ("United States GP - Qualifying 1") describe this session? */
+export function sessionMatches(ev, title) {
+  if (seriesOf({ title, synopsis: '' }) !== ev.comp) return false;
+  const part = String(title).split(' - ').pop().toLowerCase();
+  const s = String(ev.session).toLowerCase();
+  if (/sprint qualifying|sprint shootout/.test(s)) return /sprint (qualifying|shootout)/.test(part);
+  if (/qualifying/.test(s)) return /qualifying/.test(part) && !/sprint/.test(part);
+  if (/feature race/.test(s)) return /feature/.test(part);
+  if (/sprint/.test(s)) return /sprint/.test(part) && !/qualifying|shootout/.test(part);
+  if (/race/.test(s)) return /^race$|grand prix$/.test(part.trim()) && !/sunday|saturday/.test(part);
+  return false;
+}
+
+/** UK TV for an F1/F2 session: the TV guide, then Sky's F1 page; never a guess. */
+export function motorsportTv(ev, guide, listings) {
   const sids = SPORT_CHANNELS.motorsport;
   const start = Date.parse(ev.kickoff);
   const progs = liveAt(guide?.programmes || [], start, sids).filter(p => seriesOf(p) === ev.comp);
-  const tv = { broadcaster: 'Sky Sports', channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: ['uk-rights'] };
+  const tv = { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: [] };
   if (progs.length) {
     const chans = channelList(progs, sids);
     tv.channels = [chans[0]];
@@ -86,9 +100,10 @@ export function motorsportTv(ev, guide) {
     tv.broadcaster = chans[0];
     tv.confirmed = true;
     tv.sources.push('sky-guide');
-  } else {
-    tv.broadcaster = 'Sky Sports F1';
-    tv.note = 'Expected – To Be Confirmed';
+    return tv;
   }
-  return tv;
+  const date = ukDate(start);
+  const listed = (listings?.entries || []).find(e => e.page === 'f1-on-sky' && e.date === date && e.title && sessionMatches(ev, e.title));
+  if (listed) return listingTv(listed);
+  return { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: 'TV channel to be confirmed', conflict: false, sources: [] };
 }

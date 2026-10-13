@@ -9,6 +9,9 @@
 // Only "Prime" cards count (TNT's games already come from TNT's own schedule). Amazon drops an event
 // once it's over; the build keeps a channel already found until the end of the match day.
 // amazon.co.uk's own pages turn away scripted requests (HTTP 503); primevideo.com doesn't.
+// Prime Video serves each country its own page: from outside the UK (e.g. GitHub's US servers)
+// it lists that country's providers (ViX+, Paramount+ …) and no Amazon UK picks. That is reported
+// as a failure with `wrongRegion`, so a pick found by an earlier UK update is kept.
 
 import { getText, londonParts, ukDate } from '../lib/util.mjs';
 import { teamSim } from './football.mjs';
@@ -51,6 +54,11 @@ export async function fetchPrimeUcl(now = Date.now()) {
   const html = await getText(UCL_TOURNAMENT, { Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' });
   const cards = parsePrimeTournament(html, now);
   if (!cards.length) throw new Error('no events found on the Prime Video Champions League page');
+  // The UK page has Amazon's own picks ("Prime") and UK channel add-ons ("…uk", e.g. discoverytntuk)
+  if (!cards.some(c => c.provider === 'Prime' || /uk$/i.test(c.provider || ''))) {
+    const providers = [...new Set(cards.map(c => c.provider).filter(Boolean))].join(', ');
+    throw Object.assign(new Error(`Prime Video served a non-UK page (providers: ${providers || 'none'})`), { wrongRegion: true });
+  }
   return { cards };
 }
 

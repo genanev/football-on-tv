@@ -32,6 +32,9 @@ const PRIME = await fx('primevideo-ucl-tournament-2026-10-13.html');
 
 // ---------- mock fetch
 let down = null; // a source to make fail
+let primeUS = false; // serve Prime Video's US page, as GitHub's US servers get it
+const PRIME_US = '<article data-card-title="LASK vs. Liverpool" data-card-entity-type="EVENT"><img src="https://m.media-amazon.com/images/G/02/digital/video/merch/subs/benefit-id/u-z/vixplusus/logos/channels-logo-white.png"> Tomorrow 5 PM EDT</article>'
+  + '<article data-card-title="Arsenal vs. Lille" data-card-entity-type="EVENT"><img src="https://m.media-amazon.com/images/G/02/digital/video/merch/subs/benefit-id/a-f/cbsaacf/logos/channels-logo-white.png"></article>';
 globalThis.fetch = async (url) => {
   const json = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => JSON.stringify(b) });
   const html = (b) => ({ ok: true, status: 200, text: async () => b });
@@ -47,7 +50,7 @@ globalThis.fetch = async (url) => {
     return json(day ? { ...day, schedule: day.schedule.filter(s => want.has(String(s.sid))) } : { date: ymd, schedule: [] });
   }
   if (url.includes('skysports.com/watch/football-on-sky')) return html(SKY_FOOTBALL);
-  if (url.includes('primevideo.com/tournament')) return html(PRIME);
+  if (url.includes('primevideo.com/tournament')) return html(primeUS ? PRIME_US : PRIME);
   if (url.includes('netsport.eurosport.io')) {
     const date = JSON.parse(new URL(url).searchParams.get('variables')).date;
     return json(TNT[date] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
@@ -153,12 +156,37 @@ assert.deepEqual(primeKept.events.find(e => e.comp === 'UCL' && e.home === 'Live
 // from the old fan-site listings
 const prevWithTnt = await build(Date.parse('2026-10-13T09:00:00Z'), data);
 assert.deepEqual(prevWithTnt.events.find(e => e.comp === 'UCL' && e.home === 'Villarreal').tv.channels, ['HBO Max']);
-const kept = keepKnownChannels(
-  [{ id: 'x', tv: { channels: [], note: 'TV channel to be confirmed', sources: [] } }, { id: 'y', tv: { channels: [], note: 'TV channel to be confirmed', sources: [] } }],
-  { events: [{ id: 'x', tv: { channels: ['Amazon Prime Video'], sources: ['listings'] } }, { id: 'y', tv: { channels: ['HBO Max'], sources: ['tntsports.co.uk'] } }] });
-assert.deepEqual(kept[0].tv.channels, []);
-assert.deepEqual(kept[1].tv.channels, ['HBO Max']);
-assert.ok(kept[1].tv.sources.includes('previous-update'));
+// The refined rule (14 Oct 2026): keep a previous channel only if its source failed this time, or
+// the event has started; a source that answered and dropped a game before kick-off wins
+const NOW = Date.parse('2026-10-20T12:00:00Z');
+const blank = (id, kickoff) => ({ id, kickoff, tv: { channels: [], note: 'TV channel to be confirmed', sources: [] } });
+const prevTv = (id, channels, sources) => ({ id, tv: { channels, sources } });
+const keep = (ev, prev, report) => keepKnownChannels([ev], { events: [prev] }, { report, now: NOW })[0].tv;
+const LATER = '2026-10-20T19:00:00.000Z', EARLIER = '2026-10-20T11:00:00.000Z';
+assert.deepEqual(keep(blank('a', LATER), prevTv('a', ['Amazon Prime Video'], ['primevideo.com']), { primeVideo: { ok: false, wrongRegion: true } }).channels, ['Amazon Prime Video']); // US page
+assert.deepEqual(keep(blank('b', LATER), prevTv('b', ['HBO Max'], ['tntsports.co.uk']), { tntSchedule: { ok: false } }).channels, ['HBO Max']); // TNT offline
+assert.deepEqual(keep(blank('c', LATER), prevTv('c', ['Sky Sports+'], ['skysports.com']), { skyListings: { ok: true } }).channels, []); // Sky dropped it
+assert.deepEqual(keep(blank('d', EARLIER), prevTv('d', ['Sky Sports+'], ['skysports.com']), { skyListings: { ok: true } }).channels, ['Sky Sports+']); // kicked off
+assert.deepEqual(keep(blank('e', EARLIER), prevTv('e', ['Amazon Prime Video'], ['listings']), {}).channels, []); // old fan site
+assert.ok(keep(blank('f', LATER), prevTv('f', ['HBO Max'], ['tntsports.co.uk']), { tntSchedule: { ok: false } }).sources.includes('previous-update'));
+// a new confirmed channel always replaces the old one (Sky moving a game to another channel)
+const moved = keepKnownChannels([{ id: 'g', kickoff: LATER, tv: { channels: ['Sky Sports Premier League'], sources: ['sky-guide'] } }],
+  { events: [prevTv('g', ['Sky Sports Main Event'], ['sky-guide'])] }, { report: { tvGuide: { ok: true } }, now: NOW })[0].tv;
+assert.deepEqual(moved.channels, ['Sky Sports Premier League']);
+
+// Prime Video's US page (GitHub's servers): reported as the wrong region, not as "no Amazon pick",
+// so the pick a UK update found is kept; with no earlier UK update the game stays to be confirmed
+primeUS = true;
+const fromUS = await build(Date.parse('2026-10-13T09:00:00Z'));
+const fromUSafterUK = await build(Date.parse('2026-10-13T09:00:00Z'), data);
+primeUS = false;
+assert.equal(fromUS.report.primeVideo.ok, false);
+assert.equal(fromUS.report.primeVideo.wrongRegion, true);
+assert.match(fromUS.report.primeVideo.error, /non-UK page \(providers: vixplusus, cbsaacf\)/);
+const lv = (d) => d.events.find(e => e.comp === 'UCL' && /Liverpool/.test(e.home) && /Villarreal/.test(e.away));
+assert.equal(lv(fromUS).tv.note, 'TV channel to be confirmed');
+assert.deepEqual(lv(fromUSafterUK).tv.channels, ['Amazon Prime Video']);
+assert.ok(lv(fromUSafterUK).tv.sources.includes('previous-update'));
 
 console.log('\nAll tests passed');
 

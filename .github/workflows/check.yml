@@ -35,6 +35,7 @@ jobs:
             const r = require("/tmp/data.json").report;
             let bad = 0;
             for (const [k, v] of Object.entries(r)) {
+              if (v && typeof v === "object" && v.ok === false && v.wrongRegion) { console.log(`::notice title=${k} (expected from US servers)::${v.error}`); continue; }
               if (v && typeof v === "object" && v.ok === false) { bad++; console.log(`::error title=${k} failed::${v.error || (v.errors || []).join("; ")}`); }
             }
             console.log(`::notice title=Report::${JSON.stringify(r)}`);

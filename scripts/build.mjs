@@ -40,20 +40,36 @@ export { teamSim, normTeam, parsePlKickoff, isUkChannel, mapPlBroadcasts, brandO
 export const DAYS_AHEAD = 8; // a little over 7 so the app still has a full week if an update is missed
 
 const ok = (r) => r.status === 'fulfilled';
-const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason) });
+const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason), ...(r.reason?.wrongRegion ? { wrongRegion: true } : {}) });
+
+/** Which report entry says whether the source behind a `tv.sources` tag worked on this update. */
+const SOURCE_REPORT = {
+  'sky-guide': 'tvGuide', 'skysports.com': 'skyListings', 'tntsports.co.uk': 'tntSchedule',
+  'primevideo.com': 'primeVideo', 'thefa.com': 'faCup', 'premierleague.com': 'premierLeagueTv',
+};
 
 /**
- * Keep the channel from the previous update when a source stops listing an event. The football
- * listings site drops matches once they've been played, which would otherwise leave a finished
- * match with "TV channel to be confirmed".
+ * Keep a channel confirmed by the previous update when this update finds none for the event -
+ * but only when that's not news (George's rule, 14 Oct 2026):
+ *   - the source that confirmed it failed this time (offline, unreadable, or - for Prime Video -
+ *     the wrong country's page, which is what GitHub's US servers get), or
+ *   - the event has already started (Sky's pages and Prime Video drop games once they kick off or
+ *     finish).
+ * If the source answered fine and simply no longer lists an event that hasn't started, the
+ * broadcaster has dropped it: back to "TV channel to be confirmed".
+ * Channels from the old fan-site listings (sources "listings", before 13 Oct 2026) are never kept.
  */
-export function keepKnownChannels(events, previous) {
+export function keepKnownChannels(events, previous, { report = {}, now = Date.now() } = {}) {
   const before = new Map((previous?.events || previous?.matches || []).map(e => [e.id, e]));
   for (const e of events) {
     const old = before.get(e.id);
-    // (channels that came from the old fan-site listings, sources "listings", are not official: never kept)
-    if (!e.tv?.channels?.length && old?.tv?.channels?.length && !(old.tv.sources || []).includes('listings')) {
-      e.tv = { ...old.tv, sources: [...new Set([...(old.tv.sources || []), 'previous-update'])] };
+    if (e.tv?.channels?.length || !old?.tv?.channels?.length) continue;
+    const sources = old.tv.sources || [];
+    if (sources.includes('listings')) continue;
+    const sourceFailed = sources.some(s => SOURCE_REPORT[s] && report[SOURCE_REPORT[s]]?.ok === false);
+    const started = Date.parse(e.kickoff) <= now;
+    if (sourceFailed || started) {
+      e.tv = { ...old.tv, sources: [...new Set([...sources, 'previous-update'])] };
     }
   }
   return events;
@@ -173,7 +189,7 @@ export async function build(now = Date.now(), previous = null) {
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
-  keepKnownChannels(events, previous);
+  keepKnownChannels(events, previous, { report, now });
   return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events };
 }
 

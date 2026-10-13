@@ -1,82 +1,58 @@
-// Offline test: replays response shapes captured from the real sites on 8 Oct 2026.
+// Offline test for the Premier League and Champions League, and the shared time/name helpers.
+//
+// Replays real data captured on 13 Oct 2026 for the week 13-21 Oct:
+//   fixtures/pl-current-gameweek-2026-10-13.json        premierleague.com current matchweek (7)
+//   fixtures/pl-matchweek-7-2026-10-13.json             premierleague.com matches, matchweek 7
+//   fixtures/pl-matchweek-8-2026-10-13.json             premierleague.com matches, matchweek 8
+//   fixtures/uefa-champions-league-2026-10-13.json      uefa.com feed, Champions League 12-22 Oct
+//   fixtures/sky-guide-football-2026-10-13.json         Sky TV guide 13-21 Oct, football channels
+//   fixtures/skysports-football-on-sky-2026-10-13.html  skysports.com "Football on Sky" (listings only)
+//   fixtures/tnt-schedule-football-2026-10-13.json      TNT Sports' schedule 13-21 Oct (football only)
+// The Premier League's broadcaster feed answers by the requester's country; from GitHub (US) it
+// gives no UK channels, so it's mocked as empty here and checked on its own below.
+//
+//   node test/run-test.mjs              run the checks
+//   node test/run-test.mjs --write-sample also write data.json from the fixtures (don't commit that)
+
 import assert from 'node:assert/strict';
-import { build, parseListings, teamSim, ukToUtc, parsePlKickoff, ukDate } from '../scripts/build.mjs';
+import { readFile } from 'node:fs/promises';
+import { build, keepKnownChannels, teamSim, ukToUtc, parsePlKickoff, ukDate, mapPlBroadcasts } from '../scripts/build.mjs';
+import { footballTv } from '../scripts/sources/footballTv.mjs';
+import { guideProgrammesFor } from '../scripts/sources/football.mjs';
 
-// ---------- fixtures (shapes copied from the live feeds)
-const pl = (mw, kickoff, home, away, id, tz = 'BST') => ({ kickoff, kickoffTimezone: tz, period: 'PreMatch', matchWeek: mw, matchId: String(id), ground: 'X', homeTeam: { name: home, shortName: home }, awayTeam: { name: away, shortName: away } });
-const MW = {
-  6: [pl(6, '2026-10-10 12:30:00', 'Arsenal', 'Leeds United', 2645245), pl(6, '2026-10-10 15:00:00', 'Aston Villa', 'Brentford', 2645249),
-      pl(6, '2026-10-10 15:00:00', 'Chelsea', 'Bournemouth', 2645250), pl(6, '2026-10-10 17:30:00', 'Manchester United', 'Tottenham Hotspur', 2645246),
-      pl(6, '2026-10-11 14:00:00', 'Crystal Palace', 'Nottingham Forest', 2645247), pl(6, '2026-10-11 14:00:00', 'Hull City', 'Everton', 2645251),
-      pl(6, '2026-10-11 16:30:00', 'Liverpool', 'Manchester City', 2645254), pl(6, '2026-10-12 20:00:00', 'Coventry City', 'Newcastle United', 2645253)],
-  7: [pl(7, '2026-10-17 12:30:00', 'Everton', 'Chelsea', 2645258), pl(7, '2026-10-17 15:00:00', 'Brentford', 'Liverpool', 2645256),
-      pl(7, '2026-10-18 14:00:00', 'Bournemouth', 'Sunderland', 2645255), pl(7, '2026-10-18 14:00:00', 'Brighton and Hove Albion', 'Crystal Palace', 2645257),
-      pl(7, '2026-10-18 14:00:00', 'Leeds United', 'Manchester United', 2645260), pl(7, '2026-10-19 20:00:00', 'Tottenham Hotspur', 'Coventry City', 2645264)],
-};
-const ch = (name, mediaType = 'VIDEO') => ({ info: { name, channelTypes: [{ mediaType }] } });
-const BROADCAST = {
-  2645245: [ch('TNT Sports'), ch('TalkSport', 'AUDIO')], 2645246: [ch('BBC Radio 5 Live', 'AUDIO'), ch('Sky Sports')],
-  2645247: [ch('Sky Sports')], 2645251: [ch('Sky Sports')], 2645254: [ch('Sky Sports')], 2645253: [ch('Sky Sports')],
-  2645249: [], 2645250: [], 2645258: [ch('TNT Sports')], 2645256: [], 2645255: [ch('Sky Sports')], 2645257: [ch('Sky Sports')],
-  2645260: [ch('Sky Sports')], 2645264: [ch('Sky Sports')],
-};
-const team = (n) => ({ internationalName: n, isPlaceHolder: false, translations: { displayName: { EN: n } } });
-const U = (iso, h, a, id) => ({ id: String(id), kickOffTime: { dateTime: iso }, homeTeam: team(h), awayTeam: team(a), status: 'UPCOMING', round: { translations: { name: { EN: 'League phase' } } } });
-const UEFA = [
-  ['2026-10-13T16:45:00Z', 'Lens', 'Sporting CP'], ['2026-10-13T16:45:00Z', 'Sabah', 'Slavia Praha'], ['2026-10-13T19:00:00Z', 'Inter', 'Club Brugge'],
-  ['2026-10-13T19:00:00Z', 'Arsenal', 'Lille'], ['2026-10-13T19:00:00Z', 'Atleti', 'Man Utd'], ['2026-10-13T19:00:00Z', 'Leipzig', 'PSV'],
-  ['2026-10-13T19:00:00Z', 'Villarreal', 'Napoli'], ['2026-10-13T19:00:00Z', 'Galatasaray', 'Barcelona'], ['2026-10-13T19:00:00Z', 'Viking', 'Bayern München'],
-  ['2026-10-14T16:45:00Z', 'Feyenoord', 'Como'], ['2026-10-14T16:45:00Z', 'LASK', 'Liverpool'], ['2026-10-14T19:00:00Z', 'Man City', 'Paris'],
-  ['2026-10-14T19:00:00Z', 'Roma', 'Real Madrid'], ['2026-10-14T19:00:00Z', 'Aston Villa', 'Fenerbahçe'], ['2026-10-14T19:00:00Z', 'Real Betis', 'Porto'],
-  ['2026-10-14T19:00:00Z', 'Bodø/Glimt', 'B. Dortmund'], ['2026-10-14T19:00:00Z', 'Shakhtar', 'AEK Athens'], ['2026-10-14T19:00:00Z', 'S. Bratislava', 'Stuttgart'],
-].map(([iso, h, a], i) => U(iso, h, a, 2040000 + i));
-
-const pill = (c) => `<span class="channel-pill" style="background-color: #fb28fc;border: 0;">${c}</span>`;
-const fx = (time, teams, comp, chans) => `<div class="fixture"><div class="fixture__time">${time}</div><div class="fixture__teams">${teams}  </div><div class="fixture__competition">${comp}</div><div class="fixture__channel"><div class="span3 channels">${chans.map(pill).join('')}</div></div></div>`;
-const day = (label) => `<div class="fixture-date">${label}</div>`;
-const AD = '<div class="advertfixtures"><ins class="adsbygoogle"></ins></div>';
-const PLC = 'Premier League';
-const LIST_PL = `<html><div class="fixture-group"><div class="anchor"><a id="2026Oct10"></a></div>${day('Saturday 10th October 2026')}
-${fx('12:30', 'Arsenal v Leeds United', PLC, ['TNT Sports 1', 'TNT Sports Ultimate', 'HBO Max'])}${AD}
-${fx('17:30', 'Manchester United v Tottenham Hotspur', PLC, ['Sky Sports Main Event', 'Sky Sports Premier League', 'Sky Sports Ultra HDR'])}
-${day('Sunday 11th October 2026')}${fx('14:00', 'Crystal Palace v Nottingham Forest', PLC, ['Sky Sports Main Event', 'Sky Sports Ultra HDR'])}
-${fx('14:00', 'Hull City v Everton', PLC, ['Sky Sports Premier League'])}${fx('16:30', 'Liverpool v Manchester City', PLC, ['Sky Sports Main Event', 'Sky Sports Premier League'])}
-</div><div class="fixture-group">${day('Monday 12th October 2026')}${fx('20:00', 'Coventry City v Newcastle United', PLC, ['Sky Sports Main Event', 'Sky Sports Premier League'])}
-${day('Saturday 17th October 2026')}${fx('12:30', 'Everton v Chelsea', PLC, ['TNT Sports 1', 'HBO Max'])}
-${day('Sunday 18th October 2026')}${fx('14:00', 'AFC Bournemouth v Sunderland', PLC, ['Sky Sports TBC'])}${fx('14:00', 'Brighton &amp; Hove Albion v Crystal Palace', PLC, ['Sky Sports TBC'])}
-${fx('14:00', 'Leeds United v Manchester United', PLC, ['Sky Sports TBC'])}</div></html>`;
-const UCLC = 'UEFA Champions League&nbsp;League Phase';
-const LIST_UCL = `<div class="fixture-group">${day('Tuesday 13th October 2026')}
-${fx('17:45', 'RC Lens v Sporting CP', UCLC, ['TNT Sports 2', 'HBO Max'])}${fx('17:45', 'Sabah FC v Slavia Prague', UCLC, ['TNT Sports 4', 'HBO Max'])}
-${fx('20:00', 'Arsenal v Lille', UCLC, ['TNT Sports 1', 'TNT Sports Ultimate', 'HBO Max'])}${fx('20:00', 'Atlético Madrid v Manchester United', UCLC, ['Amazon Prime Video'])}
-${fx('20:00', 'Galatasaray v Barcelona', UCLC, ['TNT Sports 2', 'TNT Sports 8', 'HBO Max'])}${fx('20:00', 'Inter Milan v Club Brugge', UCLC, ['TNT Sports 5', 'HBO Max'])}
-${fx('20:00', 'RB Leipzig v PSV Eindhoven', UCLC, ['TNT Sports 7', 'HBO Max'])}${fx('20:00', 'Viking FK v Bayern Munich', UCLC, ['TNT Sports 4', 'TNT Sports 9', 'HBO Max'])}
-${fx('20:00', 'Villarreal v Napoli', UCLC, ['TNT Sports 6', 'HBO Max'])}</div><div class="fixture-group">${day('Wednesday 14th October 2026')}
-${fx('17:45', 'Feyenoord v Como', UCLC, ['TNT Sports 4', 'HBO Max'])}${fx('17:45', 'LASK v Liverpool', UCLC, ['TNT Sports 2', 'HBO Max'])}
-${fx('20:00', 'Aston Villa v Fenerbahce', UCLC, ['TNT Sports 2', 'HBO Max'])}${fx('20:00', 'Bodo/Glimt v Borussia Dortmund', UCLC, ['TNT Sports 5', 'HBO Max'])}
-${fx('20:00', 'Manchester City v PSG', UCLC, ['TNT Sports 1', 'TNT Sports Ultimate', 'HBO Max'])}${fx('20:00', 'Real Betis v FC Porto', UCLC, ['TNT Sports 6', 'HBO Max'])}
-${fx('20:00', 'Roma v Real Madrid', UCLC, ['TNT Sports 4', 'TNT Sports 10', 'HBO Max'])}${fx('20:00', 'Shakhtar Donetsk v AEK Athens', UCLC, ['TNT Sports 8', 'HBO Max'])}
-${fx('20:00', 'Slovan Bratislava v VfB Stuttgart', UCLC, ['TNT Sports 7', 'HBO Max'])}</div>`;
+const fx = (name) => readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8');
+const GAMEWEEK = JSON.parse(await fx('pl-current-gameweek-2026-10-13.json'));
+const MW = { 7: JSON.parse(await fx('pl-matchweek-7-2026-10-13.json')), 8: JSON.parse(await fx('pl-matchweek-8-2026-10-13.json')) };
+const UCL = JSON.parse(await fx('uefa-champions-league-2026-10-13.json'));
+const GUIDE = JSON.parse(await fx('sky-guide-football-2026-10-13.json'));
+const SKY_FOOTBALL = await fx('skysports-football-on-sky-2026-10-13.html');
+const TNT = JSON.parse(await fx('tnt-schedule-football-2026-10-13.json'));
 
 // ---------- mock fetch
-const calls = [];
+let down = null; // a source to make fail
 globalThis.fetch = async (url) => {
-  calls.push(url);
   const json = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => JSON.stringify(b) });
   const html = (b) => ({ ok: true, status: 200, text: async () => b });
-  if (url.includes('current-gameweek')) return json({ matchweek: 6 });
-  if (url.includes('/api/v2/matches')) { const w = +/matchweek=(\d+)/.exec(url)[1]; return json({ pagination: {}, data: MW[w] || [] }); }
-  if (url.includes('broadcasting/match-events')) {
-    const ids = /sportDataId=([\d,]+)/.exec(url)[1].split(',');
-    return json({ content: ids.map(id => ({ contentReference: { id: +id }, channels: BROADCAST[id] || [] })) });
+  if (down && url.includes(down)) return { ok: false, status: 503 };
+  if (url.includes('current-gameweek')) return json(GAMEWEEK);
+  if (url.includes('/api/v2/matches')) return json(MW[+/matchweek=(\d+)/.exec(url)[1]] || { data: [] });
+  if (url.includes('broadcasting/match-events')) return json({ content: [] }); // as seen from GitHub's US servers
+  if (url.includes('match.uefa.com')) return json(/competitionId=1&/.test(url) ? UCL : []);
+  if (url.includes('awk.epgsky.com')) {
+    const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
+    const day = GUIDE[ymd];
+    const want = new Set(sids.split(','));
+    return json(day ? { ...day, schedule: day.schedule.filter(s => want.has(String(s.sid))) } : { date: ymd, schedule: [] });
   }
-  if (url.includes('match.uefa.com')) return json(UEFA);
-  if (url.includes('premier-league-football-on-tv')) return html(LIST_PL);
-  if (url.includes('champions-league-football-on-tv')) return html(LIST_UCL);
-  return { ok: false, status: 404 };
+  if (url.includes('skysports.com/watch/football-on-sky')) return html(SKY_FOOTBALL);
+  if (url.includes('netsport.eurosport.io')) {
+    const date = JSON.parse(new URL(url).searchParams.get('variables')).date;
+    return json(TNT[date] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
+  }
+  return { ok: false, status: 404 }; // other competitions are covered by their own tests
 };
 
-// ---------- unit checks
+// ---------- unit checks: time and names
 assert.equal(new Date(ukToUtc(2026, 10, 10, 12, 30)).toISOString(), '2026-10-10T11:30:00.000Z'); // BST
 assert.equal(new Date(ukToUtc(2026, 12, 5, 15, 0)).toISOString(), '2026-12-05T15:00:00.000Z');  // GMT
 assert.equal(new Date(ukToUtc(2026, 10, 25, 14, 0)).toISOString(), '2026-10-25T14:00:00.000Z'); // day clocks go back
@@ -87,60 +63,90 @@ assert.ok(teamSim('Paris', 'PSG') >= 0.85);
 assert.ok(teamSim('Bodø/Glimt', 'Bodo/Glimt') >= 0.85);
 assert.ok(teamSim('B. Dortmund', 'Borussia Dortmund') >= 0.85);
 assert.ok(teamSim('Bayern München', 'Bayern Munich') >= 0.85);
-assert.ok(teamSim('Bournemouth', 'AFC Bournemouth') >= 0.85);
-assert.ok(teamSim('Brighton and Hove Albion', 'Brighton & Hove Albion') >= 0.85);
+assert.ok(teamSim('Spurs', 'Tottenham Hotspur') >= 0.85);
+assert.ok(teamSim("Nott'm Forest", 'Nottingham Forest') >= 0.85);
 assert.ok(teamSim('Manchester United', 'Manchester City') < 0.85);
-const parsed = parseListings(LIST_PL);
-assert.equal(parsed.length, 10);
-assert.deepEqual(parsed.find(p => p.home === 'Liverpool'), { date: '2026-10-11', time: '16:30', home: 'Liverpool', away: 'Manchester City', competition: 'Premier League', channels: ['Sky Sports Main Event', 'Sky Sports Premier League'] });
 
-// ---------- full build, "now" = Thu 8 Oct 2026 10:00 UK
-const data = await build(Date.parse('2026-10-08T09:00:00Z'));
-const by = (h) => data.events.find(m => m.home === h || m.homeShort === h);
-console.log(JSON.stringify(data.report, null, 1));
+// Youth and women's games in the guide are other teams
+const u19 = { sid: 3625, channel: 'TNT Sports 1', live: true, title: 'Live: Atletico U19 v Man Utd U19', synopsis: '', start: Date.parse('2026-10-13T18:00:00Z'), end: Date.parse('2026-10-13T21:00:00Z') };
+assert.equal(guideProgrammesFor({ home: 'Atleti', away: 'Man Utd', kickoff: '2026-10-13T19:00:00.000Z' }, [u19], [3625]).length, 0);
+
+// The Premier League's own UK broadcaster (when asked from the UK) gives the brand
+const plUk = mapPlBroadcasts([{ contentReference: { id: 1 }, channels: [{ info: { name: 'Sky Sports', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['GB'] } } }, { info: { name: 'NBC', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['US'] } } }] }]);
+assert.deepEqual(plUk['1'], ['Sky Sports']);
+const brandOnly = footballTv({ comp: 'PL', home: 'A', away: 'B', kickoff: '2026-10-24T11:30:00.000Z' }, { plBrands: plUk['1'] }).tv;
+assert.equal(brandOnly.broadcaster, 'Sky Sports');
+assert.deepEqual(brandOnly.channels, []);
+
+// ---------- full build, "now" = Tue 13 Oct 2026 10:00 UK
+const data = await build(Date.parse('2026-10-13T09:00:00Z'));
+const uk = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: 'Europe/London', weekday: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+console.log(JSON.stringify({ premierLeague: data.report.premierLeague, championsLeague: data.report.championsLeague, footballChannels: data.report.footballChannels }));
 for (const m of data.events) {
-  const t = new Date(m.kickoff).toLocaleString('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit' });
-  console.log(m.comp.padEnd(4), t.padEnd(10), `${m.home} v ${m.away}`.padEnd(42), (m.tv.channels.join(', ') || m.tv.broadcaster || '-').padEnd(40), m.tv.note || '', m.tv.conflict ? 'CONFLICT' : '');
+  console.log(m.comp.padEnd(4), uk(m.kickoff).padEnd(14), `${m.home} v ${m.away}`.padEnd(44), (m.tv.channels.join(', ') || '-').padEnd(26), m.tv.alsoOn.length ? `+ ${m.tv.alsoOn.join(', ')}` : '', m.tv.note && !m.tv.channels.length ? m.tv.note : '', m.tv.sources.join('+'));
 }
-assert.equal(data.events.filter(m => m.comp === 'PL').length, 8);  // window ends before 17 Oct
-assert.equal(data.events.filter(m => m.comp === 'UCL').length, 18);
-assert.equal(data.report.crossReferenced, '24/26');
-assert.deepEqual(by('Arsenal').tv.channels, ['TNT Sports 1']);
-assert.equal(by('Arsenal').tv.broadcaster, 'TNT Sports');
-assert.match(by('Aston Villa').tv.note, /Not shown live on UK TV/);
-assert.deepEqual(data.events.find(m => m.homeShort === 'Atleti').tv.channels, ['Amazon Prime Video']);
-assert.deepEqual(data.events.find(m => m.homeShort === 'Man City').tv.channels, ['TNT Sports 1']);
-assert.equal(data.events.find(m => m.homeShort === 'Man City').kickoff, '2026-10-14T19:00:00.000Z');
-assert.ok(data.events.every(m => !m.tv.conflict));
+const find = (comp, home) => data.events.find(e => e.comp === comp && e.home === home);
+const pl = data.events.filter(e => e.comp === 'PL');
+const ucl = data.events.filter(e => e.comp === 'UCL');
 
-// later in the week: TBC entries and Sky brand only
-const later = await build(Date.parse('2026-10-12T09:00:00Z'));
-const bour = later.events.find(m => m.home === 'Bournemouth');
-assert.equal(bour.tv.broadcaster, 'Sky Sports');
-assert.equal(bour.tv.note, 'Exact channel to be confirmed');
-assert.match(later.events.find(m => m.home === 'Brentford').tv.note, /Not shown live on UK TV/);
+// Premier League: Sky games from the TV guide, TNT's game from the guide + TNT's schedule,
+// Saturday 15:00 blackout; nothing from the old fan site
+assert.equal(pl.length, 10);
+assert.deepEqual(find('PL', 'Everton').tv.channels, ['TNT Sports 1']);
+assert.deepEqual(find('PL', 'Everton').tv.sources, ['sky-guide', 'tntsports.co.uk']);
+assert.deepEqual(find('PL', 'Newcastle United').tv.channels, ['Sky Sports Main Event']);
+assert.deepEqual(find('PL', 'Newcastle United').tv.alsoOn, ['Sky Sports Premier League']);
+assert.deepEqual(find('PL', 'Leeds United').tv.channels, ['Sky Sports Main Event']);
+assert.deepEqual(find('PL', 'Bournemouth').tv.channels, ['Sky Sports+']);
+assert.deepEqual(find('PL', 'Brighton and Hove Albion').tv.channels, ['Sky Sports Premier League']);
+assert.deepEqual(find('PL', 'Nottingham Forest').tv.channels, ['Sky Sports Main Event']); // "Live PL: Nott'm Forest v Arsenal"
+assert.deepEqual(find('PL', 'Tottenham Hotspur').tv.channels, ['Sky Sports Main Event']); // "Live MNF: Spurs v Coventry City"
+for (const home of ['Brentford', 'Fulham', 'Manchester City']) {
+  assert.equal(find('PL', home).tv.note, 'Not shown live on UK TV');
+  assert.deepEqual(find('PL', home).tv.channels, []);
+}
+assert.ok(data.events.every(e => !e.tv.sources.includes('listings')));
 
-// a failing source must not break the rest
-const realFetch = globalThis.fetch;
-globalThis.fetch = async (url) => (url.includes('live-footballontv') ? { ok: false, status: 403 } : realFetch(url));
-const degraded = await build(Date.parse('2026-10-08T09:00:00Z'));
-assert.equal(degraded.report.tvListings.ok, false);
-assert.equal(degraded.events.find(m => m.home === 'Arsenal' && m.comp === 'PL').tv.broadcaster, 'TNT Sports');
-assert.match(degraded.events.find(m => m.homeShort === 'Atleti').tv.note, /to be confirmed/);
+// Champions League: TNT's TV channels from the guide + TNT, HBO Max streams from TNT's schedule;
+// Amazon's Tuesday pick has no official source, so it's not guessed
+assert.equal(ucl.length, 36);
+const arsenal = ucl.find(e => e.home === 'Arsenal' && e.away === 'Lille');
+assert.deepEqual(arsenal.tv.channels, ['TNT Sports 1']);
+assert.deepEqual(arsenal.tv.alsoOn, ['HBO Max']);
+assert.deepEqual(find('UCL', 'Villarreal').tv.channels, ['HBO Max']);
+assert.deepEqual(find('UCL', 'Villarreal').tv.sources, ['tntsports.co.uk']);
+const atleti = ucl.find(e => e.kickoff === '2026-10-13T19:00:00.000Z' && /Atl/.test(e.home));
+assert.deepEqual(atleti.tv.channels, []);
+assert.equal(atleti.tv.note, 'TV channel to be confirmed');
+// TNT's team names read better than UEFA's short ones
+assert.ok(ucl.some(e => e.home === 'Manchester City' && e.away === 'Paris Saint-Germain'));
+assert.equal(data.report.footballChannels, '41/46 PL+UCL matches with a confirmed channel');
 
-// ...but with the previous update to hand, a match the listings no longer show keeps its channel
-// (the listings site drops matches once they've been played)
-const withPrevious = await build(Date.parse('2026-10-08T09:00:00Z'), data);
-const atleti = withPrevious.events.find(m => m.homeShort === 'Atleti');
-assert.deepEqual(atleti.tv.channels, ['Amazon Prime Video']);
-assert.equal(atleti.tv.note, null);
-assert.ok(atleti.tv.sources.includes('previous-update'));
+// A failing source must not break the rest: TNT's schedule down -> TNT channel games still come
+// from the guide, HBO Max-only games say "TV channel to be confirmed"
+down = 'netsport.eurosport.io';
+const noTnt = await build(Date.parse('2026-10-13T09:00:00Z'));
+down = null;
+assert.equal(noTnt.report.tntSchedule.ok, false);
+assert.deepEqual(noTnt.events.find(e => e.comp === 'PL' && e.home === 'Everton').tv.channels, ['TNT Sports 1']);
+assert.equal(noTnt.events.find(e => e.comp === 'UCL' && e.home === 'Villarreal').tv.note, 'TV channel to be confirmed');
+
+// ...and with the previous update to hand, a confirmed channel is kept - but never one that came
+// from the old fan-site listings
+const prevWithTnt = await build(Date.parse('2026-10-13T09:00:00Z'), data);
+assert.deepEqual(prevWithTnt.events.find(e => e.comp === 'UCL' && e.home === 'Villarreal').tv.channels, ['HBO Max']);
+const kept = keepKnownChannels(
+  [{ id: 'x', tv: { channels: [], note: 'TV channel to be confirmed', sources: [] } }, { id: 'y', tv: { channels: [], note: 'TV channel to be confirmed', sources: [] } }],
+  { events: [{ id: 'x', tv: { channels: ['Amazon Prime Video'], sources: ['listings'] } }, { id: 'y', tv: { channels: ['HBO Max'], sources: ['tntsports.co.uk'] } }] });
+assert.deepEqual(kept[0].tv.channels, []);
+assert.deepEqual(kept[1].tv.channels, ['HBO Max']);
+assert.ok(kept[1].tv.sources.includes('previous-update'));
+
 console.log('\nAll tests passed');
 
 // Save a sample data.json so the app has something to show before the first live update
 if (process.argv.includes('--write-sample')) {
   const { writeFile } = await import('node:fs/promises');
-  globalThis.fetch = realFetch;
-  await writeFile(new URL('../data.json', import.meta.url), JSON.stringify(await build(Date.parse('2026-10-08T09:00:00Z')), null, 1));
+  await writeFile(new URL('../data.json', import.meta.url), JSON.stringify(data, null, 1));
   console.log('sample data.json written');
 }

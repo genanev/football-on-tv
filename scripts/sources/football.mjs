@@ -1,15 +1,14 @@
-// Football: Premier League, Champions League and Europa League fixtures and their UK TV channels,
-// plus the TV-guide matching shared with the EFL and FA Cup modules.
+// Football: Premier League, Champions League and Europa League fixtures, team-name matching and
+// the TV-guide matching shared by every football competition (channels: see footballTv.mjs).
 //
 // Sources
 //   Premier League schedule   official premierleague.com data feed
 //   Premier League TV (brand) official premierleague.com broadcast feed
 //   Champions League schedule official uefa.com data feed
 //   Europa League schedule    official uefa.com data feed (same feed, competition 14)
-//   Exact TV channel (PL/UCL) live-footballontv.com listings (cross-reference)
-//   Exact TV channel (UEL)    Sky's TV guide ("Live UEL: Lyon v Crystal Palace")
+//   UK TV channels            footballTv.mjs (Sky TV guide, Sky Sports, TNT Sports)
 
-import { getJSON, getText, londonParts, ukToUtc, ukDate, ukHHMM, ukWeekday } from '../lib/util.mjs';
+import { getJSON, londonParts, ukToUtc, ukDate } from '../lib/util.mjs';
 
 // ----------------------------------------------------------- name matching
 
@@ -234,99 +233,15 @@ export function guideProgrammesFor(match, programmes, sids) {
     if (!(p.start <= ko + 15 * 60000 && p.end > ko + 15 * 60000 && p.start >= ko - 2 * 3600000)) return false;
     const teams = guideTeams(p.title);
     if (!teams) return false;
+    // "Atletico U19 v Man Utd U19", "Newcastle Women v …" are other teams
+    const other = /\bU\d{2}\b|\bWomen\b|\bWSL\b/i;
+    if (other.test(p.title) && !names('home').concat(names('away')).some(n => other.test(n))) return false;
     const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
     return sim('home', teams[0]) >= 0.5 && sim('away', teams[1]) >= 0.5;
   });
 }
 
-// ---------------------------------------------- TV listings (live-footballontv)
-
-const MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12 };
-
-function decodeEntities(s) {
-  return String(s)
-    .replace(/<[^>]*>/g, ' ')
-    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#0?39;|&apos;|&rsquo;/g, "'")
-    .replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
-    .replace(/\s+/g, ' ').trim();
-}
-
-/** Parse a live-footballontv.com listing page into [{date, time, home, away, competition, channels}]. */
-export function parseListings(html) {
-  const out = [];
-  const marker = /<div class="fixture-date">([\s\S]*?)<\/div>|<div class="fixture">/g;
-  const marks = [];
-  let m;
-  while ((m = marker.exec(html))) marks.push({ index: m.index, end: marker.lastIndex, date: m[1] });
-  let currentDate = null;
-  for (let i = 0; i < marks.length; i++) {
-    const mk = marks[i];
-    if (mk.date !== undefined) {
-      const t = decodeEntities(mk.date);
-      const dm = /(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)\s+(\d{4})/.exec(t);
-      currentDate = dm && MONTHS[dm[2].toLowerCase()]
-        ? `${dm[3]}-${String(MONTHS[dm[2].toLowerCase()]).padStart(2, '0')}-${dm[1].padStart(2, '0')}`
-        : null;
-      continue;
-    }
-    if (!currentDate) continue;
-    const block = html.slice(mk.end, i + 1 < marks.length ? marks[i + 1].index : mk.end + 4000);
-    const pick = (cls) => {
-      const r = new RegExp(`class="${cls}"[^>]*>([\\s\\S]*?)</div>`).exec(block);
-      return r ? decodeEntities(r[1]) : '';
-    };
-    const teams = pick('fixture__teams');
-    const parts = teams.split(/\s+v\s+/i);
-    if (parts.length !== 2) continue;
-    const time = pick('fixture__time');
-    const channels = [...block.matchAll(/class="channel-pill"[^>]*>([\s\S]*?)<\/span>/g)].map(x => decodeEntities(x[1])).filter(Boolean);
-    out.push({
-      date: currentDate,
-      time: /^\d{1,2}:\d{2}$/.test(time) ? time.padStart(5, '0') : null,
-      home: parts[0].trim(),
-      away: parts[1].trim(),
-      competition: pick('fixture__competition'),
-      channels,
-    });
-  }
-  return out;
-}
-
-export async function fetchListings() {
-  const base = 'https://www.live-footballontv.com';
-  const [pl, ucl] = await Promise.allSettled([
-    getText(`${base}/live-premier-league-football-on-tv.html`),
-    getText(`${base}/live-champions-league-football-on-tv.html`),
-  ]);
-  const res = { PL: [], UCL: [], errors: [] };
-  if (pl.status === 'fulfilled') res.PL = parseListings(pl.value).filter(x => /premier league/i.test(x.competition) || !x.competition);
-  else res.errors.push('PL listings: ' + pl.reason.message);
-  if (ucl.status === 'fulfilled') res.UCL = parseListings(ucl.value).filter(x => /champions league/i.test(x.competition) || !x.competition);
-  else res.errors.push('UCL listings: ' + ucl.reason.message);
-  return res;
-}
-
-// ------------------------------------------------------------------- merge
-
-/** Find the listing that corresponds to an official match (same UK date, best team-name match). */
-export function findListing(match, listings) {
-  const ts = Date.parse(match.kickoff);
-  const date = ukDate(ts);
-  const time = ukHHMM(ts);
-  let best = null, bestScore = 0;
-  for (const l of listings) {
-    if (l.date !== date) continue;
-    const h = Math.max(teamSim(match.home, l.home), teamSim(match.homeShort, l.home), teamSim(match.homeAlt, l.home));
-    const a = Math.max(teamSim(match.away, l.away), teamSim(match.awayShort, l.away), teamSim(match.awayAlt, l.away));
-    if (h < 0.5 || a < 0.5) continue;
-    const score = h + a + (l.time === time ? 0.25 : 0);
-    if (score > bestScore) { best = l; bestScore = score; }
-  }
-  return best;
-}
-
-const TBC_RE = /\bTBC\b|\bTBA\b/i;
+// ------------------------------------------------------------- broadcasters
 
 /** Which broadcaster family a channel name belongs to. */
 export function brandOf(channel) {
@@ -339,49 +254,4 @@ export function brandOf(channel) {
   if (c.includes('channel 4')) return 'Channel 4';
   if (c.includes('paramount')) return 'Paramount+';
   return channel;
-}
-
-/** Order channels so the most useful one comes first; drop pure duplicates/extras. */
-export function tidyChannels(channels) {
-  const clean = [...new Set(channels.map(c => c.trim()).filter(c => c && !TBC_RE.test(c)))];
-  const rank = (c) => {
-    const l = c.toLowerCase();
-    if (/ultra hdr|ultimate|hbo max|discovery\+|sky go|now\b|app/.test(l)) return 3; // alternative ways to watch
-    if (/main event/.test(l)) return 0;
-    return 1;
-  };
-  return clean.sort((a, b) => rank(a) - rank(b));
-}
-
-export function resolveTv(match, officialBrands, listing) {
-  const ts = Date.parse(match.kickoff);
-  const listed = listing ? tidyChannels(listing.channels) : [];
-  const listingTbc = listing ? listing.channels.some(c => TBC_RE.test(c)) : false;
-  const official = (officialBrands || []).map(brandOf);
-  const tv = { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: [] };
-
-  if (official.length) { tv.broadcaster = official[0]; tv.sources.push('official'); }
-
-  if (listed.length) {
-    const primary = listed.filter(c => !/ultra hdr|ultimate|hbo max|discovery\+/i.test(c));
-    tv.channels = primary.length ? primary : listed.slice(0, 1);
-    tv.alsoOn = listed.filter(c => !tv.channels.includes(c));
-    const listedBrand = brandOf(tv.channels[0]);
-    if (!tv.broadcaster) tv.broadcaster = listedBrand;
-    else if (official.length && !official.includes(listedBrand)) tv.conflict = true;
-    tv.sources.push('listings');
-    tv.confirmed = !tv.conflict;
-  } else if (listingTbc && !tv.broadcaster) {
-    tv.broadcaster = brandOf(listing.channels.find(c => TBC_RE.test(c)).replace(TBC_RE, '').trim()) || null;
-  }
-
-  if (!tv.broadcaster && !tv.channels.length) {
-    const p = londonParts(ts);
-    const isSat3pm = ukWeekday(ts) === 'Sat' && p.hh === 15 && p.mm === 0;
-    if (match.comp === 'PL' && isSat3pm) tv.note = 'Not shown live on UK TV';
-    else tv.note = 'TV channel to be confirmed';
-  } else if (!tv.channels.length) {
-    tv.note = 'Exact channel to be confirmed';
-  }
-  return tv;
 }

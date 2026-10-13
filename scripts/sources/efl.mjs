@@ -11,10 +11,8 @@
 // without a confirmed channel say "TV channel to be confirmed" (no guessing from who holds the rights).
 // League Cup: only ties confirmed on UK TV are listed (the cup tab is for televised ties).
 
-import { getJSON, londonParts, ukDate, ukWeekday } from '../lib/util.mjs';
-import { SPORT_CHANNELS, guideTv } from './skyGuide.mjs';
-import { guideProgrammesFor, teamSim } from './football.mjs';
-import { listingTv } from './skyListings.mjs';
+import { getJSON, londonParts } from '../lib/util.mjs';
+import { footballTv } from './footballTv.mjs';
 
 const EFL_URL = 'https://multi-club-matches.webapi.gc.eflservices.co.uk/v2/matches';
 const COMPETITION = { 10: 'CHAMP', 2: 'EFL Cup' };
@@ -68,27 +66,11 @@ export async function fetchEfl(fromDate, toDate, seasonID) {
 /** EFL seasons start in summer: season 2026 = 2026/27. */
 export const eflSeason = (now) => { const p = londonParts(now); return p.m >= 7 ? p.y : p.y - 1; };
 
-const isSat3pm = (ts) => { const p = londonParts(ts); return ukWeekday(ts) === 'Sat' && p.hh === 15 && p.mm === 0; };
-
-/** The entry on Sky's football page for this match: same UK date, both team names. */
-export function skyListingFor(m, entries) {
-  const date = ukDate(Date.parse(m.kickoff));
-  const names = (side) => [m[side], m[`${side}Short`]].filter(Boolean);
-  const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
-  return (entries || []).find(e => e.date === date && e.home && sim('home', e.home) >= 0.5 && sim('away', e.away) >= 0.5) || null;
-}
-
 export function eflEvents(matches, guide, listings) {
-  const sids = SPORT_CHANNELS.football;
   const events = [];
   for (const m of matches) {
-    const progs = guideProgrammesFor(m, guide?.programmes || [], sids);
-    if (progs.length) { events.push({ ...m, tv: guideTv(progs, sids) }); continue; }
-    const listed = skyListingFor(m, listings?.entries);
-    if (listed) { events.push({ ...m, tv: listingTv(listed) }); continue; }
-    if (m.comp === 'CUPS') continue; // cup tab: televised ties only
-    const tv = { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: [] };
-    tv.note = isSat3pm(Date.parse(m.kickoff)) ? 'Not shown live on UK TV' : 'TV channel to be confirmed';
+    const { tv } = footballTv(m, { guide, skyListings: listings });
+    if (m.comp === 'CUPS' && !tv.channels.length) continue; // cup tab: televised ties only
     events.push({ ...m, tv });
   }
   return events;

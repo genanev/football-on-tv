@@ -77,7 +77,8 @@ for (const e of data.events) {
   console.log(e.comp.padEnd(6), (e.label || '').padEnd(7), uk(e.kickoff).padEnd(14), `${e.home} v ${e.away}`.padEnd(44),
     (e.tv.channels.join(', ') || e.tv.broadcaster || '-').padEnd(24), e.tv.alsoOn.length ? `+ ${e.tv.alsoOn.join(', ')}` : '', e.tv.note || '');
 }
-const find = (home) => data.events.find(e => e.home === home);
+// Europa League games read TNT's team names when TNT lists them ("RC Celta", "NEC"), so match on part of the name
+const find = (home) => data.events.find(e => e.home === home) || data.events.find(e => e.comp === 'UEL' && e.home.includes(home));
 
 // Europa League: every match listed; the ones in TNT's schedule get the exact channel
 assert.equal(data.report.europaLeague.ok, true);
@@ -89,7 +90,7 @@ assert.deepEqual(find('Bournemouth').tv.channels, ['TNT Sports 1']);
 // TNT's own schedule confirms the games streamed only on HBO Max (not in any TV guide)...
 assert.deepEqual(find('Celta').tv.channels, ['HBO Max']);
 assert.deepEqual(find('Celta').tv.sources, ['tntsports.co.uk']);
-assert.deepEqual(find('N.E.C.').tv.channels, ['HBO Max']); // TNT writes "NEC - Levski Sofia"
+assert.deepEqual(find('NEC').tv.channels, ['HBO Max']); // UEFA's "N.E.C.", TNT's "NEC"
 assert.ok(data.events.filter(e => e.comp === 'UEL').every(e => e.tv.channels.length)); // all 18 confirmed
 // ...and cross-checks the TV guide's picks
 assert.deepEqual(find('Lyon').tv.sources, ['sky-guide', 'tntsports.co.uk']);
@@ -136,7 +137,7 @@ const noTnt = await build(Date.parse('2026-10-13T09:00:00Z'));
 const withPrevious = await build(Date.parse('2026-10-13T09:00:00Z'), data);
 tntDown = false;
 assert.equal(noTnt.report.tntSchedule.ok, false);
-const uel = (d, home) => d.events.find(e => e.comp === 'UEL' && e.home === home);
+const uel = (d, home) => d.events.find(e => e.comp === 'UEL' && e.home.includes(home));
 assert.equal(noTnt.events.filter(e => e.comp === 'UEL').length, 18);
 assert.deepEqual(uel(noTnt, 'Lyon').tv.channels, ['TNT Sports 1']);
 assert.deepEqual(uel(noTnt, 'Celta').tv.channels, []);

@@ -27,6 +27,7 @@ import { fetchGolf, golfEvents } from './sources/golf.mjs';
 import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snooker.mjs';
 import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchGuide, SPORT_CHANNELS, guideTv } from './sources/skyGuide.mjs';
+import { fetchSkyListings } from './sources/skyListings.mjs';
 
 // Re-exported so the tests can reach them in one place.
 export { ukToUtc, ukDate } from './lib/util.mjs';
@@ -61,17 +62,20 @@ export async function build(now = Date.now(), previous = null) {
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
 
-  const [plRes, uclRes, listRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes] = await Promise.allSettled([
+  const [plRes, uclRes, listRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes] = await Promise.allSettled([
     fetchPremierLeague(now), fetchChampionsLeague(now, DAYS_AHEAD), fetchListings(),
     fetchUefa(now, DAYS_AHEAD, 'UEL'), fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
     fetchF1(), fetchF2(), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
-    fetchGuide(today, DAYS_AHEAD + 1),
+    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now),
   ]);
 
   // ---- UK TV guide (used by every competition except the PL and Champions League)
   const guide = ok(guideRes) ? guideRes.value : null;
   report.tvGuide = guide ? { ok: true, days: guide.coveredDates.length, programmes: guide.programmes.length, errors: guide.errors } : fail(guideRes);
+  // Sky's own "what's on" pages (football, F1): confirm channels the guide doesn't list (Sky Sports+ streams)
+  const skyListings = ok(skyRes) ? skyRes.value : null;
+  report.skyListings = skyListings ? { ok: true, events: skyListings.entries.length, errors: skyListings.errors } : fail(skyRes);
 
   // ---- football
   const pl = ok(plRes) ? plRes.value.filter(inWindow) : [];
@@ -106,14 +110,14 @@ export async function build(now = Date.now(), previous = null) {
   }
   report.crossReferenced = `${matched}/${pl.length + ucl.length}`;
 
-  // ---- Europa League: channel from the TV guide; TNT Sports holds the rights
+  // ---- Europa League: channel from the TV guide only (TNT's streams aren't in it, so no guessing)
   if (ok(uelRes)) {
     const uel = uelRes.value.filter(inWindow);
     report.europaLeague = { ok: true, matches: uel.length };
     for (const m of uel) {
       const progs = guideProgrammesFor(m, guide?.programmes || [], SPORT_CHANNELS.football);
       const tv = progs.length ? guideTv(progs, SPORT_CHANNELS.football)
-        : { broadcaster: 'TNT Sports', channels: [], alsoOn: [], confirmed: false, note: 'Expected – To Be Confirmed', conflict: false, sources: ['uk-rights'] };
+        : { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: 'TV channel to be confirmed', conflict: false, sources: [] };
       const { sourceId, homeAlt, awayAlt, ...rest } = m;
       events.push({ ...rest, kind: 'match', source: 'uefa.com', tv });
     }
@@ -121,7 +125,7 @@ export async function build(now = Date.now(), previous = null) {
 
   // ---- EFL (Championship, League Cup) and FA Cup
   if (ok(eflRes)) {
-    const efl = eflEvents(eflRes.value.filter(inWindow), guide);
+    const efl = eflEvents(eflRes.value.filter(inWindow), guide, skyListings);
     report.efl = { ok: true, championship: efl.filter(e => e.comp === 'CHAMP').length, leagueCup: efl.filter(e => e.comp === 'CUPS').length };
     events.push(...efl);
   } else report.efl = fail(eflRes);
@@ -137,7 +141,7 @@ export async function build(now = Date.now(), previous = null) {
     if (!ok(res)) { report[key] = fail(res); continue; }
     const sessions = res.value.filter(inWindow);
     report[key] = { ok: true, sessions: sessions.length };
-    for (const s of sessions) events.push({ ...s, tv: motorsportTv(s, guide) });
+    for (const s of sessions) events.push({ ...s, tv: motorsportTv(s, guide, skyListings) });
   }
 
   // ---- darts

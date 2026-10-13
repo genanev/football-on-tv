@@ -4,15 +4,17 @@
 //   Fixtures   official EFL data feed (multi-club-matches.webapi.gc.eflservices.co.uk), the feed
 //              behind efl.com's match centre. Competition 10 = Championship, 2 = League Cup.
 //              Kick-off times are UTC; scores update during matches.
-//   UK TV      Sky's TV guide ("Live EFL: Stoke v Middlesbrough"). Sky holds the EFL rights.
+//   UK TV      Sky's TV guide ("Live EFL: Stoke v Middlesbrough"), then Sky's own "Football on Sky"
+//              page, which also lists Sky Sports+ streams that aren't in the guide.
 //
-// Championship: every match is listed. Saturday 15:00 games aren't shown live in the UK; others not
-// in the guide show "Sky Sports+" (Sky streams EFL games there) as expected, to be confirmed.
-// League Cup: only ties that are live on UK TV are listed (the cup tab is for televised ties).
+// Championship: every match is listed. Saturday 15:00 games aren't shown live in the UK; others
+// without a confirmed channel say "TV channel to be confirmed" (no guessing from who holds the rights).
+// League Cup: only ties confirmed on UK TV are listed (the cup tab is for televised ties).
 
-import { getJSON, londonParts, ukWeekday } from '../lib/util.mjs';
+import { getJSON, londonParts, ukDate, ukWeekday } from '../lib/util.mjs';
 import { SPORT_CHANNELS, guideTv } from './skyGuide.mjs';
-import { guideProgrammesFor } from './football.mjs';
+import { guideProgrammesFor, teamSim } from './football.mjs';
+import { listingTv } from './skyListings.mjs';
 
 const EFL_URL = 'https://multi-club-matches.webapi.gc.eflservices.co.uk/v2/matches';
 const COMPETITION = { 10: 'CHAMP', 2: 'EFL Cup' };
@@ -68,16 +70,25 @@ export const eflSeason = (now) => { const p = londonParts(now); return p.m >= 7 
 
 const isSat3pm = (ts) => { const p = londonParts(ts); return ukWeekday(ts) === 'Sat' && p.hh === 15 && p.mm === 0; };
 
-export function eflEvents(matches, guide) {
+/** The entry on Sky's football page for this match: same UK date, both team names. */
+export function skyListingFor(m, entries) {
+  const date = ukDate(Date.parse(m.kickoff));
+  const names = (side) => [m[side], m[`${side}Short`]].filter(Boolean);
+  const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
+  return (entries || []).find(e => e.date === date && e.home && sim('home', e.home) >= 0.5 && sim('away', e.away) >= 0.5) || null;
+}
+
+export function eflEvents(matches, guide, listings) {
   const sids = SPORT_CHANNELS.football;
   const events = [];
   for (const m of matches) {
     const progs = guideProgrammesFor(m, guide?.programmes || [], sids);
     if (progs.length) { events.push({ ...m, tv: guideTv(progs, sids) }); continue; }
+    const listed = skyListingFor(m, listings?.entries);
+    if (listed) { events.push({ ...m, tv: listingTv(listed) }); continue; }
     if (m.comp === 'CUPS') continue; // cup tab: televised ties only
     const tv = { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: [] };
-    if (isSat3pm(Date.parse(m.kickoff))) tv.note = 'Not shown live on UK TV';
-    else { tv.broadcaster = 'Sky Sports+'; tv.note = 'Expected – To Be Confirmed'; tv.sources.push('uk-rights'); }
+    tv.note = isSat3pm(Date.parse(m.kickoff)) ? 'Not shown live on UK TV' : 'TV channel to be confirmed';
     events.push({ ...m, tv });
   }
   return events;

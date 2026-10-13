@@ -6,6 +6,8 @@
 //   fixtures/thefa-facup-fixtures-2026-10-13.html thefa.com FA Cup fixtures (tables only)
 //   fixtures/sky-guide-football-2026-10-13.json   Sky TV guide 13-21 Oct, football channels
 //                                                 (football programmes kept, plus one other per channel/day)
+//   fixtures/skysports-football-on-sky-2026-10-13.html  skysports.com "Football on Sky" (listings only)
+//   fixtures/skysports-f1-on-sky-2026-10-13.html        skysports.com "F1 on Sky" (listings only)
 //
 //   node test/run-more-football-test.mjs
 
@@ -21,6 +23,8 @@ const UEL = JSON.parse(await fx('uefa-europa-league-2026-10-13.json'));
 const EFL = JSON.parse(await fx('efl-matches-2026-10-13.json'));
 const FA = await fx('thefa-facup-fixtures-2026-10-13.html');
 const GUIDE = JSON.parse(await fx('sky-guide-football-2026-10-13.json'));
+const SKY_FOOTBALL = await fx('skysports-football-on-sky-2026-10-13.html');
+const SKY_F1 = await fx('skysports-f1-on-sky-2026-10-13.html');
 
 // ---------- mock fetch
 globalThis.fetch = async (url) => {
@@ -28,6 +32,8 @@ globalThis.fetch = async (url) => {
   if (url.includes('match.uefa.com')) return json(/competitionId=14\b/.test(url) ? UEL : []);
   if (url.includes('eflservices.co.uk')) return json(EFL);
   if (url.includes('thefa.com')) return { ok: true, status: 200, text: async () => FA };
+  if (url.includes('skysports.com/watch/football-on-sky')) return { ok: true, status: 200, text: async () => SKY_FOOTBALL };
+  if (url.includes('skysports.com/watch/f1-on-sky')) return { ok: true, status: 200, text: async () => SKY_F1 };
   if (url.includes('awk.epgsky.com')) {
     const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
     const day = GUIDE[ymd];
@@ -72,8 +78,8 @@ assert.deepEqual(find('Lyon').tv.channels, ['TNT Sports 1']);
 assert.deepEqual(find('Torreense').tv.channels, ['TNT Sports 2']);
 assert.deepEqual(find('Benfica').tv.channels, ['TNT Sports 3']);
 assert.deepEqual(find('Bournemouth').tv.channels, ['TNT Sports 1']);
-assert.equal(find('Celta').tv.broadcaster, 'TNT Sports');
-assert.equal(find('Celta').tv.note, 'Expected – To Be Confirmed');
+assert.deepEqual(find('Celta').tv.channels, []); // not on a TNT channel: no guess
+assert.equal(find('Celta').tv.note, 'TV channel to be confirmed');
 assert.ok(!data.events.some(e => e.home === 'Brighton')); // Conference League ("Live UCoL: ...") isn't included
 
 // Championship: every match; TV picks from the guide, 3pm Saturday blackout, Sky Sports+ expected otherwise
@@ -83,7 +89,16 @@ assert.deepEqual(find('Stoke City').tv.channels, ['Sky Sports Main Event']);
 assert.deepEqual(find('Stoke City').tv.alsoOn, ['Sky Sports Football']);
 assert.deepEqual(champ.find(e => e.home === 'Millwall' && e.away === 'Swansea City').tv.channels, ['Sky Sports+']);
 assert.deepEqual(find('Lincoln City').tv.channels, ['Sky Sports Main Event']); // "Live EFL: Lincoln City v West Ham"
-assert.equal(champ.find(e => e.home === 'Bristol City' && e.away === 'Blackburn Rovers').tv.note, 'Expected – To Be Confirmed');
+// Sky Sports+ streams aren't in the TV guide: Sky's own "Football on Sky" page confirms them
+const norwich = champ.find(e => e.home === 'Norwich City' && e.away === 'Southampton');
+assert.deepEqual(norwich.tv.channels, ['Sky Sports+']);
+assert.ok(norwich.tv.sources.includes('skysports.com'));
+assert.deepEqual(champ.find(e => e.home === 'Middlesbrough' && e.away === 'Cardiff City').tv.channels, ['Sky Sports+']);
+// Not in the guide or on Sky's page (the page was captured after these 19:45 kick-offs): no guess
+const bristol = champ.find(e => e.home === 'Bristol City' && e.away === 'Blackburn Rovers');
+assert.deepEqual(bristol.tv.channels, []);
+assert.equal(bristol.tv.note, 'TV channel to be confirmed');
+assert.ok(champ.every(e => !e.tv.sources.includes('uk-rights')));
 const sat3pm = champ.filter(e => uk(e.kickoff) === 'Sat 17, 15:00');
 assert.equal(sat3pm.length, 8);
 assert.ok(sat3pm.every(e => e.tv.note === 'Not shown live on UK TV' && !e.tv.channels.length));

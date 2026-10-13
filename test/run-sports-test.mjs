@@ -14,10 +14,12 @@
 
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { build } from '../scripts/build.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName } from '../scripts/sources/darts.mjs';
-import { seriesOf, motorsportTv } from '../scripts/sources/motorsport.mjs';
+import { seriesOf, motorsportTv, sessionMatches } from '../scripts/sources/motorsport.mjs';
+import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -119,11 +121,22 @@ assert.equal(f2[0].title, 'Azerbaijan');
 assert.deepEqual(find(f2, 'Qualifying 1').tv.channels, ['Sky Sports F1']);
 assert.deepEqual(find(f2, 'Qualifying 2').tv.channels, ['Sky Sports F1']); // same programme covers both
 
-// A session the guide has no live programme for falls back to the rights holder
-const noProg = motorsportTv({ comp: 'F2', kickoff: '2026-09-24T10:30:00.000Z' }, { programmes: [], coveredDates: ['2026-09-24'] });
+// A session no official source lists gets no channel - never a guess from who holds the rights
+const noProg = motorsportTv({ comp: 'F2', session: 'Qualifying', kickoff: '2026-09-24T10:30:00.000Z' }, { programmes: [], coveredDates: ['2026-09-24'] });
 assert.deepEqual(noProg.channels, []);
-assert.equal(noProg.broadcaster, 'Sky Sports F1');
-assert.equal(noProg.note, 'Expected – To Be Confirmed');
+assert.equal(noProg.broadcaster, null);
+assert.equal(noProg.note, 'TV channel to be confirmed');
+
+// Sky's own "F1 on Sky" page confirms sessions the TV guide doesn't cover yet (real page, 13 Oct:
+// the United States GP, 23-25 Oct, is beyond the guide's 8 days)
+const SKY_F1_PAGE = { entries: parseSkyPage(readFileSync(new URL('fixtures/skysports-f1-on-sky-2026-10-13.html', import.meta.url), 'utf8'), Date.parse('2026-10-13T20:00:00Z')).map(e => ({ ...e, page: 'f1-on-sky' })) };
+assert.ok(sessionMatches({ comp: 'F1', session: 'Qualifying' }, 'MSC Cruises United States GP - Qualifying 1'));
+assert.ok(!sessionMatches({ comp: 'F1', session: 'Race' }, 'MSC Cruises United States GP - Grand Prix Sunday'));
+const usQuali = motorsportTv({ comp: 'F1', session: 'Qualifying', kickoff: '2026-10-24T21:00:00.000Z' }, null, SKY_F1_PAGE);
+assert.deepEqual(usQuali.channels, ['Sky Sports F1']);
+assert.ok(usQuali.sources.includes('skysports.com'));
+assert.deepEqual(motorsportTv({ comp: 'F1', session: 'Race', kickoff: '2026-10-25T20:00:00.000Z' }, null, SKY_F1_PAGE).channels, ['Sky Sports F1']);
+assert.equal(motorsportTv({ comp: 'F1', session: 'Sprint', kickoff: '2026-10-24T17:00:00.000Z' }, null, SKY_F1_PAGE).note, 'TV channel to be confirmed');
 assert.deepEqual(find(f2, 'Sprint Race').tv.channels, ['Sky Sports F1']);
 assert.ok(f2.every(e => e.status === 'finished' && !e.timeTbc));
 
@@ -146,7 +159,7 @@ const noGuide = await build(NOW);
 guideDown = false;
 assert.equal(noGuide.report.tvGuide.ok, false);
 assert.equal(noGuide.events.filter(e => e.comp === 'F1').length, 2);
-assert.ok(noGuide.events.filter(e => e.comp === 'F1').every(e => e.tv.broadcaster === 'Sky Sports F1' && e.tv.note === 'Expected – To Be Confirmed'));
+assert.ok(noGuide.events.filter(e => e.comp === 'F1').every(e => !e.tv.channels.length && e.tv.note === 'TV channel to be confirmed'));
 assert.ok(noGuide.events.filter(e => e.comp === 'DARTS').every(e => e.allDay));
 
 // Today's real F2 answer (next round Qatar, 27-29 Nov): nothing in a 12 Oct window, and provisional times are flagged

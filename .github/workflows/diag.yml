@@ -1,0 +1,36 @@
+name: Diag (temporary)
+
+on:
+  push:
+    branches: [official-football]
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: What Prime Video shows GitHub's servers
+        run: |
+          node --input-type=module -e '
+            import { parsePrimeTournament } from "./scripts/sources/amazonPrime.mjs";
+            const T = "amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8";
+            const variants = {
+              plain: [`https://www.primevideo.com/tournament/${T}`, {}],
+              enGB: [`https://www.primevideo.com/tournament/${T}`, { "Accept-Language": "en-GB,en;q=0.9" }],
+              regionEU: [`https://www.primevideo.com/region/eu/tournament/${T}`, {}],
+              regionEUlang: [`https://www.primevideo.com/-/en/region/eu/tournament/${T}`, {}],
+              amazonCoUk: [`https://www.amazon.co.uk/gp/video/tournament/${T}`, {}],
+            };
+            for (const [name, [url, h]] of Object.entries(variants)) {
+              try {
+                const r = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36", Accept: "text/html", ...h }, redirect: "follow" });
+                const html = await r.text();
+                const cards = parsePrimeTournament(html, Date.now());
+                const prov = {}; for (const c of cards) prov[c.provider] = (prov[c.provider] || 0) + 1;
+                console.log(`::notice title=${name}::${r.status} ${r.url} cards=${cards.length} providers=${JSON.stringify(prov)} sample=${cards.slice(0, 4).map(c => c.title).join(" | ")}`);
+              } catch (e) { console.log(`::notice title=${name}::error ${e.message}`); }
+            }'

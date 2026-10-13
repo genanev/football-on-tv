@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-13T22:11:44.899Z",
+ "generatedAt": "2026-10-13T22:17:03.906Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -1880,7 +1880,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2225,7 +2224,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2337,7 +2335,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2367,7 +2364,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2399,7 +2395,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2432,7 +2427,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }
@@ -2578,7 +2572,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "official",
      "listings"
     ]
    }

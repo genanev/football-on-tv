@@ -8,6 +8,7 @@
 //                                                 (football programmes kept, plus one other per channel/day)
 //   fixtures/skysports-football-on-sky-2026-10-13.html  skysports.com "Football on Sky" (listings only)
 //   fixtures/skysports-f1-on-sky-2026-10-13.html        skysports.com "F1 on Sky" (listings only)
+//   fixtures/tnt-schedule-2026-10-15.json                TNT Sports' schedule for Thu 15 Oct (football only)
 //
 //   node test/run-more-football-test.mjs
 
@@ -25,6 +26,7 @@ const FA = await fx('thefa-facup-fixtures-2026-10-13.html');
 const GUIDE = JSON.parse(await fx('sky-guide-football-2026-10-13.json'));
 const SKY_FOOTBALL = await fx('skysports-football-on-sky-2026-10-13.html');
 const SKY_F1 = await fx('skysports-f1-on-sky-2026-10-13.html');
+const TNT_THU = JSON.parse(await fx('tnt-schedule-2026-10-15.json'));
 
 // ---------- mock fetch
 globalThis.fetch = async (url) => {
@@ -34,6 +36,10 @@ globalThis.fetch = async (url) => {
   if (url.includes('thefa.com')) return { ok: true, status: 200, text: async () => FA };
   if (url.includes('skysports.com/watch/football-on-sky')) return { ok: true, status: 200, text: async () => SKY_FOOTBALL };
   if (url.includes('skysports.com/watch/f1-on-sky')) return { ok: true, status: 200, text: async () => SKY_F1 };
+  if (url.includes('netsport.eurosport.io')) {
+    const date = JSON.parse(new URL(url).searchParams.get('variables')).date;
+    return json(date === '2026-10-14T23:00:00.000Z' ? TNT_THU : { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
+  }
   if (url.includes('awk.epgsky.com')) {
     const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
     const day = GUIDE[ymd];
@@ -78,8 +84,14 @@ assert.deepEqual(find('Lyon').tv.channels, ['TNT Sports 1']);
 assert.deepEqual(find('Torreense').tv.channels, ['TNT Sports 2']);
 assert.deepEqual(find('Benfica').tv.channels, ['TNT Sports 3']);
 assert.deepEqual(find('Bournemouth').tv.channels, ['TNT Sports 1']);
-assert.deepEqual(find('Celta').tv.channels, []); // not on a TNT channel: no guess
-assert.equal(find('Celta').tv.note, 'TV channel to be confirmed');
+// TNT's own schedule confirms the games streamed only on HBO Max (not in any TV guide)...
+assert.deepEqual(find('Celta').tv.channels, ['HBO Max']);
+assert.deepEqual(find('Celta').tv.sources, ['tntsports.co.uk']);
+assert.deepEqual(find('N.E.C.').tv.channels, ['HBO Max']); // TNT writes "NEC - Levski Sofia"
+assert.ok(data.events.filter(e => e.comp === 'UEL').every(e => e.tv.channels.length)); // all 18 confirmed
+// ...and cross-checks the TV guide's picks
+assert.deepEqual(find('Lyon').tv.sources, ['sky-guide', 'tntsports.co.uk']);
+assert.deepEqual(find('Bournemouth').tv.alsoOn, ['HBO Max']);
 assert.ok(!data.events.some(e => e.home === 'Brighton')); // Conference League ("Live UCoL: ...") isn't included
 
 // Championship: every match; TV picks from the guide, 3pm Saturday blackout, Sky Sports+ expected otherwise

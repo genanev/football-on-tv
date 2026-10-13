@@ -1,0 +1,1667 @@
+{
+ "data": {
+  "programsByDate": {
+   "edges": [
+    {
+     "node": {
+      "id": "esp-e31821621c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-14T22:30:00.000Z",
+      "endTime": "2026-10-14T23:00:00.000Z",
+      "title": "UEFA Extraordinary Stories",
+      "subtitle": "Episode 2 | Turbine Potsdam",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821567c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-14T23:00:00.000Z",
+      "endTime": "2026-10-14T23:30:00.000Z",
+      "title": "Serie A Full Impact",
+      "subtitle": "Matchweek 5",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755606c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-14T23:00:00.000Z",
+      "endTime": "2026-10-14T23:30:00.000Z",
+      "title": "LASK - Liverpool | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/c910b4c0-fcb5-53e7-8614-04ae036bd4f3?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755598c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-14T23:30:00.000Z",
+      "endTime": "2026-10-15T00:00:00.000Z",
+      "title": "Feyenoord - Como | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/d46510ab-ff6f-5972-8f1a-0f326d06f7bc?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755616c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T00:00:00.000Z",
+      "endTime": "2026-10-15T00:30:00.000Z",
+      "title": "Manchester City - Paris Saint-Germain | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/db16c324-a51f-553a-82cb-857e479800db?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755597c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T00:30:00.000Z",
+      "endTime": "2026-10-15T01:00:00.000Z",
+      "title": "Aston Villa - Fenerbahçe | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/87959cb2-6e73-5b7c-ae56-9e2ecb11a296?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755613c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T01:00:00.000Z",
+      "endTime": "2026-10-15T01:30:00.000Z",
+      "title": "Roma - Real Madrid | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/37b037b2-dee6-520e-815e-e35572f46b40?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755608c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T01:30:00.000Z",
+      "endTime": "2026-10-15T02:00:00.000Z",
+      "title": "Bodø/Glimt - Borussia Dortmund | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/c0bfb8eb-9492-5397-9a9f-24d7d16f7532?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755602c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T02:00:00.000Z",
+      "endTime": "2026-10-15T02:30:00.000Z",
+      "title": "Real Betis - Porto | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/c7693624-a6c1-59d7-9318-cb97faa30059?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755603c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T02:30:00.000Z",
+      "endTime": "2026-10-15T03:00:00.000Z",
+      "title": "Slovan Bratislava - VfB Stuttgart | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/db71b318-ed3b-5c27-b7c4-942986721b47?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755617c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T03:00:00.000Z",
+      "endTime": "2026-10-15T03:30:00.000Z",
+      "title": "Shakhtar Donetsk - AEK Athens | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/243bb7eb-f878-52a6-b0b4-445169c77b4f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755618c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T03:30:00.000Z",
+      "endTime": "2026-10-15T04:00:00.000Z",
+      "title": "Premier League Netbusters",
+      "subtitle": "Episode 6",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750872c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T04:00:00.000Z",
+      "endTime": "2026-10-15T04:30:00.000Z",
+      "title": "UEFA Champions League",
+      "subtitle": "Stories of the Finals | Episode 2",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31805557c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T04:30:00.000Z",
+      "endTime": "2026-10-15T05:00:00.000Z",
+      "title": "Serie A Full Impact",
+      "subtitle": "Matchweek 5",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750870c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T04:30:00.000Z",
+      "endTime": "2026-10-15T05:00:00.000Z",
+      "title": "UEFA Champions League",
+      "subtitle": "Stories of the Finals | Episode 3",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750880c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T05:00:00.000Z",
+      "endTime": "2026-10-15T06:00:00.000Z",
+      "title": "UEFA Champions League Highlights Show",
+      "subtitle": "Matchday 2 | Wednesday",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31749282c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T05:00:00.000Z",
+      "endTime": "2026-10-15T05:30:00.000Z",
+      "title": "TNT Sports Reload",
+      "subtitle": "Episode 41",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755624c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T06:00:00.000Z",
+      "endTime": "2026-10-15T06:30:00.000Z",
+      "title": "LASK - Liverpool | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/c672b1b9-175d-5454-8352-d4c74ba72b53?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755622c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T06:30:00.000Z",
+      "endTime": "2026-10-15T07:00:00.000Z",
+      "title": "Feyenoord - Como | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/dd109b9e-9f6f-58a5-a1e8-0ee81ce9b11e?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31749284c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T06:45:00.000Z",
+      "endTime": "2026-10-15T07:30:00.000Z",
+      "title": "Sign Up: Into Football",
+      "subtitle": "Episode 2",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755620c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T07:00:00.000Z",
+      "endTime": "2026-10-15T07:30:00.000Z",
+      "title": "Manchester City - Paris Saint-Germain | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/eaa46bd7-b692-5415-bc86-ad613a91a5ab?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31830262c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T07:30:00.000Z",
+      "endTime": "2026-10-15T08:00:00.000Z",
+      "title": "Serie A Full Impact",
+      "subtitle": "Matchweek 5",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755621c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T07:30:00.000Z",
+      "endTime": "2026-10-15T08:00:00.000Z",
+      "title": "Aston Villa - Fenerbahçe | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/8dd14499-1aea-5608-9abf-84aa8394d48e?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755626c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T08:00:00.000Z",
+      "endTime": "2026-10-15T08:30:00.000Z",
+      "title": "Roma - Real Madrid | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/5aa7a71c-d1cc-5365-aadb-48b924a8384a?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755639c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T08:30:00.000Z",
+      "endTime": "2026-10-15T09:00:00.000Z",
+      "title": "Bodø/Glimt - Borussia Dortmund | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/8827adc0-0af9-55c9-94ec-4cd68ef2ce5e?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755634c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T09:00:00.000Z",
+      "endTime": "2026-10-15T09:30:00.000Z",
+      "title": "Real Betis - Porto | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/79d677df-d3b8-5921-a3dd-436d63009fe0?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755632c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T09:30:00.000Z",
+      "endTime": "2026-10-15T10:00:00.000Z",
+      "title": "Slovan Bratislava - VfB Stuttgart | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/d9ef5c5d-09e7-5969-9f88-ce7c76e01a6e?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755630c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T10:00:00.000Z",
+      "endTime": "2026-10-15T10:30:00.000Z",
+      "title": "Shakhtar Donetsk - AEK Athens | Highlights",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/8194353e-61ac-5c0f-98d1-75007d602d4d?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755628c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T10:30:00.000Z",
+      "endTime": "2026-10-15T11:30:00.000Z",
+      "title": "UEFA Champions League Highlights Show",
+      "subtitle": "Matchday 2 | Wednesday",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31830295c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T10:30:00.000Z",
+      "endTime": "2026-10-15T11:00:00.000Z",
+      "title": "TNT Sports Reload",
+      "subtitle": "Episode 41",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750875c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T12:30:00.000Z",
+      "endTime": "2026-10-15T13:00:00.000Z",
+      "title": "UEFA Champions League",
+      "subtitle": "Stories of the Finals | Episode 8",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750878c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T13:00:00.000Z",
+      "endTime": "2026-10-15T13:30:00.000Z",
+      "title": "UEFA Champions League",
+      "subtitle": "Stories of the Finals | Episode 9",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750876c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T13:30:00.000Z",
+      "endTime": "2026-10-15T14:00:00.000Z",
+      "title": "UEFA Champions League",
+      "subtitle": "Stories of the Finals | Episode 10",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821595c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T14:30:00.000Z",
+      "endTime": "2026-10-15T15:00:00.000Z",
+      "title": "TNT Sports Reload",
+      "subtitle": "Episode 41",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31778279c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T14:30:00.000Z",
+      "endTime": "2026-10-15T15:00:00.000Z",
+      "title": "Premier League Netbusters",
+      "subtitle": "Episode 6",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755204c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T15:00:00.000Z",
+      "endTime": "2026-10-15T16:00:00.000Z",
+      "title": "UEFA Champions League Highlights Show",
+      "subtitle": "Matchday 2 | Wednesday",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31750278c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T15:30:00.000Z",
+      "endTime": "2026-10-15T15:45:00.000Z",
+      "title": "Premier League Reload",
+      "subtitle": "Matchweek 6",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31805560c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T15:45:00.000Z",
+      "endTime": "2026-10-15T16:00:00.000Z",
+      "title": "The Breakdown",
+      "subtitle": "Sunderland",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755203c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:00:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Lyon - Crystal Palace",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/9ff4ad09-0c68-5d02-9c57-b28ef10a4dc9?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755899c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:00:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "SCU Torreense - Sunderland ",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/cf3c0ffa-dfa6-5f95-8dea-a577eac26295?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821626c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:30:00.000Z",
+      "endTime": "2026-10-15T17:00:00.000Z",
+      "title": "Inside Serie A",
+      "subtitle": "Episode 8",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201627874c0ch15007",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Multiview",
+      "subtitle": "UEFA Conference League",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/840bd9af-9db7-52ed-b8c1-0be1b1058043?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590945c0ch15006",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Multiview",
+      "subtitle": "UEFA Europa League",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/fe358831-7ac9-5ed6-af50-a278eb9d8982?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590683c0ch20092",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Gent - AGF Aarhus",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/05d1fac1-fbe8-5b90-a1f4-b0565759f4ce?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590421c0ch20066",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "RB Salzburg - AC Milan",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/1dde7e25-a8e7-5ae7-a27f-2a62fe99b156?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590419c0ch20071",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "NK Celje - Omonia",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/23af9cd6-2362-5573-ba1e-87a4ac669e4b?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590686c0ch20096",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Panathinaikos - FK Borac",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/248704a7-8dd1-5b78-b6ac-475f3152c61d?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590423c0ch20069",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Sparta Prague - Lillestrøm SK",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/264efd9a-76bd-5cb5-8938-fbbc0687cf05?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590688c0ch20088",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Universitatea Craiova - Getafe",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/361c7217-e5a2-5704-a64e-af0696eb6750?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590680c0ch20093",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Egnatia - FC Midtjylland",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/3821015d-0c97-586f-a9fe-d789f422fe67?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590682c0ch20094",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "KuPS - Trabzonspor",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/4600ea6c-e4e2-5366-a777-44264400ba64?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590422c0ch20068",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Union Saint-Gilloise - Real Sociedad",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/559369eb-bfc4-58d3-8250-9d5af342e969?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590681c0ch20089",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Hajduk Split - Ajax",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/5a7bb40d-a5a3-5398-9051-8cd169b2f941?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590418c0ch20070",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "AZ Alkmaar - Hapoel Beer Sheva",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/68402cd2-419e-5e63-bf0c-f16ba01b6f28?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590687c0ch20097",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Riga FC - Kairat Almaty",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/692e1849-b1d9-56b3-b2b5-c05112260885?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590684c0ch20091",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Lugano - Crvena Zvezda",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/850249ce-6bdc-56cb-9dc8-1616077d6a77?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590420c0ch20067",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Lech Poznan - Bayer Leverkusen",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/9cd98cbb-ee7f-5977-9cd0-92a542d33532?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590679c0ch20090",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "CSKA Sofia - Monaco",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/e5936109-51bd-5a7e-b8f3-0e792f298c09?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590685c0ch20095",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T16:40:00.000Z",
+      "endTime": "2026-10-15T18:45:00.000Z",
+      "title": "Mjällby AIF - Inter Club d'Escaldes",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/eb9a31ef-124c-5f59-b110-376ec2bf6d42?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755648c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T17:00:00.000Z",
+      "endTime": "2026-10-15T17:30:00.000Z",
+      "title": "Premier League: The Big Interview",
+      "subtitle": "Episode 9",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31805312c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T17:30:00.000Z",
+      "endTime": "2026-10-15T18:00:00.000Z",
+      "title": "Serie A Full Impact",
+      "subtitle": "Matchweek 5",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821624c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T17:30:00.000Z",
+      "endTime": "2026-10-15T18:00:00.000Z",
+      "title": "UEFA Extraordinary Stories",
+      "subtitle": "Episode 5 | Bela Guttmann",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755653c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:00:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Benfica - Celtic",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/5dc7b55c-4589-507f-a5a9-cd6b03cc77f2?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755356c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:00:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Hearts - Nordsjælland",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/b48b55d9-f4c0-50f5-9b33-d5a099309302?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755900c0ch502",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:45:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Brighton and Hove Albion - Kauno Žalgiris",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/0283a7c4-3e0c-5c8d-a755-4507de405627?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 2",
+       "family": "TNT_SPORTS_2"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201643393c0ch20072",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:45:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Bournemouth - Sturm Graz",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/17e16a1f-6d72-5400-ada6-0aedc32daa07?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590691c0ch20098",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:45:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Brighton and Hove Albion - Kauno Žalgiris",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/a0106c80-055b-5c2a-837c-635dace78738?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755206c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:45:00.000Z",
+      "endTime": "2026-10-15T21:30:00.000Z",
+      "title": "Bournemouth - Sturm Graz ",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/fc1d5126-f403-5c52-98d1-1324d5765e14?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590427c0ch20077",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Ferencváros - Viktoria Plzeň",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/098bf0b1-491a-53c0-a369-a21513b49c5a?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590425c0ch20073",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "RC Celta - Juventus",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/32479c15-12b7-5f26-990c-fe8a1bacb009?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590694c0ch20103",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Sint-Truidense VV - FC Iberia 1999",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/42003509-06c2-515d-aafe-89716e86a4c8?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590432c0ch20076",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Rennes - OFI Crete",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/4ce0106e-edc1-5742-8b44-532caf963397?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590692c0ch20101",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "FC Copenhagen - Braga",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/59668d7d-65e0-50b8-89c6-4ad21751ffc3?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590430c0ch20074",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Marseille - Olympiacos",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/7d6b272c-d5c1-5e83-8633-ebe7065203f4?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590426c0ch20078",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Dinamo Zagreb - Anderlecht",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/8d277427-7a65-55bc-9313-784f0e897423?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590431c0ch20080",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "NEC - Levski Sofia",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/b57244dc-2131-53ec-9f5d-d6105ae87b17?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590429c0ch20079",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Jagiellonia Bialystok - Ararat-Armenia",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/b9ef05f2-390a-5a0c-960f-371e2f64150f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590690c0ch20104",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Brann - Lincoln Red Imps FC",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/b9ed8733-1ad5-5c32-a183-05a1e4747128?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590428c0ch20075",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Hoffenheim - Beşiktaş",
+      "subtitle": "UEFA Europa League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/bcb4cd56-8fe5-5391-bc40-05f3ca3653c8?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590695c0ch20102",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "FC Twente - FC Thun",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/c1983f63-d09c-5acb-9ba2-f2e60e2f0933?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590689c0ch20099",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "Atalanta - Pafos",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/cb82a36a-0969-5d22-807a-b101b4cd4a9d?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201590693c0ch20100",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T18:55:00.000Z",
+      "endTime": "2026-10-15T21:00:00.000Z",
+      "title": "SC Freiburg - FK Jablonec",
+      "subtitle": "UEFA Conference League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/fd8897c5-f82a-59a5-892e-257582b2d7cb?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31805208c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T21:30:00.000Z",
+      "endTime": "2026-10-15T22:15:00.000Z",
+      "title": "UEFA Europa League and Conference League Highlights",
+      "subtitle": "UEL Matchday 2 | UECL Matchday 1",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/cfbc9b0b-f609-523e-8619-43ba2aea21eb?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821623c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T21:30:00.000Z",
+      "endTime": "2026-10-15T22:00:00.000Z",
+      "title": "UEFA Extraordinary Stories",
+      "subtitle": "Episode 5 | Bela Guttmann",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31821570c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T22:15:00.000Z",
+      "endTime": "2026-10-15T22:45:00.000Z",
+      "title": "UEFA Extraordinary Stories",
+      "subtitle": "Episode 4 | SC Bastia",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755210c0ch501",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T22:45:00.000Z",
+      "endTime": "2026-10-15T23:30:00.000Z",
+      "title": "Sign Up: Into Football",
+      "subtitle": "Episode 2",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 1",
+       "family": "TNT_SPORTS_1"
+      }
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31755649c0ch503",
+      "status": "SCHEDULED",
+      "startTime": "2026-10-15T23:00:00.000Z",
+      "endTime": "2026-10-15T23:30:00.000Z",
+      "title": "Premier League Netbusters",
+      "subtitle": "Episode 6",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": false,
+      "sportName": "Football",
+      "channel": {
+       "name": "TNT Sports 3",
+       "family": "TNT_SPORTS_3"
+      }
+     }
+    }
+   ],
+   "pageInfo": {
+    "endCursor": "MTQ3",
+    "hasNextPage": false,
+    "hasPreviousPage": false,
+    "startCursor": null
+   }
+  }
+ }
+}

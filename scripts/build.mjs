@@ -28,6 +28,7 @@ import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snook
 import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchGuide, SPORT_CHANNELS, guideTv } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
+import { fetchTntSchedule, tntProgrammesFor, tntChannelOrder } from './sources/tntSchedule.mjs';
 
 // Re-exported so the tests can reach them in one place.
 export { ukToUtc, ukDate } from './lib/util.mjs';
@@ -62,12 +63,12 @@ export async function build(now = Date.now(), previous = null) {
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
 
-  const [plRes, uclRes, listRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes] = await Promise.allSettled([
+  const [plRes, uclRes, listRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes] = await Promise.allSettled([
     fetchPremierLeague(now), fetchChampionsLeague(now, DAYS_AHEAD), fetchListings(),
     fetchUefa(now, DAYS_AHEAD, 'UEL'), fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
     fetchF1(), fetchF2(), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
-    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now),
+    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1),
   ]);
 
   // ---- UK TV guide (used by every competition except the PL and Champions League)
@@ -76,6 +77,9 @@ export async function build(now = Date.now(), previous = null) {
   // Sky's own "what's on" pages (football, F1): confirm channels the guide doesn't list (Sky Sports+ streams)
   const skyListings = ok(skyRes) ? skyRes.value : null;
   report.skyListings = skyListings ? { ok: true, events: skyListings.entries.length, errors: skyListings.errors } : fail(skyRes);
+  // TNT Sports' own schedule: its channels plus events streamed only on HBO Max
+  const tnt = ok(tntRes) ? tntRes.value : null;
+  report.tntSchedule = tnt ? { ok: true, programmes: tnt.programmes.length, errors: tnt.errors } : fail(tntRes);
 
   // ---- football
   const pl = ok(plRes) ? plRes.value.filter(inWindow) : [];
@@ -110,13 +114,17 @@ export async function build(now = Date.now(), previous = null) {
   }
   report.crossReferenced = `${matched}/${pl.length + ucl.length}`;
 
-  // ---- Europa League: channel from the TV guide only (TNT's streams aren't in it, so no guessing)
+  // ---- Europa League: channels from the TV guide and TNT's own schedule (incl. HBO Max streams)
   if (ok(uelRes)) {
     const uel = uelRes.value.filter(inWindow);
     report.europaLeague = { ok: true, matches: uel.length };
     for (const m of uel) {
       const progs = guideProgrammesFor(m, guide?.programmes || [], SPORT_CHANNELS.football);
-      const tv = progs.length ? guideTv(progs, SPORT_CHANNELS.football)
+      const fromTnt = tntProgrammesFor(m, tnt, 'Europa League');
+      const chans = tntChannelOrder([...progs.map(p => p.channel), ...fromTnt.map(p => p.channel)]);
+      const sources = [...(progs.length ? ['sky-guide'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : [])];
+      const tv = chans.length
+        ? { broadcaster: chans[0], channels: [chans[0]], alsoOn: chans.slice(1), confirmed: true, note: null, conflict: false, sources }
         : { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: 'TV channel to be confirmed', conflict: false, sources: [] };
       const { sourceId, homeAlt, awayAlt, ...rest } = m;
       events.push({ ...rest, kind: 'match', source: 'uefa.com', tv });

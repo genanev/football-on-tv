@@ -57,3 +57,4 @@ Rules: a Saturday 15:00 PL game with no channel gets "Not shown live on UK TV". 
 - Footer: only the two "Fixtures from… / Channels from…" sentences.
 - All times are shown in Europe/London time.
 - The live label reads **LIVE NOW** (one line, under the time). It follows the phone's clock for every sport (it compares exact moments, so it is right in any time zone): sessions between their start and end, football from kick-off to ~1h55 later; the feed's "live" can stretch that to at most 2h45 after kick-off (updates can be hours apart, so an old "live" must not stick; its stale score is hidden).
+- Football scores stay on (decided 13 Oct 2026, after seeing UCL scores update during matches): both the PL and UEFA feeds give live scores, so the app shows the score from the last update during a match and the final score at FT. They'll be near real time once updates run every few minutes (planned move to a proper platform).

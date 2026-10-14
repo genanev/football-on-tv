@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-13T23:45:18.225Z",
+ "generatedAt": "2026-10-14T05:01:58.814Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4127,
+   "programmes": 4418,
    "errors": []
   },
   "skyListings": {
@@ -20,8 +20,7 @@
   },
   "primeVideo": {
    "ok": false,
-   "error": "Prime Video served a non-UK page (providers: vixplusus, cbsaacf)",
-   "wrongRegion": true
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierLeague": {
    "ok": true,
@@ -71,7 +70,7 @@
     "DP World India Championship",
     "Genesis Championship"
    ],
-   "rounds": 4,
+   "rounds": 6,
    "errors": []
   },
   "snooker": {
@@ -79,7 +78,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 8
+   "sessions": 10
   },
   "cricket": {
    "ok": true,
@@ -2838,6 +2837,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Genesis Championship",
+   "venue": "Woo Jeong Hills CC",
+   "source": "europeantour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-22",
+   "kickoff": "2026-10-22T03:00:00.000Z",
+   "end": "2026-10-22T08:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "Sri Lanka v England",
@@ -2881,6 +2908,34 @@
     "note": "TV times to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792670400",
+   "kickoff": "2026-10-22T12:00:00.000Z",
+   "end": "2026-10-22T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -3029,6 +3084,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3124,6 +3180,60 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Butterfield Bermuda Championship",
+   "venue": "Port Royal Golf Course",
+   "source": "pgatour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-pga-R2026528-2026-10-22",
+   "kickoff": "2026-10-22T17:00:00.000Z",
+   "end": "2026-10-22T20:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792692000",
+   "kickoff": "2026-10-22T18:00:00.000Z",
+   "end": "2026-10-22T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "uel-2050107",
    "comp": "UEL",
    "kickoff": "2026-10-22T19:00:00.000Z",
@@ -3151,6 +3261,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3183,6 +3294,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3215,6 +3327,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }

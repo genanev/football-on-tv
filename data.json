@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-14T05:01:58.814Z",
+ "generatedAt": "2026-10-14T10:18:44.702Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4418,
+   "programmes": 4425,
    "errors": []
   },
   "skyListings": {
@@ -15,12 +15,13 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1059,
+   "programmes": 1065,
    "errors": []
   },
   "primeVideo": {
    "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "error": "Prime Video served a non-UK page (providers: vixplusus, cbsaacf)",
+   "wrongRegion": true
   },
   "premierLeague": {
    "ok": true,
@@ -2878,13 +2879,19 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

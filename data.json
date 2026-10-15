@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-14T23:18:43.196Z",
+ "generatedAt": "2026-10-15T04:50:39.161Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4163,
+   "programmes": 4382,
    "errors": []
   },
   "skyListings": {
@@ -71,7 +71,7 @@
     "DP World India Championship",
     "Genesis Championship"
    ],
-   "rounds": 6,
+   "rounds": 7,
    "errors": []
   },
   "snooker": {
@@ -79,7 +79,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 10
+   "sessions": 12
   },
   "cricket": {
    "ok": true,
@@ -3188,6 +3188,86 @@
     "note": "TV times to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792756800",
+   "kickoff": "2026-10-23T12:00:00.000Z",
+   "end": "2026-10-23T15:30:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Butterfield Bermuda Championship",
+   "venue": "Port Royal Golf Course",
+   "source": "pgatour.com",
+   "session": "Round 2",
+   "status": "upcoming",
+   "id": "golf-pga-R2026528-2026-10-23",
+   "kickoff": "2026-10-23T17:00:00.000Z",
+   "end": "2026-10-23T20:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792778400",
+   "kickoff": "2026-10-23T18:00:00.000Z",
+   "end": "2026-10-23T21:30:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

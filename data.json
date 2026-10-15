@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-15T04:50:39.161Z",
+ "generatedAt": "2026-10-15T10:02:09.007Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4382,
+   "programmes": 4396,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1059,
+   "programmes": 1060,
    "errors": []
   },
   "primeVideo": {
@@ -39,7 +39,7 @@
    "ok": true,
    "matches": 36
   },
-  "footballChannels": "24/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 14,
@@ -71,7 +71,7 @@
     "DP World India Championship",
     "Genesis Championship"
    ],
-   "rounds": 7,
+   "rounds": 8,
    "errors": []
   },
   "snooker": {
@@ -3168,6 +3168,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Genesis Championship",
+   "venue": "Woo Jeong Hills CC",
+   "source": "europeantour.com",
+   "session": "Round 2",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-23",
+   "kickoff": "2026-10-23T02:00:00.000Z",
+   "end": "2026-10-23T08:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "DARTS",
    "kind": "session",
    "title": "European Championship",
@@ -3287,13 +3315,17 @@
    "awayScore": null,
    "source": "efl.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -3312,13 +3344,19 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ]

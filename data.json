@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-16T01:28:17.091Z",
+ "generatedAt": "2026-10-16T07:18:15.864Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4277,
+   "programmes": 4289,
    "errors": []
   },
   "skyListings": {
@@ -2932,13 +2932,17 @@
    "awayScore": null,
    "source": "efl.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

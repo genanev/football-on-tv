@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-16T18:08:58.412Z",
+ "generatedAt": "2026-10-16T21:20:23.138Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4329,
+   "programmes": 4327,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 21,
+   "events": 20,
    "errors": []
   },
   "tntSchedule": {
@@ -127,9 +127,9 @@
    "homeShort": "Burnley",
    "awayShort": "Wolverhampton Wanderers",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 2,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports Main Event",
@@ -143,8 +143,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

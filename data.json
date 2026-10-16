@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-16T13:19:30.443Z",
+ "generatedAt": "2026-10-16T18:08:58.412Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4332,
+   "programmes": 4329,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1016,
+   "programmes": 1019,
    "errors": []
   },
   "primeVideo": {
@@ -128,8 +128,8 @@
    "awayShort": "Wolverhampton Wanderers",
    "venue": null,
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports Main Event",

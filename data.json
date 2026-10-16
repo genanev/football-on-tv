@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-16T07:18:15.864Z",
+ "generatedAt": "2026-10-16T13:19:30.443Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4289,
+   "programmes": 4332,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1003,
+   "programmes": 1016,
    "errors": []
   },
   "primeVideo": {
@@ -39,7 +39,7 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "26/33 PL+UCL matches with a confirmed channel",
+  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 25,
@@ -79,7 +79,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 14
+   "sessions": 17
   },
   "cricket": {
    "ok": true,
@@ -96,8 +96,8 @@
    "session": "Round 2",
    "status": "upcoming",
    "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-16",
-   "kickoff": "2026-10-16T06:30:00.000Z",
-   "end": "2026-10-16T12:30:00.000Z",
+   "kickoff": "2026-10-16T06:30:01.000Z",
+   "end": "2026-10-16T12:15:01.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Golf",
@@ -157,8 +157,8 @@
    "session": "Round 3",
    "status": "upcoming",
    "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-17",
-   "kickoff": "2026-10-17T06:30:00.000Z",
-   "end": "2026-10-17T12:30:00.000Z",
+   "kickoff": "2026-10-17T07:30:00.000Z",
+   "end": "2026-10-17T12:15:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Golf",
@@ -685,7 +685,7 @@
    "session": "Round 4",
    "status": "upcoming",
    "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-18",
-   "kickoff": "2026-10-18T06:00:00.000Z",
+   "kickoff": "2026-10-18T05:30:00.000Z",
    "end": "2026-10-18T12:30:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -752,6 +752,58 @@
     "alsoOn": [
      "Sky Sports+"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792314000",
+   "kickoff": "2026-10-18T09:00:00.000Z",
+   "end": "2026-10-18T11:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792324800",
+   "kickoff": "2026-10-18T12:00:00.000Z",
+   "end": "2026-10-18T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -870,6 +922,32 @@
     "alsoOn": [
      "Sky Sports Premier League"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792346400",
+   "kickoff": "2026-10-18T18:00:00.000Z",
+   "end": "2026-10-18T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2880,13 +2958,19 @@
    "awayScore": null,
    "source": "efl.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -3251,13 +3335,19 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

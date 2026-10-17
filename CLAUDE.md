@@ -25,6 +25,7 @@ George is not a developer: explain anything he has to do in plain language. He's
 - `.github/workflows/update.yml` runs the build every hour at :17 (GitHub often starts these late or skips them) and on demand (Actions → Update fixtures → Run workflow), then commits `data.json`. Each run commits because `generatedAt` changes, which also stops GitHub pausing the schedule.
 - `.github/workflows/check.yml` runs on pushes to any branch except `main`: all offline tests, then a live build (not saved) that fails if any source didn't answer from GitHub's US servers (Prime Video's expected `wrongRegion` is only noted).
 - `index.html` is the whole app (inline CSS/JS). On `*.github.io` it reads `data.json` from `raw.githubusercontent.com/<user>/<repo>/main/` (updates show within ~5 minutes), falling back to the local `data.json`. It reloads on open and when the tab becomes visible, and re-renders every minute. `?demo` loads `demo-data.json` (24 Sept 2026 week: F1, F2, darts) and `?demo=2` loads `demo-data-2.json` (12–20 Oct 2026: golf, snooker, cricket), pretending it's that week.
+- `design-a.html` is **Design A**, a trial multi-sport redesign developed alongside `index.html` until George picks one: sport icons (My TV, Football, Motorsport, Golf, Cricket, Others, Specials), competition chips, and a customisable **My TV** default view. It reads the same `data.json`; `?demo=3` loads `preview-data.json` (real 17 Oct 2026 data plus made-up `sample: true` events for MotoGP and Specials). Full description in `designA.md`. It duplicates `index.html`'s listing and banner code, so changes to those go in both.
 
 ## Data sources (all unofficial, undocumented endpoints)
 
@@ -97,7 +98,7 @@ UK rights for 2026/27 (background only – never used to infer a channel): PL on
   - `node test/run-golf-snooker-cricket-test.mjs` – real data and real Sky guide, 12–20 Oct 2026. `--write-demo` rewrites `demo-data-2.json`.
   - `node test/run-more-football-test.mjs` – Europa League, Championship, cups (real data, 13 Oct 2026).
 - Each test mocks `fetch` and replays files in `test/fixtures/` named `<source>-<date>.<json|html>`, trimmed to what's needed (HTML pages: the relevant markup only, with a comment saying what was kept). Capture fixtures from the real source; say in the test header when they were captured.
-- Preview: `.claude/launch.json` has an `app` config (a tiny Node static server on port 8123); open `http://localhost:8123/` (`?demo`, `?demo=2`). Check phone widths 320–412px and both themes. To preview with fresh data, write a build to `data.json` temporarily and restore it with `git checkout data.json` afterwards.
+- Preview: `.claude/launch.json` has an `app` config (a tiny Node static server on port 8123); open `http://localhost:8123/` (`?demo`, `?demo=2`). Check phone widths 320–412px and both themes. To preview with fresh data, write a build to `data.json` temporarily and restore it with `git checkout data.json` afterwards. Design A: `http://localhost:8123/design-a.html` (`?demo=3`).
 
 ## Working conventions
 
@@ -112,4 +113,5 @@ UK rights for 2026/27 (background only – never used to infer a channel): PL on
 ## Open items
 
 - **Option 2 (next step, chosen 14 Oct 2026):** run the hourly update from a UK server (e.g. a scheduled job in Google Cloud's London region on the free tier, or a small UK server). Removes the Amazon stopgap, makes the PL broadcaster feed useful, and fixes GitHub's late/skipped runs. Until then: one UK update each week before Tuesday's Champions League games.
+- **Design A** (`design-a.html`, `designA.md`, 17 Oct 2026): on trial; George decides whether it replaces the tabs in `index.html`.
 - Later: rename the app; a **Specials** section for one-off events (e.g. Wimbledon, Tour de France; MotoGP/cycling could go there); possibly the Conference League, women's cricket, the LPGA. Commercial version: licensed fixtures/TV-listings data and hosting off GitHub Pages (Play Store via a Trusted Web Activity, privacy policy, own domain).

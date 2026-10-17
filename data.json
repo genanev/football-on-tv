@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-16T21:20:23.138Z",
+ "generatedAt": "2026-10-17T00:33:57.330Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4327,
+   "programmes": 4079,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1019,
+   "programmes": 996,
    "errors": []
   },
   "primeVideo": {
@@ -25,7 +25,7 @@
   },
   "premierLeague": {
    "ok": true,
-   "matches": 15
+   "matches": 20
   },
   "championsLeague": {
    "ok": true,
@@ -39,10 +39,10 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
+  "footballChannels": "29/38 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
-   "championship": 25,
+   "championship": 24,
    "leagueCup": 0
   },
   "faCup": {
@@ -51,7 +51,7 @@
   },
   "formula1": {
    "ok": true,
-   "sessions": 1
+   "sessions": 2
   },
   "formula2": {
    "ok": true,
@@ -62,7 +62,7 @@
    "tournaments": [
     "European Championship"
    ],
-   "sessions": 3
+   "sessions": 4
   },
   "golf": {
    "ok": true,
@@ -79,74 +79,14 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 17
+   "sessions": 18
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 12
   }
  },
  "events": [
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "DP World India Championship",
-   "venue": "Delhi GC",
-   "source": "europeantour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-16",
-   "kickoff": "2026-10-16T06:30:01.000Z",
-   "end": "2026-10-16T12:15:01.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "efl-g2647372",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-16T19:00:00.000Z",
-   "timeTbc": false,
-   "home": "Burnley",
-   "away": "Wolverhampton Wanderers",
-   "homeShort": "Burnley",
-   "awayShort": "Wolverhampton Wanderers",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 2,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Football"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "GOLF",
    "kind": "session",
@@ -3447,6 +3387,271 @@
     "alsoOn": [
      "Sky Sports Main Event"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Genesis Championship",
+   "venue": "Woo Jeong Hills CC",
+   "source": "europeantour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-25",
+   "kickoff": "2026-10-25T03:00:00.000Z",
+   "end": "2026-10-25T06:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Pakistan v England",
+   "venue": "Gaddafi Stadium, Lahore",
+   "series": "ODI Tri-Series in Pakistan, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-274145",
+   "kickoff": "2026-10-25T08:00:00.000Z",
+   "end": "2026-10-25T16:00:00.000Z",
+   "session": "Match 4 (ODI)",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "European Championship",
+   "venue": "Westfalenhalle, Dortmund",
+   "source": "pdc.tv",
+   "id": "darts-10870-2026-10-25",
+   "kickoff": "2026-10-25T11:00:00.000Z",
+   "end": null,
+   "session": null,
+   "status": "upcoming",
+   "timeTbc": true,
+   "allDay": true,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV times to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792933200",
+   "kickoff": "2026-10-25T13:00:00.000Z",
+   "end": "2026-10-25T16:00:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645269",
+   "comp": "PL",
+   "kickoff": "2026-10-25T14:00:00.000Z",
+   "home": "Crystal Palace",
+   "away": "Newcastle United",
+   "homeShort": "Crystal Palace",
+   "awayShort": "Newcastle",
+   "venue": "Selhurst Park, London",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 8",
+   "kind": "match",
+   "source": "premierleague.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645270",
+   "comp": "PL",
+   "kickoff": "2026-10-25T14:00:00.000Z",
+   "home": "Hull City",
+   "away": "Brentford",
+   "homeShort": "Hull",
+   "awayShort": "Brentford",
+   "venue": "MKM Stadium, Hull",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 8",
+   "kind": "match",
+   "source": "premierleague.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645272",
+   "comp": "PL",
+   "kickoff": "2026-10-25T14:00:00.000Z",
+   "home": "Liverpool",
+   "away": "Brighton and Hove Albion",
+   "homeShort": "Liverpool",
+   "awayShort": "Brighton",
+   "venue": "Anfield, Liverpool",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 8",
+   "kind": "match",
+   "source": "premierleague.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "pl-2645273",
+   "comp": "PL",
+   "kickoff": "2026-10-25T14:00:00.000Z",
+   "home": "Manchester United",
+   "away": "Bournemouth",
+   "homeShort": "Man Utd",
+   "awayShort": "Bournemouth",
+   "venue": "Old Trafford, Manchester",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 8",
+   "kind": "match",
+   "source": "premierleague.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "pl-2645274",
+   "comp": "PL",
+   "kickoff": "2026-10-25T16:30:00.000Z",
+   "home": "Sunderland",
+   "away": "Leeds United",
+   "homeShort": "Sunderland",
+   "awayShort": "Leeds",
+   "venue": "Stadium of Light, Sunderland",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Matchweek 8",
+   "kind": "match",
+   "source": "premierleague.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f1-11396",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-10-25T20:00:00.000Z",
+   "end": "2026-10-25T22:00:00.000Z",
+   "title": "United States Grand Prix",
+   "session": "Race",
+   "venue": "Austin",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

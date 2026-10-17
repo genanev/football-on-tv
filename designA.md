@@ -21,7 +21,7 @@ then dropped on 17 Oct 2026.
  ┌──────────────────────────────────────────────┐  ← sticky
  │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (◎ ›  │  sport icons, scroll sideways
  │ My TV Football Motorsport  Golf Cricket Da…  │
- │ [⚙ Customise Your TV Feed]                   │  ← on My TV
+ │ [⚙ Customise My TV] [📅 All days]             │  ← on My TV
  │ Current Selection: Football, Golf, Darts     │
  │ [All football] [Premier League] [Champions…  │  ← on a sport: competition chips
  └──────────────────────────────────────────────┘
@@ -103,8 +103,13 @@ in advance:
   at, because My TV *is* your default view.
 - **What it shows:** every listing whose competition is in your picks, merged into one list
   grouped by day.
-- **Customise button** ("Customise Your TV Feed", on the left, under the icons) opens a sheet that slides up from the bottom (`<dialog>`), titled
-  *Customise My TV*:
+- **Day button** (calendar icon, next to Customise): reads "All days" by default, or "Today",
+  "Tomorrow" or the date ("Tue 20 Oct"). It opens a **Pick a day** sheet with "All days" and each of
+  the 8 days; tapping one applies it and closes the sheet. With a day picked, My TV lists only that
+  day. The choice is kept while you use Customise, and resets to "All days" when you tap another
+  sport, or My TV again, or reload. It applies to My TV only, not to the sport views.
+- **Customise button** ("Customise My TV", on the left, under the icons) opens a sheet that slides up
+  from the bottom (`<dialog>`), titled *Customise My TV*:
   - one card per sport: its icon, its name, a count ("All", "2 of 3", "None") and a **switch**
     for the whole sport. The switch is on when all competitions are ticked, off when none are,
     and in a half-way position when some are. Tapping it turns the whole sport on (or, if

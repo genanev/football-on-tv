@@ -338,7 +338,8 @@
     motor: svg('<path d="M5 21V3.5"/><rect x="5" y="4" width="14" height="9" rx=".5"/><path d="M5 4h4.7v4.5H5zM14.3 4H19v4.5h-4.7zM9.7 8.5h4.6V13H9.7z" fill="currentColor" stroke="none"/>'),
     golf: svg('<path d="M8 20V3l9 4-9 4"/><ellipse cx="8" cy="20" rx="5" ry="1.4"/><circle cx="17" cy="17.5" r="1.4"/>'),
     cricket: svg('<g transform="rotate(-35 12 12)"><path d="M9.8 9.5h4.4v10a1.5 1.5 0 0 1-1.5 1.5h-1.4a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M12 9.5V3"/></g><circle cx="6" cy="18" r="2.2"/>'),
-    others: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>'),
+    darts: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>'),
+    snooker: svg('<circle cx="8" cy="16" r="4"/><circle cx="16" cy="16" r="4"/><circle cx="12" cy="9.1" r="4"/>'),
     specials: svg('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 5.5H5.5v1a3 3 0 0 0 3 3M16 5.5h2.5v1a3 3 0 0 1-3 3"/><path d="M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/>'),
     edit: svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
   };
@@ -369,8 +370,11 @@
       { id: 'ODI', name: 'ODIs', tag: 'ODI', color: 'var(--cricket)', none: 'No ODIs on TV' },
       { id: 'T20I', name: 'T20 internationals', tag: 'T20I', color: 'var(--cricket)', none: 'No T20 internationals on TV' },
     ] },
-    { id: 'others', name: 'Others', color: 'var(--darts)', none: 'No televised darts or snooker', comps: [
+    // Darts and snooker each have one competition, so they get no chip row
+    { id: 'darts', name: 'Darts', color: 'var(--darts)', none: 'No televised darts', comps: [
       { id: 'DARTS', name: 'Darts', tag: 'Darts', color: 'var(--darts)', none: 'No televised darts' },
+    ] },
+    { id: 'snooker', name: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker', comps: [
       { id: 'SNOOKER', name: 'Snooker', tag: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker' },
     ] },
     { id: 'specials', name: 'Specials', color: 'var(--special)', none: 'No big events on TV', comps: [
@@ -401,8 +405,9 @@
   } catch (e) {}
   const savePicks = () => { try { localStorage.setItem('myComps', JSON.stringify([...picks])); } catch (e) {} };
 
-  // What's on screen: My TV, a whole sport, or one competition. The app always opens on My TV.
-  let view = { sport: 'mine', comp: null };
+  // What's on screen: My TV, a whole sport, or some of its competitions (`comps`; empty = the whole
+  // sport). The app always opens on My TV.
+  let view = { sport: 'mine', comps: new Set() };
 
   const fmt = (opts) => new Intl.DateTimeFormat('en-GB', { timeZone: TZ, ...opts });
   const fDate = fmt({ year: 'numeric', month: '2-digit', day: '2-digit' });
@@ -492,7 +497,7 @@
     </div>`;
   }
 
-  const inView = (cid) => view.sport === 'mine' ? picks.has(cid) : view.comp ? cid === view.comp : SPORT_OF[cid] === view.sport;
+  const inView = (cid) => view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport;
 
   // A short summary of My TV's picks: whole sports by name, otherwise the competitions.
   function picksSummary() {
@@ -516,9 +521,11 @@
         <button class="edit" id="edit">${ICON.edit}<span>Customise</span></button></div>`;
     } else {
       const s = SPORTS.find(x => x.id === view.sport);
-      $('#sub').innerHTML = `<div class="chips" role="group" aria-label="${esc(s.name)} competitions">
-        <button class="chip" data-c="" aria-pressed="${!view.comp}">All ${esc(s.name.toLowerCase())}</button>
-        ${s.comps.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${view.comp === c.id}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}
+      // A sport with a single competition has nothing to choose between, so no chips.
+      // Otherwise several chips can be on at once; "All" is on when none of them is.
+      $('#sub').innerHTML = s.comps.length < 2 ? '' : `<div class="chips" role="group" aria-label="${esc(s.name)} competitions">
+        <button class="chip" data-c="" aria-pressed="${!view.comps.size}">All ${esc(s.name.toLowerCase())}</button>
+        ${s.comps.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${view.comps.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}
       </div>`;
     }
     updateFades();
@@ -557,8 +564,10 @@
     if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
     let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
     // Competitions without a data source yet (only when one is picked on its own, or My TV is empty)
-    const c = view.comp && COMP[view.comp];
-    if (c && c.soon && DEMO_ARG !== '3') bannerHtml += `<div class="banner info">${esc(c.name)} isn’t connected yet. Its listings will appear here once it is.</div>`;
+    const chosen = [...view.comps].map(id => COMP[id]);
+    if (chosen.length && chosen.every(c => c.soon) && DEMO_ARG !== '3') {
+      bannerHtml += `<div class="banner info">${esc(chosen.map(c => c.name).join(' and '))} ${chosen.length > 1 ? 'aren’t' : 'isn’t'} connected yet. Their listings will appear here once ${chosen.length > 1 ? 'they are' : 'it is'}.</div>`;
+    }
     if (view.sport === 'mine' && !picks.size) bannerHtml += '<div class="banner info">My TV is empty. <button id="edit2">Pick your sports</button> to fill it.</div>';
     $('#banner').innerHTML = bannerHtml;
 
@@ -575,7 +584,8 @@
     }
 
     const none = view.sport === 'mine' ? 'Nothing on TV from your picks'
-      : view.comp ? COMP[view.comp].none : SPORTS.find(s => s.id === view.sport).none;
+      : view.comps.size === 1 ? COMP[[...view.comps][0]].none
+      : view.comps.size ? 'Nothing on TV from your selection' : SPORTS.find(s => s.id === view.sport).none;
     let html = '';
     for (const d of days) {
       const list = byDay[d.key];
@@ -606,7 +616,7 @@
   }
 
   // Navigation: tap a sport icon, then (optionally) one of its competitions
-  function go(next) {
+  function go(next, chipId) {
     view = next;
     renderNav();
     render();
@@ -614,16 +624,24 @@
     if (window.scrollY > top) window.scrollTo({ top });
     const tab = $(`.sport[data-s="${view.sport}"]`);
     if (tab) tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-    const chip = $('.chip[aria-pressed="true"]');
+    // Keep the chip that was just tapped in sight (the others stay where they are)
+    const chip = chipId && $(`.chip[data-c="${chipId}"]`);
     if (chip) chip.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
   $('#rail').addEventListener('click', (ev) => {
     const b = ev.target.closest('.sport');
-    if (b) go({ sport: b.dataset.s, comp: null });
+    if (b) go({ sport: b.dataset.s, comps: new Set() });
   });
   $('#sub').addEventListener('click', (ev) => {
     const chip = ev.target.closest('.chip');
-    if (chip) go({ sport: view.sport, comp: chip.dataset.c || null });
+    if (chip) {
+      // "All" clears the selection; any other chip is switched on or off. Switching off the last
+      // one leaves nothing selected, which means the whole sport again.
+      const id = chip.dataset.c;
+      const comps = new Set(id ? view.comps : []);
+      if (id) comps.has(id) ? comps.delete(id) : comps.add(id);
+      go({ sport: view.sport, comps }, id);
+    }
     if (ev.target.closest('#edit')) openPicker();
   });
   $('#banner').addEventListener('click', (ev) => { if (ev.target.closest('#edit2')) openPicker(); });
@@ -645,9 +663,9 @@
       const on = s.comps.filter(c => picks.has(c.id)).length;
       return `<div class="grp" style="--sc:${s.color}">
         <label class="grp-h"><span class="ic">${ICON[s.id]}</span>
-          <span class="nm">${esc(s.name)}<span class="ct">${on === s.comps.length ? 'All' : on ? `${on} of ${s.comps.length}` : 'None'}</span></span>
-          <input type="checkbox" class="switch" data-sport="${s.id}" aria-label="All of ${esc(s.name)}" ${on === s.comps.length ? 'checked' : ''}></label>
-        <div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>
+          <span class="nm">${esc(s.name)}<span class="ct">${s.comps.length < 2 ? (on ? 'On' : 'Off') : on === s.comps.length ? 'All' : on ? `${on} of ${s.comps.length}` : 'None'}</span></span>
+          <input type="checkbox" class="switch" data-sport="${s.id}" aria-label="${s.comps.length < 2 ? '' : 'All of '}${esc(s.name)}" ${on === s.comps.length ? 'checked' : ''}></label>
+        ${s.comps.length < 2 ? '' : `<div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>`}
       </div>`;
     }).join('') + '<div class="sheet-f"><button data-all="1">Select everything</button><button data-all="0">Clear all</button></div>';
     for (const s of SPORTS) {
@@ -680,7 +698,7 @@
     else return;
     savePicks(); renderPicker(); renderNav(); render();
   });
-  $('#picker-done').addEventListener('click', () => { closePicker(); go({ sport: 'mine', comp: null }); });
+  $('#picker-done').addEventListener('click', () => { closePicker(); go({ sport: 'mine', comps: new Set() }); });
   $('#picker').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closePicker(); }); // tap outside the sheet
 
   // Colour theme: Light / Dark. First visit matches the phone; after that your choice is remembered.

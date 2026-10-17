@@ -20,7 +20,7 @@ then dropped on 17 Oct 2026.
  UK times · updated 12 min ago
  ┌──────────────────────────────────────────────┐  ← sticky
  │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (◎ ›  │  sport icons, scroll sideways
- │ My TV Football Motorsport  Golf Cricket Oth… │
+ │ My TV Football Motorsport  Golf Cricket Da…  │
  │ Showing Football, Golf, Darts  [⚙ Customise] │  ← on My TV
  │ [All football] [Premier League] [Champions…  │  ← on a sport: competition chips
  └──────────────────────────────────────────────┘
@@ -34,8 +34,9 @@ then dropped on 17 Oct 2026.
 1. **My TV** (star icon) is the default view. The app always opens on it, and it shows only the
    competitions you ticked in **Customise**.
 2. The **sport icons** open a whole sport, for example all football.
-3. The **competition chips** under a sport narrow it to one competition, for example only the
-   Europa League.
+3. The **competition chips** under a sport narrow it to the competitions you tap, for example only
+   the Premier League and the Champions League (see "Navigation details"). Darts and snooker have
+   one competition each, so they have no chips.
 
 ## Section grouping
 
@@ -60,8 +61,8 @@ label on each listing), a colour, and its empty-day message (`none`).
 | **Cricket** (bat and ball, indigo) | Tests | `TEST` | Test | ✅ (data `comp: CRICKET`, "Test" in `session`) |
 | | ODIs | `ODI` | ODI | ✅ (the rest) |
 | | T20 internationals | `T20I` | T20I | ✅ ("T20" in `session`) |
-| **Others** (dartboard, darts gold) | Darts | `DARTS` | Darts | ✅ |
-| | Snooker | `SNOOKER` | Snooker | ✅ |
+| **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
+| **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
 | **Specials** (trophy, pink) | Wimbledon & tennis | `SPECIAL_TENNIS` | Tennis | soon |
 | | Tour de France | `SPECIAL_CYCLING` | Cycling | soon |
 | | Athletics championships | `SPECIAL_ATHLETICS` | Athletics | soon |
@@ -131,7 +132,12 @@ in advance:
   edge fades when more icons are hidden that way. The selected icon fills with the sport's colour
   and the icon turns white. Icons are inline line-drawn SVGs that follow the text colour (`ICON`).
 - **Competition chips** (`.chips`): "All football", then one per competition, scrolling
-  sideways. The selected chip is filled dark (light in dark mode) and scrolled into view.
+  sideways. Several competitions can be on at once: each tap switches that chip on or off, and
+  selected chips are filled dark (light in dark mode). "All football" is on when no competition chip
+  is, and tapping it clears the selection. Switching off the last selected chip goes back to the
+  whole sport. The chip just tapped is scrolled into view.
+- **Single-competition sports** (Darts, Snooker) show no chip row, and in Customise they are just
+  a switch ("On"/"Off") with no competition buttons.
 - The icons and chips/summary stay **sticky** at the top; a hairline appears under them once the
   list scrolls beneath. Switching view jumps back to the top of the list.
 
@@ -147,9 +153,9 @@ Same cards as the main app, with these changes:
   source feeds (same wording as `index.html`; mapped to competition ids in `render()`).
 - Every day of the 8-day window is listed. Empty-day messages: My TV "Nothing on TV from your
   picks"; whole sport "No televised football" / "No motorsport sessions" / "No televised golf" /
-  "No international cricket on TV" / "No televised darts or snooker" / "No big events on TV";
-  single competition: its own message (e.g. "No scheduled PL games", "No televised FA Cup ties",
-  "No F1 sessions").
+  "No international cricket on TV" / "No televised darts" / "No televised snooker" / "No big events
+  on TV"; one competition chip: its own message (e.g. "No scheduled PL games", "No televised FA Cup
+  ties", "No F1 sessions"); two or more chips: "Nothing on TV from your selection".
 
 ## Files
 
@@ -166,6 +172,7 @@ both until one design is chosen. If Design A wins, its navigation replaces the t
 
 ## Open questions for George
 
-- Section names: "Others" vs "More"; "Specials" vs "Big events".
-- Should the icon row hide sports you never pick, or always show all six?
-- App name: with Specials and six sports, "Football on TV" may no longer fit (already an open item).
+- Section names: "Specials" vs "Big events". (The "Others" section was removed on 17 Oct 2026:
+  Darts and Snooker are separate sports.)
+- Should the icon row hide sports you never pick, or always show all seven?
+- App name: with Specials and seven sports, "Football on TV" may no longer fit (already an open item).

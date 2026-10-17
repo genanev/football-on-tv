@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-17T00:40:15.366Z",
+ "generatedAt": "2026-10-17T05:40:01.752Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4081,
+   "programmes": 4269,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 996,
+   "programmes": 995,
    "errors": []
   },
   "primeVideo": {
@@ -71,7 +71,7 @@
     "DP World India Championship",
     "Genesis Championship"
    ],
-   "rounds": 9,
+   "rounds": 10,
    "errors": []
   },
   "snooker": {
@@ -79,7 +79,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 18
+   "sessions": 19
   },
   "cricket": {
    "ok": true,
@@ -3637,6 +3637,58 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Butterfield Bermuda Championship",
+   "venue": "Port Royal Golf Course",
+   "source": "pgatour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-pga-R2026528-2026-10-25",
+   "kickoff": "2026-10-25T17:00:00.000Z",
+   "end": "2026-10-25T20:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792954800",
+   "kickoff": "2026-10-25T19:00:00.000Z",
+   "end": "2026-10-25T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "f1-11396",
    "comp": "F1",
    "kind": "session",
@@ -3649,11 +3701,13 @@
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {
-    "broadcaster": "Sky Sports Main Event",
+    "broadcaster": "Sky Sports F1",
     "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
      "Sky Sports Main Event"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

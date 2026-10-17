@@ -1,21 +1,21 @@
 {
- "generatedAt": "2026-10-17T10:54:10.356Z",
+ "generatedAt": "2026-10-17T14:15:37.685Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4269,
+   "programmes": 4273,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 20,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 995,
+   "programmes": 994,
    "errors": []
   },
   "primeVideo": {
@@ -47,7 +47,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 1
+   "ties": 0
   },
   "formula1": {
    "ok": true,
@@ -127,9 +127,9 @@
    "homeShort": "Middlesbrough",
    "awayShort": "Cardiff",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 2,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports+",
@@ -141,8 +141,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -158,9 +157,9 @@
    "homeShort": "Millwall",
    "awayShort": "Lincoln",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": 0,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 2,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports+",
@@ -172,7 +171,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -188,8 +188,8 @@
    "homeShort": "Watford",
    "awayShort": "Charlton",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": 0,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 0,
    "source": "efl.com",
    "tv": {
@@ -204,38 +204,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "facup-2026-10-17-bury-harrogate-town-afc",
-   "comp": "CUPS",
-   "label": "FA Cup",
-   "kind": "match",
-   "kickoff": "2026-10-17T11:30:00.000Z",
-   "home": "Bury",
-   "away": "Harrogate Town AFC",
-   "homeShort": "Bury",
-   "awayShort": "Harrogate Town AFC",
-   "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Fourth Round Qualifying",
-   "source": "thefa.com",
-   "tv": {
-    "broadcaster": "BBC Sport",
-    "channels": [
-     "BBC Sport"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "thefa.com"
+     "sky-guide"
     ]
    }
   },
@@ -248,9 +217,9 @@
    "homeShort": "Everton",
    "awayShort": "Chelsea",
    "venue": "Hill Dickinson Stadium, Liverpool",
-   "status": "upcoming",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -312,9 +281,9 @@
    "homeShort": "Birmingham",
    "awayShort": "QPR",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -338,9 +307,9 @@
    "homeShort": "Bristol C",
    "awayShort": "Sheffield Utd",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -364,9 +333,9 @@
    "homeShort": "Derby",
    "awayShort": "Stoke",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -390,9 +359,9 @@
    "homeShort": "Norwich",
    "awayShort": "Portsmouth",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -416,9 +385,9 @@
    "homeShort": "Southampton",
    "awayShort": "Bolton",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -442,9 +411,9 @@
    "homeShort": "Swansea",
    "awayShort": "West Ham United",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -468,9 +437,9 @@
    "homeShort": "West Brom",
    "awayShort": "Blackburn",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 2,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -494,9 +463,9 @@
    "homeShort": "Wrexham",
    "awayShort": "PNE",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": null,
@@ -517,9 +486,9 @@
    "homeShort": "Brentford",
    "awayShort": "Liverpool",
    "venue": "Gtech Community Stadium, Brentford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -542,9 +511,9 @@
    "homeShort": "Fulham",
    "awayShort": "Hull",
    "venue": "Craven Cottage, London",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -567,9 +536,9 @@
    "homeShort": "Man City",
    "awayShort": "Ipswich",
    "venue": "Etihad Stadium, Manchester",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -776,7 +745,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -805,7 +775,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -834,7 +805,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -859,13 +831,15 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Premier League"
+     "Sky Sports Premier League",
+     "Sky Sports Football"
     ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

@@ -1,21 +1,21 @@
 {
- "generatedAt": "2026-10-17T17:20:09.730Z",
+ "generatedAt": "2026-10-17T20:42:58.055Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4273,
+   "programmes": 4270,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 22,
+   "events": 21,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 994,
+   "programmes": 993,
    "errors": []
   },
   "primeVideo": {
@@ -559,7 +559,7 @@
    "homeShort": "Newcastle",
    "awayShort": "Aston Villa",
    "venue": "St. James' Park, Newcastle",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 1,
    "round": "Matchweek 7",
@@ -577,8 +577,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

@@ -21,7 +21,8 @@ then dropped on 17 Oct 2026.
  ┌──────────────────────────────────────────────┐  ← sticky
  │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (◎ ›  │  sport icons, scroll sideways
  │ My TV Football Motorsport  Golf Cricket Da…  │
- │ Showing Football, Golf, Darts  [⚙ Customise] │  ← on My TV
+ │ [⚙ Customise Your TV Feed]                   │  ← on My TV
+ │ Current Selection: Football, Golf, Darts     │
  │ [All football] [Premier League] [Champions…  │  ← on a sport: competition chips
  └──────────────────────────────────────────────┘
  TODAY · SATURDAY 17 OCT
@@ -102,10 +103,7 @@ in advance:
   at, because My TV *is* your default view.
 - **What it shows:** every listing whose competition is in your picks, merged into one list
   grouped by day.
-- **Summary line** (under the icons): "Showing **everything**" when everything is ticked, otherwise
-  whole sports by name and single competitions by tag, for example "Showing **Football, Golf, ODI,
-  T20I, Darts**". Long summaries end in "…".
-- **Customise button** opens a sheet that slides up from the bottom (`<dialog>`), titled
+- **Customise button** ("Customise Your TV Feed", on the left, under the icons) opens a sheet that slides up from the bottom (`<dialog>`), titled
   *Customise My TV*:
   - one card per sport: its icon, its name, a count ("All", "2 of 3", "None") and a **switch**
     for the whole sport. The switch is on when all competitions are ticked, off when none are,
@@ -116,6 +114,9 @@ in advance:
   - "Select everything" and "Clear all" at the bottom; **Done** (or tapping outside the sheet)
     closes it.
   - Changes apply straight away. Done returns to My TV.
+- **Summary line** (under the Customise button): "Current Selection: **Everything**" when everything
+  is ticked, otherwise the sports with anything ticked, by sport name only (not the competitions),
+  for example "Current Selection: **Football, Golf, Darts**". It wraps onto a second line if long.
 - **Saved on the phone:** `localStorage` key `myComps` (a list of competition ids). The first
   visit has everything ticked. It doesn't touch the main app's saved `filter` or `theme`
   (`theme` is shared on purpose, so both pages use the same Light/Dark choice).

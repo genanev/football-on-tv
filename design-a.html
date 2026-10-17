@@ -181,8 +181,8 @@
   }
   .chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
   .chip .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
-  .mine { display: flex; align-items: center; gap: 10px; margin-top: 10px; min-height: 34px; }
-  .mine .what { flex: 1; min-width: 0; font-size: 14px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mine { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 10px; }
+  .mine .what { font-size: 14px; color: var(--muted); }
   .mine .what b { color: var(--text); font-weight: 600; }
   .edit {
     flex: none; display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--text);
@@ -499,17 +499,12 @@
 
   const inView = (cid) => view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport;
 
-  // A short summary of My TV's picks: whole sports by name, otherwise the competitions.
+  // A short summary of My TV's picks: the sports with anything picked (not the competitions).
   function picksSummary() {
-    if (picks.size === ALL_COMPS.length) return 'Showing <b>everything</b>';
-    if (!picks.size) return 'Nothing picked yet';
-    const parts = [];
-    for (const s of SPORTS) {
-      const on = s.comps.filter(c => picks.has(c.id));
-      if (on.length === s.comps.length) parts.push(s.name);
-      else parts.push(...on.map(c => c.tag));
-    }
-    return `Showing <b>${esc(parts.join(', '))}</b>`;
+    if (picks.size === ALL_COMPS.length) return 'Current Selection: <b>Everything</b>';
+    if (!picks.size) return 'Current Selection: <b>Nothing picked yet</b>';
+    const names = SPORTS.filter(s => s.comps.some(c => picks.has(c.id))).map(s => s.name);
+    return `Current Selection: <b>${esc(names.join(', '))}</b>`;
   }
 
   function renderNav() {
@@ -517,8 +512,9 @@
     $('#rail').innerHTML = tabs.map(s => `<button class="sport" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--sc:${s.color}">
       <span class="ic">${ICON[s.id]}</span><span>${esc(s.name)}</span></button>`).join('');
     if (view.sport === 'mine') {
-      $('#sub').innerHTML = `<div class="mine"><div class="what">${picksSummary()}</div>
-        <button class="edit" id="edit">${ICON.edit}<span>Customise</span></button></div>`;
+      $('#sub').innerHTML = `<div class="mine">
+        <button class="edit" id="edit">${ICON.edit}<span>Customise Your TV Feed</span></button>
+        <div class="what">${picksSummary()}</div></div>`;
     } else {
       const s = SPORTS.find(x => x.id === view.sport);
       // A sport with a single competition has nothing to choose between, so no chips.

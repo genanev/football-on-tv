@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-17T05:40:01.752Z",
+ "generatedAt": "2026-10-17T10:54:10.356Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -128,8 +128,8 @@
    "awayShort": "Cardiff",
    "venue": null,
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports+",
@@ -159,8 +159,8 @@
    "awayShort": "Lincoln",
    "venue": null,
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports+",
@@ -189,8 +189,8 @@
    "awayShort": "Charlton",
    "venue": null,
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "source": "efl.com",
    "tv": {
     "broadcaster": "Sky Sports Main Event",
@@ -249,8 +249,8 @@
    "awayShort": "Chelsea",
    "venue": "Hill Dickinson Stadium, Liverpool",
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",

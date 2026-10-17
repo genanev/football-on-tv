@@ -105,7 +105,7 @@ Later updates keep Amazon's pick until the end of the match day.
 
 - **Branches:** new work goes on a branch. Pushing it runs the tests and a live check on GitHub (`check.yml`). Changes reach the live app only when the branch is merged into `main`, because GitHub Pages publishes `main`.
 - **Tests:** they replay real data captured from each source, so they run offline. Run all four after any change to `scripts/`.
-- **Running an update by hand on GitHub:** **Actions** tab → **Update fixtures** → **Run workflow**.
+- **Running an update by hand on GitHub:** **Actions** tab → **Update fixtures** → **Run workflow**. That button always uses the latest version. "Re-run" on an old run repeats that old run; since 17 Oct 2026 it also uses the latest version, but "Run workflow" is the right button.
 
 ## If something looks wrong
 

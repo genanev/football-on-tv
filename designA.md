@@ -63,7 +63,7 @@ label on each listing), a colour, and its empty-day message (`none`).
 | | ODIs | `ODI` | ODI | ✅ (the rest) |
 | | T20 internationals | `T20I` | T20I | ✅ ("T20" in `session`) |
 | **Rugby** (rugby ball, teal) | Six Nations | `RU_6N` | Six Nations | soon |
-| | Nations Championship | `RU_NATIONS` | Nations Champ. | soon |
+| | Nations Championship | `RU_NATIONS` | Nations Champ | soon |
 | | Premiership | `RU_PREM` | Premiership | soon |
 | | Champions Cup | `RU_CUP` | Champions Cup | soon |
 | | Super League | `RL_SL` | Super League | soon |

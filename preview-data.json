@@ -690,6 +690,32 @@
       }
     },
     {
+      "id": "sample-rugby1",
+      "comp": "RL_NRL",
+      "kind": "match",
+      "kickoff": "2026-10-18T08:00:00.000Z",
+      "home": "Penrith Panthers",
+      "away": "Melbourne Storm",
+      "homeShort": "Penrith Panthers",
+      "awayShort": "Melbourne Storm",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "Sky Sports Action",
+        "channels": [
+          "Sky Sports Action"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
       "comp": "SNOOKER",
       "kind": "session",
       "title": "BetVictor Northern Ireland Open",
@@ -848,6 +874,32 @@
         "broadcaster": "Sky Sports NFL",
         "channels": [
           "Sky Sports NFL"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby2",
+      "comp": "RU_URC",
+      "kind": "match",
+      "kickoff": "2026-10-18T14:00:00.000Z",
+      "home": "Glasgow Warriors",
+      "away": "Leinster",
+      "homeShort": "Glasgow Warriors",
+      "awayShort": "Leinster",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "Premier Sports 1",
+        "channels": [
+          "Premier Sports 1"
         ],
         "alsoOn": [],
         "confirmed": true,
@@ -2848,6 +2900,58 @@
       }
     },
     {
+      "id": "sample-rugby3",
+      "comp": "RL_SL",
+      "kind": "match",
+      "kickoff": "2026-10-23T19:00:00.000Z",
+      "home": "Wigan Warriors",
+      "away": "St Helens",
+      "homeShort": "Wigan Warriors",
+      "awayShort": "St Helens",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "Sky Sports Main Event",
+        "channels": [
+          "Sky Sports Main Event"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby4",
+      "comp": "RU_URC",
+      "kind": "match",
+      "kickoff": "2026-10-23T19:45:00.000Z",
+      "home": "Cardiff",
+      "away": "Munster",
+      "homeShort": "Cardiff",
+      "awayShort": "Munster",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "Premier Sports 1",
+        "channels": [
+          "Premier Sports 1"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
       "comp": "GOLF",
       "kind": "session",
       "title": "Genesis Championship",
@@ -2924,6 +3028,30 @@
         "sources": [
           "sky-guide"
         ]
+      }
+    },
+    {
+      "id": "sample-rugby5",
+      "comp": "RL_NRL",
+      "kind": "match",
+      "kickoff": "2026-10-24T09:00:00.000Z",
+      "home": "Brisbane Broncos",
+      "away": "South Sydney Rabbitohs",
+      "homeShort": "Brisbane Broncos",
+      "awayShort": "South Sydney Rabbitohs",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": null,
+        "channels": [],
+        "alsoOn": [],
+        "confirmed": false,
+        "note": "TV channel to be confirmed",
+        "conflict": false,
+        "sources": []
       }
     },
     {
@@ -3328,6 +3456,88 @@
       }
     },
     {
+      "id": "sample-rugby6",
+      "comp": "RL_CC",
+      "kind": "match",
+      "kickoff": "2026-10-24T14:00:00.000Z",
+      "home": "Leigh Leopards",
+      "away": "Hull KR",
+      "homeShort": "Leigh Leopards",
+      "awayShort": "Hull KR",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "BBC Two",
+        "channels": [
+          "BBC Two"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby7",
+      "comp": "RU_NATIONS",
+      "kind": "match",
+      "kickoff": "2026-10-24T14:10:00.000Z",
+      "home": "Scotland",
+      "away": "New Zealand",
+      "homeShort": "Scotland",
+      "awayShort": "New Zealand",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "ITV1",
+        "channels": [
+          "ITV1"
+        ],
+        "alsoOn": [
+          "STV"
+        ],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby8",
+      "comp": "RU_PREM",
+      "kind": "match",
+      "kickoff": "2026-10-24T15:00:00.000Z",
+      "home": "Bath",
+      "away": "Leicester Tigers",
+      "homeShort": "Bath",
+      "awayShort": "Leicester Tigers",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "TNT Sports 1",
+        "channels": [
+          "TNT Sports 1"
+        ],
+        "alsoOn": [
+          "ITV4"
+        ],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
       "id": "pl-2645267",
       "comp": "PL",
       "kickoff": "2026-10-24T16:30:00.000Z",
@@ -3382,6 +3592,32 @@
         "sources": [
           "sky-guide"
         ]
+      }
+    },
+    {
+      "id": "sample-rugby9",
+      "comp": "RU_PREM",
+      "kind": "match",
+      "kickoff": "2026-10-24T17:30:00.000Z",
+      "home": "Saracens",
+      "away": "Northampton Saints",
+      "homeShort": "Saracens",
+      "awayShort": "Northampton Saints",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "TNT Sports 2",
+        "channels": [
+          "TNT Sports 2"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
       }
     },
     {
@@ -3664,6 +3900,56 @@
       "round": "Matchweek 8",
       "kind": "match",
       "source": "premierleague.com",
+      "tv": {
+        "broadcaster": null,
+        "channels": [],
+        "alsoOn": [],
+        "confirmed": false,
+        "note": "TV channel to be confirmed",
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby10",
+      "comp": "RU_6N",
+      "kind": "match",
+      "kickoff": "2026-10-25T14:45:00.000Z",
+      "home": "Wales",
+      "away": "Ireland",
+      "homeShort": "Wales",
+      "awayShort": "Ireland",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "BBC One",
+        "channels": [
+          "BBC One"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
+      "id": "sample-rugby11",
+      "comp": "RU_CUP",
+      "kind": "match",
+      "kickoff": "2026-10-25T15:15:00.000Z",
+      "home": "Toulouse",
+      "away": "Harlequins",
+      "homeShort": "Toulouse",
+      "awayShort": "Harlequins",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
       "tv": {
         "broadcaster": null,
         "channels": [],

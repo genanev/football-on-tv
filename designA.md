@@ -62,6 +62,26 @@ label on each listing), a colour, and its empty-day message (`none`).
 | **Cricket** (bat and ball, indigo) | Tests | `TEST` | Test | ✅ (data `comp: CRICKET`, "Test" in `session`) |
 | | ODIs | `ODI` | ODI | ✅ (the rest) |
 | | T20 internationals | `T20I` | T20I | ✅ ("T20" in `session`) |
+| **Rugby** (rugby ball, teal) | Six Nations | `RU_6N` | Six Nations | soon |
+| | Nations Championship | `RU_NATIONS` | Nations Champ. | soon |
+| | Premiership | `RU_PREM` | Premiership | soon |
+| | Champions Cup | `RU_CUP` | Champions Cup | soon |
+| | URC | `RU_URC` | URC | soon |
+| | Super League | `RL_SL` | Super League | soon |
+| | Challenge Cup | `RL_CC` | Challenge Cup | soon |
+| | NRL | `RL_NRL` | NRL | soon |
+
+**Rugby (added 18 Oct 2026, sample data only).** One icon for both codes: union first (ids `RU_…`),
+then league (`RL_…`). The list is the main competitions shown on UK TV, from a quick web search of
+the broadcasters' rights announcements (background only; the real app would still take each
+channel from a TV guide, never from who holds the rights): Six Nations (BBC and ITV, to 2029),
+the new Nations Championship that replaces the autumn series (ITV and STV, first two editions
+2026 and 2028; one source says Premier Sports too, unchecked), Premiership (TNT Sports, with seven
+ITV games a season), Champions Cup (Premier Sports, ITV for the finals), URC (Premier Sports),
+Super League (Sky Sports, with 15 BBC games; Sky's deal ends after 2026), Challenge Cup (BBC;
+not confirmed), NRL (Sky Sports). Not included yet: Rugby Championship, British & Irish Lions,
+Women's Six Nations, Rugby World Cup (2027) and league internationals. Nothing is connected to a
+data source, so every competition is marked `soon`.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
 | **Specials** (trophy, pink) | Wimbledon & tennis | `SPECIAL_TENNIS` | Tennis | soon |
@@ -168,7 +188,7 @@ Same cards as the main app, with these changes:
 | File | What |
 |---|---|
 | `design-a.html` | The whole Design A page (copy of `index.html`'s card/data code plus the new navigation). No manifest link, so "Add to Home Screen" saves `design-a.html` itself, named "Design A". |
-| `preview-data.json` | For `?demo=3`: the real `data.json` of 17 Oct 2026 plus four made-up events (`sample: true`): MotoGP Australian GP race and Malaysian GP sprint, NFL London Game, World Gymnastics Championships. |
+| `preview-data.json` | For `?demo=3`: the real `data.json` of 17 Oct 2026 plus fifteen made-up events (`sample: true`): MotoGP Australian GP race and Malaysian GP sprint, NFL London Game, World Gymnastics Championships, and eleven rugby games (`id` starts `sample-rugby`; 18–25 Oct, at least one per competition, one with no channel yet and two with "Also on"). Their channels are illustrative only. |
 | `designA.md` | This file. |
 
 **Keeping the two pages in step:** `design-a.html` duplicates `index.html`'s data loading,
@@ -180,5 +200,5 @@ both until one design is chosen. If Design A wins, its navigation replaces the t
 
 - Section names: "Specials" vs "Big events". (The "Others" section was removed on 17 Oct 2026:
   Darts and Snooker are separate sports.)
-- Should the icon row hide sports you never pick, or always show all seven?
-- App name: with Specials and seven sports, "Football on TV" may no longer fit (already an open item).
+- Should the icon row hide sports you never pick, or always show all eight?
+- App name: with Specials and eight sports, "Football on TV" may no longer fit (already an open item).

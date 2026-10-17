@@ -18,7 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      # Always the latest main - even when an old run is re-run from the Actions tab (a re-run
+      # otherwise checks out the code as it was then, and its save is refused).
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: actions/setup-node@v5
         with:
@@ -32,5 +36,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git commit -m "Update fixtures" || echo "No changes"
-          git push
+          git commit -m "Update fixtures" || { echo "No changes"; exit 0; }
+          # If something else was saved meanwhile (another run, a code change), put this update on
+          # top of it; for data.json this run's version wins, as it's the newest.
+          for attempt in 1 2 3; do
+            git push origin HEAD:main && exit 0
+            git pull --rebase -X theirs origin main
+          done
+          exit 1

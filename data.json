@@ -1,21 +1,21 @@
 {
- "generatedAt": "2026-10-17T20:42:58.055Z",
+ "generatedAt": "2026-10-17T23:11:55.870Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4270,
+   "programmes": 4012,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 21,
+   "events": 20,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 993,
+   "programmes": 986,
    "errors": []
   },
   "primeVideo": {
@@ -25,7 +25,7 @@
   },
   "premierLeague": {
    "ok": true,
-   "matches": 20
+   "matches": 15
   },
   "championsLeague": {
    "ok": true,
@@ -39,10 +39,10 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "29/38 PL+UCL matches with a confirmed channel",
+  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
-   "championship": 24,
+   "championship": 13,
    "leagueCup": 0
   },
   "faCup": {
@@ -71,7 +71,7 @@
     "DP World India Championship",
     "Genesis Championship"
    ],
-   "rounds": 10,
+   "rounds": 9,
    "errors": []
   },
   "snooker": {
@@ -83,504 +83,10 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 12
+   "matches": 11
   }
  },
  "events": [
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "DP World India Championship",
-   "venue": "Delhi GC",
-   "source": "europeantour.com",
-   "session": "Round 3",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-10-15-dp-world-india-championship-2026-10-17",
-   "kickoff": "2026-10-17T07:30:00.000Z",
-   "end": "2026-10-17T12:15:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "efl-g2647374",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T11:30:00.000Z",
-   "timeTbc": false,
-   "home": "Middlesbrough",
-   "away": "Cardiff City",
-   "homeShort": "Middlesbrough",
-   "awayShort": "Cardiff",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 2,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "efl-g2647375",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T11:30:00.000Z",
-   "timeTbc": false,
-   "home": "Millwall",
-   "away": "Lincoln City",
-   "homeShort": "Millwall",
-   "awayShort": "Lincoln",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 2,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com",
-     "previous-update"
-    ]
-   }
-  },
-  {
-   "id": "efl-g2647379",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T11:30:00.000Z",
-   "timeTbc": false,
-   "home": "Watford",
-   "away": "Charlton Athletic",
-   "homeShort": "Watford",
-   "awayShort": "Charlton",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 0,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Football"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "pl-2645258",
-   "comp": "PL",
-   "kickoff": "2026-10-17T11:30:00.000Z",
-   "home": "Everton",
-   "away": "Chelsea",
-   "homeShort": "Everton",
-   "awayShort": "Chelsea",
-   "venue": "Hill Dickinson Stadium, Liverpool",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 2,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "India v West Indies",
-   "venue": "M.Chinnaswamy Stadium, Bengaluru",
-   "series": "West Indies in India, 5 T20I Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-270278",
-   "kickoff": "2026-10-17T13:30:00.000Z",
-   "end": "2026-10-17T16:50:00.000Z",
-   "session": "5th T20I",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "efl-g2647370",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Birmingham City",
-   "away": "Queens Park Rangers",
-   "homeShort": "Birmingham",
-   "awayShort": "QPR",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 0,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647371",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Bristol City",
-   "away": "Sheffield United",
-   "homeShort": "Bristol C",
-   "awayShort": "Sheffield Utd",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647373",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Derby County",
-   "away": "Stoke City",
-   "homeShort": "Derby",
-   "awayShort": "Stoke",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647376",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Norwich City",
-   "away": "Portsmouth",
-   "homeShort": "Norwich",
-   "awayShort": "Portsmouth",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647377",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Southampton",
-   "away": "Bolton Wanderers",
-   "homeShort": "Southampton",
-   "awayShort": "Bolton",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 0,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647378",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Swansea City",
-   "away": "West Ham United",
-   "homeShort": "Swansea",
-   "awayShort": "West Ham United",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647380",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "West Bromwich Albion",
-   "away": "Blackburn Rovers",
-   "homeShort": "West Brom",
-   "awayShort": "Blackburn",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 2,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "efl-g2647381",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Wrexham",
-   "away": "Preston North End",
-   "homeShort": "Wrexham",
-   "awayShort": "PNE",
-   "venue": null,
-   "status": "finished",
-   "homeScore": 4,
-   "awayScore": 1,
-   "source": "efl.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645256",
-   "comp": "PL",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "home": "Brentford",
-   "away": "Liverpool",
-   "homeShort": "Brentford",
-   "awayShort": "Liverpool",
-   "venue": "Gtech Community Stadium, Brentford",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 2,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645259",
-   "comp": "PL",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "home": "Fulham",
-   "away": "Hull City",
-   "homeShort": "Fulham",
-   "awayShort": "Hull",
-   "venue": "Craven Cottage, London",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 0,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645261",
-   "comp": "PL",
-   "kickoff": "2026-10-17T14:00:00.000Z",
-   "home": "Manchester City",
-   "away": "Ipswich Town",
-   "homeShort": "Man City",
-   "awayShort": "Ipswich",
-   "venue": "Etihad Stadium, Manchester",
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 2,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "pl-2645262",
-   "comp": "PL",
-   "kickoff": "2026-10-17T16:30:00.000Z",
-   "home": "Newcastle United",
-   "away": "Aston Villa",
-   "homeShort": "Newcastle",
-   "awayShort": "Aston Villa",
-   "venue": "St. James' Park, Newcastle",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "GOLF",
    "kind": "session",

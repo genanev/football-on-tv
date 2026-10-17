@@ -181,15 +181,21 @@
   }
   .chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
   .chip .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
-  .mine { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 10px; }
-  .mine .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .mine { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .mine .btns { display: flex; gap: 12px; }
+  .mine .btns .edit { flex: 1 1 0; min-width: 0; justify-content: center; white-space: nowrap; }
   .mine .what { font-size: 14px; color: var(--muted); }
   .mine .what b { color: var(--text); font-weight: 600; }
   .edit {
     flex: none; display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--text);
     border-radius: 999px; padding: 6px 12px 6px 10px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
   }
-  .edit svg { width: 16px; height: 16px; }
+  .edit svg { width: 16px; height: 16px; flex: none; }
+  /* Narrow phones: keep both buttons' icon and label on one line */
+  @media (max-width: 365px) {
+    .mine .btns .edit { font-size: 13px; gap: 4px; padding: 6px 6px; }
+    .edit svg { width: 14px; height: 14px; }
+  }
 
   .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 4px 0 8px; }
   .banner.info { background: var(--surface); color: var(--muted); border: 1px dashed var(--line); }

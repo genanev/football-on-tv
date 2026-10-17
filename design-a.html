@@ -397,17 +397,14 @@
       { id: 'ODI', name: 'ODIs', tag: 'ODI', color: 'var(--cricket)', none: 'No ODIs on TV' },
       { id: 'T20I', name: 'T20 internationals', tag: 'T20I', color: 'var(--cricket)', none: 'No T20 internationals on TV' },
     ] },
-    // Rugby covers both codes: union first (Six Nations, Nations Championship, Premiership, Champions
-    // Cup, URC), then league (Super League, Challenge Cup, NRL). Ids start RU_ / RL_.
+    // Rugby covers both codes, main events only: union (Six Nations, Nations Championship, Premiership,
+    // Champions Cup) then league (Super League). Ids start RU_ / RL_.
     { id: 'rugby', name: 'Rugby', color: 'var(--rugby)', none: 'No televised rugby', comps: [
       { id: 'RU_6N', name: 'Six Nations', tag: 'Six Nations', color: 'var(--rugby)', none: 'No Six Nations rugby on TV', soon: true },
       { id: 'RU_NATIONS', name: 'Nations Championship', tag: 'Nations Champ.', color: 'var(--rugby)', none: 'No Nations Championship rugby on TV', soon: true },
       { id: 'RU_PREM', name: 'Premiership', tag: 'Premiership', color: 'var(--rugby)', none: 'No Premiership rugby on TV', soon: true },
       { id: 'RU_CUP', name: 'Champions Cup', tag: 'Champions Cup', color: 'var(--rugby)', none: 'No Champions Cup rugby on TV', soon: true },
-      { id: 'RU_URC', name: 'URC', tag: 'URC', color: 'var(--rugby)', none: 'No URC rugby on TV', soon: true },
       { id: 'RL_SL', name: 'Super League', tag: 'Super League', color: 'var(--rugby)', none: 'No Super League on TV', soon: true },
-      { id: 'RL_CC', name: 'Challenge Cup', tag: 'Challenge Cup', color: 'var(--rugby)', none: 'No Challenge Cup on TV', soon: true },
-      { id: 'RL_NRL', name: 'NRL', tag: 'NRL', color: 'var(--rugby)', none: 'No NRL on TV', soon: true },
     ] },
     // Darts and snooker each have one competition, so they get no chip row
     { id: 'darts', name: 'Darts', color: 'var(--darts)', none: 'No televised darts', comps: [

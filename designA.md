@@ -66,21 +66,21 @@ label on each listing), a colour, and its empty-day message (`none`).
 | | Nations Championship | `RU_NATIONS` | Nations Champ. | soon |
 | | Premiership | `RU_PREM` | Premiership | soon |
 | | Champions Cup | `RU_CUP` | Champions Cup | soon |
-| | URC | `RU_URC` | URC | soon |
 | | Super League | `RL_SL` | Super League | soon |
-| | Challenge Cup | `RL_CC` | Challenge Cup | soon |
-| | NRL | `RL_NRL` | NRL | soon |
 
 **Rugby (added 18 Oct 2026, sample data only).** One icon for both codes: union first (ids `RU_…`),
-then league (`RL_…`). The list is the main competitions shown on UK TV, from a quick web search of
-the broadcasters' rights announcements (background only; the real app would still take each
-channel from a TV guide, never from who holds the rights): Six Nations (BBC and ITV, to 2029),
-the new Nations Championship that replaces the autumn series (ITV and STV, first two editions
-2026 and 2028; one source says Premier Sports too, unchecked), Premiership (TNT Sports, with seven
-ITV games a season), Champions Cup (Premier Sports, ITV for the finals), URC (Premier Sports),
-Super League (Sky Sports, with 15 BBC games; Sky's deal ends after 2026), Challenge Cup (BBC;
-not confirmed), NRL (Sky Sports). Not included yet: Rugby Championship, British & Irish Lions,
-Women's Six Nations, Rugby World Cup (2027) and league internationals. Nothing is connected to a
+then league (`RL_…`). **Main events only (George, 18 Oct 2026):** internationals plus, for clubs,
+the equivalent of the Premier League and the Champions League. So: Six Nations, the new Nations
+Championship (it replaces the autumn series), Premiership and Champions Cup for union, and
+Super League for league. Left out on purpose: URC, the Challenge Cup, and all Australian
+competitions (NRL, State of Origin). Not included yet: Rugby Championship, British & Irish Lions,
+Women's Six Nations, Rugby World Cup (2027) and league internationals.
+
+UK rights, from a quick web search on 18 Oct 2026 (background only; the real app would still
+take each channel from a TV guide, never from who holds the rights): Six Nations on BBC and ITV;
+Nations Championship on ITV and STV (one source says Premier Sports too, unchecked); Premiership
+on TNT Sports with some ITV games; Champions Cup on Premier Sports, ITV for the finals; Super
+League on Sky Sports with some BBC games (Sky's deal ends after 2026). Nothing is connected to a
 data source, so every competition is marked `soon`.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
@@ -188,7 +188,7 @@ Same cards as the main app, with these changes:
 | File | What |
 |---|---|
 | `design-a.html` | The whole Design A page (copy of `index.html`'s card/data code plus the new navigation). No manifest link, so "Add to Home Screen" saves `design-a.html` itself, named "Design A". |
-| `preview-data.json` | For `?demo=3`: the real `data.json` of 17 Oct 2026 plus fifteen made-up events (`sample: true`): MotoGP Australian GP race and Malaysian GP sprint, NFL London Game, World Gymnastics Championships, and eleven rugby games (`id` starts `sample-rugby`; 18–25 Oct, at least one per competition, one with no channel yet and two with "Also on"). Their channels are illustrative only. |
+| `preview-data.json` | For `?demo=3`: the real `data.json` of 17 Oct 2026 plus twelve made-up events (`sample: true`): MotoGP Australian GP race and Malaysian GP sprint, NFL London Game, World Gymnastics Championships, and eight rugby games (`id` starts `sample-rugby`; 23–25 Oct, at least one per competition, one with no channel yet and two with "Also on"). Their channels are illustrative only. |
 | `designA.md` | This file. |
 
 **Keeping the two pages in step:** `design-a.html` duplicates `index.html`'s data loading,

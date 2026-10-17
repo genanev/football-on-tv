@@ -690,32 +690,6 @@
       }
     },
     {
-      "id": "sample-rugby1",
-      "comp": "RL_NRL",
-      "kind": "match",
-      "kickoff": "2026-10-18T08:00:00.000Z",
-      "home": "Penrith Panthers",
-      "away": "Melbourne Storm",
-      "homeShort": "Penrith Panthers",
-      "awayShort": "Melbourne Storm",
-      "status": "upcoming",
-      "homeScore": null,
-      "awayScore": null,
-      "source": "sample",
-      "sample": true,
-      "tv": {
-        "broadcaster": "Sky Sports Action",
-        "channels": [
-          "Sky Sports Action"
-        ],
-        "alsoOn": [],
-        "confirmed": true,
-        "note": null,
-        "conflict": false,
-        "sources": []
-      }
-    },
-    {
       "comp": "SNOOKER",
       "kind": "session",
       "title": "BetVictor Northern Ireland Open",
@@ -874,32 +848,6 @@
         "broadcaster": "Sky Sports NFL",
         "channels": [
           "Sky Sports NFL"
-        ],
-        "alsoOn": [],
-        "confirmed": true,
-        "note": null,
-        "conflict": false,
-        "sources": []
-      }
-    },
-    {
-      "id": "sample-rugby2",
-      "comp": "RU_URC",
-      "kind": "match",
-      "kickoff": "2026-10-18T14:00:00.000Z",
-      "home": "Glasgow Warriors",
-      "away": "Leinster",
-      "homeShort": "Glasgow Warriors",
-      "awayShort": "Leinster",
-      "status": "upcoming",
-      "homeScore": null,
-      "awayScore": null,
-      "source": "sample",
-      "sample": true,
-      "tv": {
-        "broadcaster": "Premier Sports 1",
-        "channels": [
-          "Premier Sports 1"
         ],
         "alsoOn": [],
         "confirmed": true,
@@ -2926,32 +2874,6 @@
       }
     },
     {
-      "id": "sample-rugby4",
-      "comp": "RU_URC",
-      "kind": "match",
-      "kickoff": "2026-10-23T19:45:00.000Z",
-      "home": "Cardiff",
-      "away": "Munster",
-      "homeShort": "Cardiff",
-      "awayShort": "Munster",
-      "status": "upcoming",
-      "homeScore": null,
-      "awayScore": null,
-      "source": "sample",
-      "sample": true,
-      "tv": {
-        "broadcaster": "Premier Sports 1",
-        "channels": [
-          "Premier Sports 1"
-        ],
-        "alsoOn": [],
-        "confirmed": true,
-        "note": null,
-        "conflict": false,
-        "sources": []
-      }
-    },
-    {
       "comp": "GOLF",
       "kind": "session",
       "title": "Genesis Championship",
@@ -3028,30 +2950,6 @@
         "sources": [
           "sky-guide"
         ]
-      }
-    },
-    {
-      "id": "sample-rugby5",
-      "comp": "RL_NRL",
-      "kind": "match",
-      "kickoff": "2026-10-24T09:00:00.000Z",
-      "home": "Brisbane Broncos",
-      "away": "South Sydney Rabbitohs",
-      "homeShort": "Brisbane Broncos",
-      "awayShort": "South Sydney Rabbitohs",
-      "status": "upcoming",
-      "homeScore": null,
-      "awayScore": null,
-      "source": "sample",
-      "sample": true,
-      "tv": {
-        "broadcaster": null,
-        "channels": [],
-        "alsoOn": [],
-        "confirmed": false,
-        "note": "TV channel to be confirmed",
-        "conflict": false,
-        "sources": []
       }
     },
     {
@@ -3457,7 +3355,7 @@
     },
     {
       "id": "sample-rugby6",
-      "comp": "RL_CC",
+      "comp": "RL_SL",
       "kind": "match",
       "kickoff": "2026-10-24T14:00:00.000Z",
       "home": "Leigh Leopards",
@@ -3807,6 +3705,32 @@
       }
     },
     {
+      "id": "sample-rugby11",
+      "comp": "RU_CUP",
+      "kind": "match",
+      "kickoff": "2026-10-25T13:00:00.000Z",
+      "home": "Leinster",
+      "away": "Bath",
+      "homeShort": "Leinster",
+      "awayShort": "Bath",
+      "status": "upcoming",
+      "homeScore": null,
+      "awayScore": null,
+      "source": "sample",
+      "sample": true,
+      "tv": {
+        "broadcaster": "Premier Sports 1",
+        "channels": [
+          "Premier Sports 1"
+        ],
+        "alsoOn": [],
+        "confirmed": true,
+        "note": null,
+        "conflict": false,
+        "sources": []
+      }
+    },
+    {
       "id": "pl-2645269",
       "comp": "PL",
       "kickoff": "2026-10-25T14:00:00.000Z",
@@ -3937,7 +3861,7 @@
       }
     },
     {
-      "id": "sample-rugby11",
+      "id": "sample-rugby12",
       "comp": "RU_CUP",
       "kind": "match",
       "kickoff": "2026-10-25T15:15:00.000Z",

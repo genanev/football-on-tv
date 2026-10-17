@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-17T00:33:57.330Z",
+ "generatedAt": "2026-10-17T00:40:15.366Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4079,
+   "programmes": 4081,
    "errors": []
   },
   "skyListings": {
@@ -3405,7 +3405,7 @@
    "status": "upcoming",
    "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-25",
    "kickoff": "2026-10-25T03:00:00.000Z",
-   "end": "2026-10-25T06:00:00.000Z",
+   "end": "2026-10-25T07:30:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Golf",
@@ -3441,7 +3441,9 @@
     "channels": [
      "Sky Sports Cricket"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

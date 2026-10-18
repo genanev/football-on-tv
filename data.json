@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T17:00:16.188Z",
+ "generatedAt": "2026-10-18T17:30:16.516Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,18 +15,12 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 983,
+   "programmes": 982,
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Liverpool vs. Villarreal",
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierLeague": {
    "ok": true,
@@ -44,7 +38,7 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "28/33 PL+UCL matches with a confirmed channel",
+  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -324,9 +318,9 @@
    "homeShort": "Nott'm Forest",
    "awayShort": "Arsenal",
    "venue": "The City Ground, Nottingham",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -778,7 +772,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com"
+     "primevideo.com",
+     "previous-update"
     ]
    }
   },

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T15:30:16.564Z",
+ "generatedAt": "2026-10-18T16:00:18.188Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -324,7 +324,7 @@
    "homeShort": "Nott'm Forest",
    "awayShort": "Arsenal",
    "venue": "The City Ground, Nottingham",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": 0,
    "awayScore": 0,
    "round": "Matchweek 7",

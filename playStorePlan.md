@@ -37,7 +37,7 @@ Look at these monthly once launched. The targets are starting guesses; adjust th
 |---|---|---|
 | Installs | Play Console | 500 in the first 3 months |
 | Trial → paid conversion | RevenueCat | 30% or more |
-| Paying subscribers | RevenueCat | 25 (covers running costs), then 100 |
+| Paying subscribers | RevenueCat | 95 (covers running costs), then 250 |
 | Renewal rate after year 1 | RevenueCat | 60% or more |
 | Store rating | Play Console | 4.3 or higher |
 | Crash-free users | Play Console (Android vitals) | 99.5% or more |
@@ -90,10 +90,11 @@ Look at these monthly once launched. The targets are starting guesses; adjust th
 | iPhone builds (Codemagic or similar; no Mac needed) | – | – | £0 (free monthly allowance) |
 | ICO data protection fee | £0–≈ £52 | £0–≈ £52 | – |
 | Optional: an hour of legal advice on data rights | ≈ £150–300, once | – | – |
-| **Data licences (if needed, see Phase 0)** | **unknown** | **unknown** | – |
-| **Total excluding data licences** | **≈ £30–£380** | **≈ £10–£60** | **+ ≈ £79 a year** |
+| Football fixtures: API-Football (free while building; Pro, ≈ $19 a month, from launch) | ≈ £45–180 (depends on launch month) | ≈ £180 | – |
+| **Other data licences (if needed, see Phase 0)** | **unknown** | **unknown** | – |
+| **Total excluding other data licences** | **≈ £75–£560** | **≈ £190–£240** | **+ ≈ £79 a year** |
 
-**Income per subscriber:** £3.65 includes 20% VAT (the stores collect and pay it), leaving £3.04. After the store's 15%: **≈ £2.59 a year**. Running costs are covered by **about 25 subscribers**, about 55 with the iPhone version.
+**Income per subscriber:** £3.65 includes 20% VAT (the stores collect and pay it), leaving £3.04. After the store's 15%: **≈ £2.59 a year**. Running costs are covered by **about 95 subscribers** with API-Football Pro (about 25 without it), about 125 with the iPhone version.
 
 **Business set-up:** start as a **sole trader**: no registration fee, and HMRC's trading allowance means no tax return until income passes £1,000 a year. A limited company (personal liability protection, but accounts to file every year) can wait until revenue is meaningful. Use a separate bank account (many are free) for store payouts.
 
@@ -113,6 +114,8 @@ The project only moves past a gate when its question has a clear answer. Write t
 | Risk | Likelihood | Impact | What we do about it |
 |---|---|---|---|
 | A data source objects to commercial use, or the store removes the app after a rights complaint | Medium | High | Phase 0: permission or licences before launch; one module per source, so any one can be swapped |
+| Football DataCo objects to scores (live match data; its 2013 win against Sportradar) | Low while small | Medium | **Accepted risk (George, 19 Oct 2026).** Fixtures are facts. Scores are refreshed only every 5 minutes (never live), are **not a selling point** (not in the store listing or paywall), and sit behind one switch so they can be removed quickly. Review if the app grows or DataCo makes contact |
+| API-Football stops operating, changes terms or raises prices | Low–Medium | High (all football) | Accepted for now: focus on getting to market. Its own source module, so a swap is like-for-like; football-data.org is the known fallback (PL, Championship, UCL free; the rest paid) |
 | A source changes its website and stops answering | High (happens often) | Medium | Already handled: each source fails on its own, with yellow banners and the keep rule. Add an email alert (Phase 6) |
 | Google rejects the app or delays production access | Low–Medium | Medium | Follow the store checklist (Phase 5); complete the 14-day closed test properly; keep notes for Google's questions |
 | Apple rejects the app as "just a website" (rule 4.2) | Medium if done thinly | Medium | Screens packaged inside the app, offline mode, reminders, and later push notifications or a widget |
@@ -138,10 +141,11 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 | Source | Decision | Cost | Evidence (email/licence) |
 |---|---|---|---|
-| Premier League (fixtures, broadcaster) | | | |
-| UEFA | | | |
-| EFL | | | |
-| FA | | | |
+| Premier League fixtures and scores | **Replace** with API-Football (19 Oct 2026) | Free while building; Pro ≈ $19/month live | Fixtures treated as facts; scores an accepted risk (see risk register) |
+| Premier League broadcaster feed | | | |
+| UEFA (UCL, UEL) | **Replace** with API-Football | (same subscription) | as above |
+| EFL (Championship, League Cup) | **Replace** with API-Football | (same subscription) | as above |
+| FA (FA Cup fixtures) | **Replace** with API-Football | (same subscription) | The FA's "Live on" TV pick: still ask the FA, or rely on the TV guide |
 | F1 / F2 | | | |
 | PDC | | | |
 | PGA Tour / DP World Tour | | | |
@@ -167,6 +171,15 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 - [ ] Buy the domain and move its DNS to Cloudflare (free).
 - [ ] Set up the support email (Cloudflare Email Routing, forwarding to Gmail; free).
+- [ ] **Football fixtures from API-Football** (decided 19 Oct 2026):
+  - A new source module (`apiFootball.mjs`) for the six competitions, built and tested on the free tier (100 requests a day).
+  - Run it **side by side with the current official feeds for about two weeks**, comparing kick-off times, moved games, postponements and team names. Then switch the app over and retire the PL, UEFA, EFL and FA fixture readers.
+  - Store the API key in Google Cloud Secret Manager, never in the code.
+  - Move to the Pro plan just before launch (Phase 5).
+- [ ] **Scores every 5 minutes, not live** (decided 19 Oct 2026). After the storage move below:
+  - A small scores-only update every 5 minutes, only while a game is on: one request covers all six competitions.
+  - The full update stays every 30 minutes.
+  - One switch turns scores off everywhere, in case they have to be removed.
 - [ ] Change the update job to **upload `data.json` to storage** (Cloudflare R2 or Google Cloud Storage) on the domain, instead of committing it to GitHub every 30 minutes.
   - Keep the GitHub commit for a few weeks as a fallback, then stop it.
   - This also removes the GitHub key that expires in Oct 2027.
@@ -269,7 +282,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **Store listing:**
   - Name.
   - Short description (80 characters).
-  - Full description, leading with "No ads. No betting. Just what's on TV.", and showing price and trial clearly.
+  - Full description, leading with "No ads. No betting. Just what's on TV.", and showing price and trial clearly. **Don't advertise scores** (here, in screenshots' captions or on the paywall): they may have to be removed.
   - Icon (512×512).
   - Feature graphic (1024×500).
   - 4–8 phone screenshots (light and dark).
@@ -354,3 +367,5 @@ Record decisions here as they're made (date, what, why).
 
 - 18 Oct 2026: plan written. Hosting on Cloudflare with the data file on the own domain; no separate login (the store account is the account); one-month free trial, then £3.65 a year; Google Form for feedback.
 - 18 Oct 2026: **Capacitor instead of a Trusted Web Activity**, so the same code can go to the App Store (Apple rejects "website in a wrapper" apps). **RevenueCat** for subscriptions on both stores. Android first; the App Store is a separate decision (Gate G3). Reason: mainly a learning project, run with real-business detail, keeping the iPhone option open at little extra cost.
+- 19 Oct 2026: **Football fixtures and scores from API-Football** (all six competitions), replacing the PL, UEFA, EFL and FA feeds. Free tier while building and testing; Pro (≈ $19 a month) for the live product. Reason: a documented, paid-for service instead of reading websites' hidden feeds; the focus is getting to market, accepting the risk that the supplier could stop (football-data.org is the fallback).
+- 19 Oct 2026: **Rights position on football.** Fixture facts aren't owned by anyone (the 2012 *Football DataCo v Yahoo* ruling), so no Football DataCo licence is sought for fixtures. Scores are an accepted risk while the app is small: refreshed every 5 minutes (not live), not a selling point, and removable with one switch. The Football DataCo email is no longer needed for fixtures.

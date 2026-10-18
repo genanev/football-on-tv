@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T22:00:18.807Z",
+ "generatedAt": "2026-10-18T22:30:17.093Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -37,8 +37,8 @@
    "matches": 18
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 13
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645255,2645257,2645260,2645263,2645264,2645271,2645266,2645265,2645268,2645267,2645269,2645270,2645272,2645273,2645274&pageSize=50"
   },
   "europaLeague": {
    "ok": true,
@@ -2969,15 +2969,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -2996,15 +2994,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -3052,15 +3048,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {

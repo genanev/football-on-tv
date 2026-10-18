@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T13:30:16.443Z",
+ "generatedAt": "2026-10-18T13:45:16.902Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -299,7 +299,7 @@
    "venue": "Elland Road, Leeds",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",

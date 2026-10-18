@@ -1,0 +1,2 @@
+# Shell scripts run on Linux (Google Cloud), so keep their line endings as LF even on Windows.
+*.sh text eol=lf

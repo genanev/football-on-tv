@@ -89,13 +89,15 @@ after a break, repeat the two `export` lines before carrying on.)
 
 ## Step 5 – Put the GitHub key in the locked box
 
-This asks you to paste the key **without showing it**, so it doesn't end up in any history:
+Paste this **one line exactly as it is, without putting the key in it**, and press Enter:
 
 ```bash
-read -s -p "Paste the GitHub key, then press Enter: " KEY; echo
-printf '%s' "$KEY" | gcloud secrets create github-token --data-file=-
-unset KEY
+read -s -p "Paste the GitHub key, then press Enter: " KEY; echo; printf '%s' "$KEY" | gcloud secrets create github-token --data-file=-; unset KEY
 ```
+
+The terminal then shows **Paste the GitHub key, then press Enter:** and waits. *Now* paste the key
+(nothing appears on screen as you do; that's normal) and press Enter. You should see
+`Created secret [github-token]` and `Created version [1] of the secret [github-token]`.
 
 ## Step 6 – Create the job's "identity" and let it use the key
 
@@ -198,10 +200,10 @@ In a year GitHub's key stops working and runs will fail with "Permission denied"
 failed". Make a new key (step 3), then in Cloud Shell (after the `export` lines from step 4):
 
 ```bash
-read -s -p "Paste the new GitHub key, then press Enter: " KEY; echo
-printf '%s' "$KEY" | gcloud secrets versions add github-token --data-file=-
-unset KEY
+read -s -p "Paste the new GitHub key, then press Enter: " KEY; echo; printf '%s' "$KEY" | gcloud secrets versions add github-token --data-file=-; unset KEY
 ```
+
+(Same as step 5: paste this line as it is, then paste the key when it asks.)
 
 The job always uses the newest version, so nothing else changes.
 
@@ -221,6 +223,7 @@ The job always uses the newest version, so nothing else changes.
 | Step 7 or 8 says it **can't pull the image** `docker.io/library/node:24` | Google's Docker Hub link is busy or blocked. Replace the image with Google's own copy and try again: `gcloud run jobs update football-update --region="$REGION" --image="mirror.gcr.io/library/node:24"` |
 | Log says **Permission denied**, **403** or **Authentication failed** when saving | The GitHub key is wrong, expired, or lacks **Contents: Read and write** on `football-on-tv`. Redo step 3, then the "When the key expires" commands. |
 | Step 5 says the secret **already exists** | You did step 5 twice. Use the "When the key expires" commands to add the key instead. |
+| You **typed or pasted the key into a command** (or it showed on screen or in a screenshot) | Press **Ctrl+C** to cancel. Treat that key as used up: on GitHub, delete it (Settings → Developer settings → Fine-grained tokens), make a new one (step 3), and redo step 5. If `gcloud secrets list` shows `github-token` already, add the new key with the "When the key expires" command instead of creating it again. |
 | Step 9: **PERMISSION_DENIED** on the scheduler | Repeat the first command of step 9 (the `run.invoker` one), then the `scheduler` command. |
 | The run ends with **"Gave up after 3 attempts"** | Something else kept saving to `main` at the same moment, or GitHub was down. The next run in 15 minutes will usually work. If it keeps happening, tell Claude. |
 | The execution is red and the log says **every fixture source failed** | The London computer couldn't reach any source (for example a Google network problem). It will retry in 15 minutes; the app keeps the old data meanwhile. |

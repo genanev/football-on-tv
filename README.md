@@ -76,6 +76,7 @@ None of these is a published, documented API. They are the data the sites' own p
 | `cloud/update.sh`, `cloud/SETUP.md` | The regular update that runs on Google Cloud in London, and the guide to set it up |
 | `.github/workflows/check.yml` | Runs the tests and a live check on every branch except `main` |
 | `designA.md` | How the app's navigation works (sports, competition chips, My TV, day picker) |
+| `playStorePlan.md` | The plan (with tick boxes) for turning this into a paid Google Play app |
 | `CLAUDE.md` | Detailed notes, rules and conventions for Claude Code |
 
 ## Running it

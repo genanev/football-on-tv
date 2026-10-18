@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T15:00:16.642Z",
+ "generatedAt": "2026-10-18T15:30:16.564Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 43,
+   "events": 37,
    "errors": []
   },
   "tntSchedule": {
@@ -253,8 +253,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -283,8 +282,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -313,8 +311,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

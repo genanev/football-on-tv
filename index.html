@@ -608,8 +608,8 @@
     const show = (...ids) => ids.some(inView);
     const GUIDE = ['PL', 'UCL', 'UEL', 'CHAMP', 'FAC', 'EFL', 'F1', 'F2', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
     if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
-    // (no banner when Prime Video just served the wrong country's page: expected from GitHub's US servers)
-    if (r.primeVideo && r.primeVideo.ok === false && !r.primeVideo.wrongRegion && show('UCL') && (data.events || []).some(e => e.comp === 'UCL')) banners.push('Prime Video’s Champions League page couldn’t be read on the last update, so Amazon’s game may show “TV channel to be confirmed”.');
+    // (no banner for Prime Video at all, by George's choice on 18 Oct 2026: a failed read keeps Amazon's pick
+    // anyway, and he watches data.json's report for it instead)
     if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
     if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'FAC', 'EFL', 'F1', 'F2')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');

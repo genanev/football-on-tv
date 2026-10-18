@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T06:01:29.358Z",
+ "generatedAt": "2026-10-18T11:19:38.062Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 986,
+   "programmes": 985,
    "errors": []
   },
   "primeVideo": {
@@ -126,14 +126,16 @@
    "kickoff": "2026-10-18T08:00:00.000Z",
    "end": "2026-10-18T16:00:00.000Z",
    "session": "Match 1 (ODI)",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports+",
+    "broadcaster": "Sky Sports Cricket",
     "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
      "Sky Sports+"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -156,13 +158,11 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Cricket",
+    "broadcaster": "Sky Sports+",
     "channels": [
-     "Sky Sports Cricket"
-    ],
-    "alsoOn": [
      "Sky Sports+"
     ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

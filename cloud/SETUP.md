@@ -101,6 +101,16 @@ The terminal then shows **Paste the GitHub key, then press Enter:** and waits. *
 
 ## Step 6 – Create the job's "identity" and let it use the key
 
+First check Cloud Shell still remembers your project name. Paste this; it should print your project
+ID and `europe-west2`:
+
+```bash
+echo "$PROJECT_ID $REGION"
+```
+
+If it prints nothing (or only one of them), the two `export` lines from step 4 were lost, for
+example because Cloud Shell restarted. Paste them again, with your own project ID, before going on.
+
 ```bash
 gcloud iam service-accounts create football-job --display-name="Football on TV update job"
 
@@ -222,6 +232,7 @@ The job always uses the newest version, so nothing else changes.
 |---|---|
 | Step 7 or 8 says it **can't pull the image** `docker.io/library/node:24` | Google's Docker Hub link is busy or blocked. Replace the image with Google's own copy and try again: `gcloud run jobs update football-update --region="$REGION" --image="mirror.gcr.io/library/node:24"` |
 | Log says **Permission denied**, **403** or **Authentication failed** when saving | The GitHub key is wrong, expired, or lacks **Contents: Read and write** on `football-on-tv`. Redo step 3, then the "When the key expires" commands. |
+| Step 6 or later says **Invalid service account (`football-job@.iam.gserviceaccount.com`)**, with the project name missing | Cloud Shell forgot the two `export` lines from step 4. Paste them again with your project ID, then rerun only the command that failed (the service account itself was already created; don't create it twice). |
 | Step 5 says the secret **already exists** | You did step 5 twice. Use the "When the key expires" commands to add the key instead. |
 | You **typed or pasted the key into a command** (or it showed on screen or in a screenshot) | Press **Ctrl+C** to cancel. Treat that key as used up: on GitHub, delete it (Settings → Developer settings → Fine-grained tokens), make a new one (step 3), and redo step 5. If `gcloud secrets list` shows `github-token` already, add the new key with the "When the key expires" command instead of creating it again. |
 | Step 9: **PERMISSION_DENIED** on the scheduler | Repeat the first command of step 9 (the `run.invoker` one), then the `scheduler` command. |

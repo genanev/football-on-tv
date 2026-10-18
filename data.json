@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-18T11:19:38.062Z",
+ "generatedAt": "2026-10-18T13:11:16.804Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4344,
+   "programmes": 4348,
    "errors": []
   },
   "skyListings": {
@@ -19,9 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "Prime Video served a non-UK page (providers: vixplusus, freewithads, cbsaacf)",
-   "wrongRegion": true
+   "ok": true,
+   "events": 17,
+   "amazonPicks": [
+    "Liverpool vs. Villarreal",
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierLeague": {
    "ok": true,
@@ -33,13 +38,13 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 0
+   "matches": 13
   },
   "europaLeague": {
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
+  "footballChannels": "28/33 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -232,9 +237,9 @@
    "homeShort": "Bournemouth",
    "awayShort": "Sunderland",
    "venue": "Vitality Stadium, Bournemouth",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -262,9 +267,9 @@
    "homeShort": "Brighton",
    "awayShort": "Crystal Palace",
    "venue": "American Express Stadium, Falmer",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 3,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -292,9 +297,9 @@
    "homeShort": "Leeds",
    "awayShort": "Man Utd",
    "venue": "Elland Road, Leeds",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",
@@ -512,7 +517,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -774,8 +780,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com",
-     "previous-update"
+     "primevideo.com"
     ]
    }
   },
@@ -2994,13 +2999,15 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -3019,13 +3026,15 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -3073,13 +3082,15 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {

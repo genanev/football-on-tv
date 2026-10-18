@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T14:15:17.645Z",
+ "generatedAt": "2026-10-18T14:30:16.520Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -328,8 +328,8 @@
    "awayShort": "Arsenal",
    "venue": "The City Ground, Nottingham",
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",

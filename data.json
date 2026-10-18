@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T13:11:16.804Z",
+ "generatedAt": "2026-10-18T13:13:08.654Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 20,
+   "events": 43,
    "errors": []
   },
   "tntSchedule": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Liverpool vs. Villarreal",
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierLeague": {
    "ok": true,
@@ -37,14 +31,14 @@
    "matches": 18
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 13
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645255,2645257,2645260,2645263,2645264,2645271,2645266,2645265,2645268,2645267,2645269,2645270,2645272,2645273,2645274&pageSize=50"
   },
   "europaLeague": {
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "28/33 PL+UCL matches with a confirmed channel",
+  "footballChannels": "27/33 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -750,7 +744,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -780,7 +775,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com"
+     "primevideo.com",
+     "previous-update"
     ]
    }
   },
@@ -2999,15 +2995,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -3026,15 +3020,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -3082,15 +3074,13 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {

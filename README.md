@@ -9,7 +9,7 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 - **Snooker:** World Snooker Tour events on TV
 - **Cricket:** men's internationals between the 12 top nations
 
-You pick a sport with a round icon at the top. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby, MotoGP and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
+You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby, MotoGP and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
 
 It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
 
@@ -67,6 +67,7 @@ None of these is a published, documented API. They are the data the sites' own p
 | `data.json` | The latest fixtures and channels (rewritten by every update; don't edit by hand) |
 | `demo-data.json`, `demo-data-2.json`, `preview-data.json` | Recorded weeks for the demo views (see below) |
 | `manifest.webmanifest`, `icon-*.png`, `apple-touch-icon.png` | What makes it installable on a phone |
+| `sport-icons/` | The 3D sport icons (SVG) used in the top row and on every game |
 | `scripts/build.mjs` | The update: runs every source and writes `data.json` |
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings) |
 | `scripts/lib/util.mjs` | Shared helpers (UK time, fetching) |
@@ -114,5 +115,5 @@ The "Run workflow" button on GitHub's Actions tab still works as a manual backup
 
 1. Create a **public** GitHub repository and upload this folder, including `.github`.
 2. **Settings → Pages:** deploy from branch `main`, folder `/ (root)`.
-3. **Actions:** enable workflows, open **Update fixtures** and click **Run workflow**.
+3. **First data:** **Actions** → enable workflows → open **Update fixtures** and click **Run workflow**. That fills `data.json` once, from GitHub's US servers. For regular updates from a UK address, set up the Google Cloud job with `cloud/SETUP.md`.
 4. On a phone, open `https://<username>.github.io/<repository>/` in Chrome, then **⋮ → Add to home screen**.

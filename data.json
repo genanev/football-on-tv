@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-18T17:30:16.516Z",
+ "generatedAt": "2026-10-18T18:00:18.129Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4348,
+   "programmes": 4347,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 36,
+   "events": 35,
    "errors": []
   },
   "tntSchedule": {
@@ -330,15 +330,13 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Premier League",
-     "Sky Sports Football"
+     "Sky Sports Premier League"
     ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

@@ -1,10 +1,11 @@
 name: Update fixtures
 
 on:
-  schedule:
-    # Every hour. GitHub often runs these late or skips some, so hourly keeps data fresh.
-    - cron: "17 * * * *"
-  workflow_dispatch: {} # adds a "Run workflow" button on the Actions tab
+  # The regular update now runs on Google Cloud in London every 30 minutes (cloud/SETUP.md), so this
+  # has no schedule. It stays as a manual backup: the "Run workflow" button on the Actions tab.
+  # It runs from GitHub's US servers, so Prime Video's UK page isn't available to it; channels
+  # already confirmed from Prime Video are kept (see "Keep rule" in CLAUDE.md).
+  workflow_dispatch: {}
 
 permissions:
   contents: write

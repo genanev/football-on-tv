@@ -1,7 +1,7 @@
 # Setting up the UK update on Google Cloud (London)
 
 Today the hourly update runs on GitHub's computers in the USA. This guide moves it to Google's
-London data centre, so it runs from a UK address, **every 15 minutes**. That fixes three things:
+London data centre, so it runs from a UK address, **every 15 or 30 minutes** (the steps below start at 15; George changed it to 30, see "Changing how often it runs"). That fixes three things:
 
 - Amazon's Champions League pick (Prime Video only shows its UK page to UK visitors), so the weekly
   "run it from your own computer" job goes away.
@@ -17,7 +17,7 @@ the last step, and every step can be undone (see "Stopping it").
 | Piece | What it does |
 |---|---|
 | **Cloud Run Job** `football-update` | A tiny computer that starts, runs the update (about 6 seconds of work), saves `data.json` to GitHub and switches off. |
-| **Cloud Scheduler** `football-update-trigger` | The alarm clock: starts the job every 15 minutes. |
+| **Cloud Scheduler** `football-update-trigger` | The alarm clock: starts the job every 15 minutes (30 once changed). |
 | **Secret Manager** `github-token` | A locked box for the key that lets the job save to GitHub. |
 
 The job downloads the newest code from GitHub every time it runs, so changes you merge to `main`
@@ -184,16 +184,16 @@ gcloud scheduler jobs create http football-update-trigger \
 without waiting, click **Cloud Scheduler** in the console and press **Force run** on
 `football-update-trigger`; or wait 15 minutes and look at GitHub for a new "Update fixtures" commit.
 
-## Step 10 – Hand over from GitHub
+## Step 10 – Hand over from GitHub (done on 18 Oct 2026)
 
 Leave both running for a day. That's safe: if GitHub's US run and the London run overlap, the
 London run's Amazon pick is kept (the US run can't read Prime Video, which counts as "that source
 failed", so the keep rule leaves it alone).
 
-When the London runs look good (a new "Update fixtures" commit every ~15 minutes, no yellow banners
-you didn't expect), **tell Claude**. Claude will switch off GitHub's hourly schedule in
-`.github/workflows/update.yml` (the "Run workflow" button stays as a backup) and update the docs.
-You can then stop the weekly UK run from your own computer.
+When the London runs look good (a new "Update fixtures" commit on schedule, no yellow banners
+you didn't expect), **tell Claude**. Claude switches off GitHub's hourly schedule in
+`.github/workflows/update.yml` (the "Run workflow" button stays as a backup) and updates the docs.
+You can then stop the weekly UK run from your own computer. This was done on 18 Oct 2026.
 
 ## Watching it
 
@@ -201,8 +201,20 @@ You can then stop the weekly UK run from your own computer.
   20 minutes old. The app also shows "updated … ago" at the top, and a yellow warning appears if
   the listings are over 12 hours old.
 - **Did a run fail?** Cloud Run → Jobs → `football-update` → **Executions** (failed ones are red).
-  A single failed run doesn't matter: the next one is 15 minutes later and the app keeps the last
+  A single failed run doesn't matter: the next one is 15 or 30 minutes later and the app keeps the last
   good data.
+
+## Changing how often it runs
+
+In Cloud Shell, after the two `export` lines from step 4. Every 30 minutes:
+
+```bash
+gcloud scheduler jobs update http football-update-trigger --location="$REGION" --schedule="*/30 * * * *"
+```
+
+Every 15 minutes: use `*/15 * * * *` in the same command. Every hour: `0 * * * *`. It takes
+effect straight away. Faster than every 10 minutes isn't recommended: GitHub Pages rebuilds on
+every save and starts dropping builds above about 10 an hour.
 
 ## When the key expires
 

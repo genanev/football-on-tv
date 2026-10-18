@@ -22,7 +22,7 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 ## How it works
 
 ```
- hourly (GitHub Actions)                                     phone
+ every 30 min (Google Cloud, London)                         phone
 ┌───────────────────────────────────────────────┐        ┌───────────────┐
 │ scripts/build.mjs                             │        │ index.html    │
 │  ├─ fixtures:  PL, UEFA, EFL, FA, F1, F2,     │ writes │ (the whole    │
@@ -34,7 +34,7 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 ```
 
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
-2. **Automation:** a GitHub Action (`.github/workflows/update.yml`) runs the update every hour and commits `data.json`. GitHub often starts these runs late or skips some.
+2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub. Prime Video's Champions League page needs the UK address. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
 3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` straight from GitHub, so a new update shows within minutes, and it reloads whenever you open it or switch back to it.
 
 ### Data sources
@@ -71,7 +71,8 @@ None of these is a published, documented API. They are the data the sites' own p
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings) |
 | `scripts/lib/util.mjs` | Shared helpers (UK time, fetching) |
 | `test/*.mjs`, `test/fixtures/` | Offline tests and the real data they replay |
-| `.github/workflows/update.yml` | Hourly update |
+| `.github/workflows/update.yml` | Manual backup update (the "Run workflow" button on the Actions tab; no schedule) |
+| `cloud/update.sh`, `cloud/SETUP.md` | The regular update that runs on Google Cloud in London, and the guide to set it up |
 | `.github/workflows/check.yml` | Runs the tests and a live check on every branch except `main` |
 | `designA.md` | How the app's navigation works (sports, competition chips, My TV, day picker) |
 | `CLAUDE.md` | Detailed notes, rules and conventions for Claude Code |
@@ -90,21 +91,11 @@ You need **Node.js 24**. There are no packages to install.
 
 The update prints a short report of every source, and the same report is stored in `data.json` under `report`.
 
-### Updating from the UK (Amazon stopgap)
+### Where the update runs
 
-_A fix is drafted: `cloud/SETUP.md` is the step-by-step guide for running the update from Google Cloud in London every 15 minutes. Until that is set up, use the weekly run below._
+The regular update runs on Google Cloud in London: a Cloud Run job started every 30 minutes by Cloud Scheduler. From a UK address, Prime Video shows Amazon's Champions League pick and the Premier League's broadcaster feed answers for the UK. `cloud/SETUP.md` explains how it was set up, how to change how often it runs, how to pause it and how to renew its GitHub key (the key expires after a year, around 18 Oct 2027).
 
-Prime Video only shows the UK Champions League page to UK visitors, and the hourly updates run on GitHub's US servers. So until the updates move to a UK server, run one update from a UK computer each week before Tuesday's Champions League games. In this folder:
-
-```
-node scripts/build.mjs
-git add data.json
-git commit -m "Update fixtures"
-git pull --rebase
-git push
-```
-
-Later updates keep Amazon's pick until the end of the match day.
+The "Run workflow" button on GitHub's Actions tab still works as a manual backup. It runs from GitHub's US servers, so Prime Video's UK page isn't available to it; Amazon picks already found are kept.
 
 ## Working on it
 
@@ -115,9 +106,9 @@ Later updates keep Amazon's pick until the end of the match day.
 ## If something looks wrong
 
 - **A yellow banner** means a source couldn't be read on the last update. Everything else still works, and channels already confirmed are kept.
-- **Finding out what happened:** open the latest run on the **Actions** tab and expand **Fetch fixtures and TV channels**. It prints the report for each source.
+- **Finding out what happened:** in Google Cloud, open Cloud Run → **Jobs** → `football-update` → **Executions** → a run → **Logs**; it prints the report for each source. The same report is saved in `data.json` under `report`.
 - **A channel says "TV channel to be confirmed"** when no broadcaster's listing has confirmed it yet. Broadcasters publish their picks a few days ahead.
-- **Paused updates:** GitHub pauses scheduled actions after 60 days without activity. Each update commits, so this shouldn't happen. If it does, re-enable it from the Actions tab.
+- **Updates stopped:** the newest "Update fixtures" commit on GitHub should be under about 40 minutes old. If not, check in Google Cloud that the Cloud Scheduler job `football-update-trigger` is enabled and that the latest job execution didn't fail with a GitHub permission error (the key expires after a year; see `cloud/SETUP.md`).
 
 ## One-off setup (for a new copy)
 

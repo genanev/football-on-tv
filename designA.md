@@ -1,14 +1,12 @@
 # Design A – "Sport icons"
 
-A trial redesign of the app for when it covers many sports. It lives in its own page,
-**`design-a.html`**, next to the existing app (`index.html`). Both pages read the same `data.json`,
-so they can be developed side by side until George decides which one to keep. `index.html`
-is not changed by this design.
+The app's navigation for when it covers many sports. It was built as a trial page
+(`design-a.html`) next to the old tab-bar app, and on **18 Oct 2026 George made it the main app**:
+it is now `index.html`. The old tab-bar version is the parent of the commit tagged `design-a-live`.
 
-- Live app: `https://genanev.github.io/football-on-tv/` (unchanged)
-- Design A: `https://genanev.github.io/football-on-tv/design-a.html` (once it's on `main`)
-- Design A with sample events: `…/design-a.html?demo=3`
-- Locally: `http://localhost:8123/design-a.html` (the `app` config in `.claude/launch.json`)
+- App: `https://genanev.github.io/football-on-tv/`
+- With sample events (rugby, MotoGP and Specials, marked SAMPLE): `…/?demo=3`
+- Locally: `http://localhost:8123/` (the `app` config in `.claude/launch.json`)
 
 Design B ("follow & swipe": a first-visit sport picker and swipeable tabs) was also built and
 then dropped on 17 Oct 2026.
@@ -41,7 +39,7 @@ then dropped on 17 Oct 2026.
 
 ## Section grouping
 
-The sports and their competitions are defined once, in `SPORTS` in `design-a.html`. Each
+The sports and their competitions are defined once, in `SPORTS` in `index.html`. Each
 competition has an `id`, a full `name` (used on chips and in Customise), a short `tag` (the outlined
 label on each listing), a colour, and its empty-day message (`none`).
 
@@ -169,14 +167,14 @@ in advance:
 
 ## Listings
 
-Same cards as the main app, with these changes:
+Listing cards (these changed from the old tab-bar app):
 - The outlined tag shows the competition's own tag and colour from `SPORTS` (cup ties show their
   cup, specials can bring their own `label`).
 - Sample events get the extra **SAMPLE** tag.
-- All of `main`'s rules are kept: LIVE NOW, FT/P–P, scores, a channel pill and a note never
+- All the listing rules are kept: LIVE NOW, FT/P–P, scores, a channel pill and a note never
   together, "…to be confirmed" hidden once started, "Also on…", the conflict warning.
 - **Banners:** one per failed source, shown only when the view includes a competition that
-  source feeds (same wording as `index.html`; mapped to competition ids in `render()`).
+  source feeds (mapped to competition ids in `render()`).
 - Every day of the 8-day window is listed. Empty-day messages: My TV "Nothing on TV from your
   picks"; whole sport "No televised football" / "No motorsport sessions" / "No televised golf" /
   "No international cricket on TV" / "No televised darts" / "No televised snooker" / "No big events
@@ -187,14 +185,12 @@ Same cards as the main app, with these changes:
 
 | File | What |
 |---|---|
-| `design-a.html` | The whole Design A page (copy of `index.html`'s card/data code plus the new navigation). No manifest link, so "Add to Home Screen" saves `design-a.html` itself, named "Design A". |
+| `index.html` | The whole app: Design A's navigation plus the listing cards, banners and data loading. |
 | `preview-data.json` | For `?demo=3`: the real `data.json` of 17 Oct 2026 plus twelve made-up events (`sample: true`): MotoGP Australian GP race and Malaysian GP sprint, NFL London Game, World Gymnastics Championships, and eight rugby games (`id` starts `sample-rugby`; 23–25 Oct, at least one per competition, one with no channel yet and two with "Also on"). Their channels are illustrative only. |
 | `designA.md` | This file. |
 
-**Keeping the two pages in step:** `design-a.html` duplicates `index.html`'s data loading,
-`matchHtml` and banner code. A change to how listings look or which sources exist must be made in
-both until one design is chosen. If Design A wins, its navigation replaces the tabs in
-`index.html`, and `design-a.html` and `preview-data.json` can be deleted.
+`preview-data.json` stays for the `?demo=3` view, which is the place to look at competitions that
+have no data yet.
 
 ## Open questions for George
 

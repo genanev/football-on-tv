@@ -9,6 +9,8 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 - **Snooker:** World Snooker Tour events on TV
 - **Cricket:** men's internationals between the 12 top nations
 
+You pick a sport with a round icon at the top. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby, MotoGP and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
+
 It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
 
 ## Principles
@@ -63,7 +65,7 @@ None of these is a published, documented API. They are the data the sites' own p
 |---|---|
 | `index.html` | The app |
 | `data.json` | The latest fixtures and channels (rewritten by every update; don't edit by hand) |
-| `demo-data.json`, `demo-data-2.json` | Recorded weeks for the demo views (see below) |
+| `demo-data.json`, `demo-data-2.json`, `preview-data.json` | Recorded weeks for the demo views (see below) |
 | `manifest.webmanifest`, `icon-*.png`, `apple-touch-icon.png` | What makes it installable on a phone |
 | `scripts/build.mjs` | The update: runs every source and writes `data.json` |
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings) |
@@ -71,6 +73,7 @@ None of these is a published, documented API. They are the data the sites' own p
 | `test/*.mjs`, `test/fixtures/` | Offline tests and the real data they replay |
 | `.github/workflows/update.yml` | Hourly update |
 | `.github/workflows/check.yml` | Runs the tests and a live check on every branch except `main` |
+| `designA.md` | How the app's navigation works (sports, competition chips, My TV, day picker) |
 | `CLAUDE.md` | Detailed notes, rules and conventions for Claude Code |
 
 ## Running it
@@ -83,7 +86,7 @@ You need **Node.js 24**. There are no packages to install.
 | Run an update into another file | `node scripts/build.mjs some-file.json` |
 | Run all the tests | `node test/run-test.mjs`, `node test/run-sports-test.mjs`, `node test/run-golf-snooker-cricket-test.mjs`, `node test/run-more-football-test.mjs` |
 | Look at the app on your computer | start a local web server in this folder and open it in a browser: e.g. `npx serve` (then `http://localhost:3000/`), or the `app` preview in `.claude/launch.json` (`http://localhost:8123/`) |
-| See the recorded demo weeks | add `?demo` (F1, F2, darts) or `?demo=2` (golf, snooker, cricket) to the address |
+| See the recorded demo weeks | add `?demo` (F1, F2, darts), `?demo=2` (golf, snooker, cricket) or `?demo=3` (the week of 17 Oct 2026 plus made-up rugby, MotoGP and special-event games marked SAMPLE) to the address |
 
 The update prints a short report of every source, and the same report is stored in `data.json` under `report`.
 

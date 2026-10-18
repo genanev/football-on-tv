@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T14:30:16.520Z",
+ "generatedAt": "2026-10-18T15:00:16.642Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -237,7 +237,7 @@
    "homeShort": "Bournemouth",
    "awayShort": "Sunderland",
    "venue": "Vitality Stadium, Bournemouth",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Matchweek 7",
@@ -267,8 +267,8 @@
    "homeShort": "Brighton",
    "awayShort": "Crystal Palace",
    "venue": "American Express Stadium, Falmer",
-   "status": "live",
-   "homeScore": 4,
+   "status": "finished",
+   "homeScore": 5,
    "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
@@ -297,7 +297,7 @@
    "homeShort": "Leeds",
    "awayShort": "Man Utd",
    "venue": "Elland Road, Leeds",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Matchweek 7",

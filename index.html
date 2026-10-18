@@ -160,7 +160,7 @@
   }
   .filters.stuck { border-bottom-color: var(--line); }
   .rail {
-    display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+    display: flex; align-items: flex-start; gap: 2px; overflow-x: auto; scrollbar-width: none;
     margin: 0 -16px; padding: 0 10px; scroll-padding: 0 48px;
   }
   .rail::-webkit-scrollbar, .chips::-webkit-scrollbar { display: none; }
@@ -182,7 +182,7 @@
     display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0 2px;
     font: inherit; font-size: 12px; font-weight: 600;
   }
-  .sport.mine { --lab: var(--text); }
+  .sport.mytab { --lab: var(--text); }
   .sport[aria-selected="true"] { color: var(--lab); font-weight: 700; }
   .sport[aria-selected="true"] .tile { transform: translateY(-3px); box-shadow: inset 0 0 0 2px var(--ring), 0 7px 14px -7px var(--ring); }
   .sport[aria-selected="true"] .tile img { transform: scale(1.1); }
@@ -570,7 +570,7 @@
   }
 
   function renderNav() {
-    $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mine' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--h:${s.hue}">
+    $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mytab' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--h:${s.hue}">
       ${tile(s)}<span>${esc(s.name)}</span></button>`).join('');
     if (view.sport === 'mine') {
       const day = pickedDay();

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-18T21:30:17.421Z",
+ "generatedAt": "2026-10-18T22:00:18.807Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4344,
+   "programmes": 4328,
    "errors": []
   },
   "skyListings": {
@@ -84,7 +84,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 19
+   "sessions": 18
   },
   "cricket": {
    "ok": true,
@@ -185,34 +185,8 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792314000",
    "kickoff": "2026-10-18T09:00:00.000Z",
-   "end": "2026-10-18T11:00:00.000Z",
+   "end": "2026-10-18T17:15:00.000Z",
    "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 4",
-    "channels": [
-     "TNT Sports 4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792324800",
-   "kickoff": "2026-10-18T12:00:00.000Z",
-   "end": "2026-10-18T16:00:00.000Z",
-   "session": "Afternoon session",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 4",

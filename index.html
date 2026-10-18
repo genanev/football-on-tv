@@ -41,6 +41,7 @@
     --snooker: #6d4c41;
     --cricket: #3949ab;
     --rugby: #00796b;
+    --tl1: .975; --tc1: .02; --tl2: .9; --tc2: .055; --rl: .55; --ll: .4; --mring: oklch(.32 .09 155);
     --special: #ad1457;
     --sky: #d35400;
     --tnt: #b4169e;
@@ -80,6 +81,7 @@
       --snooker: #d7a98c;
       --cricket: #9fa8da;
       --rugby: #4db6ac;
+      --tl1: .36; --tc1: .045; --tl2: .27; --tc2: .05; --rl: .72; --ll: .85; --mring: oklch(.85 .1 155);
       --special: #f48fb1;
       --sky: #ff9a4d;
       --tnt: #f06ae0;
@@ -116,6 +118,7 @@
     --snooker: #d7a98c;
     --cricket: #9fa8da;
     --rugby: #4db6ac;
+    --tl1: .36; --tc1: .045; --tl2: .27; --tc2: .05; --rl: .72; --ll: .85; --mring: oklch(.85 .1 155);
     --special: #f48fb1;
     --sky: #ff9a4d;
     --tnt: #f06ae0;
@@ -157,26 +160,32 @@
   }
   .filters.stuck { border-bottom-color: var(--line); }
   .rail {
-    display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none;
+    display: flex; align-items: flex-start; gap: 2px; overflow-x: auto; scrollbar-width: none;
     margin: 0 -16px; padding: 0 10px; scroll-padding: 0 48px;
   }
   .rail::-webkit-scrollbar, .chips::-webkit-scrollbar { display: none; }
   .rail.fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); }
   .rail.fade-l { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); }
   .rail.fade-l.fade-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); }
+  /* Sport tiles: the 3D icon (sport-icons/) on a soft rounded tile tinted with the sport's hue (--h) */
+  .tile {
+    --ring: oklch(var(--rl) .15 var(--h));
+    flex: none; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px;
+    background: linear-gradient(165deg, oklch(var(--tl1) var(--tc1) var(--h)), oklch(var(--tl2) var(--tc2) var(--h)));
+    transition: transform .15s, box-shadow .15s;
+  }
+  .tile img { display: block; width: 72%; height: 72%; transition: transform .15s; }
+  .tile.mytv { --ring: var(--mring); background: linear-gradient(165deg, oklch(.56 .12 155), oklch(.42 .1 155)); }
   .sport {
-    flex: none; width: 66px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
-    display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 4px 0 2px;
+    --lab: oklch(var(--ll) .14 var(--h));
+    flex: none; width: 72px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0 2px;
     font: inherit; font-size: 12px; font-weight: 600;
   }
-  .sport .ic {
-    width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
-    background: var(--surface); border: 1.5px solid var(--line); color: var(--sc);
-    transition: background .15s, color .15s, border-color .15s, transform .15s;
-  }
-  .sport .ic svg { width: 26px; height: 26px; }
-  .sport[aria-selected="true"] { color: var(--text); font-weight: 700; }
-  .sport[aria-selected="true"] .ic { background: var(--sc); border-color: var(--sc); color: var(--pill-text); transform: scale(1.04); }
+  .sport.mytab { --lab: var(--text); }
+  .sport[aria-selected="true"] { color: var(--lab); font-weight: 700; }
+  .sport[aria-selected="true"] .tile { transform: translateY(-3px); box-shadow: inset 0 0 0 2px var(--ring), 0 7px 14px -7px var(--ring); }
+  .sport[aria-selected="true"] .tile img { transform: scale(1.1); }
 
   .chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 10px -16px 0; padding: 0 16px; scroll-padding: 0 16px; }
   .chip {
@@ -214,12 +223,19 @@
   .empty { color: var(--faint); font-size: 14px; padding: 4px 2px 6px; }
 
   .list { background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
-  .match { display: grid; grid-template-columns: 56px 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
+  /* The time column (time, LIVE NOW, sport icon) spans every row, so a tall time cell never pushes the
+     tags down; if it is taller than the text, the spare room goes to the empty last row. */
+  .match { display: grid; grid-template-columns: 56px 1fr; grid-template-rows: auto auto 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
+  .match > .time { grid-row: 1 / -1; }
+  .match > .teams { grid-column: 2; grid-row: 1; }
+  .match > .meta { grid-row: 2; }
   .match:first-child { border-top: 0; }
   .match.past { opacity: .55; }
   .time { font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; padding-top: 1px; }
   .status { display: block; font-size: 11px; font-weight: 700; color: var(--faint); margin-top: 2px; letter-spacing: .03em; }
   .status.live { color: var(--live); white-space: nowrap; }
+  /* The sport's icon under the time (and LIVE NOW), so it's clear at a glance which sport a game is */
+  .sico { display: block; width: 38px; height: 38px; margin: 4px 0 0 -3px; }
   .teams { font-weight: 600; font-size: 16px; line-height: 1.3; min-width: 0; }
   .teams .v { color: var(--faint); font-weight: 400; padding: 0 2px; }
   .score { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 700; margin-left: 6px; }
@@ -256,8 +272,7 @@
   .sheet-b { overflow-y: auto; padding: 0 16px calc(16px + env(safe-area-inset-bottom)); }
   .grp { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; }
   .grp-h { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-  .grp-h .ic { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--sc); color: var(--pill-text); flex: none; }
-  .grp-h .ic svg { width: 21px; height: 21px; }
+  .grp-h .tile { width: 44px; height: 44px; border-radius: 14px; }
   .grp-h .nm { flex: 1; font-weight: 700; font-size: 16px; }
   .grp-h .ct { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
   .switch { appearance: none; -webkit-appearance: none; margin: 0; flex: none; width: 46px; height: 28px; border-radius: 999px; background: var(--line); position: relative; cursor: pointer; transition: background .15s; }
@@ -356,18 +371,9 @@
     return urls;
   }
 
-  // Line icons (24×24, drawn in the current text colour)
+  // Line icons for the two buttons (24×24, drawn in the current text colour). The sport icons are 3D pictures in sport-icons/.
   const svg = (body) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
   const ICON = {
-    mine: svg('<path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/>'),
-    football: svg('<circle cx="12" cy="12" r="9"/><path d="M12 8l3.8 2.8-1.5 4.4H9.7l-1.5-4.4z"/><path d="M12 3v5M15.8 10.8l4.6-1.6M14.3 15.2l2.8 3.9M9.7 15.2l-2.8 3.9M8.2 10.8L3.6 9.2"/>'),
-    motor: svg('<path d="M5 21V3.5"/><rect x="5" y="4" width="14" height="9" rx=".5"/><path d="M5 4h4.7v4.5H5zM14.3 4H19v4.5h-4.7zM9.7 8.5h4.6V13H9.7z" fill="currentColor" stroke="none"/>'),
-    golf: svg('<path d="M8 20V3l9 4-9 4"/><ellipse cx="8" cy="20" rx="5" ry="1.4"/><circle cx="17" cy="17.5" r="1.4"/>'),
-    cricket: svg('<g transform="rotate(-35 12 12)"><path d="M9.8 9.5h4.4v10a1.5 1.5 0 0 1-1.5 1.5h-1.4a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M12 9.5V3"/></g><circle cx="6" cy="18" r="2.2"/>'),
-    rugby: svg('<ellipse cx="12" cy="12" rx="9.5" ry="5.8" transform="rotate(-45 12 12)"/><path d="M8.5 15.5l7-7M9.5 12.9l1.6 1.6M11.2 11.2l1.6 1.6M12.9 9.5l1.6 1.6"/>'),
-    darts: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>'),
-    snooker: svg('<circle cx="8" cy="16" r="4"/><circle cx="16" cy="16" r="4"/><circle cx="12" cy="9.1" r="4"/>'),
-    specials: svg('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 5.5H5.5v1a3 3 0 0 0 3 3M16 5.5h2.5v1a3 3 0 0 1-3 3"/><path d="M12 13v3.5M8.5 20.5h7M9.5 16.5h5v4h-5z"/>'),
     calendar: svg('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
     edit: svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
   };
@@ -375,7 +381,7 @@
   // Sports and their competitions. `soon` = not connected to a data source yet.
   // `tag` is the short label on each listing; `none` is what an empty day says.
   const SPORTS = [
-    { id: 'football', name: 'Football', color: 'var(--pl)', none: 'No televised football', comps: [
+    { id: 'football', icon: 'football', hue: 255, name: 'Football', color: 'var(--pl)', none: 'No televised football', comps: [
       { id: 'PL', name: 'Premier League', tag: 'PL', color: 'var(--pl)', none: 'No scheduled PL games' },
       { id: 'UCL', name: 'Champions League', tag: 'UCL', color: 'var(--ucl)', none: 'No scheduled UCL games' },
       { id: 'UEL', name: 'Europa League', tag: 'UEL', color: 'var(--uel)', none: 'No scheduled UEL games' },
@@ -383,24 +389,24 @@
       { id: 'FAC', name: 'FA Cup', tag: 'FA Cup', color: 'var(--cups)', none: 'No televised FA Cup ties' },
       { id: 'EFL', name: 'EFL Cup', tag: 'EFL Cup', color: 'var(--cups)', none: 'No televised EFL Cup ties' },
     ] },
-    { id: 'motor', name: 'Motorsport', color: 'var(--f1)', none: 'No motorsport sessions', comps: [
+    { id: 'motor', icon: 'motorsport', hue: 27, name: 'Motorsport', color: 'var(--f1)', none: 'No motorsport sessions', comps: [
       { id: 'F1', name: 'Formula 1', tag: 'F1', color: 'var(--f1)', none: 'No F1 sessions' },
       { id: 'F2', name: 'Formula 2', tag: 'F2', color: 'var(--f2)', none: 'No F2 sessions' },
       { id: 'F3', name: 'Formula 3', tag: 'F3', color: 'var(--f3)', none: 'No F3 sessions', soon: true },
       { id: 'MOTOGP', name: 'MotoGP', tag: 'MotoGP', color: 'var(--motogp)', none: 'No MotoGP sessions', soon: true },
     ] },
-    { id: 'golf', name: 'Golf', color: 'var(--golf)', none: 'No televised golf', comps: [
+    { id: 'golf', icon: 'golf', hue: 145, name: 'Golf', color: 'var(--golf)', none: 'No televised golf', comps: [
       { id: 'PGA', name: 'PGA Tour', tag: 'PGA Tour', color: 'var(--pga)', none: 'No PGA Tour golf on TV' },
       { id: 'DPWT', name: 'DP World Tour', tag: 'DP World', color: 'var(--golf)', none: 'No DP World Tour golf on TV' },
     ] },
-    { id: 'cricket', name: 'Cricket', color: 'var(--cricket)', none: 'No international cricket on TV', comps: [
+    { id: 'cricket', icon: 'cricket', hue: 60, name: 'Cricket', color: 'var(--cricket)', none: 'No international cricket on TV', comps: [
       { id: 'TEST', name: 'Tests', tag: 'Test', color: 'var(--cricket)', none: 'No Test cricket on TV' },
       { id: 'ODI', name: 'ODIs', tag: 'ODI', color: 'var(--cricket)', none: 'No ODIs on TV' },
       { id: 'T20I', name: 'T20 internationals', tag: 'T20I', color: 'var(--cricket)', none: 'No T20 internationals on TV' },
     ] },
     // Rugby covers both codes, main events only: union (Six Nations, Nations Championship, Premiership,
     // Champions Cup) then league (Super League). Ids start RU_ / RL_.
-    { id: 'rugby', name: 'Rugby', color: 'var(--rugby)', none: 'No televised rugby', comps: [
+    { id: 'rugby', icon: 'rugby', hue: 290, name: 'Rugby', color: 'var(--rugby)', none: 'No televised rugby', comps: [
       { id: 'RU_6N', name: 'Six Nations', tag: 'Six Nations', color: 'var(--rugby)', none: 'No Six Nations rugby on TV', soon: true },
       { id: 'RU_NATIONS', name: 'Nations Championship', tag: 'Nations Champ', color: 'var(--rugby)', none: 'No Nations Championship rugby on TV', soon: true },
       { id: 'RU_PREM', name: 'Premiership', tag: 'Premiership', color: 'var(--rugby)', none: 'No Premiership rugby on TV', soon: true },
@@ -408,19 +414,24 @@
       { id: 'RL_SL', name: 'Super League', tag: 'Super League', color: 'var(--rugby)', none: 'No Super League on TV', soon: true },
     ] },
     // Darts and snooker each have one competition, so they get no chip row
-    { id: 'darts', name: 'Darts', color: 'var(--darts)', none: 'No televised darts', comps: [
+    { id: 'darts', icon: 'darts', hue: 345, name: 'Darts', color: 'var(--darts)', none: 'No televised darts', comps: [
       { id: 'DARTS', name: 'Darts', tag: 'Darts', color: 'var(--darts)', none: 'No televised darts' },
     ] },
-    { id: 'snooker', name: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker', comps: [
+    { id: 'snooker', icon: 'snooker', hue: 175, name: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker', comps: [
       { id: 'SNOOKER', name: 'Snooker', tag: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker' },
     ] },
-    { id: 'specials', name: 'Specials', color: 'var(--special)', none: 'No big events on TV', comps: [
+    { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', comps: [
       { id: 'SPECIAL_TENNIS', name: 'Wimbledon & tennis', tag: 'Tennis', color: 'var(--special)', none: 'No big tennis on TV', soon: true },
       { id: 'SPECIAL_CYCLING', name: 'Tour de France', tag: 'Cycling', color: 'var(--special)', none: 'No Tour de France on TV', soon: true },
       { id: 'SPECIAL_ATHLETICS', name: 'Athletics championships', tag: 'Athletics', color: 'var(--special)', none: 'No athletics championships on TV', soon: true },
       { id: 'SPECIAL_OTHER', name: 'Other big events', tag: 'Special', color: 'var(--special)', none: 'No other big events on TV', soon: true },
     ] },
   ];
+  // My TV is not a sport but sits in the same row
+  const MINE = { id: 'mine', icon: 'mytv', hue: 155, name: 'My TV' };
+  const SPORT_BY_ID = Object.fromEntries(SPORTS.map(s => [s.id, s]));
+  // A sport's 3D icon on its tinted tile (the colours are set by CSS from --h)
+  const tile = (s) => `<span class="tile${s.id === 'mine' ? ' mytv' : ''}" style="--h:${s.hue}"><img src="sport-icons/${s.icon}.svg" alt=""></span>`;
   const COMP = {}, SPORT_OF = {};
   for (const s of SPORTS) for (const c of s.comps) { COMP[c.id] = c; SPORT_OF[c.id] = s.id; }
   const ALL_COMPS = Object.keys(COMP);
@@ -537,9 +548,11 @@
     const c = COMP[compOf(m)];
     const tag = `<span class="comp" style="color:${c ? c.color : 'var(--other)'}">${esc(m.label || (c ? c.tag : m.comp))}</span>`;
     const sample = m.sample ? '<span class="comp sample">SAMPLE</span>' : '';
+    const sport = SPORT_BY_ID[SPORT_OF[compOf(m)]];
+    const sico = sport ? `<img class="sico" src="sport-icons/${sport.icon}.svg" alt="${esc(sport.name)}" title="${esc(sport.name)}">` : '';
 
     return `<div class="match${past ? ' past' : ''}">
-      <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}</div>
+      <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}${sico}</div>
       <div class="teams">${headline}</div>
       <div class="meta">${tag}${sample}${tvHtml}</div>
       ${also}${warn}
@@ -557,9 +570,8 @@
   }
 
   function renderNav() {
-    const tabs = [{ id: 'mine', name: 'My TV', color: 'var(--accent)' }, ...SPORTS];
-    $('#rail').innerHTML = tabs.map(s => `<button class="sport" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--sc:${s.color}">
-      <span class="ic">${ICON[s.id]}</span><span>${esc(s.name)}</span></button>`).join('');
+    $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mytab' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--h:${s.hue}">
+      ${tile(s)}<span>${esc(s.name)}</span></button>`).join('');
     if (view.sport === 'mine') {
       const day = pickedDay();
       $('#sub').innerHTML = `<div class="mine">
@@ -708,7 +720,7 @@
     $('#picker-body').innerHTML = SPORTS.map(s => {
       const on = s.comps.filter(c => picks.has(c.id)).length;
       return `<div class="grp" style="--sc:${s.color}">
-        <label class="grp-h"><span class="ic">${ICON[s.id]}</span>
+        <label class="grp-h">${tile(s)}
           <span class="nm">${esc(s.name)}<span class="ct">${s.comps.length < 2 ? (on ? 'On' : 'Off') : on === s.comps.length ? 'All' : on ? `${on} of ${s.comps.length}` : 'None'}</span></span>
           <input type="checkbox" class="switch" data-sport="${s.id}" aria-label="${s.comps.length < 2 ? '' : 'All of '}${esc(s.name)}" ${on === s.comps.length ? 'checked' : ''}></label>
         ${s.comps.length < 2 ? '' : `<div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>`}

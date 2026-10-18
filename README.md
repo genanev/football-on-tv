@@ -92,6 +92,8 @@ The update prints a short report of every source, and the same report is stored 
 
 ### Updating from the UK (Amazon stopgap)
 
+_A fix is drafted: `cloud/SETUP.md` is the step-by-step guide for running the update from Google Cloud in London every 15 minutes. Until that is set up, use the weekly run below._
+
 Prime Video only shows the UK Champions League page to UK visitors, and the hourly updates run on GitHub's US servers. So until the updates move to a UK server, run one update from a UK computer each week before Tuesday's Champions League games. In this folder:
 
 ```

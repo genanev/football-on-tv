@@ -17,7 +17,7 @@ then dropped on 17 Oct 2026.
  Football on TV                        [☀ Light]
  UK times · updated 12 min ago
  ┌──────────────────────────────────────────────┐  ← sticky
- │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (◎ ›  │  sport icons, scroll sideways
+ │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (🏉 ›  │  3D sport icons on tiles, scroll sideways
  │ My TV Football Motorsport  Golf Cricket Da…  │
  │ [⚙ Customise My TV] [📅 All days]             │  ← on My TV
  │ Current Selection: Football, Golf, Darts     │
@@ -151,10 +151,19 @@ in advance:
 
 ## Navigation details
 
-- **Sport icon row** (`.rail`): 48 px round icons with the sport's name under them, 66 px apart,
-  scrolling sideways (about 5½ fit on a 390 px phone, so the cut-off one hints at more). The
-  edge fades when more icons are hidden that way. The selected icon fills with the sport's colour
-  and the icon turns white. Icons are inline line-drawn SVGs that follow the text colour (`ICON`).
+- **Sport icon row** (`.rail`): a **3D icon** (`sport-icons/<name>.svg`, from the "Studio 3D" icon
+  pack George supplied on 18 Oct 2026) on a 64 px rounded tile (radius 20 px) tinted with the sport's
+  hue, with the sport's name under it, 72 px apart, scrolling sideways (about 5 fit on a 390 px
+  phone, so the cut-off one hints at more). The edge fades when more tiles are hidden that way. The
+  selected tile lifts 3 px, its icon grows 10% and it gets a 2 px ring in the hue (the label turns
+  that colour and bold). My TV has a dark-green tile. Tile colours come from CSS variables
+  (`--tl1`, `--tc1`, `--tl2`, `--tc2`, `--rl`, `--ll`, `--mring`) set for light and dark mode, plus
+  `--h`, the hue, set per sport in `SPORTS` (`icon`, `hue`): football 255, motorsport 27, golf 145,
+  cricket 60, rugby 290, darts 345, snooker 175, specials 88, My TV 155. The same tile, smaller, is
+  in Customise My TV. The icon files and the pack's own tile spec are in `sport-icons/`.
+- **Sport icon on every listing:** each card shows its sport's icon (38 px, no tile, no text) under
+  the time and LIVE NOW, so it is clear what sport a game is even when the tag only says "Test" or
+  "ODI". The time column spans the card's rows so the icon never pushes the tags down.
 - **Competition chips** (`.chips`): "All football", then one per competition, scrolling
   sideways. Several competitions can be on at once: each tap switches that chip on or off, and
   selected chips are filled dark (light in dark mode). "All football" is on when no competition chip
@@ -171,6 +180,7 @@ Listing cards (these changed from the old tab-bar app):
 - The outlined tag shows the competition's own tag and colour from `SPORTS` (cup ties show their
   cup, specials can bring their own `label`).
 - Sample events get the extra **SAMPLE** tag.
+- The sport's 3D icon sits under the time (see "Sport icon on every listing" above).
 - All the listing rules are kept: LIVE NOW, FT/P–P, scores, a channel pill and a note never
   together, "…to be confirmed" hidden once started, "Also on…", the conflict warning.
 - **Banners:** one per failed source, shown only when the view includes a competition that

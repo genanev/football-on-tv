@@ -159,19 +159,26 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] Name chosen: **Telly Fixtures**. Store title along the lines of "Telly Fixtures: Sport on UK TV".
   - [x] No clashing app found in the stores; trademark register checked by George (no conflict).
   - [x] App ID: **`uk.co.tellyfixtures`** (Android and, later, Apple). **It can't change after the first upload.**
-  - [ ] Register the domains soon, so nobody else takes them (all free on 19 Oct 2026): **tellyfixtures.co.uk** (the main one, which the app ID matches), **tellyfixtures.app**, and optionally **tellyfixtures.com**. About £10 each a year; on Cloudflare (Phase 1) or any registrar.
+  - [x] Domains registered on Cloudflare (19 Oct 2026): **tellyfixtures.co.uk** (the main one, which the app ID matches) and **tellyfixtures.com**, auto-renewing yearly. tellyfixtures.app deliberately skipped (optional; can be bought later if still free).
   - [ ] Rename the app itself (title, manifest, icons, footer) in Phase 1.
 - [ ] **Pricing.** Recommended: **one-month free trial, then £3.65 a year**. The alternative, a free tier with the full week and My TV paid, gets more installs but is more to build. Decide before Phase 3.
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the trial terms beside it.
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [ ] **Your public details.** Paid apps show the seller's contact details. Decide whether to use your home address or a virtual business address (≈ £5–15 a month), and set up a support email on the domain.
+- [ ] **Sole trader or limited company before opening the store accounts?** George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
+  - skips the 12-tester closed test;
+  - shows the company's address instead of yours;
+  - needs a registered company (£100) and a free D-U-N-S number (can take weeks);
+  - means yearly accounts (often a few hundred pounds with an accountant).
+
+  Talk to an accountant before Phase 2.
 - [ ] **Accounts and security.** Use one Google account just for the business, with two-step sign-in. Keep everything in a password manager: store accounts, keys, recovery codes.
 
 ## Phase 1: product readiness on your own domain
 
 *You'll learn: domains and DNS, hosting, cloud storage, privacy law basics.*
 
-- [ ] Buy the domain and move its DNS to Cloudflare (free).
+- [x] Buy the domain and have its DNS on Cloudflare: done 19 Oct 2026 (registered on Cloudflare, so its DNS is already there).
 - [ ] Set up the support email (Cloudflare Email Routing, forwarding to Gmail; free).
 - [ ] **Football fixtures from API-Football** (decided 19 Oct 2026):
   - A new source module (`apiFootball.mjs`) for the six competitions, built and tested on the free tier (100 requests a day).

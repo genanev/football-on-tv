@@ -31,6 +31,9 @@ const ALIASES = {
   'olympiacos': 'olympiakos', 'olympiakos': 'olympiakos', 'kobenhavn': 'copenhagen', 'fc kobenhavn': 'copenhagen',
   'shakhtar': 'shakhtar donetsk', 'dinamo zagreb': 'dinamo zagreb', 'salzburg': 'red bull salzburg',
   'aek athens': 'aek athens', 'union sg': 'union saint gilloise', 'club brugge': 'club brugge',
+  // API-Football's names (compare-api-football.mjs, 19 Oct 2026)
+  'qpr': 'queens park rangers', 'fk crvena zvezda': 'red star belgrade', 'red star': 'red star belgrade',
+  'rfs': 'rigas fs', 'rigas futbola skola': 'rigas fs',
 };
 
 function stripAccents(s) {

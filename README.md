@@ -87,7 +87,7 @@ You need **Node.js 24**. There are no packages to install.
 |---|---|
 | Run an update now (writes `data.json`) | `node scripts/build.mjs` |
 | Run an update into another file | `node scripts/build.mjs some-file.json` |
-| Run all the tests | `node test/run-test.mjs`, `node test/run-sports-test.mjs`, `node test/run-golf-snooker-cricket-test.mjs`, `node test/run-more-football-test.mjs` |
+| Run all the tests | `node test/run-test.mjs`, `node test/run-sports-test.mjs`, `node test/run-golf-snooker-cricket-test.mjs`, `node test/run-more-football-test.mjs`, `node test/run-api-football-test.mjs` |
 | Look at the app on your computer | start a local web server in this folder and open it in a browser: e.g. `npx serve` (then `http://localhost:3000/`), or the `app` preview in `.claude/launch.json` (`http://localhost:8123/`) |
 | See the recorded demo weeks | add `?demo` (F1, F2, darts), `?demo=2` (golf, snooker, cricket) or `?demo=3` (the week of 17 Oct 2026 plus made-up rugby, MotoGP and special-event games marked SAMPLE) to the address |
 

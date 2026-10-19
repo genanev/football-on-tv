@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-19T12:30:13.534Z",
+ "generatedAt": "2026-10-19T13:00:13.192Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -129,7 +129,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792400400",
    "kickoff": "2026-10-19T09:00:00.000Z",
-   "end": "2026-10-19T11:45:00.000Z",
+   "end": "2026-10-19T11:30:00.000Z",
    "session": "Morning session",
    "timeTbc": false,
    "tv": {

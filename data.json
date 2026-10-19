@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-19T19:00:13.389Z",
+ "generatedAt": "2026-10-19T19:30:13.659Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -213,8 +213,8 @@
    "homeShort": "Spurs",
    "awayShort": "Coventry",
    "venue": "Tottenham Hotspur Stadium, London",
-   "status": "upcoming",
-   "homeScore": 0,
+   "status": "live",
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",

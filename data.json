@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T11:00:18.532Z",
+ "generatedAt": "2026-10-19T11:30:13.131Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4399,
+   "programmes": 4401,
    "errors": []
   },
   "skyListings": {
@@ -48,7 +48,7 @@
   "efl": {
    "ok": true,
    "championship": 13,
-   "leagueCup": 0
+   "leagueCup": 1
   },
   "faCup": {
    "ok": true,
@@ -83,7 +83,7 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 16
+   "sessions": 17
   },
   "cricket": {
    "ok": true,
@@ -129,7 +129,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792400400",
    "kickoff": "2026-10-19T09:00:00.000Z",
-   "end": "2026-10-19T11:00:00.000Z",
+   "end": "2026-10-19T11:30:00.000Z",
    "session": "Morning session",
    "timeTbc": false,
    "tv": {
@@ -2198,6 +2198,32 @@
    }
   },
   {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "BetVictor Northern Ireland Open",
+   "venue": "Belfast",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792843200",
+   "kickoff": "2026-10-24T12:00:00.000Z",
+   "end": "2026-10-24T15:30:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "efl-g2647382",
    "comp": "CHAMP",
    "label": null,
@@ -2995,6 +3021,38 @@
     ],
     "alsoOn": [
      "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "efl-g2687771",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-27T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Fleetwood Town",
+   "away": "Arsenal",
+   "homeShort": "Fleetwood",
+   "awayShort": "Arsenal",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "source": "efl.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
     ],
     "confirmed": true,
     "note": null,

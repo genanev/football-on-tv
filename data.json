@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T08:30:13.400Z",
+ "generatedAt": "2026-10-19T09:00:12.843Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4385,
+   "programmes": 4397,
    "errors": []
   },
   "skyListings": {
@@ -44,7 +44,7 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "24/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -87,7 +87,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 12
   }
  },
  "events": [
@@ -2714,14 +2714,16 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   },
@@ -2936,6 +2938,33 @@
     "broadcaster": "TNT Sports 1",
     "channels": [
      "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Pakistan v Sri Lanka",
+   "venue": "Gaddafi Stadium, Lahore",
+   "series": "ODI Tri-Series in Pakistan, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-274146",
+   "kickoff": "2026-10-27T08:00:00.000Z",
+   "end": "2026-10-27T16:00:00.000Z",
+   "session": "Match 5 (ODI)",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
     ],
     "alsoOn": [],
     "confirmed": true,

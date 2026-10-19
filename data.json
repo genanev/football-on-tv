@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T22:30:13.573Z",
+ "generatedAt": "2026-10-19T23:00:23.170Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4388,
+   "programmes": 4139,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 990,
+   "programmes": 976,
    "errors": []
   },
   "primeVideo": {
@@ -30,7 +30,7 @@
   },
   "premierLeague": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
   "championsLeague": {
    "ok": true,
@@ -38,13 +38,13 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 9
+   "matches": 8
   },
   "europaLeague": {
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "26/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/28 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -83,158 +83,14 @@
    "tournaments": [
     "BetVictor Northern Ireland Open"
    ],
-   "sessions": 17
+   "sessions": 14
   },
   "cricket": {
    "ok": true,
-   "matches": 12
+   "matches": 11
   }
  },
  "events": [
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "South Africa v Australia",
-   "venue": "St George's Park, Gqeberha",
-   "series": "Australia in South Africa, 3 Test Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-269791-d2",
-   "kickoff": "2026-10-19T08:00:00.000Z",
-   "end": "2026-10-19T15:00:00.000Z",
-   "session": "2nd Test, Day 2",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Cricket",
-    "channels": [
-     "Sky Sports Cricket"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792400400",
-   "kickoff": "2026-10-19T09:00:00.000Z",
-   "end": "2026-10-19T11:30:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 4"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792411200",
-   "kickoff": "2026-10-19T12:00:00.000Z",
-   "end": "2026-10-19T16:00:00.000Z",
-   "session": "Afternoon session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 4"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792432800",
-   "kickoff": "2026-10-19T18:00:00.000Z",
-   "end": "2026-10-19T23:00:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 4"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "pl-2645264",
-   "comp": "PL",
-   "kickoff": "2026-10-19T19:00:00.000Z",
-   "home": "Tottenham Hotspur",
-   "away": "Coventry City",
-   "homeShort": "Spurs",
-   "awayShort": "Coventry",
-   "venue": "Tottenham Hotspur Stadium, London",
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 1,
-   "round": "Matchweek 7",
-   "kind": "match",
-   "source": "premierleague.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",

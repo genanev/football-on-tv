@@ -229,6 +229,53 @@ read -s -p "Paste the new GitHub key, then press Enter: " KEY; echo; printf '%s'
 
 The job always uses the newest version, so nothing else changes.
 
+## Switching football to API-Football
+
+The update reads football fixtures and scores from API-Football as soon as the job has the
+API-Football key; without it, it keeps using the official websites. So: first merge the
+`api-football` branch into `main` (that changes nothing yet), then give the job the key.
+
+In Cloud Shell (after the `export` lines from step 4):
+
+1. Put the key in the locked box. Paste this line as it is, then paste the key from your
+   API-Football dashboard when it asks (it won't show on screen):
+
+```bash
+read -s -p "Paste the API-Football key, then press Enter: " KEY; echo; printf '%s' "$KEY" | gcloud secrets create api-football-key --data-file=-; unset KEY
+```
+
+2. Let the job read it, and hand it to the job (its GitHub key stays as it is):
+
+```bash
+gcloud secrets add-iam-policy-binding api-football-key \
+  --member="serviceAccount:football-job@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor"
+gcloud run jobs update football-update --region="$REGION" \
+  --update-secrets="API_FOOTBALL_KEY=api-football-key:latest"
+```
+
+3. Run it once and check, as in step 8:
+   `gcloud run jobs execute football-update --region="$REGION" --wait`. The printed report should
+   say `"footballSource": "api-football"` and `"apiFootball": { "ok": true, ... }`.
+
+Each update uses 8 of the Pro plan's 7,500 requests a day (about 400 a day at every 30 minutes).
+
+**Going back to the official websites** (for example if API-Football stops working):
+
+```bash
+gcloud run jobs update football-update --region="$REGION" --update-env-vars="FOOTBALL_SOURCE=official"
+```
+
+Undo it with `--remove-env-vars="FOOTBALL_SOURCE"`.
+
+**Turning football scores off everywhere** (if they ever have to go):
+
+```bash
+gcloud run jobs update football-update --region="$REGION" --update-env-vars="SHOW_SCORES=off"
+```
+
+Undo it with `--remove-env-vars="SHOW_SCORES"`. Both take effect on the next run.
+
 ## Stopping it
 
 - **Pause** (keeps everything, runs stop):

@@ -14,16 +14,57 @@
 
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { ukHHMM } from '../scripts/lib/util.mjs';
+import { ukHHMM, ukToUtc, ukDate } from '../scripts/lib/util.mjs';
+import { build } from '../scripts/build.mjs';
 import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: await fx('apifootball-fixtures-2026-10-19.json') };
 
+// ---------- the other sources the build reads (for the build checks at the end)
+// Sky TV guide entries, hand-written in Sky's format (UK local times; the guide has no past days)
+const MAIN = 4002;
+let eid = 0;
+const prog = (sid, date, hhmm, mins, t) => {
+  const [y, m, d] = date.split('-').map(Number);
+  const [hh, mm] = hhmm.split(':').map(Number);
+  return { sid, ev: { st: ukToUtc(y, m, d, hh, mm) / 1000, d: mins * 60, eid: `E${(++eid).toString(16)}`, t, sy: '', eg: 7, esg: 11, s: true, hd: true, new: false } };
+};
+const GUIDE = [
+  prog(MAIN, '2026-10-24', '17:00', 180, 'Live PL: Chelsea v Tottenham'),
+  prog(MAIN, '2026-10-27', '19:30', 180, 'Live Carabao Cup: Fleetwood v Arsenal'),
+];
+const skyDay = (url) => {
+  const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
+  const date = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6)}`;
+  const schedule = sids.split(',').map(Number).map(sid => ({ sid: String(sid), events: GUIDE.filter(g => g.sid === sid && ukDate(g.ev.st * 1000) === date).map(g => g.ev) }));
+  return { date: ymd, schedule };
+};
+// The FA's page: one televised tie (markup in the page's format; see thefa-facup-fixtures-2026-10-13.html)
+const FA_PAGE = `<table class="gTable"><tr><td class="headl">Tuesday 20 October 2026</td><td class="headr">Fourth Round Qualifying</td></tr>
+<tr class="even"><td class="cOne"><time datetime=">19:45">19:45</time></td><td class="cThree">Harrogate Town AFC</td><td class="cFive">Bury</td><td class="cSeven">Live on BBC Sport</td></tr></table>`;
+// The Premier League's feed: one match, with its UK broadcaster in the league's broadcast feed
+const PL_WEEK = { data: [{ matchId: 999, kickoff: '2026-10-25 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Crystal Palace' }, awayTeam: { name: 'Newcastle United' } }] };
+const PL_TV = { content: [{ contentReference: { id: 999 }, channels: [{ info: { name: 'Sky Sports', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['GB'] } } }] }] };
+let afDown = false;
+const ok = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => (typeof b === 'string' ? b : JSON.stringify(b)) });
+function otherSource(url) {
+  if (url.includes('api-sports.io')) return afDown ? { ok: false, status: 500 } : null;
+  if (url.includes('awk.epgsky.com')) return ok(skyDay(url));
+  if (url.includes('thefa.com')) return ok(FA_PAGE);
+  if (url.includes('current-gameweek')) return ok({ matchweek: 9 });
+  if (url.includes('pulselive.com')) return ok(/matchweek=9&/.test(url) ? PL_WEEK : { data: [] });
+  if (url.includes('api.premierleague.com/broadcasting')) return ok(PL_TV);
+  if (url.includes('match.uefa.com') || url.includes('eflservices.co.uk')) throw new Error(`official feed read with API-Football: ${url}`);
+  return { ok: false, status: 404 }; // other sports: covered by their own tests
+}
+
 // ---------- mock fetch
 let requests = [];
 let failLeagues = new Set();
 globalThis.fetch = async (url, opts = {}) => {
+  const other = otherSource(url);
+  if (other) return other;
   requests.push({ url, key: opts.headers?.['x-apisports-key'] });
   const q = new URL(url).searchParams;
   const league = q.get('league');
@@ -128,5 +169,54 @@ failLeagues = new Set();
 requests = [];
 await assert.rejects(fetchApiFootball('2026-10-19', '2026-10-27', 2026, ''), /API_FOOTBALL_KEY is not set/);
 assert.equal(requests.length, 0);
+
+// ---------- the build with API-Football as the football source (Mon 19 Oct 2026, 23:00 UK)
+process.env.API_FOOTBALL_KEY = 'test-key';
+const NOW = Date.parse('2026-10-19T22:00:00Z');
+const data = await build(NOW, null, { footballSource: 'api-football' });
+const r = data.report;
+assert.equal(r.footballSource, 'api-football');
+assert.equal(r.apiFootball.ok, true);
+assert.deepEqual([r.premierLeague, r.championsLeague, r.europaLeague], [{ ok: true, matches: 11 }, { ok: true, matches: 18 }, { ok: true, matches: 18 }]);
+assert.equal(r.efl.ok, true);
+assert.equal(r.faPage.ok, true);
+assert.equal(r.scores, 'on');
+const ev = (comp, home) => data.events.find(e => e.comp === comp && e.home === home);
+// New-app-only competitions are read but not in this app's data
+assert.ok(!data.events.some(e => e.comp === 'UECL' || e.comp === 'WSL'));
+// Every football event is from API-Football, with its kick-off and score
+assert.ok(data.events.filter(e => e.kind === 'match').every(e => e.source === 'api-football.com'));
+assert.deepEqual([ev('PL', 'Tottenham').status, ev('PL', 'Tottenham').homeScore, ev('PL', 'Tottenham').awayScore], ['finished', 3, 1]);
+// Channel from the Sky guide
+assert.deepEqual(ev('PL', 'Chelsea').tv.channels, ['Sky Sports Main Event']);
+// Saturday 15:00 UK: not shown live
+assert.equal(ev('PL', 'Arsenal').tv.note, 'Not shown live on UK TV');
+assert.equal(ev('CHAMP', 'Wolves').kickoff, '2026-10-20T18:45:00.000Z'); // Tuesday's game, not the Saturday one
+assert.equal(data.events.find(e => e.comp === 'CHAMP' && e.home === 'Wolves' && e.away === 'Watford').tv.note, 'Not shown live on UK TV');
+// The Premier League's own broadcaster, paired with API-Football's match by teams
+assert.deepEqual([ev('PL', 'Crystal Palace').tv.broadcaster, ev('PL', 'Crystal Palace').tv.note], ['Sky Sports', 'Exact channel to be confirmed']);
+assert.equal(r.premierLeagueTv.ok, true);
+// Cups: televised ties only. League Cup from the guide; FA Cup from the FA's "Live on" list
+const cups = data.events.filter(e => e.comp === 'CUPS');
+assert.deepEqual(cups.map(e => `${e.label}: ${e.home} v ${e.away} on ${e.tv.channels[0]}`), [
+  'FA Cup: Harrogate Town v Bury on BBC Sport',
+  'EFL Cup: Fleetwood Town v Arsenal on Sky Sports Main Event',
+]);
+assert.ok(cups[0].tv.sources.includes('thefa.com'));
+
+// Scores switched off: none anywhere
+const noScores = await build(NOW, null, { footballSource: 'api-football', showScores: false });
+assert.equal(noScores.report.scores, 'off');
+assert.ok(noScores.events.every(e => e.homeScore == null && e.awayScore == null));
+
+// API-Football down: every football competition reports a failure (the app shows its banners),
+// the rest of the build carries on, and no official fixture feed is read instead
+afDown = true;
+const down = await build(NOW, null, { footballSource: 'api-football' });
+afDown = false;
+assert.equal(down.report.apiFootball.ok, false);
+assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup'].every(k => down.report[k].ok === false));
+assert.equal(down.events.filter(e => e.kind === 'match').length, 0);
+assert.equal(down.report.tvGuide.ok, true);
 
 console.log('All API-Football tests passed');

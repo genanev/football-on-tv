@@ -10,9 +10,9 @@
 //
 // Only televised ties are listed (the cup tab is for ties you can watch).
 
-import { getText, ukToUtc } from '../lib/util.mjs';
+import { getText, ukToUtc, ukDate } from '../lib/util.mjs';
 import { SPORT_CHANNELS, guideTv } from './skyGuide.mjs';
-import { guideProgrammesFor } from './football.mjs';
+import { guideProgrammesFor, teamSim } from './football.mjs';
 
 const FA_URL = 'https://www.thefa.com/competitions/thefacup/fixtures';
 const MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12 };
@@ -63,13 +63,26 @@ export async function fetchFaCup() {
   return parseFaFixtures(html).map(mapFaTie).filter(Boolean);
 }
 
+/**
+ * The FA's "Live on" channel for a tie from another source (API-Football lists every tie, televised
+ * or not): the FA page's tie on the same UK date with both team names, or null.
+ */
+export function faChannelFor(tie, faPageTies) {
+  const date = ukDate(Date.parse(tie.kickoff));
+  const hit = (faPageTies || []).find(t => ukDate(Date.parse(t.kickoff)) === date
+    && teamSim(t.home, tie.home) >= 0.5 && teamSim(t.away, tie.away) >= 0.5);
+  return hit?.faChannel || null;
+}
+
+/** Televised ties only: shown in the TV guide, or listed "Live on …" by the FA (`faChannel`). */
 export function faCupEvents(ties, guide) {
   const sids = SPORT_CHANNELS.football;
   return ties.map(({ faChannel, ...t }) => {
     const progs = guideProgrammesFor(t, guide?.programmes || [], sids);
+    if (!progs.length && !faChannel) return null;
     const tv = progs.length ? guideTv(progs, sids)
       : { broadcaster: faChannel, channels: [faChannel], alsoOn: [], confirmed: true, note: null, conflict: false, sources: [] };
-    tv.sources = [...new Set(['thefa.com', ...tv.sources])];
+    if (faChannel) tv.sources = [...new Set(['thefa.com', ...tv.sources])];
     return { ...t, tv };
-  });
+  }).filter(Boolean);
 }

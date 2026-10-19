@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T17:30:13.280Z",
+ "generatedAt": "2026-10-19T18:00:23.434Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4405,
+   "programmes": 4402,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 991,
+   "programmes": 990,
    "errors": []
   },
   "primeVideo": {
@@ -214,8 +214,8 @@
    "awayShort": "Coventry",
    "venue": "Tottenham Hotspur Stadium, London",
    "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Matchweek 7",
    "kind": "match",
    "source": "premierleague.com",

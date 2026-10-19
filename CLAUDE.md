@@ -88,7 +88,7 @@ UK rights for 2026/27 (background only – never used to infer a channel): PL on
 - Football scores stay on (13 Oct 2026): the PL, UEFA and EFL feeds give live scores; the app shows the score from the last update during a match and the final score at FT. Updates run every 30 minutes, so a score can be up to about 30 minutes old (every 15 would be nearer real time; see `cloud/SETUP.md`).
 - Yellow banners: one per failed source, only in views that include a competition that source feeds. **Exception: no banner for Prime Video** (George, 18 Oct 2026: a failed read keeps Amazon's pick anyway, and he watches `report.primeVideo` in `data.json` himself). A competition with no data source yet is marked **SOON** on its chip and in Customise (MotoGP, F3, Rugby, Specials); picked on its own it shows a grey note that it isn't connected yet.
 - **Rugby: main events only (George, 18 Oct 2026):** Six Nations, Nations Championship, Premiership, Champions Cup (union) and Super League (league). Deliberately left out: URC, the Challenge Cup and all Australian competitions (NRL, State of Origin). All five are `soon` (no data source yet).
-- The app name stays "Football on TV" for now (George will rename it later; `manifest.webmanifest`'s description still mentions only football).
+- **The app will be called "Telly Fixtures" (George, 19 Oct 2026)**, app ID `uk.co.tellyfixtures` (permanent once uploaded to a store; use it for Android and Apple), main domain tellyfixtures.co.uk. Until the Phase 1 rename, the app, repo and docs still say "Football on TV" (`manifest.webmanifest`'s description still mentions only football).
 
 ## Running and testing
 

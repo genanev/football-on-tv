@@ -155,10 +155,12 @@ The project only moves past a gate when its question has a clear answer. Write t
 | TNT Sports | | | |
 | Prime Video | | | |
 
-- [ ] **Name and brand.**
-  - Choose the name.
-  - Check it isn't already an app on Google Play or the App Store, or a UK trademark (the IPO's trademark search is free).
-  - Check the domain is free, and decide the app ID (e.g. `uk.co.yourdomain.whatson`). **The app ID can't change after the first upload.**
+- [x] **Name and brand (19 Oct 2026): Telly Fixtures.**
+  - [x] Name chosen: **Telly Fixtures**. Store title along the lines of "Telly Fixtures: Sport on UK TV".
+  - [x] No clashing app found in the stores; trademark register checked by George (no conflict).
+  - [x] App ID: **`uk.co.tellyfixtures`** (Android and, later, Apple). **It can't change after the first upload.**
+  - [ ] Register the domains soon, so nobody else takes them (all free on 19 Oct 2026): **tellyfixtures.co.uk** (the main one, which the app ID matches), **tellyfixtures.app**, and optionally **tellyfixtures.com**. About £10 each a year; on Cloudflare (Phase 1) or any registrar.
+  - [ ] Rename the app itself (title, manifest, icons, footer) in Phase 1.
 - [ ] **Pricing.** Recommended: **one-month free trial, then £3.65 a year**. The alternative, a free tier with the full week and My TV paid, gets more installs but is more to build. Decide before Phase 3.
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the trial terms beside it.
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
@@ -369,3 +371,4 @@ Record decisions here as they're made (date, what, why).
 - 18 Oct 2026: **Capacitor instead of a Trusted Web Activity**, so the same code can go to the App Store (Apple rejects "website in a wrapper" apps). **RevenueCat** for subscriptions on both stores. Android first; the App Store is a separate decision (Gate G3). Reason: mainly a learning project, run with real-business detail, keeping the iPhone option open at little extra cost.
 - 19 Oct 2026: **Football fixtures and scores from API-Football** (all six competitions), replacing the PL, UEFA, EFL and FA feeds. Free tier while building and testing; Pro (≈ $19 a month) for the live product. Reason: a documented, paid-for service instead of reading websites' hidden feeds; the focus is getting to market, accepting the risk that the supplier could stop (football-data.org is the fallback).
 - 19 Oct 2026: **Rights position on football.** Fixture facts aren't owned by anyone (the 2012 *Football DataCo v Yahoo* ruling), so no Football DataCo licence is sought for fixtures. Scores are an accepted risk while the app is small: refreshed every 5 minutes (not live), not a selling point, and removable with one switch. The Football DataCo email is no longer needed for fixtures.
+- 19 Oct 2026: **Name: Telly Fixtures; app ID `uk.co.tellyfixtures`; main domain tellyfixtures.co.uk.** Reason: says what the app does, covers every sport, friendly and British, distinctive (no similar app found), and all its domains were free. Considered: Derby Time(s) (exciting, but football or horse racing only, and confusable with Derby and the *Derbyshire Times*); TV Lineup (both words too generic); Front Row (crowded name); On Now (too close to Sky's NOW).

@@ -1,2 +1,5 @@
 # Business working files (permission emails, tracker): kept out of git while the repo is public
 business/
+
+# Local secrets (API keys): never commit
+.env

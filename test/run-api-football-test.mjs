@@ -6,25 +6,30 @@
 //     (39 PL, 40 Championship, 2 UCL, 3 UEL, 45 FA Cup, 48 League Cup; only the fields we use kept)
 //   That week has Champions and Europa League matchday 3, PL matchweek 9 (across the clocks going
 //   back on 27 Oct) and League Cup round of 16 (one tie decided on penalties).
+//   fixtures/apifootball-fixtures-2026-10-19.json   /fixtures for 19-27 Oct 2026 (Pro plan, evening
+//     of 19 Oct), the same plus 848 Conference League and 44 WSL (added for the new app). The clocks
+//     go back on Sunday 25 Oct.
 //
 //   node test/run-api-football-test.mjs
 
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { ukHHMM } from '../scripts/lib/util.mjs';
-import { mapAfFixture, afErrors, afSeason, fetchApiFootball } from '../scripts/sources/apiFootball.mjs';
+import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
 
-const AF = JSON.parse(await readFile(new URL('fixtures/apifootball-fixtures-2024-10-22.json', import.meta.url), 'utf8'));
+const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
+const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: await fx('apifootball-fixtures-2026-10-19.json') };
 
 // ---------- mock fetch
 let requests = [];
 let failLeagues = new Set();
 globalThis.fetch = async (url, opts = {}) => {
   requests.push({ url, key: opts.headers?.['x-apisports-key'] });
-  const league = new URL(url).searchParams.get('league');
+  const q = new URL(url).searchParams;
+  const league = q.get('league');
   const body = failLeagues.has(league)
     ? { errors: { plan: 'Free plans do not have access to this season, try from 2022 to 2024.' }, results: 0, response: [] }
-    : AF[league] || { errors: [], results: 0, response: [] };
+    : WEEKS[q.get('season')]?.[league] || { errors: [], results: 0, response: [] };
   return { ok: true, status: 200, json: async () => body };
 };
 
@@ -61,7 +66,7 @@ assert.deepEqual(mapAfFixture(fixture('NS')), {
 // ---------- the captured week
 const { matches, errors } = await fetchApiFootball('2024-10-22', '2024-10-30', 2024, 'test-key');
 assert.deepEqual(errors, []);
-assert.equal(requests.length, 6); // one per competition
+assert.equal(requests.length, 8); // one per competition
 assert.ok(requests.every(r => r.key === 'test-key'));
 const q = new URL(requests[0].url).searchParams;
 assert.deepEqual([q.get('season'), q.get('from'), q.get('to'), q.get('timezone')], ['2024', '2024-10-22', '2024-10-30', 'UTC']);
@@ -89,6 +94,24 @@ const pens = matches.find(m => m.home === 'Brentford' && m.label === 'EFL Cup');
 assert.deepEqual([pens.away, pens.status, pens.homeScore, pens.awayScore], ['Sheffield Wednesday', 'finished', 1, 1]);
 assert.ok(matches.every(m => m.source === 'api-football.com' && m.id.startsWith('af-')));
 
+// ---------- this week (19-27 Oct 2026), with the Conference League and the WSL
+requests = [];
+const now = await fetchApiFootball('2026-10-19', '2026-10-27', 2026, 'test-key');
+assert.deepEqual(now.errors, []);
+const c26 = (comp, label = null) => now.matches.filter(m => m.comp === comp && m.label === label).length;
+assert.deepEqual([c26('PL'), c26('CHAMP'), c26('UCL'), c26('UEL'), c26('UECL'), c26('WSL'), c26('CUPS', 'FA Cup'), c26('CUPS', 'EFL Cup')], [11, 13, 18, 18, 18, 7, 11, 2]);
+// After the clocks go back (Sun 25 Oct): 14:00 UTC = 14:00 UK, as premierleague.com says
+const utd = now.matches.find(m => m.home === 'Manchester United' && m.comp === 'PL');
+assert.equal(ukHHMM(Date.parse(utd.kickoff)), '14:00');
+// Before (Sat 24 Oct, BST): 11:30 UTC = 12:30 UK
+const villa = now.matches.find(m => m.home === 'Aston Villa' && m.comp === 'PL');
+assert.equal(ukHHMM(Date.parse(villa.kickoff)), '12:30');
+// WSL: "Tottenham Hotspur W" shown as "… Women", matched (TV listings) as "Tottenham Hotspur"
+const wsl = now.matches.find(m => m.comp === 'WSL' && m.homeShort === 'Tottenham Hotspur');
+assert.deepEqual([wsl.home, wsl.away, wsl.awayShort], ['Tottenham Hotspur Women', 'Arsenal Women', 'Arsenal']);
+const uecl = now.matches.find(m => m.comp === 'UECL' && m.away === 'Brighton');
+assert.deepEqual([uecl.home, uecl.round, uecl.label], ['FK Jablonec', 'League Stage - 2', null]);
+
 // ---------- failures
 // One competition refused: the others still arrive, and the error names the competition
 requests = []; failLeagues = new Set(['45']);
@@ -97,7 +120,7 @@ assert.equal(partial.matches.length, 78);
 assert.deepEqual(partial.errors, ['FA Cup: plan: Free plans do not have access to this season, try from 2022 to 2024.']);
 
 // Every competition refused (e.g. the free plan asked for the current season): the source fails
-failLeagues = new Set(Object.keys(AF));
+failLeagues = new Set(Object.keys(AF_LEAGUES));
 await assert.rejects(fetchApiFootball('2026-10-19', '2026-10-27', 2026, 'test-key'), /plan: Free plans/);
 failLeagues = new Set();
 

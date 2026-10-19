@@ -33,7 +33,9 @@ const ALIASES = {
   'aek athens': 'aek athens', 'union sg': 'union saint gilloise', 'club brugge': 'club brugge',
   // API-Football's names (compare-api-football.mjs, 19 Oct 2026)
   'qpr': 'queens park rangers', 'fk crvena zvezda': 'red star belgrade', 'red star': 'red star belgrade',
-  'rfs': 'rigas fs', 'rigas futbola skola': 'rigas fs',
+  'rfs': 'rigas fs', 'rigas futbola skola': 'rigas fs', 'gnk dinamo': 'dinamo zagreb',
+  'n e c': 'nec nijmegen', 'nec': 'nec nijmegen', 'hearts': 'heart of midlothian',
+  'st truiden': 'sint truiden', 'sint truidense': 'sint truiden', 'stvv': 'sint truiden',
 };
 
 function stripAccents(s) {
@@ -202,7 +204,7 @@ export function mapUefaMatch(m, comp = 'UCL') {
   };
 }
 
-const UEFA_COMPETITION = { UCL: 1, UEL: 14 };
+const UEFA_COMPETITION = { UCL: 1, UEL: 14, UECL: 2019 }; // UECL: only compare-api-football.mjs uses it
 
 export async function fetchUefa(now, daysAhead, comp = 'UCL') {
   const from = ukDate(now - 86400000);

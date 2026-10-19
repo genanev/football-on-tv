@@ -1,4 +1,5 @@
-// API-Football: fixtures and scores for all six football competitions, from one documented,
+// API-Football: fixtures and scores for every football competition (the six in today's app, plus
+// the Conference League and the WSL for the new app), from one documented,
 // paid-for service (George's decision, 19 Oct 2026). It replaces the four official feeds
 // (premierleague.com, uefa.com, efl.com, thefa.com) once a side-by-side comparison has shown it
 // agrees with them (scripts/compare-api-football.mjs).
@@ -6,7 +7,7 @@
 // Source
 //   v3.football.api-sports.io/fixtures?league=<id>&season=<YYYY>&from=&to=&timezone=UTC
 //   with header x-apisports-key. One request per competition returns every fixture in the
-//   window, so a full read is 6 requests. Kick-off times are UTC ("2024-10-27T15:30:00+00:00").
+//   window, so a full read is 8 requests. Kick-off times are UTC ("2024-10-27T15:30:00+00:00").
 //   The key comes from the API_FOOTBALL_KEY environment variable (a local .env file, never in git;
 //   Secret Manager in Google Cloud).
 //
@@ -31,7 +32,14 @@ export const AF_LEAGUES = {
   3: { comp: 'UEL', label: null },
   45: { comp: 'CUPS', label: 'FA Cup' },
   48: { comp: 'CUPS', label: 'EFL Cup' },
+  // Added for the new app only (George, 19 Oct 2026); the current app doesn't list them
+  848: { comp: 'UECL', label: null },
+  44: { comp: 'WSL', label: null, women: true },
 };
+
+// WSL teams come as "Arsenal W": shown as "Arsenal Women", matched as "Arsenal"
+const fullName = (n, women) => (women ? String(n || '').replace(/\s+W$/, ' Women') : n);
+const shortName = (n, women) => (women ? String(n || '').replace(/\s+W$/, '') : n);
 
 const AF_STATUS = {
   TBD: 'upcoming', NS: 'upcoming',
@@ -57,10 +65,10 @@ export function mapAfFixture(f) {
     kind: 'match',
     kickoff: new Date(ts).toISOString(),
     timeTbc: short === 'TBD',
-    home: f.teams?.home?.name,
-    away: f.teams?.away?.name,
-    homeShort: f.teams?.home?.name,
-    awayShort: f.teams?.away?.name,
+    home: fullName(f.teams?.home?.name, league.women),
+    away: fullName(f.teams?.away?.name, league.women),
+    homeShort: shortName(f.teams?.home?.name, league.women),
+    awayShort: shortName(f.teams?.away?.name, league.women),
     venue: f.fixture.venue?.name || null,
     status: AF_STATUS[short] || 'upcoming',
     homeScore: goals(f.goals?.home),
@@ -78,7 +86,7 @@ export function afErrors(j) {
 }
 
 /**
- * Every fixture of our six competitions between two UK dates ("YYYY-MM-DD", inclusive).
+ * Every fixture of our competitions between two UK dates ("YYYY-MM-DD", inclusive).
  * One competition failing doesn't stop the others (it's listed in `errors`); if all fail, it throws.
  */
 export async function fetchApiFootball(fromDate, toDate, season, key = process.env.API_FOOTBALL_KEY) {

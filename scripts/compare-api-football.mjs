@@ -6,7 +6,7 @@
 //   node --env-file=.env scripts/compare-api-football.mjs 2024-10-22   a past window (the free
 //                                                                       plan only has 2022-2024)
 //
-// Uses 6 API-Football requests per run.
+// Uses 8 API-Football requests per run.
 
 import { ukDate, ukMidnight, ukHHMM, ukWeekday } from './lib/util.mjs';
 import { getJSON } from './lib/util.mjs';
@@ -42,10 +42,12 @@ await Promise.all([
   settle('PL', plSeasonMatches()),
   settle('UCL', fetchUefa(from + 86400000, DAYS - 1, 'UCL')),
   settle('UEL', fetchUefa(from + 86400000, DAYS - 1, 'UEL')),
+  settle('UECL', fetchUefa(from + 86400000, DAYS - 1, 'UECL')),
   settle('EFL', fetchEfl(start, end, season)),
   isPast ? Promise.resolve(notes.push('FA Cup: not compared (thefa.com only shows the next round)'))
     : settle('FA Cup', fetchFaCup()),
 ]);
+notes.push('WSL: not compared (no official feed in the current app)');
 
 let af;
 try {
@@ -58,7 +60,7 @@ const afMatches = af.matches.filter(inWindow);
 
 // ---------------------------------------------------------------- compare
 
-const group = (m) => m.label || m.comp; // PL, CHAMP, UCL, UEL, EFL Cup, FA Cup
+const group = (m) => m.label || m.comp; // PL, CHAMP, UCL, UEL, UECL, WSL, EFL Cup, FA Cup
 const officialAll = Object.values(official).flat();
 const when = (iso) => { const t = Date.parse(iso); return `${ukWeekday(t)} ${ukDate(t).slice(5)} ${ukHHMM(t)}`; };
 const name = (m) => `${m.home} v ${m.away}`;
@@ -87,7 +89,7 @@ for (const o of officialAll) {
   if (!differs) rows.same++;
 }
 for (const a of afMatches) {
-  if (used.has(a)) continue;
+  if (used.has(a) || a.comp === 'WSL') continue;
   // The FA page lists televised ties only, so other FA Cup ties are expected here
   const why = group(a) === 'FA Cup' ? '  (expected: thefa.com lists televised ties only)' : '';
   rows.extra.push(`${group(a)}  ${when(a.kickoff)}  ${name(a)}${why}`);

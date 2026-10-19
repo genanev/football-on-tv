@@ -16,6 +16,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { ukHHMM, ukToUtc, ukDate } from '../scripts/lib/util.mjs';
 import { build } from '../scripts/build.mjs';
+import { unknownClubs } from '../scripts/sources/teamNames.mjs';
 import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
@@ -104,6 +105,11 @@ assert.deepEqual(mapAfFixture(fixture('NS')), {
   status: 'upcoming', homeScore: null, awayScore: null, round: 'Regular Season - 9', source: 'api-football.com',
 });
 
+// A club missing from teamNames.mjs (e.g. newly promoted) keeps API-Football's name and is reported
+assert.deepEqual(unknownClubs([{ comp: 'CHAMP', homeShort: 'Wolves', awayShort: 'Boreham Wood' }, { comp: 'CUPS', homeShort: 'Anstey Nomads', awayShort: 'Macclesfield' }]), ['Boreham Wood']);
+assert.equal(mapAfFixture({ ...fixture('NS'), teams: { home: { name: 'Boreham Wood' }, away: { name: 'Wolves' } } }).home, 'Boreham Wood');
+assert.equal(mapAfFixture({ ...fixture('NS'), teams: { home: { name: 'Boreham Wood' }, away: { name: 'Wolves' } } }).away, 'Wolverhampton Wanderers');
+
 // ---------- the captured week
 const { matches, errors } = await fetchApiFootball('2024-10-22', '2024-10-30', 2024, 'test-key');
 assert.deepEqual(errors, []);
@@ -120,7 +126,7 @@ assert.equal(count('UEL'), 18);
 assert.equal(count('CUPS', 'EFL Cup'), 8);
 assert.equal(count('CUPS', 'FA Cup'), 0); // FA Cup first round was 2 Nov 2024
 
-const find = (home) => matches.find(m => m.home === home && m.comp !== 'UCL' && m.comp !== 'UEL');
+const find = (home) => matches.find(m => m.homeShort === home && m.comp !== 'UCL' && m.comp !== 'UEL');
 // Friday night before the clocks went back: 19:00 UTC = 20:00 UK (BST)
 assert.equal(find('Leicester').kickoff, '2024-10-25T19:00:00.000Z');
 assert.equal(ukHHMM(Date.parse(find('Leicester').kickoff)), '20:00');
@@ -134,6 +140,11 @@ assert.deepEqual([arsenal.away, arsenal.status, arsenal.homeScore, arsenal.awayS
 const pens = matches.find(m => m.home === 'Brentford' && m.label === 'EFL Cup');
 assert.deepEqual([pens.away, pens.status, pens.homeScore, pens.awayScore], ['Sheffield Wednesday', 'finished', 1, 1]);
 assert.ok(matches.every(m => m.source === 'api-football.com' && m.id.startsWith('af-')));
+// English clubs are shown by their full names; API-Football's own name is kept for matching
+assert.deepEqual([find('Leicester').home, find('Leicester').homeShort], ['Leicester City', 'Leicester']);
+const swed = matches.find(m => m.homeShort === 'Sheffield Wednesday' && m.comp === 'CHAMP');
+assert.equal(swed.home, 'Sheffield Wednesday'); // not confused with Sheffield United ("Sheffield Utd")
+assert.equal(matches.find(m => m.awayShort === 'Crvena Zvezda' || m.awayShort === 'FK Crvena Zvezda').away, 'FK Crvena Zvezda'); // not English: as given
 
 // ---------- this week (19-27 Oct 2026), with the Conference League and the WSL
 requests = [];
@@ -150,8 +161,8 @@ assert.equal(ukHHMM(Date.parse(villa.kickoff)), '12:30');
 // WSL: "Tottenham Hotspur W" shown as "… Women", matched (TV listings) as "Tottenham Hotspur"
 const wsl = now.matches.find(m => m.comp === 'WSL' && m.homeShort === 'Tottenham Hotspur');
 assert.deepEqual([wsl.home, wsl.away, wsl.awayShort], ['Tottenham Hotspur Women', 'Arsenal Women', 'Arsenal']);
-const uecl = now.matches.find(m => m.comp === 'UECL' && m.away === 'Brighton');
-assert.deepEqual([uecl.home, uecl.round, uecl.label], ['FK Jablonec', 'League Stage - 2', null]);
+const uecl = now.matches.find(m => m.comp === 'UECL' && m.awayShort === 'Brighton');
+assert.deepEqual([uecl.home, uecl.away, uecl.round, uecl.label], ['FK Jablonec', 'Brighton and Hove Albion', 'League Stage - 2', null]);
 
 // ---------- failures
 // One competition refused: the others still arrive, and the error names the competition
@@ -181,7 +192,7 @@ assert.deepEqual([r.premierLeague, r.championsLeague, r.europaLeague], [{ ok: tr
 assert.equal(r.efl.ok, true);
 assert.equal(r.faPage.ok, true);
 assert.equal(r.scores, 'on');
-const ev = (comp, home) => data.events.find(e => e.comp === comp && e.home === home);
+const ev = (comp, home) => data.events.find(e => e.comp === comp && e.homeShort === home); // by API-Football's name
 // New-app-only competitions are read but not in this app's data
 assert.ok(!data.events.some(e => e.comp === 'UECL' || e.comp === 'WSL'));
 // Every football event is from API-Football, with its kick-off and score
@@ -192,7 +203,11 @@ assert.deepEqual(ev('PL', 'Chelsea').tv.channels, ['Sky Sports Main Event']);
 // Saturday 15:00 UK: not shown live
 assert.equal(ev('PL', 'Arsenal').tv.note, 'Not shown live on UK TV');
 assert.equal(ev('CHAMP', 'Wolves').kickoff, '2026-10-20T18:45:00.000Z'); // Tuesday's game, not the Saturday one
-assert.equal(data.events.find(e => e.comp === 'CHAMP' && e.home === 'Wolves' && e.away === 'Watford').tv.note, 'Not shown live on UK TV');
+assert.equal(`${ev('CHAMP', 'Wolves').home} v ${ev('CHAMP', 'Wolves').away}`, 'Wolverhampton Wanderers v Portsmouth');
+assert.equal(`${ev('CHAMP', 'Sheffield Utd').home} v ${ev('CHAMP', 'Sheffield Utd').away}`, 'Sheffield United v Derby County');
+assert.equal(`${ev('CHAMP', 'QPR').home} v ${ev('CHAMP', 'QPR').away}`, 'Queens Park Rangers v Swansea City');
+assert.deepEqual(r.apiFootball.unknownClubs, []); // every league club this week is in teamNames.mjs
+assert.equal(data.events.find(e => e.comp === 'CHAMP' && e.homeShort === 'Wolves' && e.awayShort === 'Watford').tv.note, 'Not shown live on UK TV');
 // The Premier League's own broadcaster, paired with API-Football's match by teams
 assert.deepEqual([ev('PL', 'Crystal Palace').tv.broadcaster, ev('PL', 'Crystal Palace').tv.note], ['Sky Sports', 'Exact channel to be confirmed']);
 assert.equal(r.premierLeagueTv.ok, true);

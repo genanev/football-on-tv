@@ -21,6 +21,7 @@
 // No TV channels here: those still come from the TV listings (footballTv.mjs).
 
 import { getJSON, londonParts } from '../lib/util.mjs';
+import { fullClubName } from './teamNames.mjs';
 
 const AF_URL = 'https://v3.football.api-sports.io/fixtures';
 
@@ -37,8 +38,9 @@ export const AF_LEAGUES = {
   44: { comp: 'WSL', label: null, women: true },
 };
 
-// WSL teams come as "Arsenal W": shown as "Arsenal Women", matched as "Arsenal"
-const fullName = (n, women) => (women ? String(n || '').replace(/\s+W$/, ' Women') : n);
+// Shown: English clubs' full names ("Wolves" -> "Wolverhampton Wanderers", teamNames.mjs); WSL teams
+// come as "Arsenal W", shown as "Arsenal Women". Matched (TV listings): API-Football's name ("Arsenal").
+const fullName = (n, women) => (women ? String(n || '').replace(/\s+W$/, ' Women') : fullClubName(n));
 const shortName = (n, women) => (women ? String(n || '').replace(/\s+W$/, '') : n);
 
 const AF_STATUS = {

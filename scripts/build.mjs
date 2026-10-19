@@ -28,6 +28,7 @@ import { footballTv } from './sources/footballTv.mjs';
 import { fetchEfl, eflEvents, eflSeason } from './sources/efl.mjs';
 import { fetchFaCup, faCupEvents, faChannelFor } from './sources/facup.mjs';
 import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
+import { unknownClubs } from './sources/teamNames.mjs';
 import { fetchF1, fetchF2, motorsportTv } from './sources/motorsport.mjs';
 import { fetchTournaments as fetchDarts, dartsEvents } from './sources/darts.mjs';
 import { fetchGolf, golfEvents } from './sources/golf.mjs';
@@ -137,8 +138,9 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   let eflError = null, faError = null;
   if (useAf) {
     const af = ok(afRes) ? afRes.value : null;
-    report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors } : fail(afRes);
     const all = af ? af.matches.filter(inWindow).filter(m => !NEW_APP_ONLY.has(m.comp)) : [];
+    // unknownClubs: league clubs shown by API-Football's short name (add them to teamNames.mjs)
+    report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors, unknownClubs: unknownClubs(all) } : fail(afRes);
     // One report entry per competition as before, so the app's banners still say what's missing
     const errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : report.apiFootball.error);
     const entry = (name, n) => (errorOf(name) ? { ok: false, error: errorOf(name) } : { ok: true, matches: n });

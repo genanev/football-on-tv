@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T15:00:14.297Z",
+ "generatedAt": "2026-10-19T15:30:13.338Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4401,
+   "programmes": 4403,
    "errors": []
   },
   "skyListings": {
@@ -44,7 +44,7 @@
    "ok": true,
    "matches": 18
   },
-  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "26/29 PL+UCL matches with a confirmed channel",
   "efl": {
    "ok": true,
    "championship": 13,
@@ -2825,14 +2825,16 @@
    "kind": "match",
    "source": "premierleague.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   },

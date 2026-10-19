@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-19T07:00:25.670Z",
+ "generatedAt": "2026-10-19T07:30:13.939Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4373,
+   "programmes": 4382,
    "errors": []
   },
   "skyListings": {
@@ -87,7 +87,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 10
+   "matches": 11
   }
  },
  "events": [
@@ -2938,6 +2938,35 @@
      "TNT Sports 1"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "Newlands, Cape Town",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269792-d1",
+   "kickoff": "2026-10-27T08:30:00.000Z",
+   "end": "2026-10-27T15:30:00.000Z",
+   "session": "3rd Test, Day 1",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T16:30:32.912Z",
+ "generatedAt": "2026-10-20T17:00:28.887Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -249,9 +249,9 @@
    "homeShort": "Fenerbahçe",
    "awayShort": "Slavia Praha",
    "venue": "Chobani Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -283,9 +283,9 @@
    "homeShort": "Sabah FA",
    "awayShort": "Borussia Dortmund",
    "venue": "Baku Olympic Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

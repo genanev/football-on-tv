@@ -57,8 +57,19 @@ export function parsePremierSports(html, now = Date.now()) {
   return out;
 }
 
+/**
+ * Like Prime Video, the site serves each country its own page: from GitHub's US servers it has none
+ * of the UK listings (check.yml, 20 Oct 2026). A page without the UK channel logos is reported as
+ * `wrongRegion` (the keep rule then holds channels found earlier); the London update gets the UK page.
+ */
 export async function fetchPremierSports(now = Date.now()) {
-  const events = parsePremierSports(await getText(PS_URL), now);
-  if (!events.length) throw new Error('No events found on premiersports.com (page layout changed?)');
+  const html = await getText(PS_URL);
+  const events = parsePremierSports(html, now);
+  if (!events.length) {
+    const ukPage = /channel_logos\/uk\//.test(html);
+    const err = new Error(ukPage ? 'No events found on premiersports.com (page layout changed?)' : 'premiersports.com served a non-UK page');
+    if (!ukPage) err.wrongRegion = true;
+    throw err;
+  }
   return { events };
 }

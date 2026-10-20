@@ -52,7 +52,7 @@ const FA_PAGE = `<table class="gTable"><tr><td class="headl">Tuesday 20 October 
 // The Premier League's feed: one match, with its UK broadcaster in the league's broadcast feed
 const PL_WEEK = { data: [{ matchId: 999, kickoff: '2026-10-25 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Crystal Palace' }, awayTeam: { name: 'Newcastle United' } }] };
 const PL_TV = { content: [{ contentReference: { id: 999 }, channels: [{ info: { name: 'Sky Sports', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['GB'] } } }] }] };
-let afDown = false, psDown = false;
+let afDown = false, psDown = false, psForeign = false;
 // Premier Sports' fixtures page (streaming only, not in Sky's guide), trimmed; see the file's comment
 const PS_PAGE = await readFile(new URL('fixtures/premiersports-upcoming-fixtures-2026-10-20.html', import.meta.url), 'utf8');
 const ok = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => (typeof b === 'string' ? b : JSON.stringify(b)) });
@@ -60,7 +60,7 @@ function otherSource(url) {
   if (url.includes('api-sports.io')) return afDown ? { ok: false, status: 500 } : null;
   if (url.includes('awk.epgsky.com')) return ok(skyDay(url));
   if (url.includes('thefa.com')) return ok(FA_PAGE);
-  if (url.includes('premiersports.com')) return psDown ? { ok: false, status: 503 } : ok(PS_PAGE);
+  if (url.includes('premiersports.com')) return psDown ? { ok: false, status: 503 } : ok(psForeign ? '<html><body>Premier Sports is not available in your region</body></html>' : PS_PAGE);
   if (url.includes('current-gameweek')) return ok({ matchweek: 9 });
   if (url.includes('pulselive.com')) return ok(/matchweek=9&/.test(url) ? PL_WEEK : { data: [] });
   if (url.includes('api.premierleague.com/broadcasting')) return ok(PL_TV);
@@ -239,6 +239,14 @@ psDown = true;
 const keptNoPs = await build(NOW, data, { footballSource: 'api-football' });
 psDown = false;
 assert.deepEqual(keptNoPs.events.find(e => e.comp === 'SCOT' && e.homeShort === 'Motherwell').tv.channels, ['Premier Sports 1']);
+// From GitHub's US servers the site serves a page without the UK listings: "wrong region" (check.yml
+// only notes it, the app shows no banner) and the channel found earlier is kept
+psForeign = true;
+const usRun = await build(NOW, data, { footballSource: 'api-football' });
+psForeign = false;
+assert.equal(usRun.report.premierSports.ok, false);
+assert.equal(usRun.report.premierSports.wrongRegion, true);
+assert.deepEqual(usRun.events.find(e => e.comp === 'SCOT' && e.homeShort === 'Motherwell').tv.channels, ['Premier Sports 1']);
 // Every football event is from API-Football, with its kick-off and score
 assert.ok(data.events.filter(e => e.kind === 'match').every(e => e.source === 'api-football.com'));
 assert.deepEqual([ev('PL', 'Tottenham').status, ev('PL', 'Tottenham').homeScore, ev('PL', 'Tottenham').awayScore], ['finished', 3, 1]);

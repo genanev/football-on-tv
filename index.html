@@ -643,7 +643,7 @@
     // anyway, and he watches data.json's report for it instead)
     if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
     if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
-    if (r.premierSports && r.premierSports.ok === false && show('SCOT')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so Scottish Premiership games on Premier Sports may show “TV channel to be confirmed”.');
+    if (r.premierSports && r.premierSports.ok === false && !r.premierSports.wrongRegion && show('SCOT')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so Scottish Premiership games on Premier Sports may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');

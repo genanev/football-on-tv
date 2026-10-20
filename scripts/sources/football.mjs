@@ -241,6 +241,10 @@ export function guideProgrammesFor(match, programmes, sids) {
     // "Atletico U19 v Man Utd U19", "Newcastle Women v …" are other teams
     const other = /\bU\d{2}\b|\bWomen\b|\bWSL\b/i;
     if (other.test(p.title) && !names('home').concat(names('away')).some(n => other.test(n))) return false;
+    // ...and a WSL game ("Arsenal Women") needs a women's programme ("Live WSL: Arsenal v Chelsea"),
+    // not the men's game between the same clubs
+    const women = /\bWomen\b|\bWSL\b/i;
+    if ((match.comp === 'WSL' || names('home').some(n => women.test(n))) && !women.test(`${p.title} ${p.synopsis || ''}`)) return false;
     const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
     return sim('home', teams[0]) >= 0.5 && sim('away', teams[1]) >= 0.5;
   });

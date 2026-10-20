@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T20:00:13.627Z",
+ "generatedAt": "2026-10-20T20:30:25.650Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -345,8 +345,8 @@
    "awayShort": "Portsmouth",
    "venue": "Molineux Stadium",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 6",
    "source": "api-football.com",
    "tv": {
@@ -377,7 +377,7 @@
    "awayShort": "Villarreal",
    "venue": "Anfield",
    "status": "live",
-   "homeScore": 2,
+   "homeScore": 4,
    "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -408,8 +408,8 @@
    "awayShort": "AEK Athens FC",
    "venue": "Etihad Stadium",
    "status": "live",
-   "homeScore": 2,
-   "awayScore": 0,
+   "homeScore": 4,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -443,7 +443,7 @@
    "venue": "Maradona Stadium",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -474,7 +474,7 @@
    "venue": "Parc des Princes",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -506,7 +506,7 @@
    "venue": "Estádio do Dragão",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -536,7 +536,7 @@
    "awayShort": "Slovan Bratislava",
    "venue": "Stadio Olimpico",
    "status": "live",
-   "homeScore": 2,
+   "homeScore": 4,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -568,7 +568,7 @@
    "venue": "MHP Arena",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

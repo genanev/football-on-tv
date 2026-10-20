@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-20T09:30:13.853Z",
+ "generatedAt": "2026-10-20T10:00:23.979Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4357,
+   "programmes": 4369,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 974,
+   "programmes": 975,
    "errors": []
   },
   "primeVideo": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 183
+   "events": 185
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -4176,13 +4176,17 @@
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T07:00:17.651Z",
+ "generatedAt": "2026-10-20T07:30:16.827Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 17,
+   "events": 16,
    "amazonPicks": [
     "Liverpool vs. Villarreal",
     "Manchester United vs. Roma",

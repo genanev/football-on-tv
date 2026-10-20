@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-20T18:30:25.230Z",
+ "generatedAt": "2026-10-20T19:00:31.097Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4373,
+   "programmes": 4372,
    "errors": []
   },
   "skyListings": {
@@ -249,9 +249,9 @@
    "homeShort": "Fenerbahçe",
    "awayShort": "Slavia Praha",
    "venue": "Chobani Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -283,7 +283,7 @@
    "homeShort": "Sabah FA",
    "awayShort": "Borussia Dortmund",
    "venue": "Baku Olympic Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 2,
    "round": "League Stage - 3",
@@ -344,9 +344,9 @@
    "homeShort": "Wolves",
    "awayShort": "Portsmouth",
    "venue": "Molineux Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 6",
    "source": "api-football.com",
    "tv": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T15:00:36.043Z",
+ "generatedAt": "2026-10-20T15:30:14.592Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 181
+   "events": 189
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -136,9 +136,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-274143",
    "kickoff": "2026-10-20T08:00:00.000Z",
-   "end": "2026-10-20T16:00:00.000Z",
+   "end": "2026-10-20T15:26:00.000Z",
    "session": "Match 2 (ODI)",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Cricket",

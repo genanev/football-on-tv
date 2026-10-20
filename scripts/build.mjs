@@ -9,7 +9,7 @@
 //   Championship, League Cup           sources/efl.mjs (official feed)
 //   FA Cup (televised ties)            sources/facup.mjs (the FA's page: fixtures in "official"
 //                                      mode, the FA's "Live on" TV picks in both modes)
-//   Formula 1, Formula 2               sources/motorsport.mjs
+//   Formula 1, Formula 2, Formula 3    sources/motorsport.mjs
 //   Darts (televised PDC events)       sources/darts.mjs
 //   Golf (PGA Tour, DP World Tour)     sources/golf.mjs
 //   Snooker (World Snooker Tour)       sources/snooker.mjs
@@ -29,7 +29,7 @@ import { fetchEfl, eflEvents, eflSeason } from './sources/efl.mjs';
 import { fetchFaCup, faCupEvents, faChannelFor } from './sources/facup.mjs';
 import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
 import { unknownClubs } from './sources/teamNames.mjs';
-import { fetchF1, fetchF2, motorsportTv } from './sources/motorsport.mjs';
+import { fetchF1, fetchF2, fetchF3, motorsportTv } from './sources/motorsport.mjs';
 import { fetchTournaments as fetchDarts, dartsEvents } from './sources/darts.mjs';
 import { fetchGolf, golfEvents } from './sources/golf.mjs';
 import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snooker.mjs';
@@ -113,10 +113,10 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // With API-Football, the Premier League feed is still read, but only to look up the league's own
   // UK broadcaster for each match (its broadcast feed is keyed by the league's match ids), and the
   // FA's page only for its "Live on" TV picks.
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, afRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, afRes] = await Promise.allSettled([
     fetchPremierLeague(now), useAf ? skip : fetchChampionsLeague(now, DAYS_AHEAD),
     useAf ? skip : fetchUefa(now, DAYS_AHEAD, 'UEL'), useAf ? skip : fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
-    fetchF1(), fetchF2(), fetchDarts(today, lastDay),
+    fetchF1(), fetchF2(), fetchF3(), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
     fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now),
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
@@ -227,7 +227,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   } else report.faCup = { ok: false, error: faError };
 
   // ---- F1 / F2
-  for (const [key, res] of [['formula1', f1Res], ['formula2', f2Res]]) {
+  for (const [key, res] of [['formula1', f1Res], ['formula2', f2Res], ['formula3', f3Res]]) {
     if (!ok(res)) { report[key] = fail(res); continue; }
     const sessions = res.value.filter(inWindow);
     report[key] = { ok: true, sessions: sessions.length };
@@ -278,7 +278,7 @@ if (isMain) {
   try { previous = JSON.parse(await readFile(out, 'utf8')); } catch { /* first run */ }
   const data = await build(Date.now(), previous);
   console.log(JSON.stringify(data.report, null, 2));
-  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
+  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'formula3', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {
     console.error('Every fixture source failed - keeping the previous data.json');
     process.exit(1);

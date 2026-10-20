@@ -36,6 +36,7 @@ export const CHANNELS = {
 /** Channels searched for each sport, most likely first (that order picks the main channel). */
 export const SPORT_CHANNELS = {
   motorsport: [3835, 4002, 3940, 4075],
+  motogp: [3625, 3627, 3629, 4040], // TNT Sports 1-4 (MotoGP's UK broadcaster in 2026)
   darts: [4002, 3940, 4090, 4081, 3939, 4010, 6534, 6504],
   golf: [4026, 4002, 3940, 4090, 2075, 3000],
   snooker: [3625, 3627, 3629, 4040, 3000, 2075, 2086, 4058, 6534, 6504],

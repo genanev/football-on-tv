@@ -324,8 +324,8 @@
   <main id="main"><div class="loading">Loading fixtures…</div></main>
 
   <footer>
-    Fixtures from premierleague.com, uefa.com, formula1.com, fiaformula2.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
-    icc-cricket.com, efl.com and thefa.com. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, the Premier League and the FA.
+    Fixtures from <span id="football-src">premierleague.com, uefa.com,</span> formula1.com, fiaformula2.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
+    icc-cricket.com<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, the Premier League and the FA.
   </footer>
 </div>
 
@@ -596,6 +596,11 @@
     if (!data) return;
 
     $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
+    // Football fixtures come from API-Football once the update job has its key (build.mjs)
+    if (data.report && data.report.footballSource === 'api-football') {
+      $('#football-src').textContent = 'api-football.com (football),';
+      $('#football-src2').textContent = '';
+    }
 
     const banners = [];
     const ageH = (nowMs() - Date.parse(data.generatedAt)) / 3600000;

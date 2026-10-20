@@ -1,10 +1,14 @@
 // Builds data.json: what's on UK TV for today + the next 7 days, with UK times.
 //
 // Competitions and where their data comes from (one module per source family):
-//   Premier League, Champions League,  sources/football.mjs
+//   All football fixtures and scores   sources/apiFootball.mjs when API_FOOTBALL_KEY is set
+//                                      (George's decision, 19 Oct 2026); otherwise the official
+//                                      feeds below. FOOTBALL_SOURCE=official|api-football forces one.
+//   Premier League, Champions League,  sources/football.mjs (official feeds)
 //   Europa League
-//   Championship, League Cup           sources/efl.mjs
-//   FA Cup (televised ties)            sources/facup.mjs
+//   Championship, League Cup           sources/efl.mjs (official feed)
+//   FA Cup (televised ties)            sources/facup.mjs (the FA's page: fixtures in "official"
+//                                      mode, the FA's "Live on" TV picks in both modes)
 //   Formula 1, Formula 2               sources/motorsport.mjs
 //   Darts (televised PDC events)       sources/darts.mjs
 //   Golf (PGA Tour, DP World Tour)     sources/golf.mjs
@@ -19,10 +23,12 @@
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { ukDate, ukMidnight } from './lib/util.mjs';
-import { fetchPremierLeague, fetchPlBroadcasts, fetchChampionsLeague, fetchUefa } from './sources/football.mjs';
+import { fetchPremierLeague, fetchPlBroadcasts, fetchChampionsLeague, fetchUefa, teamSim } from './sources/football.mjs';
 import { footballTv } from './sources/footballTv.mjs';
 import { fetchEfl, eflEvents, eflSeason } from './sources/efl.mjs';
-import { fetchFaCup, faCupEvents } from './sources/facup.mjs';
+import { fetchFaCup, faCupEvents, faChannelFor } from './sources/facup.mjs';
+import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
+import { unknownClubs } from './sources/teamNames.mjs';
 import { fetchF1, fetchF2, motorsportTv } from './sources/motorsport.mjs';
 import { fetchTournaments as fetchDarts, dartsEvents } from './sources/darts.mjs';
 import { fetchGolf, golfEvents } from './sources/golf.mjs';
@@ -39,13 +45,26 @@ export { teamSim, normTeam, parsePlKickoff, isUkChannel, mapPlBroadcasts, brandO
 
 export const DAYS_AHEAD = 8; // a little over 7 so the app still has a full week if an update is missed
 
+/** Where football fixtures and scores come from: API-Football once its key is set up, else the official feeds. */
+export const defaultFootballSource = () =>
+  process.env.FOOTBALL_SOURCE || (process.env.API_FOOTBALL_KEY ? 'api-football' : 'official');
+
+/**
+ * Football scores on or off everywhere (George, 19 Oct 2026: scores are an accepted risk and may have
+ * to be removed). SHOW_SCORES=off removes them from data.json, so the app shows none.
+ */
+export const SHOW_SCORES = process.env.SHOW_SCORES !== 'off';
+
+/** Read from API-Football for the new app only; not shown in this app (George, 19 Oct 2026). */
+const NEW_APP_ONLY = new Set(['UECL', 'WSL']);
+
 const ok = (r) => r.status === 'fulfilled';
 const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason), ...(r.reason?.wrongRegion ? { wrongRegion: true } : {}) });
 
-/** Which report entry says whether the source behind a `tv.sources` tag worked on this update. */
+/** Which report entries say whether the source behind a `tv.sources` tag worked on this update. */
 const SOURCE_REPORT = {
   'sky-guide': 'tvGuide', 'skysports.com': 'skyListings', 'tntsports.co.uk': 'tntSchedule',
-  'primevideo.com': 'primeVideo', 'thefa.com': 'faCup', 'premierleague.com': 'premierLeagueTv',
+  'primevideo.com': 'primeVideo', 'thefa.com': ['faCup', 'faPage'], 'premierleague.com': 'premierLeagueTv',
 };
 
 /**
@@ -66,7 +85,7 @@ export function keepKnownChannels(events, previous, { report = {}, now = Date.no
     if (e.tv?.channels?.length || !old?.tv?.channels?.length) continue;
     const sources = old.tv.sources || [];
     if (sources.includes('listings')) continue;
-    const sourceFailed = sources.some(s => SOURCE_REPORT[s] && report[SOURCE_REPORT[s]]?.ok === false);
+    const sourceFailed = sources.some(s => [].concat(SOURCE_REPORT[s] || []).some(k => report[k]?.ok === false));
     const started = Date.parse(e.kickoff) <= now;
     if (sourceFailed || started) {
       e.tv = { ...old.tv, sources: [...new Set([...sources, 'previous-update'])] };
@@ -75,20 +94,27 @@ export function keepKnownChannels(events, previous, { report = {}, now = Date.no
   return events;
 }
 
-export async function build(now = Date.now(), previous = null) {
+export async function build(now = Date.now(), previous = null, { footballSource = defaultFootballSource(), showScores = SHOW_SCORES } = {}) {
   const report = {};
   const today = ukDate(now);
   const windowStart = ukMidnight(today);
   const windowEnd = windowStart + (DAYS_AHEAD + 1) * 86400000;
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
+  const useAf = footballSource === 'api-football';
+  const skip = Promise.resolve([]); // official football feed not needed with API-Football
 
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes] = await Promise.allSettled([
-    fetchPremierLeague(now), fetchChampionsLeague(now, DAYS_AHEAD),
-    fetchUefa(now, DAYS_AHEAD, 'UEL'), fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
+  // With API-Football, the Premier League feed is still read, but only to look up the league's own
+  // UK broadcaster for each match (its broadcast feed is keyed by the league's match ids), and the
+  // FA's page only for its "Live on" TV picks.
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, afRes] = await Promise.allSettled([
+    fetchPremierLeague(now), useAf ? skip : fetchChampionsLeague(now, DAYS_AHEAD),
+    useAf ? skip : fetchUefa(now, DAYS_AHEAD, 'UEL'), useAf ? skip : fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
     fetchF1(), fetchF2(), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
     fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now),
+    // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
+    useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -104,51 +130,85 @@ export async function build(now = Date.now(), previous = null) {
   const prime = ok(primeRes) ? primeRes.value : null;
   report.primeVideo = prime ? { ok: true, events: prime.cards.length, amazonPicks: prime.cards.filter(c => c.provider === 'Prime').map(c => c.title) } : fail(primeRes);
 
-  // ---- football
-  const pl = ok(plRes) ? plRes.value.filter(inWindow) : [];
-  report.premierLeague = ok(plRes) ? { ok: true, matches: pl.length } : fail(plRes);
+  // ---- football fixtures: API-Football, or the official feeds
+  report.footballSource = footballSource;
+  const plFeed = ok(plRes) ? plRes.value.filter(inWindow) : [];
+  const faPage = ok(faRes) ? faRes.value.filter(inWindow) : null;
+  let pl, ucl, uel, efl, fa;
+  let eflError = null, faError = null;
+  if (useAf) {
+    const af = ok(afRes) ? afRes.value : null;
+    const all = af ? af.matches.filter(inWindow).filter(m => !NEW_APP_ONLY.has(m.comp)) : [];
+    // unknownClubs: league clubs shown by API-Football's short name (add them to teamNames.mjs)
+    report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors, unknownClubs: unknownClubs(all) } : fail(afRes);
+    // One report entry per competition as before, so the app's banners still say what's missing
+    const errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : report.apiFootball.error);
+    const entry = (name, n) => (errorOf(name) ? { ok: false, error: errorOf(name) } : { ok: true, matches: n });
+    pl = all.filter(m => m.comp === 'PL');
+    ucl = all.filter(m => m.comp === 'UCL');
+    uel = all.filter(m => m.comp === 'UEL');
+    efl = all.filter(m => m.comp === 'CHAMP' || m.label === 'EFL Cup');
+    fa = all.filter(m => m.label === 'FA Cup').map(t => ({ ...t, faChannel: faChannelFor(t, faPage) }));
+    report.premierLeague = entry('PL', pl.length);
+    report.championsLeague = entry('UCL', ucl.length);
+    report.europaLeague = entry('UEL', uel.length);
+    eflError = errorOf('CHAMP') || errorOf('EFL Cup');
+    faError = errorOf('FA Cup');
+    report.faPage = faPage ? { ok: true, televisedTies: faPage.length } : fail(faRes);
+  } else {
+    pl = plFeed;
+    report.premierLeague = ok(plRes) ? { ok: true, matches: pl.length } : fail(plRes);
+    ucl = ok(uclRes) ? uclRes.value.filter(inWindow) : [];
+    report.championsLeague = ok(uclRes) ? { ok: true, matches: ucl.length } : fail(uclRes);
+    uel = ok(uelRes) ? uelRes.value.filter(inWindow) : [];
+    report.europaLeague = ok(uelRes) ? { ok: true, matches: uel.length } : fail(uelRes);
+    efl = ok(eflRes) ? eflRes.value.filter(inWindow) : [];
+    eflError = ok(eflRes) ? null : fail(eflRes).error;
+    fa = faPage || [];
+    faError = faPage ? null : fail(faRes).error;
+  }
 
-  const ucl = ok(uclRes) ? uclRes.value.filter(inWindow) : [];
-  report.championsLeague = ok(uclRes) ? { ok: true, matches: ucl.length } : fail(uclRes);
-
-  // The Premier League's own UK broadcaster per match (only answers UK requests; see footballTv.mjs)
+  // The Premier League's own UK broadcaster per match (only answers UK requests; see footballTv.mjs).
+  // Its feed is keyed by the league's match ids: API-Football's matches are paired with them by teams.
+  const plIdOf = (m) => (useAf
+    ? plFeed.find(p => Math.abs(Date.parse(p.kickoff) - Date.parse(m.kickoff)) < 86400000
+      && teamSim(p.home, m.home) >= 0.5 && teamSim(p.away, m.away) >= 0.5)?.sourceId
+    : m.sourceId);
   let plTv = {};
-  if (pl.length) {
+  const plIds = pl.map(plIdOf).filter(Boolean);
+  if (plIds.length) {
     try {
-      plTv = await fetchPlBroadcasts(pl.map(m => m.sourceId));
+      plTv = await fetchPlBroadcasts(plIds);
       report.premierLeagueTv = { ok: true, matches: Object.values(plTv).filter(v => v.length).length };
     } catch (e) {
       report.premierLeagueTv = { ok: false, error: e.message };
     }
-  }
-
-  const uel = ok(uelRes) ? uelRes.value.filter(inWindow) : [];
-  report.europaLeague = ok(uelRes) ? { ok: true, matches: uel.length } : fail(uelRes);
+  } else if (useAf && pl.length && !ok(plRes)) report.premierLeagueTv = fail(plRes);
 
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
   for (const m of [...pl, ...ucl, ...uel]) {
-    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, plBrands: m.comp === 'PL' ? plTv[m.sourceId] : null });
+    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, plBrands: m.comp === 'PL' ? plTv[plIdOf(m)] : null });
     const { sourceId, homeAlt, awayAlt, ...rest } = m;
-    // UEFA uses short international names ("Atleti", "Paris"); TNT's names read better.
+    // UEFA and API-Football use short names ("Atleti", "Paris"); TNT's names read better.
     if (m.comp !== 'PL' && tntNames) { rest.home = tntNames[0]; rest.away = tntNames[1]; }
-    events.push({ ...rest, kind: 'match', source: m.comp === 'PL' ? 'premierleague.com' : 'uefa.com', tv });
+    events.push({ ...rest, kind: 'match', source: m.source || (m.comp === 'PL' ? 'premierleague.com' : 'uefa.com'), tv });
   }
   const football = events.filter(e => e.comp === 'PL' || e.comp === 'UCL');
   report.footballChannels = `${football.filter(e => e.tv.channels.length).length}/${football.length} PL+UCL matches with a confirmed channel`;
 
-  // ---- EFL (Championship, League Cup) and FA Cup
-  if (ok(eflRes)) {
-    const efl = eflEvents(eflRes.value.filter(inWindow), guide, skyListings);
-    report.efl = { ok: true, championship: efl.filter(e => e.comp === 'CHAMP').length, leagueCup: efl.filter(e => e.comp === 'CUPS').length };
-    events.push(...efl);
-  } else report.efl = fail(eflRes);
+  // ---- EFL (Championship, League Cup) and FA Cup: televised cup ties only
+  if (!eflError) {
+    const eflEv = eflEvents(efl, guide, skyListings);
+    report.efl = { ok: true, championship: eflEv.filter(e => e.comp === 'CHAMP').length, leagueCup: eflEv.filter(e => e.comp === 'CUPS').length };
+    events.push(...eflEv);
+  } else report.efl = { ok: false, error: eflError };
 
-  if (ok(faRes)) {
-    const fa = faCupEvents(faRes.value.filter(inWindow), guide);
-    report.faCup = { ok: true, ties: fa.length };
-    events.push(...fa);
-  } else report.faCup = fail(faRes);
+  if (!faError) {
+    const faEv = faCupEvents(fa, guide);
+    report.faCup = { ok: true, ties: faEv.length };
+    events.push(...faEv);
+  } else report.faCup = { ok: false, error: faError };
 
   // ---- F1 / F2
   for (const [key, res] of [['formula1', f1Res], ['formula2', f2Res]]) {
@@ -190,6 +250,8 @@ export async function build(now = Date.now(), previous = null) {
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
   keepKnownChannels(events, previous, { report, now });
+  if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
+  report.scores = showScores ? 'on' : 'off';
   return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events };
 }
 
@@ -200,7 +262,7 @@ if (isMain) {
   try { previous = JSON.parse(await readFile(out, 'utf8')); } catch { /* first run */ }
   const data = await build(Date.now(), previous);
   console.log(JSON.stringify(data.report, null, 2));
-  const scheduleOk = ['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
+  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'darts', 'golf', 'snooker', 'cricket'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {
     console.error('Every fixture source failed - keeping the previous data.json');
     process.exit(1);

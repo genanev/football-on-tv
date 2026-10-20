@@ -180,11 +180,12 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 - [x] Buy the domain and have its DNS on Cloudflare: done 19 Oct 2026 (registered on Cloudflare, so its DNS is already there).
 - [ ] Set up the support email (Cloudflare Email Routing, forwarding to Gmail; free).
-- [ ] **Football fixtures from API-Football** (decided 19 Oct 2026):
-  - A new source module (`apiFootball.mjs`) for the six competitions, built and tested on the free tier (100 requests a day).
-  - Run it **side by side with the current official feeds for about two weeks**, comparing kick-off times, moved games, postponements and team names. Then switch the app over and retire the PL, UEFA, EFL and FA fixture readers.
-  - Store the API key in Google Cloud Secret Manager, never in the code.
-  - Move to the Pro plan just before launch (Phase 5).
+- [x] **Football fixtures from API-Football** (decided 19 Oct 2026; **live since 20 Oct 2026**):
+  - [x] Source module `apiFootball.mjs` with offline tests; also reads the Conference League and the WSL for the new app.
+  - [x] Compared with the official feeds (Oct 2024 week, and the current week on the Pro plan): all shared games identical once a few name aliases were added. Full club names via `teamNames.mjs`.
+  - [x] API key in Google Cloud Secret Manager (`api-football-key`), never in the code.
+  - [x] Pro plan since 19 Oct 2026 (George chose to start it early, to test on the current season), about $19 a month.
+  - [ ] Keep an eye on it for a couple of weeks (moved games, postponements, the 25 Oct clock change). `scripts/compare-api-football.mjs` still compares it with the official feeds; going back is one command (`cloud/SETUP.md`). Then retire the PL, UEFA and EFL fixture readers.
 - [ ] **Scores every 5 minutes, not live** (decided 19 Oct 2026). After the storage move below:
   - A small scores-only update every 5 minutes, only while a game is on: one request covers all six competitions.
   - The full update stays every 30 minutes.

@@ -55,8 +55,14 @@ export const defaultFootballSource = () =>
  */
 export const SHOW_SCORES = process.env.SHOW_SCORES !== 'off';
 
-/** Read from API-Football for the new app only; not shown in this app (George, 19 Oct 2026). */
-const NEW_APP_ONLY = new Set(['UECL', 'WSL']);
+/**
+ * Competitions from API-Football only (no official feed in this app). Conference League and WSL games
+ * are listed only when a TV source confirms a channel (George, 20 Oct 2026: many games, few on UK TV);
+ * the Scottish Premiership lists every game, like the PL and the Championship.
+ */
+const AF_ONLY = ['UECL', 'WSL', 'SCOT'];
+const TELEVISED_ONLY = new Set(['UECL', 'WSL']);
+const AF_ONLY_REPORT = { UECL: 'conferenceLeague', WSL: 'wsl', SCOT: 'scottishPremiership' };
 
 const ok = (r) => r.status === 'fulfilled';
 const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason), ...(r.reason?.wrongRegion ? { wrongRegion: true } : {}) });
@@ -134,19 +140,21 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   report.footballSource = footballSource;
   const plFeed = ok(plRes) ? plRes.value.filter(inWindow) : [];
   const faPage = ok(faRes) ? faRes.value.filter(inWindow) : null;
-  let pl, ucl, uel, efl, fa;
+  let pl, ucl, uel, efl, fa, more = [];
   let eflError = null, faError = null;
+  let errorOf = () => null;
   if (useAf) {
     const af = ok(afRes) ? afRes.value : null;
-    const all = af ? af.matches.filter(inWindow).filter(m => !NEW_APP_ONLY.has(m.comp)) : [];
+    const all = af ? af.matches.filter(inWindow) : [];
     // unknownClubs: league clubs shown by API-Football's short name (add them to teamNames.mjs)
     report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors, unknownClubs: unknownClubs(all) } : fail(afRes);
     // One report entry per competition as before, so the app's banners still say what's missing
-    const errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : report.apiFootball.error);
+    errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : report.apiFootball.error);
     const entry = (name, n) => (errorOf(name) ? { ok: false, error: errorOf(name) } : { ok: true, matches: n });
     pl = all.filter(m => m.comp === 'PL');
     ucl = all.filter(m => m.comp === 'UCL');
     uel = all.filter(m => m.comp === 'UEL');
+    more = all.filter(m => AF_ONLY.includes(m.comp));
     efl = all.filter(m => m.comp === 'CHAMP' || m.label === 'EFL Cup');
     fa = all.filter(m => m.label === 'FA Cup').map(t => ({ ...t, faChannel: faChannelFor(t, faPage) }));
     report.premierLeague = entry('PL', pl.length);
@@ -187,8 +195,9 @@ export async function build(now = Date.now(), previous = null, { footballSource 
 
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
-  for (const m of [...pl, ...ucl, ...uel]) {
+  for (const m of [...pl, ...ucl, ...uel, ...more]) {
     const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, plBrands: m.comp === 'PL' ? plTv[plIdOf(m)] : null });
+    if (TELEVISED_ONLY.has(m.comp) && !tv.channels.length) continue;
     const { sourceId, homeAlt, awayAlt, ...rest } = m;
     // UEFA and API-Football use short names ("Atleti", "Paris"); TNT's names read better.
     if (m.comp !== 'PL' && tntNames) { rest.home = tntNames[0]; rest.away = tntNames[1]; }
@@ -196,6 +205,13 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   }
   const football = events.filter(e => e.comp === 'PL' || e.comp === 'UCL');
   report.footballChannels = `${football.filter(e => e.tv.channels.length).length}/${football.length} PL+UCL matches with a confirmed channel`;
+  if (useAf) {
+    for (const comp of AF_ONLY) {
+      const err = errorOf(comp);
+      report[AF_ONLY_REPORT[comp]] = err ? { ok: false, error: err }
+        : { ok: true, [TELEVISED_ONLY.has(comp) ? 'televised' : 'matches']: events.filter(e => e.comp === comp).length };
+    }
+  }
 
   // ---- EFL (Championship, League Cup) and FA Cup: televised cup ties only
   if (!eflError) {

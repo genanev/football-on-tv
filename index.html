@@ -31,6 +31,9 @@
     --uel: #e65100;
     --champ: #546e7a;
     --cups: #c2185b;
+    --uecl: #558b2f;
+    --wsl: #8e24aa;
+    --scot: #00558b;
     --f1: #d50000;
     --f2: #00838f;
     --f3: #6a1b9a;
@@ -71,6 +74,9 @@
       --uel: #ffb74d;
       --champ: #b0bec5;
       --cups: #f48fb1;
+      --uecl: #aed581;
+      --wsl: #ce93d8;
+      --scot: #81d4fa;
       --f1: #ff6e64;
       --f2: #4dd0e1;
       --f3: #ce93d8;
@@ -108,6 +114,9 @@
     --uel: #ffb74d;
     --champ: #b0bec5;
     --cups: #f48fb1;
+    --uecl: #aed581;
+    --wsl: #ce93d8;
+    --scot: #81d4fa;
     --f1: #ff6e64;
     --f2: #4dd0e1;
     --f3: #ce93d8;
@@ -385,7 +394,10 @@
       { id: 'PL', name: 'Premier League', tag: 'PL', color: 'var(--pl)', none: 'No scheduled PL games' },
       { id: 'UCL', name: 'Champions League', tag: 'UCL', color: 'var(--ucl)', none: 'No scheduled UCL games' },
       { id: 'UEL', name: 'Europa League', tag: 'UEL', color: 'var(--uel)', none: 'No scheduled UEL games' },
+      { id: 'UECL', name: 'Conference League', tag: 'UECL', color: 'var(--uecl)', none: 'No televised Conference League games' },
       { id: 'CHAMP', name: 'Championship', tag: 'Champ', color: 'var(--champ)', none: 'No scheduled Championship games' },
+      { id: 'SCOT', name: 'Scottish Premiership', tag: 'SPFL', color: 'var(--scot)', none: 'No scheduled Scottish Premiership games' },
+      { id: 'WSL', name: "Women's Super League", tag: 'WSL', color: 'var(--wsl)', none: 'No televised WSL games' },
       { id: 'FAC', name: 'FA Cup', tag: 'FA Cup', color: 'var(--cups)', none: 'No televised FA Cup ties' },
       { id: 'EFL', name: 'EFL Cup', tag: 'EFL Cup', color: 'var(--cups)', none: 'No televised EFL Cup ties' },
     ] },
@@ -449,9 +461,23 @@
   let picks = new Set(ALL_COMPS);
   try {
     const saved = JSON.parse(localStorage.getItem('myComps'));
-    if (Array.isArray(saved)) picks = new Set(saved.filter(c => COMP[c]));
+    if (Array.isArray(saved)) {
+      picks = new Set(saved.filter(c => COMP[c]));
+      // Competitions added to the app since the picks were saved start ticked, so they show up in
+      // My TV. `myCompsKnown` lists what existed then; saved before it existed (20 Oct 2026), the
+      // new ones are the Conference League, Scottish Premiership and WSL.
+      const known = JSON.parse(localStorage.getItem('myCompsKnown'));
+      const added = Array.isArray(known) ? ALL_COMPS.filter(c => !known.includes(c)) : ['UECL', 'SCOT', 'WSL'];
+      for (const c of added) picks.add(c);
+    }
   } catch (e) {}
-  const savePicks = () => { try { localStorage.setItem('myComps', JSON.stringify([...picks])); } catch (e) {} };
+  const savePicks = () => {
+    try {
+      localStorage.setItem('myComps', JSON.stringify([...picks]));
+      localStorage.setItem('myCompsKnown', JSON.stringify(ALL_COMPS));
+    } catch (e) {}
+  };
+  savePicks();
 
   // What's on screen: My TV, a whole sport, or some of its competitions (`comps`; empty = the whole
   // sport). The app always opens on My TV. On My TV, `day` (a UK date like "2026-10-19") narrows the
@@ -611,16 +637,19 @@
     if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
-    const GUIDE = ['PL', 'UCL', 'UEL', 'CHAMP', 'FAC', 'EFL', 'F1', 'F2', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
+    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
     if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
     // (no banner for Prime Video at all, by George's choice on 18 Oct 2026: a failed read keeps Amazon's pick
     // anyway, and he watches data.json's report for it instead)
-    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
-    if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'FAC', 'EFL', 'F1', 'F2')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');
     if (r.efl && r.efl.ok === false && show('CHAMP', 'EFL')) banners.push('Championship and League Cup fixtures couldn’t be loaded on the last update.');
+    if (r.conferenceLeague && r.conferenceLeague.ok === false && show('UECL')) banners.push('Conference League fixtures couldn’t be loaded on the last update.');
+    if (r.scottishPremiership && r.scottishPremiership.ok === false && show('SCOT')) banners.push('Scottish Premiership fixtures couldn’t be loaded on the last update.');
+    if (r.wsl && r.wsl.ok === false && show('WSL')) banners.push('WSL fixtures couldn’t be loaded on the last update.');
     if (r.faCup && r.faCup.ok === false && show('FAC')) banners.push('FA Cup ties couldn’t be loaded on the last update.');
     if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push('Formula 1 sessions couldn’t be loaded on the last update.');
     if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push('Formula 2 sessions couldn’t be loaded on the last update.');

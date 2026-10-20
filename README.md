@@ -2,7 +2,7 @@
 
 A phone web app that lists what's on UK TV for **today and the next 7 days**, with **UK times** and the **UK TV channel**:
 
-- **Football:** Premier League, Champions League, Europa League, Championship, televised League Cup and FA Cup ties
+- **Football:** Premier League, Champions League, Europa League, Championship, Scottish Premiership, and televised Conference League, Women's Super League, League Cup and FA Cup games
 - **Motorsport:** Formula 1 and Formula 2 (qualifying, sprint and race)
 - **Darts:** televised PDC events
 - **Golf:** PGA Tour, DP World Tour and the majors

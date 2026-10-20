@@ -24,7 +24,7 @@ const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: aw
 
 // ---------- the other sources the build reads (for the build checks at the end)
 // Sky TV guide entries, hand-written in Sky's format (UK local times; the guide has no past days)
-const MAIN = 4002;
+const MAIN = 4002, PL_CH = 4010, TNT1 = 3625;
 let eid = 0;
 const prog = (sid, date, hhmm, mins, t) => {
   const [y, m, d] = date.split('-').map(Number);
@@ -34,6 +34,10 @@ const prog = (sid, date, hhmm, mins, t) => {
 const GUIDE = [
   prog(MAIN, '2026-10-24', '17:00', 180, 'Live PL: Chelsea v Tottenham'),
   prog(MAIN, '2026-10-27', '19:30', 180, 'Live Carabao Cup: Fleetwood v Arsenal'),
+  prog(TNT1, '2026-10-22', '17:30', 135, 'Live UEFA Conference League: Jablonec v Brighton'),
+  prog(MAIN, '2026-10-24', '12:30', 150, 'Live WSL: Tottenham v Arsenal'),
+  prog(PL_CH, '2026-10-25', '11:30', 150, 'Live PL: Crystal Palace v Chelsea'), // made up: a men's game at the time of the WSL one
+  prog(MAIN, '2026-10-25', '11:30', 150, 'Live SPFL: Hibernian v Celtic'),
 ];
 const skyDay = (url) => {
   const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
@@ -113,7 +117,7 @@ assert.equal(mapAfFixture({ ...fixture('NS'), teams: { home: { name: 'Boreham Wo
 // ---------- the captured week
 const { matches, errors } = await fetchApiFootball('2024-10-22', '2024-10-30', 2024, 'test-key');
 assert.deepEqual(errors, []);
-assert.equal(requests.length, 8); // one per competition
+assert.equal(requests.length, 9); // one per competition
 assert.ok(requests.every(r => r.key === 'test-key'));
 const q = new URL(requests[0].url).searchParams;
 assert.deepEqual([q.get('season'), q.get('from'), q.get('to'), q.get('timezone')], ['2024', '2024-10-22', '2024-10-30', 'UTC']);
@@ -151,7 +155,7 @@ requests = [];
 const now = await fetchApiFootball('2026-10-19', '2026-10-27', 2026, 'test-key');
 assert.deepEqual(now.errors, []);
 const c26 = (comp, label = null) => now.matches.filter(m => m.comp === comp && m.label === label).length;
-assert.deepEqual([c26('PL'), c26('CHAMP'), c26('UCL'), c26('UEL'), c26('UECL'), c26('WSL'), c26('CUPS', 'FA Cup'), c26('CUPS', 'EFL Cup')], [11, 13, 18, 18, 18, 7, 11, 2]);
+assert.deepEqual([c26('PL'), c26('CHAMP'), c26('UCL'), c26('UEL'), c26('UECL'), c26('WSL'), c26('SCOT'), c26('CUPS', 'FA Cup'), c26('CUPS', 'EFL Cup')], [11, 13, 18, 18, 18, 7, 6, 11, 2]);
 // After the clocks go back (Sun 25 Oct): 14:00 UTC = 14:00 UK, as premierleague.com says
 const utd = now.matches.find(m => m.home === 'Manchester United' && m.comp === 'PL');
 assert.equal(ukHHMM(Date.parse(utd.kickoff)), '14:00');
@@ -161,6 +165,8 @@ assert.equal(ukHHMM(Date.parse(villa.kickoff)), '12:30');
 // WSL: "Tottenham Hotspur W" shown as "… Women", matched (TV listings) as "Tottenham Hotspur"
 const wsl = now.matches.find(m => m.comp === 'WSL' && m.homeShort === 'Tottenham Hotspur');
 assert.deepEqual([wsl.home, wsl.away, wsl.awayShort], ['Tottenham Hotspur Women', 'Arsenal Women', 'Arsenal']);
+const lionesses = now.matches.find(m => m.comp === 'WSL' && m.homeShort === 'Liverpool');
+assert.equal(`${lionesses.home} v ${lionesses.away}`, 'Liverpool Women v London City Lionesses');
 const uecl = now.matches.find(m => m.comp === 'UECL' && m.awayShort === 'Brighton');
 assert.deepEqual([uecl.home, uecl.away, uecl.round, uecl.label], ['FK Jablonec', 'Brighton and Hove Albion', 'League Stage - 2', null]);
 
@@ -193,8 +199,20 @@ assert.equal(r.efl.ok, true);
 assert.equal(r.faPage.ok, true);
 assert.equal(r.scores, 'on');
 const ev = (comp, home) => data.events.find(e => e.comp === comp && e.homeShort === home); // by API-Football's name
-// New-app-only competitions are read but not in this app's data
-assert.ok(!data.events.some(e => e.comp === 'UECL' || e.comp === 'WSL'));
+// Conference League and WSL: televised games only (George, 20 Oct 2026)
+const listed = (comp) => data.events.filter(e => e.comp === comp).map(e => `${e.home} v ${e.away} on ${e.tv.channels[0]}`);
+assert.deepEqual(listed('UECL'), ['FK Jablonec v Brighton and Hove Albion on TNT Sports 1']);
+assert.deepEqual(listed('WSL'), ['Tottenham Hotspur Women v Arsenal Women on Sky Sports Main Event']);
+// the men's programme at the same time doesn't put Crystal Palace Women v Chelsea Women on TV
+assert.ok(!data.events.some(e => e.comp === 'WSL' && e.homeShort === 'Crystal Palace'));
+assert.deepEqual([r.conferenceLeague, r.wsl], [{ ok: true, televised: 1 }, { ok: true, televised: 1 }]);
+// Scottish Premiership: every game, full names, the 3pm blackout, channels from the guide
+assert.deepEqual(r.scottishPremiership, { ok: true, matches: 6 });
+const scot = (home) => data.events.find(e => e.comp === 'SCOT' && e.homeShort === home);
+assert.equal(`${scot('ST Mirren').home} v ${scot('ST Mirren').away}`, 'St Mirren v Dundee');
+assert.equal(scot('ST Mirren').tv.note, 'Not shown live on UK TV'); // Sat 24 Oct, 15:00 BST
+assert.deepEqual(scot('Hibernian').tv.channels, ['Sky Sports Main Event']); // Sun 25 Oct, 12:00 GMT
+assert.equal(`${scot('Motherwell').away}: ${scot('Motherwell').tv.note}`, 'Heart of Midlothian: TV channel to be confirmed');
 // Every football event is from API-Football, with its kick-off and score
 assert.ok(data.events.filter(e => e.kind === 'match').every(e => e.source === 'api-football.com'));
 assert.deepEqual([ev('PL', 'Tottenham').status, ev('PL', 'Tottenham').homeScore, ev('PL', 'Tottenham').awayScore], ['finished', 3, 1]);
@@ -230,7 +248,7 @@ afDown = true;
 const down = await build(NOW, null, { footballSource: 'api-football' });
 afDown = false;
 assert.equal(down.report.apiFootball.ok, false);
-assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup'].every(k => down.report[k].ok === false));
+assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'conferenceLeague', 'wsl', 'scottishPremiership'].every(k => down.report[k].ok === false));
 assert.equal(down.events.filter(e => e.kind === 'match').length, 0);
 assert.equal(down.report.tvGuide.ok, true);
 

@@ -1,5 +1,5 @@
-// API-Football: fixtures and scores for every football competition (the six in today's app, plus
-// the Conference League and the WSL for the new app), from one documented,
+// API-Football: fixtures and scores for every football competition (PL, Championship, UCL, UEL,
+// Conference League, WSL, Scottish Premiership, FA Cup, League Cup), from one documented,
 // paid-for service (George's decision, 19 Oct 2026). It replaces the four official feeds
 // (premierleague.com, uefa.com, efl.com, thefa.com) once a side-by-side comparison has shown it
 // agrees with them (scripts/compare-api-football.mjs).
@@ -7,7 +7,7 @@
 // Source
 //   v3.football.api-sports.io/fixtures?league=<id>&season=<YYYY>&from=&to=&timezone=UTC
 //   with header x-apisports-key. One request per competition returns every fixture in the
-//   window, so a full read is 8 requests. Kick-off times are UTC ("2024-10-27T15:30:00+00:00").
+//   window, so a full read is 9 requests. Kick-off times are UTC ("2024-10-27T15:30:00+00:00").
 //   The key comes from the API_FOOTBALL_KEY environment variable (a local .env file, never in git;
 //   Secret Manager in Google Cloud).
 //
@@ -33,14 +33,21 @@ export const AF_LEAGUES = {
   3: { comp: 'UEL', label: null },
   45: { comp: 'CUPS', label: 'FA Cup' },
   48: { comp: 'CUPS', label: 'EFL Cup' },
-  // Added for the new app only (George, 19 Oct 2026); the current app doesn't list them
+  // Added by George on 19-20 Oct 2026: Conference League and WSL (televised games only),
+  // Scottish Premiership (every game)
   848: { comp: 'UECL', label: null },
   44: { comp: 'WSL', label: null, women: true },
+  179: { comp: 'SCOT', label: null },
 };
 
 // Shown: English clubs' full names ("Wolves" -> "Wolverhampton Wanderers", teamNames.mjs); WSL teams
 // come as "Arsenal W", shown as "Arsenal Women". Matched (TV listings): API-Football's name ("Arsenal").
-const fullName = (n, women) => (women ? String(n || '').replace(/\s+W$/, ' Women') : fullClubName(n));
+// ("London City Lionesses W" is just "London City Lionesses": its name already says so)
+const fullName = (n, women) => {
+  if (!women) return fullClubName(n);
+  const club = String(n || '').replace(/\s+W$/, '');
+  return /\b(women|ladies|lionesses)\b/i.test(club) ? club : `${club} Women`;
+};
 const shortName = (n, women) => (women ? String(n || '').replace(/\s+W$/, '') : n);
 
 const AF_STATUS = {

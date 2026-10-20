@@ -2,7 +2,7 @@
 // "Wolves"). Only what's shown changes: matching against TV listings still works from API-Football's
 // name, fuzzily (teamSim + ALIASES in football.mjs).
 //
-// Every club in the four English leagues, API-Football's name -> the name premierleague.com and
+// Every club in the four English leagues and the Scottish Premiership, API-Football's name -> the name premierleague.com and
 // efl.com use. Made on 19 Oct 2026 from API-Football's /teams lists and the official feeds' names,
 // paired by teamSim and checked by hand ("Sheffield Utd" was a tie between the two Sheffield clubs;
 // "Milton Keynes Dons" kept over the EFL's "MK Dons"). A club not listed here (promoted from the
@@ -46,13 +46,18 @@ export const FULL_NAMES = {
   "Port Vale": "Port Vale", "Rochdale": "Rochdale", "Rotherham": "Rotherham United",
   "Salford City": "Salford City", "Shrewsbury": "Shrewsbury Town", "Swindon Town": "Swindon Town",
   "Tranmere": "Tranmere Rovers", "Walsall": "Walsall", "York": "York City",
+  // Scottish Premiership 2026/27 (added 20 Oct 2026; names as the clubs write them)
+  "Aberdeen": "Aberdeen", "Celtic": "Celtic", "Dundee": "Dundee", "Dundee Utd": "Dundee United",
+  "Falkirk": "Falkirk", "Heart Of Midlothian": "Heart of Midlothian", "Hibernian": "Hibernian",
+  "Kilmarnock": "Kilmarnock", "Motherwell": "Motherwell", "Rangers": "Rangers",
+  "ST Johnstone": "St Johnstone", "ST Mirren": "St Mirren",
 };
 
 /** The full name for display; API-Football's own name if the club isn't listed. */
 export const fullClubName = (name) => FULL_NAMES[name] || name;
 
-/** League clubs (PL and Championship games) missing from the table, for the update's report. */
+/** League clubs (PL, Championship and Scottish Premiership games) missing from the table, for the update's report. */
 export function unknownClubs(matches) {
-  const names = matches.filter(m => m.comp === 'PL' || m.comp === 'CHAMP').flatMap(m => [m.homeShort, m.awayShort]);
+  const names = matches.filter(m => m.comp === 'PL' || m.comp === 'CHAMP' || m.comp === 'SCOT').flatMap(m => [m.homeShort, m.awayShort]);
   return [...new Set(names.filter(n => n && !FULL_NAMES[n]))].sort();
 }

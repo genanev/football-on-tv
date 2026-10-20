@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-20T01:00:13.328Z",
+ "generatedAt": "2026-10-20T01:30:13.284Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4133,
+   "programmes": 4329,
    "errors": []
   },
   "skyListings": {
@@ -27,6 +27,10 @@
     "Arsenal vs. Dortmund",
     "Atlético Madrid vs. Manchester United"
    ]
+  },
+  "premierSports": {
+   "ok": true,
+   "events": 183
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -71,7 +75,7 @@
   "efl": {
    "ok": true,
    "championship": 13,
-   "leagueCup": 1
+   "leagueCup": 2
   },
   "faCup": {
    "ok": true,
@@ -84,6 +88,14 @@
   "formula2": {
    "ok": true,
    "sessions": 0
+  },
+  "formula3": {
+   "ok": true,
+   "sessions": 0
+  },
+  "motogp": {
+   "ok": true,
+   "sessions": 3
   },
   "darts": {
    "ok": true,
@@ -2493,6 +2505,33 @@
    }
   },
   {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-d74b766a-057a-4b10-9811-faa6c94021bd",
+   "kickoff": "2026-10-23T23:50:00.000Z",
+   "end": "2026-10-24T00:30:00.000Z",
+   "session": "Qualifying",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "comp": "GOLF",
    "kind": "session",
    "title": "Genesis Championship",
@@ -2517,6 +2556,35 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-d9677cd6-e05f-4de3-8c56-3dfe879151e0",
+   "kickoff": "2026-10-24T04:00:00.000Z",
+   "end": "2026-10-24T04:45:00.000Z",
+   "session": "Sprint",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
     ]
    }
   },
@@ -3338,6 +3406,35 @@
    }
   },
   {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-80982421-6539-4108-84c7-cb87f188c505",
+   "kickoff": "2026-10-25T03:00:00.000Z",
+   "end": "2026-10-25T04:00:00.000Z",
+   "session": "Race",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "Pakistan v England",
@@ -3620,13 +3717,17 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Premier Sports 1",
+    "channels": [
+     "Premier Sports 1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premiersports.com"
+    ]
    }
   },
   {
@@ -4107,6 +4208,38 @@
     "note": "TV channel to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "id": "af-1640388",
+   "sourceId": "1640388",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-28T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Liverpool",
+   "away": "Chelsea",
+   "homeShort": "Liverpool",
+   "awayShort": "Chelsea",
+   "venue": "Anfield",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ]

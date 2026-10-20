@@ -6,10 +6,11 @@
 //                        only televised ones are shown.
 //   Session times + TV   Sky's TV guide. The PDC does not publish session start times as data
 //                        (only in news articles), so each live darts programme in the guide on
-//                        a tournament day becomes one session.
+//                        a tournament day becomes one session - on Sky ("Live ...") or on ITV,
+//                        whose live titles don't say "Live" (isLiveCoverage).
 
 import { getJSON, ukDate, ukMidnight } from '../lib/util.mjs';
-import { SPORT_CHANNELS, groupSessions, guideTv, nameScore, sessionLabel, windowDates } from './skyGuide.mjs';
+import { SPORT_CHANNELS, groupSessions, guideTv, nameScore, sessionLabel, windowDates, isLiveCoverage } from './skyGuide.mjs';
 
 const PDC_URL = 'https://tournaments.darts.web.gc.pdcservices.co.uk/v2/';
 
@@ -54,7 +55,7 @@ const isDarts = (p) => /\bdarts?\b/i.test(p.title) || /\bdarts?\b/i.test(p.synop
  */
 export function dartsEvents(tournaments, guide, fromDate, days) {
   const sids = SPORT_CHANNELS.darts;
-  const live = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid) && isDarts(p));
+  const live = (guide?.programmes || []).filter(p => isLiveCoverage(p) && sids.includes(p.sid) && isDarts(p));
   const events = [];
   for (const date of windowDates(fromDate, days)) {
     const today = tournaments.filter(t => t.startDate <= date && t.endDate >= date);

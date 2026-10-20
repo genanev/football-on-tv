@@ -45,6 +45,17 @@ export const SPORT_CHANNELS = {
 
 export const isLiveTitle = (t) => /^live\b/i.test(String(t || '').trim());
 
+/**
+ * Free-to-air channels don't start live titles with "Live", and the guide has no other live marker:
+ * ITV4's live European Championship darts (22-25 Oct 2026) was just "Darts: European Championship".
+ * On these channels, a programme of an hour or more that doesn't look like a replay counts as live
+ * coverage - used only for a sport's own programmes on its tournament days (darts, snooker).
+ */
+export const FREE_TO_AIR = new Set([3000, 2075, 2086, 6504, 6534, 4075, 4058]); // BBC One/Two/Four, ITV1, ITV4, Channel 4, Channel 5
+const REPLAY = /highlights|\bhlts\b|\breview\b|\bclassics?\b|\bbest of\b|\breload\b|\brewind\b|round-?up|\bpreview\b|\(\d{1,2}\.\d{1,2}\)/i;
+export const isLiveCoverage = (p) => p.live
+  || (FREE_TO_AIR.has(p.sid) && p.end - p.start >= 3600000 && !REPLAY.test(`${p.title} ${p.synopsis || ''}`));
+
 /** Flatten one day's EPG response into programmes. */
 export function mapGuideDay(json) {
   const out = [];

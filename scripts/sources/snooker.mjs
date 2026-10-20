@@ -5,13 +5,15 @@
 //                        the feed behind wst.tv. Same platform as the PDC darts feed. It has no
 //                        "televised" flag, so the TV guide decides which events are shown.
 //   Session times + TV   Sky's TV guide: each live snooker programme on a tournament day becomes
-//                        a session (morning / afternoon / evening).
+//                        a session (morning / afternoon / evening). BBC and Channel 5 titles don't
+//                        say "Live", so free-to-air programmes count too unless they look like
+//                        replays (isLiveCoverage).
 //
 // Qualifiers are skipped. If the guide is unavailable, each main tournament day is listed with
 // "TV times to be confirmed".
 
 import { getJSON, ukDate, ukMidnight } from '../lib/util.mjs';
-import { SPORT_CHANNELS, groupSessions, guideTv, nameScore, sessionLabel, windowDates } from './skyGuide.mjs';
+import { SPORT_CHANNELS, groupSessions, guideTv, nameScore, sessionLabel, windowDates, isLiveCoverage } from './skyGuide.mjs';
 
 const WST_URL = 'https://tournaments.snooker.web.gc.wstservices.co.uk/v2/';
 
@@ -44,7 +46,7 @@ const isSnooker = (p) => /\bsnooker\b/i.test(p.title) || /\bsnooker\b/i.test(p.s
 
 export function snookerEvents(tournaments, guide, fromDate, days) {
   const sids = SPORT_CHANNELS.snooker;
-  const live = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid) && isSnooker(p));
+  const live = (guide?.programmes || []).filter(p => isLiveCoverage(p) && sids.includes(p.sid) && isSnooker(p));
   const covered = new Set(guide?.coveredDates || []);
   const events = [];
   for (const date of windowDates(fromDate, days)) {

@@ -17,7 +17,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { build } from '../scripts/build.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
-import { cleanName } from '../scripts/sources/darts.mjs';
+import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
+import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
 import { seriesOf, motorsportTv, sessionMatches } from '../scripts/sources/motorsport.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 
@@ -152,6 +153,32 @@ assert.equal(darts[3].end, '2026-10-01T22:00:00.000Z'); // two back-to-back prog
 assert.equal(darts[4].allDay, true);
 assert.equal(darts[4].tv.note, 'TV times to be confirmed');
 assert.ok(darts.every(e => e.title === 'World Grand Prix' && e.venue === 'Mattioli Arena, Leicester'));
+
+// ITV doesn't start live titles with "Live": the European Championship on ITV4 (real guide entries,
+// captured 20 Oct 2026) is still one session per programme, while a highlights show and a short
+// programme on the same days are not
+const ITV4 = 6534;
+const ec = { id: 'ec', name: 'European Championship', venue: 'Westfalenhallen, Dortmund', startDate: '2026-10-22', endDate: '2026-10-25', televised: true };
+const itv = (start, mins, title, synopsis) => ({ id: `itv-${start}`, sid: ITV4, channel: 'ITV4', start: Date.parse(start), end: Date.parse(start) + mins * 60000, live: false, title, synopsis });
+const itvGuide = { programmes: [
+  itv('2026-10-22T17:00:00Z', 240, 'Darts: European Championship', 'Pete Graces, Chris Mason and Maxx Hopp present day one of the European Championship Darts from Westfalenhallen in Dortmund, featuring eight first-round ties.'),
+  itv('2026-10-23T17:00:00Z', 240, 'Darts: European Championship', 'The first round concludes at the European Championship Darts in Dortmund, with eight more matches and places in the last 16 up for grabs.'),
+  itv('2026-10-24T11:00:00Z', 240, 'Darts: European Championship', 'The race for the European Championship title steps up a gear in Dortmund. Four last-16 matches take centre stage, with a place in the last eight at stake.'),
+  itv('2026-10-24T17:00:00Z', 240, 'Darts: European Championship', "The last 16 concludes at the European Championship as four more players book their places in Sunday's quarter-finals."),
+  itv('2026-10-25T12:00:00Z', 240, 'Darts: European Championship', "It's quarter-finals time at the European Championship in Dortmund. Eight players remain, but only four can progress to tonight's showpiece."),
+  itv('2026-10-25T18:00:00Z', 240, 'Darts: European Championship', 'The European Championship reaches its thrilling conclusion in Dortmund, with two semi-finals followed by the final. Only one player can be crowned European champion.'),
+  itv('2026-10-23T09:00:00Z', 60, 'Darts: European Championship Highlights', 'Highlights of day one in Dortmund.'), // made up
+  itv('2026-10-24T10:30:00Z', 30, 'Darts: European Championship Preview', 'A look ahead to the last 16.'), // made up
+] };
+const ecEvents = dartsEvents([ec], itvGuide, '2026-10-22', 4);
+assert.deepEqual(ecEvents.map(e => `${ukDate(Date.parse(e.kickoff))} ${e.session} ${e.tv.channels[0]}`), [
+  '2026-10-22 Evening session ITV4', '2026-10-23 Evening session ITV4',
+  '2026-10-24 Afternoon session ITV4', '2026-10-24 Evening session ITV4',
+  '2026-10-25 Afternoon session ITV4', '2026-10-25 Evening session ITV4',
+]);
+assert.ok(ecEvents.every(e => !e.allDay && e.tv.note == null));
+// Sky's own non-"Live" darts programmes are still not live coverage (e.g. "PDC Classics" above)
+assert.ok(!isLiveCoverage({ sid: 4090, live: false, title: 'PDC Classics 2023', synopsis: '', start: 0, end: 3600000 }));
 
 // TV guide down: sessions still listed, with the expected channel / TBC
 guideDown = true;

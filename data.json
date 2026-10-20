@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T19:30:31.964Z",
+ "generatedAt": "2026-10-20T20:00:13.627Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 21,
+   "amazonPicks": [
+    "Liverpool vs. Villarreal",
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -53,7 +59,7 @@
    "ok": true,
    "matches": 8
   },
-  "footballChannels": "24/28 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -371,7 +377,7 @@
    "awayShort": "Villarreal",
    "venue": "Anfield",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -385,8 +391,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com",
-     "previous-update"
+     "primevideo.com"
     ]
    }
   },
@@ -403,7 +408,7 @@
    "awayShort": "AEK Athens FC",
    "venue": "Etihad Stadium",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -437,8 +442,8 @@
    "awayShort": "Bodo/Glimt",
    "venue": "Maradona Stadium",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 0,
+   "homeScore": 2,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -468,7 +473,7 @@
    "awayShort": "Barcelona",
    "venue": "Parc des Princes",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -531,7 +536,7 @@
    "awayShort": "Slovan Bratislava",
    "venue": "Stadio Olimpico",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -562,7 +567,7 @@
    "awayShort": "Atletico Madrid",
    "venue": "MHP Arena",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",

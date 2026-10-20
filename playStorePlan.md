@@ -154,6 +154,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 | Sky TV guide / Sky Sports pages | | | |
 | TNT Sports | | | |
 | Prime Video | | | |
+| Premier Sports (streaming; Scottish Premiership, later rugby) | Ask (email 12, added 20 Oct 2026) | | |
 
 - [x] **Name and brand (19 Oct 2026): Telly Fixtures.**
   - [x] Name chosen: **Telly Fixtures**. Store title along the lines of "Telly Fixtures: Sport on UK TV".

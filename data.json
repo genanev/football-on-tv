@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T12:00:25.090Z",
+ "generatedAt": "2026-10-20T12:30:27.633Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 985,
+   "programmes": 980,
    "errors": []
   },
   "primeVideo": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 185
+   "events": 182
   },
   "footballSource": "api-football",
   "apiFootball": {

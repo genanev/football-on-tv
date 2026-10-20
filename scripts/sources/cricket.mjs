@@ -74,7 +74,10 @@ export async function fetchCricket(fromDate, toDate) {
 }
 
 const NOT_LIVE = /\bhlts\b|highlights|reload|review|preview|my icon|official film|countdown|classic|greatest|auction|the test within/i;
-const CRICKET = /cricket|\bT20|\bODI\b|\bTest\b/i;
+// Words that say a programme is cricket. Sky doesn't always use the format's name: the tri-series
+// ODI on 22 Oct 2026 was "Live Tri-Series: SL v ENG", "England's second 50-over match in the tri-series".
+const CRICKET = /cricket|\bT20|\bODI\b|\bTest\b|\b\d0-over\b|\bone-day\b|\btri-series\b/i;
+const SKY_CRICKET = 4081; // everything on Sky Sports Cricket is cricket
 const ordinal = (s) => (/(\d+)(?:st|nd|rd|th)\b/i.exec(s || '') || [])[1] || null;
 
 /** Programmes showing this match (or Test day) live: on air at the start, naming a team, same match number. */
@@ -89,7 +92,7 @@ export function cricketProgrammes(ev, programmes) {
     // Unlabelled ones ("India - T20 International Cricket") must start close to play and say it in the title.
     if (!p.live && p.start < start - 90 * 60000) return false;
     const text = p.live ? `${p.title} ${p.synopsis}` : p.title;
-    if (!CRICKET.test(text) || !ev.teams.some(t => text.includes(t))) return false;
+    if (!(p.sid === SKY_CRICKET || CRICKET.test(text)) || !ev.teams.some(t => text.includes(t))) return false;
     const pNum = ordinal(p.title);
     return !(num && pNum && num !== pNum);
   });

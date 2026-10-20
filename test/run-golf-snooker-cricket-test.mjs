@@ -15,7 +15,7 @@ import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { build } from '../scripts/build.mjs';
 import { mapPgaSchedule, parseDpwtSchedule, mergeTours, tourOf } from '../scripts/sources/golf.mjs';
-import { mapMatch, parseGmt } from '../scripts/sources/cricket.mjs';
+import { mapMatch, parseGmt, cricketEvents } from '../scripts/sources/cricket.mjs';
 import { cleanName, snookerEvents } from '../scripts/sources/snooker.mjs';
 import { sessionLabel } from '../scripts/sources/skyGuide.mjs';
 
@@ -128,6 +128,19 @@ dpwtDown = false;
 assert.equal(partial.report.golf.ok, true);
 assert.equal(partial.report.golf.errors.length, 1);
 assert.equal(partial.events.filter(e => e.comp === 'GOLF').length, 0); // the India event is DP World Tour only
+
+// Sky's guide doesn't always name the format: the tri-series ODI on 22 Oct 2026 (real entries,
+// captured 20 Oct) was "Live Tri-Series: SL v ENG", "…50-over match in the tri-series…" - no
+// "ODI" or "cricket". It must still be found, on both channels.
+const triSynopsis = "England's second 50-over match in the tri-series, held in Pakistan, sees Harry Brook's men take on Sri Lanka - the same side they overcame last month on English soil.";
+const triProg = (sid, channel, start) => ({ id: `${sid}-tri`, sid, channel, start: Date.parse(start), end: Date.parse('2026-10-22T16:00:00Z'), live: true, title: 'Live Tri-Series: SL v ENG', synopsis: triSynopsis });
+const slEng = { id: 'cricket-sl-eng', comp: 'CRICKET', kind: 'session', title: 'Sri Lanka v England', teams: ['Sri Lanka', 'England'], matchNumber: 'Match 3',
+  kickoff: '2026-10-22T08:00:00.000Z', end: '2026-10-22T16:00:00.000Z', session: 'Match 3 (ODI)', status: 'upcoming', timeTbc: false };
+const tri = cricketEvents([slEng], { programmes: [triProg(4081, 'Sky Sports Cricket', '2026-10-22T07:30:00Z'), triProg(4002, 'Sky Sports Main Event', '2026-10-22T08:00:00Z')] });
+assert.deepEqual([tri[0].tv.channels, tri[0].tv.alsoOn, tri[0].tv.note], [['Sky Sports Cricket'], ['Sky Sports Main Event'], null]);
+// ...but a non-cricket programme naming England on a shared channel still isn't taken for it
+const footy = { ...triProg(4002, 'Sky Sports Main Event', '2026-10-22T07:45:00Z'), title: 'Live International Football: England v Wales', synopsis: 'England host Wales.' };
+assert.equal(cricketEvents([slEng], { programmes: [footy] })[0].tv.note, 'TV channel to be confirmed');
 
 console.log('\nAll golf, snooker and cricket tests passed');
 

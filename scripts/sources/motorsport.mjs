@@ -1,5 +1,5 @@
-// Formula 1 and Formula 2 session times, from the official Formula 1 data platform
-// (api.formula1.com) that powers formula1.com and fiaformula2.com.
+// Formula 1, Formula 2 and Formula 3 session times, from the official Formula 1 data platform
+// (api.formula1.com) that powers formula1.com, fiaformula2.com and fiaformula3.com.
 //
 // Each site's "event tracker" returns the current or next race weekend with its full
 // session timetable (local start time + GMT offset). The API keys below are the public
@@ -20,6 +20,10 @@ const F1_URL = 'https://api.formula1.com/v1/event-tracker';
 const F1_KEY = 'BQ1SiSmLUOsp460VzXBlLrh689kGgYEZ'; // formula1.com public web key
 const F2_URL = 'https://api.formula1.com/v1/core-event-tracker/f2';
 const F2_KEY = 'MsEALPOPbzgjZIWE6GmU2O69VKY8zZpi'; // fiaformula2.com public web key
+const F3_URL = 'https://api.formula1.com/v1/core-event-tracker/f3';
+// fiaformula3.com public web key (in the page's config as api.key.public, not as "apikey")
+const F3_KEY = 'gGX8kMJ7NQmaRfrltWE0xrGgHaEfv1Cn';
+const SOURCE = { F1: 'formula1.com', F2: 'fiaformula2.com', F3: 'fiaformula3.com' };
 
 const STATE = { completed: 'finished', live: 'live', started: 'live', upcoming: 'upcoming', cancelled: 'cancelled' };
 
@@ -41,9 +45,9 @@ export function mapSession(comp, s, race) {
     session: label,
     venue: race?.circuitShortName || race?.meetingLocation || null,
     status,
-    // F2 marks provisional timetables "TBC" until the times are confirmed.
+    // F2/F3 mark provisional timetables "TBC" until the times are confirmed.
     timeTbc: String(s.sessionStatus || '').toUpperCase() === 'TBC',
-    source: comp === 'F1' ? 'formula1.com' : 'fiaformula2.com',
+    source: SOURCE[comp],
   };
 }
 
@@ -55,6 +59,25 @@ export function mapF2Tracker(j) {
   return (j?.race?.meetingSessions || []).map(s => mapSession('F2', s, j.race)).filter(Boolean);
 }
 
+/**
+ * F3 qualifies in two groups, ten minutes each, 20 minutes apart ("Group A - Qualifying",
+ * "Group B - Qualifying"); TV shows them as one programme, so they become one "Qualifying" entry.
+ */
+export function mapF3Tracker(j) {
+  const out = [];
+  for (const s of (j?.race?.meetingSessions || []).map(x => mapSession('F3', x, j.race)).filter(Boolean)) {
+    const prev = out[out.length - 1];
+    if (/qualifying/i.test(s.session) && prev && /qualifying/i.test(prev.session)
+      && Date.parse(s.kickoff) - Date.parse(prev.end) <= 3600000) {
+      prev.end = s.end;
+      prev.timeTbc = prev.timeTbc || s.timeTbc;
+      continue;
+    }
+    out.push(/qualifying/i.test(s.session) ? { ...s, session: 'Qualifying' } : s);
+  }
+  return out;
+}
+
 export async function fetchF1() {
   return mapF1Tracker(await getJSON(F1_URL, { apikey: F1_KEY, locale: 'en' }));
 }
@@ -63,11 +86,17 @@ export async function fetchF2() {
   return mapF2Tracker(await getJSON(F2_URL, { apikey: F2_KEY, locale: 'en', Origin: 'https://www.fiaformula2.com' }));
 }
 
+/** The current or next F3 weekend (none between the season's last round, in September, and March). */
+export async function fetchF3() {
+  return mapF3Tracker(await getJSON(F3_URL, { apikey: F3_KEY, locale: 'en', Origin: 'https://www.fiaformula3.com' }));
+}
+
 /** Which series a TV programme is about, from its title (or synopsis if the title is vague). */
 export function seriesOf(p) {
   const classify = (s) => {
     if (/formula 2|\bf2\b/i.test(s)) return 'F2';
-    if (/formula 3|\bf3\b|f1 academy|porsche|supercup/i.test(s)) return 'other';
+    if (/formula 3|\bf3\b/i.test(s)) return 'F3';
+    if (/f1 academy|porsche|supercup/i.test(s)) return 'other';
     if (/formula 1|\bf1\b|grand prix|\bgp\b|qualifying|sprint/i.test(s)) return 'F1';
     return null;
   };
@@ -87,7 +116,7 @@ export function sessionMatches(ev, title) {
   return false;
 }
 
-/** UK TV for an F1/F2 session: the TV guide, then Sky's F1 page; never a guess. */
+/** UK TV for an F1/F2/F3 session: the TV guide, then Sky's F1 page; never a guess. */
 export function motorsportTv(ev, guide, listings) {
   const sids = SPORT_CHANNELS.motorsport;
   const start = Date.parse(ev.kickoff);

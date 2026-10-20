@@ -404,8 +404,8 @@
     { id: 'motor', icon: 'motorsport', hue: 27, name: 'Motorsport', color: 'var(--f1)', none: 'No motorsport sessions', comps: [
       { id: 'F1', name: 'Formula 1', tag: 'F1', color: 'var(--f1)', none: 'No F1 sessions' },
       { id: 'F2', name: 'Formula 2', tag: 'F2', color: 'var(--f2)', none: 'No F2 sessions' },
-      { id: 'F3', name: 'Formula 3', tag: 'F3', color: 'var(--f3)', none: 'No F3 sessions', soon: true },
-      { id: 'MOTOGP', name: 'MotoGP', tag: 'MotoGP', color: 'var(--motogp)', none: 'No MotoGP sessions', soon: true },
+      { id: 'F3', name: 'Formula 3', tag: 'F3', color: 'var(--f3)', none: 'No F3 sessions' },
+      { id: 'MOTOGP', name: 'MotoGP', tag: 'MotoGP', color: 'var(--motogp)', none: 'No MotoGP sessions' },
     ] },
     { id: 'golf', icon: 'golf', hue: 145, name: 'Golf', color: 'var(--golf)', none: 'No televised golf', comps: [
       { id: 'PGA', name: 'PGA Tour', tag: 'PGA Tour', color: 'var(--pga)', none: 'No PGA Tour golf on TV' },
@@ -637,12 +637,12 @@
     if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
-    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
+    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
     if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
     // (no banner for Prime Video at all, by George's choice on 18 Oct 2026: a failed read keeps Amazon's pick
     // anyway, and he watches data.json's report for it instead)
-    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
-    if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');
@@ -653,6 +653,8 @@
     if (r.faCup && r.faCup.ok === false && show('FAC')) banners.push('FA Cup ties couldn’t be loaded on the last update.');
     if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push('Formula 1 sessions couldn’t be loaded on the last update.');
     if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push('Formula 2 sessions couldn’t be loaded on the last update.');
+    if (r.formula3 && r.formula3.ok === false && show('F3')) banners.push('Formula 3 sessions couldn’t be loaded on the last update.');
+    if (r.motogp && r.motogp.ok === false && show('MOTOGP')) banners.push('MotoGP sessions couldn’t be loaded on the last update.');
     if (r.darts && r.darts.ok === false && show('DARTS')) banners.push('Darts events couldn’t be loaded on the last update.');
     if (r.golf && r.golf.ok === false && show('PGA', 'DPWT')) banners.push('Golf tournaments couldn’t be loaded on the last update.');
     if (r.snooker && r.snooker.ok === false && show('SNOOKER')) banners.push('Snooker tournaments couldn’t be loaded on the last update.');

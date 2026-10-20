@@ -5,6 +5,11 @@
 //   fixtures/f1-event-tracker-baku.json   formula1.com event tracker (meeting 1295)
 //   fixtures/f2-event-tracker-baku.json   fiaformula2.com event tracker, Baku timetable
 //   fixtures/f2-event-tracker-qatar.json  fiaformula2.com event tracker as returned on 12 Oct (next round)
+//   fixtures/motogp-events-2026.json      motogp.com events feed for 2026 (Japan, Australia, Malaysia
+//                                         weekends; trimmed), captured 20 Oct
+//   fixtures/f3-racing-monza-2026.json    F3's Monza weekend (4-6 Sept) in the event tracker's format, taken on
+//                                         20 Oct from fiaformula3.com/en/racing/2026/monza (the tracker itself
+//                                         only returns the next weekend, and the F3 season had ended)
 //   fixtures/pdc-tournaments-2026.json    PDC tournaments feed (mid-Sept to late Oct)
 // Sky's TV guide only publishes today + ~8 days, so the guide entries below are written by hand
 // in Sky's exact response format, at the real session times.
@@ -19,13 +24,16 @@ import { build } from '../scripts/build.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
 import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
-import { seriesOf, motorsportTv, sessionMatches } from '../scripts/sources/motorsport.mjs';
+import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker } from '../scripts/sources/motorsport.mjs';
+import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
 const F2 = await fx('f2-event-tracker-baku.json');
 const F2_QATAR = await fx('f2-event-tracker-qatar.json');
+const F3_MONZA = await fx('f3-racing-monza-2026.json');
+const MOTOGP = await fx('motogp-events-2026.json');
 const PDC = await fx('pdc-tournaments-2026.json');
 
 // ---------- Sky TV guide entries (UK local times)
@@ -73,6 +81,8 @@ globalThis.fetch = async (url) => {
   const json = (b) => ({ ok: true, status: 200, json: async () => b });
   if (url.includes('api.formula1.com/v1/event-tracker')) return json(F1);
   if (url.includes('core-event-tracker/f2')) return json(f2Feed);
+  if (url.includes('api.motogp.pulselive.com/motogp/v1/events')) return json(/seasonYear=2026/.test(url) ? MOTOGP : []);
+  if (url.includes('core-event-tracker/f3')) return json({ seasonContext: { seasonYear: '2026', seasonState: 'DURING-SEASON' } }); // as on 20 Oct: no next F3 weekend
   if (url.includes('tournaments.darts')) return json(/seasonID=2026/.test(url) ? PDC : { data: [], meta: { totalCount: 0 } });
   if (url.includes('awk.epgsky.com')) return guideDown ? { ok: false, status: 503 } : json(skyDay(url));
   return { ok: false, status: 404 }; // football sources are covered by run-test.mjs
@@ -153,6 +163,56 @@ assert.equal(darts[3].end, '2026-10-01T22:00:00.000Z'); // two back-to-back prog
 assert.equal(darts[4].allDay, true);
 assert.equal(darts[4].tv.note, 'TV times to be confirmed');
 assert.ok(darts.every(e => e.title === 'World Grand Prix' && e.venue === 'Mattioli Arena, Leicester'));
+
+// F3 (Monza, 4-6 Sept, real timetable): practice skipped; the two 10-minute qualifying groups
+// (Group A 14:00, Group B 14:20 local) are one "Qualifying" entry, 14:00-14:30 local = 12:00-12:30 UTC
+const f3 = mapF3Tracker(F3_MONZA);
+assert.deepEqual(f3.map(e => `${e.session} ${e.kickoff}-${e.end.slice(11, 16)}`), [
+  'Qualifying 2026-09-04T12:00:00.000Z-12:30',
+  'Sprint Race 2026-09-05T07:30:00.000Z-08:15',
+  'Feature Race 2026-09-06T06:15:00.000Z-07:05',
+]);
+assert.ok(f3.every(e => e.comp === 'F3' && e.title === 'Italy' && e.venue === 'Monza' && e.source === 'fiaformula3.com' && e.status === 'finished'));
+assert.equal(data.report.formula3.ok, true); // no F3 weekend ahead in the off-season: ok, nothing listed
+assert.equal(data.report.formula3.sessions, 0);
+// TV: a Formula 3 programme on Sky Sports F1 confirms it; an F2 programme at the same time doesn't
+const f3Prog = (title, start, mins) => ({ id: title, sid: SKY_F1, channel: 'Sky Sports F1', live: true, title, synopsis: '', start: Date.parse(start), end: Date.parse(start) + mins * 60000 });
+assert.deepEqual(motorsportTv(f3[0], { programmes: [f3Prog('Live Formula 3: Qualifying', '2026-09-04T11:55:00Z', 45)] }).channels, ['Sky Sports F1']);
+assert.equal(motorsportTv(f3[0], { programmes: [f3Prog('Live F2: Qualifying', '2026-09-04T11:55:00Z', 45)] }).note, 'TV channel to be confirmed');
+assert.equal(seriesOf({ title: 'Live F3: Feature Race', synopsis: '' }), 'F3');
+
+// MotoGP (MotoGP class only): qualifying (Q1 + Q2 as one), sprint and race of each GP weekend
+assert.deepEqual(data.report.motogp, { ok: true, sessions: 0 }); // no MotoGP in the 24 Sept window
+const aus = mapMotoGpEvent(MOTOGP.find(e => /AUSTRALIA/.test(e.name)));
+assert.deepEqual(aus.map(e => `${e.session} ${e.kickoff}-${e.end.slice(11, 16)}`), [
+  'Qualifying 2026-10-23T23:50:00.000Z-00:30', // 10:50-11:30 local (+11:00), Q1 to Q2
+  'Sprint 2026-10-24T04:00:00.000Z-04:45',     // 15:00 local; races have no end time: 45 minutes
+  'Race 2026-10-25T03:00:00.000Z-04:00',       // 14:00 local
+]);
+assert.ok(aus.every(e => e.comp === 'MOTOGP' && e.title === 'Grand Prix of Australia' && e.venue === 'Phillip Island' && e.status === 'upcoming'));
+assert.ok(MOTOGP.flatMap(mapMotoGpEvent).filter(e => /Japan/.test(e.title)).every(e => e.status === 'finished'));
+assert.equal(motoGpTitle('RED BULL GRAND PRIX OF SAN MARINO AND THE RIMINI RIVIERA'), 'Grand Prix of San Marino and the Rimini Riviera');
+// Channels: Sky's guide (TNT Sports 2) and TNT's schedule (HBO Max), real entries for 23-25 Oct 2026
+const TNT2 = 3627;
+const gp = (title, start, mins, live = true) => ({ id: `${title}${start}`, sid: TNT2, channel: 'TNT Sports 2', live, title, synopsis: '', start: Date.parse(start), end: Date.parse(start) + mins * 60000 });
+const motoGuide = { programmes: [
+  gp('Live MotoGP: Australia Qualifying', '2026-10-23T23:00:00Z', 165),
+  gp('Live Moto2/3: Australia Qualify.', '2026-10-24T01:45:00Z', 120),
+  gp('Live MotoGP: Australia Sprint Race', '2026-10-24T03:45:00Z', 60),
+  gp('MotoGP: Australia Sprint Race', '2026-10-24T12:00:00Z', 30, false), // replay
+  gp('Live Moto2: GP of Australia', '2026-10-25T01:00:00Z', 135),        // on air at the MotoGP race's start time
+  gp('Live MotoGP: GP of Australia', '2026-10-25T03:15:00Z', 105),       // starts 15 minutes after it
+] };
+const tntProg = (subtitle, start, mins, channel = 'HBO Max') => ({ title: 'MotoGP | Australia', subtitle, channel, live: true, start: Date.parse(start), end: Date.parse(start) + mins * 60000 });
+const motoTnt = { programmes: [
+  tntProg('Sprint Race', '2026-10-24T04:00:00Z', 25),
+  tntProg('Race', '2026-10-25T03:00:00Z', 45),
+  { ...tntProg('', '2026-10-24T04:45:00Z', 15, 'TNT Sports 2'), title: 'MotoGP Rewind', live: false },
+] };
+const motoTv = (e) => { const tv = motoGpTv(e, motoGuide, motoTnt); return `${tv.channels[0]} | ${tv.alsoOn.join(', ')}`; };
+assert.deepEqual(aus.map(motoTv), ['TNT Sports 2 | ', 'TNT Sports 2 | HBO Max', 'TNT Sports 2 | HBO Max']);
+assert.deepEqual(motoGpTv(aus[2], motoGuide, motoTnt).sources, ['sky-guide', 'tntsports.co.uk']);
+assert.equal(motoGpTv(aus[0], { programmes: [] }, null).note, 'TV channel to be confirmed');
 
 // ITV doesn't start live titles with "Live": the European Championship on ITV4 (real guide entries,
 // captured 20 Oct 2026) is still one session per programme, while a highlights show and a short

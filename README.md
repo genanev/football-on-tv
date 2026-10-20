@@ -3,13 +3,13 @@
 A phone web app that lists what's on UK TV for **today and the next 7 days**, with **UK times** and the **UK TV channel**:
 
 - **Football:** Premier League, Champions League, Europa League, Championship, Scottish Premiership, and televised Conference League, Women's Super League, League Cup and FA Cup games
-- **Motorsport:** Formula 1 and Formula 2 (qualifying, sprint and race)
+- **Motorsport:** Formula 1, Formula 2, Formula 3 and MotoGP (qualifying, sprint and race)
 - **Darts:** televised PDC events
 - **Golf:** PGA Tour, DP World Tour and the majors
 - **Snooker:** World Snooker Tour events on TV
 - **Cricket:** men's internationals between the 12 top nations
 
-You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby, MotoGP and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
+You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
 
 It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
 

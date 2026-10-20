@@ -40,6 +40,7 @@ import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
 import { fetchTntSchedule } from './sources/tntSchedule.mjs';
 import { fetchPrimeUcl } from './sources/amazonPrime.mjs';
+import { fetchPremierSports } from './sources/premierSports.mjs';
 
 // Re-exported so the tests can reach them in one place.
 export { ukToUtc, ukDate } from './lib/util.mjs';
@@ -72,7 +73,7 @@ const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason), 
 /** Which report entries say whether the source behind a `tv.sources` tag worked on this update. */
 const SOURCE_REPORT = {
   'sky-guide': 'tvGuide', 'skysports.com': 'skyListings', 'tntsports.co.uk': 'tntSchedule',
-  'primevideo.com': 'primeVideo', 'thefa.com': ['faCup', 'faPage'], 'premierleague.com': 'premierLeagueTv',
+  'primevideo.com': 'primeVideo', 'premiersports.com': 'premierSports', 'thefa.com': ['faCup', 'faPage'], 'premierleague.com': 'premierLeagueTv',
 };
 
 /**
@@ -115,12 +116,12 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // With API-Football, the Premier League feed is still read, but only to look up the league's own
   // UK broadcaster for each match (its broadcast feed is keyed by the league's match ids), and the
   // FA's page only for its "Live on" TV picks.
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, afRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes] = await Promise.allSettled([
     fetchPremierLeague(now), useAf ? skip : fetchChampionsLeague(now, DAYS_AHEAD),
     useAf ? skip : fetchUefa(now, DAYS_AHEAD, 'UEL'), useAf ? skip : fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
     fetchF1(), fetchF2(), fetchF3(), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
-    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now),
+    fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now), fetchPremierSports(now),
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
     useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
   ]);
@@ -137,6 +138,10 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // Prime Video's Champions League page: Amazon's own picks
   const prime = ok(primeRes) ? primeRes.value : null;
   report.primeVideo = prime ? { ok: true, events: prime.cards.length, amazonPicks: prime.cards.filter(c => c.provider === 'Prime').map(c => c.title) } : fail(primeRes);
+
+  // Premier Sports (streaming only, not in Sky's guide): Scottish Premiership channels
+  const premierSports = ok(psRes) ? psRes.value : null;
+  report.premierSports = premierSports ? { ok: true, events: premierSports.events.length } : fail(psRes);
 
   // ---- football fixtures: API-Football, or the official feeds
   report.footballSource = footballSource;
@@ -198,7 +203,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
   for (const m of [...pl, ...ucl, ...uel, ...more]) {
-    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, plBrands: m.comp === 'PL' ? plTv[plIdOf(m)] : null });
+    const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, premierSports, plBrands: m.comp === 'PL' ? plTv[plIdOf(m)] : null });
     if (TELEVISED_ONLY.has(m.comp) && !tv.channels.length) continue;
     const { sourceId, homeAlt, awayAlt, ...rest } = m;
     // UEFA and API-Football use short names ("Atleti", "Paris"); TNT's names read better.

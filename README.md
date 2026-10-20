@@ -54,6 +54,7 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 | | Sky Sports' "on Sky" pages (incl. Sky Sports+ streams) | reading the pages |
 | | TNT Sports' schedule (incl. HBO Max streams) | its data feed (API) |
 | | Prime Video's Champions League page (Amazon's Tuesday pick) | reading the page, **from the UK only** |
+| | Premier Sports' fixtures page (streaming only; Scottish Premiership games) | reading the page |
 | | The FA's fixtures page ("Live on BBC Sport") | reading the page |
 | | Premier League broadcast feed | its data feed (API); answers for the requester's country |
 

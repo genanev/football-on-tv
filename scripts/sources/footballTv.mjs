@@ -4,6 +4,8 @@
 //   3. TNT Sports' schedule TNT games incl. HBO Max streams
 //   4. Prime Video          Amazon's own Champions League pick (its tournament page), for a game
 //                           none of the above shows
+//   4b. Premier Sports      streaming-only, not in Sky's guide: its fixtures page (Scottish
+//                           Premiership games, premierSports.mjs)
 //   5. Premier League feed  the league's own UK broadcaster (only answers UK requests; GitHub's
 //                           servers are in the US, so in practice it rarely adds anything)
 // All confirmed channels are combined (main channel first, HBO Max last). Without any:
@@ -23,6 +25,21 @@ const COMPETITION = {
   PL: 'Premier League', UCL: 'Champions League', UEL: 'Europa League', UECL: 'Conference League',
   CHAMP: 'Championship', CUPS: null, WSL: false, SCOT: false,
 };
+
+// Competitions looked up on Premier Sports, as its page names them (Scottish Premiership first;
+// George, 20 Oct 2026). Its listed time is when coverage starts, usually 30 minutes before kick-off.
+const PREMIER_SPORTS = { SCOT: 'SPFL' };
+
+/** Premier Sports' listing for this match: same competition, both teams, coverage from up to 2h before kick-off. */
+export function premierSportsFor(m, ps) {
+  const comp = PREMIER_SPORTS[m.comp];
+  if (!comp) return [];
+  const ko = Date.parse(m.kickoff);
+  const names = (side) => [m[side], m[`${side}Short`]].filter(Boolean);
+  const sim = (side, name) => Math.max(...names(side).map(n => teamSim(n, name)));
+  return (ps?.events || []).filter(e => e.competition === comp && e.start >= ko - 2 * 3600000 && e.start <= ko + 15 * 60000
+    && e.away && sim('home', e.home) >= 0.5 && sim('away', e.away) >= 0.5);
+}
 
 /** Women's games ("Arsenal Women", WSL) and men's games must not confirm each other. */
 const WOMEN = /\bwomen\b|\bwsl\b/i;
@@ -45,20 +62,23 @@ export const isSat3pm = (ts) => { const p = londonParts(ts); return ukWeekday(ts
  * Returns { tv, tntNames } - tntNames are the broadcaster's (TNT's or Amazon's) spellings of the teams ("Manchester City",
  * "Paris Saint-Germain"), which read better than UEFA's short names ("Man City", "Paris").
  */
-export function footballTv(m, { guide, skyListings, tnt, prime, plBrands } = {}) {
+export function footballTv(m, { guide, skyListings, tnt, prime, plBrands, premierSports } = {}) {
   const sids = SPORT_CHANNELS.football;
   const progs = guideProgrammesFor(m, guide?.programmes || [], sids);
   const listed = skyListingFor(m, skyListings?.entries);
   const fromTnt = COMPETITION[m.comp] === false ? [] : tntProgrammesFor(m, tnt, COMPETITION[m.comp]);
+  const fromPs = premierSportsFor(m, premierSports);
 
   const names = [
     ...channelList(progs, sids),
     ...(listed ? listed.channels.map(c => c.name) : []),
     ...fromTnt.map(p => p.channel),
+    ...fromPs.map(e => e.channel),
   ];
   const chans = [...new Set(names)].sort((a, b) => (a === 'HBO Max') - (b === 'HBO Max'));
   const sources = [
     ...(progs.length ? ['sky-guide'] : []), ...(listed ? ['skysports.com'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : []),
+    ...(fromPs.length ? ['premiersports.com'] : []),
   ];
   const tntNames = fromTnt.length ? tntTeams(fromTnt[0].title) : null;
 

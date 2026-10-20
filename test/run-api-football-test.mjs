@@ -17,6 +17,7 @@ import { readFile } from 'node:fs/promises';
 import { ukHHMM, ukToUtc, ukDate } from '../scripts/lib/util.mjs';
 import { build } from '../scripts/build.mjs';
 import { unknownClubs } from '../scripts/sources/teamNames.mjs';
+import { parsePremierSports, parsePsTime } from '../scripts/sources/premierSports.mjs';
 import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
@@ -51,12 +52,15 @@ const FA_PAGE = `<table class="gTable"><tr><td class="headl">Tuesday 20 October 
 // The Premier League's feed: one match, with its UK broadcaster in the league's broadcast feed
 const PL_WEEK = { data: [{ matchId: 999, kickoff: '2026-10-25 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Crystal Palace' }, awayTeam: { name: 'Newcastle United' } }] };
 const PL_TV = { content: [{ contentReference: { id: 999 }, channels: [{ info: { name: 'Sky Sports', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['GB'] } } }] }] };
-let afDown = false;
+let afDown = false, psDown = false;
+// Premier Sports' fixtures page (streaming only, not in Sky's guide), trimmed; see the file's comment
+const PS_PAGE = await readFile(new URL('fixtures/premiersports-upcoming-fixtures-2026-10-20.html', import.meta.url), 'utf8');
 const ok = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => (typeof b === 'string' ? b : JSON.stringify(b)) });
 function otherSource(url) {
   if (url.includes('api-sports.io')) return afDown ? { ok: false, status: 500 } : null;
   if (url.includes('awk.epgsky.com')) return ok(skyDay(url));
   if (url.includes('thefa.com')) return ok(FA_PAGE);
+  if (url.includes('premiersports.com')) return psDown ? { ok: false, status: 503 } : ok(PS_PAGE);
   if (url.includes('current-gameweek')) return ok({ matchweek: 9 });
   if (url.includes('pulselive.com')) return ok(/matchweek=9&/.test(url) ? PL_WEEK : { data: [] });
   if (url.includes('api.premierleague.com/broadcasting')) return ok(PL_TV);
@@ -113,6 +117,13 @@ assert.deepEqual(mapAfFixture(fixture('NS')), {
 assert.deepEqual(unknownClubs([{ comp: 'CHAMP', homeShort: 'Wolves', awayShort: 'Boreham Wood' }, { comp: 'CUPS', homeShort: 'Anstey Nomads', awayShort: 'Macclesfield' }]), ['Boreham Wood']);
 assert.equal(mapAfFixture({ ...fixture('NS'), teams: { home: { name: 'Boreham Wood' }, away: { name: 'Wolves' } } }).home, 'Boreham Wood');
 assert.equal(mapAfFixture({ ...fixture('NS'), teams: { home: { name: 'Boreham Wood' }, away: { name: 'Wolves' } } }).away, 'Wolverhampton Wanderers');
+
+// Premier Sports' page: days have no year; the nearest one to now is used
+assert.equal(new Date(parsePsTime('Sunday, January 3', '7:45pm', Date.parse('2026-12-20T12:00:00Z'))).toISOString(), '2027-01-03T19:45:00.000Z');
+assert.equal(new Date(parsePsTime('Sunday, October 25', '1:30pm', Date.parse('2026-10-20T12:00:00Z'))).toISOString(), '2026-10-25T13:30:00.000Z'); // GMT by then
+assert.equal(new Date(parsePsTime('Saturday, October 24', '12:15am', Date.parse('2026-10-20T12:00:00Z'))).toISOString(), '2026-10-23T23:15:00.000Z'); // BST
+const psEvents = parsePremierSports(PS_PAGE, Date.parse('2026-10-20T00:15:00Z'));
+assert.deepEqual(psEvents.filter(e => e.competition === 'SPFL').map(e => `${e.home} v ${e.away} on ${e.channel}`), ['Motherwell v Hearts on Premier Sports 1', 'Aberdeen v Hibernian on Premier Sports 1']);
 
 // ---------- the captured week
 const { matches, errors } = await fetchApiFootball('2024-10-22', '2024-10-30', 2024, 'test-key');
@@ -212,7 +223,22 @@ const scot = (home) => data.events.find(e => e.comp === 'SCOT' && e.homeShort ==
 assert.equal(`${scot('ST Mirren').home} v ${scot('ST Mirren').away}`, 'St Mirren v Dundee');
 assert.equal(scot('ST Mirren').tv.note, 'Not shown live on UK TV'); // Sat 24 Oct, 15:00 BST
 assert.deepEqual(scot('Hibernian').tv.channels, ['Sky Sports Main Event']); // Sun 25 Oct, 12:00 GMT
-assert.equal(`${scot('Motherwell').away}: ${scot('Motherwell').tv.note}`, 'Heart of Midlothian: TV channel to be confirmed');
+// Motherwell v Hearts is only on Premier Sports (streaming, not in Sky's guide): its page lists it
+// from 13:30, the start of coverage, for a 14:00 kick-off
+assert.equal(`${scot('Motherwell').away}: ${scot('Motherwell').tv.channels[0]}`, 'Heart of Midlothian: Premier Sports 1');
+assert.deepEqual(scot('Motherwell').tv.sources, ['premiersports.com']);
+assert.equal(r.premierSports.ok, true);
+// Premier Sports' page unreachable: back to "to be confirmed" (the app shows a banner in Scottish views)
+psDown = true;
+const noPs = await build(NOW, null, { footballSource: 'api-football' });
+psDown = false;
+assert.equal(noPs.report.premierSports.ok, false);
+assert.equal(noPs.events.find(e => e.comp === 'SCOT' && e.homeShort === 'Motherwell').tv.note, 'TV channel to be confirmed');
+// ...unless an earlier update had confirmed it (the keep rule)
+psDown = true;
+const keptNoPs = await build(NOW, data, { footballSource: 'api-football' });
+psDown = false;
+assert.deepEqual(keptNoPs.events.find(e => e.comp === 'SCOT' && e.homeShort === 'Motherwell').tv.channels, ['Premier Sports 1']);
 // Every football event is from API-Football, with its kick-off and score
 assert.ok(data.events.filter(e => e.kind === 'match').every(e => e.source === 'api-football.com'));
 assert.deepEqual([ev('PL', 'Tottenham').status, ev('PL', 'Tottenham').homeScore, ev('PL', 'Tottenham').awayScore], ['finished', 3, 1]);

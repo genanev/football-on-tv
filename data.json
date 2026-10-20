@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T19:00:31.097Z",
+ "generatedAt": "2026-10-20T19:30:31.964Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Liverpool vs. Villarreal",
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -59,7 +53,7 @@
    "ok": true,
    "matches": 8
   },
-  "footballChannels": "25/28 PL+UCL matches with a confirmed channel",
+  "footballChannels": "24/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -376,9 +370,9 @@
    "homeShort": "Liverpool",
    "awayShort": "Villarreal",
    "venue": "Anfield",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -391,7 +385,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com"
+     "primevideo.com",
+     "previous-update"
     ]
    }
   },
@@ -407,9 +402,9 @@
    "homeShort": "Manchester City",
    "awayShort": "AEK Athens FC",
    "venue": "Etihad Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -441,9 +436,9 @@
    "homeShort": "Napoli",
    "awayShort": "Bodo/Glimt",
    "venue": "Maradona Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -472,9 +467,9 @@
    "homeShort": "Paris Saint Germain",
    "awayShort": "Barcelona",
    "venue": "Parc des Princes",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -504,9 +499,9 @@
    "homeShort": "FC Porto",
    "awayShort": "PSV Eindhoven",
    "venue": "Estádio do Dragão",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -535,9 +530,9 @@
    "homeShort": "AS Roma",
    "awayShort": "Slovan Bratislava",
    "venue": "Stadio Olimpico",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -566,9 +561,9 @@
    "homeShort": "VfB Stuttgart",
    "awayShort": "Atletico Madrid",
    "venue": "MHP Arena",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

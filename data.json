@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-20T21:30:14.179Z",
+ "generatedAt": "2026-10-20T22:00:30.388Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4372,
+   "programmes": 4358,
    "errors": []
   },
   "skyListings": {
@@ -20,11 +20,11 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 20,
+   "events": 24,
    "amazonPicks": [
-    "Liverpool vs. Villarreal",
     "Manchester United vs. Roma",
     "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
     "Atlético Madrid vs. Manchester United"
    ]
   },

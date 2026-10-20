@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-20T20:30:25.650Z",
+ "generatedAt": "2026-10-20T21:00:15.016Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 34,
+   "events": 23,
    "errors": []
   },
   "tntSchedule": {
@@ -66,7 +66,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 4
+   "televised": 5
   },
   "scottishPremiership": {
    "ok": true,
@@ -344,7 +344,7 @@
    "homeShort": "Wolves",
    "awayShort": "Portsmouth",
    "venue": "Molineux Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 6",
@@ -359,8 +359,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -376,9 +375,9 @@
    "homeShort": "Liverpool",
    "awayShort": "Villarreal",
    "venue": "Anfield",
-   "status": "live",
+   "status": "finished",
    "homeScore": 4,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -407,8 +406,8 @@
    "homeShort": "Manchester City",
    "awayShort": "AEK Athens FC",
    "venue": "Etihad Stadium",
-   "status": "live",
-   "homeScore": 4,
+   "status": "finished",
+   "homeScore": 5,
    "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -441,9 +440,9 @@
    "homeShort": "Napoli",
    "awayShort": "Bodo/Glimt",
    "venue": "Maradona Stadium",
-   "status": "live",
-   "homeScore": 2,
-   "awayScore": 2,
+   "status": "finished",
+   "homeScore": 4,
+   "awayScore": 3,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -472,9 +471,9 @@
    "homeShort": "Paris Saint Germain",
    "awayShort": "Barcelona",
    "venue": "Parc des Princes",
-   "status": "live",
-   "homeScore": 1,
-   "awayScore": 1,
+   "status": "finished",
+   "homeScore": 4,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -504,7 +503,7 @@
    "homeShort": "FC Porto",
    "awayShort": "PSV Eindhoven",
    "venue": "Estádio do Dragão",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 1,
    "round": "League Stage - 3",
@@ -535,7 +534,7 @@
    "homeShort": "AS Roma",
    "awayShort": "Slovan Bratislava",
    "venue": "Stadio Olimpico",
-   "status": "live",
+   "status": "finished",
    "homeScore": 4,
    "awayScore": 0,
    "round": "League Stage - 3",
@@ -566,7 +565,7 @@
    "homeShort": "VfB Stuttgart",
    "awayShort": "Atletico Madrid",
    "venue": "MHP Arena",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "League Stage - 3",
@@ -2462,12 +2461,15 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2500,7 +2502,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2671,7 +2674,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2694,13 +2698,17 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -2731,7 +2739,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2766,6 +2775,39 @@
     "sources": [
      "sky-guide",
      "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1607711",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T11:45:00.000Z",
+   "timeTbc": false,
+   "home": "Tottenham Hotspur Women",
+   "away": "Arsenal Women",
+   "homeShort": "Tottenham Hotspur",
+   "awayShort": "Arsenal",
+   "venue": "Brisbane Road",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 7",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
     ]
    }
   },
@@ -3203,12 +3245,15 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -3235,13 +3280,15 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Premier League"
+     "Sky Sports Premier League",
+     "Sky Sports+"
     ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

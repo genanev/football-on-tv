@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-21T00:00:51.680Z",
+ "generatedAt": "2026-10-21T00:30:14.093Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4214,
+   "programmes": 4252,
    "errors": []
   },
   "skyListings": {
@@ -2028,7 +2028,7 @@
    "away": "Nottingham Forest",
    "homeShort": "Ipswich",
    "awayShort": "Nottingham Forest",
-   "venue": "Portman Road",
+   "venue": "Portman Road Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

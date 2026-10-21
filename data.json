@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-21T06:30:33.340Z",
+ "generatedAt": "2026-10-21T07:00:37.381Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4376,
+   "programmes": 4388,
    "errors": []
   },
   "skyListings": {
@@ -111,7 +111,7 @@
     "VidantaWorld Mexico Open",
     "Genesis Championship"
    ],
-   "rounds": 8,
+   "rounds": 9,
    "errors": []
   },
   "snooker": {
@@ -123,7 +123,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 12
   },
   "scores": "on"
  },
@@ -3915,6 +3915,61 @@
     "broadcaster": "Sky Sports Cricket",
     "channels": [
      "Sky Sports Cricket"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "Newlands, Cape Town",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269792-d3",
+   "kickoff": "2026-10-29T08:30:00.000Z",
+   "end": "2026-10-29T15:30:00.000Z",
+   "session": "3rd Test, Day 3",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "VidantaWorld Mexico Open",
+   "venue": "Vidanta Vallarta",
+   "source": "pgatour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-pga-R2026540-2026-10-29",
+   "kickoff": "2026-10-29T20:00:00.000Z",
+   "end": "2026-10-29T23:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
     ],
     "alsoOn": [
      "Sky Sports Main Event"

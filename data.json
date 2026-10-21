@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T18:30:24.785Z",
+ "generatedAt": "2026-10-21T19:00:23.215Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 24,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -225,9 +219,9 @@
    "homeShort": "Como",
    "awayShort": "Manchester United",
    "venue": "Stadio Giuseppe Sinigaglia",
-   "status": "live",
+   "status": "finished",
    "homeScore": 4,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -257,7 +251,7 @@
    "homeShort": "Lille",
    "awayShort": "Galatasaray",
    "venue": "Stade Pierre-Mauroy",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 4,
    "round": "League Stage - 3",

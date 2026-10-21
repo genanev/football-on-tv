@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T19:00:23.215Z",
+ "generatedAt": "2026-10-21T19:30:16.564Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 23,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -283,9 +289,9 @@
    "homeShort": "Aston Villa",
    "awayShort": "Viking",
    "venue": "Villa Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -317,9 +323,9 @@
    "homeShort": "Bayern München",
    "awayShort": "Arsenal",
    "venue": "Allianz Arena",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -349,9 +355,9 @@
    "homeShort": "Club Brugge KV",
    "awayShort": "Lens",
    "venue": "Jan Breydel Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -380,9 +386,9 @@
    "homeShort": "Inter",
    "awayShort": "Shakhtar Donetsk",
    "venue": "San Siro/Giuseppe Meazza",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -411,9 +417,9 @@
    "homeShort": "Real Betis",
    "awayShort": "Feyenoord",
    "venue": "Estadio de la Cartuja",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -442,9 +448,9 @@
    "homeShort": "Real Madrid",
    "awayShort": "RB Leipzig",
    "venue": "Santiago Bernabéu Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -476,9 +482,9 @@
    "homeShort": "Sporting CP",
    "awayShort": "Lask Linz",
    "venue": "Estádio José Alvalade",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

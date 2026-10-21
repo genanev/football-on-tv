@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T17:00:18.656Z",
+ "generatedAt": "2026-10-21T17:30:13.792Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -258,8 +258,8 @@
    "awayShort": "Galatasaray",
    "venue": "Stade Pierre-Mauroy",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 1,
+   "homeScore": 2,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-21T19:30:16.564Z",
+ "generatedAt": "2026-10-21T20:00:25.335Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4386,
+   "programmes": 4385,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 23,
+   "events": 24,
    "amazonPicks": [
     "Manchester United vs. Roma",
     "Arsenal vs. Dortmund",
@@ -290,7 +290,7 @@
    "awayShort": "Viking",
    "venue": "Villa Park",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -324,7 +324,7 @@
    "awayShort": "Arsenal",
    "venue": "Allianz Arena",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -356,7 +356,7 @@
    "awayShort": "Lens",
    "venue": "Jan Breydel Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -449,7 +449,7 @@
    "awayShort": "RB Leipzig",
    "venue": "Santiago Bernabéu Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",

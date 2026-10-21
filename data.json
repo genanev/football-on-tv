@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T16:30:22.052Z",
+ "generatedAt": "2026-10-21T17:00:18.656Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 987,
+   "programmes": 986,
    "errors": []
   },
   "primeVideo": {
@@ -225,9 +225,9 @@
    "homeShort": "Como",
    "awayShort": "Manchester United",
    "venue": "Stadio Giuseppe Sinigaglia",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -257,9 +257,9 @@
    "homeShort": "Lille",
    "awayShort": "Galatasaray",
    "venue": "Stade Pierre-Mauroy",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

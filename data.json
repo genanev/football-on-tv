@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-21T14:00:34.991Z",
+ "generatedAt": "2026-10-21T14:30:19.420Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4384,
+   "programmes": 4383,
    "errors": []
   },
   "skyListings": {
@@ -19,18 +19,12 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 24,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
-   "events": 187
+   "events": 188
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -3889,7 +3883,9 @@
     "channels": [
      "Sky Sports Main Event"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T22:00:16.559Z",
+ "generatedAt": "2026-10-21T22:30:18.949Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 19,
+   "events": 17,
    "amazonPicks": [
     "Manchester United vs. Roma",
     "Arsenal vs. Dortmund",

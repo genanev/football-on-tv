@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T17:30:13.792Z",
+ "generatedAt": "2026-10-21T18:00:20.050Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -226,7 +226,7 @@
    "awayShort": "Manchester United",
    "venue": "Stadio Giuseppe Sinigaglia",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -259,7 +259,7 @@
    "venue": "Stade Pierre-Mauroy",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

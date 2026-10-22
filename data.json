@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T01:00:24.135Z",
+ "generatedAt": "2026-10-22T01:30:23.877Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4118,
+   "programmes": 4335,
    "errors": []
   },
   "skyListings": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -111,7 +105,7 @@
     "VidantaWorld Mexico Open",
     "Genesis Championship"
    ],
-   "rounds": 9,
+   "rounds": 10,
    "errors": []
   },
   "snooker": {
@@ -3657,6 +3651,34 @@
      "TNT Sports 1"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "VidantaWorld Mexico Open",
+   "venue": "Vidanta Vallarta",
+   "source": "pgatour.com",
+   "session": "Round 2",
+   "status": "upcoming",
+   "id": "golf-pga-R2026540-2026-10-30",
+   "kickoff": "2026-10-30T18:00:00.000Z",
+   "end": "2026-10-30T23:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

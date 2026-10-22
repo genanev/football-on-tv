@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T17:00:21.551Z",
+ "generatedAt": "2026-10-22T17:30:15.700Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 17,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -305,8 +311,8 @@
    "awayShort": "FC Copenhagen",
    "venue": "Stadion Rajko Mit",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 2,
+   "awayScore": 1,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -400,7 +406,7 @@
    "venue": "Coliseum",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -462,7 +468,7 @@
    "venue": null,
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 3,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -554,7 +560,7 @@
    "awayShort": "Heart Of Midlothian",
    "venue": "Papara Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 2",
    "source": "api-football.com",
@@ -587,7 +593,7 @@
    "venue": "Vazgen Sargsyan Republican Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -617,8 +623,8 @@
    "awayShort": "NEC Nijmegen",
    "venue": "Stadion Maksimir",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 2,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -648,8 +654,8 @@
    "awayShort": "Torreense",
    "venue": "Groupama Aréna",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -680,7 +686,7 @@
    "venue": "Allianz Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -743,7 +749,7 @@
    "venue": "Pankritio Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

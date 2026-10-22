@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T20:00:13.684Z",
+ "generatedAt": "2026-10-22T20:30:14.811Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -921,7 +921,7 @@
    "awayShort": "Egnatia Rrogozhinë",
    "venue": "Vejlby Stadion",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 1,
    "round": "League Stage - 2",
    "source": "api-football.com",
@@ -1076,7 +1076,7 @@
    "awayShort": "KuPS",
    "venue": "Gradski Stadion",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 2",
    "source": "api-football.com",
@@ -1108,7 +1108,7 @@
    "venue": "Victoria Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -1170,7 +1170,7 @@
    "venue": "Tüpraş Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -1237,8 +1237,8 @@
    "awayShort": "Celta Vigo",
    "venue": "Celtic Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -1271,7 +1271,7 @@
    "awayShort": "Lyon",
    "venue": "Prezero Arena",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -1334,7 +1334,7 @@
    "venue": "Åråsen Stadion",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 3,
+   "awayScore": 5,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -1364,8 +1364,8 @@
    "awayShort": "Red Bull Salzburg",
    "venue": "Stadion Z’dežele",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -1427,7 +1427,7 @@
    "venue": "GSP Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -1457,8 +1457,8 @@
    "awayShort": "Levski Sofia",
    "venue": "Doosan Arena",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {

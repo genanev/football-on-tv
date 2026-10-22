@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T21:00:20.989Z",
+ "generatedAt": "2026-10-22T21:30:13.915Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4362,
+   "programmes": 4361,
    "errors": []
   },
   "skyListings": {
@@ -836,7 +836,7 @@
    "source": "pdc.tv",
    "id": "darts-10870-1792688400",
    "kickoff": "2026-10-22T17:00:00.000Z",
-   "end": "2026-10-22T21:10:00.000Z",
+   "end": "2026-10-22T21:30:00.000Z",
    "session": "Evening session",
    "status": "upcoming",
    "timeTbc": false,

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T08:30:14.370Z",
+ "generatedAt": "2026-10-22T09:00:15.186Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4360,
+   "programmes": 4362,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 971,
+   "programmes": 970,
    "errors": []
   },
   "primeVideo": {
@@ -75,7 +75,7 @@
   "efl": {
    "ok": true,
    "championship": 13,
-   "leagueCup": 3
+   "leagueCup": 2
   },
   "faCup": {
    "ok": true,
@@ -3323,38 +3323,6 @@
    }
   },
   {
-   "id": "af-1640575",
-   "sourceId": "1640575",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-28T19:30:00.000Z",
-   "timeTbc": false,
-   "home": "Manchester City",
-   "away": "Brighton and Hove Albion",
-   "homeShort": "Manchester City",
-   "awayShort": "Brighton",
-   "venue": "Etihad Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "af-1556688",
    "comp": "SCOT",
    "label": null,
@@ -3741,13 +3709,19 @@
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ]

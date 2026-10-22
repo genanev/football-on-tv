@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T06:30:14.013Z",
+ "generatedAt": "2026-10-22T07:00:14.198Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 17,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -161,7 +167,7 @@
    "kickoff": "2026-10-22T07:00:00.000Z",
    "end": "2026-10-22T11:00:00.000Z",
    "session": "1st T20I",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",

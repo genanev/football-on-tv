@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T00:30:22.743Z",
+ "generatedAt": "2026-10-22T01:00:24.135Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4086,
+   "programmes": 4118,
    "errors": []
   },
   "skyListings": {
@@ -2103,7 +2103,7 @@
    "away": "Burnley",
    "homeShort": "Lincoln",
    "awayShort": "Burnley",
-   "venue": "LNER stadium",
+   "venue": "Sincil Bank",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2131,7 +2131,7 @@
    "away": "West Bromwich Albion",
    "homeShort": "Preston",
    "awayShort": "West Brom",
-   "venue": "Deepdale",
+   "venue": "Deepdale Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2187,7 +2187,7 @@
    "away": "Bristol City",
    "homeShort": "Stoke City",
    "awayShort": "Bristol City",
-   "venue": "Bet365 Stadium",
+   "venue": "bet365 Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

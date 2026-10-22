@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T23:00:14.258Z",
+ "generatedAt": "2026-10-22T23:30:15.895Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4054,
+   "programmes": 4065,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1149,
+   "programmes": 1151,
    "errors": []
   },
   "primeVideo": {

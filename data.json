@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T18:30:16.355Z",
+ "generatedAt": "2026-10-22T19:00:18.937Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4364,
+   "programmes": 4363,
    "errors": []
   },
   "skyListings": {
@@ -56,8 +56,8 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645271,2645266,2645265,2645268,2645267,2645273,2645272,2645269,2645270,2645274&pageSize=50"
+   "ok": true,
+   "matches": 8
   },
   "footballChannels": "7/10 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -94,8 +94,8 @@
    "sessions": 0
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026"
+   "ok": true,
+   "sessions": 3
   },
   "darts": {
    "ok": true,
@@ -310,7 +310,7 @@
    "homeShort": "FK Crvena Zvezda",
    "awayShort": "FC Copenhagen",
    "venue": "Stadium Rajko Mitić",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 2,
    "round": "League Stage - 2",
@@ -341,9 +341,9 @@
    "homeShort": "FC Iberia 1999",
    "awayShort": "Mjallby AIF",
    "venue": "Mikheil Meskhi Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -372,7 +372,7 @@
    "homeShort": "FK Jablonec",
    "awayShort": "Brighton",
    "venue": "Stadion Střelnice",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 0,
    "round": "League Stage - 2",
@@ -404,9 +404,9 @@
    "homeShort": "Getafe",
    "awayShort": "FC Lugano",
    "venue": "Coliseum Alfonso Pérez",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
-   "awayScore": 4,
+   "awayScore": 5,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -435,7 +435,7 @@
    "homeShort": "Inter Club d'Escaldes",
    "awayShort": "Universitatea Craiova",
    "venue": "DEVK-Arena",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 3,
    "round": "League Stage - 2",
@@ -466,7 +466,7 @@
    "homeShort": "Kauno Žalgiris",
    "awayShort": "Brann",
    "venue": "National Football Academy",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 4,
    "round": "League Stage - 2",
@@ -497,9 +497,9 @@
    "homeShort": "FC Nordsjaelland",
    "awayShort": "CSKA Sofia",
    "venue": "Right to Dream Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -528,7 +528,7 @@
    "homeShort": "Pafos",
    "awayShort": "Riga",
    "venue": "Stelios Kyriakidis",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "League Stage - 2",
@@ -559,7 +559,7 @@
    "homeShort": "Trabzonspor",
    "awayShort": "Heart Of Midlothian",
    "venue": "Papara Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 2",
@@ -591,7 +591,7 @@
    "homeShort": "Ararat-Armenia",
    "awayShort": "AZ Alkmaar",
    "venue": "Vazgen Sargsyan Republican Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 4,
    "round": "League Stage - 3",
@@ -622,7 +622,7 @@
    "homeShort": "Dinamo Zagreb",
    "awayShort": "NEC Nijmegen",
    "venue": "Stadion Maksimir",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 4,
    "round": "League Stage - 3",
@@ -653,8 +653,8 @@
    "homeShort": "Ferencvarosi TC",
    "awayShort": "Torreense",
    "venue": "Groupama Aréna",
-   "status": "live",
-   "homeScore": 3,
+   "status": "finished",
+   "homeScore": 4,
    "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -684,7 +684,7 @@
    "homeShort": "Juventus",
    "awayShort": "Rennes",
    "venue": "Allianz Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 2,
    "round": "League Stage - 3",
@@ -715,7 +715,7 @@
    "homeShort": "Lech Poznan",
    "awayShort": "Sunderland",
    "venue": "Stadion Miejski",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "League Stage - 3",
@@ -747,7 +747,7 @@
    "homeShort": "OFI",
    "awayShort": "Bayer Leverkusen",
    "venue": "Pankritio Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 2,
    "round": "League Stage - 3",
@@ -778,7 +778,7 @@
    "homeShort": "Sturm Graz",
    "awayShort": "Marseille",
    "venue": "Stadion Graz-Liebenau",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 3",
@@ -809,7 +809,7 @@
    "homeShort": "Union St. Gilloise",
    "awayShort": "Hapoel Beer Sheva",
    "venue": "Merkur Spielarena",
-   "status": "live",
+   "status": "finished",
    "homeScore": 4,
    "awayScore": 0,
    "round": "League Stage - 3",
@@ -982,9 +982,9 @@
    "homeShort": "SC Braga",
    "awayShort": "Gent",
    "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {
@@ -1706,6 +1706,33 @@
    }
   },
   {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-d74b766a-057a-4b10-9811-faa6c94021bd",
+   "kickoff": "2026-10-23T23:50:00.000Z",
+   "end": "2026-10-24T00:30:00.000Z",
+   "session": "Qualifying",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "comp": "GOLF",
    "kind": "session",
    "title": "Genesis Championship",
@@ -1730,6 +1757,35 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-d9677cd6-e05f-4de3-8c56-3dfe879151e0",
+   "kickoff": "2026-10-24T04:00:00.000Z",
+   "end": "2026-10-24T04:45:00.000Z",
+   "session": "Sprint",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
     ]
    }
   },
@@ -2595,6 +2651,35 @@
    }
   },
   {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Australia",
+   "venue": "Phillip Island",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-80982421-6539-4108-84c7-cb87f188c505",
+   "kickoff": "2026-10-25T03:00:00.000Z",
+   "end": "2026-10-25T04:00:00.000Z",
+   "session": "Race",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "Pakistan v England",
@@ -2786,13 +2871,15 @@
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {

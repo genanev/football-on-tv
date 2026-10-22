@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T00:00:17.104Z",
+ "generatedAt": "2026-10-22T00:30:22.743Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4060,
+   "programmes": 4086,
    "errors": []
   },
   "skyListings": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 188
+   "events": 184
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -1987,7 +1987,7 @@
    "away": "Arsenal Women",
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Arsenal",
-   "venue": "Brisbane Road",
+   "venue": "Tottenham Hotspur Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2324,7 +2324,7 @@
    "away": "Aberdeen",
    "homeShort": "Dundee Utd",
    "awayShort": "Aberdeen",
-   "venue": "Tannadice Park",
+   "venue": "CalForth Construction Arena",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2405,7 +2405,7 @@
    "away": "Dundee",
    "homeShort": "ST Mirren",
    "awayShort": "Dundee",
-   "venue": "The SMISA Stadium",
+   "venue": "The SMiSA Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2432,7 +2432,7 @@
    "away": "West Ham Women",
    "homeShort": "Brighton",
    "awayShort": "West Ham",
-   "venue": "The Broadfield Stadium",
+   "venue": "American Express Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

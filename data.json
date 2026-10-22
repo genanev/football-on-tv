@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T15:30:20.735Z",
+ "generatedAt": "2026-10-22T16:00:19.521Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1165,
+   "programmes": 1161,
    "errors": []
   },
   "primeVideo": {
@@ -278,10 +278,10 @@
    "away": "Panathinaikos",
    "homeShort": "Kairat Almaty",
    "awayShort": "Panathinaikos",
-   "venue": "Almaty Central Stadium",
+   "venue": "Central Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 2,
+   "awayScore": 4,
    "round": "League Stage - 2",
    "source": "api-football.com",
    "tv": {

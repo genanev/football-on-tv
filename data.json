@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T14:00:14.680Z",
+ "generatedAt": "2026-10-22T14:30:18.178Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4370,
+   "programmes": 4368,
    "errors": []
   },
   "skyListings": {
@@ -192,7 +192,7 @@
    "source": "icc-cricket.com",
    "id": "cricket-269791-d5",
    "kickoff": "2026-10-22T08:00:00.000Z",
-   "end": "2026-10-22T15:00:00.000Z",
+   "end": "2026-10-22T14:00:00.000Z",
    "session": "2nd Test, Day 5",
    "status": "upcoming",
    "timeTbc": false,

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-22T11:00:16.774Z",
+ "generatedAt": "2026-10-22T11:30:25.105Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4369,
+   "programmes": 4370,
    "errors": []
   },
   "skyListings": {
@@ -165,9 +165,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-271646",
    "kickoff": "2026-10-22T07:00:00.000Z",
-   "end": "2026-10-22T11:00:00.000Z",
+   "end": "2026-10-22T11:09:00.000Z",
    "session": "1st T20I",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T19:00:15.698Z",
+ "generatedAt": "2026-10-23T19:30:14.105Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -303,9 +303,9 @@
    "homeShort": "Bolton",
    "awayShort": "Middlesbrough",
    "venue": "Toughsheet Community Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -337,9 +337,9 @@
    "homeShort": "Ipswich",
    "awayShort": "Nottingham Forest",
    "venue": "Portman Road Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-23T08:30:19.458Z",
+ "generatedAt": "2026-10-23T09:00:22.495Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4255,
+   "programmes": 4276,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1151,
+   "programmes": 1152,
    "errors": []
   },
   "primeVideo": {
@@ -124,7 +124,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 12
   },
   "scores": "on"
  },
@@ -2491,6 +2491,33 @@
    }
   },
   {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Australia",
+   "venue": "Newlands, Cape Town",
+   "series": "Australia in South Africa, 3 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269792-d5",
+   "kickoff": "2026-10-31T08:30:00.000Z",
+   "end": "2026-10-31T15:30:00.000Z",
+   "session": "3rd Test, Day 5",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -2535,13 +2562,17 @@
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

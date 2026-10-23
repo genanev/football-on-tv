@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T17:30:16.458Z",
+ "generatedAt": "2026-10-23T18:00:15.385Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 16,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -36,7 +30,9 @@
   "apiFootball": {
    "ok": true,
    "matches": 112,
-   "errors": [],
+   "errors": [
+    "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-22&to=2026-10-31&timezone=UTC"
+   ],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -44,8 +40,8 @@
    "matches": 18
   },
   "championsLeague": {
-   "ok": true,
-   "matches": 0
+   "ok": false,
+   "error": "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-22&to=2026-10-31&timezone=UTC"
   },
   "europaLeague": {
    "ok": true,
@@ -166,9 +162,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-274659",
    "kickoff": "2026-10-23T11:30:00.000Z",
-   "end": "2026-10-23T19:30:00.000Z",
+   "end": "2026-10-23T17:49:00.000Z",
    "session": "Final (ODI)",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",

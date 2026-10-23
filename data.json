@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-23T22:30:14.414Z",
+ "generatedAt": "2026-10-23T23:00:16.204Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4277,
+   "programmes": 4005,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1151,
+   "programmes": 1152,
    "errors": []
   },
   "primeVideo": {
@@ -35,7 +35,7 @@
   "footballSource": "api-football",
   "apiFootball": {
    "ok": true,
-   "matches": 112,
+   "matches": 83,
    "errors": [],
    "unknownClubs": []
   },
@@ -59,14 +59,14 @@
    "ok": true,
    "matches": 11
   },
-  "footballChannels": "11/18 PL+UCL matches with a confirmed channel",
+  "footballChannels": "10/18 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
   },
   "wsl": {
    "ok": true,
-   "televised": 8
+   "televised": 9
   },
   "scottishPremiership": {
    "ok": true,
@@ -74,7 +74,7 @@
   },
   "efl": {
    "ok": true,
-   "championship": 24,
+   "championship": 23,
    "leagueCup": 3
   },
   "faCup": {
@@ -95,14 +95,14 @@
   },
   "motogp": {
    "ok": true,
-   "sessions": 5
+   "sessions": 6
   },
   "darts": {
    "ok": true,
    "tournaments": [
     "European Championship"
    ],
-   "sessions": 5
+   "sessions": 4
   },
   "golf": {
    "ok": true,
@@ -111,7 +111,7 @@
     "VidantaWorld Mexico Open",
     "Genesis Championship"
    ],
-   "rounds": 9,
+   "rounds": 7,
    "errors": []
   },
   "snooker": {
@@ -120,7 +120,7 @@
     "BetVictor Northern Ireland Open",
     "International Championship"
    ],
-   "sessions": 9
+   "sessions": 7
   },
   "cricket": {
    "ok": true,
@@ -129,232 +129,6 @@
   "scores": "on"
  },
  "events": [
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Genesis Championship",
-   "venue": "Woo Jeong Hills CC",
-   "source": "europeantour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-23",
-   "kickoff": "2026-10-23T03:00:00.000Z",
-   "end": "2026-10-23T08:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "Afghanistan v Zimbabwe",
-   "venue": "Sharjah Cricket Stadium, Sharjah",
-   "series": "ODI Tri-Series in United Arab Emirates, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-274659",
-   "kickoff": "2026-10-23T11:30:00.000Z",
-   "end": "2026-10-23T17:49:00.000Z",
-   "session": "Final (ODI)",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792756800",
-   "kickoff": "2026-10-23T12:00:00.000Z",
-   "end": "2026-10-23T15:30:00.000Z",
-   "session": "Afternoon session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 4"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "European Championship",
-   "venue": "Westfalenhalle, Dortmund",
-   "source": "pdc.tv",
-   "id": "darts-10870-1792774800",
-   "kickoff": "2026-10-23T17:00:00.000Z",
-   "end": "2026-10-23T21:10:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Butterfield Bermuda Championship",
-   "venue": "Port Royal Golf Course",
-   "source": "pgatour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-pga-R2026528-2026-10-23",
-   "kickoff": "2026-10-23T17:00:00.000Z",
-   "end": "2026-10-23T20:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792778400",
-   "kickoff": "2026-10-23T18:00:00.000Z",
-   "end": "2026-10-23T21:45:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 4",
-    "channels": [
-     "TNT Sports 4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1563216",
-   "sourceId": "1563216",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-23T19:00:00.000Z",
-   "timeTbc": false,
-   "home": "Bolton Wanderers",
-   "away": "Middlesbrough",
-   "homeShort": "Bolton",
-   "awayShort": "Middlesbrough",
-   "venue": "Toughsheet Community Stadium",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 5,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557443",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-23T19:00:00.000Z",
-   "timeTbc": false,
-   "home": "Ipswich Town",
-   "away": "Nottingham Forest",
-   "homeShort": "Ipswich",
-   "awayShort": "Nottingham Forest",
-   "venue": "Portman Road Stadium",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 1,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "MOTOGP",
    "kind": "session",
@@ -3382,6 +3156,120 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Seddon Park, Hamilton",
+   "series": "India in New Zealand, 5 T20I Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271650",
+   "kickoff": "2026-11-01T07:00:00.000Z",
+   "end": "2026-11-01T11:00:00.000Z",
+   "session": "5th T20I",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Malaysia",
+   "venue": "Petronas Sepang International Circuit",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
+   "kickoff": "2026-11-01T07:00:00.000Z",
+   "end": "2026-11-01T08:00:00.000Z",
+   "session": "Race",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1607713",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Arsenal Women",
+   "away": "Aston Villa Women",
+   "homeShort": "Arsenal",
+   "awayShort": "Aston Villa",
+   "venue": "Emirates Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1557453",
+   "comp": "PL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T16:30:00.000Z",
+   "timeTbc": false,
+   "home": "Liverpool",
+   "away": "Arsenal",
+   "homeShort": "Liverpool",
+   "awayShort": "Arsenal",
+   "venue": "Anfield",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Exact channel to be confirmed",
+    "conflict": false,
+    "sources": [
+     "premierleague.com"
     ]
    }
   }

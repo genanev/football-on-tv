@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T19:30:14.105Z",
+ "generatedAt": "2026-10-23T20:00:16.050Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 16,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -304,8 +298,8 @@
    "awayShort": "Middlesbrough",
    "venue": "Toughsheet Community Stadium",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 1,
+   "awayScore": 3,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -338,7 +332,7 @@
    "awayShort": "Nottingham Forest",
    "venue": "Portman Road Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",

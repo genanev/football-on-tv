@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-23T05:30:29.039Z",
+ "generatedAt": "2026-10-23T06:00:14.070Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4252,
+   "programmes": 4253,
    "errors": []
   },
   "skyListings": {
@@ -66,7 +66,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 5
+   "televised": 6
   },
   "scottishPremiership": {
    "ok": true,
@@ -2631,6 +2631,37 @@
     "sources": [
      "sky-guide",
      "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1607712",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T12:45:00.000Z",
+   "timeTbc": false,
+   "home": "Everton Women",
+   "away": "Manchester United Women",
+   "homeShort": "Everton",
+   "awayShort": "Manchester United",
+   "venue": "Goodison Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

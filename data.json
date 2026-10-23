@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-23T00:00:24.176Z",
+ "generatedAt": "2026-10-23T00:30:16.706Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4065,
+   "programmes": 4093,
    "errors": []
   },
   "skyListings": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 189
+   "events": 188
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -1430,7 +1430,7 @@
    "away": "Chelsea Women",
    "homeShort": "Crystal Palace",
    "awayShort": "Chelsea",
-   "venue": "VBS Community Stadium",
+   "venue": "Selhurst Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1640,7 +1640,7 @@
    "away": "London City Lionesses",
    "homeShort": "Liverpool",
    "awayShort": "London City Lionesses",
-   "venue": "St Helens Stadium",
+   "venue": "West Lancashire College Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1756,7 +1756,7 @@
    "away": "Manchester City Women",
    "homeShort": "Manchester United",
    "awayShort": "Manchester City",
-   "venue": "Leigh Sports Village",
+   "venue": "Old Trafford",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

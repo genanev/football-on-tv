@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-23T20:30:14.801Z",
+ "generatedAt": "2026-10-23T21:00:15.916Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4292,
+   "programmes": 4289,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 16,
+   "events": 15,
    "amazonPicks": [
     "Manchester United vs. Roma",
     "Arsenal vs. Dortmund",
@@ -220,7 +220,7 @@
    "source": "pdc.tv",
    "id": "darts-10870-1792774800",
    "kickoff": "2026-10-23T17:00:00.000Z",
-   "end": "2026-10-23T21:00:00.000Z",
+   "end": "2026-10-23T21:10:00.000Z",
    "session": "Evening session",
    "status": "upcoming",
    "timeTbc": false,
@@ -303,9 +303,9 @@
    "homeShort": "Bolton",
    "awayShort": "Middlesbrough",
    "venue": "Toughsheet Community Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
-   "awayScore": 3,
+   "awayScore": 5,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -337,7 +337,7 @@
    "homeShort": "Ipswich",
    "awayShort": "Nottingham Forest",
    "venue": "Portman Road Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 8",

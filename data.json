@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T12:30:17.770Z",
+ "generatedAt": "2026-10-24T13:00:28.367Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -36,7 +36,9 @@
   "apiFootball": {
    "ok": true,
    "matches": 83,
-   "errors": [],
+   "errors": [
+    "UECL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=848&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   ],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -61,8 +63,8 @@
   },
   "footballChannels": "11/18 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
-   "ok": true,
-   "televised": 0
+   "ok": false,
+   "error": "UECL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=848&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
   },
   "wsl": {
    "ok": true,
@@ -281,7 +283,7 @@
    "venue": "The Valley",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -379,8 +381,8 @@
    "awayShort": "Manchester City",
    "venue": "Villa Park",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 0,
+   "homeScore": 2,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -414,7 +416,7 @@
    "venue": "Tottenham Hotspur Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

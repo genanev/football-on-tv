@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-24T21:30:17.497Z",
+ "generatedAt": "2026-10-24T22:00:26.345Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4236,
+   "programmes": 4221,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1149,
+   "programmes": 1146,
    "errors": []
   },
   "primeVideo": {
@@ -931,7 +931,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792864800",
    "kickoff": "2026-10-24T18:00:00.000Z",
-   "end": "2026-10-24T21:30:00.000Z",
+   "end": "2026-10-24T22:15:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -957,7 +957,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792867500",
    "kickoff": "2026-10-24T18:45:00.000Z",
-   "end": "2026-10-24T21:30:00.000Z",
+   "end": "2026-10-24T22:00:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {

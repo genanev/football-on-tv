@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T15:00:21.021Z",
+ "generatedAt": "2026-10-24T15:30:17.407Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -35,10 +35,9 @@
   "footballSource": "api-football",
   "apiFootball": {
    "ok": true,
-   "matches": 75,
+   "matches": 65,
    "errors": [
-    "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC",
-    "EFL Cup: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=48&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+    "SCOT: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=179&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
    ],
    "unknownClubs": []
   },
@@ -47,8 +46,8 @@
    "matches": 18
   },
   "championsLeague": {
-   "ok": false,
-   "error": "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   "ok": true,
+   "matches": 0
   },
   "europaLeague": {
    "ok": true,
@@ -72,12 +71,13 @@
    "televised": 9
   },
   "scottishPremiership": {
-   "ok": true,
-   "matches": 18
+   "ok": false,
+   "error": "SCOT: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=179&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
   },
   "efl": {
-   "ok": false,
-   "error": "EFL Cup: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=48&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   "ok": true,
+   "championship": 23,
+   "leagueCup": 3
   },
   "faCup": {
    "ok": true,
@@ -269,6 +269,100 @@
    }
   },
   {
+   "id": "af-1563218",
+   "sourceId": "1563218",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T11:30:00.000Z",
+   "timeTbc": false,
+   "home": "Charlton Athletic",
+   "away": "Norwich City",
+   "homeShort": "Charlton",
+   "awayShort": "Norwich",
+   "venue": "The Valley",
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 3,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1563220",
+   "sourceId": "1563220",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T11:30:00.000Z",
+   "timeTbc": false,
+   "home": "Portsmouth",
+   "away": "Millwall",
+   "homeShort": "Portsmouth",
+   "awayShort": "Millwall",
+   "venue": "Fratton Park",
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 1,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563223",
+   "sourceId": "1563223",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T11:30:00.000Z",
+   "timeTbc": false,
+   "home": "Sheffield United",
+   "away": "Derby County",
+   "homeShort": "Sheffield Utd",
+   "awayShort": "Derby",
+   "venue": "Bramall Lane",
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 1,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1557438",
    "comp": "PL",
    "label": null,
@@ -362,6 +456,230 @@
    }
   },
   {
+   "id": "af-1563215",
+   "sourceId": "1563215",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Blackburn Rovers",
+   "away": "Wrexham",
+   "homeShort": "Blackburn",
+   "awayShort": "Wrexham",
+   "venue": "Ewood Park",
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563217",
+   "sourceId": "1563217",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Cardiff City",
+   "away": "Birmingham City",
+   "homeShort": "Cardiff",
+   "awayShort": "Birmingham",
+   "venue": "Cardiff City Stadium",
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563219",
+   "sourceId": "1563219",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Lincoln City",
+   "away": "Burnley",
+   "homeShort": "Lincoln",
+   "awayShort": "Burnley",
+   "venue": "Sincil Bank",
+   "status": "live",
+   "homeScore": 4,
+   "awayScore": 1,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563221",
+   "sourceId": "1563221",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Preston North End",
+   "away": "West Bromwich Albion",
+   "homeShort": "Preston",
+   "awayShort": "West Brom",
+   "venue": "Deepdale Stadium",
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563222",
+   "sourceId": "1563222",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Queens Park Rangers",
+   "away": "Swansea City",
+   "homeShort": "QPR",
+   "awayShort": "Swansea",
+   "venue": "Loftus Road",
+   "status": "live",
+   "homeScore": 4,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563224",
+   "sourceId": "1563224",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Stoke City",
+   "away": "Bristol City",
+   "homeShort": "Stoke City",
+   "awayShort": "Bristol City",
+   "venue": "bet365 Stadium",
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563225",
+   "sourceId": "1563225",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "West Ham United",
+   "away": "Southampton",
+   "homeShort": "West Ham",
+   "awayShort": "Southampton",
+   "venue": "London Stadium",
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 3,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563226",
+   "sourceId": "1563226",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-24T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Wolverhampton Wanderers",
+   "away": "Watford",
+   "homeShort": "Wolves",
+   "awayShort": "Watford",
+   "venue": "Molineux Stadium",
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
    "id": "af-1557437",
    "comp": "PL",
    "label": null,
@@ -374,7 +692,7 @@
    "awayShort": "Everton",
    "venue": "Emirates Stadium",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
@@ -404,114 +722,6 @@
    "homeScore": 0,
    "awayScore": 0,
    "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556682",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-24T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Dundee United",
-   "away": "Aberdeen",
-   "homeShort": "Dundee Utd",
-   "awayShort": "Aberdeen",
-   "venue": "CalForth Construction Arena",
-   "status": "live",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556683",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-24T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Falkirk",
-   "away": "Kilmarnock",
-   "homeShort": "Falkirk",
-   "awayShort": "Kilmarnock",
-   "venue": "Falkirk Stadium",
-   "status": "live",
-   "homeScore": 2,
-   "awayScore": 0,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556686",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-24T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Rangers",
-   "away": "St Johnstone",
-   "homeShort": "Rangers",
-   "awayShort": "ST Johnstone",
-   "venue": "Ibrox Stadium",
-   "status": "live",
-   "homeScore": 1,
-   "awayScore": 0,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556687",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-24T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "St Mirren",
-   "away": "Dundee",
-   "homeShort": "ST Mirren",
-   "awayShort": "Dundee",
-   "venue": "The SMiSA Stadium",
-   "status": "live",
-   "homeScore": 1,
-   "awayScore": 0,
-   "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
     "broadcaster": null,
@@ -837,38 +1047,6 @@
    }
   },
   {
-   "id": "af-1556684",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "Hibernian",
-   "away": "Celtic",
-   "homeShort": "Hibernian",
-   "awayShort": "Celtic",
-   "venue": "Easter Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "skysports.com"
-    ]
-   }
-  },
-  {
    "id": "af-1607708",
    "comp": "WSL",
    "label": null,
@@ -1050,37 +1228,6 @@
     "sources": [
      "sky-guide",
      "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1556685",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Motherwell",
-   "away": "Heart of Midlothian",
-   "homeShort": "Motherwell",
-   "awayShort": "Heart Of Midlothian",
-   "venue": "Fir Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Premier Sports 1",
-    "channels": [
-     "Premier Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "premiersports.com"
     ]
    }
   },
@@ -1436,6 +1583,40 @@
    }
   },
   {
+   "id": "af-1640386",
+   "sourceId": "1640386",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-27T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Fleetwood Town",
+   "away": "Arsenal",
+   "homeShort": "Fleetwood Town",
+   "awayShort": "Arsenal",
+   "venue": "Highbury Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "South Africa v Australia",
@@ -1465,107 +1646,27 @@
    }
   },
   {
-   "id": "af-1556688",
-   "comp": "SCOT",
-   "label": null,
+   "id": "af-1640575",
+   "sourceId": "1640575",
+   "comp": "CUPS",
+   "label": "EFL Cup",
    "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
+   "kickoff": "2026-10-28T19:30:00.000Z",
    "timeTbc": false,
-   "home": "Aberdeen",
-   "away": "Falkirk",
-   "homeShort": "Aberdeen",
-   "awayShort": "Falkirk",
-   "venue": "Pittodrie Stadium",
+   "home": "Manchester City",
+   "away": "Brighton and Hove Albion",
+   "homeShort": "Manchester City",
+   "awayShort": "Brighton",
+   "venue": "Etihad Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
-   "round": "Regular Season - 11",
+   "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556689",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Celtic",
-   "away": "Dundee United",
-   "homeShort": "Celtic",
-   "awayShort": "Dundee Utd",
-   "venue": "Celtic Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 11",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556690",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Dundee",
-   "away": "Kilmarnock",
-   "homeShort": "Dundee",
-   "awayShort": "Kilmarnock",
-   "venue": "Dens Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 11",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556691",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Heart of Midlothian",
-   "away": "Rangers",
-   "homeShort": "Heart Of Midlothian",
-   "awayShort": "Rangers",
-   "venue": "Tynecastle Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 11",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
+    "broadcaster": "Sky Sports+",
     "channels": [
-     "Sky Sports Football"
+     "Sky Sports+"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -1577,57 +1678,37 @@
    }
   },
   {
-   "id": "af-1556692",
-   "comp": "SCOT",
-   "label": null,
+   "id": "af-1640388",
+   "sourceId": "1640388",
+   "comp": "CUPS",
+   "label": "EFL Cup",
    "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
+   "kickoff": "2026-10-28T20:00:00.000Z",
    "timeTbc": false,
-   "home": "St Johnstone",
-   "away": "Motherwell",
-   "homeShort": "ST Johnstone",
-   "awayShort": "Motherwell",
-   "venue": "McDiarmid Park",
+   "home": "Liverpool",
+   "away": "Chelsea",
+   "homeShort": "Liverpool",
+   "awayShort": "Chelsea",
+   "venue": "Anfield",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
-   "round": "Regular Season - 11",
+   "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556693",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "St Mirren",
-   "away": "Hibernian",
-   "homeShort": "ST Mirren",
-   "awayShort": "Hibernian",
-   "venue": "The SMISA Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 11",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -1799,6 +1880,40 @@
    }
   },
   {
+   "id": "af-1563233",
+   "sourceId": "1563233",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-30T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Sheffield United",
+   "away": "Wrexham",
+   "homeShort": "Sheffield Utd",
+   "awayShort": "Wrexham",
+   "venue": "Bramall Lane",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "MOTOGP",
    "kind": "session",
    "title": "Grand Prix of Malaysia",
@@ -1932,6 +2047,100 @@
    }
   },
   {
+   "id": "af-1563229",
+   "sourceId": "1563229",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T12:30:00.000Z",
+   "timeTbc": false,
+   "home": "Lincoln City",
+   "away": "Birmingham City",
+   "homeShort": "Lincoln",
+   "awayShort": "Birmingham",
+   "venue": "LNER stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1563232",
+   "sourceId": "1563232",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T12:30:00.000Z",
+   "timeTbc": false,
+   "home": "Norwich City",
+   "away": "Watford",
+   "homeShort": "Norwich",
+   "awayShort": "Watford",
+   "venue": "Carrow Road",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563235",
+   "sourceId": "1563235",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T12:30:00.000Z",
+   "timeTbc": false,
+   "home": "Stoke City",
+   "away": "Preston North End",
+   "homeShort": "Stoke City",
+   "awayShort": "Preston",
+   "venue": "Bet365 Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1557450",
    "comp": "PL",
    "label": null,
@@ -1994,6 +2203,230 @@
     "sources": [
      "sky-guide"
     ]
+   }
+  },
+  {
+   "id": "af-1563227",
+   "sourceId": "1563227",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Bolton Wanderers",
+   "away": "Bristol City",
+   "homeShort": "Bolton",
+   "awayShort": "Bristol City",
+   "venue": "Toughsheet Community Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563228",
+   "sourceId": "1563228",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Burnley",
+   "away": "Portsmouth",
+   "homeShort": "Burnley",
+   "awayShort": "Portsmouth",
+   "venue": "Turf Moor",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563230",
+   "sourceId": "1563230",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Middlesbrough",
+   "away": "Charlton Athletic",
+   "homeShort": "Middlesbrough",
+   "awayShort": "Charlton",
+   "venue": "Riverside Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563231",
+   "sourceId": "1563231",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Millwall",
+   "away": "Derby County",
+   "homeShort": "Millwall",
+   "awayShort": "Derby",
+   "venue": "The Den",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563234",
+   "sourceId": "1563234",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Southampton",
+   "away": "Queens Park Rangers",
+   "homeShort": "Southampton",
+   "awayShort": "QPR",
+   "venue": "St. Mary's Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563236",
+   "sourceId": "1563236",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Swansea City",
+   "away": "Blackburn Rovers",
+   "homeShort": "Swansea",
+   "awayShort": "Blackburn",
+   "venue": "Swansea.com Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563237",
+   "sourceId": "1563237",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "West Ham United",
+   "away": "West Bromwich Albion",
+   "homeShort": "West Ham",
+   "awayShort": "West Brom",
+   "venue": "London Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563238",
+   "sourceId": "1563238",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Wolverhampton Wanderers",
+   "away": "Cardiff City",
+   "homeShort": "Wolves",
+   "awayShort": "Cardiff",
+   "venue": "Molineux Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 13",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
+    "conflict": false,
+    "sources": []
    }
   },
   {
@@ -2120,168 +2553,6 @@
    "homeScore": null,
    "awayScore": null,
    "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556694",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Dundee United",
-   "away": "Heart of Midlothian",
-   "homeShort": "Dundee Utd",
-   "awayShort": "Heart Of Midlothian",
-   "venue": "Tannadice Park",
-   "status": "postponed",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556695",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Falkirk",
-   "away": "Celtic",
-   "homeShort": "Falkirk",
-   "awayShort": "Celtic",
-   "venue": "Falkirk Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556696",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Hibernian",
-   "away": "Dundee",
-   "homeShort": "Hibernian",
-   "awayShort": "Dundee",
-   "venue": "Easter Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556697",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Kilmarnock",
-   "away": "St Johnstone",
-   "homeShort": "Kilmarnock",
-   "awayShort": "ST Johnstone",
-   "venue": "Rugby Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556698",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Motherwell",
-   "away": "St Mirren",
-   "homeShort": "Motherwell",
-   "awayShort": "ST Mirren",
-   "venue": "Fir Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556699",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Rangers",
-   "away": "Aberdeen",
-   "homeShort": "Rangers",
-   "awayShort": "Aberdeen",
-   "venue": "Ibrox Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
     "broadcaster": null,

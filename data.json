@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T16:30:17.862Z",
+ "generatedAt": "2026-10-24T17:00:26.728Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,18 +15,12 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1150,
+   "programmes": 1149,
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 14,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -852,7 +846,7 @@
    "awayShort": "West Ham",
    "venue": "American Express Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
@@ -885,9 +879,9 @@
    "homeShort": "Chelsea",
    "awayShort": "Tottenham",
    "venue": "Stamford Bridge",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

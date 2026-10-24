@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T00:00:16.169Z",
+ "generatedAt": "2026-10-24T00:30:17.588Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 199
+   "events": 191
   },
   "footballSource": "api-football",
   "apiFootball": {

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-24T16:00:17.964Z",
+ "generatedAt": "2026-10-24T16:30:17.862Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4238,
+   "programmes": 4237,
    "errors": []
   },
   "skyListings": {
@@ -436,7 +436,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792843200",
    "kickoff": "2026-10-24T12:00:00.000Z",
-   "end": "2026-10-24T16:15:00.000Z",
+   "end": "2026-10-24T16:30:00.000Z",
    "session": "Afternoon session",
    "timeTbc": false,
    "tv": {
@@ -851,9 +851,9 @@
    "homeShort": "Brighton",
    "awayShort": "West Ham",
    "venue": "American Express Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

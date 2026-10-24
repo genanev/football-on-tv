@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T22:00:26.345Z",
+ "generatedAt": "2026-10-24T22:30:17.859Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1146,
+   "programmes": 1147,
    "errors": []
   },
   "primeVideo": {
@@ -931,7 +931,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792864800",
    "kickoff": "2026-10-24T18:00:00.000Z",
-   "end": "2026-10-24T22:15:00.000Z",
+   "end": "2026-10-24T22:30:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -957,7 +957,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792867500",
    "kickoff": "2026-10-24T18:45:00.000Z",
-   "end": "2026-10-24T22:00:00.000Z",
+   "end": "2026-10-24T22:30:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -983,7 +983,7 @@
    "title": "United States Grand Prix",
    "session": "Qualifying",
    "venue": "Austin",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

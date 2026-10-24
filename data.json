@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-24T12:00:24.483Z",
+ "generatedAt": "2026-10-24T12:30:17.770Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4234,
+   "programmes": 4239,
    "errors": []
   },
   "skyListings": {
@@ -36,9 +36,7 @@
   "apiFootball": {
    "ok": true,
    "matches": 83,
-   "errors": [
-    "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
-   ],
+   "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -50,8 +48,8 @@
    "matches": 0
   },
   "europaLeague": {
-   "ok": false,
-   "error": "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   "ok": true,
+   "matches": 0
   },
   "faPage": {
    "ok": true,
@@ -283,7 +281,7 @@
    "venue": "The Valley",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -350,7 +348,7 @@
    "venue": "Bramall Lane",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -416,7 +414,7 @@
    "venue": "Tottenham Hotspur Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

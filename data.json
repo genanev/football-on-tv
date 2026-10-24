@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T18:00:19.593Z",
+ "generatedAt": "2026-10-24T18:30:22.241Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 14,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -36,9 +30,7 @@
   "apiFootball": {
    "ok": true,
    "matches": 83,
-   "errors": [
-    "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
-   ],
+   "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -46,8 +38,8 @@
    "matches": 18
   },
   "championsLeague": {
-   "ok": false,
-   "error": "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   "ok": true,
+   "matches": 0
   },
   "europaLeague": {
    "ok": true,
@@ -853,7 +845,7 @@
    "homeShort": "Brighton",
    "awayShort": "West Ham",
    "venue": "American Express Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 3,
    "awayScore": 0,
    "round": "Regular Season - 7",
@@ -887,9 +879,9 @@
    "homeShort": "Chelsea",
    "awayShort": "Tottenham",
    "venue": "Stamford Bridge",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

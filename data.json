@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-24T11:30:19.535Z",
+ "generatedAt": "2026-10-24T12:00:24.483Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4232,
+   "programmes": 4234,
    "errors": []
   },
   "skyListings": {
@@ -36,7 +36,9 @@
   "apiFootball": {
    "ok": true,
    "matches": 83,
-   "errors": [],
+   "errors": [
+    "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
+   ],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -48,8 +50,8 @@
    "matches": 0
   },
   "europaLeague": {
-   "ok": true,
-   "matches": 0
+   "ok": false,
+   "error": "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-23&to=2026-11-01&timezone=UTC"
   },
   "faPage": {
    "ok": true,
@@ -279,9 +281,9 @@
    "homeShort": "Charlton",
    "awayShort": "Norwich",
    "venue": "The Valley",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -314,9 +316,9 @@
    "homeShort": "Portsmouth",
    "awayShort": "Millwall",
    "venue": "Fratton Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -346,9 +348,9 @@
    "homeShort": "Sheffield Utd",
    "awayShort": "Derby",
    "venue": "Bramall Lane",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -378,9 +380,9 @@
    "homeShort": "Aston Villa",
    "awayShort": "Manchester City",
    "venue": "Villa Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -412,9 +414,9 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Arsenal",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

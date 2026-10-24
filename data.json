@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T20:00:21.967Z",
+ "generatedAt": "2026-10-24T20:30:18.995Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 12,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -50,8 +56,8 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 11
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645266,2645265,2645268,2645267,2645273,2645272,2645269,2645270,2645274,2645278,2645275,2645282,2645277,2645280,2645279,2645284,2645276,2645281&pageSize=50"
   },
   "footballChannels": "11/18 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -88,8 +94,8 @@
    "sessions": 0
   },
   "motogp": {
-   "ok": true,
-   "sessions": 6
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026"
   },
   "darts": {
    "ok": true,
@@ -124,33 +130,6 @@
  },
  "events": [
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Australia",
-   "venue": "Phillip Island",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-d74b766a-057a-4b10-9811-faa6c94021bd",
-   "kickoff": "2026-10-23T23:50:00.000Z",
-   "end": "2026-10-24T00:30:00.000Z",
-   "session": "Qualifying",
-   "status": "finished",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "comp": "GOLF",
    "kind": "session",
    "title": "Genesis Championship",
@@ -175,35 +154,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Australia",
-   "venue": "Phillip Island",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-d9677cd6-e05f-4de3-8c56-3dfe879151e0",
-   "kickoff": "2026-10-24T04:00:00.000Z",
-   "end": "2026-10-24T04:45:00.000Z",
-   "session": "Sprint",
-   "status": "finished",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -1021,35 +971,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Australia",
-   "venue": "Phillip Island",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-80982421-6539-4108-84c7-cb87f188c505",
-   "kickoff": "2026-10-25T03:00:00.000Z",
-   "end": "2026-10-25T04:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -2205,33 +2126,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-1a64f2f2-1a2e-4798-8acc-89c3f8391d5e",
-   "kickoff": "2026-10-31T02:50:00.000Z",
-   "end": "2026-10-31T03:30:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -2254,33 +2148,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-77c9f3f4-a34f-4c14-842c-91fe87b1b11d",
-   "kickoff": "2026-10-31T07:00:00.000Z",
-   "end": "2026-10-31T07:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -3159,33 +3026,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
-   "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T08:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },

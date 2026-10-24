@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T06:30:19.416Z",
+ "generatedAt": "2026-10-24T07:00:18.115Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -224,7 +224,7 @@
    "kickoff": "2026-10-24T07:00:00.000Z",
    "end": "2026-10-24T11:00:00.000Z",
    "session": "2nd T20I",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 3",

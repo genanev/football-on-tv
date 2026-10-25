@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T20:00:29.161Z",
+ "generatedAt": "2026-10-25T20:30:27.613Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 23,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 4,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -66,7 +60,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 7
+   "televised": 5
   },
   "scottishPremiership": {
    "ok": true,
@@ -291,15 +285,12 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [
-     "Sky Sports Football"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -486,68 +477,6 @@
    }
   },
   {
-   "id": "af-1607706",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Birmingham City Women",
-   "away": "Charlton Athletic Women",
-   "homeShort": "Birmingham City",
-   "awayShort": "Charlton Athletic",
-   "venue": "The DCS Stadium",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 0,
-   "round": "Regular Season - 7",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1607709",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Everton Women",
-   "away": "Aston Villa Women",
-   "homeShort": "Everton",
-   "awayShort": "Aston Villa",
-   "venue": "Rossett Park",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 3,
-   "round": "Regular Season - 7",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
    "id": "af-1607710",
    "comp": "WSL",
    "label": null,
@@ -569,15 +498,12 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [
-     "Sky Sports Football"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -693,8 +619,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -733,7 +658,7 @@
    "title": "United States Grand Prix",
    "session": "Race",
    "venue": "Austin",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

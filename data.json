@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-24T23:30:18.809Z",
+ "generatedAt": "2026-10-25T00:00:17.688Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1169,
+   "programmes": 1168,
    "errors": []
   },
   "primeVideo": {

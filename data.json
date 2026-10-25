@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T14:00:20.778Z",
+ "generatedAt": "2026-10-25T14:30:18.481Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 21,
+   "events": 20,
    "errors": []
   },
   "tntSchedule": {
@@ -265,8 +265,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -292,7 +291,9 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -340,9 +341,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Newcastle",
    "venue": "Selhurst Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -372,9 +373,9 @@
    "homeShort": "Hull City",
    "awayShort": "Brentford",
    "venue": "MKM Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -403,9 +404,9 @@
    "homeShort": "Liverpool",
    "awayShort": "Brighton",
    "venue": "Anfield",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -435,9 +436,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Bournemouth",
    "venue": "Old Trafford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -467,9 +468,9 @@
    "homeShort": "Motherwell",
    "awayShort": "Heart Of Midlothian",
    "venue": "Fir Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -498,15 +499,15 @@
    "homeShort": "Birmingham City",
    "awayShort": "Charlton Athletic",
    "venue": "The DCS Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Mix",
+    "broadcaster": "Sky Sports+",
     "channels": [
-     "Sky Sports Mix"
+     "Sky Sports+"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -529,15 +530,15 @@
    "homeShort": "Everton",
    "awayShort": "Aston Villa",
    "venue": "Rossett Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Mix",
+    "broadcaster": "Sky Sports+",
     "channels": [
-     "Sky Sports Mix"
+     "Sky Sports+"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -560,9 +561,9 @@
    "homeShort": "Liverpool",
    "awayShort": "London City Lionesses",
    "venue": "West Lancashire College Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
@@ -689,7 +690,7 @@
      "Sky Sports Football"
     ],
     "alsoOn": [
-     "Sky Sports Mix"
+     "Sky Sports+"
     ],
     "confirmed": true,
     "note": null,

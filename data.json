@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-25T18:30:18.513Z",
+ "generatedAt": "2026-10-25T19:00:19.439Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4331,
+   "programmes": 4329,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 24,
+   "events": 23,
    "errors": []
   },
   "tntSchedule": {
@@ -636,8 +636,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

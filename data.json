@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T03:30:27.565Z",
+ "generatedAt": "2026-10-25T04:00:18.702Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1168,
+   "programmes": 1167,
    "errors": []
   },
   "primeVideo": {
@@ -165,23 +165,20 @@
    "source": "motogp.com",
    "timeTbc": false,
    "id": "motogp-80982421-6539-4108-84c7-cb87f188c505",
-   "kickoff": "2026-10-25T03:00:00.000Z",
-   "end": "2026-10-25T04:00:00.000Z",
+   "kickoff": "2026-10-25T05:30:00.000Z",
+   "end": "2026-10-25T06:30:00.000Z",
    "session": "Race",
-   "status": "live",
+   "status": "upcoming",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [
-     "HBO Max"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
      "tntsports.co.uk"
     ]
    }

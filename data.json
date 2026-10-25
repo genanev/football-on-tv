@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T16:00:18.245Z",
+ "generatedAt": "2026-10-25T16:30:24.097Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 20,
+   "events": 24,
    "errors": []
   },
   "tntSchedule": {
@@ -36,9 +36,7 @@
   "apiFootball": {
    "ok": true,
    "matches": 81,
-   "errors": [
-    "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
-   ],
+   "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -46,8 +44,8 @@
    "matches": 15
   },
   "championsLeague": {
-   "ok": false,
-   "error": "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
+   "ok": true,
+   "matches": 0
   },
   "europaLeague": {
    "ok": true,
@@ -61,7 +59,7 @@
    "ok": true,
    "matches": 10
   },
-  "footballChannels": "9/15 PL+UCL matches with a confirmed channel",
+  "footballChannels": "8/15 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -77,7 +75,7 @@
   "efl": {
    "ok": true,
    "championship": 12,
-   "leagueCup": 3
+   "leagueCup": 4
   },
   "faCup": {
    "ok": true,
@@ -196,7 +194,7 @@
    "kickoff": "2026-10-25T08:00:00.000Z",
    "end": "2026-10-25T16:00:00.000Z",
    "session": "Match 4 (ODI)",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Cricket",
@@ -294,7 +292,7 @@
      "Sky Sports Mix"
     ],
     "alsoOn": [
-     "Sky Sports+"
+     "Sky Sports Football"
     ],
     "confirmed": true,
     "note": null,
@@ -358,8 +356,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -390,7 +387,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -421,8 +419,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -453,8 +450,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -507,9 +503,9 @@
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports+",
+    "broadcaster": "Sky Sports Football",
     "channels": [
-     "Sky Sports+"
+     "Sky Sports Football"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -538,9 +534,9 @@
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports+",
+    "broadcaster": "Sky Sports Football",
     "channels": [
-     "Sky Sports+"
+     "Sky Sports Football"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -573,7 +569,9 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -691,9 +689,7 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -841,6 +837,38 @@
    }
   },
   {
+   "id": "af-1640384",
+   "sourceId": "1640384",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-27T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Bradford City",
+   "away": "Peterborough United",
+   "homeShort": "Bradford",
+   "awayShort": "Peterborough",
+   "venue": "Valley Parade",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
+    ]
+   }
+  },
+  {
    "id": "af-1640386",
    "sourceId": "1640386",
    "comp": "CUPS",
@@ -870,7 +898,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

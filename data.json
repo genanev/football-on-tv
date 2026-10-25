@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-25T01:00:20.251Z",
+ "generatedAt": "2026-10-25T01:30:17.923Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 3981,
+   "programmes": 4302,
    "errors": []
   },
   "skyListings": {
@@ -120,7 +120,7 @@
     "BetVictor Northern Ireland Open",
     "International Championship"
    ],
-   "sessions": 6
+   "sessions": 8
   },
   "cricket": {
    "ok": true,
@@ -2432,6 +2432,62 @@
      "Sky Sports Golf"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793599200",
+   "kickoff": "2026-11-02T06:00:00.000Z",
+   "end": "2026-11-02T09:30:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793619000",
+   "kickoff": "2026-11-02T11:30:00.000Z",
+   "end": "2026-11-02T15:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

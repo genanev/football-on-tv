@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-25T19:30:18.317Z",
+ "generatedAt": "2026-10-25T20:00:29.161Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4329,
+   "programmes": 4326,
    "errors": []
   },
   "skyListings": {
@@ -678,8 +678,8 @@
    "homeShort": "Manchester United",
    "awayShort": "Manchester City",
    "venue": "Old Trafford",
-   "status": "live",
-   "homeScore": 0,
+   "status": "finished",
+   "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",

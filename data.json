@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-25T21:30:18.584Z",
+ "generatedAt": "2026-10-25T22:00:21.012Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4324,
+   "programmes": 4315,
    "errors": []
   },
   "skyListings": {
@@ -98,11 +98,8 @@
    "sessions": 4
   },
   "darts": {
-   "ok": true,
-   "tournaments": [
-    "European Championship"
-   ],
-   "sessions": 2
+   "ok": false,
+   "error": "HTTP 502 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
   },
   "golf": {
    "ok": true,
@@ -204,32 +201,6 @@
     "alsoOn": [
      "Sky Sports Main Event"
     ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "European Championship",
-   "venue": "Westfalenhalle, Dortmund",
-   "source": "pdc.tv",
-   "id": "darts-10870-1792929600",
-   "kickoff": "2026-10-25T12:00:00.000Z",
-   "end": "2026-10-25T16:00:00.000Z",
-   "session": "Afternoon session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -564,32 +535,6 @@
     "alsoOn": [
      "Sky Sports Premier League"
     ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "European Championship",
-   "venue": "Westfalenhalle, Dortmund",
-   "source": "pdc.tv",
-   "id": "darts-10870-1792951200",
-   "kickoff": "2026-10-25T18:00:00.000Z",
-   "end": "2026-10-25T22:00:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

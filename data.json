@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T14:30:18.481Z",
+ "generatedAt": "2026-10-25T15:00:28.243Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -438,7 +438,7 @@
    "venue": "Old Trafford",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 2,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -532,7 +532,7 @@
    "venue": "Rossett Park",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {
@@ -563,7 +563,7 @@
    "venue": "West Lancashire College Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

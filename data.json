@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T15:30:23.393Z",
+ "generatedAt": "2026-10-25T16:00:18.245Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -36,7 +36,9 @@
   "apiFootball": {
    "ok": true,
    "matches": 81,
-   "errors": [],
+   "errors": [
+    "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
+   ],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -44,8 +46,8 @@
    "matches": 15
   },
   "championsLeague": {
-   "ok": true,
-   "matches": 0
+   "ok": false,
+   "error": "UCL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=2&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
   },
   "europaLeague": {
    "ok": true,
@@ -312,7 +314,7 @@
    "status": "upcoming",
    "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792933200",
    "kickoff": "2026-10-25T13:00:00.000Z",
-   "end": "2026-10-25T16:00:00.000Z",
+   "end": "2026-10-25T16:10:00.000Z",
    "session": "Afternoon session",
    "timeTbc": false,
    "tv": {
@@ -341,7 +343,7 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Newcastle",
    "venue": "Selhurst Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 2,
    "round": "Regular Season - 8",
@@ -373,7 +375,7 @@
    "homeShort": "Hull City",
    "awayShort": "Brentford",
    "venue": "MKM Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 8",
@@ -404,7 +406,7 @@
    "homeShort": "Liverpool",
    "awayShort": "Brighton",
    "venue": "Anfield",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 8",
@@ -436,9 +438,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Bournemouth",
    "venue": "Old Trafford",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -468,9 +470,9 @@
    "homeShort": "Motherwell",
    "awayShort": "Heart Of Midlothian",
    "venue": "Fir Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -499,7 +501,7 @@
    "homeShort": "Birmingham City",
    "awayShort": "Charlton Athletic",
    "venue": "The DCS Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 7",
@@ -530,8 +532,8 @@
    "homeShort": "Everton",
    "awayShort": "Aston Villa",
    "venue": "Rossett Park",
-   "status": "live",
-   "homeScore": 0,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 3,
    "round": "Regular Season - 7",
    "source": "api-football.com",
@@ -561,8 +563,8 @@
    "homeShort": "Liverpool",
    "awayShort": "London City Lionesses",
    "venue": "West Lancashire College Stadium",
-   "status": "live",
-   "homeScore": 1,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 2,
    "round": "Regular Season - 7",
    "source": "api-football.com",

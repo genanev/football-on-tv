@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T22:00:21.012Z",
+ "generatedAt": "2026-10-25T22:30:25.430Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -98,8 +98,11 @@
    "sessions": 4
   },
   "darts": {
-   "ok": false,
-   "error": "HTTP 502 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
+   "ok": true,
+   "tournaments": [
+    "European Championship"
+   ],
+   "sessions": 2
   },
   "golf": {
    "ok": true,
@@ -201,6 +204,32 @@
     "alsoOn": [
      "Sky Sports Main Event"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "European Championship",
+   "venue": "Westfalenhalle, Dortmund",
+   "source": "pdc.tv",
+   "id": "darts-10870-1792929600",
+   "kickoff": "2026-10-25T12:00:00.000Z",
+   "end": "2026-10-25T16:00:00.000Z",
+   "session": "Afternoon session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -544,6 +573,32 @@
    }
   },
   {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "European Championship",
+   "venue": "Westfalenhalle, Dortmund",
+   "source": "pdc.tv",
+   "id": "darts-10870-1792951200",
+   "kickoff": "2026-10-25T18:00:00.000Z",
+   "end": "2026-10-25T22:15:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1607705",
    "comp": "WSL",
    "label": null,
@@ -609,7 +664,7 @@
    "title": "United States Grand Prix",
    "session": "Race",
    "venue": "Austin",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T17:30:20.001Z",
+ "generatedAt": "2026-10-25T18:00:35.430Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -679,9 +679,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Manchester City",
    "venue": "Old Trafford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

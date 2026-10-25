@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T12:30:30.636Z",
+ "generatedAt": "2026-10-25T13:00:26.282Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -252,7 +252,7 @@
    "venue": "Easter Road",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

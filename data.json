@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-25T05:00:19.955Z",
+ "generatedAt": "2026-10-25T05:30:18.127Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4305,
+   "programmes": 4323,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1166,
+   "programmes": 1161,
    "errors": []
   },
   "primeVideo": {
@@ -170,13 +170,11 @@
    "session": "Race",
    "status": "upcoming",
    "tv": {
-    "broadcaster": "TNT Sports 2",
+    "broadcaster": "HBO Max",
     "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
      "HBO Max"
     ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

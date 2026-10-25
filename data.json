@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T19:00:19.439Z",
+ "generatedAt": "2026-10-25T19:30:18.317Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -680,7 +680,7 @@
    "venue": "Old Trafford",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T06:30:18.152Z",
+ "generatedAt": "2026-10-25T07:00:28.925Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,14 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 4,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -35,7 +29,7 @@
   "footballSource": "api-football",
   "apiFootball": {
    "ok": true,
-   "matches": 82,
+   "matches": 81,
    "errors": [],
    "unknownClubs": []
   },
@@ -70,7 +64,7 @@
   },
   "scottishPremiership": {
    "ok": true,
-   "matches": 14
+   "matches": 13
   },
   "efl": {
    "ok": true,
@@ -2105,33 +2099,6 @@
    "homeShort": "Motherwell",
    "awayShort": "ST Mirren",
    "venue": "Fir Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556699",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Rangers",
-   "away": "Aberdeen",
-   "homeShort": "Rangers",
-   "awayShort": "Aberdeen",
-   "venue": "Ibrox Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

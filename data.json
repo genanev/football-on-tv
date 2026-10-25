@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T18:00:35.430Z",
+ "generatedAt": "2026-10-25T18:30:18.513Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -619,7 +619,7 @@
    "homeShort": "Sunderland",
    "awayShort": "Leeds",
    "venue": "Stadium of Light",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 0,
    "round": "Regular Season - 8",

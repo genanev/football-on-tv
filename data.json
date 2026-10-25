@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T13:00:26.282Z",
+ "generatedAt": "2026-10-25T13:30:18.608Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -284,7 +284,7 @@
    "venue": "Selhurst Park",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

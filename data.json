@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T12:00:18.144Z",
+ "generatedAt": "2026-10-25T12:30:30.636Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -250,9 +250,9 @@
    "homeShort": "Hibernian",
    "awayShort": "Celtic",
    "venue": "Easter Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -282,9 +282,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Chelsea",
    "venue": "Selhurst Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 7",
    "source": "api-football.com",
    "tv": {

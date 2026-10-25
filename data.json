@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-25T17:00:18.638Z",
+ "generatedAt": "2026-10-25T17:30:20.001Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -36,9 +36,7 @@
   "apiFootball": {
    "ok": true,
    "matches": 81,
-   "errors": [
-    "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
-   ],
+   "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -50,8 +48,8 @@
    "matches": 0
   },
   "europaLeague": {
-   "ok": false,
-   "error": "UEL: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=3&season=2026&from=2026-10-24&to=2026-11-02&timezone=UTC"
+   "ok": true,
+   "matches": 0
   },
   "faPage": {
    "ok": true,

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T10:00:18.629Z",
+ "generatedAt": "2026-10-26T10:30:23.191Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4393,
+   "programmes": 4395,
    "errors": []
   },
   "skyListings": {
@@ -2358,13 +2358,19 @@
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

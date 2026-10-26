@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T17:30:22.108Z",
+ "generatedAt": "2026-10-26T18:00:24.709Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4432,
+   "programmes": 4431,
    "errors": []
   },
   "skyListings": {
@@ -30,7 +30,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 154
+   "events": 156
   },
   "footballSource": "api-football",
   "apiFootball": {

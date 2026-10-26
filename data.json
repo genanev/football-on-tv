@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-25T23:30:18.395Z",
+ "generatedAt": "2026-10-26T00:00:22.783Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4296,
+   "programmes": 3966,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1170,
+   "programmes": 1183,
    "errors": []
   },
   "primeVideo": {
@@ -30,22 +30,22 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 170
+   "events": 154
   },
   "footballSource": "api-football",
   "apiFootball": {
    "ok": true,
-   "matches": 81,
+   "matches": 78,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 15
+   "matches": 10
   },
   "championsLeague": {
    "ok": true,
-   "matches": 0
+   "matches": 9
   },
   "europaLeague": {
    "ok": true,
@@ -57,24 +57,24 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 10
+   "matches": 5
   },
-  "footballChannels": "8/15 PL+UCL matches with a confirmed channel",
+  "footballChannels": "10/19 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
   },
   "wsl": {
    "ok": true,
-   "televised": 5
+   "televised": 2
   },
   "scottishPremiership": {
    "ok": true,
-   "matches": 13
+   "matches": 11
   },
   "efl": {
    "ok": true,
-   "championship": 12,
+   "championship": 21,
    "leagueCup": 4
   },
   "faCup": {
@@ -83,7 +83,7 @@
   },
   "formula1": {
    "ok": true,
-   "sessions": 1
+   "sessions": 2
   },
   "formula2": {
    "ok": true,
@@ -95,594 +95,35 @@
   },
   "motogp": {
    "ok": true,
-   "sessions": 4
+   "sessions": 3
   },
   "darts": {
    "ok": true,
-   "tournaments": [
-    "European Championship"
-   ],
-   "sessions": 2
+   "tournaments": [],
+   "sessions": 0
   },
   "golf": {
    "ok": true,
    "tournaments": [
-    "Butterfield Bermuda Championship",
-    "VidantaWorld Mexico Open",
-    "Genesis Championship"
+    "VidantaWorld Mexico Open"
    ],
-   "rounds": 6,
+   "rounds": 4,
    "errors": []
   },
   "snooker": {
    "ok": true,
    "tournaments": [
-    "BetVictor Northern Ireland Open",
     "International Championship"
    ],
-   "sessions": 8
+   "sessions": 6
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
   "scores": "on"
  },
  "events": [
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Genesis Championship",
-   "venue": "Woo Jeong Hills CC",
-   "source": "europeantour.com",
-   "session": "Round 4",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-10-22-genesis-championship-2026-10-25",
-   "kickoff": "2026-10-25T03:00:00.000Z",
-   "end": "2026-10-25T07:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Australia",
-   "venue": "Phillip Island",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-80982421-6539-4108-84c7-cb87f188c505",
-   "kickoff": "2026-10-25T05:30:00.000Z",
-   "end": "2026-10-25T06:30:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "HBO Max",
-    "channels": [
-     "HBO Max"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "Pakistan v England",
-   "venue": "Gaddafi Stadium, Lahore",
-   "series": "ODI Tri-Series in Pakistan, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-274145",
-   "kickoff": "2026-10-25T08:00:00.000Z",
-   "end": "2026-10-25T16:00:00.000Z",
-   "session": "Match 4 (ODI)",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Cricket",
-    "channels": [
-     "Sky Sports Cricket"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "European Championship",
-   "venue": "Westfalenhalle, Dortmund",
-   "source": "pdc.tv",
-   "id": "darts-10870-1792929600",
-   "kickoff": "2026-10-25T12:00:00.000Z",
-   "end": "2026-10-25T16:00:00.000Z",
-   "session": "Afternoon session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1556684",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "Hibernian",
-   "away": "Celtic",
-   "homeShort": "Hibernian",
-   "awayShort": "Celtic",
-   "venue": "Easter Road",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 2,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607708",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "Crystal Palace Women",
-   "away": "Chelsea Women",
-   "homeShort": "Crystal Palace",
-   "awayShort": "Chelsea",
-   "venue": "Selhurst Park",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 3,
-   "round": "Regular Season - 7",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Mix",
-    "channels": [
-     "Sky Sports Mix"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792933200",
-   "kickoff": "2026-10-25T13:00:00.000Z",
-   "end": "2026-10-25T16:10:00.000Z",
-   "session": "Afternoon session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557441",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Crystal Palace",
-   "away": "Newcastle United",
-   "homeShort": "Crystal Palace",
-   "awayShort": "Newcastle",
-   "venue": "Selhurst Park",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 2,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557442",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Hull City",
-   "away": "Brentford",
-   "homeShort": "Hull City",
-   "awayShort": "Brentford",
-   "venue": "MKM Stadium",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 1,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com",
-     "previous-update"
-    ]
-   }
-  },
-  {
-   "id": "af-1557444",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Liverpool",
-   "away": "Brighton and Hove Albion",
-   "homeShort": "Liverpool",
-   "awayShort": "Brighton",
-   "venue": "Anfield",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 0,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Premier League",
-    "channels": [
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557445",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Manchester United",
-   "away": "Bournemouth",
-   "homeShort": "Manchester United",
-   "awayShort": "Bournemouth",
-   "venue": "Old Trafford",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 3,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1556685",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Motherwell",
-   "away": "Heart of Midlothian",
-   "homeShort": "Motherwell",
-   "awayShort": "Heart Of Midlothian",
-   "venue": "Fir Park",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 2,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Premier Sports 1",
-    "channels": [
-     "Premier Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "premiersports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1607710",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Liverpool Women",
-   "away": "London City Lionesses",
-   "homeShort": "Liverpool",
-   "awayShort": "London City Lionesses",
-   "venue": "West Lancashire College Stadium",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 2,
-   "round": "Regular Season - 7",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Mix",
-    "channels": [
-     "Sky Sports Mix"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Butterfield Bermuda Championship",
-   "venue": "Port Royal Golf Course",
-   "source": "pgatour.com",
-   "session": "Round 4",
-   "status": "upcoming",
-   "id": "golf-pga-R2026528-2026-10-25",
-   "kickoff": "2026-10-25T16:00:01.000Z",
-   "end": "2026-10-25T18:00:01.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557446",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T16:30:00.000Z",
-   "timeTbc": false,
-   "home": "Sunderland",
-   "away": "Leeds United",
-   "homeShort": "Sunderland",
-   "awayShort": "Leeds",
-   "venue": "Stadium of Light",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 0,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "European Championship",
-   "venue": "Westfalenhalle, Dortmund",
-   "source": "pdc.tv",
-   "id": "darts-10870-1792951200",
-   "kickoff": "2026-10-25T18:00:00.000Z",
-   "end": "2026-10-25T22:15:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607705",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-25T18:00:00.000Z",
-   "timeTbc": false,
-   "home": "Manchester United Women",
-   "away": "Manchester City Women",
-   "homeShort": "Manchester United",
-   "awayShort": "Manchester City",
-   "venue": "Old Trafford",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 1,
-   "round": "Regular Season - 7",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "BetVictor Northern Ireland Open",
-   "venue": "Belfast",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-b4533c9e-8d2c-4ecc-8dfd-c6b284705578-1792954800",
-   "kickoff": "2026-10-25T19:00:00.000Z",
-   "end": "2026-10-25T22:00:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "f1-11396",
-   "comp": "F1",
-   "kind": "session",
-   "kickoff": "2026-10-25T20:00:00.000Z",
-   "end": "2026-10-25T22:00:00.000Z",
-   "title": "United States Grand Prix",
-   "session": "Race",
-   "venue": "Austin",
-   "status": "finished",
-   "timeTbc": false,
-   "source": "formula1.com",
-   "tv": {
-    "broadcaster": "Sky Sports F1",
-    "channels": [
-     "Sky Sports F1"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",
@@ -2175,6 +1616,34 @@
    }
   },
   {
+   "id": "f1-11400",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-10-31T21:00:00.000Z",
+   "end": "2026-10-31T22:00:00.000Z",
+   "title": "Mexico City Grand Prix",
+   "session": "Qualifying",
+   "venue": "Mexico City",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -2347,6 +1816,34 @@
    }
   },
   {
+   "id": "f1-11404",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-11-01T20:00:00.000Z",
+   "end": "2026-11-01T22:00:00.000Z",
+   "title": "Mexico City Grand Prix",
+   "session": "Race",
+   "venue": "Mexico City",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "GOLF",
    "kind": "session",
    "title": "VidantaWorld Mexico Open",
@@ -2454,6 +1951,529 @@
     "conflict": false,
     "sources": [
      "premierleague.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1635669",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Galatasaray",
+   "away": "VfB Stuttgart",
+   "homeShort": "Galatasaray",
+   "awayShort": "VfB Stuttgart",
+   "venue": "Rams Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635723",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Shakhtar Donetsk",
+   "away": "Sporting CP",
+   "homeShort": "Shakhtar Donetsk",
+   "awayShort": "Sporting CP",
+   "venue": "Stamford Bridge",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1563240",
+   "sourceId": "1563240",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Blackburn Rovers",
+   "away": "Stoke City",
+   "homeShort": "Blackburn",
+   "awayShort": "Stoke City",
+   "venue": "Ewood Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563249",
+   "sourceId": "1563249",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Charlton Athletic",
+   "away": "Bolton Wanderers",
+   "homeShort": "Charlton",
+   "awayShort": "Bolton",
+   "venue": "The Valley",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563241",
+   "sourceId": "1563241",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Derby County",
+   "away": "Norwich City",
+   "homeShort": "Derby",
+   "awayShort": "Norwich",
+   "venue": "Pride Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563242",
+   "sourceId": "1563242",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Portsmouth",
+   "away": "Swansea City",
+   "homeShort": "Portsmouth",
+   "awayShort": "Swansea",
+   "venue": "Fratton Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563243",
+   "sourceId": "1563243",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Preston North End",
+   "away": "Sheffield United",
+   "homeShort": "Preston",
+   "awayShort": "Sheffield Utd",
+   "venue": "Deepdale",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563244",
+   "sourceId": "1563244",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Queens Park Rangers",
+   "away": "Burnley",
+   "homeShort": "QPR",
+   "awayShort": "Burnley",
+   "venue": "Loftus Road",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563245",
+   "sourceId": "1563245",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Watford",
+   "away": "Lincoln City",
+   "homeShort": "Watford",
+   "awayShort": "Lincoln",
+   "venue": "Vicarage Road",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563239",
+   "sourceId": "1563239",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Birmingham City",
+   "away": "Millwall",
+   "homeShort": "Birmingham",
+   "awayShort": "Millwall",
+   "venue": "St. Andrew's Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563246",
+   "sourceId": "1563246",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "West Bromwich Albion",
+   "away": "Southampton",
+   "homeShort": "West Brom",
+   "awayShort": "Southampton",
+   "venue": "The Hawthorns",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635622",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Atlético Madrid",
+   "away": "Bayern Munich",
+   "homeShort": "Atletico Madrid",
+   "awayShort": "Bayern München",
+   "venue": "Metropolitano Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635627",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Barcelona",
+   "away": "Aston Villa",
+   "homeShort": "Barcelona",
+   "awayShort": "Aston Villa",
+   "venue": "Camp Nou",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635640",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Bodo/Glimt",
+   "away": "Lille",
+   "homeShort": "Bodo/Glimt",
+   "awayShort": "Lille",
+   "venue": "Aspmyra Stadion",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635662",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Feyenoord",
+   "away": "Inter",
+   "homeShort": "Feyenoord",
+   "awayShort": "Inter",
+   "venue": "De Kuip",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635677",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Lask Linz",
+   "away": "Slovan Bratislava",
+   "homeShort": "Lask Linz",
+   "awayShort": "Slovan Bratislava",
+   "venue": "Raiffeisen Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635695",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Manchester United",
+   "away": "Roma",
+   "homeShort": "Manchester United",
+   "awayShort": "AS Roma",
+   "venue": "Old Trafford",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635746",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-03T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Villarreal",
+   "away": "Paris Saint-Germain",
+   "homeShort": "Villarreal",
+   "awayShort": "Paris Saint Germain",
+   "venue": "Estadio de la Ceramica",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
     ]
    }
   }

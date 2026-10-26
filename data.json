@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-26T08:30:25.394Z",
+ "generatedAt": "2026-10-26T09:00:20.263Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -35,7 +35,7 @@
   "footballSource": "api-football",
   "apiFootball": {
    "ok": true,
-   "matches": 78,
+   "matches": 77,
    "errors": [],
    "unknownClubs": []
   },
@@ -70,7 +70,7 @@
   },
   "scottishPremiership": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
   "efl": {
    "ok": true,
@@ -417,37 +417,6 @@
    }
   },
   {
-   "id": "af-1556691",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Heart of Midlothian",
-   "away": "Rangers",
-   "homeShort": "Heart Of Midlothian",
-   "awayShort": "Rangers",
-   "venue": "Tynecastle Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 11",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "af-1556692",
    "comp": "SCOT",
    "label": null,
@@ -485,7 +454,7 @@
    "away": "Hibernian",
    "homeShort": "ST Mirren",
    "awayShort": "Hibernian",
-   "venue": "The SMiSA Stadium",
+   "venue": "The SMISA Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -527,6 +496,37 @@
     "alsoOn": [
      "Sky Sports Mix"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1556691",
+   "comp": "SCOT",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-10-28T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Heart of Midlothian",
+   "away": "Rangers",
+   "homeShort": "Heart Of Midlothian",
+   "awayShort": "Rangers",
+   "venue": "Tynecastle Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1416,60 +1416,6 @@
    }
   },
   {
-   "id": "af-1556695",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Falkirk",
-   "away": "Celtic",
-   "homeShort": "Falkirk",
-   "awayShort": "Celtic",
-   "venue": "Falkirk Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1556696",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-10-31T15:00:00.000Z",
-   "timeTbc": false,
-   "home": "Hibernian",
-   "away": "Dundee",
-   "homeShort": "Hibernian",
-   "awayShort": "Dundee",
-   "venue": "Easter Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
    "id": "af-1556697",
    "comp": "SCOT",
    "label": null,
@@ -1780,6 +1726,33 @@
     "sources": [
      "sky-guide"
     ]
+   }
+  },
+  {
+   "id": "af-1556695",
+   "comp": "SCOT",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T13:00:00.000Z",
+   "timeTbc": false,
+   "home": "Falkirk",
+   "away": "Celtic",
+   "homeShort": "Falkirk",
+   "awayShort": "Celtic",
+   "venue": "Falkirk Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
    }
   },
   {

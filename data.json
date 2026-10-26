@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T05:30:20.855Z",
+ "generatedAt": "2026-10-26T06:00:21.310Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4337,
+   "programmes": 4340,
    "errors": []
   },
   "skyListings": {
@@ -66,7 +66,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 2
+   "televised": 3
   },
   "scottishPremiership": {
    "ok": true,
@@ -1774,6 +1774,37 @@
     "alsoOn": [
      "Sky Sports Mix"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607715",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Brighton Women",
+   "away": "Crystal Palace Women",
+   "homeShort": "Brighton",
+   "awayShort": "Crystal Palace",
+   "venue": "The Broadfield Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

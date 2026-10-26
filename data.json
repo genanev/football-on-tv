@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T06:30:18.886Z",
+ "generatedAt": "2026-10-26T07:00:22.078Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4341,
+   "programmes": 4351,
    "errors": []
   },
   "skyListings": {
@@ -66,7 +66,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 3
+   "televised": 4
   },
   "scottishPremiership": {
    "ok": true,
@@ -1774,6 +1774,37 @@
     "alsoOn": [
      "Sky Sports Mix"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607714",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Birmingham City Women",
+   "away": "Tottenham Hotspur Women",
+   "homeShort": "Birmingham City",
+   "awayShort": "Tottenham Hotspur",
+   "venue": "St. Andrew's @ Knighthead Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

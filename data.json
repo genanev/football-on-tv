@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T11:00:20.680Z",
+ "generatedAt": "2026-10-26T11:30:23.100Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4398,
+   "programmes": 4426,
    "errors": []
   },
   "skyListings": {
@@ -66,7 +66,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 4
+   "televised": 5
   },
   "scottishPremiership": {
    "ok": true,
@@ -1719,6 +1719,39 @@
     ],
     "alsoOn": [
      "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607717",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "London City Lionesses",
+   "away": "Manchester City Women",
+   "homeShort": "London City Lionesses",
+   "awayShort": "Manchester City",
+   "venue": "Copperjax Community Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
     ],
     "confirmed": true,
     "note": null,

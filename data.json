@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-26T00:00:22.783Z",
+ "generatedAt": "2026-10-26T00:30:25.896Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -485,7 +485,7 @@
    "away": "Hibernian",
    "homeShort": "ST Mirren",
    "awayShort": "Hibernian",
-   "venue": "The SMISA Stadium",
+   "venue": "The SMiSA Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

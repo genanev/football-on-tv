@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T07:30:18.897Z",
+ "generatedAt": "2026-10-26T08:00:22.500Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4373,
+   "programmes": 4386,
    "errors": []
   },
   "skyListings": {
@@ -19,8 +19,14 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 4,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,

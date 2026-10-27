@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-27T11:00:20.025Z",
+ "generatedAt": "2026-10-27T11:30:27.074Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4393,
+   "programmes": 4391,
    "errors": []
   },
   "skyListings": {
@@ -15,23 +15,25 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1200,
+   "programmes": 1199,
    "errors": []
   },
   "primeVideo": {
    "ok": true,
-   "events": 5,
+   "events": 7,
    "amazonPicks": [
     "Manchester United vs. Roma",
     "Arsenal vs. Dortmund",
-    "Fenerbahce vs. Lyon",
     "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United"
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
    ]
   },
   "premierSports": {
    "ok": true,
-   "events": 153
+   "events": 155
   },
   "footballSource": "api-football",
   "apiFootball": {
@@ -2855,13 +2857,19 @@
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

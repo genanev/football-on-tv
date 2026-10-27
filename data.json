@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-27T00:30:18.910Z",
+ "generatedAt": "2026-10-27T01:00:19.452Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4068,
+   "programmes": 4130,
    "errors": []
   },
   "skyListings": {
@@ -115,7 +115,7 @@
    "tournaments": [
     "International Championship"
    ],
-   "sessions": 9
+   "sessions": 10
   },
   "cricket": {
    "ok": true,
@@ -2668,7 +2668,37 @@
     "channels": [
      "TNT Sports 1"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793791800",
+   "kickoff": "2026-11-04T11:30:00.000Z",
+   "end": "2026-11-04T15:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2704,6 +2734,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2735,6 +2766,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2964,6 +2996,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2995,6 +3028,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }

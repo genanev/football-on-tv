@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T22:00:19.278Z",
+ "generatedAt": "2026-10-27T22:30:25.240Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 23,
+   "events": 27,
    "errors": []
   },
   "tntSchedule": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 12,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -202,38 +211,6 @@
    }
   },
   {
-   "id": "af-1640384",
-   "sourceId": "1640384",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-27T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Bradford City",
-   "away": "Peterborough United",
-   "homeShort": "Bradford",
-   "awayShort": "Peterborough",
-   "venue": "Valley Parade",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 0,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
    "id": "af-1640386",
    "sourceId": "1640386",
    "comp": "CUPS",
@@ -263,8 +240,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -685,6 +661,38 @@
    }
   },
   {
+   "id": "af-1640385",
+   "sourceId": "1640385",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-29T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Everton",
+   "away": "Newcastle United",
+   "homeShort": "Everton",
+   "awayShort": "Newcastle",
+   "venue": "Hill Dickinson Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
+    ]
+   }
+  },
+  {
    "comp": "GOLF",
    "kind": "session",
    "title": "VidantaWorld Mexico Open",
@@ -826,7 +834,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1020,7 +1029,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1043,13 +1053,17 @@
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -1082,7 +1096,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1147,7 +1162,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1614,13 +1630,15 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Premier League"
+     "Sky Sports Premier League",
+     "Sky Sports Football"
     ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

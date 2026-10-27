@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-27T20:30:21.998Z",
+ "generatedAt": "2026-10-27T21:00:19.787Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4399,
+   "programmes": 4398,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 20,
+   "events": 24,
    "errors": []
   },
   "tntSchedule": {
@@ -78,7 +78,7 @@
   "efl": {
    "ok": true,
    "championship": 24,
-   "leagueCup": 4
+   "leagueCup": 7
   },
   "faCup": {
    "ok": true,
@@ -334,7 +334,104 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1640383",
+   "sourceId": "1640383",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-28T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Bournemouth",
+   "away": "Aston Villa",
+   "homeShort": "Bournemouth",
+   "awayShort": "Aston Villa",
+   "venue": "Vitality Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1640387",
+   "sourceId": "1640387",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-28T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Fulham",
+   "away": "Crystal Palace",
+   "homeShort": "Fulham",
+   "awayShort": "Crystal Palace",
+   "venue": "Craven Cottage",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1640389",
+   "sourceId": "1640389",
+   "comp": "CUPS",
+   "label": "EFL Cup",
+   "kind": "match",
+   "kickoff": "2026-10-28T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Sunderland",
+   "away": "Brentford",
+   "homeShort": "Sunderland",
+   "awayShort": "Brentford",
+   "venue": "Stadium of Light",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Round of 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
     ]
    }
   },
@@ -503,7 +600,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -534,7 +632,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

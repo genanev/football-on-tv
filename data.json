@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-26T23:30:29.735Z",
+ "generatedAt": "2026-10-27T00:00:24.197Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4416,
+   "programmes": 4068,
    "errors": []
   },
   "skyListings": {
@@ -15,12 +15,18 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1197,
+   "programmes": 1199,
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 4,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -39,7 +45,7 @@
   },
   "championsLeague": {
    "ok": true,
-   "matches": 9
+   "matches": 18
   },
   "europaLeague": {
    "ok": true,
@@ -53,7 +59,7 @@
    "ok": true,
    "matches": 5
   },
-  "footballChannels": "10/19 PL+UCL matches with a confirmed channel",
+  "footballChannels": "15/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -68,7 +74,7 @@
   },
   "efl": {
    "ok": true,
-   "championship": 21,
+   "championship": 24,
    "leagueCup": 4
   },
   "faCup": {
@@ -109,11 +115,11 @@
    "tournaments": [
     "International Championship"
    ],
-   "sessions": 8
+   "sessions": 9
   },
   "cricket": {
    "ok": true,
-   "matches": 10
+   "matches": 11
   },
   "scores": "on"
  },
@@ -2616,6 +2622,408 @@
      "sky-guide",
      "tntsports.co.uk"
     ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Eden Park, Auckland",
+   "series": "India in New Zealand, 5 ODI Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271651",
+   "kickoff": "2026-11-04T02:00:00.000Z",
+   "end": "2026-11-04T10:00:00.000Z",
+   "session": "1st ODI",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793772000",
+   "kickoff": "2026-11-04T06:00:00.000Z",
+   "end": "2026-11-04T09:30:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1635606",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "AEK Athens",
+   "away": "Real Madrid",
+   "homeShort": "AEK Athens FC",
+   "awayShort": "Real Madrid",
+   "venue": "Allwyn Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635658",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Fenerbahçe",
+   "away": "Liverpool",
+   "homeShort": "Fenerbahçe",
+   "awayShort": "Liverpool",
+   "venue": "Chobani Stadium Fenerbahce Sukru Saracoglu",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1563248",
+   "sourceId": "1563248",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Cardiff City",
+   "away": "West Ham United",
+   "homeShort": "Cardiff",
+   "awayShort": "West Ham",
+   "venue": "Cardiff City Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563250",
+   "sourceId": "1563250",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Wrexham",
+   "away": "Middlesbrough",
+   "homeShort": "Wrexham",
+   "awayShort": "Middlesbrough",
+   "venue": "Racecourse Ground",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563247",
+   "sourceId": "1563247",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Bristol City",
+   "away": "Wolverhampton Wanderers",
+   "homeShort": "Bristol City",
+   "awayShort": "Wolves",
+   "venue": "Ashton Gate Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 14",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635651",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Borussia Dortmund",
+   "away": "Real Betis",
+   "homeShort": "Borussia Dortmund",
+   "awayShort": "Real Betis",
+   "venue": "Signal Iduna Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635656",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "FC Porto",
+   "away": "Napoli",
+   "homeShort": "FC Porto",
+   "awayShort": "Napoli",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635681",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Lens",
+   "away": "Como",
+   "homeShort": "Lens",
+   "awayShort": "Como",
+   "venue": "Stade Bollaert-Delelis",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635707",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "PSV Eindhoven",
+   "away": "Club Brugge KV",
+   "homeShort": "PSV Eindhoven",
+   "awayShort": "Club Brugge KV",
+   "venue": "Philips Stadion",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1635710",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "RB Leipzig",
+   "away": "Manchester City",
+   "homeShort": "RB Leipzig",
+   "awayShort": "Manchester City",
+   "venue": "Red Bull Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635726",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Slavia Prague",
+   "away": "Arsenal",
+   "homeShort": "Slavia Praha",
+   "awayShort": "Arsenal",
+   "venue": "Fortuna Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635745",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Viking",
+   "away": "Sabah FA",
+   "homeShort": "Viking",
+   "awayShort": "Sabah FA",
+   "venue": "Lyse Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
    }
   }
  ]

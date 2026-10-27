@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T21:00:19.787Z",
+ "generatedAt": "2026-10-27T21:30:25.550Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 24,
+   "events": 23,
    "errors": []
   },
   "tntSchedule": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 12,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -224,7 +215,7 @@
    "awayShort": "Peterborough",
    "venue": "Valley Parade",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Round of 16",
    "source": "api-football.com",
@@ -257,7 +248,7 @@
    "venue": "Highbury Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Round of 16",
    "source": "api-football.com",
    "tv": {

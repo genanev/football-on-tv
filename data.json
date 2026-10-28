@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-28T00:30:12.577Z",
+ "generatedAt": "2026-10-28T01:00:11.495Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4129,
+   "programmes": 4180,
    "errors": []
   },
   "skyListings": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 12,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -3106,7 +3115,9 @@
     "channels": [
      "TNT Sports 1"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3132,7 +3143,9 @@
     "channels": [
      "TNT Sports 1"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3168,6 +3181,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3460,6 +3474,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3605,6 +3620,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3692,6 +3708,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }

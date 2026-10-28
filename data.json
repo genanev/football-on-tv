@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T16:30:17.324Z",
+ "generatedAt": "2026-10-28T17:00:30.535Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1203,
+   "programmes": 1221,
    "errors": []
   },
   "primeVideo": {
@@ -62,7 +62,7 @@
    "ok": true,
    "matches": 5
   },
-  "footballChannels": "16/28 PL+UCL matches with a confirmed channel",
+  "footballChannels": "23/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 2
@@ -2135,7 +2135,9 @@
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2512,7 +2514,7 @@
    "kind": "match",
    "kickoff": "2026-11-03T20:00:00.000Z",
    "timeTbc": false,
-   "home": "Bodo/Glimt",
+   "home": "Bodø Glimt",
    "away": "Lille",
    "homeShort": "Bodo/Glimt",
    "awayShort": "Lille",
@@ -2523,13 +2525,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -2550,13 +2556,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -2566,7 +2576,7 @@
    "kind": "match",
    "kickoff": "2026-11-03T20:00:00.000Z",
    "timeTbc": false,
-   "home": "Lask Linz",
+   "home": "LASK",
    "away": "Slovan Bratislava",
    "homeShort": "Lask Linz",
    "awayShort": "Slovan Bratislava",
@@ -2577,13 +2587,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -2756,7 +2770,9 @@
     "channels": [
      "TNT Sports 3"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2927,33 +2943,6 @@
    }
   },
   {
-   "id": "af-1635656",
-   "comp": "UCL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-04T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "FC Porto",
-   "away": "Napoli",
-   "homeShort": "FC Porto",
-   "awayShort": "Napoli",
-   "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "League Stage - 4",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
    "id": "af-1635681",
    "comp": "UCL",
    "label": null,
@@ -2971,13 +2960,48 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1635656",
+   "comp": "UCL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Porto",
+   "away": "Napoli",
+   "homeShort": "FC Porto",
+   "awayShort": "Napoli",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -2988,7 +3012,7 @@
    "kickoff": "2026-11-04T20:00:00.000Z",
    "timeTbc": false,
    "home": "PSV Eindhoven",
-   "away": "Club Brugge KV",
+   "away": "Club Brugge",
    "homeShort": "PSV Eindhoven",
    "awayShort": "Club Brugge KV",
    "venue": "Philips Stadion",
@@ -2998,13 +3022,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3061,7 +3089,9 @@
     "channels": [
      "TNT Sports 1"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3078,8 +3108,8 @@
    "kind": "match",
    "kickoff": "2026-11-04T20:00:00.000Z",
    "timeTbc": false,
-   "home": "Viking",
-   "away": "Sabah FA",
+   "home": "Viking FK",
+   "away": "Sabah FK",
    "homeShort": "Viking",
    "awayShort": "Sabah FA",
    "venue": "Lyse Arena",
@@ -3089,13 +3119,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3300,7 +3334,7 @@
    "kickoff": "2026-11-05T17:45:00.000Z",
    "timeTbc": false,
    "home": "Anderlecht",
-   "away": "Red Bull Salzburg",
+   "away": "Salzburg",
    "homeShort": "Anderlecht",
    "awayShort": "Red Bull Salzburg",
    "venue": "Lotto Park",
@@ -3310,13 +3344,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3361,7 +3399,7 @@
    "kickoff": "2026-11-05T17:45:00.000Z",
    "timeTbc": false,
    "home": "Levski Sofia",
-   "away": "Jagiellonia",
+   "away": "Jagiellonia Bialystok",
    "homeShort": "Levski Sofia",
    "awayShort": "Jagiellonia",
    "venue": "National Stadium Vasil Levski",
@@ -3371,13 +3409,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3414,8 +3456,8 @@
    "kind": "match",
    "kickoff": "2026-11-05T17:45:00.000Z",
    "timeTbc": false,
-   "home": "NEC Nijmegen",
-   "away": "Omonia Nicosia",
+   "home": "NEC",
+   "away": "Omonia",
    "homeShort": "NEC Nijmegen",
    "awayShort": "Omonia Nicosia",
    "venue": "Goffertstadion",
@@ -3425,13 +3467,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3452,13 +3498,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {

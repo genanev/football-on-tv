@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T22:00:13.594Z",
+ "generatedAt": "2026-10-28T22:30:16.096Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 22,
+   "events": 21,
    "errors": []
   },
   "tntSchedule": {
@@ -329,7 +329,7 @@
    "homeShort": "Liverpool",
    "awayShort": "Chelsea",
    "venue": "Anfield",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Round of 16",
@@ -346,8 +346,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

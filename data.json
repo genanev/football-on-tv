@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T21:30:10.820Z",
+ "generatedAt": "2026-10-28T22:00:13.594Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 27,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -78,7 +69,7 @@
   "efl": {
    "ok": true,
    "championship": 24,
-   "leagueCup": 6
+   "leagueCup": 3
   },
   "faCup": {
    "ok": true,
@@ -171,7 +162,7 @@
    "homeShort": "Manchester City",
    "awayShort": "Brighton",
    "venue": "Etihad Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 2,
    "round": "Round of 16",
@@ -186,104 +177,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1640383",
-   "sourceId": "1640383",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Bournemouth",
-   "away": "Aston Villa",
-   "homeShort": "Bournemouth",
-   "awayShort": "Aston Villa",
-   "venue": "Vitality Stadium",
-   "status": "live",
-   "homeScore": 3,
-   "awayScore": 0,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1640387",
-   "sourceId": "1640387",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Fulham",
-   "away": "Crystal Palace",
-   "homeShort": "Fulham",
-   "awayShort": "Crystal Palace",
-   "venue": "Craven Cottage",
-   "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1640389",
-   "sourceId": "1640389",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-28T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Sunderland",
-   "away": "Brentford",
-   "homeShort": "Sunderland",
-   "awayShort": "Brentford",
-   "venue": "Stadium of Light",
-   "status": "live",
-   "homeScore": 3,
-   "awayScore": 1,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -299,7 +193,7 @@
    "homeShort": "Aberdeen",
    "awayShort": "Falkirk",
    "venue": "Pittodrie Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 1,
    "round": "Regular Season - 11",
@@ -326,7 +220,7 @@
    "homeShort": "Celtic",
    "awayShort": "Dundee Utd",
    "venue": "Celtic Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 2,
    "round": "Regular Season - 11",
@@ -353,8 +247,8 @@
    "homeShort": "Dundee",
    "awayShort": "Kilmarnock",
    "venue": "Dens Park",
-   "status": "live",
-   "homeScore": 2,
+   "status": "finished",
+   "homeScore": 3,
    "awayScore": 1,
    "round": "Regular Season - 11",
    "source": "api-football.com",
@@ -380,8 +274,8 @@
    "homeShort": "ST Johnstone",
    "awayShort": "Motherwell",
    "venue": "McDiarmid Park",
-   "status": "live",
-   "homeScore": 1,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 2,
    "round": "Regular Season - 11",
    "source": "api-football.com",
@@ -407,7 +301,7 @@
    "homeShort": "ST Mirren",
    "awayShort": "Hibernian",
    "venue": "The SMiSA Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 11",
@@ -469,9 +363,9 @@
    "homeShort": "Heart Of Midlothian",
    "awayShort": "Rangers",
    "venue": "Tynecastle Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
@@ -484,8 +378,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

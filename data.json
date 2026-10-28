@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T17:00:30.535Z",
+ "generatedAt": "2026-10-28T17:30:26.927Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,21 +15,12 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1221,
+   "programmes": 1245,
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 12,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -65,7 +56,7 @@
   "footballChannels": "23/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
-   "televised": 2
+   "televised": 18
   },
   "wsl": {
    "ok": true,
@@ -3261,6 +3252,130 @@
    }
   },
   {
+   "id": "af-1636376",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "AGF Aarhus",
+   "away": "Braga",
+   "homeShort": "Aarhus",
+   "awayShort": "SC Braga",
+   "venue": "Cepheus Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636383",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Atalanta",
+   "away": "Kairat Almaty",
+   "homeShort": "Atalanta",
+   "awayShort": "Kairat Almaty",
+   "venue": "New Balance Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636399",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Crvena Zvezda",
+   "away": "Inter Club d'Escaldes",
+   "homeShort": "FK Crvena Zvezda",
+   "awayShort": "Inter Club d'Escaldes",
+   "venue": "Stadion Rajko Mit",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636448",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "FC Midtjylland",
+   "away": "Ajax",
+   "homeShort": "FC Midtjylland",
+   "awayShort": "Ajax",
+   "venue": "MCH Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1636473",
    "comp": "UECL",
    "label": null,
@@ -3288,6 +3403,130 @@
     "conflict": false,
     "sources": [
      "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636439",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "KuPS",
+   "away": "Gent",
+   "homeShort": "KuPS",
+   "awayShort": "Gent",
+   "venue": "Tammelan Stadion",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636444",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Lincoln Red Imps FC",
+   "away": "Hajduk Split",
+   "homeShort": "Lincoln Red Imps FC",
+   "awayShort": "HNK Hajduk Split",
+   "venue": "Europa Point Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636452",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Mjällby AIF",
+   "away": "FK Borac",
+   "homeShort": "Mjallby AIF",
+   "awayShort": "Borac Banja Luka",
+   "venue": "Olympia",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636476",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T17:45:00.000Z",
+   "timeTbc": false,
+   "home": "Trabzonspor",
+   "away": "SC Freiburg",
+   "homeShort": "Trabzonspor",
+   "awayShort": "SC Freiburg",
+   "venue": "Papara Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
      "tntsports.co.uk"
     ]
    }
@@ -3429,8 +3668,8 @@
    "kind": "match",
    "kickoff": "2026-11-05T17:45:00.000Z",
    "timeTbc": false,
-   "home": "Lillestrom",
-   "away": "Plzen",
+   "home": "Lillestrøm SK",
+   "away": "Viktoria Plzeň",
    "homeShort": "Lillestrom",
    "awayShort": "Plzen",
    "venue": null,
@@ -3440,13 +3679,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3599,6 +3842,68 @@
    }
   },
   {
+   "id": "af-1636408",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "FC Copenhagen",
+   "away": "FC Iberia 1999",
+   "homeShort": "FC Copenhagen",
+   "awayShort": "FC Iberia 1999",
+   "venue": "Parken Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636478",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "FC Twente",
+   "away": "Pafos",
+   "homeShort": "Twente",
+   "awayShort": "Pafos",
+   "venue": "De Grolsch Veste",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1636416",
    "comp": "UECL",
    "label": null,
@@ -3620,12 +3925,200 @@
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
      "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636447",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Lugano",
+   "away": "Kauno Žalgiris",
+   "homeShort": "FC Lugano",
+   "awayShort": "Kauno Žalgiris",
+   "venue": "AIL Arena",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636456",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Monaco",
+   "away": "Nordsjælland",
+   "homeShort": "Monaco",
+   "awayShort": "FC Nordsjaelland",
+   "venue": "Stade Louis II",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636465",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Panathinaikos",
+   "away": "CSKA Sofia",
+   "homeShort": "Panathinaikos",
+   "awayShort": "CSKA Sofia",
+   "venue": "Olympic Stadium of Athens",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636466",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Riga FC",
+   "away": "FK Jablonec",
+   "homeShort": "Riga",
+   "awayShort": "FK Jablonec",
+   "venue": "Skonto stadions",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636469",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Sint-Truidense VV",
+   "away": "Brann",
+   "homeShort": "St. Truiden",
+   "awayShort": "Brann",
+   "venue": "Daio Wasabi Stayen",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636483",
+   "comp": "UECL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Universitatea Craiova",
+   "away": "Egnatia",
+   "homeShort": "Universitatea Craiova",
+   "awayShort": "Egnatia Rrogozhinë",
+   "venue": "Stadionul Ion Oblemenco",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 3",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
      "tntsports.co.uk"
     ]
    }
@@ -3682,13 +4175,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3709,40 +4206,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "id": "af-1636245",
-   "comp": "UEL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-05T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "Celta Vigo",
-   "away": "Union St. Gilloise",
-   "homeShort": "Celta Vigo",
-   "awayShort": "Union St. Gilloise",
-   "venue": null,
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "League Stage - 4",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3767,7 +4241,9 @@
     "channels": [
      "TNT Sports 3"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3785,7 +4261,7 @@
    "kickoff": "2026-11-05T20:00:00.000Z",
    "timeTbc": false,
    "home": "Hapoel Beer Sheva",
-   "away": "OFI",
+   "away": "OFI Crete",
    "homeShort": "Hapoel Beer Sheva",
    "awayShort": "OFI",
    "venue": "Superbet Arena - Giulesti",
@@ -3795,13 +4271,79 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636245",
+   "comp": "UEL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "RC Celta",
+   "away": "Union Saint-Gilloise",
+   "homeShort": "Celta Vigo",
+   "awayShort": "Union St. Gilloise",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1636347",
+   "comp": "UEL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-05T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "SCU Torreense",
+   "away": "Ararat-Armenia",
+   "homeShort": "Torreense",
+   "awayShort": "Ararat-Armenia",
+   "venue": "Estadio Algarve",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3812,7 +4354,7 @@
    "kickoff": "2026-11-05T20:00:00.000Z",
    "timeTbc": false,
    "home": "Sturm Graz",
-   "away": "Celje",
+   "away": "NK Celje",
    "homeShort": "Sturm Graz",
    "awayShort": "Celje",
    "venue": "Merkur-Arena",
@@ -3822,13 +4364,17 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "tntsports.co.uk"
+    ]
    }
   },
   {
@@ -3863,33 +4409,6 @@
      "sky-guide",
      "tntsports.co.uk"
     ]
-   }
-  },
-  {
-   "id": "af-1636347",
-   "comp": "UEL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-05T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "Torreense",
-   "away": "Ararat-Armenia",
-   "homeShort": "Torreense",
-   "awayShort": "Ararat-Armenia",
-   "venue": "Estadio Algarve",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "League Stage - 4",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
    }
   }
  ]

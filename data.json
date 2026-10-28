@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-28T20:00:30.274Z",
+ "generatedAt": "2026-10-28T20:30:27.315Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -172,8 +172,8 @@
    "awayShort": "Brighton",
    "venue": "Etihad Stadium",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
@@ -238,7 +238,7 @@
    "venue": "Craven Cottage",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
@@ -269,8 +269,8 @@
    "awayShort": "Brentford",
    "venue": "Stadium of Light",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
@@ -327,8 +327,8 @@
    "awayShort": "Dundee Utd",
    "venue": "Celtic Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
@@ -354,7 +354,7 @@
    "awayShort": "Kilmarnock",
    "venue": "Dens Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 11",
    "source": "api-football.com",
@@ -381,8 +381,8 @@
    "awayShort": "Motherwell",
    "venue": "McDiarmid Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
@@ -435,9 +435,9 @@
    "homeShort": "Liverpool",
    "awayShort": "Chelsea",
    "venue": "Anfield",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Round of 16",
    "source": "api-football.com",
    "tv": {
@@ -469,9 +469,9 @@
    "homeShort": "Heart Of Midlothian",
    "awayShort": "Rangers",
    "venue": "Tynecastle Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {

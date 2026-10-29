@@ -74,11 +74,17 @@ export function faChannelFor(tie, faPageTies) {
   return hit?.faChannel || null;
 }
 
-/** Televised ties only: shown in the TV guide, or listed "Live on …" by the FA (`faChannel`). */
-export function faCupEvents(ties, guide) {
+/**
+ * Televised ties only: shown in the TV guide, or listed "Live on …" by the FA (`faChannel`), or
+ * with the previous update's channel kept (`kept(t)`, build.mjs's keep rule, which fills it in).
+ */
+export function faCupEvents(ties, guide, kept = () => false) {
   const sids = SPORT_CHANNELS.football;
   return ties.map(({ faChannel, ...t }) => {
     const progs = guideProgrammesFor(t, guide?.programmes || [], sids);
+    if (!progs.length && !faChannel && kept(t)) {
+      return { ...t, tv: { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: null, conflict: false, sources: [] } };
+    }
     if (!progs.length && !faChannel) return null;
     const tv = progs.length ? guideTv(progs, sids)
       : { broadcaster: faChannel, channels: [faChannel], alsoOn: [], confirmed: true, note: null, conflict: false, sources: [] };

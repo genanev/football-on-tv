@@ -303,6 +303,23 @@ assert.deepEqual(cups.map(e => `${e.label}: ${e.home} v ${e.away} on ${e.tv.chan
 ]);
 assert.ok(cups[0].tv.sources.includes('thefa.com'));
 
+// A televised-only tie the previous update had a channel for stays listed after kick-off, until the
+// end of its UK day, even though nothing lists it now (Sky's page drops games once they're over:
+// Everton v Newcastle, EFL Cup, vanished at 23:00 on 29 Oct 2026). Same for the Conference League.
+const prevWithTies = structuredClone(data);
+const tvOf = (channel, source) => ({ broadcaster: channel, channels: [channel], alsoOn: [], confirmed: true, note: null, conflict: false, sources: [source] });
+prevWithTies.events.push(
+  { id: 'af-1640384', comp: 'CUPS', label: 'EFL Cup', kind: 'match', kickoff: '2026-10-27T19:45:00.000Z', home: 'Bradford City', away: 'Peterborough United', tv: tvOf('Sky Sports+', 'skysports.com') },
+  { id: 'af-1636434', comp: 'UECL', kind: 'match', kickoff: '2026-10-22T14:30:00.000Z', home: 'Kairat Almaty', away: 'Panathinaikos', tv: tvOf('HBO Max', 'tntsports.co.uk') },
+);
+const afterTie = await build(Date.parse('2026-10-27T22:30:00Z'), prevWithTies, { footballSource: 'api-football' });
+const bradford = afterTie.events.find(e => e.id === 'af-1640384');
+assert.deepEqual([bradford?.home, bradford?.tv.channels[0], bradford?.tv.sources], ['Bradford City', 'Sky Sports+', ['skysports.com', 'previous-update']]);
+const afterUecl = await build(Date.parse('2026-10-22T18:00:00Z'), prevWithTies, { footballSource: 'api-football' });
+assert.equal(afterUecl.events.find(e => e.id === 'af-1636434')?.tv.channels[0], 'HBO Max');
+// ...and without that earlier channel, an untelevised tie is still not listed
+assert.ok(!(await build(Date.parse('2026-10-27T22:30:00Z'), data, { footballSource: 'api-football' })).events.some(e => e.id === 'af-1640384'));
+
 // Scores switched off: none anywhere
 const noScores = await build(NOW, null, { footballSource: 'api-football', showScores: false });
 assert.equal(noScores.report.scores, 'off');

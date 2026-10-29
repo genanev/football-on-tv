@@ -66,11 +66,12 @@ export async function fetchEfl(fromDate, toDate, seasonID) {
 /** EFL seasons start in summer: season 2026 = 2026/27. */
 export const eflSeason = (now) => { const p = londonParts(now); return p.m >= 7 ? p.y : p.y - 1; };
 
-export function eflEvents(matches, guide, listings) {
+/** `kept(m)`: the previous update's channel is being kept for this tie (build.mjs's keep rule). */
+export function eflEvents(matches, guide, listings, kept = () => false) {
   const events = [];
   for (const m of matches) {
     const { tv } = footballTv(m, { guide, skyListings: listings });
-    if (m.comp === 'CUPS' && !tv.channels.length) continue; // cup tab: televised ties only
+    if (m.comp === 'CUPS' && !tv.channels.length && !kept(m)) continue; // cup tab: televised ties only
     events.push({ ...m, tv });
   }
   return events;

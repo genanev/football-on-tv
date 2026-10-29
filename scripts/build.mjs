@@ -114,19 +114,25 @@ const SOURCE_REPORT = {
  * Channels from the old fan-site listings (sources "listings", before 13 Oct 2026) are never kept.
  */
 export function keepKnownChannels(events, previous, { report = {}, now = Date.now() } = {}) {
-  const before = new Map((previous?.events || previous?.matches || []).map(e => [e.id, e]));
+  const before = previousEvents(previous);
   for (const e of events) {
-    const old = before.get(e.id);
-    if (e.tv?.channels?.length || !old?.tv?.channels?.length) continue;
-    const sources = old.tv.sources || [];
-    if (sources.includes('listings')) continue;
-    const sourceFailed = sources.some(s => [].concat(SOURCE_REPORT[s] || []).some(k => report[k]?.ok === false));
-    const started = Date.parse(e.kickoff) <= now;
-    if (sourceFailed || started) {
-      e.tv = { ...old.tv, sources: [...new Set([...sources, 'previous-update'])] };
-    }
+    if (e.tv?.channels?.length) continue;
+    const tv = keptTv(e, before.get(e.id), report, now);
+    if (tv) e.tv = tv;
   }
   return events;
+}
+
+const previousEvents = (previous) => new Map((previous?.events || previous?.matches || []).map(e => [e.id, e]));
+
+/** The previous update's channel for an event, when the keep rule above says to keep it; else null. */
+export function keptTv(e, old, report, now) {
+  if (!old?.tv?.channels?.length) return null;
+  const sources = old.tv.sources || [];
+  if (sources.includes('listings')) return null;
+  const sourceFailed = sources.some(s => [].concat(SOURCE_REPORT[s] || []).some(k => report[k]?.ok === false));
+  const started = Date.parse(e.kickoff) <= now;
+  return sourceFailed || started ? { ...old.tv, sources: [...new Set([...sources, 'previous-update'])] } : null;
 }
 
 /**
@@ -279,11 +285,17 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     report.premierLeagueTv = { ok: false, error: golden.premierLeague.error }; // no match ids yet
   }
 
+  // Games listed only when televised (Conference League, WSL, cup ties) stay listed when the keep rule
+  // keeps their channel: Sky's page drops a game once it's over, which once removed a finished
+  // League Cup tie (Everton v Newcastle, 29 Oct 2026) before the end of its day
+  const before = previousEvents(previous);
+  const kept = (m) => !!keptTv(m, before.get(m.id), report, now);
+
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
   for (const m of [...pl, ...ucl, ...uel, ...more]) {
     const { tv, tntNames } = footballTv(m, { guide, skyListings, tnt, prime, premierSports, plBrands: m.comp === 'PL' ? plTv[plIdOf(m)] : null });
-    if (TELEVISED_ONLY.has(m.comp) && !tv.channels.length) continue;
+    if (TELEVISED_ONLY.has(m.comp) && !tv.channels.length && !kept(m)) continue;
     const { sourceId, homeAlt, awayAlt, ...rest } = m;
     // UEFA and API-Football use short names ("Atleti", "Paris"); TNT's names read better.
     if (m.comp !== 'PL' && tntNames) { rest.home = tntNames[0]; rest.away = tntNames[1]; }
@@ -301,13 +313,13 @@ export async function build(now = Date.now(), previous = null, { footballSource 
 
   // ---- EFL (Championship, League Cup) and FA Cup: televised cup ties only
   if (!eflError) {
-    const eflEv = eflEvents(efl, guide, skyListings);
+    const eflEv = eflEvents(efl, guide, skyListings, kept);
     report.efl = { ok: true, championship: eflEv.filter(e => e.comp === 'CHAMP').length, leagueCup: eflEv.filter(e => e.comp === 'CUPS').length };
     events.push(...eflEv);
   } else report.efl = { ok: false, error: eflError };
 
   if (!faError) {
-    const faEv = faCupEvents(fa, guide);
+    const faEv = faCupEvents(fa, guide, kept);
     report.faCup = { ok: true, ties: faEv.length };
     events.push(...faEv);
   } else report.faCup = { ok: false, error: faError };

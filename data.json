@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T15:00:11.725Z",
+ "generatedAt": "2026-10-29T15:30:12.438Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,12 +10,12 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 21,
+   "events": 23,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1276,
+   "programmes": 1277,
    "errors": []
   },
   "primeVideo": {
@@ -33,7 +33,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 171
+   "events": 173
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -92,7 +92,7 @@
    "ok": true,
    "matches": 6
   },
-  "footballChannels": "24/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -1241,13 +1241,17 @@
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {

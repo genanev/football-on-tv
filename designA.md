@@ -83,13 +83,13 @@ League on Sky Sports with some BBC games (Sky's deal ends after 2026). On 31 Oct
 three Premiership games on TNT Sports 1 and two on HBO Max only.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
-| **Tennis** (ball, green; temporary icon, 29 Oct 2026) | Australian Open | `TEN_AO` | Aus Open | ✅ |
+| **Tennis** (ball over a net, green; George's PNG) | Australian Open | `TEN_AO` | Aus Open | ✅ |
 | | Roland-Garros | `TEN_RG` | Roland-Garros | ✅ |
 | | Wimbledon | `TEN_WIM` | Wimbledon | ✅ |
 | | US Open | `TEN_USO` | US Open | ✅ |
 | | ATP Finals | `TEN_ATPF` | ATP Finals | ✅ |
 | | WTA Finals | `TEN_WTAF` | WTA Finals | ✅ |
-| **Skiing** (peak and skis, ice blue; temporary icon, 29 Oct 2026) | Alpine skiing | `SKI` | World Cup / World Championships (the event's label) | ✅ |
+| **Skiing** (mountains and slalom gates, ice blue; George's PNG) | Alpine skiing | `SKI` | World Cup / World Championships (the event's label) | ✅ |
 | **Specials** (trophy, pink) | European Curling Championships | `SPECIAL_CURLING` | Curling | ✅ |
 
 Specials are real events only (George, 29 Oct 2026): the four placeholders (Wimbledon & tennis,

@@ -439,9 +439,8 @@
     { id: 'snooker', icon: 'snooker', hue: 175, name: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker', comps: [
       { id: 'SNOOKER', name: 'Snooker', tag: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker' },
     ] },
-    // Tennis (George, 29 Oct 2026): the Grand Slams and the season finals, one entry per day on UK TV.
-    // Temporary icon until George's arrives.
-    { id: 'tennis', icon: 'tennis', hue: 110, name: 'Tennis', color: 'var(--tennis)', none: 'No tennis on TV', comps: [
+    // Tennis (George, 29 Oct 2026): the Grand Slams and the season finals, one entry per day on UK TV
+    { id: 'tennis', icon: 'tennis', iconFile: 'tennis.png', hue: 110, name: 'Tennis', color: 'var(--tennis)', none: 'No tennis on TV', comps: [
       { id: 'TEN_AO', name: 'Australian Open', tag: 'Aus Open', color: 'var(--tennis)', none: 'No Australian Open on TV' },
       { id: 'TEN_RG', name: 'Roland-Garros', tag: 'Roland-Garros', color: 'var(--tennis)', none: 'No Roland-Garros on TV' },
       { id: 'TEN_WIM', name: 'Wimbledon', tag: 'Wimbledon', color: 'var(--tennis)', none: 'No Wimbledon on TV' },
@@ -450,8 +449,8 @@
       { id: 'TEN_WTAF', name: 'WTA Finals', tag: 'WTA Finals', color: 'var(--tennis)', none: 'No WTA Finals on TV' },
     ] },
     // Alpine skiing (George, 29 Oct 2026): World Cup and World Championships races, one entry per run.
-    // The tag shows the event's own label ("World Cup"). Temporary icon until George's arrives.
-    { id: 'skiing', icon: 'skiing', hue: 205, name: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV', comps: [
+    // The tag shows the event's own label ("World Cup").
+    { id: 'skiing', icon: 'skiing', iconFile: 'skiing.png', hue: 205, name: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV', comps: [
       { id: 'SKI', name: 'Alpine skiing', tag: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV' },
     ] },
     { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', listComps: true, comps: [
@@ -466,7 +465,9 @@
   // Specials, whose events are too different to lump together (George, 29 Oct 2026)
   const showsComps = (s) => s.comps.length > 1 || !!s.listComps;
   // A sport's 3D icon on its tinted tile (the colours are set by CSS from --h)
-  const tile = (s) => `<span class="tile${s.id === 'mine' ? ' mytv' : ''}" style="--h:${s.hue}"><img src="sport-icons/${s.icon}.svg" alt=""></span>`;
+  // A sport's icon file: SVG unless it says otherwise (George's Tennis and Skiing icons are PNGs)
+  const iconSrc = (s) => `sport-icons/${s.iconFile || `${s.icon}.svg`}`;
+  const tile = (s) => `<span class="tile${s.id === 'mine' ? ' mytv' : ''}" style="--h:${s.hue}"><img src="${iconSrc(s)}" alt=""></span>`;
   const COMP = {}, SPORT_OF = {};
   for (const s of SPORTS) for (const c of s.comps) { COMP[c.id] = c; SPORT_OF[c.id] = s.id; }
   const ALL_COMPS = Object.keys(COMP);
@@ -602,7 +603,7 @@
     const tag = `<span class="comp" style="color:${c ? c.color : 'var(--other)'}">${esc(m.label || (c ? c.tag : m.comp))}</span>`;
     const sample = m.sample ? '<span class="comp sample">SAMPLE</span>' : '';
     const sport = SPORT_BY_ID[SPORT_OF[compOf(m)]];
-    const sico = sport ? `<img class="sico" src="sport-icons/${sport.icon}.svg" alt="${esc(sport.name)}" title="${esc(sport.name)}">` : '';
+    const sico = sport ? `<img class="sico" src="${iconSrc(sport)}" alt="${esc(sport.name)}" title="${esc(sport.name)}">` : '';
 
     return `<div class="match${past ? ' past' : ''}">
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}${sico}</div>

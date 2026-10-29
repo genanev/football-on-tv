@@ -5,8 +5,9 @@ Transparent icons (no tile). Place each on a rounded tile in the app.
 Files: svg/ (scalable), png-512/, png-128/
 Keys: mytv, football, motorsport, golf, cricket, darts, rugby, snooker, specials
 
-`skiing.svg` and `tennis.svg` are not from the pack: temporary icons drawn by hand on 29 Oct 2026 (a
-snowy peak with crossed skis; a tennis ball), in the same style, to be replaced by George's final ones.
+`tennis.png` and `skiing.png` are not from the pack: George's own icons (29 Oct 2026), 512×512 PNGs
+with a transparent background, in the same style. They replaced temporary hand-drawn SVGs; the app
+names their file in `SPORTS` (`iconFile`), since every other icon is an SVG.
 
 ## Tile backgrounds (CSS)
 Sports: linear-gradient(165deg, oklch(0.975 0.02 H), oklch(0.9 0.055 H))

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T16:30:21.388Z",
+ "generatedAt": "2026-10-29T17:00:32.444Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4552,
+   "programmes": 4553,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1273,
+   "programmes": 1270,
    "errors": []
   },
   "primeVideo": {
@@ -2733,6 +2733,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -4351,13 +4352,11 @@
    "session": "Morning session",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "TNT Sports 1",
+    "broadcaster": "TNT Sports 3",
     "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
      "TNT Sports 3"
     ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

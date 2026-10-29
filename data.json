@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T12:30:15.298Z",
+ "generatedAt": "2026-10-29T13:00:22.036Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4547,
+   "programmes": 4550,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1275,
+   "programmes": 1276,
    "errors": []
   },
   "primeVideo": {
@@ -235,7 +235,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793278620000",
+   "id": "curling-SPECIAL_CURLING-1793278611671",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -244,7 +244,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-29T12:57:00.000Z",
+   "kickoff": "2026-10-29T12:56:51.671Z",
    "end": "2026-10-29T15:30:00.000Z",
    "timeTbc": false,
    "tv": {

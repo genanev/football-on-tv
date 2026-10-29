@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T21:00:19.810Z",
+ "generatedAt": "2026-10-29T21:30:27.533Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -278,7 +278,7 @@
    "awayShort": "Newcastle",
    "venue": "Hill Dickinson Stadium",
    "status": "live",
-   "homeScore": 2,
+   "homeScore": 3,
    "awayScore": 0,
    "round": "Round of 16",
    "source": "api-football.com",

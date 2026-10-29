@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T01:00:29.527Z",
+ "generatedAt": "2026-10-29T01:30:18.971Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4178,
+   "programmes": 4358,
    "errors": []
   },
   "skyListings": {
@@ -4173,6 +4173,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -4205,7 +4206,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com"
+     "thefa.com",
+     "sky-guide"
     ]
    }
   },
@@ -4228,13 +4230,17 @@
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -4255,11 +4261,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Premier League",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

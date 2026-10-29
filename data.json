@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T00:00:29.162Z",
+ "generatedAt": "2026-10-29T00:30:27.668Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4175,
+   "programmes": 4178,
    "errors": []
   },
   "skyListings": {
@@ -19,23 +19,44 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
-   "events": 163
+   "events": 160
   },
   "footballSource": "api-football",
+  "goldenCheck": {
+   "premierLeague": {
+    "ok": true,
+    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "corrections": 0
+   },
+   "championsLeague": {
+    "ok": true,
+    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "corrections": 0
+   },
+   "europaLeague": {
+    "ok": true,
+    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "corrections": 1
+   },
+   "conferenceLeague": {
+    "ok": true,
+    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "corrections": 0
+   },
+   "efl": {
+    "ok": true,
+    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "corrections": 0
+   },
+   "changed": [
+    "UEL Rennes v Olympiakos Piraeus: Thu 11-05 17:45 -> Wed 11-04 15:30 (uefa.com)"
+   ]
+  },
   "apiFootball": {
    "ok": true,
    "matches": 114,
@@ -62,7 +83,7 @@
    "ok": true,
    "matches": 6
   },
-  "footballChannels": "23/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "24/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -671,7 +692,7 @@
    "away": "Manchester United Women",
    "homeShort": "Everton",
    "awayShort": "Manchester United",
-   "venue": "Goodison Park",
+   "venue": "Rossett Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -954,7 +975,7 @@
    "away": "Nottingham Forest",
    "homeShort": "Brentford",
    "awayShort": "Nottingham Forest",
-   "venue": "Brentford Community Stadium",
+   "venue": "Gtech Community Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1062,7 +1083,7 @@
    "away": "Heart of Midlothian",
    "homeShort": "Dundee Utd",
    "awayShort": "Heart Of Midlothian",
-   "venue": "Tannadice Park",
+   "venue": "CalForth Construction Arena",
    "status": "postponed",
    "homeScore": null,
    "awayScore": null,
@@ -1089,7 +1110,7 @@
    "away": "St Johnstone",
    "homeShort": "Kilmarnock",
    "awayShort": "ST Johnstone",
-   "venue": "Rugby Park",
+   "venue": "The BBSP Stadium Rugby Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -2389,6 +2410,38 @@
    }
   },
   {
+   "id": "af-1636324",
+   "comp": "UEL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-04T15:30:00.000Z",
+   "timeTbc": false,
+   "home": "Rennes",
+   "away": "Olympiacos",
+   "homeShort": "Rennes",
+   "awayShort": "Olympiakos Piraeus",
+   "venue": "Roazhon Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Stage - 4",
+   "source": "api-football.com",
+   "checkedBy": "uefa.com",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1635606",
    "comp": "UCL",
    "label": null,
@@ -3404,33 +3457,6 @@
    }
   },
   {
-   "id": "af-1636324",
-   "comp": "UEL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-05T17:45:00.000Z",
-   "timeTbc": false,
-   "home": "Rennes",
-   "away": "Olympiakos Piraeus",
-   "homeShort": "Rennes",
-   "awayShort": "Olympiakos Piraeus",
-   "venue": "Roazhon Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "League Stage - 4",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
    "id": "af-1636337",
    "comp": "UEL",
    "label": null,
@@ -4220,16 +4246,149 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   }
- ]
+ ],
+ "golden": {
+  "premierLeague": {
+   "ok": true,
+   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "corrections": [],
+   "matches": [
+    {
+     "sourceId": "2645278",
+     "home": "Chelsea",
+     "away": "Manchester United",
+     "kickoff": "2026-10-31T12:30:00.000Z"
+    },
+    {
+     "sourceId": "2645275",
+     "home": "Bournemouth",
+     "away": "Leeds United",
+     "kickoff": "2026-10-31T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645277",
+     "home": "Brentford",
+     "away": "Nottingham Forest",
+     "kickoff": "2026-10-31T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645279",
+     "home": "Coventry City",
+     "away": "Sunderland",
+     "kickoff": "2026-10-31T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645280",
+     "home": "Hull City",
+     "away": "Ipswich Town",
+     "kickoff": "2026-10-31T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645282",
+     "home": "Manchester City",
+     "away": "Brighton and Hove Albion",
+     "kickoff": "2026-10-31T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645284",
+     "home": "Tottenham Hotspur",
+     "away": "Crystal Palace",
+     "kickoff": "2026-10-31T17:30:00.000Z"
+    },
+    {
+     "sourceId": "2645276",
+     "home": "Aston Villa",
+     "away": "Fulham",
+     "kickoff": "2026-10-31T20:00:00.000Z"
+    },
+    {
+     "sourceId": "2645281",
+     "home": "Liverpool",
+     "away": "Arsenal",
+     "kickoff": "2026-11-01T16:30:00.000Z"
+    },
+    {
+     "sourceId": "2645283",
+     "home": "Newcastle United",
+     "away": "Everton",
+     "kickoff": "2026-11-02T20:00:00.000Z"
+    },
+    {
+     "sourceId": "2645288",
+     "home": "Everton",
+     "away": "Coventry City",
+     "kickoff": "2026-11-06T20:00:00.000Z"
+    },
+    {
+     "sourceId": "2645291",
+     "home": "Leeds United",
+     "away": "Tottenham Hotspur",
+     "kickoff": "2026-11-07T12:30:00.000Z"
+    },
+    {
+     "sourceId": "2645285",
+     "home": "Arsenal",
+     "away": "Hull City",
+     "kickoff": "2026-11-07T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645289",
+     "home": "Fulham",
+     "away": "Newcastle United",
+     "kickoff": "2026-11-07T15:00:00.000Z"
+    },
+    {
+     "sourceId": "2645293",
+     "home": "Nottingham Forest",
+     "away": "Manchester City",
+     "kickoff": "2026-11-07T17:30:00.000Z"
+    }
+   ]
+  },
+  "championsLeague": {
+   "ok": true,
+   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "corrections": []
+  },
+  "europaLeague": {
+   "ok": true,
+   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "corrections": [
+    {
+     "id": "af-1636324",
+     "was": {
+      "kickoff": "2026-11-05T17:45:00.000Z",
+      "status": "upcoming"
+     },
+     "kickoff": "2026-11-04T15:30:00.000Z",
+     "status": "upcoming",
+     "timeTbc": false,
+     "source": "uefa.com"
+    }
+   ]
+  },
+  "conferenceLeague": {
+   "ok": true,
+   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "corrections": []
+  },
+  "efl": {
+   "ok": true,
+   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "corrections": []
+  }
+ }
 }

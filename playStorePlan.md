@@ -166,7 +166,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the trial terms beside it.
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [ ] **Your public details.** Paid apps show the seller's contact details. Decide whether to use your home address or a virtual business address (≈ £5–15 a month), and set up a support email on the domain.
-- [ ] **Sole trader or limited company before opening the store accounts?** George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
+- [x] **Sole trader or limited company before opening the store accounts?** Decided 29 Oct 2026: a **personal** Google Play account, as a sole trader (see the decisions log). George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
   - skips the 12-tester closed test;
   - shows the company's address instead of yours;
   - needs a registered company (£100) and a free D-U-N-S number (can take weeks);
@@ -222,7 +222,11 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
-- [ ] Create the **Google Play developer account** (personal, $25). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
+- [ ] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
+  - Use a Google account just for the app, in your legal name, with two-step sign-in.
+  - Have ready: passport or driving licence, possibly a bank statement or bill as proof of address, a card for the fee, your mobile number, and the Pixel 9 (new personal accounts verify a real Android phone through the Play Console app).
+  - Sign up at play.google.com/console/signup and choose "Yourself". Public developer name: **Telly Fixtures**. Contact email: the new Gmail until the support address on the domain works.
+  - Check what each screen says will be shown publicly (see "Your public details" in Phase 0).
 - [ ] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Get your Pixel 9 ready for testing (developer options, USB debugging).
 - [ ] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it.
 - [ ] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …".
@@ -384,3 +388,4 @@ Record decisions here as they're made (date, what, why).
 - 20 Oct 2026: **More football, from API-Football:** the Scottish Premiership (every game), and the Conference League and Women's Super League (televised games only). Reason: wider appeal at no extra data cost (one request each per update, well within the Pro plan).
 - 29 Oct 2026: **The official ("golden") football feeds check API-Football once a day and win where they disagree.** Reason: API-Football was two days late with a game UEFA moved (Rennes v Olympiacos, 28 Oct). Once a day, rather than every update, to keep our footprint on those websites small. The old plan to retire them is dropped.
 - 19 Oct 2026: **Name: Telly Fixtures; app ID `uk.co.tellyfixtures`; main domain tellyfixtures.co.uk.** Reason: says what the app does, covers every sport, friendly and British, distinctive (no similar app found), and all its domains were free. Considered: Derby Time(s) (exciting, but football or horse racing only, and confusable with Derby and the *Derbyshire Times*); TV Lineup (both words too generic); Front Row (crowded name); On Now (too close to Sky's NOW).
+- 29 Oct 2026: **A personal Google Play developer account**, not an organisation one. Reason: George is a sole trader, and an organisation account needs a registered company and a D-U-N-S number first. Accepted in exchange: the 12-tester, 14-day closed test before launch, and a personal account can't become an organisation account later (the app would have to be transferred to a new account if a company is formed).

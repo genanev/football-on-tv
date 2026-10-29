@@ -549,8 +549,8 @@
       const onNow = playing && now >= ko.getTime() && (now < end || (m.status === 'live' && now < maxEnd));
       const staleLive = m.status === 'live' && !onNow && now >= end; // over, but the result isn't in yet
       past = m.status === 'finished' || (!onNow && now >= end);
+      // No "FT" (George, 29 Oct 2026): other sports have no finished label; greyed out is enough
       if (onNow) status = '<span class="status live">LIVE NOW</span>';
-      else if (m.status === 'finished') status = '<span class="status">FT</span>';
       else if (m.status === 'postponed') status = '<span class="status">P–P</span>';
       const hasScore = m.homeScore != null && m.awayScore != null && m.status !== 'upcoming' && !staleLive;
       const score = hasScore ? `<span class="score">${m.homeScore}–${m.awayScore}</span>` : '';
@@ -565,9 +565,13 @@
     }
     // George's rule: a channel pill and a note never appear together - a note only explains a
     // missing channel. "...to be confirmed" also means nothing once the event has started
-    // (all-day "TBC" entries keep it: their time is a placeholder).
+    // (all-day "TBC" entries keep it: their time is a placeholder). A football game that is over
+    // with no channel wasn't on UK TV: it says so, like the 3pm blackout games (George, 29 Oct
+    // 2026: a bare row left too much white space, e.g. midweek Scottish games).
     const started = past || (!m.allDay && now >= ko.getTime());
-    if (tv.note && !tvHtml && !(started && /confirm/i.test(tv.note))) tvHtml += `<span class="note ${/confirm/i.test(tv.note) ? 'tbc' : ''}">${esc(tv.note)}</span>`;
+    let note = tv.note;
+    if (m.kind === 'match' && past && m.status !== 'postponed' && /confirm/i.test(note || '')) note = 'Not shown live on UK TV';
+    if (note && !tvHtml && !(started && /confirm/i.test(note))) tvHtml += `<span class="note ${/confirm/i.test(note) ? 'tbc' : ''}">${esc(note)}</span>`;
 
     const also = tv.alsoOn && tv.alsoOn.length ? `<div class="also">Also on ${esc(tv.alsoOn.join(', '))}</div>` : '';
     const warn = tv.conflict ? `<div class="warn">Sources disagree – the Premier League lists ${esc(tv.broadcaster)}. Double-check before kick-off.</div>` : '';

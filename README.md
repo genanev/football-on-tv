@@ -46,7 +46,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 | | Source | Accessed by |
 |---|---|---|
 | **Fixtures** | All football (Premier League, Champions League, Europa League, Conference League, Championship, Scottish Premiership, WSL, FA Cup, League Cup): API-Football | a paid, documented data service (Pro plan, about $19 a month) |
-| | Backup for football: the Premier League, UEFA, EFL and FA feeds | their data feeds and pages; used if API-Football is switched off |
+| | Check and backup for football: the Premier League, UEFA, EFL and FA feeds | their data feeds and pages; read once a day to check API-Football (they win if the two disagree, e.g. a moved game), and used in full if API-Football is switched off |
 | | Formula 1 (formula1.com), Formula 2 (fiaformula2.com), Formula 3 (fiaformula3.com) | their data feeds (API) |
 | | MotoGP (motogp.com) | its data feed (API) |
 | | Darts (pdc.tv), Snooker (wst.tv) | their data feeds (API) |
@@ -117,7 +117,7 @@ The "Run workflow" button on GitHub's Actions tab still works as a manual backup
 - **A yellow banner** means a source couldn't be read on the last update. Everything else still works, and channels already confirmed are kept.
 - **Finding out what happened:** in Google Cloud, open Cloud Run → **Jobs** → `football-update` → **Executions** → a run → **Logs**; it prints the report for each source. The same report is saved in `data.json` under `report`.
 - **A channel says "TV channel to be confirmed"** when no broadcaster's listing has confirmed it yet. Broadcasters publish their picks a few days ahead.
-- **Football looks wrong** (wrong times, missing games): the report's `apiFootball` entry says whether API-Football answered. `scripts/compare-api-football.mjs` compares it with the official feeds, and `cloud/SETUP.md` explains how to switch back to them.
+- **Football looks wrong** (wrong times, missing games): the report's `apiFootball` entry says whether API-Football answered, and `goldenCheck` says when the official feeds last checked it and which games they corrected (`changed`). `scripts/compare-api-football.mjs` compares it with the official feeds, and `cloud/SETUP.md` explains how to switch back to them.
 - **Updates stopped:** the newest "Update fixtures" commit on GitHub should be under about 40 minutes old. If not, check in Google Cloud that the Cloud Scheduler job `football-update-trigger` is enabled and that the latest job execution didn't fail with a GitHub permission error (the key expires after a year; see `cloud/SETUP.md`).
 
 ## One-off setup (for a new copy)

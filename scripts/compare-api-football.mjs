@@ -10,7 +10,8 @@
 
 import { ukDate, ukMidnight, ukHHMM, ukWeekday } from './lib/util.mjs';
 import { getJSON } from './lib/util.mjs';
-import { mapPlMatch, fetchUefa, teamSim, normTeam } from './sources/football.mjs';
+import { mapPlMatch, fetchUefa, normTeam } from './sources/football.mjs';
+import { pairMatches } from './sources/goldenCheck.mjs';
 import { fetchEfl } from './sources/efl.mjs';
 import { fetchFaCup } from './sources/facup.mjs';
 import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
@@ -65,18 +66,10 @@ const officialAll = Object.values(official).flat();
 const when = (iso) => { const t = Date.parse(iso); return `${ukWeekday(t)} ${ukDate(t).slice(5)} ${ukHHMM(t)}`; };
 const name = (m) => `${m.home} v ${m.away}`;
 
-const used = new Set();
-const rows = { same: 0, time: [], status: [], score: [], names: [], missing: [], extra: [] };
-for (const o of officialAll) {
-  let best = null, bestScore = 0;
-  for (const a of afMatches) {
-    if (used.has(a) || group(a) !== group(o)) continue;
-    if (Math.abs(Date.parse(a.kickoff) - Date.parse(o.kickoff)) > 4 * 86400000) continue;
-    const s = Math.min(teamSim(o.home, a.home), teamSim(o.away, a.away));
-    if (s >= 0.5 && s > bestScore) { best = a; bestScore = s; }
-  }
-  if (!best) { rows.missing.push(`${group(o)}  ${when(o.kickoff)}  ${name(o)}`); continue; }
-  used.add(best);
+// Paired the same way as the build's daily check (goldenCheck.mjs)
+const { pairs, missing, extra } = pairMatches(officialAll, afMatches);
+const rows = { same: 0, time: [], status: [], score: [], names: [], missing: missing.map(o => `${group(o)}  ${when(o.kickoff)}  ${name(o)}`), extra: [] };
+for (const { o, a: best } of pairs) {
   let differs = false;
   if (best.kickoff !== o.kickoff) { differs = true; rows.time.push(`${group(o)}  ${name(o)}: official ${when(o.kickoff)}, API-Football ${when(best.kickoff)}`); }
   if (best.status !== o.status) { differs = true; rows.status.push(`${group(o)}  ${name(o)}: official ${o.status}, API-Football ${best.status}`); }
@@ -88,8 +81,8 @@ for (const o of officialAll) {
   }
   if (!differs) rows.same++;
 }
-for (const a of afMatches) {
-  if (used.has(a) || a.comp === 'WSL') continue;
+for (const a of extra) {
+  if (a.comp === 'WSL') continue;
   // The FA page lists televised ties only, so other FA Cup ties are expected here
   const why = group(a) === 'FA Cup' ? '  (expected: thefa.com lists televised ties only)' : '';
   rows.extra.push(`${group(a)}  ${when(a.kickoff)}  ${name(a)}${why}`);

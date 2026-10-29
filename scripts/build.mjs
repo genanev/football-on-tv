@@ -4,6 +4,8 @@
 //   All football fixtures and scores   sources/apiFootball.mjs when API_FOOTBALL_KEY is set
 //                                      (George's decision, 19 Oct 2026); otherwise the official
 //                                      feeds below. FOOTBALL_SOURCE=official|api-football forces one.
+//                                      With API-Football, the official feeds are read once a day to
+//                                      check it, and win where they disagree (sources/goldenCheck.mjs).
 //   Premier League, Champions League,  sources/football.mjs (official feeds)
 //   Europa League
 //   Championship, League Cup           sources/efl.mjs (official feed)
@@ -29,6 +31,7 @@ import { footballTv } from './sources/footballTv.mjs';
 import { fetchEfl, eflEvents, eflSeason } from './sources/efl.mjs';
 import { fetchFaCup, faCupEvents, faChannelFor } from './sources/facup.mjs';
 import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
+import { checkDue, findCorrections, applyCorrections } from './sources/goldenCheck.mjs';
 import { unknownClubs } from './sources/teamNames.mjs';
 import { fetchF1, fetchF2, fetchF3, motorsportTv } from './sources/motorsport.mjs';
 import { fetchMotoGp, motoGpTv } from './sources/motogp.mjs';
@@ -66,6 +69,18 @@ export const SHOW_SCORES = process.env.SHOW_SCORES !== 'off';
 const AF_ONLY = ['UECL', 'WSL', 'SCOT'];
 const TELEVISED_ONLY = new Set(['UECL', 'WSL']);
 const AF_ONLY_REPORT = { UECL: 'conferenceLeague', WSL: 'wsl', SCOT: 'scottishPremiership' };
+
+/**
+ * The official feeds API-Football is checked against once a day (goldenCheck.mjs; George, 29 Oct
+ * 2026): their key in data.json's `golden`, the competitions each covers and where it comes from.
+ */
+const GOLDEN = {
+  premierLeague: { groups: ['PL'], source: 'premierleague.com' },
+  championsLeague: { groups: ['UCL'], source: 'uefa.com' },
+  europaLeague: { groups: ['UEL'], source: 'uefa.com' },
+  conferenceLeague: { groups: ['UECL'], source: 'uefa.com' },
+  efl: { groups: ['CHAMP', 'EFL Cup'], source: 'efl.com' },
+};
 
 const ok = (r) => r.status === 'fulfilled';
 const fail = (r) => ({ ok: false, error: r.reason?.message || String(r.reason), ...(r.reason?.wrongRegion ? { wrongRegion: true } : {}) });
@@ -111,19 +126,22 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   const lastDay = ukDate(windowEnd - 3600000);
   const inWindow = (e) => { const t = Date.parse(e.kickoff); return t >= windowStart && t < windowEnd; };
   const useAf = footballSource === 'api-football';
-  const skip = Promise.resolve([]); // official football feed not needed with API-Football
+  const skip = Promise.resolve([]); // official football feed not needed on this update
 
-  // With API-Football, the Premier League feed is still read, but only to look up the league's own
-  // UK broadcaster for each match (its broadcast feed is keyed by the league's match ids), and the
-  // FA's page only for its "Live on" TV picks.
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes] = await Promise.allSettled([
-    fetchPremierLeague(now), useAf ? skip : fetchChampionsLeague(now, DAYS_AHEAD),
-    useAf ? skip : fetchUefa(now, DAYS_AHEAD, 'UEL'), useAf ? skip : fetchEfl(today, lastDay, eflSeason(now)), fetchFaCup(),
+  // With API-Football, the official fixture feeds are read once a day only, to check it
+  // (goldenCheck.mjs); the Premier League's also gives the league's match ids, which its UK
+  // broadcaster feed is keyed by. The FA's page is read every time, for its "Live on" TV picks.
+  const prevGolden = previous?.golden || {};
+  const due = Object.fromEntries(Object.keys(GOLDEN).map(k => [k, !useAf || checkDue(prevGolden[k], now)]));
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes] = await Promise.allSettled([
+    due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
+    due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
     fetchF1(), fetchF2(), fetchF3(), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
     fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now), fetchPremierSports(now),
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
     useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
+    useAf && due.conferenceLeague ? fetchUefa(now, DAYS_AHEAD, 'UECL') : skip, // no official-mode Conference League
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -145,19 +163,45 @@ export async function build(now = Date.now(), previous = null, { footballSource 
 
   // ---- football fixtures: API-Football, or the official feeds
   report.footballSource = footballSource;
-  const plFeed = ok(plRes) ? plRes.value.filter(inWindow) : [];
   const faPage = ok(faRes) ? faRes.value.filter(inWindow) : null;
-  let pl, ucl, uel, efl, fa, more = [];
+  let pl, ucl, uel, efl, fa, plFeed, more = [];
   let eflError = null, faError = null;
   let errorOf = () => null;
+  // In official mode the daily check isn't made; the last one is kept for the next API-Football update
+  let golden = useAf ? {} : previous?.golden;
   if (useAf) {
     const af = ok(afRes) ? afRes.value : null;
+    // One report entry per competition as before, so the app's banners still say what's missing
+    errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : fail(afRes).error);
+    const entry = (name, n) => (errorOf(name) ? { ok: false, error: errorOf(name) } : { ok: true, matches: n });
+
+    // The daily check against the official feeds (goldenCheck.mjs): a feed read on this update is
+    // compared with API-Football now; the others keep their last findings. Nothing is compared
+    // when API-Football failed for that competition.
+    const officialRes = { premierLeague: plRes, championsLeague: uclRes, europaLeague: uelRes, conferenceLeague: ueclRes, efl: eflRes };
+    for (const [key, { groups, source }] of Object.entries(GOLDEN)) {
+      const res = officialRes[key], last = prevGolden[key];
+      if (!due[key] || groups.some(errorOf)) { if (last) golden[key] = last; continue; }
+      if (!ok(res)) { golden[key] = { corrections: [], ...last, ok: false, error: fail(res).error }; continue; }
+      golden[key] = { ok: true, checkedAt: new Date(now).toISOString(), corrections: findCorrections(res.value, af.matches, source, { within: inWindow }) };
+      // the PL's match ids until the next check: today's window plus the day it moves on by
+      const untilNextCheck = (m) => { const t = Date.parse(m.kickoff); return t >= windowStart && t < windowEnd + 86400000; };
+      if (key === 'premierLeague') golden[key].matches = res.value.filter(untilNextCheck).map(({ sourceId, home, away, kickoff }) => ({ sourceId, home, away, kickoff }));
+    }
+    // The FA's page is read every time: its televised ties' kick-offs win too
+    const faFixes = af && faPage && !errorOf('FA Cup') ? findCorrections(faPage, af.matches, 'thefa.com', { status: false, adds: false }) : [];
+    const changed = af ? [...Object.values(golden).flatMap(g => applyCorrections(af.matches, g.corrections)), ...applyCorrections(af.matches, faFixes)] : [];
+    report.goldenCheck = {
+      ...Object.fromEntries(Object.entries(golden).map(([k, g]) => [k, g.ok
+        ? { ok: true, checkedAt: g.checkedAt, corrections: g.corrections.length }
+        : { ok: false, error: g.error, lastChecked: g.checkedAt || null }])),
+      changed,
+    };
+    plFeed = (golden.premierLeague?.matches || []).filter(inWindow);
+
     const all = af ? af.matches.filter(inWindow) : [];
     // unknownClubs: league clubs shown by API-Football's short name (add them to teamNames.mjs)
-    report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors, unknownClubs: unknownClubs(all) } : fail(afRes);
-    // One report entry per competition as before, so the app's banners still say what's missing
-    errorOf = (name) => (af ? af.errors.find(e => e.startsWith(`${name}:`)) || null : report.apiFootball.error);
-    const entry = (name, n) => (errorOf(name) ? { ok: false, error: errorOf(name) } : { ok: true, matches: n });
+    report.apiFootball = af ? { ok: true, matches: af.matches.length, errors: af.errors, unknownClubs: unknownClubs(all.filter(m => m.source === 'api-football.com')) } : fail(afRes);
     pl = all.filter(m => m.comp === 'PL');
     ucl = all.filter(m => m.comp === 'UCL');
     uel = all.filter(m => m.comp === 'UEL');
@@ -171,7 +215,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     faError = errorOf('FA Cup');
     report.faPage = faPage ? { ok: true, televisedTies: faPage.length } : fail(faRes);
   } else {
-    pl = plFeed;
+    pl = plFeed = ok(plRes) ? plRes.value.filter(inWindow) : [];
     report.premierLeague = ok(plRes) ? { ok: true, matches: pl.length } : fail(plRes);
     ucl = ok(uclRes) ? uclRes.value.filter(inWindow) : [];
     report.championsLeague = ok(uclRes) ? { ok: true, matches: ucl.length } : fail(uclRes);
@@ -198,7 +242,9 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     } catch (e) {
       report.premierLeagueTv = { ok: false, error: e.message };
     }
-  } else if (useAf && pl.length && !ok(plRes)) report.premierLeagueTv = fail(plRes);
+  } else if (useAf && pl.length && golden.premierLeague?.ok === false) {
+    report.premierLeagueTv = { ok: false, error: golden.premierLeague.error }; // no match ids yet
+  }
 
   // Channels from the Sky TV guide, Sky Sports' page and TNT's schedule (footballTv.mjs)
   const events = [];
@@ -282,7 +328,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   keepKnownChannels(events, previous, { report, now });
   if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
   report.scores = showScores ? 'on' : 'off';
-  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events };
+  // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it
+  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events, golden };
 }
 
 const isMain = import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('build.mjs');

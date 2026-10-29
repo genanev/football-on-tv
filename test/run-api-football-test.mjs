@@ -9,6 +9,8 @@
 //   fixtures/apifootball-fixtures-2026-10-19.json   /fixtures for 19-27 Oct 2026 (Pro plan, evening
 //     of 19 Oct), the same plus 848 Conference League and 44 WSL (added for the new app). The clocks
 //     go back on Sunday 25 Oct.
+// The build checks are made with the other sources mocked, including the once-a-day check against
+// the official feeds (goldenCheck.mjs), whose answers are hand-written in each feed's format.
 //
 //   node test/run-api-football-test.mjs
 
@@ -50,21 +52,46 @@ const skyDay = (url) => {
 const FA_PAGE = `<table class="gTable"><tr><td class="headl">Tuesday 20 October 2026</td><td class="headr">Fourth Round Qualifying</td></tr>
 <tr class="even"><td class="cOne"><time datetime=">19:45">19:45</time></td><td class="cThree">Harrogate Town AFC</td><td class="cFive">Bury</td><td class="cSeven">Live on BBC Sport</td></tr></table>`;
 // The Premier League's feed: one match, with its UK broadcaster in the league's broadcast feed
-const PL_WEEK = { data: [{ matchId: 999, kickoff: '2026-10-25 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Crystal Palace' }, awayTeam: { name: 'Newcastle United' } }] };
+// (and, made up for the daily check, Sunderland v Leeds an hour later than API-Football has it,
+// like API-Football's PL games on the day the clocks went back in 2024)
+const PL_WEEK = { data: [
+  { matchId: 999, kickoff: '2026-10-25 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Crystal Palace' }, awayTeam: { name: 'Newcastle United' } },
+  { matchId: 998, kickoff: '2026-10-25 17:30:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 9, homeTeam: { name: 'Sunderland' }, awayTeam: { name: 'Leeds United' } },
+  // beyond the app's window (the real feed reaches weeks ahead): not "missing" from API-Football
+  { matchId: 997, kickoff: '2026-11-08 14:00:00', kickoffTimezone: 'GMT', period: 'PreMatch', matchWeek: 11, homeTeam: { name: 'Arsenal' }, awayTeam: { name: 'Hull City' } },
+] };
 const PL_TV = { content: [{ contentReference: { id: 999 }, channels: [{ info: { name: 'Sky Sports', channelTypes: [{ mediaType: 'VIDEO' }], broadcaster: { restrictedCountries: ['GB'] } } }] }] };
-let afDown = false, psDown = false, psForeign = false;
+// The official feeds API-Football is checked against once a day (goldenCheck.mjs), in each feed's
+// format, made up after the real case of 28 Oct 2026 (UEFA moved Rennes v Olympiacos a day earlier;
+// API-Football still had the old date): Juventus v Rennes moved from Thursday to Wednesday;
+// Lech Poznań v Sunderland as API-Football has it. The EFL: Bolton v Middlesbrough postponed, a
+// game API-Football lacks (Leicester v Sheffield Wednesday), Stoke v Bristol City as it has it.
+const UEFA_UEL = [
+  { id: 2047001, kickOffTime: { dateTime: '2026-10-21T15:30:00Z' }, status: 'UPCOMING', homeTeam: { internationalName: 'Juventus' }, awayTeam: { internationalName: 'Rennes' } },
+  { id: 2047002, kickOffTime: { dateTime: '2026-10-22T16:45:00Z' }, status: 'UPCOMING', homeTeam: { internationalName: 'Lech Poznań' }, awayTeam: { internationalName: 'Sunderland' } },
+];
+const eflMatch = (id, utc, period, home, away) => ({ id, attributes: { competitionID: 10, kickOffDateUTC: utc, matchPeriod: period, homeTeam: { name: home }, awayTeam: { name: away } } });
+const EFL_FEED = { data: [
+  eflMatch('e1', '2026-10-23 19:00:00', 'Postponed', 'Bolton Wanderers', 'Middlesbrough'),
+  eflMatch('e2', '2026-10-24 14:00:00', 'PreMatch', 'Leicester City', 'Sheffield Wednesday'),
+  eflMatch('e3', '2026-10-24 14:00:00', 'PreMatch', 'Stoke City', 'Bristol City'),
+], links: {} };
+let afDown = false, psDown = false, psForeign = false, uefaDown = false, faLate = false;
+let officialReads = []; // requests to the official fixture feeds (read once a day with API-Football)
 // Premier Sports' fixtures page (streaming only, not in Sky's guide), trimmed; see the file's comment
 const PS_PAGE = await readFile(new URL('fixtures/premiersports-upcoming-fixtures-2026-10-20.html', import.meta.url), 'utf8');
 const ok = (b) => ({ ok: true, status: 200, json: async () => b, text: async () => (typeof b === 'string' ? b : JSON.stringify(b)) });
 function otherSource(url) {
   if (url.includes('api-sports.io')) return afDown ? { ok: false, status: 500 } : null;
   if (url.includes('awk.epgsky.com')) return ok(skyDay(url));
-  if (url.includes('thefa.com')) return ok(FA_PAGE);
+  if (url.includes('thefa.com')) return ok(faLate ? FA_PAGE.replace(/19:45/g, '20:00') : FA_PAGE);
   if (url.includes('premiersports.com')) return psDown ? { ok: false, status: 503 } : ok(psForeign ? '<html><body>Premier Sports is not available in your region</body></html>' : PS_PAGE);
+  if (/current-gameweek|premier-league-prod\.pulselive\.com|match\.uefa\.com|eflservices\.co\.uk/.test(url)) officialReads.push(url);
   if (url.includes('current-gameweek')) return ok({ matchweek: 9 });
   if (url.includes('pulselive.com')) return ok(/matchweek=9&/.test(url) ? PL_WEEK : { data: [] });
   if (url.includes('api.premierleague.com/broadcasting')) return ok(PL_TV);
-  if (url.includes('match.uefa.com') || url.includes('eflservices.co.uk')) throw new Error(`official feed read with API-Football: ${url}`);
+  if (url.includes('match.uefa.com')) return uefaDown ? { ok: false, status: 503 } : ok(/competitionId=14&/.test(url) ? UEFA_UEL : []);
+  if (url.includes('eflservices.co.uk')) return ok(EFL_FEED);
   return { ok: false, status: 404 }; // other sports: covered by their own tests
 }
 
@@ -247,8 +274,9 @@ psForeign = false;
 assert.equal(usRun.report.premierSports.ok, false);
 assert.equal(usRun.report.premierSports.wrongRegion, true);
 assert.deepEqual(usRun.events.find(e => e.comp === 'SCOT' && e.homeShort === 'Motherwell').tv.channels, ['Premier Sports 1']);
-// Every football event is from API-Football, with its kick-off and score
-assert.ok(data.events.filter(e => e.kind === 'match').every(e => e.source === 'api-football.com'));
+// Every football event is from API-Football, with its kick-off and score (except one game it lacks,
+// added from the EFL's feed by the daily check, below)
+assert.deepEqual(data.events.filter(e => e.kind === 'match' && e.source !== 'api-football.com').map(e => `${e.home} (${e.source})`), ['Leicester City (efl.com)']);
 assert.deepEqual([ev('PL', 'Tottenham').status, ev('PL', 'Tottenham').homeScore, ev('PL', 'Tottenham').awayScore], ['finished', 3, 1]);
 // Channel from the Sky guide
 assert.deepEqual(ev('PL', 'Chelsea').tv.channels, ['Sky Sports Main Event']);
@@ -285,5 +313,78 @@ assert.equal(down.report.apiFootball.ok, false);
 assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'conferenceLeague', 'wsl', 'scottishPremiership'].every(k => down.report[k].ok === false));
 assert.equal(down.events.filter(e => e.kind === 'match').length, 0);
 assert.equal(down.report.tvGuide.ok, true);
+
+// ---------- the daily check against the official feeds (goldenCheck.mjs; George, 29 Oct 2026)
+// The first update (no earlier check) reads them all; where they disagree with API-Football, they win
+const g = data.report.goldenCheck;
+assert.deepEqual(Object.fromEntries(Object.entries(g).filter(([k]) => k !== 'changed').map(([k, v]) => [k, `${v.ok} ${v.corrections}`])),
+  { premierLeague: 'true 1', championsLeague: 'true 0', europaLeague: 'true 1', conferenceLeague: 'true 0', efl: 'true 2' });
+assert.deepEqual(g.changed, [
+  'PL Sunderland v Leeds United: Sun 10-25 16:30 -> Sun 10-25 17:30 (premierleague.com)',
+  'UEL Juventus v Rennes: Thu 10-22 17:45 -> Wed 10-21 16:30 (uefa.com)',
+  'CHAMP Bolton Wanderers v Middlesbrough: upcoming -> postponed (efl.com)',
+  'CHAMP Leicester City v Sheffield Wednesday: added, Sat 10-24 15:00 (efl.com)',
+]);
+const rennes = (d) => d.events.find(e => e.comp === 'UEL' && e.awayShort === 'Rennes');
+assert.deepEqual([rennes(data).kickoff, rennes(data).checkedBy, rennes(data).source], ['2026-10-21T15:30:00.000Z', 'uefa.com', 'api-football.com']);
+assert.equal(ev('PL', 'Sunderland').kickoff, '2026-10-25T17:30:00.000Z');
+assert.equal(ev('CHAMP', 'Bolton').status, 'postponed');
+const leicester = data.events.find(e => e.comp === 'CHAMP' && e.home === 'Leicester City');
+assert.deepEqual([leicester.away, leicester.tv.note], ['Sheffield Wednesday', 'Not shown live on UK TV']); // Sat 15:00
+assert.equal(ev('UEL', 'Lech Poznan').checkedBy, undefined); // agrees: unchanged
+assert.ok(officialReads.some(u => u.includes('match.uefa.com')) && officialReads.some(u => u.includes('eflservices')));
+// What the check found is saved in data.json, with the PL's match ids for its broadcaster feed
+assert.deepEqual(Object.keys(data.golden), ['premierLeague', 'championsLeague', 'europaLeague', 'conferenceLeague', 'efl']);
+assert.ok(data.golden.premierLeague.matches.some(m => m.sourceId === '999'));
+assert.ok(!data.golden.premierLeague.matches.some(m => m.sourceId === '997')); // beyond the window
+
+// The next update, 30 minutes later: no official feed is read, yesterday's findings still apply,
+// and the PL broadcaster is still found (match ids from the saved check)
+officialReads = [];
+const next = await build(NOW + 30 * 60000, data, { footballSource: 'api-football' });
+assert.deepEqual(officialReads, []);
+assert.equal(rennes(next).kickoff, '2026-10-21T15:30:00.000Z');
+assert.equal(next.events.find(e => e.comp === 'CHAMP' && e.homeShort === 'Bolton').status, 'postponed');
+assert.ok(next.events.some(e => e.home === 'Leicester City'));
+assert.equal(next.events.find(e => e.comp === 'PL' && e.homeShort === 'Crystal Palace').tv.broadcaster, 'Sky Sports');
+assert.equal(next.report.goldenCheck.europaLeague.checkedAt, data.golden.europaLeague.checkedAt);
+assert.deepEqual(next.golden, data.golden);
+
+// API-Football has changed the game since the check: it has newer news, so its kick-off stands
+const changedSince = structuredClone(data);
+changedSince.golden.europaLeague.corrections[0].was.kickoff = '2026-10-22T19:00:00.000Z';
+assert.equal(rennes(await build(NOW + 30 * 60000, changedSince, { footballSource: 'api-football' })).kickoff, '2026-10-22T16:45:00.000Z');
+
+// Once a day: not before 06:00 UK the next day, then on the first update from 06:00
+officialReads = [];
+await build(Date.parse('2026-10-20T04:30:00Z'), data, { footballSource: 'api-football' }); // 05:30 UK
+assert.deepEqual(officialReads, []);
+const six = await build(Date.parse('2026-10-20T05:00:00Z'), data, { footballSource: 'api-football' }); // 06:00 UK
+assert.ok(officialReads.some(u => u.includes('match.uefa.com')));
+assert.equal(six.golden.europaLeague.checkedAt, '2026-10-20T05:00:00.000Z');
+
+// A feed fails at its check: its last findings still apply, and it is tried again on the next update
+uefaDown = true;
+const failed = await build(Date.parse('2026-10-20T05:00:00Z'), data, { footballSource: 'api-football' });
+uefaDown = false;
+assert.equal(failed.report.goldenCheck.europaLeague.ok, false);
+assert.equal(failed.report.goldenCheck.europaLeague.lastChecked, data.golden.europaLeague.checkedAt);
+assert.equal(failed.report.goldenCheck.efl.ok, true);
+assert.equal(rennes(failed).kickoff, '2026-10-21T15:30:00.000Z');
+officialReads = [];
+const retried = await build(Date.parse('2026-10-20T05:30:00Z'), failed, { footballSource: 'api-football' });
+assert.ok(officialReads.some(u => u.includes('match.uefa.com')) && !officialReads.some(u => u.includes('eflservices')));
+assert.equal(retried.golden.europaLeague.ok, true);
+
+// The FA's page is read on every update: its televised ties' kick-offs win straight away
+faLate = true;
+const faMoved = await build(NOW + 30 * 60000, data, { footballSource: 'api-football' });
+faLate = false;
+const harrogate = faMoved.events.find(e => e.label === 'FA Cup' && e.homeShort.startsWith('Harrogate'));
+assert.deepEqual([harrogate.kickoff, harrogate.checkedBy, harrogate.tv.channels[0]], ['2026-10-20T19:00:00.000Z', 'thefa.com', 'BBC Sport']);
+
+// The official-feeds mode (GitHub's backup button) doesn't check, but keeps the last check for the
+// next API-Football update
+assert.deepEqual((await build(NOW + 30 * 60000, data, { footballSource: 'official' })).golden, data.golden);
 
 console.log('All API-Football tests passed');

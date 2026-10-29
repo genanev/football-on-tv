@@ -1,8 +1,9 @@
 // API-Football: fixtures and scores for every football competition (PL, Championship, UCL, UEL,
 // Conference League, WSL, Scottish Premiership, FA Cup, League Cup), from one documented,
-// paid-for service (George's decision, 19 Oct 2026). It replaces the four official feeds
-// (premierleague.com, uefa.com, efl.com, thefa.com) once a side-by-side comparison has shown it
-// agrees with them (scripts/compare-api-football.mjs).
+// paid-for service (George's decision, 19 Oct 2026), in place of the four official feeds
+// (premierleague.com, uefa.com, efl.com, thefa.com) on every update. Those are still read once a
+// day to check it, and win where they disagree (goldenCheck.mjs): it can be slow to pick up a
+// moved game. scripts/compare-api-football.mjs lists every difference for a week.
 //
 // Source
 //   v3.football.api-sports.io/fixtures?league=<id>&season=<YYYY>&from=&to=&timezone=UTC

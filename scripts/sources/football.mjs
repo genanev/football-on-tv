@@ -204,7 +204,7 @@ export function mapUefaMatch(m, comp = 'UCL') {
   };
 }
 
-const UEFA_COMPETITION = { UCL: 1, UEL: 14, UECL: 2019 }; // UECL: only compare-api-football.mjs uses it
+const UEFA_COMPETITION = { UCL: 1, UEL: 14, UECL: 2019 }; // UECL: only to check API-Football (goldenCheck.mjs)
 
 export async function fetchUefa(now, daysAhead, comp = 'UCL') {
   const from = ukDate(now - 86400000);

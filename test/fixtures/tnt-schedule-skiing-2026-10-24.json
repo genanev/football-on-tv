@@ -1,0 +1,245 @@
+{
+ "2026-10-24": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31778807c0ch502",
+       "startTime": "2026-10-24T07:59:58.591Z",
+       "endTime": "2026-10-24T09:57:20.456Z",
+       "title": "Sölden | Women's Giant Slalom ",
+       "subtitle": "World Cup | Run 1",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/dcd3b078-bf12-533b-a7a7-bec05649685c?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201587591c0ch20084",
+       "startTime": "2026-10-24T08:00:00.754Z",
+       "endTime": "2026-10-24T09:57:00.749Z",
+       "title": "Sölden | Women's Giant Slalom",
+       "subtitle": "World Cup | Run 1",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/13404c2a-4baf-5836-a92e-ff5cc8c68f5b?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31778814c0ch502",
+       "startTime": "2026-10-24T11:14:52.740Z",
+       "endTime": "2026-10-24T12:34:18.080Z",
+       "title": "Sölden | Women's Giant Slalom",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/9ecec63a-eeb4-5416-bf15-8fc6d3760622?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201587592c0ch20084",
+       "startTime": "2026-10-24T11:15:01.555Z",
+       "endTime": "2026-10-24T13:06:11.573Z",
+       "title": "Sölden | Women's Giant Slalom",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/35623400-335a-57da-a8ec-160a50933559?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31778655c0ch503",
+       "startTime": "2026-10-24T16:42:22.000Z",
+       "endTime": "2026-10-24T17:07:27.296Z",
+       "title": "Sölden | Women's Giant Slalom | Highlights",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/261bbc66-907a-5cb3-89f8-a34736953cda?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31750419c0ch502",
+       "startTime": "2026-10-23T23:00:40.000Z",
+       "endTime": "2026-10-24T01:40:13.804Z",
+       "title": "MotoGP | Round 18 | Australia",
+       "subtitle": "Free Practice 2 and Qualifying",
+       "sportName": "MOTO GP",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/68b4ce3d-f687-5cab-a29e-845f97cd5884?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-10-25": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31751035c0ch503",
+       "startTime": "2026-10-25T08:29:51.855Z",
+       "endTime": "2026-10-25T10:25:43.450Z",
+       "title": "Sölden | Men's Giant Slalom ",
+       "subtitle": "World Cup | Run 1",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/84557ca9-0eab-5fd1-bb22-924ba74a3383?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201587589c0ch20084",
+       "startTime": "2026-10-25T08:30:02.161Z",
+       "endTime": "2026-10-25T10:25:24.377Z",
+       "title": "Sölden | Men's Giant Slalom",
+       "subtitle": "World Cup | Run 1",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/3134bf14-7cd4-5b87-abd5-4837ac6baeae?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751046c0ch503",
+       "startTime": "2026-10-25T11:44:52.215Z",
+       "endTime": "2026-10-25T13:02:11.062Z",
+       "title": "Sölden | Men's Giant Slalom ",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/78bbf20f-6f83-553b-99ec-ca5c31e3a546?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201587590c0ch20084",
+       "startTime": "2026-10-25T11:45:01.870Z",
+       "endTime": "2026-10-25T13:26:15.977Z",
+       "title": "Sölden | Men's Giant Slalom",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/f574fe43-79ca-5893-a337-0b505f95d2d8?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751039c0ch503",
+       "startTime": "2026-10-25T18:31:28.320Z",
+       "endTime": "2026-10-25T18:58:20.000Z",
+       "title": "Sölden | Men's Giant Slalom | Highlights",
+       "subtitle": "World Cup | Run 1",
+       "sportName": "Alpine Skiing",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/b3319ff0-1cc7-523f-a692-469fc6ee5220?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751045c0ch503",
+       "startTime": "2026-10-25T19:01:16.796Z",
+       "endTime": "2026-10-25T19:27:35.414Z",
+       "title": "Sölden | Men's Giant Slalom | Highlights",
+       "subtitle": "World Cup | Run 2",
+       "sportName": "Alpine Skiing",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/0740eb4e-3cc2-5700-ba50-5c4a2e9895e2?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31820208c0ch503",
+       "startTime": "2026-10-24T23:10:15.298Z",
+       "endTime": "2026-10-25T01:11:46.413Z",
+       "title": "Wellington Phoenix - Melbourne Victory",
+       "subtitle": "A-League Women",
+       "sportName": "Football",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/de3ff4d5-0eea-5da9-8af3-8b60796011e2?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ }
+}

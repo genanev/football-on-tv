@@ -1,0 +1,80 @@
+BEGIN:VCALENDAR
+PRODID:-//FIS//Calendar//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+CREATED:20261027T101008Z
+LAST-MODIFIED:20261027T101008Z
+DTSTAMP:20261029T012820Z
+UID:AL131578
+DTSTART:20261025T090000Z
+DTEND:20261025T130000Z
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Giant Slalom\nRun 1 loc: 10:00\nRun 2 loc: 13:00\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131578\nOrganisation: \nOrganisations Komitee Bergbahnen Sölden | Ötztal Tourismus\nDorfstraße 115\n6450 Sölden\nAustria\nAUT\nPhone: +43 57200 921\nE-mail:skiweltcup@oetztal.com\nWeb: https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening
+SUMMARY:Soelden (AUT) - Alpine Skiing World Cup Giant Slalom
+LOCATION:Soelden
+CATEGORIES:FIS-calendar-AL-WC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261027T101008Z
+LAST-MODIFIED:20261027T101008Z
+DTSTAMP:20261029T012820Z
+UID:AL131577
+DTSTART:20261024T083000Z
+DTEND:20261024T123000Z
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Giant Slalom\nRun 1 loc: 10:30\nRun 2 loc: 13:30\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131577\nOrganisation: \nOrganisations Komitee Bergbahnen Sölden | Ötztal Tourismus\nDorfstraße 115\n6450 Sölden\nAustria\nAUT\nPhone: +43 57200 921\nE-mail:skiweltcup@oetztal.com\nWeb: https://www.soelden.com/de/veranstaltungen-freizeittipps/events/audi-fis-skiweltcup-opening
+SUMMARY:Soelden (AUT) - Alpine Skiing World Cup Giant Slalom
+LOCATION:Soelden
+CATEGORIES:FIS-calendar-AL-WC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261018T111044Z
+LAST-MODIFIED:20261018T111044Z
+DTSTAMP:20261029T012820Z
+UID:AL131580
+DTSTART:20261115T090000Z
+DTEND:20261115T130000Z
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Slalom\nRun 1 loc: 11:00\nRun 2 loc: 14:00\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131580\nOrganisation: \nSki Sport Finland ry\nValimotie 10\n00380 Helsinki\nFinland\nFIN\nPhone: +358400818484\nE-mail:natalia.lahtela@skisport.fi\nWeb: https://www.worldcuplevi.com
+SUMMARY:Levi (FIN) - Alpine Skiing World Cup Slalom
+LOCATION:Levi
+CATEGORIES:FIS-calendar-AL-WC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261018T111043Z
+LAST-MODIFIED:20261018T111043Z
+DTSTAMP:20261029T012820Z
+UID:AL131579
+DTSTART:20261114T090000Z
+DTEND:20261114T130000Z
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Slalom\nRun 1 loc: 11:00\nRun 2 loc: 14:00\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131579\nOrganisation: \nSki Sport Finland ry\nValimotie 10\n00380 Helsinki\nFinland\nFIN\nPhone: +358400818484\nE-mail:natalia.lahtela@skisport.fi\nWeb: https://www.worldcuplevi.com
+SUMMARY:Levi (FIN) - Alpine Skiing World Cup Slalom
+LOCATION:Levi
+CATEGORIES:FIS-calendar-AL-WC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261018T111047Z
+LAST-MODIFIED:20261018T111047Z
+DTSTAMP:20261029T012820Z
+UID:AL131697
+DTSTART:20261128T184500Z
+DTEND:20261128T224500Z
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Super G\nRun 1 loc: 11:45\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131697\nOrganisation: \nCopper Mountain\n209 Ten Mile Circle\n80443 Copper Mtn, CO\nUSA\nUSA\nPhone: +1 866 656 1546\nE-mail:teamservices@coppercolorado.com\nWeb: https://www.coppercolorado.com/copper-cup/event-experience/
+SUMMARY:Copper Mountain, CO (USA) - Alpine Skiing World Cup Super G
+LOCATION:Copper Mountain, CO
+CATEGORIES:FIS-calendar-AL-WC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+END:VCALENDAR

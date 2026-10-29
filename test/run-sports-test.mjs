@@ -11,6 +11,12 @@
 //                                         20 Oct from fiaformula3.com/en/racing/2026/monza (the tracker itself
 //                                         only returns the next weekend, and the F3 season had ended)
 //   fixtures/pdc-tournaments-2026.json    PDC tournaments feed (mid-Sept to late Oct)
+//   fixtures/fis-alpine-wc-2027.ics       FIS's alpine skiing World Cup calendar (iCal) for 2026/27,
+//                                         captured 29 Oct: Sölden, Levi and one Copper Mountain race
+//   fixtures/fis-alpine-wsc-2027.ics      FIS's World Championships calendar (dates only so far):
+//                                         two races and a qualification round
+//   fixtures/tnt-schedule-skiing-2026-10-24.json  TNT's schedule API for 24-25 Oct (Sölden), captured
+//                                         29 Oct, trimmed to the skiing programmes plus one other
 // Sky's TV guide only publishes today + ~8 days, so the guide entries below are written by hand
 // in Sky's exact response format, at the real session times.
 //
@@ -27,6 +33,8 @@ import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
 import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker } from '../scripts/sources/motorsport.mjs';
 import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
+import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/sources/skiing.mjs';
+import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -35,6 +43,10 @@ const F2_QATAR = await fx('f2-event-tracker-qatar.json');
 const F3_MONZA = await fx('f3-racing-monza-2026.json');
 const MOTOGP = await fx('motogp-events-2026.json');
 const PDC = await fx('pdc-tournaments-2026.json');
+const FIS_WC = await readFile(new URL('fixtures/fis-alpine-wc-2027.ics', import.meta.url), 'utf8');
+const FIS_WSC = await readFile(new URL('fixtures/fis-alpine-wsc-2027.ics', import.meta.url), 'utf8');
+const TNT_SKI = await fx('tnt-schedule-skiing-2026-10-24.json');
+let fisDown = false;
 
 // ---------- Sky TV guide entries (UK local times)
 const SKY_F1 = 3835, MAIN = 4002, PLUS = 3940, MIX = 4090;
@@ -85,6 +97,14 @@ globalThis.fetch = async (url) => {
   if (url.includes('core-event-tracker/f3')) return json({ seasonContext: { seasonYear: '2026', seasonState: 'DURING-SEASON' } }); // as on 20 Oct: no next F3 weekend
   if (url.includes('tournaments.darts')) return json(/seasonID=2026/.test(url) ? PDC : { data: [], meta: { totalCount: 0 } });
   if (url.includes('awk.epgsky.com')) return guideDown ? { ok: false, status: 503 } : json(skyDay(url));
+  if (url.includes('fis-ski.com')) {
+    const ics = /seasoncode=2027/.test(url) ? (/categorycode=WSC/.test(url) ? FIS_WSC : FIS_WC) : null;
+    return fisDown || !ics ? { ok: false, status: 404 } : { ok: true, status: 200, text: async () => ics };
+  }
+  if (url.includes('netsport.eurosport.io')) { // TNT's schedule: the Sölden weekend, nothing on other days
+    const day = ukDate(Date.parse(JSON.parse(new URL(url).searchParams.get('variables')).date) + 3600000);
+    return json(TNT_SKI[day] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
+  }
   return { ok: false, status: 404 }; // football sources are covered by run-test.mjs
 };
 
@@ -258,6 +278,50 @@ const qatar = late.events.filter(e => e.comp === 'F2');
 assert.deepEqual(qatar.map(e => e.session), ['Qualifying', 'Sprint Race', 'Feature Race']);
 assert.ok(qatar.every(e => e.timeTbc));
 f2Feed = F2;
+
+// ---------- alpine skiing (George, 29 Oct 2026): FIS's calendar, one entry per run, TNT's channels
+assert.equal(fisSeason(Date.parse('2026-10-29T12:00:00Z')), 2027);
+assert.equal(fisSeason(Date.parse('2027-03-20T12:00:00Z')), 2027);
+assert.deepEqual(['Soelden', 'Copper Mountain, CO', 'Levi', "Val d'Isere"].map(placeName), ['Sölden', 'Copper Mountain', 'Levi', "Val d'Isère"]);
+const races = [...parseIcs(FIS_WC), ...parseIcs(FIS_WSC)].flatMap(mapFisRace);
+const skiLine = (s) => `${s.label} | ${s.title} · ${s.session} | ${s.allDay ? `${ukDate(Date.parse(s.kickoff))} TBC` : `${uk(s.kickoff)}-${uk(s.end).slice(-5)}`}`;
+assert.deepEqual(races.map(skiLine), [
+  "World Cup | Men's Giant Slalom · Sölden · Run 1 | Sun 25, 09:00-10:30",   // 10:00 local; the clocks had gone back (FIS writes UTC)
+  "World Cup | Men's Giant Slalom · Sölden · Run 2 | Sun 25, 12:00-13:30",   // "Run 2 loc: 13:00": 3 hours after run 1
+  "World Cup | Women's Giant Slalom · Sölden · Run 1 | Sat 24, 09:30-11:00", // 10:30 local (CEST)
+  "World Cup | Women's Giant Slalom · Sölden · Run 2 | Sat 24, 12:30-14:00",
+  "World Cup | Men's Slalom · Levi · Run 1 | Sun 15, 09:00-10:30",
+  "World Cup | Men's Slalom · Levi · Run 2 | Sun 15, 12:00-13:30",
+  "World Cup | Women's Slalom · Levi · Run 1 | Sat 14, 09:00-10:30",
+  "World Cup | Women's Slalom · Levi · Run 2 | Sat 14, 12:00-13:30",
+  "World Cup | Men's Super-G · Copper Mountain | Sat 28, 18:45-20:45",       // one run; 11:45 in Colorado
+  'World Championships | Mixed Team Parallel · Crans-Montana | 2027-02-01 TBC', // no times yet: "TBC" on its day
+  "World Championships | Women's Super-G · Crans-Montana | 2027-02-04 TBC",
+]); // the World Championships' qualification rounds are skipped
+// Channels from TNT's schedule (real entries): women's runs on TNT Sports 2, men's on TNT Sports 3,
+// both also on HBO Max; highlights and other sports don't count
+const skiTnt = { programmes: Object.values(TNT_SKI).flatMap(mapTntDay) };
+assert.ok(skiTnt.programmes.some(p => p.sport !== 'Alpine Skiing') && skiTnt.programmes.some(p => /Highlights/.test(p.title)));
+const skiChannels = (s) => { const tv = skiTv(s, skiTnt); return [...tv.channels, ...tv.alsoOn].join(', ') || tv.note; };
+assert.deepEqual(races.slice(0, 4).map(skiChannels), ['TNT Sports 3, HBO Max', 'TNT Sports 3, HBO Max', 'TNT Sports 2, HBO Max', 'TNT Sports 2, HBO Max']);
+assert.deepEqual(skiTv(races[0], skiTnt).sources, ['tntsports.co.uk']);
+assert.equal(skiChannels(races[4]), 'TV channel to be confirmed'); // Levi: not in TNT's schedule yet
+assert.equal(skiChannels({ ...races[0], run: 2 }), 'TV channel to be confirmed'); // run 1's start, run 2's programme only
+// The build: Saturday morning of the Sölden weekend
+const soelden = await build(Date.parse('2026-10-24T06:00:00Z'));
+assert.deepEqual(soelden.report.skiing, { ok: true, runs: 4, errors: [] });
+const skiEvents = soelden.events.filter(e => e.comp === 'SKI');
+assert.deepEqual(skiEvents.map(e => `${e.kind} ${e.title} · ${e.session}: ${e.tv.channels[0]}`), [
+  "session Women's Giant Slalom · Sölden · Run 1: TNT Sports 2", "session Women's Giant Slalom · Sölden · Run 2: TNT Sports 2",
+  "session Men's Giant Slalom · Sölden · Run 1: TNT Sports 3", "session Men's Giant Slalom · Sölden · Run 2: TNT Sports 3",
+]);
+assert.ok(skiEvents.every(e => e.source === 'fis-ski.com' && e.label === 'World Cup' && !('gender' in e)));
+// FIS unreachable: the report says so (the app shows a banner in the skiing view)
+fisDown = true;
+const noFis = await build(Date.parse('2026-10-24T06:00:00Z'));
+fisDown = false;
+assert.equal(noFis.report.skiing.ok, false);
+assert.equal(noFis.events.filter(e => e.comp === 'SKI').length, 0);
 
 console.log('\nAll sports tests passed');
 

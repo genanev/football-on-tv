@@ -82,6 +82,7 @@ League on Sky Sports with some BBC games (Sky's deal ends after 2026). Nothing i
 data source, so every competition is marked `soon`.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
+| **Skiing** (peak and skis, ice blue; temporary icon, 29 Oct 2026) | Alpine skiing | `SKI` | World Cup / World Championships (the event's label) | ✅ |
 | **Specials** (trophy, pink) | Wimbledon & tennis | `SPECIAL_TENNIS` | Tennis | soon |
 | | Tour de France | `SPECIAL_CYCLING` | Cycling | soon |
 | | Athletics championships | `SPECIAL_ATHLETICS` | Athletics | soon |
@@ -169,7 +170,7 @@ in advance:
   selected chips are filled dark (light in dark mode). "All football" is on when no competition chip
   is, and tapping it clears the selection. Switching off the last selected chip goes back to the
   whole sport. The chip just tapped is scrolled into view.
-- **Single-competition sports** (Darts, Snooker) show no chip row, and in Customise they are just
+- **Single-competition sports** (Darts, Snooker, Skiing) show no chip row, and in Customise they are just
   a switch ("On"/"Off") with no competition buttons.
 - The icons and chips/summary stay **sticky** at the top; a hairline appears under them once the
   list scrolls beneath. Switching view jumps back to the top of the list.

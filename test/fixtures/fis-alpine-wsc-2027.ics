@@ -1,0 +1,69 @@
+BEGIN:VCALENDAR
+PRODID:-//FIS//Calendar//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+CREATED:20261027T111057Z
+LAST-MODIFIED:20261027T111057Z
+DTSTAMP:20261029T012526Z
+UID:AL131840
+DTSTART;VALUE=DATE:20270201
+DTEND;VALUE=DATE:20270202
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DESCRIPTION:Category: World Championships\nGender: Mixed\Event: Team Parallel\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131840\nOrganisation: \nFIS Alpine World Ski Championships Crans-Montana 2027\nRoute des Barzettes 18\n3963 Crans-Montana\nValais / Switzerland\nSUI\nPhone: +41 76 235 68 44\nE-mail:info@cransmontana2027.ch\nWeb: https://www.cransmontana2027.ch/en/
+SUMMARY:Crans Montana (SUI) - Alpine Skiing World Championships Team Parallel
+LOCATION:Crans Montana
+CATEGORIES:FIS-calendar-AL-WSC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261027T111057Z
+LAST-MODIFIED:20261027T111057Z
+DTSTAMP:20261029T012526Z
+UID:AL131844
+DTSTART;VALUE=DATE:20270204
+DTEND;VALUE=DATE:20270205
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DESCRIPTION:Category: World Championships\nGender: Women\Event: Super G\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131844\nOrganisation: \nFIS Alpine World Ski Championships Crans-Montana 2027\nRoute des Barzettes 18\n3963 Crans-Montana\nValais / Switzerland\nSUI\nPhone: +41 76 235 68 44\nE-mail:info@cransmontana2027.ch\nWeb: https://www.cransmontana2027.ch/en/
+SUMMARY:Crans Montana (SUI) - Alpine Skiing World Championships Super G
+LOCATION:Crans Montana
+CATEGORIES:FIS-calendar-AL-WSC
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261027T111057Z
+LAST-MODIFIED:20261027T111057Z
+DTSTAMP:20261029T012526Z
+UID:AL131852
+DTSTART;VALUE=DATE:20270210
+DTEND;VALUE=DATE:20270211
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DESCRIPTION:Category: World Championships\nGender: Women\Event: Giant Slalom Qualification\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131852\nOrganisation: \nFIS Alpine World Ski Championships Crans-Montana 2027\nRoute des Barzettes 18\n3963 Crans-Montana\nValais / Switzerland\nSUI\nPhone: +41 76 235 68 44\nE-mail:info@cransmontana2027.ch\nWeb: https://www.cransmontana2027.ch/en/
+SUMMARY:Crans Montana (SUI) - Alpine Skiing World Championships Giant Slalom Qualification
+LOCATION:Crans Montana
+CATEGORIES:FIS-calendar-AL-FQUA
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20261027T111057Z
+LAST-MODIFIED:20261027T111057Z
+DTSTAMP:20261029T012526Z
+UID:AL131855
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270212
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+DESCRIPTION:Category: World Championships\nGender: Men\Event: Giant Slalom Qualification\nResult/Startlist:  https://www.fis-ski.com/DB/general/results.html?seasoncode=2027&sectorcode=AL&raceid=131855\nOrganisation: \nFIS Alpine World Ski Championships Crans-Montana 2027\nRoute des Barzettes 18\n3963 Crans-Montana\nValais / Switzerland\nSUI\nPhone: +41 76 235 68 44\nE-mail:info@cransmontana2027.ch\nWeb: https://www.cransmontana2027.ch/en/
+SUMMARY:Crans Montana (SUI) - Alpine Skiing World Championships Giant Slalom Qualification
+LOCATION:Crans Montana
+CATEGORIES:FIS-calendar-AL-FQUA
+TRANSP:TRANSPARENT
+STATUS:FREE
+X-MICROSOFT-CDO-BUSYSTATUS:FREE
+END:VEVENT
+END:VCALENDAR

@@ -17,7 +17,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { ukHHMM, ukToUtc, ukDate } from '../scripts/lib/util.mjs';
-import { build } from '../scripts/build.mjs';
+import { build, markNotOnTv } from '../scripts/build.mjs';
 import { unknownClubs } from '../scripts/sources/teamNames.mjs';
 import { parsePremierSports, parsePsTime } from '../scripts/sources/premierSports.mjs';
 import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
@@ -283,6 +283,10 @@ assert.deepEqual(ev('PL', 'Chelsea').tv.channels, ['Sky Sports Main Event']);
 // Saturday 15:00 UK: not shown live
 assert.equal(ev('PL', 'Arsenal').tv.note, 'Not shown live on UK TV');
 assert.equal(ev('CHAMP', 'Wolves').kickoff, '2026-10-20T18:45:00.000Z'); // Tuesday's game, not the Saturday one
+// Within 48 hours with no channel, but Sky's pages and TNT's schedule aren't mocked here (they
+// fail), so it isn't marked "not on TV" (the 48-hour cut-off, checked below)
+assert.equal(r.skyListings.ok, false);
+assert.equal(ev('CHAMP', 'Wolves').tv.note, 'TV channel to be confirmed');
 assert.equal(`${ev('CHAMP', 'Wolves').home} v ${ev('CHAMP', 'Wolves').away}`, 'Wolverhampton Wanderers v Portsmouth');
 assert.equal(`${ev('CHAMP', 'Sheffield Utd').home} v ${ev('CHAMP', 'Sheffield Utd').away}`, 'Sheffield United v Derby County');
 assert.equal(`${ev('CHAMP', 'QPR').home} v ${ev('CHAMP', 'QPR').away}`, 'Queens Park Rangers v Swansea City');
@@ -386,5 +390,26 @@ assert.deepEqual([harrogate.kickoff, harrogate.checkedBy, harrogate.tv.channels[
 // The official-feeds mode (GitHub's backup button) doesn't check, but keeps the last check for the
 // next API-Football update
 assert.deepEqual((await build(NOW + 30 * 60000, data, { footballSource: 'official' })).golden, data.golden);
+
+// ---------- the 48-hour cut-off (markNotOnTv; George, 29 Oct 2026)
+// No channel or broadcaster 48 hours before kick-off: not on UK TV, if every TV listing was read
+const T0 = Date.parse('2026-10-26T19:45:00Z');
+const listingsOk = { tvGuide: { ok: true }, skyListings: { ok: true }, tntSchedule: { ok: true }, premierSports: { ok: true }, primeVideo: { ok: true } };
+const game = (comp, hoursAhead, tv = {}) => ({ kind: 'match', comp, status: 'upcoming', kickoff: new Date(T0 + hoursAhead * 3600000).toISOString(),
+  tv: { broadcaster: null, channels: [], alsoOn: [], note: 'TV channel to be confirmed', sources: [], ...tv } });
+const noteAfter = (e, report = listingsOk) => markNotOnTv([e], report, T0)[0].tv.note;
+assert.equal(noteAfter(game('SCOT', 47)), 'Not shown live on UK TV');
+assert.equal(noteAfter(game('CHAMP', 48)), 'Not shown live on UK TV');
+assert.equal(noteAfter(game('CHAMP', 49)), 'TV channel to be confirmed'); // too early to tell
+// the league's own pick ("Sky Sports"), a channel, a postponed game or an unknown kick-off time: unchanged
+assert.equal(noteAfter(game('PL', 10, { broadcaster: 'Sky Sports', note: 'Exact channel to be confirmed' })), 'Exact channel to be confirmed');
+assert.equal(noteAfter(game('SCOT', 10, { broadcaster: 'Sky Sports Football', channels: ['Sky Sports Football'], note: null })), null);
+assert.equal(noteAfter({ ...game('CHAMP', 10), status: 'postponed' }), 'TV channel to be confirmed');
+assert.equal(noteAfter({ ...game('CHAMP', 10), timeTbc: true }), 'TV channel to be confirmed');
+// a TV listing that could name the game wasn't read: still "to be confirmed"
+assert.equal(noteAfter(game('CHAMP', 10), { ...listingsOk, tvGuide: { ok: false } }), 'TV channel to be confirmed');
+assert.equal(noteAfter(game('SCOT', 10), { ...listingsOk, premierSports: { ok: false, wrongRegion: true } }), 'TV channel to be confirmed');
+assert.equal(noteAfter(game('CHAMP', 10), { ...listingsOk, premierSports: { ok: false } }), 'Not shown live on UK TV'); // not a Premier Sports game
+assert.equal(noteAfter(game('UCL', 10), { ...listingsOk, primeVideo: { ok: false } }), 'TV channel to be confirmed');
 
 console.log('All API-Football tests passed');

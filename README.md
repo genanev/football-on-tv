@@ -18,7 +18,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 ## Principles
 
 - **Proper sources only.** Football fixtures and scores come from API-Football, a paid football data service; every other sport's fixtures come from the competition's own data. TV channels come from the broadcasters' own listings, never from fan sites.
-- **No guessing.** A channel is shown only when a broadcaster's listing confirms it. Otherwise the app says "TV channel to be confirmed". The one rule-based line is "Not shown live on UK TV" for Saturday 3pm football (the UK blackout).
+- **No guessing.** A channel is shown only when a broadcaster's listing confirms it. Otherwise the app says "TV channel to be confirmed". The rule-based line is "Not shown live on UK TV": for Saturday 3pm football (the UK blackout), and for any football game with no channel listed 48 hours before kick-off (broadcasters announce their picks earlier than that), so people can plan.
 - **Each source fails on its own.** If one site can't be read, everything else still works, and the app shows a yellow banner saying what's affected.
 
 ## How it works

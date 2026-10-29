@@ -118,6 +118,25 @@ export function keepKnownChannels(events, previous, { report = {}, now = Date.no
   return events;
 }
 
+/**
+ * A football game with no channel or broadcaster 48 hours before kick-off isn't on UK TV (George,
+ * 29 Oct 2026: "to be confirmed" until kick-off raised false hopes, e.g. midweek Scottish and
+ * Championship games). Broadcasters list their picks earlier than that: in the updates of 20-29 Oct
+ * 2026, every game that went from "TV channel to be confirmed" to a channel did so at least 79 hours
+ * before kick-off. Only when every TV listing that could name the game answered on this update -
+ * otherwise a failed read would look like "not on TV". A channel found later replaces the note.
+ */
+export const NO_TV_CUTOFF_HOURS = 48;
+export function markNotOnTv(events, report, now) {
+  for (const e of events) {
+    if (e.kind !== 'match' || e.status === 'postponed' || e.timeTbc || !e.tv || e.tv.channels?.length || e.tv.broadcaster) continue;
+    if (!/confirm/i.test(e.tv.note || '') || Date.parse(e.kickoff) - now > NO_TV_CUTOFF_HOURS * 3600000) continue;
+    const listings = ['tvGuide', 'skyListings', 'tntSchedule', ...(e.comp === 'SCOT' ? ['premierSports'] : []), ...(e.comp === 'UCL' ? ['primeVideo'] : [])];
+    if (listings.every(k => report[k]?.ok === true)) e.tv = { ...e.tv, note: 'Not shown live on UK TV' };
+  }
+  return events;
+}
+
 export async function build(now = Date.now(), previous = null, { footballSource = defaultFootballSource(), showScores = SHOW_SCORES } = {}) {
   const report = {};
   const today = ukDate(now);
@@ -326,6 +345,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
   keepKnownChannels(events, previous, { report, now });
+  markNotOnTv(events, report, now);
   if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
   report.scores = showScores ? 'on' : 'off';
   // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it

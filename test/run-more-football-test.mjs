@@ -109,10 +109,12 @@ const norwich = champ.find(e => e.home === 'Norwich City' && e.away === 'Southam
 assert.deepEqual(norwich.tv.channels, ['Sky Sports+']);
 assert.ok(norwich.tv.sources.includes('skysports.com'));
 assert.deepEqual(champ.find(e => e.home === 'Middlesbrough' && e.away === 'Cardiff City').tv.channels, ['Sky Sports+']);
-// Not in the guide or on Sky's page (the page was captured after these 19:45 kick-offs): no guess
+// Not in the guide or on Sky's page (the page was captured after these 19:45 kick-offs): no channel
+// is guessed from the rights. Every TV listing answered, 10 hours before kick-off, so the 48-hour
+// cut-off (markNotOnTv, 29 Oct 2026) says it isn't on UK TV
 const bristol = champ.find(e => e.home === 'Bristol City' && e.away === 'Blackburn Rovers');
 assert.deepEqual(bristol.tv.channels, []);
-assert.equal(bristol.tv.note, 'TV channel to be confirmed');
+assert.equal(bristol.tv.note, 'Not shown live on UK TV');
 assert.ok(champ.every(e => !e.tv.sources.includes('uk-rights')));
 const sat3pm = champ.filter(e => uk(e.kickoff) === 'Sat 17, 15:00');
 assert.equal(sat3pm.length, 8);

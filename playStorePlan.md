@@ -27,7 +27,7 @@ Google's and Apple's rules, prices and free tiers below were right as of mid-202
 - Works offline.
 - **Match reminders** ("remind me 30 minutes before"): the first phone feature, useful on its own and needed for Apple later.
 
-**Not in scope for launch:** an iPhone version, sign-in accounts, push notifications sent from a server, rugby/MotoGP/Specials data, countries other than the UK.
+**Not in scope for launch:** an iPhone version, sign-in accounts, push notifications sent from a server, countries other than the UK. (Rugby union, MotoGP, tennis, alpine skiing and a first Special, curling, were added in Oct 2026; Super League follows once its 2027 fixtures are out.)
 
 ## 2. Measures of success
 
@@ -113,7 +113,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 | Risk | Likelihood | Impact | What we do about it |
 |---|---|---|---|
-| A data source objects to commercial use, or the store removes the app after a rights complaint | Medium | High | Phase 0: permission or licences before launch; one module per source, so any one can be swapped |
+| A data source objects to commercial use, or the store removes the app after a rights complaint | Low while small | High | **Accepted risk (George, 29 Oct 2026).** Permission was asked from all 12 organisations (emails sent); none has replied, and we go ahead without waiting. Any objection is dealt with when it arises: one module per source, so any one can be switched off or swapped quickly. Review if the app grows |
 | Football DataCo objects to scores (live match data; its 2013 win against Sportradar) | Low while small | Medium | **Accepted risk (George, 19 Oct 2026).** Fixtures are facts. Scores are refreshed only every 5 minutes (never live), are **not a selling point** (not in the store listing or paywall), and sit behind one switch so they can be removed quickly. Review if the app grows or DataCo makes contact |
 | API-Football stops operating, changes terms or raises prices | Low–Medium | High (all football) | Accepted for now: focus on getting to market. Its own source module, so a swap is like-for-like; football-data.org is the known fallback (PL, Championship, UCL free; the rest paid) |
 | A source changes its website and stops answering | High (happens often) | Medium | Already handled: each source fails on its own, with yellow banners and the keep rule. Add an email alert (Phase 6) |
@@ -133,7 +133,8 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: what makes an app legal to sell, naming and branding, pricing.*
 
-- [ ] **Data rights (Gate G0).** Today's sources are the unofficial feeds and pages behind each website. That's fine for personal use, but most of these sites' terms forbid commercial reuse. For each source, decide **keep with permission / replace / licence**, and record it below.
+- [x] **Data rights (Gate G0), 29 Oct 2026: going ahead.** The 12 permission emails were sent; no replies so far. George's decision: we don't wait. We asked for consent, and any objection will be dealt with as it arises (he doubts there will be any unless the app really takes off). Sources added after the emails (MotoGP, F3, tennis, skiing, curling, rugby) weren't asked; same approach. See the decisions log and the risk register.
+- Background (18 Oct 2026): today's sources are the unofficial feeds and pages behind each website. That's fine for personal use, but most of these sites' terms forbid commercial reuse. For each source, decide **keep with permission / replace / licence**, and record it below.
   - **Ask:** governing bodies (FA, WST, PDC, the golf tours, ICC) may be happy to be listed and linked. Get written permission.
   - **Football fixtures:** fixture lists themselves have weak UK legal protection (the 2012 *Football DataCo v Yahoo* ruling), but Football DataCo still sells licences for Premier League/EFL fixtures. Worth an hour with a solicitor or the IPO's free advice service, rather than guessing.
   - **TV listings:** a commercial TV guide (EPG) feed, or the broadcasters' partner/affiliate schemes. Some pay you for links to their sign-up pages, which could become a second income without breaking the no-ads principle.
@@ -142,19 +143,20 @@ The project only moves past a gate when its question has a clear answer. Write t
 | Source | Decision | Cost | Evidence (email/licence) |
 |---|---|---|---|
 | Premier League fixtures and scores | **Replace** with API-Football (19 Oct 2026) | Free while building; Pro ≈ $19/month live | Fixtures treated as facts; scores an accepted risk (see risk register) |
-| Premier League broadcaster feed | | | |
-| UEFA (UCL, UEL) | **Replace** with API-Football | (same subscription) | as above |
-| EFL (Championship, League Cup) | **Replace** with API-Football | (same subscription) | as above |
-| FA (FA Cup fixtures) | **Replace** with API-Football | (same subscription) | The FA's "Live on" TV pick: still ask the FA, or rely on the TV guide |
-| F1 / F2 | | | |
-| PDC | | | |
-| PGA Tour / DP World Tour | | | |
-| WST | | | |
-| ICC | | | |
-| Sky TV guide / Sky Sports pages | | | |
-| TNT Sports | | | |
-| Prime Video | | | |
-| Premier Sports (streaming; Scottish Premiership, later rugby) | Ask (email 12, added 20 Oct 2026) | | |
+| Premier League broadcaster feed | Keep; asked (email 4) | £0 | Sent; no reply (29 Oct 2026) |
+| UEFA (UCL, UEL) | **Replace** with API-Football; read once a day to check it (29 Oct 2026) | (same subscription) | as above |
+| EFL (Championship, League Cup) | **Replace** with API-Football; read once a day to check it | (same subscription) | as above |
+| FA (FA Cup fixtures) | **Replace** with API-Football | (same subscription) | The FA's "Live on" TV pick: asked (email 5), no reply |
+| F1 / F2 (F3 added later) | Keep; asked (email 6) | £0 | Sent; no reply |
+| PDC | Keep; asked (email 7) | £0 | Sent; no reply |
+| PGA Tour / DP World Tour | Keep; asked (emails 9, 10) | £0 | Sent; no reply |
+| WST | Keep; asked (email 8) | £0 | Sent; no reply |
+| ICC | Keep; asked (email 11) | £0 | Sent; no reply |
+| Sky TV guide / Sky Sports pages | Keep; asked (email 1) | £0 | Sent; no reply |
+| TNT Sports | Keep; asked (email 2) | £0 | Sent; no reply |
+| Prime Video | Keep; asked (email 3) | £0 | Sent; no reply |
+| Premier Sports (streaming; Scottish Premiership, rugby's Champions Cup) | Keep; asked (email 12) | £0 | Sent; no reply |
+| MotoGP, FIS (skiing), WTA and the ATP Finals' site (tennis), World Curling, World Rugby | Keep; not asked (added after the emails, 20-29 Oct 2026) | £0 | Same approach: deal with any objection as it arises |
 
 - [x] **Name and brand (19 Oct 2026): Telly Fixtures.**
   - [x] Name chosen: **Telly Fixtures**. Store title along the lines of "Telly Fixtures: Sport on UK TV".
@@ -189,7 +191,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] Keep an eye on it for a couple of weeks (moved games, postponements, the 25 Oct clock change). Checked 28 Oct 2026: every game identical across the clock change, but API-Football was still showing a Europa League game UEFA had moved (Rennes v Olympiacos) on its old date two days later.
   - [x] **Daily check against the official feeds (29 Oct 2026), instead of retiring them:** once a day the Premier League, UEFA and EFL feeds are compared with API-Football, and they win where they disagree (moved, postponed or missing games). Reading them once a day keeps our footprint on those sites small (about 10 requests a day in total, fewer than before). Going back to the official feeds completely is still one command (`cloud/SETUP.md`).
 - [ ] **Scores every 5 minutes, not live** (decided 19 Oct 2026). After the storage move below:
-  - A small scores-only update every 5 minutes, only while a game is on: one request covers all six competitions.
+  - A small scores-only update every 5 minutes, only while a game is on: one request covers all nine competitions.
   - The full update stays every 30 minutes.
   - One switch turns scores off everywhere, in case they have to be removed.
 - [ ] Change the update job to **upload `data.json` to storage** (Cloudflare R2 or Google Cloud Storage) on the domain, instead of committing it to GitHub every 30 minutes.
@@ -209,7 +211,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - "Listings can change: check with the broadcaster."
   - Apple's standard licence terms, if used later.
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
-- [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them. Commission or design the app icon (512×512 for Play, 1024×1024 for Apple).
+- [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple).
 - [ ] **Accessibility:**
   - Text still fits when the phone's font size is increased.
   - Colour contrast meets WCAG AA in both themes.
@@ -331,7 +333,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Note what changed.
 - [ ] **Alerting:** an email when a source fails for several updates in a row, or the data file is older than 2 hours.
 - [ ] Make the update job **save only when something changed**, plus a heartbeat, before ever running it more often than every 30 minutes.
-- [ ] Connect the "SOON" competitions (rugby, MotoGP, Specials): each is a reason to subscribe and a "What's new" entry.
+- [ ] Connect the "SOON" competitions: each is a reason to subscribe and a "What's new" entry. Done: MotoGP and F3 (20 Oct 2026); rugby union, tennis, alpine skiing and the first Special, curling (29 Oct 2026). Still to do: Super League (once its 2027 fixtures are out) and more Specials.
 - [ ] **Privacy-friendly growth:**
   - Landing page and FAQ.
   - Posts in sports forums and Facebook groups.
@@ -389,3 +391,4 @@ Record decisions here as they're made (date, what, why).
 - 29 Oct 2026: **The official ("golden") football feeds check API-Football once a day and win where they disagree.** Reason: API-Football was two days late with a game UEFA moved (Rennes v Olympiacos, 28 Oct). Once a day, rather than every update, to keep our footprint on those websites small. The old plan to retire them is dropped.
 - 19 Oct 2026: **Name: Telly Fixtures; app ID `uk.co.tellyfixtures`; main domain tellyfixtures.co.uk.** Reason: says what the app does, covers every sport, friendly and British, distinctive (no similar app found), and all its domains were free. Considered: Derby Time(s) (exciting, but football or horse racing only, and confusable with Derby and the *Derbyshire Times*); TV Lineup (both words too generic); Front Row (crowded name); On Now (too close to Sky's NOW).
 - 29 Oct 2026: **A personal Google Play developer account**, not an organisation one. Reason: George is a sole trader, and an organisation account needs a registered company and a D-U-N-S number first. Accepted in exchange: the 12-tester, 14-day closed test before launch, and a personal account can't become an organisation account later (the app would have to be transferred to a new account if a company is formed).
+- 29 Oct 2026: **Gate G0 passed: going ahead without waiting for replies on data rights.** All 12 permission emails were sent and none has been answered. Reason: we asked for consent; objections are unlikely unless the app really takes off, and any that come will be dealt with as they arise (each source is its own module, so it can be switched off or replaced). Sources added since (MotoGP, F3, tennis, skiing, curling, rugby) weren't asked, under the same approach.

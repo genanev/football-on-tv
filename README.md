@@ -19,6 +19,13 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 
 The plan is to turn it into a paid app called **Telly Fixtures** on Google Play: see `playStorePlan.md`.
 
+## Status (29 Oct 2026)
+
+- **Live:** every sport above, updated every 30 minutes from Google Cloud in London. Football comes from API-Football, checked once a day against the official Premier League, UEFA and EFL feeds, which win if they disagree. A football game with no UK channel 48 hours before kick-off says "Not shown live on UK TV".
+- **Still to connect:** rugby league's Super League (its 2027 fixtures aren't out yet), and more Specials, one real event at a time.
+- **Design:** Design A (see `designA.md`). A card style with one rounded box per event was mocked up (branch `mockup-cards`, not merged); the current design stays for now.
+- **Paid app:** the name (Telly Fixtures), app ID and domains are done; a personal Google Play developer account is decided but not opened yet. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 0 pricing and public details, then Phase 1: support email, moving `data.json` to the own domain, privacy policy and terms).
+
 ## Principles
 
 - **Proper sources only.** Football fixtures and scores come from API-Football, a paid football data service; every other sport's fixtures come from the competition's own data. TV channels come from the broadcasters' own listings, never from fan sites.
@@ -34,7 +41,9 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 │  ├─ fixtures:  API-Football (all football),   │ writes │ (the whole    │
 │  │             F1, F2, F3, MotoGP, PDC,       │ ─────► │  app: reads   │
 │  │             PGA Tour, DP World Tour, WST,  │ data.  │  data.json)   │
-│  │             ICC                            │ json   └───────────────┘
+│  │             ICC, World Rugby, WTA,         │ json   └───────────────┘
+│  │             ATP Finals site, FIS (skiing), │
+│  │             World Curling                  │
 │  └─ channels:  Sky TV guide, Sky Sports,      │
 │                TNT Sports, Prime Video,       │
 │                Premier Sports, FA, PL         │
@@ -69,7 +78,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 | | The FA's fixtures page ("Live on BBC Sport") | reading the page |
 | | Premier League broadcast feed | its data feed (API); answers for the requester's country |
 
-Apart from API-Football, none of these is a published, documented API. They are the data the sites' own pages use, which is fine for a personal app. For the paid app, permission is being asked from each organisation (see `playStorePlan.md`, Phase 0); each source is a separate module under `scripts/sources/`, so swapping one is a like-for-like change.
+Apart from API-Football, none of these is a published, documented API. They are the data the sites' own pages use. For the paid app, permission was asked from the 12 main organisations in October 2026; none has replied, and the project goes ahead without waiting, dealing with any objection if it comes (see `playStorePlan.md`, Phase 0). Each source is a separate module under `scripts/sources/`, so switching one off or swapping it is a like-for-like change.
 
 ## Files
 

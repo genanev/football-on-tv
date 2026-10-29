@@ -1,0 +1,486 @@
+{
+ "pageInfo": {
+  "page": 0,
+  "numPages": 1,
+  "pageSize": 100,
+  "numEntries": 14
+ },
+ "content": [
+  {
+   "matchId": "a995889b-9f0e-45b9-bec2-e7e660aa7756",
+   "description": "Match 21",
+   "eventPhase": "League",
+   "venue": {
+    "id": "33",
+    "altId": "f743e2f8-0b20-43b4-889e-533f1d3eeaad",
+    "name": "Ashton Gate Stadium",
+    "city": "Bristol",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793389500000,
+    "gmtOffset": 0,
+    "label": "2026-10-30"
+   },
+   "teams": [
+    {
+     "name": "Bristol Bears",
+     "abbreviation": "BRI"
+    },
+    {
+     "name": "Leicester Tigers",
+     "abbreviation": "LEI"
+    }
+   ],
+   "status": "U",
+   "competition": "English Premiership 2027",
+   "events": [
+    {
+     "label": "English Premiership 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "5e33bff7-dfa6-400d-86d4-e4499d38bab0",
+   "description": null,
+   "eventPhase": "Semi-Finals",
+   "venue": {
+    "id": "6176de18-ffe8-4036-8b12-e0f6570898af",
+    "altId": "6176de18-ffe8-4036-8b12-e0f6570898af",
+    "name": "Trailfinders Sports Ground",
+    "city": "Ealing",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793448000000,
+    "gmtOffset": 0,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "Trailfinders Women",
+     "abbreviation": "TRF"
+    },
+    {
+     "name": "Sale Sharks Women",
+     "abbreviation": null
+    }
+   ],
+   "status": "U",
+   "competition": "Premiership Womens Rugby Cup 2026",
+   "events": [
+    {
+     "label": "Premiership Womens Rugby Cup 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "47e5fe8d-88b2-4268-bb2d-9c04aad345cc",
+   "description": "Match 53",
+   "eventPhase": "League",
+   "venue": {
+    "id": "99",
+    "altId": "1f2c52ff-1f11-4b95-80d8-91276f399ba6",
+    "name": "Stade Marcel Michelin",
+    "city": "Clermont Ferrand",
+    "country": "France"
+   },
+   "time": {
+    "millis": 1793453400000,
+    "gmtOffset": 1,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "ASM Clermont Auvergne",
+     "abbreviation": "CLE"
+    },
+    {
+     "name": "Racing 92",
+     "abbreviation": "RAC"
+    }
+   ],
+   "status": "U",
+   "competition": "Top 14 2027",
+   "events": [
+    {
+     "label": "Top 14 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "8c669e20-46ee-4974-91d8-3c4b5a0c427b",
+   "description": "Match 22",
+   "eventPhase": "League",
+   "venue": {
+    "id": "797",
+    "altId": "5af8ed42-3ba1-42b2-bca2-4962aa0643be",
+    "name": "Sandy Park",
+    "city": "Exeter",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793458800000,
+    "gmtOffset": 0,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "Exeter Chiefs",
+     "abbreviation": "EXE"
+    },
+    {
+     "name": "Harlequins",
+     "abbreviation": "HAR"
+    }
+   ],
+   "status": "U",
+   "competition": "English Premiership 2027",
+   "events": [
+    {
+     "label": "English Premiership 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "2425d551-6066-4de2-b9e5-0c31fcfe1ccc",
+   "description": "Match 23",
+   "eventPhase": "League",
+   "venue": {
+    "id": "1768",
+    "altId": "09c3f731-34a1-4bb8-a0e7-60ce1c80de3f",
+    "name": "StoneX Stadium",
+    "city": "London",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793458800000,
+    "gmtOffset": 0,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "Saracens",
+     "abbreviation": "SAR"
+    },
+    {
+     "name": "Newcastle Red Bulls",
+     "abbreviation": "NEW"
+    }
+   ],
+   "status": "U",
+   "competition": "English Premiership 2027",
+   "events": [
+    {
+     "label": "English Premiership 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "195e36a6-baad-42fb-9ed8-7941c4b6995b",
+   "description": "Match 24",
+   "eventPhase": "League",
+   "venue": {
+    "id": "245",
+    "altId": "1085c171-0518-4427-baa8-1105ffe8e6c6",
+    "name": "Recreation Ground",
+    "city": "Bath",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793459100000,
+    "gmtOffset": 0,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "Bath Rugby",
+     "abbreviation": "BAT"
+    },
+    {
+     "name": "Sale Sharks",
+     "abbreviation": "SAL"
+    }
+   ],
+   "status": "U",
+   "competition": "English Premiership 2027",
+   "events": [
+    {
+     "label": "English Premiership 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "23a99f3c-614e-4b62-8b26-041ded2e9553",
+   "description": "Match 25",
+   "eventPhase": "League",
+   "venue": {
+    "id": "493",
+    "altId": "fa277d8c-3fba-4dc8-9844-8a02cb53eb8a",
+    "name": "Franklin's Gardens",
+    "city": "Northampton",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793467800000,
+    "gmtOffset": 0,
+    "label": "2026-10-31"
+   },
+   "teams": [
+    {
+     "name": "Northampton Saints",
+     "abbreviation": "NOR"
+    },
+    {
+     "name": "Gloucester Rugby",
+     "abbreviation": "GLO"
+    }
+   ],
+   "status": "U",
+   "competition": "English Premiership 2027",
+   "events": [
+    {
+     "label": "English Premiership 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "3d7926a0-5b32-487b-8ec2-9ace28affa52",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "1339",
+    "altId": "0330735f-7f0b-49bb-989c-e1fab92f942b",
+    "name": "CorPacq Stadium",
+    "city": "Manchester",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1793994300000,
+    "gmtOffset": 0,
+    "label": "2026-11-06"
+   },
+   "teams": [
+    {
+     "name": "Sale Sharks",
+     "abbreviation": "SAL"
+    },
+    {
+     "name": "Bristol Bears",
+     "abbreviation": "BRI"
+    }
+   ],
+   "status": "U",
+   "competition": "Premiership Rugby Cup 2027",
+   "events": [
+    {
+     "label": "Premiership Rugby Cup 2027"
+    }
+   ]
+  },
+  {
+   "matchId": "1e74b48e-25fe-4ebe-beea-abb6cea010a0",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "4",
+    "altId": "f96114bb-dfc7-4da9-87d8-a694fdd6314f",
+    "name": "Aviva Stadium",
+    "city": "Dublin",
+    "country": "Ireland"
+   },
+   "time": {
+    "millis": 1793995800000,
+    "gmtOffset": 0,
+    "label": "2026-11-06"
+   },
+   "teams": [
+    {
+     "name": "Ireland",
+     "abbreviation": "IRE"
+    },
+    {
+     "name": "Argentina",
+     "abbreviation": "ARG"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "54780758-13bb-414b-94d6-2095f217459c",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "cfbcaffc-5ab1-4a0d-9cad-9daabede908f",
+    "altId": "cfbcaffc-5ab1-4a0d-9cad-9daabede908f",
+    "name": "Allianz Stadium",
+    "city": "Turin",
+    "country": "Italy"
+   },
+   "time": {
+    "millis": 1794051600000,
+    "gmtOffset": 1,
+    "label": "2026-11-07"
+   },
+   "teams": [
+    {
+     "name": "Italy",
+     "abbreviation": "ITA"
+    },
+    {
+     "name": "South Africa",
+     "abbreviation": "RSA"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "db7d80ff-3fa4-4b76-8b84-f615725dd62b",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "7",
+    "altId": "331f1bf0-92fd-4e94-b873-936024b730a4",
+    "name": "Murrayfield",
+    "city": "Edinburgh",
+    "country": "Scotland"
+   },
+   "time": {
+    "millis": 1794060600000,
+    "gmtOffset": 0,
+    "label": "2026-11-07"
+   },
+   "teams": [
+    {
+     "name": "Scotland",
+     "abbreviation": "SCO"
+    },
+    {
+     "name": "New Zealand",
+     "abbreviation": "NZL"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "20078fb5-fab3-4d28-ad54-d550b01b472d",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "1",
+    "altId": "3ded6bd9-3feb-41cb-ba5c-a738c0aa3446",
+    "name": "Principality Stadium",
+    "city": "Cardiff",
+    "country": "Wales"
+   },
+   "time": {
+    "millis": 1794069600000,
+    "gmtOffset": 0,
+    "label": "2026-11-07"
+   },
+   "teams": [
+    {
+     "name": "Wales",
+     "abbreviation": "WAL"
+    },
+    {
+     "name": "Japan",
+     "abbreviation": "JPN"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "267608f1-90cc-4c93-ac68-b0f0fa3bbf9e",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "1476",
+    "altId": "505ecf27-9c56-4e55-8622-10345e23f64a",
+    "name": "Groupama Stadium",
+    "city": "Lyon",
+    "country": "France"
+   },
+   "time": {
+    "millis": 1794082200000,
+    "gmtOffset": 1,
+    "label": "2026-11-07"
+   },
+   "teams": [
+    {
+     "name": "France",
+     "abbreviation": "FRA"
+    },
+    {
+     "name": "Fiji",
+     "abbreviation": "FIJ"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  },
+  {
+   "matchId": "d21f7bed-f2f9-45bd-be33-3a0fc9beec42",
+   "description": null,
+   "eventPhase": null,
+   "venue": {
+    "id": "3",
+    "altId": "29e4b8a8-2de0-4311-b4c0-aed196480b73",
+    "name": "Allianz Stadium",
+    "city": "London",
+    "country": "England"
+   },
+   "time": {
+    "millis": 1794150600000,
+    "gmtOffset": 0,
+    "label": "2026-11-08"
+   },
+   "teams": [
+    {
+     "name": "England",
+     "abbreviation": "ENG"
+    },
+    {
+     "name": "Australia",
+     "abbreviation": "AUS"
+    }
+   ],
+   "status": "U",
+   "competition": "Nations Championship 2026",
+   "events": [
+    {
+     "label": "Nations Championship 2026"
+    }
+   ]
+  }
+ ]
+}

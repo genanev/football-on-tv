@@ -1,0 +1,313 @@
+{
+ "2026-10-30": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31749942c0ch501",
+       "startTime": "2026-10-30T00:30:00.000Z",
+       "endTime": "2026-10-30T00:45:00.000Z",
+       "title": "The Wrap Up",
+       "subtitle": "Gallgher PREM | Round 4",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751173c0ch599",
+       "startTime": "2026-10-30T19:00:00.000Z",
+       "endTime": "2026-10-30T22:00:00.000Z",
+       "title": "Bristol Bears - Leicester Tigers",
+       "subtitle": "Gallagher PREM",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports UHD ULTIMATE"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/17b58ff9-3be8-54a8-99ff-d42764c8138b?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31749965c0ch501",
+       "startTime": "2026-10-30T19:00:00.000Z",
+       "endTime": "2026-10-30T22:00:00.000Z",
+       "title": "Bristol Bears - Leicester Tigers",
+       "subtitle": "Gallagher PREM",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/e17c7f39-bcf4-5b00-a3c5-65de4c9d38a1?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-10-31": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31751127c0ch503",
+       "startTime": "2026-10-31T01:00:00.000Z",
+       "endTime": "2026-10-31T02:00:00.000Z",
+       "title": "Bristol Bears - Leicester Tigers | Highlights",
+       "subtitle": "Gallagher PREM",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/dd882345-0cbb-51c0-930c-038221f83ab9?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751139c0ch503",
+       "startTime": "2026-10-31T13:30:00.000Z",
+       "endTime": "2026-10-31T14:30:00.000Z",
+       "title": "Bristol Bears - Leicester Tigers | Highlights",
+       "subtitle": "Gallagher PREM",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/151a55da-9f8f-52e5-bda6-0251965069f0?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201644502c0ch20091",
+       "startTime": "2026-10-31T14:45:00.000Z",
+       "endTime": "2026-10-31T17:00:00.000Z",
+       "title": "Saracens - Newcastle Red Bulls",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/541eaa20-cb14-5aaf-8bbb-43563f92598c?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201644507c0ch15006",
+       "startTime": "2026-10-31T14:45:00.000Z",
+       "endTime": "2026-10-31T17:00:00.000Z",
+       "title": "Multiview",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/b959271a-ab08-54c8-adc9-5f6dc53315cf?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201644497c0ch20090",
+       "startTime": "2026-10-31T14:45:00.000Z",
+       "endTime": "2026-10-31T17:00:00.000Z",
+       "title": "Exeter Chiefs - Harlequins",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/de7f6425-5532-525b-94aa-2749eccdd9dd?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31749972c0ch501",
+       "startTime": "2026-10-31T15:00:00.000Z",
+       "endTime": "2026-10-31T17:15:00.000Z",
+       "title": "Bath Rugby - Sale Sharks",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/a9bc9a33-5aa2-5774-b4a7-4c1c8c10bd57?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751174c0ch599",
+       "startTime": "2026-10-31T15:00:00.000Z",
+       "endTime": "2026-10-31T17:15:00.000Z",
+       "title": "Bath Rugby - Sale Sharks",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports UHD ULTIMATE"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/c0199552-2adc-5729-a582-64b5f712ad3f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31749978c0ch501",
+       "startTime": "2026-10-31T17:15:00.000Z",
+       "endTime": "2026-10-31T19:45:00.000Z",
+       "title": "Northampton Saints - Gloucester Rugby | Highlights",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/0131ba9c-ed4f-52fb-9ffd-f62e7d267f1c?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31751177c0ch599",
+       "startTime": "2026-10-31T17:15:00.000Z",
+       "endTime": "2026-10-31T19:45:00.000Z",
+       "title": "Northampton Saints - Gloucester Rugby",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports UHD ULTIMATE"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/7dd32510-21bd-5f46-bba5-8a1f9795cfdd?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31841022c0ch501",
+       "startTime": "2026-10-31T19:45:00.000Z",
+       "endTime": "2026-10-31T20:45:00.000Z",
+       "title": "Exeter Chiefs - Harlequins | Highlights",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/b2ce011b-46fb-5274-8981-c905757e0c8f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31841021c0ch501",
+       "startTime": "2026-10-31T20:45:00.000Z",
+       "endTime": "2026-10-31T21:45:00.000Z",
+       "title": "Saracens - Newcastle Red Bulls | Highlights",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/8686f462-59c5-55a4-a7de-38a056ad9038?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31841020c0ch501",
+       "startTime": "2026-10-31T21:45:00.000Z",
+       "endTime": "2026-10-31T22:00:00.000Z",
+       "title": "The Breakdown ",
+       "subtitle": "Saracens",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31749483c0ch504vcp",
+       "startTime": "2026-10-31T23:30:00.000Z",
+       "endTime": "2026-11-01T00:30:00.000Z",
+       "title": "Bath Rugby - Sale Sharks | Highlights",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31749483c0ch504",
+       "startTime": "2026-10-31T23:30:00.000Z",
+       "endTime": "2026-11-01T00:30:00.000Z",
+       "title": "Bath Rugby - Sale Sharks | Highlights",
+       "subtitle": "Gallagher PREM | Round 5",
+       "sportName": "Rugby",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 4"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/280a004d-9a97-5de8-ba58-539f69e8602d?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ }
+}

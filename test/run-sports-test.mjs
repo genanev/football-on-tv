@@ -25,6 +25,10 @@
 //   fixtures/wta-tournaments-2026-10-29.json           WTA calendar from 25 Oct 2026: the Grand Slams
 //                                         and Finals, plus one WTA 1000 (ignored)
 //   fixtures/nittoatpfinals-home-2026-10-29.html       the ATP Finals' home page (the dates only)
+//   fixtures/worldrugby-matches-2026-10-29.json        World Rugby's matches, 29 Oct - 8 Nov 2026,
+//                                         captured 29 Oct: our four competitions plus three others
+//   fixtures/tnt-schedule-rugby-2026-10-30.json        TNT's schedule, 30-31 Oct: the rugby programmes
+//   fixtures/sky-guide-rugby-2026-10-30.json           Sky's guide (raw), 30-31 Oct, TNT Sports 1-4
 // Sky's TV guide only publishes today + ~8 days, so the guide entries below are written by hand
 // in Sky's exact response format, at the real session times.
 //
@@ -34,7 +38,8 @@
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
-import { build } from '../scripts/build.mjs';
+import { build, markNotOnTv } from '../scripts/build.mjs';
+import { mapWrMatch } from '../scripts/sources/rugby.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
 import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
@@ -61,7 +66,10 @@ const SKY_REAL = await fx('sky-guide-curling-tennis-2026-10-29.json');
 const WCF = await fx('worldcurling-event-europeans-2026.json');
 const WTA = await fx('wta-tournaments-2026-10-29.json');
 const ATP_FINALS = await readFile(new URL('fixtures/nittoatpfinals-home-2026-10-29.html', import.meta.url), 'utf8');
-let fisDown = false, wtaDown = false;
+const WR = await fx('worldrugby-matches-2026-10-29.json');
+const TNT_RUGBY = await fx('tnt-schedule-rugby-2026-10-30.json');
+const SKY_RUGBY = await fx('sky-guide-rugby-2026-10-30.json');
+let fisDown = false, wtaDown = false, wrDown = false;
 
 // ---------- Sky TV guide entries (UK local times)
 const SKY_F1 = 3835, MAIN = 4002, PLUS = 3940, MIX = 4090;
@@ -95,6 +103,10 @@ const GUIDE = [
 for (const d of ['2026-09-27', '2026-09-28', '2026-09-29', '2026-09-30', '2026-10-01']) GUIDE.push(prog(SKY_F1, d, '09:00', 30, 'The F1 Show', ''));
 // Real guide entries, 29 Oct - 2 Nov 2026: curling on TNT Sports 1-4, tennis on Sky Sports
 for (const day of Object.values(SKY_REAL)) for (const s of day.schedule) for (const ev of s.events) GUIDE.push({ sid: Number(s.sid), ev });
+// ...and rugby on TNT Sports 1-4, 30-31 Oct (the Premiership; with replays that aren't live)
+for (const day of Object.values(SKY_RUGBY)) for (const s of day.schedule) for (const ev of s.events) {
+  if (!GUIDE.some(g => g.sid === Number(s.sid) && g.ev.eid === ev.eid)) GUIDE.push({ sid: Number(s.sid), ev });
+}
 // The ATP Finals (15-22 Nov) aren't in the guide yet: written in Sky's format, with the titles Sky used
 // for the Paris Masters in Oct 2026 ("Live ATP Paris", "Live: ATP Paris")
 const SKY_TENNIS = 1284;
@@ -129,8 +141,10 @@ globalThis.fetch = async (url) => {
   }
   if (url.includes('netsport.eurosport.io')) { // TNT's schedule: the Sölden weekend, nothing on other days
     const day = ukDate(Date.parse(JSON.parse(new URL(url).searchParams.get('variables')).date) + 3600000);
-    return json(TNT_SKI[day] || TNT_CURLING[day] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
+    const edges = [TNT_SKI, TNT_CURLING, TNT_RUGBY].flatMap(f => f[day]?.data.programsByDate.edges || []);
+    return json({ data: { programsByDate: { edges, pageInfo: { hasNextPage: false } } } });
   }
+  if (url.includes('api.wr-rims-prod.pulselive.com')) return wrDown ? { ok: false, status: 503 } : json(WR);
   if (url.includes('worldcurling.org/wp-json/wp/v2/event')) return json(/slug=europeans/.test(url) ? [WCF] : []);
   if (url.includes('api.wtatennis.com')) return wtaDown ? { ok: false, status: 503 } : json(WTA);
   if (url.includes('nittoatpfinals.com')) return { ok: true, status: 200, text: async () => ATP_FINALS };
@@ -407,6 +421,40 @@ wtaDown = false;
 assert.equal(noWta.report.tennis.ok, true);
 assert.equal(noWta.report.tennis.errors.length, 1);
 assert.ok(noWta.events.some(e => e.comp === 'TEN_ATPF'));
+
+// ---------- rugby union (connected 29 Oct 2026): World Rugby's fixtures, channels as for football
+const wr = WR.content.map(mapWrMatch).filter(Boolean);
+assert.deepEqual([...new Set(wr.map(m => m.comp))], ['RU_PREM', 'RU_NATIONS']); // Top 14, the women's and the PREM Rugby Cup are left out
+assert.equal(WR.content.length - wr.length, 3);
+const bristol = wr.find(m => m.home === 'Bristol Bears');
+assert.deepEqual([bristol.away, bristol.kickoff, bristol.status, bristol.homeScore, bristol.source], ['Leicester Tigers', '2026-10-30T19:45:00.000Z', 'upcoming', null, 'world.rugby']);
+// The build on Fri 30 Oct: this weekend's Premiership round from Sky's guide and TNT's schedule (real),
+// and next weekend's Nations Championship, not listed by any broadcaster yet
+const rug = await build(Date.parse('2026-10-30T06:00:00Z'));
+assert.equal(rug.report.rugby.ok, true);
+const rugLine = (e) => `${uk(e.kickoff)} ${e.home} v ${e.away}: ${[...e.tv.channels, ...e.tv.alsoOn].join(', ') || e.tv.note}`;
+assert.deepEqual(rug.events.filter(e => e.comp === 'RU_PREM').map(rugLine), [
+  'Fri 30, 19:45 Bristol Bears v Leicester Tigers: TNT Sports 1, HBO Max', // guide: "Live: Bristol Bears v Leicester"
+  'Sat 31, 15:00 Exeter Chiefs v Harlequins: HBO Max',                     // streamed only (the 19:45 TNT 1 showing is a replay)
+  'Sat 31, 15:00 Saracens v Newcastle Red Bulls: HBO Max',
+  'Sat 31, 15:05 Bath Rugby v Sale Sharks: TNT Sports 1, HBO Max',
+  'Sat 31, 17:30 Northampton Saints v Gloucester Rugby: TNT Sports 1, HBO Max', // "Live: Northampton v Gloucester"
+]);
+assert.deepEqual(rug.events.find(e => e.home === 'Bath Rugby').tv.sources, ['sky-guide', 'tntsports.co.uk']);
+assert.deepEqual(rug.events.filter(e => e.comp === 'RU_NATIONS').map(e => `${e.home} v ${e.away}: ${e.tv.note}`), [
+  'Ireland v Argentina: TV channel to be confirmed', 'Italy v South Africa: TV channel to be confirmed', 'Scotland v New Zealand: TV channel to be confirmed',
+  'Wales v Japan: TV channel to be confirmed', 'France v Fiji: TV channel to be confirmed',
+]); // England v Australia (Sun 8 Nov) is beyond the window
+// The football-only 48-hour cut-off leaves rugby alone
+const allRead = { tvGuide: { ok: true }, skyListings: { ok: true }, tntSchedule: { ok: true }, premierSports: { ok: true }, primeVideo: { ok: true } };
+const ireland = { ...rug.events.find(e => e.home === 'Ireland'), tv: { channels: [], broadcaster: null, note: 'TV channel to be confirmed' } };
+assert.equal(markNotOnTv([ireland], allRead, Date.parse(ireland.kickoff) - 3600000)[0].tv.note, 'TV channel to be confirmed');
+// World Rugby's feed down: the report says so (the app shows a banner in the rugby views)
+wrDown = true;
+const noWr = await build(Date.parse('2026-10-30T06:00:00Z'));
+wrDown = false;
+assert.equal(noWr.report.rugby.ok, false);
+assert.equal(noWr.events.filter(e => e.comp.startsWith('RU_')).length, 0);
 
 console.log('\nAll sports tests passed');
 

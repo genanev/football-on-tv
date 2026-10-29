@@ -20,6 +20,8 @@
 //   Alpine skiing (World Cup, Worlds)  sources/skiing.mjs (FIS)
 //   Tennis (Grand Slams, ATP/WTA       sources/tennis.mjs (dates: WTA feed, nittoatpfinals.com;
 //   Finals)                            times and channels: the TV listings)
+//   Rugby union (Premiership, Champions sources/rugby.mjs (World Rugby's feed; channels: the TV
+//   Cup, Nations Championship, 6N)     listings)
 //   Specials: curling (European        sources/curling.mjs (dates: World Curling; games and channels:
 //   Championships)                     the TV listings)
 //   Football UK TV channels            sources/footballTv.mjs (Sky guide, Sky Sports, TNT Sports)
@@ -47,6 +49,7 @@ import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchSkiing, skiTv } from './sources/skiing.mjs';
 import { fetchTennis, tennisEvents } from './sources/tennis.mjs';
 import { fetchCurling, curlingEvents } from './sources/curling.mjs';
+import { fetchRugby, rugbyTv } from './sources/rugby.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
 import { fetchTntSchedule } from './sources/tntSchedule.mjs';
@@ -135,9 +138,10 @@ export function keepKnownChannels(events, previous, { report = {}, now = Date.no
  * otherwise a failed read would look like "not on TV". A channel found later replaces the note.
  */
 export const NO_TV_CUTOFF_HOURS = 48;
+const FOOTBALL_COMPS = new Set(['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'CUPS']); // not rugby
 export function markNotOnTv(events, report, now) {
   for (const e of events) {
-    if (e.kind !== 'match' || e.status === 'postponed' || e.timeTbc || !e.tv || e.tv.channels?.length || e.tv.broadcaster) continue;
+    if (e.kind !== 'match' || !FOOTBALL_COMPS.has(e.comp) || e.status === 'postponed' || e.timeTbc || !e.tv || e.tv.channels?.length || e.tv.broadcaster) continue;
     if (!/confirm/i.test(e.tv.note || '') || Date.parse(e.kickoff) - now > NO_TV_CUTOFF_HOURS * 3600000) continue;
     const listings = ['tvGuide', 'skyListings', 'tntSchedule', ...(e.comp === 'SCOT' ? ['premierSports'] : []), ...(e.comp === 'UCL' ? ['primeVideo'] : [])];
     if (listings.every(k => report[k]?.ok === true)) e.tv = { ...e.tv, note: 'Not shown live on UK TV' };
@@ -160,7 +164,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // broadcaster feed is keyed by. The FA's page is read every time, for its "Live on" TV picks.
   const prevGolden = previous?.golden || {};
   const due = Object.fromEntries(Object.keys(GOLDEN).map(k => [k, !useAf || checkDue(prevGolden[k], now)]));
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
     fetchF1(), fetchF2(), fetchF3(), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
@@ -170,6 +174,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
     useAf && due.conferenceLeague ? fetchUefa(now, DAYS_AHEAD, 'UECL') : skip, // no official-mode Conference League
     fetchSkiing(today, lastDay), fetchTennis(today, lastDay), fetchCurling(),
+    fetchRugby(ukDate(windowStart - 3600000), lastDay), // from the day before, like API-Football
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -364,6 +369,13 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     events.push(...tennis);
   } else report.tennis = fail(tennisRes);
 
+  // ---- rugby union: every match of the four competitions, channels as for football
+  if (ok(rugbyRes)) {
+    const rugby = rugbyRes.value.filter(inWindow);
+    report.rugby = { ok: true, matches: rugby.length };
+    for (const m of rugby) events.push({ ...m, tv: rugbyTv(m, { guide, tnt, premierSports }) });
+  } else report.rugby = fail(rugbyRes);
+
   // ---- Specials: curling, one entry per televised game
   if (ok(curlingRes)) {
     const curling = curlingEvents(curlingRes.value.events, guide, tnt, today, DAYS_AHEAD + 1).filter(inWindow);
@@ -389,7 +401,7 @@ if (isMain) {
   try { previous = JSON.parse(await readFile(out, 'utf8')); } catch { /* first run */ }
   const data = await build(Date.now(), previous);
   console.log(JSON.stringify(data.report, null, 2));
-  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'formula3', 'motogp', 'darts', 'golf', 'snooker', 'cricket', 'skiing', 'tennis', 'curling'].some(k => data.report[k]?.ok);
+  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'formula3', 'motogp', 'darts', 'golf', 'snooker', 'cricket', 'skiing', 'tennis', 'curling', 'rugby'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {
     console.error('Every fixture source failed - keeping the previous data.json');
     process.exit(1);

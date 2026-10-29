@@ -46,6 +46,8 @@ export const SPORT_CHANNELS = {
   // Sky Sports (ATP/WTA Finals, US Open), BBC (Wimbledon), TNT (Australian Open, Roland-Garros)
   tennis: [1284, 4002, 3940, 4090, 3000, 2075, 3625, 3627, 3629, 4040],
   curling: [3625, 3627, 3629, 4040], // TNT Sports 1-4 (the European Championships, 2026)
+  // TNT (Premiership, Champions Cup), Sky Sports, BBC and ITV (Six Nations, internationals), Channel 4/5
+  rugby: [3625, 3627, 3629, 4040, 4002, 3940, 4090, 3000, 2075, 6504, 6534, 4075, 4058],
 };
 
 export const isLiveTitle = (t) => /^live\b/i.test(String(t || '').trim());

@@ -60,13 +60,14 @@ label on each listing), a colour, and its empty-day message (`none`).
 | **Cricket** (bat and ball, indigo) | Tests | `TEST` | Test | ✅ (data `comp: CRICKET`, "Test" in `session`) |
 | | ODIs | `ODI` | ODI | ✅ (the rest) |
 | | T20 internationals | `T20I` | T20I | ✅ ("T20" in `session`) |
-| **Rugby** (rugby ball, teal) | Six Nations | `RU_6N` | Six Nations | soon |
-| | Nations Championship | `RU_NATIONS` | Nations Champ | soon |
-| | Premiership | `RU_PREM` | Premiership | soon |
-| | Champions Cup | `RU_CUP` | Champions Cup | soon |
+| **Rugby** (rugby ball, teal) | Six Nations | `RU_6N` | Six Nations | ✅ |
+| | Nations Championship | `RU_NATIONS` | Nations Champ | ✅ |
+| | Premiership | `RU_PREM` | Premiership | ✅ |
+| | Champions Cup | `RU_CUP` | Champions Cup | ✅ |
 | | Super League | `RL_SL` | Super League | soon |
 
-**Rugby (added 18 Oct 2026, sample data only).** One icon for both codes: union first (ids `RU_…`),
+**Rugby (added 18 Oct 2026; union connected 29 Oct 2026 from World Rugby's feed, Super League
+still waiting for its 2027 fixtures).** One icon for both codes: union first (ids `RU_…`),
 then league (`RL_…`). **Main events only (George, 18 Oct 2026):** internationals plus, for clubs,
 the equivalent of the Premier League and the Champions League. So: Six Nations, the new Nations
 Championship (it replaces the autumn series), Premiership and Champions Cup for union, and
@@ -78,8 +79,8 @@ UK rights, from a quick web search on 18 Oct 2026 (background only; the real app
 take each channel from a TV guide, never from who holds the rights): Six Nations on BBC and ITV;
 Nations Championship on ITV and STV (one source says Premier Sports too, unchecked); Premiership
 on TNT Sports with some ITV games; Champions Cup on Premier Sports, ITV for the finals; Super
-League on Sky Sports with some BBC games (Sky's deal ends after 2026). Nothing is connected to a
-data source, so every competition is marked `soon`.
+League on Sky Sports with some BBC games (Sky's deal ends after 2026). On 31 Oct 2026 TNT showed
+three Premiership games on TNT Sports 1 and two on HBO Max only.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
 | **Tennis** (ball, green; temporary icon, 29 Oct 2026) | Australian Open | `TEN_AO` | Aus Open | ✅ |

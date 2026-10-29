@@ -340,7 +340,7 @@
 
   <footer>
     Fixtures from <span id="football-src">premierleague.com, uefa.com,</span> formula1.com, fiaformula2.com, fiaformula3.com, motogp.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
-    icc-cricket.com, wtatennis.com, nittoatpfinals.com, fis-ski.com, worldcurling.org<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, Premier Sports, the Premier League and the FA.
+    icc-cricket.com, world.rugby, wtatennis.com, nittoatpfinals.com, fis-ski.com, worldcurling.org<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, Premier Sports, the Premier League and the FA.
   </footer>
 </div>
 
@@ -425,10 +425,11 @@
     // Rugby covers both codes, main events only: union (Six Nations, Nations Championship, Premiership,
     // Champions Cup) then league (Super League). Ids start RU_ / RL_.
     { id: 'rugby', icon: 'rugby', hue: 290, name: 'Rugby', color: 'var(--rugby)', none: 'No televised rugby', comps: [
-      { id: 'RU_6N', name: 'Six Nations', tag: 'Six Nations', color: 'var(--rugby)', none: 'No Six Nations rugby on TV', soon: true },
-      { id: 'RU_NATIONS', name: 'Nations Championship', tag: 'Nations Champ', color: 'var(--rugby)', none: 'No Nations Championship rugby on TV', soon: true },
-      { id: 'RU_PREM', name: 'Premiership', tag: 'Premiership', color: 'var(--rugby)', none: 'No Premiership rugby on TV', soon: true },
-      { id: 'RU_CUP', name: 'Champions Cup', tag: 'Champions Cup', color: 'var(--rugby)', none: 'No Champions Cup rugby on TV', soon: true },
+      // Union connected 29 Oct 2026 (World Rugby's feed). Super League waits for its 2027 fixtures.
+      { id: 'RU_6N', name: 'Six Nations', tag: 'Six Nations', color: 'var(--rugby)', none: 'No Six Nations rugby on TV' },
+      { id: 'RU_NATIONS', name: 'Nations Championship', tag: 'Nations Champ', color: 'var(--rugby)', none: 'No Nations Championship rugby on TV' },
+      { id: 'RU_PREM', name: 'Premiership', tag: 'Premiership', color: 'var(--rugby)', none: 'No Premiership rugby on TV' },
+      { id: 'RU_CUP', name: 'Champions Cup', tag: 'Champions Cup', color: 'var(--rugby)', none: 'No Champions Cup rugby on TV' },
       { id: 'RL_SL', name: 'Super League', tag: 'Super League', color: 'var(--rugby)', none: 'No Super League on TV', soon: true },
     ] },
     // Darts, snooker and skiing each have one competition, so they get no chip row
@@ -453,7 +454,7 @@
     { id: 'skiing', icon: 'skiing', hue: 205, name: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV', comps: [
       { id: 'SKI', name: 'Alpine skiing', tag: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV' },
     ] },
-    { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', comps: [
+    { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', listComps: true, comps: [
       // One-off and yearly events (George, 29 Oct 2026: the placeholders went; each special is a real event)
       { id: 'SPECIAL_CURLING', name: 'European Curling Championships', tag: 'Curling', color: 'var(--special)', none: 'No European Curling Championships on TV' },
     ] },
@@ -461,6 +462,9 @@
   // My TV is not a sport but sits in the same row
   const MINE = { id: 'mine', icon: 'mytv', hue: 155, name: 'My TV' };
   const SPORT_BY_ID = Object.fromEntries(SPORTS.map(s => [s.id, s]));
+  // Chips (and Customise buttons) for a sport's competitions: when it has several, or always for
+  // Specials, whose events are too different to lump together (George, 29 Oct 2026)
+  const showsComps = (s) => s.comps.length > 1 || !!s.listComps;
   // A sport's 3D icon on its tinted tile (the colours are set by CSS from --h)
   const tile = (s) => `<span class="tile${s.id === 'mine' ? ' mytv' : ''}" style="--h:${s.hue}"><img src="sport-icons/${s.icon}.svg" alt=""></span>`;
   const COMP = {}, SPORT_OF = {};
@@ -631,9 +635,9 @@
         <div class="what">${picksSummary()}</div></div>`;
     } else {
       const s = SPORTS.find(x => x.id === view.sport);
-      // A sport with a single competition has nothing to choose between, so no chips.
+      // A sport with a single competition has nothing to choose between, so no chips (except Specials).
       // Otherwise several chips can be on at once; "All" is on when none of them is.
-      $('#sub').innerHTML = s.comps.length < 2 ? '' : `<div class="chips" role="group" aria-label="${esc(s.name)} competitions">
+      $('#sub').innerHTML = !showsComps(s) ? '' : `<div class="chips" role="group" aria-label="${esc(s.name)} competitions">
         <button class="chip" data-c="" aria-pressed="${!view.comps.size}">All ${esc(s.name.toLowerCase())}</button>
         ${s.comps.map(c => `<button class="chip" data-c="${c.id}" aria-pressed="${view.comps.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}
       </div>`;
@@ -661,13 +665,14 @@
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
     const TENNIS = ['TEN_AO', 'TEN_RG', 'TEN_WIM', 'TEN_USO', 'TEN_ATPF', 'TEN_WTAF'];
-    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I', ...TENNIS, 'SPECIAL_CURLING'];
+    const RUGBY = ['RU_6N', 'RU_NATIONS', 'RU_PREM', 'RU_CUP'];
+    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I', ...TENNIS, 'SPECIAL_CURLING', ...RUGBY];
     if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
     // (no banner for Prime Video at all, by George's choice on 18 Oct 2026: a failed read keeps Amazon's pick
     // anyway, and he watches data.json's report for it instead)
-    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP', 'SKI', 'TEN_AO', 'TEN_RG', 'SPECIAL_CURLING')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP', 'SKI', 'TEN_AO', 'TEN_RG', 'SPECIAL_CURLING', 'RU_PREM', 'RU_CUP', 'RU_NATIONS')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
     if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
-    if (r.premierSports && r.premierSports.ok === false && !r.premierSports.wrongRegion && show('SCOT')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so Scottish Premiership games on Premier Sports may show “TV channel to be confirmed”.');
+    if (r.premierSports && r.premierSports.ok === false && !r.premierSports.wrongRegion && show('SCOT', 'RU_CUP')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so games on Premier Sports may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
     if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
     if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');
@@ -686,6 +691,7 @@
     if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
     if (r.skiing && r.skiing.ok === false && show('SKI')) banners.push('Alpine skiing races couldn’t be loaded on the last update.');
     if (r.tennis && r.tennis.ok === false && show(...TENNIS)) banners.push('Tennis tournaments couldn’t be loaded on the last update.');
+    if (r.rugby && r.rugby.ok === false && show(...RUGBY)) banners.push('Rugby fixtures couldn’t be loaded on the last update.');
     if (r.curling && r.curling.ok === false && show('SPECIAL_CURLING')) banners.push('The curling championships couldn’t be loaded on the last update.');
     let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
     // Competitions without a data source yet (only when one is picked on its own, or My TV is empty)
@@ -785,9 +791,9 @@
       const on = s.comps.filter(c => picks.has(c.id)).length;
       return `<div class="grp" style="--sc:${s.color}">
         <label class="grp-h">${tile(s)}
-          <span class="nm">${esc(s.name)}<span class="ct">${s.comps.length < 2 ? (on ? 'On' : 'Off') : on === s.comps.length ? 'All' : on ? `${on} of ${s.comps.length}` : 'None'}</span></span>
-          <input type="checkbox" class="switch" data-sport="${s.id}" aria-label="${s.comps.length < 2 ? '' : 'All of '}${esc(s.name)}" ${on === s.comps.length ? 'checked' : ''}></label>
-        ${s.comps.length < 2 ? '' : `<div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>`}
+          <span class="nm">${esc(s.name)}<span class="ct">${!showsComps(s) ? (on ? 'On' : 'Off') : on === s.comps.length ? 'All' : on ? `${on} of ${s.comps.length}` : 'None'}</span></span>
+          <input type="checkbox" class="switch" data-sport="${s.id}" aria-label="${!showsComps(s) ? '' : 'All of '}${esc(s.name)}" ${on === s.comps.length ? 'checked' : ''}></label>
+        ${!showsComps(s) ? '' : `<div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>`}
       </div>`;
     }).join('') + '<div class="sheet-f"><button data-all="1">Select everything</button><button data-all="0">Clear all</button></div>';
     for (const s of SPORTS) {

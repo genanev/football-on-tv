@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-29T23:00:25.585Z",
+ "generatedAt": "2026-10-29T23:30:17.586Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -139,12 +139,11 @@
    "ok": true,
    "tournaments": [
     "VidantaWorld Mexico Open",
-    "World Wide Technology Championship"
+    "World Wide Technology Championship",
+    "Abu Dhabi Aldar Championship"
    ],
-   "rounds": 6,
-   "errors": [
-    "fetch failed"
-   ]
+   "rounds": 8,
+   "errors": []
   },
   "snooker": {
    "ok": true,
@@ -167,6 +166,10 @@
    "tournaments": [],
    "days": 0,
    "errors": []
+  },
+  "rugby": {
+   "ok": true,
+   "matches": 6
   },
   "curling": {
    "ok": true,
@@ -461,6 +464,40 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "wr-a995889b-9f0e-45b9-bec2-e7e660aa7756",
+   "comp": "RU_PREM",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-10-30T19:45:00.000Z",
+   "timeTbc": false,
+   "home": "Bristol Bears",
+   "away": "Leicester Tigers",
+   "homeShort": "Bristol Bears",
+   "awayShort": "Leicester Tigers",
+   "venue": "Ashton Gate Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Match 21",
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
     ]
    }
   },
@@ -1251,6 +1288,68 @@
    }
   },
   {
+   "id": "wr-8c669e20-46ee-4974-91d8-3c4b5a0c427b",
+   "comp": "RU_PREM",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Exeter Chiefs",
+   "away": "Harlequins",
+   "homeShort": "Exeter Chiefs",
+   "awayShort": "Harlequins",
+   "venue": "Sandy Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Match 22",
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "wr-2425d551-6066-4de2-b9e5-0c31fcfe1ccc",
+   "comp": "RU_PREM",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-10-31T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Saracens",
+   "away": "Newcastle Red Bulls",
+   "homeShort": "Saracens",
+   "awayShort": "Newcastle Red Bulls",
+   "venue": "StoneX Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Match 23",
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1556694",
    "comp": "SCOT",
    "label": null,
@@ -1332,6 +1431,40 @@
    }
   },
   {
+   "id": "wr-195e36a6-baad-42fb-9ed8-7941c4b6995b",
+   "comp": "RU_PREM",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-10-31T15:05:00.000Z",
+   "timeTbc": false,
+   "home": "Bath Rugby",
+   "away": "Sale Sharks",
+   "homeShort": "Bath Rugby",
+   "awayShort": "Sale Sharks",
+   "venue": "Recreation Ground",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Match 24",
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1557456",
    "comp": "PL",
    "label": null,
@@ -1363,6 +1496,40 @@
     "sources": [
      "sky-guide",
      "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "wr-23a99f3c-614e-4b62-8b26-041ded2e9553",
+   "comp": "RU_PREM",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-10-31T17:30:00.000Z",
+   "timeTbc": false,
+   "home": "Northampton Saints",
+   "away": "Gloucester Rugby",
+   "homeShort": "Northampton Saints",
+   "awayShort": "Gloucester Rugby",
+   "venue": "Franklin's Gardens",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "League Match 25",
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "tntsports.co.uk"
     ]
    }
   },
@@ -3120,6 +3287,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Abu Dhabi Aldar Championship",
+   "venue": "Yas Links",
+   "source": "europeantour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-05",
+   "kickoff": "2026-11-05T07:00:00.000Z",
+   "end": "2026-11-05T13:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -4307,6 +4502,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Abu Dhabi Aldar Championship",
+   "venue": "Yas Links",
+   "source": "europeantour.com",
+   "session": "Round 2",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-06",
+   "kickoff": "2026-11-06T07:00:00.000Z",
+   "end": "2026-11-06T13:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -4456,6 +4679,33 @@
     "sources": [
      "sky-guide"
     ]
+   }
+  },
+  {
+   "id": "wr-1e74b48e-25fe-4ebe-beea-abb6cea010a0",
+   "comp": "RU_NATIONS",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-11-06T20:10:00.000Z",
+   "timeTbc": false,
+   "home": "Ireland",
+   "away": "Argentina",
+   "homeShort": "Ireland",
+   "awayShort": "Argentina",
+   "venue": "Aviva Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": null,
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
    }
   }
  ],

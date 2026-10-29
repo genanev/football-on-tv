@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-29T21:30:27.533Z",
+ "generatedAt": "2026-10-29T22:00:20.966Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4553,
+   "programmes": 4551,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 23,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -108,7 +99,7 @@
   "efl": {
    "ok": true,
    "championship": 25,
-   "leagueCup": 1
+   "leagueCup": 0
   },
   "faCup": {
    "ok": true,
@@ -261,38 +252,6 @@
     "sources": [
      "tntsports.co.uk",
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1640385",
-   "sourceId": "1640385",
-   "comp": "CUPS",
-   "label": "EFL Cup",
-   "kind": "match",
-   "kickoff": "2026-10-29T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Everton",
-   "away": "Newcastle United",
-   "homeShort": "Everton",
-   "awayShort": "Newcastle",
-   "venue": "Hill Dickinson Stadium",
-   "status": "live",
-   "homeScore": 3,
-   "awayScore": 0,
-   "round": "Round of 16",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
     ]
    }
   },

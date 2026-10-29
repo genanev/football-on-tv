@@ -20,6 +20,7 @@ export const CHANNELS = {
   4090: 'Sky Sports Mix',
   4081: 'Sky Sports Cricket',
   4026: 'Sky Sports Golf',
+  1284: 'Sky Sports Tennis',
   3625: 'TNT Sports 1',
   3627: 'TNT Sports 2',
   3629: 'TNT Sports 3',
@@ -42,6 +43,9 @@ export const SPORT_CHANNELS = {
   snooker: [3625, 3627, 3629, 4040, 3000, 2075, 2086, 4058, 6534, 6504],
   cricket: [4081, 4002, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075],
   football: [4002, 4010, 3939, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075, 6504, 6534, 4058],
+  // Sky Sports (ATP/WTA Finals, US Open), BBC (Wimbledon), TNT (Australian Open, Roland-Garros)
+  tennis: [1284, 4002, 3940, 4090, 3000, 2075, 3625, 3627, 3629, 4040],
+  curling: [3625, 3627, 3629, 4040], // TNT Sports 1-4 (the European Championships, 2026)
 };
 
 export const isLiveTitle = (t) => /^live\b/i.test(String(t || '').trim());

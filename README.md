@@ -8,7 +8,9 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 - **Golf:** PGA Tour, DP World Tour and the majors
 - **Snooker:** World Snooker Tour events on TV
 - **Cricket:** men's internationals between the 12 top nations
+- **Tennis:** the four Grand Slams, the ATP Finals and the WTA Finals, one entry per day on UK TV
 - **Alpine skiing:** every World Cup and World Championships race, one entry per run
+- **Specials:** real one-off or yearly events, so far the European Curling Championships (televised games)
 
 You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby and some one-off big events appear marked **SOON**: they are in the design but have no data connected yet. The design is described in `designA.md`.
 
@@ -54,7 +56,9 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 | | Golf: PGA Tour (pgatour.com) | its data feed (API) |
 | | Golf: DP World Tour (europeantour.com) | the schedule data inside its page |
 | | Cricket (icc-cricket.com) | its data feed (API) |
+| | Tennis dates (wtatennis.com; the ATP Finals from nittoatpfinals.com) | the WTA's data feed (API); reading the ATP Finals' page |
 | | Alpine skiing (fis-ski.com) | its calendar feed (iCal) |
+| | Curling championships (worldcurling.org) | its event pages' data feed |
 | **TV channels** | Sky TV guide (every channel on Sky: Sky Sports, TNT, BBC, ITV, Channel 4/5) | its data feed (API), the main source |
 | | Sky Sports' "on Sky" pages (incl. Sky Sports+ streams) | reading the pages |
 | | TNT Sports' schedule (incl. HBO Max streams) | its data feed (API) |

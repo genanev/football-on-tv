@@ -1,0 +1,550 @@
+{
+ "2026-10-28": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31805254c0ch501",
+       "startTime": "2026-10-28T07:26:54.079Z",
+       "endTime": "2026-10-28T09:43:27.795Z",
+       "title": "Italy - Germany",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/c60cb8c8-0ab3-5797-a520-4e564c3f17ec?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623603c0ch20099",
+       "startTime": "2026-10-28T07:27:01.096Z",
+       "endTime": "2026-10-28T09:43:06.206Z",
+       "title": "Italy - Germany",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/d71db276-5ac1-562f-be33-e8e3f36fc6bd?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805590c0ch502",
+       "startTime": "2026-10-28T17:56:53.334Z",
+       "endTime": "2026-10-28T20:15:09.735Z",
+       "title": "Germany - Netherlands",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/7c9f27a1-1f5a-5bfc-9a41-1fb2e5a92d21?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623604c0ch20099",
+       "startTime": "2026-10-28T17:57:00.047Z",
+       "endTime": "2026-10-28T20:14:46.340Z",
+       "title": "Germany - Netherlands",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/ba9fdbe7-36f5-504b-a0b4-832c0a84317f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31808978c0ch501",
+       "startTime": "2026-10-28T00:00:24.548Z",
+       "endTime": "2026-10-28T04:33:52.596Z",
+       "title": "Milwaukee Brewers @ Tampa Bay Rays ",
+       "subtitle": "MLB | World Series | Game 4",
+       "sportName": "Baseball",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/c60f5660-111a-52e8-982b-9349b9530bfe?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-10-29": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31805262c0ch501",
+       "startTime": "2026-10-29T13:00:00.000Z",
+       "endTime": "2026-10-29T15:30:00.000Z",
+       "title": "Germany - Scotland ",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/92ddabcc-583a-5117-80e9-117ac3be010a?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623605c0ch20099",
+       "startTime": "2026-10-29T13:00:00.000Z",
+       "endTime": "2026-10-29T15:00:00.000Z",
+       "title": "Germany - Scotland",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/6b1c2b72-094b-56d4-8033-c3a64fee2528?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805265c0ch501",
+       "startTime": "2026-10-29T21:00:00.000Z",
+       "endTime": "2026-10-29T23:00:00.000Z",
+       "title": "Germany - Scotland | Highlights",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/52b1f6ab-ee15-5ef0-a0fd-f8b9ed6b7412?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31808980c0ch501",
+       "startTime": "2026-10-29T00:00:21.401Z",
+       "endTime": "2026-10-29T03:30:00.000Z",
+       "title": "Milwaukee Brewers @ Tampa Bay Rays",
+       "subtitle": "MLB | World Series | Game 5",
+       "sportName": "Baseball",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/494ec62e-a5e1-50b5-825f-b638ff076f66?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-10-30": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31805477c0ch503",
+       "startTime": "2026-10-30T02:30:00.000Z",
+       "endTime": "2026-10-30T04:30:00.000Z",
+       "title": "Germany - Scotland | Highlights",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/a086a134-bd18-5dac-b349-a41279f49774?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31820216c0ch503",
+       "startTime": "2026-10-30T06:30:00.000Z",
+       "endTime": "2026-10-30T08:30:00.000Z",
+       "title": "Germany - Scotland | Highlights",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": false,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/4b6b8494-c7c1-5ba8-9f6a-fef8fb9de558?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31820219c0ch503",
+       "startTime": "2026-10-30T08:30:00.000Z",
+       "endTime": "2026-10-30T11:00:00.000Z",
+       "title": "Czech Republic - Germany",
+       "subtitle": "Women | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/443ae837-a1e0-5f48-a781-d1503b4b42e1?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623609c0ch20099",
+       "startTime": "2026-10-30T08:30:00.000Z",
+       "endTime": "2026-10-30T10:30:00.000Z",
+       "title": "Czech Republic - Germany",
+       "subtitle": "Women | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/cc1b82e8-d1bb-57ab-a0cc-b454336ded68?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623613c0ch20099",
+       "startTime": "2026-10-30T13:00:00.000Z",
+       "endTime": "2026-10-30T15:00:00.000Z",
+       "title": "Czech Republic - Sweden",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/db1a245a-6908-5ca2-b372-9a39be52fe97?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805607c0ch502",
+       "startTime": "2026-10-30T17:30:00.000Z",
+       "endTime": "2026-10-30T20:00:00.000Z",
+       "title": "Italy - Germany",
+       "subtitle": "Women | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/f921b413-7428-581e-ac8b-d396236db30b?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623610c0ch20099",
+       "startTime": "2026-10-30T17:30:00.000Z",
+       "endTime": "2026-10-30T19:30:00.000Z",
+       "title": "Italy - Germany",
+       "subtitle": "Women | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/83b018f9-3cd9-5ed0-a264-ff15d74abcfe?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31750548c0ch502",
+       "startTime": "2026-10-30T01:00:00.000Z",
+       "endTime": "2026-10-30T03:45:00.000Z",
+       "title": "MotoGP | Round 19 | Malaysia",
+       "subtitle": "Free Practice 1",
+       "sportName": "MOTO GP",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/940259d5-7ae2-57c0-ae96-612fe09dd278?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-10-31": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31841071c0ch502",
+       "startTime": "2026-10-31T08:30:00.000Z",
+       "endTime": "2026-10-31T11:00:00.000Z",
+       "title": "Scotland - Italy",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/bbd01222-92dd-5725-a981-b21f59aaed24?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623606c0ch20099",
+       "startTime": "2026-10-31T08:30:00.000Z",
+       "endTime": "2026-10-31T10:30:00.000Z",
+       "title": "Scotland - Italy",
+       "subtitle": "Men | Round Robin | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/754f2c8c-f714-5ce1-8016-b4e3e9ac9aa3?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805376c0ch504vcp",
+       "startTime": "2026-10-31T13:00:00.000Z",
+       "endTime": "2026-10-31T15:30:00.000Z",
+       "title": "Curling",
+       "subtitle": "Women | Semi-Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805376c0ch504",
+       "startTime": "2026-10-31T13:00:00.000Z",
+       "endTime": "2026-10-31T15:30:00.000Z",
+       "title": "Curling",
+       "subtitle": "Women | Semi-Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 4"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/407d4d57-4a40-5040-94d4-23c99137ad9f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623611c0ch20099",
+       "startTime": "2026-10-31T13:00:00.000Z",
+       "endTime": "2026-10-31T15:00:00.000Z",
+       "title": "Curling",
+       "subtitle": "Women | Semi-Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/04c9726e-9d6c-50ac-b569-4d88eb81b0ca?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805610c0ch502",
+       "startTime": "2026-10-31T17:30:00.000Z",
+       "endTime": "2026-10-31T20:00:00.000Z",
+       "title": "Curling",
+       "subtitle": "Men | Semi-Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/e6358aa8-08f6-5c80-8f09-ccfbc21f0754?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623607c0ch20099",
+       "startTime": "2026-10-31T17:30:00.000Z",
+       "endTime": "2026-10-31T19:30:00.000Z",
+       "title": "Curling",
+       "subtitle": "Men | Semi-Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/1ae945c8-fffd-5cd1-aadd-2d81c41b9c92?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31808989c0ch501",
+       "startTime": "2026-10-31T00:00:00.000Z",
+       "endTime": "2026-10-31T03:30:00.000Z",
+       "title": "Tampa Bay Rays @ Milwaukee Brewers",
+       "subtitle": "MLB | World Series | Game 6",
+       "sportName": "Baseball",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 1"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/68e820a2-b07c-5285-9854-09b687f7b9ec?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ },
+ "2026-11-01": {
+  "data": {
+   "programsByDate": {
+    "edges": [
+     {
+      "node": {
+       "id": "esp-e31811373c0ch502",
+       "startTime": "2026-11-01T09:00:00.000Z",
+       "endTime": "2026-11-01T11:30:00.000Z",
+       "title": "Curling",
+       "subtitle": "Women | Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 2"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/3a5e815b-11ef-5c99-bd91-ebb6947e5977?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623612c0ch20099",
+       "startTime": "2026-11-01T09:00:00.000Z",
+       "endTime": "2026-11-01T11:00:00.000Z",
+       "title": "Curling",
+       "subtitle": "Women | Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/7cab5587-91ee-5591-8440-55e1713f352f?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e201623608c0ch20099",
+       "startTime": "2026-11-01T13:00:00.000Z",
+       "endTime": "2026-11-01T15:00:00.000Z",
+       "title": "Curling",
+       "subtitle": "Men | Final | European Championships",
+       "sportName": "Curling",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/ca8ec0a2-9eef-5349-bbb7-364eff7cc0ab?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     },
+     {
+      "node": {
+       "id": "esp-e31805490c0ch503",
+       "startTime": "2026-10-31T22:00:00.000Z",
+       "endTime": "2026-11-01T00:00:00.000Z",
+       "title": "UFC Fight Night | Moicano - Nolan",
+       "subtitle": "Preliminary",
+       "sportName": "Mixed Martial Arts",
+       "isLive": true,
+       "channel": {
+        "name": "TNT Sports 3"
+       },
+       "programLink": {
+        "url": "https://play.hbomax.com/sport/1fb097d0-a259-5695-8369-aa083eea4314?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+       }
+      }
+     }
+    ],
+    "pageInfo": {
+     "hasNextPage": false
+    }
+   }
+  }
+ }
+}

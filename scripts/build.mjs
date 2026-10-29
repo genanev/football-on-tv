@@ -18,6 +18,10 @@
 //   Snooker (World Snooker Tour)       sources/snooker.mjs
 //   Cricket (men's internationals)     sources/cricket.mjs
 //   Alpine skiing (World Cup, Worlds)  sources/skiing.mjs (FIS)
+//   Tennis (Grand Slams, ATP/WTA       sources/tennis.mjs (dates: WTA feed, nittoatpfinals.com;
+//   Finals)                            times and channels: the TV listings)
+//   Specials: curling (European        sources/curling.mjs (dates: World Curling; games and channels:
+//   Championships)                     the TV listings)
 //   Football UK TV channels            sources/footballTv.mjs (Sky guide, Sky Sports, TNT Sports)
 //   UK TV guide (Sky, TNT, BBC, ITV)   sources/skyGuide.mjs
 //
@@ -41,6 +45,8 @@ import { fetchGolf, golfEvents } from './sources/golf.mjs';
 import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snooker.mjs';
 import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchSkiing, skiTv } from './sources/skiing.mjs';
+import { fetchTennis, tennisEvents } from './sources/tennis.mjs';
+import { fetchCurling, curlingEvents } from './sources/curling.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
 import { fetchTntSchedule } from './sources/tntSchedule.mjs';
@@ -154,7 +160,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // broadcaster feed is keyed by. The FA's page is read every time, for its "Live on" TV picks.
   const prevGolden = previous?.golden || {};
   const due = Object.fromEntries(Object.keys(GOLDEN).map(k => [k, !useAf || checkDue(prevGolden[k], now)]));
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
     fetchF1(), fetchF2(), fetchF3(), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
@@ -163,7 +169,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
     useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
     useAf && due.conferenceLeague ? fetchUefa(now, DAYS_AHEAD, 'UECL') : skip, // no official-mode Conference League
-    fetchSkiing(today, lastDay),
+    fetchSkiing(today, lastDay), fetchTennis(today, lastDay), fetchCurling(),
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -351,6 +357,20 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     for (const { gender, discipline, run, place, ...s } of runs) events.push({ ...s, tv: skiTv({ ...s, gender, discipline, run }, tnt) });
   } else report.skiing = fail(skiRes);
 
+  // ---- tennis: one entry per tournament day live on UK TV
+  if (ok(tennisRes)) {
+    const tennis = tennisEvents(tennisRes.value.tournaments, guide, tnt, today, DAYS_AHEAD + 1).filter(inWindow);
+    report.tennis = { ok: true, tournaments: tennisRes.value.tournaments.map(t => t.name), days: tennis.length, errors: tennisRes.value.errors };
+    events.push(...tennis);
+  } else report.tennis = fail(tennisRes);
+
+  // ---- Specials: curling, one entry per televised game
+  if (ok(curlingRes)) {
+    const curling = curlingEvents(curlingRes.value.events, guide, tnt, today, DAYS_AHEAD + 1).filter(inWindow);
+    report.curling = { ok: true, events: curlingRes.value.events.map(e => `${e.name} ${e.startDate}..${e.endDate}`), games: curling.length, errors: curlingRes.value.errors };
+    events.push(...curling);
+  } else report.curling = fail(curlingRes);
+
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
 
@@ -369,7 +389,7 @@ if (isMain) {
   try { previous = JSON.parse(await readFile(out, 'utf8')); } catch { /* first run */ }
   const data = await build(Date.now(), previous);
   console.log(JSON.stringify(data.report, null, 2));
-  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'formula3', 'motogp', 'darts', 'golf', 'snooker', 'cricket', 'skiing'].some(k => data.report[k]?.ok);
+  const scheduleOk = ['apiFootball', 'premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'formula1', 'formula2', 'formula3', 'motogp', 'darts', 'golf', 'snooker', 'cricket', 'skiing', 'tennis', 'curling'].some(k => data.report[k]?.ok);
   if (!scheduleOk) {
     console.error('Every fixture source failed - keeping the previous data.json');
     process.exit(1);

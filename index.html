@@ -47,6 +47,7 @@
     --rugby: #00796b;
     --tl1: .975; --tc1: .02; --tl2: .9; --tc2: .055; --rl: .55; --ll: .4; --mring: oklch(.32 .09 155);
     --special: #ad1457;
+    --tennis: #558b2f;
     --sky: #d35400;
     --tnt: #b4169e;
     --prime: #0084b4;
@@ -91,6 +92,7 @@
       --rugby: #4db6ac;
       --tl1: .36; --tc1: .045; --tl2: .27; --tc2: .05; --rl: .72; --ll: .85; --mring: oklch(.85 .1 155);
       --special: #f48fb1;
+      --tennis: #c5e1a5;
       --sky: #ff9a4d;
       --tnt: #f06ae0;
       --prime: #38c3f2;
@@ -132,6 +134,7 @@
     --rugby: #4db6ac;
     --tl1: .36; --tc1: .045; --tl2: .27; --tc2: .05; --rl: .72; --ll: .85; --mring: oklch(.85 .1 155);
     --special: #f48fb1;
+    --tennis: #c5e1a5;
     --sky: #ff9a4d;
     --tnt: #f06ae0;
     --prime: #38c3f2;
@@ -337,7 +340,7 @@
 
   <footer>
     Fixtures from <span id="football-src">premierleague.com, uefa.com,</span> formula1.com, fiaformula2.com, fiaformula3.com, motogp.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
-    icc-cricket.com, fis-ski.com<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, Premier Sports, the Premier League and the FA.
+    icc-cricket.com, wtatennis.com, nittoatpfinals.com, fis-ski.com, worldcurling.org<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, Premier Sports, the Premier League and the FA.
   </footer>
 </div>
 
@@ -435,16 +438,24 @@
     { id: 'snooker', icon: 'snooker', hue: 175, name: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker', comps: [
       { id: 'SNOOKER', name: 'Snooker', tag: 'Snooker', color: 'var(--snooker)', none: 'No televised snooker' },
     ] },
+    // Tennis (George, 29 Oct 2026): the Grand Slams and the season finals, one entry per day on UK TV.
+    // Temporary icon until George's arrives.
+    { id: 'tennis', icon: 'tennis', hue: 110, name: 'Tennis', color: 'var(--tennis)', none: 'No tennis on TV', comps: [
+      { id: 'TEN_AO', name: 'Australian Open', tag: 'Aus Open', color: 'var(--tennis)', none: 'No Australian Open on TV' },
+      { id: 'TEN_RG', name: 'Roland-Garros', tag: 'Roland-Garros', color: 'var(--tennis)', none: 'No Roland-Garros on TV' },
+      { id: 'TEN_WIM', name: 'Wimbledon', tag: 'Wimbledon', color: 'var(--tennis)', none: 'No Wimbledon on TV' },
+      { id: 'TEN_USO', name: 'US Open', tag: 'US Open', color: 'var(--tennis)', none: 'No US Open on TV' },
+      { id: 'TEN_ATPF', name: 'ATP Finals', tag: 'ATP Finals', color: 'var(--tennis)', none: 'No ATP Finals on TV' },
+      { id: 'TEN_WTAF', name: 'WTA Finals', tag: 'WTA Finals', color: 'var(--tennis)', none: 'No WTA Finals on TV' },
+    ] },
     // Alpine skiing (George, 29 Oct 2026): World Cup and World Championships races, one entry per run.
     // The tag shows the event's own label ("World Cup"). Temporary icon until George's arrives.
     { id: 'skiing', icon: 'skiing', hue: 205, name: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV', comps: [
       { id: 'SKI', name: 'Alpine skiing', tag: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV' },
     ] },
     { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', comps: [
-      { id: 'SPECIAL_TENNIS', name: 'Wimbledon & tennis', tag: 'Tennis', color: 'var(--special)', none: 'No big tennis on TV', soon: true },
-      { id: 'SPECIAL_CYCLING', name: 'Tour de France', tag: 'Cycling', color: 'var(--special)', none: 'No Tour de France on TV', soon: true },
-      { id: 'SPECIAL_ATHLETICS', name: 'Athletics championships', tag: 'Athletics', color: 'var(--special)', none: 'No athletics championships on TV', soon: true },
-      { id: 'SPECIAL_OTHER', name: 'Other big events', tag: 'Special', color: 'var(--special)', none: 'No other big events on TV', soon: true },
+      // One-off and yearly events (George, 29 Oct 2026: the placeholders went; each special is a real event)
+      { id: 'SPECIAL_CURLING', name: 'European Curling Championships', tag: 'Curling', color: 'var(--special)', none: 'No European Curling Championships on TV' },
     ] },
   ];
   // My TV is not a sport but sits in the same row
@@ -649,11 +660,12 @@
     if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
-    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I'];
+    const TENNIS = ['TEN_AO', 'TEN_RG', 'TEN_WIM', 'TEN_USO', 'TEN_ATPF', 'TEN_WTAF'];
+    const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I', ...TENNIS, 'SPECIAL_CURLING'];
     if (r.tvGuide && r.tvGuide.ok === false && show(...GUIDE)) banners.push('The Sky TV guide couldn’t be read on the last update, so some channels and times may show as to be confirmed.');
     // (no banner for Prime Video at all, by George's choice on 18 Oct 2026: a failed read keeps Amazon's pick
     // anyway, and he watches data.json's report for it instead)
-    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP', 'SKI')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
+    if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP', 'SKI', 'TEN_AO', 'TEN_RG', 'SPECIAL_CURLING')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
     if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierSports && r.premierSports.ok === false && !r.premierSports.wrongRegion && show('SCOT')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so Scottish Premiership games on Premier Sports may show “TV channel to be confirmed”.');
     if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
@@ -673,6 +685,8 @@
     if (r.snooker && r.snooker.ok === false && show('SNOOKER')) banners.push('Snooker tournaments couldn’t be loaded on the last update.');
     if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
     if (r.skiing && r.skiing.ok === false && show('SKI')) banners.push('Alpine skiing races couldn’t be loaded on the last update.');
+    if (r.tennis && r.tennis.ok === false && show(...TENNIS)) banners.push('Tennis tournaments couldn’t be loaded on the last update.');
+    if (r.curling && r.curling.ok === false && show('SPECIAL_CURLING')) banners.push('The curling championships couldn’t be loaded on the last update.');
     let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
     // Competitions without a data source yet (only when one is picked on its own, or My TV is empty)
     const chosen = [...view.comps].map(id => COMP[id]);

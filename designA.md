@@ -82,11 +82,18 @@ League on Sky Sports with some BBC games (Sky's deal ends after 2026). Nothing i
 data source, so every competition is marked `soon`.
 | **Darts** (dartboard, gold) | Darts | `DARTS` | Darts | ✅ |
 | **Snooker** (three balls, brown) | Snooker | `SNOOKER` | Snooker | ✅ |
+| **Tennis** (ball, green; temporary icon, 29 Oct 2026) | Australian Open | `TEN_AO` | Aus Open | ✅ |
+| | Roland-Garros | `TEN_RG` | Roland-Garros | ✅ |
+| | Wimbledon | `TEN_WIM` | Wimbledon | ✅ |
+| | US Open | `TEN_USO` | US Open | ✅ |
+| | ATP Finals | `TEN_ATPF` | ATP Finals | ✅ |
+| | WTA Finals | `TEN_WTAF` | WTA Finals | ✅ |
 | **Skiing** (peak and skis, ice blue; temporary icon, 29 Oct 2026) | Alpine skiing | `SKI` | World Cup / World Championships (the event's label) | ✅ |
-| **Specials** (trophy, pink) | Wimbledon & tennis | `SPECIAL_TENNIS` | Tennis | soon |
-| | Tour de France | `SPECIAL_CYCLING` | Cycling | soon |
-| | Athletics championships | `SPECIAL_ATHLETICS` | Athletics | soon |
-| | Other big events | `SPECIAL_OTHER` | Special (or the event's own `label`, e.g. "NFL") | soon |
+| **Specials** (trophy, pink) | European Curling Championships | `SPECIAL_CURLING` | Curling | ✅ |
+
+Specials are real events only (George, 29 Oct 2026): the four placeholders (Wimbledon & tennis,
+Tour de France, athletics, other big events) were removed; tennis became its own sport. Add each new
+special as its own competition once its source exists.
 
 **Splitting data comps in the app (`compOf`).** The build writes one `comp` for both cups
 (`CUPS`), for all golf (`GOLF`) and for all cricket (`CRICKET`). The page splits them as shown in
@@ -110,8 +117,8 @@ in advance:
   listed with the competition's own empty message ("No MotoGP sessions").
 - **Customise:** it can be ticked like any other competition and is ticked by default, so it
   appears on My TV by itself as soon as it's connected.
-- **Whole sport / My TV:** no note. A sport with no data at all (Specials today) just shows its
-  empty message on every day ("No big events on TV").
+- **Whole sport / My TV:** no note. A sport with no data on a day just shows its empty message
+  ("No big events on TV").
 - **`?demo=3`** hides the note, because `preview-data.json` has made-up events for MotoGP and
   Specials. They carry `sample: true` and show a dashed grey **SAMPLE** tag next to the
   competition tag. The yellow demo banner says the week is real plus made-up events.
@@ -170,7 +177,7 @@ in advance:
   selected chips are filled dark (light in dark mode). "All football" is on when no competition chip
   is, and tapping it clears the selection. Switching off the last selected chip goes back to the
   whole sport. The chip just tapped is scrolled into view.
-- **Single-competition sports** (Darts, Snooker, Skiing) show no chip row, and in Customise they are just
+- **Single-competition sports** (Darts, Snooker, Skiing; Specials while it has one event) show no chip row, and in Customise they are just
   a switch ("On"/"Off") with no competition buttons.
 - The icons and chips/summary stay **sticky** at the top; a hairline appears under them once the
   list scrolls beneath. Switching view jumps back to the top of the list.

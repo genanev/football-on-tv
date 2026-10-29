@@ -1,0 +1,11 @@
+{
+ "id": 25431,
+ "slug": "europeans",
+ "link": "https://worldcurling.org/events/europeans/",
+ "title": {
+  "rendered": "Le Gruyère AOP European Curling Championships 2026"
+ },
+ "content": {
+  "rendered": "<section id=\"hero-event\" class=\"p-clamp-t p-clamp-sm-b\">\n  <div class=\"container-xxl\">\n    <div class=\"row g-2 g-md-5 ai-center p-2 p-md-4 rounded\">\n              <div class=\"col-md-3\">\n                      <img loading=\"lazy\" decoding=\"async\" width=\"1000\" height=\"1000\" src=\"/wp-content/uploads/2024/01/ECC_Ostrava2026_RGB_new.png\" class=\"w-100 event-badge img-fluid\" alt=\"\" srcset=\"/wp-content/uploads/2024/01/ECC_Ostrava2026_RGB_new.png 1000w, /wp-content/uploads/2024/01/ECC_Ostrava2026_RGB_new.png 300w, /wp-content/uploads/2024/01/ECC_Ostrava2026_RGB_new.png 150w, /wp-content/uploads/2024/01/ECC_Ostrava2026_RGB_new.png 768w\" sizes=\"auto, (max-width: 1000px) 100vw, 1000px\" />\n                  </div>\n        <div class=\"col-md-9 t-white\">\n          <h1 class=\"title-event\">Le Gruyère AOP European Curling Championships 2026</h1>\n          <div class=\"d-flex mt-4 flex-column flex-md-row\">\n                          <em class=\"h5 tx-uc me-5 d-flex ai-center\">\n                <svg class=\"icon icon-location\" aria-labelledby=\"title-6ae2a39fb488e desc-6ae2a39fb488e\" focusable=\"false\" width=\"25\" height=\"25\" role=\"img\"><title id=\"title-Location-6ae2a39fb488e\">Location</title><desc id=\"desc-6ae2a39fb488e\">Icon for location</desc> <use href=\"#icon-location\" xlink:href=\"#icon-location\"></use> </svg>\n                <span class=\"ms-1\">Ostrava, Czechia</span>\n              </em>\n                                      <em class=\"h5 tx-uc d-flex ai-center\">\n                <svg class=\"icon icon-calendar\" aria-labelledby=\"title-6ae2a39fb48ba desc-6ae2a39fb48ba\" focusable=\"false\" width=\"25\" height=\"25\" role=\"img\"><title id=\"title-Calendar-6ae2a39fb48ba\">Calendar</title><desc id=\"desc-6ae2a39fb48ba\">Icon for calendar</desc> <use href=\"#icon-calendar\" xlink:href=\"#icon-calendar\"></use> </svg>\n                <span class=\"ms-1\">27 October – 1 November 2026</span>\n              </em>\n                      </div>\n        </div>\n          </div>\n  </div>\n</section>"
+ }
+}

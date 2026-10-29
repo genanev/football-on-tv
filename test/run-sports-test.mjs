@@ -17,6 +17,14 @@
 //                                         two races and a qualification round
 //   fixtures/tnt-schedule-skiing-2026-10-24.json  TNT's schedule API for 24-25 Oct (Sölden), captured
 //                                         29 Oct, trimmed to the skiing programmes plus one other
+//   fixtures/tnt-schedule-curling-2026-10-28.json TNT's schedule API, 28 Oct - 1 Nov (the European
+//                                         Curling Championships), captured 29 Oct, trimmed the same way
+//   fixtures/sky-guide-curling-tennis-2026-10-29.json  Sky's guide (raw), 29 Oct - 2 Nov, trimmed to
+//                                         the curling and tennis programmes (TNT 1-4, Sky Sports)
+//   fixtures/worldcurling-event-europeans-2026.json    World Curling's event (its page header only)
+//   fixtures/wta-tournaments-2026-10-29.json           WTA calendar from 25 Oct 2026: the Grand Slams
+//                                         and Finals, plus one WTA 1000 (ignored)
+//   fixtures/nittoatpfinals-home-2026-10-29.html       the ATP Finals' home page (the dates only)
 // Sky's TV guide only publishes today + ~8 days, so the guide entries below are written by hand
 // in Sky's exact response format, at the real session times.
 //
@@ -35,6 +43,8 @@ import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/sources/skiing.mjs';
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
+import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/curling.mjs';
+import { mapWtaTournaments, parseAtpFinals } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -46,7 +56,12 @@ const PDC = await fx('pdc-tournaments-2026.json');
 const FIS_WC = await readFile(new URL('fixtures/fis-alpine-wc-2027.ics', import.meta.url), 'utf8');
 const FIS_WSC = await readFile(new URL('fixtures/fis-alpine-wsc-2027.ics', import.meta.url), 'utf8');
 const TNT_SKI = await fx('tnt-schedule-skiing-2026-10-24.json');
-let fisDown = false;
+const TNT_CURLING = await fx('tnt-schedule-curling-2026-10-28.json');
+const SKY_REAL = await fx('sky-guide-curling-tennis-2026-10-29.json');
+const WCF = await fx('worldcurling-event-europeans-2026.json');
+const WTA = await fx('wta-tournaments-2026-10-29.json');
+const ATP_FINALS = await readFile(new URL('fixtures/nittoatpfinals-home-2026-10-29.html', import.meta.url), 'utf8');
+let fisDown = false, wtaDown = false;
 
 // ---------- Sky TV guide entries (UK local times)
 const SKY_F1 = 3835, MAIN = 4002, PLUS = 3940, MIX = 4090;
@@ -78,6 +93,17 @@ const GUIDE = [
   prog(MAIN, '2026-10-02', '13:00', 120, 'Live: WTA Wuhan', 'Tennis.'), // something on 2 Oct, but no darts listed yet
 ];
 for (const d of ['2026-09-27', '2026-09-28', '2026-09-29', '2026-09-30', '2026-10-01']) GUIDE.push(prog(SKY_F1, d, '09:00', 30, 'The F1 Show', ''));
+// Real guide entries, 29 Oct - 2 Nov 2026: curling on TNT Sports 1-4, tennis on Sky Sports
+for (const day of Object.values(SKY_REAL)) for (const s of day.schedule) for (const ev of s.events) GUIDE.push({ sid: Number(s.sid), ev });
+// The ATP Finals (15-22 Nov) aren't in the guide yet: written in Sky's format, with the titles Sky used
+// for the Paris Masters in Oct 2026 ("Live ATP Paris", "Live: ATP Paris")
+const SKY_TENNIS = 1284;
+GUIDE.push(
+  prog(SKY_TENNIS, '2026-11-15', '11:00', 300, 'Live: ATP Finals', 'Day one of the season-ending ATP Finals in Turin.'),
+  prog(MAIN, '2026-11-15', '18:30', 210, 'Live ATP Finals', 'The evening session in Turin.'),
+  prog(PLUS, '2026-11-15', '09:30', 450, 'Live: ATP/WTA Tennis', 'Enjoy live action from the ATP and WTA Tours.'), // names no tournament
+  prog(MAIN, '2026-11-15', '08:00', 120, 'Live: US Open Golf Review', 'Highlights.'),                              // golf, not tennis
+);
 
 function skyDay(url) {
   const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
@@ -103,8 +129,11 @@ globalThis.fetch = async (url) => {
   }
   if (url.includes('netsport.eurosport.io')) { // TNT's schedule: the Sölden weekend, nothing on other days
     const day = ukDate(Date.parse(JSON.parse(new URL(url).searchParams.get('variables')).date) + 3600000);
-    return json(TNT_SKI[day] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
+    return json(TNT_SKI[day] || TNT_CURLING[day] || { data: { programsByDate: { edges: [], pageInfo: { hasNextPage: false } } } });
   }
+  if (url.includes('worldcurling.org/wp-json/wp/v2/event')) return json(/slug=europeans/.test(url) ? [WCF] : []);
+  if (url.includes('api.wtatennis.com')) return wtaDown ? { ok: false, status: 503 } : json(WTA);
+  if (url.includes('nittoatpfinals.com')) return { ok: true, status: 200, text: async () => ATP_FINALS };
   return { ok: false, status: 404 }; // football sources are covered by run-test.mjs
 };
 
@@ -322,6 +351,62 @@ const noFis = await build(Date.parse('2026-10-24T06:00:00Z'));
 fisDown = false;
 assert.equal(noFis.report.skiing.ok, false);
 assert.equal(noFis.events.filter(e => e.comp === 'SKI').length, 0);
+
+// ---------- curling, a Special (George, 29 Oct 2026): the European Championships, televised games only
+assert.deepEqual(parseDateRange('27 October – 1 November 2026'), { startDate: '2026-10-27', endDate: '2026-11-01' });
+assert.deepEqual(parseDateRange('1&ndash;7 March 2027'), { startDate: '2027-03-01', endDate: '2027-03-07' });
+assert.deepEqual(parseDateRange('28 December – 3 January 2027'), { startDate: '2026-12-28', endDate: '2027-01-03' });
+assert.deepEqual(mapWcfEvent(CURLING_EVENTS[0], WCF), {
+  comp: 'SPECIAL_CURLING', name: 'European Curling Championships', place: 'Ostrava, Czechia', startDate: '2026-10-27', endDate: '2026-11-01', source: 'worldcurling.org',
+});
+// The build on Sat 31 Oct: the last two days, from Sky's guide and TNT's schedule (real entries)
+const curl = await build(Date.parse('2026-10-31T06:00:00Z'));
+assert.equal(curl.report.curling.ok, true);
+const curlLine = (e) => `${uk(e.kickoff)} ${e.title}${e.session ? ` · ${e.session}` : ''}: ${[...e.tv.channels, ...e.tv.alsoOn].join(', ')} (${e.tv.sources.join('+')})`;
+assert.deepEqual(curl.events.filter(e => e.comp === 'SPECIAL_CURLING').map(curlLine), [
+  "Sat 31, 08:30 Scotland v Italy · Men's Round Robin: TNT Sports 2, HBO Max (sky-guide+tntsports.co.uk)",
+  "Sat 31, 13:00 Women's Semi-Final: TNT Sports 4, HBO Max (sky-guide+tntsports.co.uk)", // the two semi-finals' streams are one entry
+  "Sat 31, 17:30 Men's Semi-Final: TNT Sports 2, HBO Max (sky-guide+tntsports.co.uk)",   // the guide's title: "Live: Curling EC - Ostrava"
+  "Sun 01, 09:00 Women's Final: TNT Sports 2, HBO Max (sky-guide+tntsports.co.uk)",
+  "Sun 01, 13:00 Men's Final: HBO Max (tntsports.co.uk)",                                // streamed only
+]); // TNT's highlights and replays (not live) aren't listed
+// Earlier in the week, from TNT's schedule alone (the guide has no past days): teams and stage from it
+const curlWed = await build(Date.parse('2026-10-28T06:00:00Z'));
+assert.deepEqual(curlWed.events.filter(e => e.comp === 'SPECIAL_CURLING' && ukDate(Date.parse(e.kickoff)) === '2026-10-28').map(curlLine), [
+  "Wed 28, 07:26 Italy v Germany · Men's Round Robin: TNT Sports 1, HBO Max (tntsports.co.uk)",
+  "Wed 28, 17:56 Germany v Netherlands · Men's Round Robin: TNT Sports 2, HBO Max (tntsports.co.uk)",
+]);
+// TNT's "Czech Republic" and the guide's "Czechia" are one team
+assert.ok(curlWed.events.some(e => e.title === 'Czechia v Germany'));
+// After the championships: nothing (Specials are listed only while on)
+assert.equal((await build(Date.parse('2026-11-02T06:00:00Z'))).events.filter(e => e.comp === 'SPECIAL_CURLING').length, 0);
+
+// ---------- tennis (George, 29 Oct 2026): Grand Slams, ATP Finals, WTA Finals
+const tours = mapWtaTournaments(WTA);
+assert.deepEqual(tours.map(t => `${t.comp} ${t.startDate}..${t.endDate} ${t.place}`), [
+  'TEN_WTAF 2026-11-08..2026-11-15 Indian Wells', 'TEN_AO 2027-01-17..2027-01-31 Melbourne', 'TEN_RG 2027-05-23..2027-06-06 Paris',
+  'TEN_WIM 2027-06-28..2027-07-11 Wimbledon', 'TEN_USO 2027-08-29..2027-09-12 New York', 'TEN_WTAF 2027-11-10..2027-11-14 Charlotte',
+]); // the WTA 1000 in the file is ignored
+assert.deepEqual(parseAtpFinals(ATP_FINALS), { comp: 'TEN_ATPF', name: 'ATP Finals', id: 'atpf-2026', startDate: '2026-11-15', endDate: '2026-11-22', place: 'Inalpi Arena, Torino', source: 'nittoatpfinals.com' });
+// Sun 15 Nov: the ATP Finals' first day, live on Sky Sports Tennis and Main Event; the generic
+// "ATP/WTA Tennis" programme and the US Open golf don't count. The WTA Finals' last day has no
+// programme naming it in the guide, so it isn't listed.
+const atp = await build(Date.parse('2026-11-15T07:00:00Z'));
+// (The guide here has nothing at all for 16-22 Nov, so those days are "TV times to be confirmed".)
+assert.deepEqual(atp.report.tennis, { ok: true, tournaments: ['WTA Finals', 'ATP Finals'], days: 8, errors: [] });
+assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && !e.allDay).map(e => `${e.comp} ${e.title} · ${e.session} ${uk(e.kickoff)}-${uk(e.end).slice(-5)}: ${e.tv.channels[0]} + ${e.tv.alsoOn.join(', ')}`),
+  ['TEN_ATPF ATP Finals · Day 1 Sun 15, 11:00-22:00: Sky Sports Tennis + Sky Sports Main Event']);
+assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && e.allDay).map(e => e.session), ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8']);
+// A tournament day the guide can't show (no listings for that date): "TV times to be confirmed"
+const wtaDay = (await build(Date.parse('2026-11-08T07:00:00Z'))).events.find(e => e.comp === 'TEN_WTAF');
+assert.deepEqual([wtaDay.session, wtaDay.allDay, wtaDay.tv.note], ['Day 1', true, 'TV times to be confirmed']);
+// The WTA feed down: the ATP Finals still come from their own site
+wtaDown = true;
+const noWta = await build(Date.parse('2026-11-15T07:00:00Z'));
+wtaDown = false;
+assert.equal(noWta.report.tennis.ok, true);
+assert.equal(noWta.report.tennis.errors.length, 1);
+assert.ok(noWta.events.some(e => e.comp === 'TEN_ATPF'));
 
 console.log('\nAll sports tests passed');
 

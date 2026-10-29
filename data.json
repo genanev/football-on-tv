@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T22:30:27.858Z",
+ "generatedAt": "2026-10-29T23:00:25.585Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4551,
+   "programmes": 4537,
    "errors": []
   },
   "skyListings": {
@@ -139,11 +139,12 @@
    "ok": true,
    "tournaments": [
     "VidantaWorld Mexico Open",
-    "World Wide Technology Championship",
-    "Abu Dhabi Aldar Championship"
+    "World Wide Technology Championship"
    ],
-   "rounds": 8,
-   "errors": []
+   "rounds": 6,
+   "errors": [
+    "fetch failed"
+   ]
   },
   "snooker": {
    "ok": true,
@@ -3119,34 +3120,6 @@
    }
   },
   {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Abu Dhabi Aldar Championship",
-   "venue": "Yas Links",
-   "source": "europeantour.com",
-   "session": "Round 1",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-05",
-   "kickoff": "2026-11-05T07:00:00.000Z",
-   "end": "2026-11-05T13:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -4325,34 +4298,6 @@
      "TNT Sports 3"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Abu Dhabi Aldar Championship",
-   "venue": "Yas Links",
-   "source": "europeantour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-06",
-   "kickoff": "2026-11-06T07:00:00.000Z",
-   "end": "2026-11-06T13:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

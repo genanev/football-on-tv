@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T06:00:22.935Z",
+ "generatedAt": "2026-10-29T06:30:16.357Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4508,
+   "programmes": 4511,
    "errors": []
   },
   "skyListings": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 20,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -119,7 +128,7 @@
   },
   "motogp": {
    "ok": true,
-   "sessions": 6
+   "sessions": 3
   },
   "darts": {
    "ok": true,
@@ -3193,50 +3202,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-4f3bf8c8-d4e1-460d-acef-8743f03c3a4d",
-   "kickoff": "2026-11-05T12:40:00.000Z",
-   "end": "2026-11-05T13:20:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-3453a511-7d69-4e2f-b574-9651cd0e796a",
-   "kickoff": "2026-11-05T17:00:00.000Z",
-   "end": "2026-11-05T17:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
    "id": "af-1636376",
    "comp": "UECL",
    "label": null,
@@ -4422,33 +4387,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-ac8631ea-71b0-411a-8676-aa68b4f69b81",
-   "kickoff": "2026-11-06T17:00:00.000Z",
-   "end": "2026-11-06T18:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },

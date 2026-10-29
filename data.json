@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T11:30:18.819Z",
+ "generatedAt": "2026-10-29T12:00:15.348Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4540,
+   "programmes": 4545,
    "errors": []
   },
   "skyListings": {
@@ -33,7 +33,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 160
+   "events": 170
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -235,7 +235,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793278800000",
+   "id": "curling-SPECIAL_CURLING-1793278620000",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -244,7 +244,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-29T13:00:00.000Z",
+   "kickoff": "2026-10-29T12:57:00.000Z",
    "end": "2026-10-29T15:30:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -259,8 +259,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
+     "tntsports.co.uk",
+     "sky-guide"
     ]
    }
   },

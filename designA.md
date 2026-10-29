@@ -184,7 +184,7 @@ Listing cards (these changed from the old tab-bar app):
 - All the listing rules are kept: LIVE NOW, P–P, scores, a channel pill and a note never
   together, "…to be confirmed" hidden once started, "Also on…", the conflict warning.
   Since 29 Oct 2026 finished games have no "FT" (greyed out is enough), and a football game that
-  is over with no channel says "Not shown live on UK TV".
+  has kicked off with no channel says "Not shown live on UK TV" (while live and afterwards).
 - **Banners:** one per failed source, shown only when the view includes a competition that
   source feeds (mapped to competition ids in `render()`).
 - Every day of the 8-day window is listed. Empty-day messages: My TV "Nothing on TV from your

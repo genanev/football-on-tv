@@ -565,12 +565,12 @@
     }
     // George's rule: a channel pill and a note never appear together - a note only explains a
     // missing channel. "...to be confirmed" also means nothing once the event has started
-    // (all-day "TBC" entries keep it: their time is a placeholder). A football game that is over
-    // with no channel wasn't on UK TV: it says so, like the 3pm blackout games (George, 29 Oct
+    // (all-day "TBC" entries keep it: their time is a placeholder). A football game that has kicked
+    // off with no channel isn't on UK TV: it says so, like the 3pm blackout games (George, 29 Oct
     // 2026: a bare row left too much white space, e.g. midweek Scottish games).
     const started = past || (!m.allDay && now >= ko.getTime());
     let note = tv.note;
-    if (m.kind === 'match' && past && m.status !== 'postponed' && /confirm/i.test(note || '')) note = 'Not shown live on UK TV';
+    if (m.kind === 'match' && started && m.status !== 'postponed' && /confirm/i.test(note || '')) note = 'Not shown live on UK TV';
     if (note && !tvHtml && !(started && /confirm/i.test(note))) tvHtml += `<span class="note ${/confirm/i.test(note) ? 'tbc' : ''}">${esc(note)}</span>`;
 
     const also = tv.alsoOn && tv.alsoOn.length ? `<div class="also">Also on ${esc(tv.alsoOn.join(', '))}</div>` : '';

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-29T10:00:13.681Z",
+ "generatedAt": "2026-10-29T10:30:19.984Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4534,
+   "programmes": 4538,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1266,
+   "programmes": 1268,
    "errors": []
   },
   "primeVideo": {
@@ -2467,7 +2467,7 @@
    "kind": "match",
    "kickoff": "2026-11-03T20:00:00.000Z",
    "timeTbc": false,
-   "home": "Bodø Glimt",
+   "home": "Bodø/Glimt",
    "away": "Lille",
    "homeShort": "Bodo/Glimt",
    "awayShort": "Lille",

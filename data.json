@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T09:30:18.640Z",
+ "generatedAt": "2026-10-30T10:00:13.476Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4482,
+   "programmes": 4483,
    "errors": []
   },
   "skyListings": {
@@ -89,8 +89,8 @@
    "televisedTies": 1
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 8
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645278,2645275,2645282,2645277,2645280,2645279,2645284,2645276,2645281,2645283,2645288,2645291,2645289,2645285,2645293&pageSize=50"
   },
   "footballChannels": "26/33 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -127,8 +127,8 @@
    "sessions": 0
   },
   "motogp": {
-   "ok": true,
-   "sessions": 5
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026"
   },
   "darts": {
    "ok": true,
@@ -165,7 +165,9 @@
    "ok": true,
    "tournaments": [],
    "days": 0,
-   "errors": []
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-10-30&to=2026-11-07"
+   ]
   },
   "rugby": {
    "ok": true,
@@ -423,33 +425,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-1a64f2f2-1a2e-4798-8acc-89c3f8391d5e",
-   "kickoff": "2026-10-31T02:50:00.000Z",
-   "end": "2026-10-31T03:30:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -472,35 +447,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-77c9f3f4-a34f-4c14-842c-91fe87b1b11d",
-   "kickoff": "2026-10-31T07:00:00.000Z",
-   "end": "2026-10-31T07:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -1586,35 +1532,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
-   "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T08:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -4702,33 +4619,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-4f3bf8c8-d4e1-460d-acef-8743f03c3a4d",
-   "kickoff": "2026-11-07T11:40:00.000Z",
-   "end": "2026-11-07T12:20:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-54780758-13bb-414b-94d6-2095f217459c",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -5299,32 +5189,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-3453a511-7d69-4e2f-b574-9651cd0e796a",
-   "kickoff": "2026-11-07T16:00:00.000Z",
-   "end": "2026-11-07T16:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-20078fb5-fab3-4d28-ad54-d550b01b472d",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -5401,15 +5265,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {

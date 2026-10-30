@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T12:00:11.929Z",
+ "generatedAt": "2026-10-30T12:30:17.280Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4481,
+   "programmes": 4483,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1240,
+   "programmes": 1239,
    "errors": []
   },
   "primeVideo": {
@@ -122,8 +122,9 @@
    "sessions": 5
   },
   "darts": {
-   "ok": false,
-   "error": "HTTP 502 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
+   "ok": true,
+   "tournaments": [],
+   "sessions": 0
   },
   "golf": {
    "ok": true,

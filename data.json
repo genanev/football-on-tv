@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-30T19:30:19.391Z",
+ "generatedAt": "2026-10-30T20:00:21.635Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -356,7 +356,7 @@
    "homeShort": "Bristol Bears",
    "awayShort": "Leicester Tigers",
    "venue": "Ashton Gate Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 21",

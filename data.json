@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T05:30:13.713Z",
+ "generatedAt": "2026-10-30T06:00:21.195Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4444,
+   "programmes": 4451,
    "errors": []
   },
   "skyListings": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 20,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -30,27 +39,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "checkedAt": "2026-10-30T06:00:21.195Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "checkedAt": "2026-10-30T06:00:21.195Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "checkedAt": "2026-10-30T06:00:21.195Z",
     "corrections": 1
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "checkedAt": "2026-10-30T06:00:21.195Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-10-29T00:30:27.668Z",
+    "checkedAt": "2026-10-30T06:00:21.195Z",
     "corrections": 0
    },
    "changed": [
@@ -5467,7 +5476,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "checkedAt": "2026-10-30T06:00:21.195Z",
    "corrections": [],
    "matches": [
     {
@@ -5559,17 +5568,47 @@
      "home": "Nottingham Forest",
      "away": "Manchester City",
      "kickoff": "2026-11-07T17:30:00.000Z"
+    },
+    {
+     "sourceId": "2645286",
+     "home": "Brighton and Hove Albion",
+     "away": "Brentford",
+     "kickoff": "2026-11-08T14:00:00.000Z"
+    },
+    {
+     "sourceId": "2645287",
+     "home": "Crystal Palace",
+     "away": "Liverpool",
+     "kickoff": "2026-11-08T14:00:00.000Z"
+    },
+    {
+     "sourceId": "2645290",
+     "home": "Ipswich Town",
+     "away": "Bournemouth",
+     "kickoff": "2026-11-08T14:00:00.000Z"
+    },
+    {
+     "sourceId": "2645294",
+     "home": "Sunderland",
+     "away": "Chelsea",
+     "kickoff": "2026-11-08T14:00:00.000Z"
+    },
+    {
+     "sourceId": "2645292",
+     "home": "Manchester United",
+     "away": "Aston Villa",
+     "kickoff": "2026-11-08T16:30:00.000Z"
     }
    ]
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "checkedAt": "2026-10-30T06:00:21.195Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "checkedAt": "2026-10-30T06:00:21.195Z",
    "corrections": [
     {
      "id": "af-1636324",
@@ -5586,12 +5625,12 @@
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "checkedAt": "2026-10-30T06:00:21.195Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-10-29T00:30:27.668Z",
+   "checkedAt": "2026-10-30T06:00:21.195Z",
    "corrections": []
   }
  }

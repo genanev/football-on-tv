@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T08:00:22.064Z",
+ "generatedAt": "2026-10-30T08:30:19.479Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4468,
+   "programmes": 4475,
    "errors": []
   },
   "skyListings": {
@@ -210,6 +210,36 @@
    }
   },
   {
+   "id": "curling-SPECIAL_CURLING-1793348821861",
+   "comp": "SPECIAL_CURLING",
+   "kind": "session",
+   "label": null,
+   "title": "Czechia v Germany",
+   "session": "Women's Round Robin",
+   "venue": "Ostrava, Czechia",
+   "source": "worldcurling.org",
+   "status": "upcoming",
+   "kickoff": "2026-10-30T08:27:01.861Z",
+   "end": "2026-10-30T11:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk",
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "South Africa v Australia",
@@ -235,36 +265,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793349000000",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Czechia v Germany",
-   "session": "Women's Round Robin",
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-10-30T08:30:00.000Z",
-   "end": "2026-10-30T11:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },

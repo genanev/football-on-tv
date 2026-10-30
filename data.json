@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T00:30:19.126Z",
+ "generatedAt": "2026-10-30T01:00:23.490Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4259,
+   "programmes": 4313,
    "errors": []
   },
   "skyListings": {
@@ -99,7 +99,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 5
+   "televised": 6
   },
   "scottishPremiership": {
    "ok": true,
@@ -112,7 +112,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 1
+   "ties": 3
   },
   "formula1": {
    "ok": true,
@@ -150,7 +150,7 @@
    "tournaments": [
     "International Championship"
    ],
-   "sessions": 14
+   "sessions": 16
   },
   "cricket": {
    "ok": true,
@@ -4622,6 +4622,58 @@
    }
   },
   {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1794031200",
+   "kickoff": "2026-11-07T06:00:00.000Z",
+   "end": "2026-11-07T09:00:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "International Championship",
+   "venue": "Nanjing",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1794051000",
+   "kickoff": "2026-11-07T11:30:00.000Z",
+   "end": "2026-11-07T14:30:00.000Z",
+   "session": "Morning session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "MOTOGP",
    "kind": "session",
    "title": "Grand Prix of Qatar",
@@ -4794,6 +4846,37 @@
     "sources": [
      "sky-guide",
      "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1607722",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-07T12:30:00.000Z",
+   "timeTbc": false,
+   "home": "Chelsea Women",
+   "away": "Everton Women",
+   "homeShort": "Chelsea",
+   "awayShort": "Everton",
+   "venue": "Stamford Bridge",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },
@@ -5210,6 +5293,38 @@
    }
   },
   {
+   "id": "af-1646905",
+   "sourceId": "1646905",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-07T17:30:00.000Z",
+   "timeTbc": false,
+   "home": "Altrincham",
+   "away": "Notts County",
+   "homeShort": "Altrincham",
+   "awayShort": "Notts County",
+   "venue": "Moss Lane",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1557465",
    "comp": "PL",
    "label": null,
@@ -5266,6 +5381,40 @@
     "conflict": false,
     "sources": [
      "premiersports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1646813",
+   "sourceId": "1646813",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-07T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Peterborough United",
+   "away": "Reading",
+   "homeShort": "Peterborough",
+   "awayShort": "Reading",
+   "venue": "Weston Homes Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

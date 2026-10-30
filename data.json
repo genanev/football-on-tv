@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T06:30:23.438Z",
+ "generatedAt": "2026-10-30T07:00:30.141Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4457,
+   "programmes": 4467,
    "errors": []
   },
   "skyListings": {
@@ -99,7 +99,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 6
+   "televised": 7
   },
   "scottishPremiership": {
    "ok": true,
@@ -142,7 +142,7 @@
     "World Wide Technology Championship",
     "Abu Dhabi Aldar Championship"
    ],
-   "rounds": 7,
+   "rounds": 8,
    "errors": []
   },
   "snooker": {
@@ -193,7 +193,7 @@
    "kickoff": "2026-10-30T07:00:00.000Z",
    "end": "2026-10-30T11:00:00.000Z",
    "session": "4th T20I",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",
@@ -4648,6 +4648,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Abu Dhabi Aldar Championship",
+   "venue": "Yas Links",
+   "source": "europeantour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-07",
+   "kickoff": "2026-11-07T07:00:00.000Z",
+   "end": "2026-11-07T13:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "International Championship",
@@ -4870,6 +4898,37 @@
     "broadcaster": "Sky Sports Premier League",
     "channels": [
      "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607723",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-07T12:30:00.000Z",
+   "timeTbc": false,
+   "home": "Manchester City Women",
+   "away": "West Ham Women",
+   "homeShort": "Manchester City",
+   "awayShort": "West Ham",
+   "venue": "Academy Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
     ],
     "alsoOn": [],
     "confirmed": true,

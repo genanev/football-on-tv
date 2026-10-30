@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T00:00:19.714Z",
+ "generatedAt": "2026-10-30T00:30:19.126Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4240,
+   "programmes": 4259,
    "errors": []
   },
   "skyListings": {
@@ -33,7 +33,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 173
+   "events": 169
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1685,7 +1685,7 @@
    "away": "Aston Villa Women",
    "homeShort": "Arsenal",
    "awayShort": "Aston Villa",
-   "venue": "Emirates Stadium",
+   "venue": "Meadow Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1718,7 +1718,7 @@
    "away": "Manchester City Women",
    "homeShort": "London City Lionesses",
    "awayShort": "Manchester City",
-   "venue": "Copperjax Community Stadium",
+   "venue": "Princes Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1809,7 +1809,7 @@
    "away": "Tottenham Hotspur Women",
    "homeShort": "Birmingham City",
    "awayShort": "Tottenham Hotspur",
-   "venue": "St. Andrew's @ Knighthead Park",
+   "venue": "The DCS Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1840,7 +1840,7 @@
    "away": "Crystal Palace Women",
    "homeShort": "Brighton",
    "awayShort": "Crystal Palace",
-   "venue": "The Broadfield Stadium",
+   "venue": "American Express Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

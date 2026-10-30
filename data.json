@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T17:30:12.021Z",
+ "generatedAt": "2026-10-30T18:00:12.031Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4485,
+   "programmes": 4494,
    "errors": []
   },
   "skyListings": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -131,9 +122,8 @@
    "sessions": 5
   },
   "darts": {
-   "ok": true,
-   "tournaments": [],
-   "sessions": 0
+   "ok": false,
+   "error": "HTTP 502 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
   },
   "golf": {
    "ok": true,

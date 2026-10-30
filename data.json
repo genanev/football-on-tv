@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T07:00:30.141Z",
+ "generatedAt": "2026-10-30T07:30:17.683Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4467,
+   "programmes": 4468,
    "errors": []
   },
   "skyListings": {
@@ -142,7 +142,7 @@
     "World Wide Technology Championship",
     "Abu Dhabi Aldar Championship"
    ],
-   "rounds": 8,
+   "rounds": 9,
    "errors": []
   },
   "snooker": {
@@ -5469,6 +5469,32 @@
     "alsoOn": [
      "TNT Sports 3"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "World Wide Technology Championship",
+   "venue": "El Cardonal at Diamante",
+   "source": "pgatour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-pga-R2026457-2026-11-07",
+   "kickoff": "2026-11-07T20:00:00.000Z",
+   "end": "2026-11-07T23:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

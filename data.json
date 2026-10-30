@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-30T18:00:12.031Z",
+ "generatedAt": "2026-10-30T18:30:13.894Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 20,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -122,8 +131,9 @@
    "sessions": 5
   },
   "darts": {
-   "ok": false,
-   "error": "HTTP 502 for https://tournaments.darts.web.gc.pdcservices.co.uk/v2/?seasonID=2025&page.size=300"
+   "ok": true,
+   "tournaments": [],
+   "sessions": 0
   },
   "golf": {
    "ok": true,
@@ -140,7 +150,7 @@
    "tournaments": [
     "International Championship"
    ],
-   "sessions": 16
+   "sessions": 14
   },
   "cricket": {
    "ok": true,
@@ -440,32 +450,6 @@
    }
   },
   {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793426400",
-   "kickoff": "2026-10-31T06:00:00.000Z",
-   "end": "2026-10-31T09:30:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "MOTOGP",
    "kind": "session",
    "title": "Grand Prix of Malaysia",
@@ -568,32 +552,6 @@
     "broadcaster": "Sky Sports Cricket",
     "channels": [
      "Sky Sports Cricket"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793446200",
-   "kickoff": "2026-10-31T11:30:00.000Z",
-   "end": "2026-10-31T15:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
     ],
     "alsoOn": [],
     "confirmed": true,

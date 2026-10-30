@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-30T10:30:20.659Z",
+ "generatedAt": "2026-10-30T11:00:16.364Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4483,
+   "programmes": 4480,
    "errors": []
   },
   "skyListings": {
@@ -191,9 +191,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-271649",
    "kickoff": "2026-10-30T07:00:00.000Z",
-   "end": "2026-10-30T11:00:00.000Z",
+   "end": "2026-10-30T10:55:00.000Z",
    "session": "4th T20I",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",
@@ -269,7 +269,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793365200000",
+   "id": "curling-SPECIAL_CURLING-1793365020000",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -278,7 +278,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-30T13:00:00.000Z",
+   "kickoff": "2026-10-30T12:57:00.000Z",
    "end": "2026-10-30T15:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -296,7 +296,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793381400000",
+   "id": "curling-SPECIAL_CURLING-1793381220000",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -305,7 +305,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-30T17:30:00.000Z",
+   "kickoff": "2026-10-30T17:27:00.000Z",
    "end": "2026-10-30T20:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -320,8 +320,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
+     "tntsports.co.uk",
+     "sky-guide"
     ]
    }
   },

@@ -51,8 +51,8 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 ```
 
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
-2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub. Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
-3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` straight from GitHub, so a new update shows within minutes, and it reloads whenever you open it or switch back to it.
+2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2) once that's set up (`cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
+3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it.
 
 ### Data sources
 
@@ -92,6 +92,7 @@ Apart from API-Football, none of these is a published, documented API. They are 
 | `scripts/build.mjs` | The update: runs every source and writes `data.json` |
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings); `teamNames.mjs` has the full club names |
 | `scripts/compare-api-football.mjs` | Compares API-Football's fixtures with the official feeds for a week |
+| `scripts/upload-r2.mjs` | Uploads `data.json` to Cloudflare R2, our own domain (run by the London job) |
 | `.env` | The API-Football key, on your PC only (never uploaded to GitHub) |
 | `business/` | Permission emails and research for the paid app, on your PC only (not in GitHub while the repository is public) |
 | `scripts/lib/util.mjs` | Shared helpers (UK time, fetching) |

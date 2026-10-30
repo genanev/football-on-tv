@@ -188,6 +188,45 @@ assert.equal(lv(fromUS).tv.note, 'TV channel to be confirmed');
 assert.deepEqual(lv(fromUSafterUK).tv.channels, ['Amazon Prime Video']);
 assert.ok(lv(fromUSafterUK).tv.sources.includes('previous-update'));
 
+// Uploading data.json to Cloudflare R2 (own domain). The signer must give Amazon's documented
+// result for its "PUT Object" example (S3 Signature Version 4 docs), since R2 checks it the same way.
+{
+  const { signS3, uploadToR2 } = await import('../scripts/upload-r2.mjs');
+  const signed = signS3({
+    method: 'PUT', url: 'https://examplebucket.s3.amazonaws.com/test$file.text', body: 'Welcome to Amazon S3.',
+    headers: { date: 'Fri, 24 May 2013 00:00:00 GMT', 'x-amz-storage-class': 'REDUCED_REDUNDANCY' },
+    accessKeyId: 'AKIAIOSFODNN7EXAMPLE', secretAccessKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY',
+    region: 'us-east-1', now: Date.UTC(2013, 4, 24),
+  });
+  assert.equal(signed.authorization, 'AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20130524/us-east-1/s3/aws4_request, '
+    + 'SignedHeaders=date;host;x-amz-content-sha256;x-amz-date;x-amz-storage-class, Signature=98ad721746da40c64f1a55b78f14c238d841ea1380cd77a1b5971af0ece108bd');
+
+  const { mkdtemp, writeFile } = await import('node:fs/promises');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const file = join(await mkdtemp(join(tmpdir(), 'r2-')), 'data.json');
+  await writeFile(file, '{"generatedAt":"2026-10-30T09:00:00Z"}');
+  const sent = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, opts) => {
+    sent.push({ url, ...opts });
+    return sent.length === 1 ? { ok: true, status: 200 }
+      : { ok: false, status: 403, text: async () => '<?xml version="1.0"?><Error><Code>SignatureDoesNotMatch</Code></Error>' };
+  };
+  const r2 = { url: 'https://acc123.r2.cloudflarestorage.com/tellyfixtures-data/', key: 'KEYID:SECRETVALUE', now: Date.UTC(2026, 9, 30, 9) };
+  const up = await uploadToR2(file, r2);
+  assert.equal(up.url, 'https://acc123.r2.cloudflarestorage.com/tellyfixtures-data/data.json');
+  assert.equal(sent[0].method, 'PUT');
+  assert.equal(sent[0].headers['content-type'], 'application/json; charset=utf-8');
+  assert.equal(sent[0].headers['cache-control'], 'public, max-age=60');
+  assert.equal(sent[0].headers.host, undefined); // fetch sets it
+  assert.match(sent[0].headers.authorization, /^AWS4-HMAC-SHA256 Credential=KEYID\/20261030\/auto\/s3\/aws4_request, SignedHeaders=cache-control;content-type;host;x-amz-content-sha256;x-amz-date, Signature=[0-9a-f]{64}$/);
+  // A refused upload names R2's error code, never the key
+  await assert.rejects(uploadToR2(file, r2), (e) => e.message === 'HTTP 403 SignatureDoesNotMatch' && !/SECRETVALUE/.test(e.message));
+  await assert.rejects(uploadToR2(file, { ...r2, key: 'KEYID' }), /R2_UPLOAD_KEY is missing or incomplete/);
+  globalThis.fetch = realFetch;
+}
+
 console.log('\nAll tests passed');
 
 // Save a sample data.json so the app has something to show before the first live update

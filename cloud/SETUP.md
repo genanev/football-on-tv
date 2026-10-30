@@ -19,6 +19,7 @@ the last step, and every step can be undone (see "Stopping it").
 | **Cloud Run Job** `football-update` | A tiny computer that starts, runs the update (about 6 seconds of work), saves `data.json` to GitHub and switches off. |
 | **Cloud Scheduler** `football-update-trigger` | The alarm clock: starts the job every 15 minutes (30 once changed). |
 | **Secret Manager** `github-token` | A locked box for the key that lets the job save to GitHub. |
+| **Cloudflare R2** `tellyfixtures-data` (added later) | Storage on your own domain: the job also uploads `data.json` there (see "Saving data.json to your own domain"). |
 
 The job downloads the newest code from GitHub every time it runs, so changes you merge to `main`
 take effect on the next run with nothing to redeploy. The script it runs is `cloud/update.sh`.
@@ -276,6 +277,116 @@ gcloud run jobs update football-update --region="$REGION" --update-env-vars="SHO
 
 Undo it with `--remove-env-vars="SHOW_SCORES"`. Both take effect on the next run.
 
+## Saving data.json to your own domain (Cloudflare R2)
+
+Step 1 of the paid-app work (`playStorePlan.md`, Phase 1). The job keeps saving `data.json` to
+GitHub as before, and **also** uploads it to Cloudflare's storage (**R2**), where it's served at
+**https://data.tellyfixtures.co.uk/data.json**. The app reads both and shows whichever is newer, so
+nothing changes for you if one of them fails. Later the phone app reads only the domain, and the
+GitHub saves can stop.
+
+It takes about 20 minutes. Until you've done it, the job just prints "R2 is not set up" and carries on.
+
+**Cost:** R2's free allowance is 10 GB of storage, a million uploads and ten million downloads a
+month. We use one small file, about 1,500 uploads a month, and one download each time someone opens
+the app. Cloudflare may ask for a payment card to switch R2 on, even though it stays free.
+
+### A. Create the storage (Cloudflare dashboard)
+
+1. Go to <https://dash.cloudflare.com> and sign in (the account that holds tellyfixtures.co.uk).
+2. In the left menu: **R2 Object Storage** (under "Storage & databases"). The first time, it asks
+   you to switch R2 on (and maybe add a card). The free plan is all we need.
+3. **Create bucket**. Name: `tellyfixtures-data`. Location: **Automatic** (or a Western Europe hint
+   if offered). Storage class: **Standard**. → **Create bucket**.
+
+(If any screen looks different from this, tell Claude what you see.)
+
+### B. Put it on data.tellyfixtures.co.uk
+
+1. In the bucket: **Settings** → **Custom Domains** → **Add**.
+2. Type `data.tellyfixtures.co.uk` → **Continue** → **Connect domain**. Cloudflare adds the
+   address itself. It shows "Initializing" for a few minutes, then **Active**.
+3. Leave **Public Development URL** (r2.dev) **disabled**: the custom domain is the only public
+   address.
+
+### C. Let the app read it from any page
+
+Still in **Settings**: **CORS Policy** → **Add CORS policy** (or **Edit**). Replace what's there with
+this, then **Save**:
+
+```json
+[
+  {
+    "AllowedOrigins": ["*"],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedHeaders": ["*"],
+    "MaxAgeSeconds": 86400
+  }
+]
+```
+
+This lets the app (on github.io today, later the phone app) download the file. It only allows
+reading: uploads still need the key from step D.
+
+### D. A key for the London job
+
+1. While still in **Settings**, find **S3 API** and copy the address shown. It looks like
+   `https://1a2b3c….r2.cloudflarestorage.com/tellyfixtures-data`. Keep it for step E. (It isn't
+   secret.)
+2. Back on the R2 overview page: **Manage API tokens** (sometimes under **{} API**) → **Create
+   Account API token** (or **Create API token**).
+3. Name: `London update job`. Permissions: **Object Read & Write**. Specify bucket(s): **Apply to
+   specific buckets only** → `tellyfixtures-data`. TTL: **Forever** (it can only write to this one
+   bucket, so it doesn't need to expire). → **Create**.
+4. The next page shows an **Access Key ID** and a **Secret Access Key** once. Keep the page open
+   for step E. (The other values on that page aren't needed.)
+
+### E. Give the key to the job (Cloud Shell)
+
+Open Cloud Shell as in step 4 at the top, and paste the two `export` lines first.
+
+1. Put the key in the locked box. Paste this line **as it is**. It asks for the two values one at a
+   time; paste each when asked (nothing shows on screen) and press Enter:
+
+```bash
+read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Paste the Secret Access Key, then press Enter: " S; echo; printf '%s:%s' "$A" "$S" | gcloud secrets create r2-upload-key --data-file=-; unset A S
+```
+
+2. Let the job read it, and hand it to the job together with the bucket's address. In the last
+   line, **replace the address with the S3 API address you copied in step D**:
+
+```bash
+gcloud secrets add-iam-policy-binding r2-upload-key \
+  --member="serviceAccount:football-job@${PROJECT_ID}.iam.gserviceaccount.com" \
+  --role="roles/secretmanager.secretAccessor"
+gcloud run jobs update football-update --region="$REGION" \
+  --update-secrets="R2_UPLOAD_KEY=r2-upload-key:latest" \
+  --update-env-vars="R2_URL=https://1a2b3c.r2.cloudflarestorage.com/tellyfixtures-data"
+```
+
+(This only adds to the job. Its GitHub and API-Football keys stay as they are.)
+
+### F. Run it once and check
+
+1. `gcloud run jobs execute football-update --region="$REGION" --wait`
+2. In the log (Cloud Run → Jobs → `football-update` → the latest execution → **Logs**), look for
+   **"Uploaded data.json (… bytes) to https://….r2.cloudflarestorage.com/tellyfixtures-data/data.json."**
+   followed by "Saved data.json to GitHub."
+3. Open **https://data.tellyfixtures.co.uk/data.json** in your browser. You should see the data
+   (a page of text starting `{"generatedAt":`), with today's time in `generatedAt`.
+4. Tell Claude it's done.
+
+**Replacing the R2 key** (if it was pasted wrongly, or ever shown on screen): make a new token
+(R2 step D), paste this line as it is and the two values when asked, then delete the old token in
+Cloudflare:
+
+```bash
+read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Paste the Secret Access Key, then press Enter: " S; echo; printf '%s:%s' "$A" "$S" | gcloud secrets versions add r2-upload-key --data-file=-; unset A S
+```
+
+**Stopping the upload** (it carries on saving to GitHub):
+`gcloud run jobs update football-update --region="$REGION" --remove-env-vars="R2_URL" --remove-secrets="R2_UPLOAD_KEY"`.
+
 ## Stopping it
 
 - **Pause** (keeps everything, runs stop):
@@ -298,6 +409,9 @@ Undo it with `--remove-env-vars="SHOW_SCORES"`. Both take effect on the next run
 | The run ends with **"Gave up after 3 attempts"** | Something else kept saving to `main` at the same moment, or GitHub was down. The next run in 15 minutes will usually work. If it keeps happening, tell Claude. |
 | The execution is red and the log says **every fixture source failed** | The London computer couldn't reach any source (for example a Google network problem). It will retry in 15 minutes; the app keeps the old data meanwhile. |
 | The log shows **Prime Video `wrongRegion`** | Prime Video still isn't seeing a UK address. Tell Claude. |
+| Log says **Upload to R2 failed: HTTP 403** (`SignatureDoesNotMatch`, `InvalidAccessKeyId` or `AccessDenied`) | The R2 key was pasted wrongly, or the token can't write to `tellyfixtures-data`. Follow "Replacing the R2 key" (end of R2 step F). |
+| Log says **Upload to R2 failed: HTTP 404** (`NoSuchBucket`) | `R2_URL` doesn't end with the bucket's name. Rerun the last command of R2 step E with the S3 API address copied exactly. |
+| **data.tellyfixtures.co.uk** doesn't open, but the log says "Uploaded" | The custom domain is still being set up (R2 step B shows "Initializing"): wait 10 minutes. |
 
 ## For Claude (not needed to follow the steps)
 
@@ -309,6 +423,12 @@ Undo it with `--remove-env-vars="SHOW_SCORES"`. Both take effect on the next run
   the first real run is the test.
 - Docker Hub's official images are accepted directly by Cloud Run; `mirror.gcr.io/library/node:24`
   is the fallback. The full `node:24` image is used because it has `git` and `bash`.
+- The R2 upload is `scripts/upload-r2.mjs`: an S3 `PUT` signed with AWS Signature Version 4 in
+  node:crypto (no SDK, per the no-packages rule; region `auto`, path-style
+  `https://<account>.r2.cloudflarestorage.com/<bucket>/data.json`). The signer reproduces the
+  "PUT Object" example in Amazon's SigV4 docs (`test/run-test.mjs`). It couldn't be tried against
+  R2 itself from the dev machine (no R2 key there); the first real run is the test. `update.sh`
+  runs it after each build and ignores its failure, and skips it on `DRY_RUN`.
 - Every run commits (`generatedAt` always changes), so `main` gets about 96 commits a day and
   GitHub Pages rebuilds 4 times an hour (its soft limit is about 10). Going faster than every
   10 minutes means saving only when the events changed (plus a heartbeat every few hours so the

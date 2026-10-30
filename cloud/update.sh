@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# The update that runs on Google Cloud (Cloud Run Job in London, started every 15 minutes by Cloud
+# The update that runs on Google Cloud (Cloud Run Job in London, started every 30 minutes by Cloud
 # Scheduler). It does what .github/workflows/update.yml does, but from a UK address: rebuild
-# data.json from every source, then save it to GitHub's main branch. See cloud/SETUP.md.
+# data.json from every source, upload it to Cloudflare R2 (data.tellyfixtures.co.uk) once that's
+# set up, then save it to GitHub's main branch. See cloud/SETUP.md.
 #
 # The job's container is Google's stock Node image; its start command clones this repo and runs
 # this file, so a change merged to main takes effect on the next run with nothing to rebuild.
 #
 # Needs: GITHUB_TOKEN (a token that may write to this repository; the job gets it from Secret Manager).
+# Optional: R2_URL and R2_UPLOAD_KEY (scripts/upload-r2.mjs); without them the upload is skipped.
 # For testing in a throwaway clone: ALLOW_RESET=1 (this script resets the checkout to GitHub's main)
 # and DRY_RUN=1 (commit locally, don't push).
 set -euo pipefail
@@ -36,6 +38,12 @@ for attempt in 1 2 3; do
   # Exits 1 (and leaves data.json alone) only when every fixture source failed: then nothing is
   # saved and the job shows as failed in Cloud Run.
   node scripts/build.mjs data.json
+
+  # The own domain first. A failed upload doesn't stop the GitHub save: the app reads both and
+  # shows whichever is newer, so it just falls back to GitHub's copy.
+  if [ -z "${DRY_RUN:-}" ]; then
+    node scripts/upload-r2.mjs data.json || echo "Warning: data.json was not uploaded to R2 this time; GitHub's copy is still saved."
+  fi
 
   git add data.json
   if git diff --cached --quiet; then echo "No changes to save."; exit 0; fi

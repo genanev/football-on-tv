@@ -362,8 +362,10 @@
   const DAYS = 8; // today + next 7 days
   const $ = (s) => document.querySelector(s);
 
-  // Where data.json lives. On GitHub Pages we read it straight from the repo so
-  // updates show up within minutes; elsewhere (or if that fails) use the copy next to this page.
+  // Where data.json lives. On GitHub Pages we read it from our own domain (Cloudflare R2, uploaded
+  // by every update) and straight from the repo at the same time, and show whichever is newer, so
+  // updates show up within minutes even if one of the two is behind or down. Elsewhere (or if
+  // both fail) use the copy next to this page.
   // ?demo shows demo-data.json (a recorded week with F1, F2 and darts) as if it were that week;
   // ?demo=2 shows demo-data-2.json (golf, snooker and cricket); ?demo=3 shows preview-data.json
   // (the 17 Oct 2026 week plus made-up sample events for competitions that aren't connected yet).
@@ -373,17 +375,17 @@
   let demoNow = null;
   const nowMs = () => demoNow ?? Date.now();
 
-  function dataUrls() {
-    if (DEMO) return [DEMO_FILE];
-    const urls = [];
-    const host = location.hostname;
-    const m = /^([^.]+)\.github\.io$/i.exec(host);
-    if (m) {
-      const repo = location.pathname.split('/').filter(Boolean)[0] || `${m[1]}.github.io`;
-      urls.push(`https://raw.githubusercontent.com/${m[1]}/${repo}/main/data.json?t=${Date.now()}`);
-    }
-    urls.push(`data.json?t=${Date.now()}`);
-    return urls;
+  const OWN_DATA = 'https://data.tellyfixtures.co.uk/data.json';
+
+  // Groups of addresses, tried in order: the first group whose reads succeed wins, and within a
+  // group the newest copy wins.
+  function dataSources() {
+    if (DEMO) return [[DEMO_FILE]];
+    const t = `?t=${Date.now()}`;
+    const m = /^([^.]+)\.github\.io$/i.exec(location.hostname);
+    if (!m) return [[`data.json${t}`]];
+    const repo = location.pathname.split('/').filter(Boolean)[0] || `${m[1]}.github.io`;
+    return [[OWN_DATA + t, `https://raw.githubusercontent.com/${m[1]}/${repo}/main/data.json${t}`], [`data.json${t}`]];
   }
 
   // Line icons for the two buttons (24×24, drawn in the current text colour). The sport icons are 3D pictures in sport-icons/.
@@ -728,16 +730,19 @@
 
   async function load() {
     let lastErr;
-    for (const url of dataUrls()) {
-      try {
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        const j = await r.json();
-        if (!data || Date.parse(j.generatedAt) >= Date.parse(data.generatedAt)) data = j;
-        if (DEMO) demoNow = Date.parse(data.generatedAt) + 4 * 3600000; // a few hours into the recorded day
-        lastErr = null;
-        break;
-      } catch (e) { lastErr = e; }
+    const get = async (url) => {
+      const r = await fetch(url, { cache: 'no-store' });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    };
+    for (const group of dataSources()) {
+      const got = await Promise.allSettled(group.map(get));
+      const ok = got.filter(g => g.status === 'fulfilled').map(g => g.value);
+      if (!ok.length) { lastErr = got[0].reason; continue; }
+      for (const j of ok) if (!data || Date.parse(j.generatedAt) >= Date.parse(data.generatedAt)) data = j;
+      if (DEMO) demoNow = Date.parse(data.generatedAt) + 4 * 3600000; // a few hours into the recorded day
+      lastErr = null;
+      break;
     }
     if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please try again shortly.</div>`;
     render();

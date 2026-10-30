@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-30T21:30:19.636Z",
+ "generatedAt": "2026-10-30T22:00:18.186Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4493,
+   "programmes": 4489,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 22,
+   "events": 21,
    "errors": []
   },
   "tntSchedule": {
@@ -365,7 +365,7 @@
    "homeShort": "Bristol Bears",
    "awayShort": "Leicester Tigers",
    "venue": "Ashton Gate Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 21",
@@ -400,7 +400,7 @@
    "homeShort": "Sheffield Utd",
    "awayShort": "Wrexham",
    "venue": "Bramall Lane",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 13",

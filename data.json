@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-30T12:30:17.280Z",
+ "generatedAt": "2026-10-30T13:00:16.065Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -24,7 +24,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 169
+   "events": 175
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -260,7 +260,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793365020000",
+   "id": "curling-SPECIAL_CURLING-1793365021118",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -269,8 +269,8 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-30T12:57:00.000Z",
-   "end": "2026-10-30T15:00:00.000Z",
+   "kickoff": "2026-10-30T12:57:01.118Z",
+   "end": "2026-10-30T14:59:55.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "HBO Max",
@@ -523,6 +523,36 @@
    }
   },
   {
+   "id": "curling-SPECIAL_CURLING-1793435220000",
+   "comp": "SPECIAL_CURLING",
+   "kind": "session",
+   "label": null,
+   "title": "Scotland v Italy",
+   "session": "Men's Round Robin",
+   "venue": "Ostrava, Czechia",
+   "source": "worldcurling.org",
+   "status": "upcoming",
+   "kickoff": "2026-10-31T08:27:00.000Z",
+   "end": "2026-10-31T11:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk",
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "South Africa v Australia",
@@ -546,36 +576,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793435400000",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Scotland v Italy",
-   "session": "Men's Round Robin",
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-10-31T08:30:00.000Z",
-   "end": "2026-10-31T11:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
     ]
    }
   },
@@ -772,7 +772,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793451600000",
+   "id": "curling-SPECIAL_CURLING-1793451420000",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -781,7 +781,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-31T13:00:00.000Z",
+   "kickoff": "2026-10-31T12:57:00.000Z",
    "end": "2026-10-31T15:30:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -796,8 +796,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
+     "tntsports.co.uk",
+     "sky-guide"
     ]
    }
   },
@@ -1342,6 +1342,36 @@
    }
   },
   {
+   "id": "curling-SPECIAL_CURLING-1793467620000",
+   "comp": "SPECIAL_CURLING",
+   "kind": "session",
+   "label": null,
+   "title": "Men's Semi-Final",
+   "session": null,
+   "venue": "Ostrava, Czechia",
+   "source": "worldcurling.org",
+   "status": "upcoming",
+   "kickoff": "2026-10-31T17:27:00.000Z",
+   "end": "2026-10-31T20:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk",
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1557456",
    "comp": "PL",
    "label": null,
@@ -1397,36 +1427,6 @@
     "broadcaster": "TNT Sports 1",
     "channels": [
      "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793467800000",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Men's Semi-Final",
-   "session": null,
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-10-31T17:30:00.000Z",
-   "end": "2026-10-31T20:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
     ],
     "alsoOn": [
      "HBO Max"
@@ -1610,7 +1610,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793523600000",
+   "id": "curling-SPECIAL_CURLING-1793523420000",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -1619,7 +1619,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-11-01T09:00:00.000Z",
+   "kickoff": "2026-11-01T08:57:00.000Z",
    "end": "2026-11-01T11:30:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -1634,8 +1634,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
+     "tntsports.co.uk",
+     "sky-guide"
     ]
    }
   },
@@ -1732,6 +1732,33 @@
    }
   },
   {
+   "id": "curling-SPECIAL_CURLING-1793537820000",
+   "comp": "SPECIAL_CURLING",
+   "kind": "session",
+   "label": null,
+   "title": "Men's Final",
+   "session": null,
+   "venue": "Ostrava, Czechia",
+   "source": "worldcurling.org",
+   "status": "upcoming",
+   "kickoff": "2026-11-01T12:57:00.000Z",
+   "end": "2026-11-01T15:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "HBO Max",
+    "channels": [
+     "HBO Max"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
    "id": "af-1556695",
    "comp": "SCOT",
    "label": null,
@@ -1759,33 +1786,6 @@
     "conflict": false,
     "sources": [
      "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793538000000",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Men's Final",
-   "session": null,
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-11-01T13:00:00.000Z",
-   "end": "2026-11-01T15:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "HBO Max",
-    "channels": [
-     "HBO Max"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "tntsports.co.uk"
     ]
    }
   },

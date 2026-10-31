@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-31T09:30:24.991Z",
+ "generatedAt": "2026-10-31T10:00:11.199Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4410,
+   "programmes": 4408,
    "errors": []
   },
   "skyListings": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -495,8 +486,8 @@
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
-   "title": "Women's Semi-Final",
-   "session": null,
+   "title": "Switzerland v Scotland",
+   "session": "Women's Semi-Final",
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",

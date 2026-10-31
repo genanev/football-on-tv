@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T07:00:22.867Z",
+ "generatedAt": "2026-10-31T07:30:24.398Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1209,
+   "programmes": 1208,
    "errors": []
   },
   "primeVideo": {
@@ -213,7 +213,7 @@
    "kickoff": "2026-10-31T07:00:00.000Z",
    "end": "2026-10-31T07:45:00.000Z",
    "session": "Sprint",
-   "status": "upcoming",
+   "status": "finished",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [

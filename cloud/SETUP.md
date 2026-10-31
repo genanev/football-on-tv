@@ -343,7 +343,18 @@ reading: uploads still need the key from step D.
 
 ### E. Give the key to the job (Cloud Shell)
 
-Open Cloud Shell as in step 4 at the top, and paste the two `export` lines first.
+Open Cloud Shell as in step 4 at the top. Then paste these lines **as they are**: they fill in your
+project's name by themselves (the prompt shows it in brackets, e.g. `(football-on-tv-512001)`):
+
+```bash
+export PROJECT_ID="$(gcloud config get-value project)"
+export REGION="europe-west2"
+echo "$PROJECT_ID $REGION"
+```
+
+The last line must print your project's name and `europe-west2`. If it prints
+`football-on-tv-123456` (the example) or nothing before `europe-west2`, run
+`gcloud config set project <your project ID>` and paste the three lines again.
 
 1. Put the key in the locked box. Paste this line **as it is**. It asks for the two values one at a
    time; paste each when asked (nothing shows on screen) and press Enter:
@@ -352,13 +363,21 @@ Open Cloud Shell as in step 4 at the top, and paste the two `export` lines first
 read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Paste the Secret Access Key, then press Enter: " S; echo; printf '%s:%s' "$A" "$S" | gcloud secrets create r2-upload-key --data-file=-; unset A S
 ```
 
-2. Let the job read it, and hand it to the job together with the bucket's address. In the last
-   line, **replace the address with the S3 API address you copied in step D**:
+2. Let the job read it:
 
 ```bash
 gcloud secrets add-iam-policy-binding r2-upload-key \
   --member="serviceAccount:football-job@${PROJECT_ID}.iam.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor"
+```
+
+   It prints a few lines ending in `etag: …` and `version: 1`, with `football-job@…` listed under
+   `roles/secretmanager.secretAccessor`. Wait a minute: Google takes a little while to apply it.
+
+3. Hand the key to the job together with the bucket's address. **Replace the address with the S3
+   API address you copied in step D**:
+
+```bash
 gcloud run jobs update football-update --region="$REGION" \
   --update-secrets="R2_UPLOAD_KEY=r2-upload-key:latest" \
   --update-env-vars="R2_URL=https://1a2b3c.r2.cloudflarestorage.com/tellyfixtures-data"
@@ -409,6 +428,8 @@ read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Pa
 | The run ends with **"Gave up after 3 attempts"** | Something else kept saving to `main` at the same moment, or GitHub was down. The next run in 15 minutes will usually work. If it keeps happening, tell Claude. |
 | The execution is red and the log says **every fixture source failed** | The London computer couldn't reach any source (for example a Google network problem). It will retry in 15 minutes; the app keeps the old data meanwhile. |
 | The log shows **Prime Video `wrongRegion`** | Prime Video still isn't seeing a UK address. Tell Claude. |
+| R2 step E, part 2 says **Service account football-job@football-on-tv-123456… does not exist** | Cloud Shell used the example project name. Paste the three lines at the top of R2 step E, check they print your project's name, and rerun part 2. The key from part 1 is already saved: don't create it again. |
+| R2 step E, part 3 says **Permission denied on secret … must be granted the 'Secret Manager Secret Accessor' role** | Part 2 didn't go through, or Google hasn't applied it yet. Run `gcloud secrets get-iam-policy r2-upload-key`: if `football-job@…` isn't listed, rerun part 2; if it is, wait two minutes and rerun part 3. |
 | Log says **Upload to R2 failed: HTTP 403** (`SignatureDoesNotMatch`, `InvalidAccessKeyId` or `AccessDenied`) | The R2 key was pasted wrongly, or the token can't write to `tellyfixtures-data`. Follow "Replacing the R2 key" (end of R2 step F). |
 | Log says **Upload to R2 failed: HTTP 404** (`NoSuchBucket`) | `R2_URL` doesn't end with the bucket's name. Rerun the last command of R2 step E with the S3 API address copied exactly. |
 | **data.tellyfixtures.co.uk** doesn't open, but the log says "Uploaded" | The custom domain is still being set up (R2 step B shows "Initializing"): wait 10 minutes. |

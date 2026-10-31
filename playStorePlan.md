@@ -196,7 +196,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - One switch turns scores off everywhere, in case they have to be removed.
 - [ ] Change the update job to **upload `data.json` to storage** (Cloudflare R2 or Google Cloud Storage) on the domain, instead of committing it to GitHub every 30 minutes.
   - [x] Code (30 Oct 2026): the job uploads to **Cloudflare R2** (bucket `tellyfixtures-data`, served at https://data.tellyfixtures.co.uk/data.json), and the web app reads the domain and GitHub together, showing the newer copy.
-  - [ ] George: create the bucket, the domain and the key (`cloud/SETUP.md` → "Saving data.json to your own domain"), then check the file opens in a browser.
+  - [x] George: created the bucket, the domain and the key (`cloud/SETUP.md` → "Saving data.json to your own domain"); the first upload ran on 31 Oct 2026 at 23:00 and the live app reads both copies.
   - Keep the GitHub commit for a few weeks as a fallback, then stop it.
   - This also removes the GitHub key that expires in Oct 2027.
 - [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews.

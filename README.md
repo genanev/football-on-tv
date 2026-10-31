@@ -24,7 +24,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 - **Live:** every sport above, updated every 30 minutes from Google Cloud in London. Football comes from API-Football, checked once a day against the official Premier League, UEFA and EFL feeds, which win if they disagree. A football game with no UK channel 48 hours before kick-off says "Not shown live on UK TV".
 - **Still to connect:** rugby league's Super League (its 2027 fixtures aren't out yet), and more Specials, one real event at a time.
 - **Design:** Design A (see `designA.md`). A card style with one rounded box per event was mocked up (branch `mockup-cards`, not merged); the current design stays for now.
-- **Paid app:** the name (Telly Fixtures), app ID and domains are done; a personal Google Play developer account is decided but not opened yet. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 0 pricing and public details, then Phase 1: support email, moving `data.json` to the own domain, privacy policy and terms).
+- **Paid app:** the name (Telly Fixtures), app ID and domains are done; a personal Google Play developer account is decided but not opened yet. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 0 pricing and public details, then Phase 1: support email, privacy policy and terms; `data.json` is on the own domain since 31 Oct 2026).
 
 ## Principles
 
@@ -51,7 +51,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 ```
 
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
-2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2) once that's set up (`cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
+2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2; live since 31 Oct 2026, set up in `cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
 3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it.
 
 ### Data sources

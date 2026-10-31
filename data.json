@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-31T22:30:16.546Z",
+ "generatedAt": "2026-10-31T22:55:17.742Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4410,
+   "programmes": 4398,
    "errors": []
   },
   "skyListings": {
@@ -1474,7 +1474,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk"
+     "tntsports.co.uk",
+     "sky-guide"
     ]
    }
   },

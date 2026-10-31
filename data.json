@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T14:00:24.728Z",
+ "generatedAt": "2026-10-31T14:30:13.609Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -339,7 +339,7 @@
    "venue": "Sincil Bank",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -370,7 +370,7 @@
    "homeShort": "Norwich",
    "awayShort": "Watford",
    "venue": "Carrow Road",
-   "status": "live",
+   "status": "finished",
    "homeScore": 3,
    "awayScore": 2,
    "round": "Regular Season - 13",
@@ -402,7 +402,7 @@
    "homeShort": "Stoke City",
    "awayShort": "Preston",
    "venue": "bet365 Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 13",
@@ -436,7 +436,7 @@
    "homeShort": "Chelsea",
    "awayShort": "Manchester United",
    "venue": "Stamford Bridge",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 9",

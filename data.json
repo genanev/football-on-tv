@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-31T11:00:14.829Z",
+ "generatedAt": "2026-10-31T11:30:12.689Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4407,
+   "programmes": 4408,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1206,
+   "programmes": 1205,
    "errors": []
   },
   "primeVideo": {
@@ -278,7 +278,7 @@
    "source": "worldcurling.org",
    "status": "upcoming",
    "kickoff": "2026-10-31T08:27:03.370Z",
-   "end": "2026-10-31T11:05:00.000Z",
+   "end": "2026-10-31T11:05:33.237Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",

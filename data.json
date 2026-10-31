@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-31T21:30:24.975Z",
+ "generatedAt": "2026-10-31T22:00:28.297Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4413,
+   "programmes": 4410,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1204,
+   "programmes": 1205,
    "errors": []
   },
   "primeVideo": {
@@ -1194,7 +1194,7 @@
    "homeShort": "Aston Villa",
    "awayShort": "Fulham",
    "venue": "Villa Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 9",
@@ -1460,14 +1460,16 @@
    "source": "worldcurling.org",
    "status": "upcoming",
    "kickoff": "2026-11-01T12:57:00.000Z",
-   "end": "2026-11-01T15:00:00.000Z",
+   "end": "2026-11-01T15:30:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "HBO Max",
+    "broadcaster": "TNT Sports 2",
     "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
      "HBO Max"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

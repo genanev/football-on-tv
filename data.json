@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T10:30:09.923Z",
+ "generatedAt": "2026-10-31T11:00:14.829Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,8 +19,17 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 20,
+   "amazonPicks": [
+    "Manchester United vs. Roma",
+    "Arsenal vs. Dortmund",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -269,7 +278,7 @@
    "source": "worldcurling.org",
    "status": "upcoming",
    "kickoff": "2026-10-31T08:27:03.370Z",
-   "end": "2026-10-31T11:00:00.000Z",
+   "end": "2026-10-31T11:05:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",

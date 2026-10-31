@@ -1,4 +1,4 @@
-# Football on TV
+# Telly Fixtures (formerly Football on TV)
 
 A phone web app that lists what's on UK TV for **today and the next 7 days**, with **UK times** and the **UK TV channel**:
 
@@ -52,7 +52,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
 2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2; live since 31 Oct 2026, set up in `cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
-3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it.
+3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it. It works offline too: the phone keeps a copy of the app and of the last listings, and says how old they are when it can't get new ones (`sw.js`).
 
 ### Data sources
 
@@ -88,6 +88,7 @@ Apart from API-Football, none of these is a published, documented API. They are 
 | `data.json` | The latest fixtures and channels (rewritten by every update; don't edit by hand) |
 | `demo-data.json`, `demo-data-2.json`, `preview-data.json` | Recorded weeks for the demo views (see below) |
 | `manifest.webmanifest`, `icon-*.png`, `apple-touch-icon.png` | What makes it installable on a phone |
+| `sw.js` | Keeps the app on the phone so it opens offline |
 | `sport-icons/` | The 3D sport icons (SVG) used in the top row and on every game |
 | `scripts/build.mjs` | The update: runs every source and writes `data.json` |
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings); `teamNames.mjs` has the full club names |

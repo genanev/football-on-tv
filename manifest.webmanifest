@@ -1,7 +1,7 @@
 {
-  "name": "Football on TV",
-  "short_name": "Football TV",
-  "description": "Premier League and Champions League games with UK kick-off times and TV channels.",
+  "name": "Telly Fixtures",
+  "short_name": "Telly Fixtures",
+  "description": "What's on UK TV for the next 7 days: football, motorsport, golf, cricket, rugby, darts, snooker, tennis, skiing and big events, with UK times and TV channels.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

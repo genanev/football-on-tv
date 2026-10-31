@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Football on TV</title>
+<title>Telly Fixtures</title>
 <meta name="description" content="Football, motorsport, golf, cricket, rugby, darts, snooker and big events on UK TV for the next 7 days, with UK times and TV channels.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
@@ -11,27 +11,29 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Football TV">
+<meta name="apple-mobile-web-app-title" content="Telly Fixtures">
 <meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111412" media="(prefers-color-scheme: dark)">
 <script>
   try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
 </script>
 <style>
+  /* Every text colour meets WCAG AA (4.5:1) on the background it sits on, in both themes
+     (checked 31 Oct 2026; UEL, UECL, tennis, Sky and Prime were darkened slightly for it) */
   :root {
     --bg: #f4f5f2;
     --surface: #ffffff;
     --text: #15191a;
     --muted: #5f6866;
-    --faint: #8b9391;
+    --faint: #666f6c;
     --line: #e3e6e1;
     --accent: #0b6b3a;
     --pl: #3d195b;
     --ucl: #0d47a1;
-    --uel: #e65100;
+    --uel: #c94700;
     --champ: #546e7a;
     --cups: #c2185b;
-    --uecl: #558b2f;
+    --uecl: #4c7d2a;
     --wsl: #8e24aa;
     --scot: #00558b;
     --f1: #d50000;
@@ -47,10 +49,10 @@
     --rugby: #00796b;
     --tl1: .975; --tc1: .02; --tl2: .9; --tc2: .055; --rl: .55; --ll: .4; --mring: oklch(.32 .09 155);
     --special: #ad1457;
-    --tennis: #558b2f;
-    --sky: #d35400;
+    --tennis: #4c7d2a;
+    --sky: #c24e00;
     --tnt: #b4169e;
-    --prime: #0084b4;
+    --prime: #0079a6;
     --bbc: #222;
     --other: #4a5553;
     --warn-bg: #fff4d6;
@@ -68,7 +70,7 @@
       --surface: #1b201d;
       --text: #eef1ee;
       --muted: #a3aca8;
-      --faint: #7b8580;
+      --faint: #8a948f;
       --line: #2a312d;
       --accent: #4cc283;
       --pl: #b98be0;
@@ -110,7 +112,7 @@
     --surface: #1b201d;
     --text: #eef1ee;
     --muted: #a3aca8;
-    --faint: #7b8580;
+    --faint: #8a948f;
     --line: #2a312d;
     --accent: #4cc283;
     --pl: #b98be0;
@@ -157,7 +159,8 @@
   button { -webkit-tap-highlight-color: transparent; }
   .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 40px; }
 
-  header { padding: 20px 0 12px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+  /* Wraps (title above the theme button) when the phone's text size is turned up */
+  header { padding: 20px 0 12px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
   h1 { font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
   .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
   .actions { display: flex; gap: 8px; flex: none; }
@@ -193,10 +196,12 @@
   .tile.mytv { --ring: var(--mring); background: linear-gradient(165deg, oklch(.56 .12 155), oklch(.42 .1 155)); }
   .sport {
     --lab: oklch(var(--ll) .14 var(--h));
-    flex: none; width: 72px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
+    flex: none; min-width: 72px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0 2px;
-    font: inherit; font-size: 12px; font-weight: 600;
+    font: inherit; font-size: 12px; font-weight: 600; white-space: nowrap;
   }
+  /* Larger text: each label gets the room it needs (the row scrolls) rather than spilling onto its neighbours */
+  .sport > span:last-child { padding: 0 3px; }
   .sport.mytab { --lab: var(--text); }
   .sport[aria-selected="true"] { color: var(--lab); font-weight: 700; }
   .sport[aria-selected="true"] .tile { transform: translateY(-3px); box-shadow: inset 0 0 0 2px var(--ring), 0 7px 14px -7px var(--ring); }
@@ -210,8 +215,9 @@
   .chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
   .chip .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
   .mine { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-  .mine .btns { display: flex; gap: 12px; }
-  .mine .btns .edit { flex: 1 1 0; min-width: 0; justify-content: center; white-space: nowrap; }
+  /* Side by side and equally wide; with larger text the day button moves under Customise */
+  .mine .btns { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+  .mine .btns .edit { flex: 1 1 120px; min-width: fit-content; justify-content: center; white-space: nowrap; }
   .mine .what { font-size: 14px; color: var(--muted); }
   .mine .what b { color: var(--text); font-weight: 600; }
   .edit {
@@ -240,7 +246,7 @@
   .list { background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
   /* The time column (time, LIVE NOW, sport icon) spans every row, so a tall time cell never pushes the
      tags down; if it is taller than the text, the spare room goes to the empty last row. */
-  .match { display: grid; grid-template-columns: 56px 1fr; grid-template-rows: auto auto 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
+  .match { display: grid; grid-template-columns: minmax(56px, max-content) minmax(0, 1fr); grid-template-rows: auto auto 1fr; gap: 4px 12px; padding: 12px 14px; border-top: 1px solid var(--line); }
   .match > .time { grid-row: 1 / -1; }
   .match > .teams { grid-column: 2; grid-row: 1; }
   .match > .meta { grid-row: 2; }
@@ -251,20 +257,21 @@
   .status.live { color: var(--live); white-space: nowrap; }
   /* The sport's icon under the time (and LIVE NOW), so it's clear at a glance which sport a game is */
   .sico { display: block; width: 38px; height: 38px; margin: 4px 0 0 -3px; }
-  .teams { font-weight: 600; font-size: 16px; line-height: 1.3; min-width: 0; }
+  .teams { font-weight: 600; font-size: 16px; line-height: 1.3; min-width: 0; overflow-wrap: break-word; } /* "Wolverhampton" at the largest text size */
   .teams .v { color: var(--faint); font-weight: 400; padding: 0 2px; }
   .score { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 700; margin-left: 6px; }
   .meta { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 2px; }
   .comp { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
   .comp.sample { color: var(--faint); border-style: dashed; }
   .teams .sess { color: var(--muted); font-weight: 500; }
-  .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); white-space: nowrap; }
+  /* A pill moves to the next line first; only one wider than the whole card (large text) wraps its words */
+  .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); max-width: 100%; }
   .pill.sky { background: var(--sky); }
   .pill.tnt { background: var(--tnt); }
   .pill.prime { background: var(--prime); }
   .pill.bbc { background: var(--bbc); }
   .note { font-size: 13px; color: var(--muted); }
-  .note.tbc::before { content: "⏳ "; }
+  .note.tbc::before { content: "⏳ "; content: "⏳ " / ""; } /* decoration: screen readers skip it */
   .also { grid-column: 2; font-size: 12px; color: var(--faint); }
   .warn { grid-column: 2; font-size: 12px; color: var(--warn-text); background: var(--warn-bg); border-radius: 8px; padding: 4px 8px; }
 
@@ -316,17 +323,22 @@
   .dayopt .dd { margin-left: auto; }
   .sheet-f { display: flex; justify-content: center; gap: 18px; padding: 4px 0 6px; }
   .sheet-f button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+  /* The phone's "remove animations" setting: no sliding sheets or lifting tiles */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div>
-      <h1>Football on TV</h1>
+      <h1>Telly Fixtures</h1>
       <div class="sub" id="updated">UK times</div>
     </div>
     <div class="actions">
-    <button class="theme" id="theme" aria-label="Colour theme"></button>
+    <button class="theme" id="theme"></button>
     </div>
   </header>
 
@@ -528,6 +540,14 @@
   const dayName = (d) => d.i === 0 ? 'Today' : d.i === 1 ? 'Tomorrow' : fShort.format(d.date);
 
   let data = null;
+  // The last listings that loaded are kept on the phone (`lastData`), so the app opens straight
+  // away with them and still works without a signal; `offline` = this time nothing new could be read.
+  const SAVED = 'lastData';
+  let offline = false;
+  if (!DEMO) try {
+    const saved = JSON.parse(localStorage.getItem(SAVED));
+    if (saved && saved.generatedAt && Array.isArray(saved.events)) data = saved;
+  } catch (e) {}
 
   function esc(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -664,7 +684,8 @@
       2: 'Demo: a recorded week (12 Oct 2026) to show how golf, snooker and cricket look.',
       3: 'Design preview: the real week of 17 Oct 2026, plus made-up events marked SAMPLE for sports that aren’t connected yet.',
     }[DEMO_ARG] || 'Demo: a recorded week (24 Sept 2026) to show how F1, F2 and darts look.');
-    if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
+    if (offline) banners.push(`Couldn’t get the latest listings (no connection?), so these are the ones saved on this phone, from ${ago(data.generatedAt)}. Channels may have changed since.`);
+    else if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
     const TENNIS = ['TEN_AO', 'TEN_RG', 'TEN_WIM', 'TEN_USO', 'TEN_ATPF', 'TEN_WTAF'];
@@ -739,12 +760,15 @@
       const got = await Promise.allSettled(group.map(get));
       const ok = got.filter(g => g.status === 'fulfilled').map(g => g.value);
       if (!ok.length) { lastErr = got[0].reason; continue; }
+      const before = data;
       for (const j of ok) if (!data || Date.parse(j.generatedAt) >= Date.parse(data.generatedAt)) data = j;
       if (DEMO) demoNow = Date.parse(data.generatedAt) + 4 * 3600000; // a few hours into the recorded day
+      else if (data !== before) try { localStorage.setItem(SAVED, JSON.stringify(data)); } catch (e) {}
       lastErr = null;
       break;
     }
-    if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please try again shortly.</div>`;
+    offline = !!lastErr && !!data;
+    if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please check your connection and try again shortly.</div>`;
     render();
   }
 
@@ -870,6 +894,8 @@
     const btn = $('#theme');
     btn.innerHTML = `${t.icon}<span>${t.label}</span>`;
     btn.title = `${t.label} mode. Tap to switch.`;
+    // Screen readers say what it is and what's on; the name includes the word shown ("Light")
+    btn.setAttribute('aria-label', `Colour theme: ${t.label}`);
     document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = theme === 'dark' ? '#111412' : '#f4f5f2'; });
   }
   $('#theme').addEventListener('click', () => {
@@ -881,7 +907,10 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
   setInterval(render, 60000);
   renderNav();
+  render(); // the saved listings, if any, while the new ones load
   load();
+  // Offline use: sw.js keeps the app's own files on the phone
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();
 </script>
 </body>

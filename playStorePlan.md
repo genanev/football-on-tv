@@ -163,7 +163,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] No clashing app found in the stores; trademark register checked by George (no conflict).
   - [x] App ID: **`uk.co.tellyfixtures`** (Android and, later, Apple). **It can't change after the first upload.**
   - [x] Domains registered on Cloudflare (19 Oct 2026): **tellyfixtures.co.uk** (the main one, which the app ID matches) and **tellyfixtures.com**, auto-renewing yearly. tellyfixtures.app deliberately skipped (optional; can be bought later if still free).
-  - [ ] Rename the app itself (title, manifest, icons, footer) in Phase 1.
+  - [x] Rename the app itself (31 Oct 2026): title, heading, manifest and home-screen name. The icon waits for the app icon (see "Icon licence" below); the footer names no app. The web address keeps `football-on-tv` until the site moves to Cloudflare Pages.
 - [ ] **Pricing.** Recommended: **one-month free trial, then £3.65 a year**. The alternative, a free tier with the full week and My TV paid, gets more installs but is more to build. Decide before Phase 3.
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the trial terms beside it.
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
@@ -214,10 +214,12 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Apple's standard licence terms, if used later.
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
 - [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple).
-- [ ] **Accessibility:**
-  - Text still fits when the phone's font size is increased.
-  - Colour contrast meets WCAG AA in both themes.
-  - Every icon button has a label for screen readers (TalkBack on Android, VoiceOver on iPhone).
+- [ ] **Accessibility** (the code, 31 Oct 2026; one check on the phone left):
+  - [x] Text still fits when the phone's font size is increased (checked up to 200%, at 320–412px wide).
+  - [x] Colour contrast meets WCAG AA in both themes (five colours darkened slightly, including Sky's orange).
+  - [x] Every icon button has a label for screen readers; the animations stop when the phone asks for less motion.
+  - [ ] George: try the app once with **TalkBack** on the Pixel (Settings → Accessibility → TalkBack) and with the largest font size.
+- [x] **Offline use** (31 Oct 2026): the phone keeps the app and the last listings, opens without a signal and says how old the listings are.
 - [ ] **Polish:**
   - Nothing that looks unfinished. "SOON" items are fine if clearly labelled.
   - Clear wording for errors and empty days.
@@ -233,7 +235,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Check what each screen says will be shown publicly (see "Your public details" in Phase 0).
 - [ ] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Get your Pixel 9 ready for testing (developer options, USB debugging).
 - [ ] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it.
-- [ ] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …".
+- [ ] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking.)
 - [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
 - [ ] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). A bell on each fixture: "Remind me 30 min before". Android 13+ asks for permission the first time. Store reminders on the phone.
 - [ ] **Versioning:**

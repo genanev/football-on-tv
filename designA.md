@@ -14,7 +14,7 @@ then dropped on 17 Oct 2026.
 ## The idea in one screen
 
 ```
- Football on TV                        [☀ Light]
+ Telly Fixtures                        [☀ Light]
  UK times · updated 12 min ago
  ┌──────────────────────────────────────────────┐  ← sticky
  │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (🏉 ›  │  3D sport icons on tiles, scroll sideways
@@ -218,4 +218,4 @@ have no data yet.
 - Section names: "Specials" vs "Big events". (The "Others" section was removed on 17 Oct 2026:
   Darts and Snooker are separate sports.)
 - Should the icon row hide sports you never pick, or always show all eight?
-- App name: with Specials and eight sports, "Football on TV" may no longer fit (already an open item).
+- App name: settled – **Telly Fixtures** (chosen 19 Oct 2026, shown in the app since 31 Oct 2026).

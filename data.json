@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T02:30:27.174Z",
+ "generatedAt": "2026-10-31T03:00:31.779Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -195,7 +195,7 @@
    "kickoff": "2026-10-31T02:50:00.000Z",
    "end": "2026-10-31T03:30:00.000Z",
    "session": "Qualifying",
-   "status": "upcoming",
+   "status": "live",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [

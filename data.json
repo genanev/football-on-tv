@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T15:00:20.797Z",
+ "generatedAt": "2026-10-31T15:30:24.465Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,12 +10,12 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 22,
+   "events": 21,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1206,
+   "programmes": 1204,
    "errors": []
   },
   "primeVideo": {
@@ -352,8 +352,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -485,8 +484,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -533,9 +531,9 @@
    "homeShort": "Bolton",
    "awayShort": "Bristol City",
    "venue": "Toughsheet Community Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -561,9 +559,9 @@
    "homeShort": "Burnley",
    "awayShort": "Portsmouth",
    "venue": "Turf Moor",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -589,9 +587,9 @@
    "homeShort": "Middlesbrough",
    "awayShort": "Charlton",
    "venue": "Riverside Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -617,9 +615,9 @@
    "homeShort": "Millwall",
    "awayShort": "Derby",
    "venue": "The Den",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 3,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -645,9 +643,9 @@
    "homeShort": "Southampton",
    "awayShort": "QPR",
    "venue": "St. Mary's Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -673,9 +671,9 @@
    "homeShort": "Swansea",
    "awayShort": "Blackburn",
    "venue": "Swansea.com Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -701,9 +699,9 @@
    "homeShort": "West Ham",
    "awayShort": "West Brom",
    "venue": "London Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -729,9 +727,9 @@
    "homeShort": "Wolves",
    "awayShort": "Cardiff",
    "venue": "Molineux Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -756,9 +754,9 @@
    "homeShort": "Bournemouth",
    "awayShort": "Leeds",
    "venue": "Vitality Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -783,9 +781,9 @@
    "homeShort": "Brentford",
    "awayShort": "Nottingham Forest",
    "venue": "Gtech Community Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -810,9 +808,9 @@
    "homeShort": "Coventry",
    "awayShort": "Sunderland",
    "venue": "Coventry Building Society Arena",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -837,9 +835,9 @@
    "homeShort": "Hull City",
    "awayShort": "Ipswich",
    "venue": "MKM Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -869,9 +867,9 @@
    "homeShort": "Manchester City",
    "awayShort": "Brighton",
    "venue": "Etihad Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -896,7 +894,7 @@
    "homeShort": "Exeter Chiefs",
    "awayShort": "Harlequins",
    "venue": "Sandy Park",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 22",
@@ -927,7 +925,7 @@
    "homeShort": "Saracens",
    "awayShort": "Newcastle Red Bulls",
    "venue": "StoneX Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 23",
@@ -985,9 +983,9 @@
    "homeShort": "Kilmarnock",
    "awayShort": "ST Johnstone",
    "venue": "The BBSP Stadium Rugby Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -1039,7 +1037,7 @@
    "homeShort": "Bath Rugby",
    "awayShort": "Sale Sharks",
    "venue": "Recreation Ground",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 24",
@@ -1815,7 +1813,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-10-31T00:00:28.749Z",
+ "generatedAt": "2026-10-31T00:30:11.613Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4156,
+   "programmes": 4176,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 20,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
@@ -89,8 +89,8 @@
    "televisedTies": 1
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 504 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645278,2645275,2645282,2645277,2645280,2645279,2645284,2645276,2645281,2645283,2645288,2645291,2645289,2645285,2645293,2645286,2645287,2645290,2645294,2645292&pageSize=50"
+   "ok": true,
+   "matches": 13
   },
   "footballChannels": "27/38 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -1724,7 +1724,7 @@
    "away": "Everton",
    "homeShort": "Newcastle",
    "awayShort": "Everton",
-   "venue": "St. James' Park",
+   "venue": "St James' Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -5290,13 +5290,15 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -5317,13 +5319,15 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -5344,13 +5348,15 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -5371,13 +5377,15 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -5506,13 +5514,15 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   }
  ],

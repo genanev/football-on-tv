@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T17:30:11.529Z",
+ "generatedAt": "2026-10-31T18:00:14.103Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -1060,7 +1060,7 @@
    }
   },
   {
-   "id": "curling-SPECIAL_CURLING-1793467620000",
+   "id": "curling-SPECIAL_CURLING-1793467624577",
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
@@ -1069,7 +1069,7 @@
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",
-   "kickoff": "2026-10-31T17:27:00.000Z",
+   "kickoff": "2026-10-31T17:27:04.577Z",
    "end": "2026-10-31T20:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -1101,9 +1101,9 @@
    "homeShort": "Tottenham",
    "awayShort": "Crystal Palace",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -1136,7 +1136,7 @@
    "homeShort": "Northampton Saints",
    "awayShort": "Gloucester Rugby",
    "venue": "Franklin's Gardens",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 25",
@@ -1332,8 +1332,8 @@
    "comp": "SPECIAL_CURLING",
    "kind": "session",
    "label": null,
-   "title": "Women's Final",
-   "session": null,
+   "title": "Switzerland v Sweden",
+   "session": "Women's Final",
    "venue": "Ostrava, Czechia",
    "source": "worldcurling.org",
    "status": "upcoming",

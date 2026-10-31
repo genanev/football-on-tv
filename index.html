@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Follow the phone's font size (Chrome for Android 146+): it scales 1rem, so every font size in
+     the stylesheet is in rem (16px = 1rem). Don't set a font-size on html: that switches it off. -->
+<meta name="text-scale" content="scale">
 <title>Telly Fixtures</title>
 <meta name="description" content="Football, motorsport, golf, cricket, rugby, darts, snooker and big events on UK TV for the next 7 days, with UK times and TV channels.">
 <link rel="manifest" href="manifest.webmanifest">
@@ -153,7 +156,7 @@
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font: 1rem/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
   button { -webkit-tap-highlight-color: transparent; }
@@ -161,13 +164,13 @@
 
   /* Wraps (title above the theme button) when the phone's text size is turned up */
   header { padding: 20px 0 12px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
-  h1 { font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
-  .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  h1 { font-size: 1.625rem; line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); font-size: 0.8125rem; margin-top: 4px; }
   .actions { display: flex; gap: 8px; flex: none; }
   .theme {
     border: 1px solid var(--line); background: var(--surface); color: var(--text);
     border-radius: 999px; height: 40px; padding: 0 12px 0 10px; display: flex; align-items: center; gap: 6px;
-    font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+    font: inherit; font-size: 0.8125rem; font-weight: 600; cursor: pointer;
   }
   .theme svg { width: 18px; height: 18px; }
 
@@ -198,7 +201,7 @@
     --lab: oklch(var(--ll) .14 var(--h));
     flex: none; min-width: 72px; border: 0; background: transparent; color: var(--muted); cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 6px 0 2px;
-    font: inherit; font-size: 12px; font-weight: 600; white-space: nowrap;
+    font: inherit; font-size: 0.75rem; font-weight: 600; white-space: nowrap;
   }
   /* Larger text: each label gets the room it needs (the row scrolls) rather than spilling onto its neighbours */
   .sport > span:last-child { padding: 0 3px; }
@@ -210,38 +213,38 @@
   .chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 10px -16px 0; padding: 0 16px; scroll-padding: 0 16px; }
   .chip {
     flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--text);
-    border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+    border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer; white-space: nowrap;
   }
   .chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
-  .chip .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
+  .chip .soon { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
   .mine { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
   /* Side by side and equally wide; with larger text the day button moves under Customise */
   .mine .btns { display: flex; flex-wrap: wrap; gap: 8px 12px; }
   .mine .btns .edit { flex: 1 1 120px; min-width: fit-content; justify-content: center; white-space: nowrap; }
-  .mine .what { font-size: 14px; color: var(--muted); }
+  .mine .what { font-size: 0.875rem; color: var(--muted); }
   .mine .what b { color: var(--text); font-weight: 600; }
   .edit {
     flex: none; display: flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--text);
-    border-radius: 999px; padding: 6px 12px 6px 10px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+    border-radius: 999px; padding: 6px 12px 6px 10px; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer;
   }
   .edit svg { width: 16px; height: 16px; flex: none; }
   /* Narrow phones: keep both buttons' icon and label on one line */
   @media (max-width: 365px) {
-    .mine .btns .edit { font-size: 13px; gap: 4px; padding: 6px 6px; }
+    .mine .btns .edit { font-size: 0.8125rem; gap: 4px; padding: 6px 6px; }
     .edit svg { width: 14px; height: 14px; }
   }
 
-  .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 14px; margin: 4px 0 8px; }
+  .banner { background: var(--warn-bg); color: var(--warn-text); border-radius: 12px; padding: 10px 12px; font-size: 0.875rem; margin: 4px 0 8px; }
   .banner.info { background: var(--surface); color: var(--muted); border: 1px dashed var(--line); }
   .banner button { font: inherit; font-weight: 700; color: var(--text); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 
   .day { margin-top: 14px; }
   .day h2 {
-    font-size: 16px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+    font-size: 1rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
     margin: 0 0 8px 2px; font-weight: 700;
   }
   .day h2 .today { color: var(--accent); }
-  .empty { color: var(--faint); font-size: 14px; padding: 4px 2px 6px; }
+  .empty { color: var(--faint); font-size: 0.875rem; padding: 4px 2px 6px; }
 
   .list { background: var(--surface); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
   /* The time column (time, LIVE NOW, sport icon) spans every row, so a tall time cell never pushes the
@@ -252,30 +255,30 @@
   .match > .meta { grid-row: 2; }
   .match:first-child { border-top: 0; }
   .match.past { opacity: .55; }
-  .time { font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; padding-top: 1px; }
-  .status { display: block; font-size: 11px; font-weight: 700; color: var(--faint); margin-top: 2px; letter-spacing: .03em; }
+  .time { font-weight: 700; font-size: 1.0625rem; font-variant-numeric: tabular-nums; padding-top: 1px; }
+  .status { display: block; font-size: 0.6875rem; font-weight: 700; color: var(--faint); margin-top: 2px; letter-spacing: .03em; }
   .status.live { color: var(--live); white-space: nowrap; }
   /* The sport's icon under the time (and LIVE NOW), so it's clear at a glance which sport a game is */
   .sico { display: block; width: 38px; height: 38px; margin: 4px 0 0 -3px; }
-  .teams { font-weight: 600; font-size: 16px; line-height: 1.3; min-width: 0; overflow-wrap: break-word; } /* "Wolverhampton" at the largest text size */
+  .teams { font-weight: 600; font-size: 1rem; line-height: 1.3; min-width: 0; overflow-wrap: break-word; } /* "Wolverhampton" at the largest text size */
   .teams .v { color: var(--faint); font-weight: 400; padding: 0 2px; }
   .score { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 700; margin-left: 6px; }
   .meta { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 2px; }
-  .comp { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
+  .comp { font-size: 0.6875rem; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 6px; border: 1px solid currentColor; white-space: nowrap; }
   .comp.sample { color: var(--faint); border-style: dashed; }
   .teams .sess { color: var(--muted); font-weight: 500; }
   /* A pill moves to the next line first; only one wider than the whole card (large text) wraps its words */
-  .pill { font-size: 13px; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); max-width: 100%; }
+  .pill { font-size: 0.8125rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; color: var(--pill-text); background: var(--other); max-width: 100%; }
   .pill.sky { background: var(--sky); }
   .pill.tnt { background: var(--tnt); }
   .pill.prime { background: var(--prime); }
   .pill.bbc { background: var(--bbc); }
-  .note { font-size: 13px; color: var(--muted); }
+  .note { font-size: 0.8125rem; color: var(--muted); }
   .note.tbc::before { content: "⏳ "; content: "⏳ " / ""; } /* decoration: screen readers skip it */
-  .also { grid-column: 2; font-size: 12px; color: var(--faint); }
-  .warn { grid-column: 2; font-size: 12px; color: var(--warn-text); background: var(--warn-bg); border-radius: 8px; padding: 4px 8px; }
+  .also { grid-column: 2; font-size: 0.75rem; color: var(--faint); }
+  .warn { grid-column: 2; font-size: 0.75rem; color: var(--warn-text); background: var(--warn-bg); border-radius: 8px; padding: 4px 8px; }
 
-  footer { color: var(--faint); font-size: 12px; margin-top: 28px; line-height: 1.5; }
+  footer { color: var(--faint); font-size: 0.75rem; margin-top: 28px; line-height: 1.5; }
   footer a { color: inherit; }
   .loading { color: var(--muted); padding: 40px 0; text-align: center; }
 
@@ -288,15 +291,15 @@
   dialog.sheet::backdrop { background: rgba(0, 0, 0, .45); }
   @keyframes up { from { transform: translateY(40px); opacity: .4; } to { transform: none; opacity: 1; } }
   .sheet-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 6px; }
-  .sheet-h h3 { margin: 0; font-size: 20px; letter-spacing: -0.01em; }
-  .done { border: 0; background: var(--accent); color: var(--pill-text); font: inherit; font-weight: 700; font-size: 15px; border-radius: 999px; padding: 8px 18px; cursor: pointer; }
-  .sheet-p { margin: 0; padding: 0 16px 10px; color: var(--muted); font-size: 14px; }
+  .sheet-h h3 { margin: 0; font-size: 1.25rem; letter-spacing: -0.01em; }
+  .done { border: 0; background: var(--accent); color: var(--pill-text); font: inherit; font-weight: 700; font-size: 0.9375rem; border-radius: 999px; padding: 8px 18px; cursor: pointer; }
+  .sheet-p { margin: 0; padding: 0 16px 10px; color: var(--muted); font-size: 0.875rem; }
   .sheet-b { overflow-y: auto; padding: 0 16px calc(16px + env(safe-area-inset-bottom)); }
   .grp { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin-bottom: 10px; }
   .grp-h { display: flex; align-items: center; gap: 10px; cursor: pointer; }
   .grp-h .tile { width: 44px; height: 44px; border-radius: 14px; }
-  .grp-h .nm { flex: 1; font-weight: 700; font-size: 16px; }
-  .grp-h .ct { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
+  .grp-h .nm { flex: 1; font-weight: 700; font-size: 1rem; }
+  .grp-h .ct { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 500; }
   .switch { appearance: none; -webkit-appearance: none; margin: 0; flex: none; width: 46px; height: 28px; border-radius: 999px; background: var(--line); position: relative; cursor: pointer; transition: background .15s; }
   .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: left .15s; }
   .switch:checked { background: var(--sc); }
@@ -306,23 +309,23 @@
   .opts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .opt {
     border: 1px solid var(--line); background: transparent; color: var(--muted); border-radius: 999px;
-    padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+    padding: 6px 12px; font: inherit; font-size: 0.875rem; font-weight: 600; cursor: pointer;
   }
   .opt::before { content: "+ "; }
   .opt[aria-pressed="true"] { background: color-mix(in srgb, var(--sc) 14%, transparent); border-color: var(--sc); color: var(--text); }
   .opt[aria-pressed="true"]::before { content: "✓ "; color: var(--sc); }
-  .opt .soon { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 4px; }
+  .opt .soon { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 4px; }
   .dayopt {
     display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left;
     border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: var(--radius);
-    padding: 13px 14px; margin-bottom: 8px; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer;
+    padding: 13px 14px; margin-bottom: 8px; font: inherit; font-size: 1rem; font-weight: 600; cursor: pointer;
   }
-  .dayopt .dd { color: var(--muted); font-weight: 500; font-size: 14px; }
+  .dayopt .dd { color: var(--muted); font-weight: 500; font-size: 0.875rem; }
   .dayopt[aria-pressed="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
   .dayopt[aria-pressed="true"]::after { content: "✓"; color: var(--accent); margin-left: 10px; }
   .dayopt .dd { margin-left: auto; }
   .sheet-f { display: flex; justify-content: center; gap: 18px; padding: 4px 0 6px; }
-  .sheet-f button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; text-decoration: underline; cursor: pointer; }
+  .sheet-f button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.875rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
 
   /* The phone's "remove animations" setting: no sliding sheets or lifting tiles */
   @media (prefers-reduced-motion: reduce) {

@@ -215,7 +215,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
 - [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple).
 - [ ] **Accessibility** (the code, 31 Oct 2026; one check on the phone left):
-  - [x] Text still fits when the phone's font size is increased (checked up to 200%, at 320–412px wide).
+  - [x] Text follows the phone's font size and still fits when it's increased (checked up to 200%, at 320–412px wide). Needs Chrome 146 or later.
   - [x] Colour contrast meets WCAG AA in both themes (five colours darkened slightly, including Sky's orange).
   - [x] Every icon button has a label for screen readers; the animations stop when the phone asks for less motion.
   - [ ] George: try the app once with **TalkBack** on the Pixel (Settings → Accessibility → TalkBack) and with the largest font size.

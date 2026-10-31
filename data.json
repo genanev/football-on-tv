@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-10-31T01:00:11.638Z",
+ "generatedAt": "2026-10-31T01:30:28.702Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4238,
+   "programmes": 4398,
    "errors": []
   },
   "skyListings": {
@@ -92,7 +92,7 @@
    "ok": true,
    "matches": 13
   },
-  "footballChannels": "27/38 PL+UCL matches with a confirmed channel",
+  "footballChannels": "28/38 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -112,7 +112,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 3
+   "ties": 5
   },
   "formula1": {
    "ok": true,
@@ -5377,14 +5377,80 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1646909",
+   "sourceId": "1646909",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-08T14:15:00.000Z",
+   "timeTbc": false,
+   "home": "Cray Wanderers",
+   "away": "Stockport County",
+   "homeShort": "Cray Wanderers",
+   "awayShort": "Stockport County",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1646817",
+   "sourceId": "1646817",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-08T15:00:00.000Z",
+   "timeTbc": false,
+   "home": "Wimborne Town",
+   "away": "Crawley Town",
+   "homeShort": "Wimborne Town",
+   "awayShort": "Crawley Town",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

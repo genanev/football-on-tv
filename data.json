@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T14:30:13.609Z",
+ "generatedAt": "2026-10-31T15:00:20.797Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -92,14 +92,14 @@
    "ok": true,
    "matches": 13
   },
-  "footballChannels": "28/38 PL+UCL matches with a confirmed channel",
+  "footballChannels": "27/38 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
   },
   "wsl": {
    "ok": true,
-   "televised": 7
+   "televised": 9
   },
   "scottishPremiership": {
    "ok": true,
@@ -337,7 +337,7 @@
    "homeShort": "Lincoln",
    "awayShort": "Birmingham",
    "venue": "Sincil Bank",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 3,
    "round": "Regular Season - 13",
@@ -385,7 +385,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -419,8 +420,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -470,7 +470,7 @@
    "homeShort": "Everton",
    "awayShort": "Manchester United",
    "venue": "Rossett Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 0,
    "round": "Regular Season - 8",
@@ -852,7 +852,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -1011,9 +1012,9 @@
    "homeShort": "Motherwell",
    "awayShort": "ST Mirren",
    "venue": "Fir Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
@@ -1413,7 +1414,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1446,7 +1448,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1499,12 +1502,15 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1530,12 +1536,15 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1566,7 +1575,70 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1607718",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "West Ham Women",
+   "away": "Liverpool Women",
+   "homeShort": "West Ham",
+   "awayShort": "Liverpool",
+   "venue": "London Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1607716",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-01T14:30:00.000Z",
+   "timeTbc": false,
+   "home": "Charlton Athletic Women",
+   "away": "Chelsea Women",
+   "homeShort": "Charlton Athletic",
+   "awayShort": "Chelsea",
+   "venue": "The Oakwood",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 8",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
     ]
    }
   },
@@ -1599,7 +1671,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

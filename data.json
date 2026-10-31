@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-31T17:00:29.373Z",
+ "generatedAt": "2026-10-31T17:30:11.529Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -1037,7 +1037,7 @@
    "homeShort": "Bath Rugby",
    "awayShort": "Sale Sharks",
    "venue": "Recreation Ground",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": "League Match 24",

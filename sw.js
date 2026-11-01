@@ -6,9 +6,9 @@
 // main shows on the next open, as before), and the copy is refreshed on the way. Only when the
 // network fails is the saved copy used.
 
-const CACHE = 'telly-fixtures-v1';
+const CACHE = 'telly-fixtures-v2';
 const SHELL = [
-  './', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png',
+  './', 'platform.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png',
   ...['mytv', 'football', 'motorsport', 'golf', 'cricket', 'rugby', 'darts', 'snooker', 'specials'].map(n => `sport-icons/${n}.svg`),
   'sport-icons/tennis.png', 'sport-icons/skiing.png',
 ];

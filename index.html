@@ -20,6 +20,8 @@
 <script>
   try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
 </script>
+<!-- Web browser or phone app: everything that differs between them is in platform.js -->
+<script src="platform.js"></script>
 <style>
   /* Every text colour meets WCAG AA (4.5:1) on the background it sits on, in both themes
      (checked 31 Oct 2026; UEL, UECL, tennis, Sky and Prime were darkened slightly for it) */
@@ -377,10 +379,10 @@
   const DAYS = 8; // today + next 7 days
   const $ = (s) => document.querySelector(s);
 
-  // Where data.json lives. On GitHub Pages we read it from our own domain (Cloudflare R2, uploaded
-  // by every update) and straight from the repo at the same time, and show whichever is newer, so
-  // updates show up within minutes even if one of the two is behind or down. Elsewhere (or if
-  // both fail) use the copy next to this page.
+  // Where data.json lives. The phone app reads it from our own domain (Cloudflare R2, uploaded by
+  // every update) only. On GitHub Pages we read it from there and straight from the repo at the
+  // same time, and show whichever is newer, so updates show up within minutes even if one of the
+  // two is behind or down. Elsewhere (or if both fail) use the copy next to this page.
   // ?demo shows demo-data.json (a recorded week with F1, F2 and darts) as if it were that week;
   // ?demo=2 shows demo-data-2.json (golf, snooker and cricket); ?demo=3 shows preview-data.json
   // (the 17 Oct 2026 week plus made-up sample events for competitions that aren't connected yet).
@@ -397,7 +399,8 @@
   function dataSources() {
     if (DEMO) return [[DEMO_FILE]];
     const t = `?t=${Date.now()}`;
-    const m = /^([^.]+)\.github\.io$/i.exec(location.hostname);
+    if (platform.isApp) return [[OWN_DATA + t]];
+    const m =/^([^.]+)\.github\.io$/i.exec(location.hostname);
     if (!m) return [[`data.json${t}`]];
     const repo = location.pathname.split('/').filter(Boolean)[0] || `${m[1]}.github.io`;
     return [[OWN_DATA + t, `https://raw.githubusercontent.com/${m[1]}/${repo}/main/data.json${t}`], [`data.json${t}`]];
@@ -900,6 +903,7 @@
     // Screen readers say what it is and what's on; the name includes the word shown ("Light")
     btn.setAttribute('aria-label', `Colour theme: ${t.label}`);
     document.querySelectorAll('meta[name="theme-color"]').forEach(m => { m.content = theme === 'dark' ? '#111412' : '#f4f5f2'; });
+    platform.themeChanged(theme);
   }
   $('#theme').addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
@@ -907,13 +911,21 @@
     applyTheme();
   });
   applyTheme();
+  // The phone app's back button: close an open sheet, else go back to My TV; on My TV the app goes
+  // to the background
+  platform.onBack(() => {
+    if ($('#picker').open) { closePicker(); return true; }
+    if ($('#dayPicker').open) { closeDayPicker(); return true; }
+    if (view.sport !== 'mine') { go({ sport: 'mine', comps: new Set(), day: view.day }); return true; }
+    return false;
+  });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load(); });
   setInterval(render, 60000);
   renderNav();
   render(); // the saved listings, if any, while the new ones load
   load();
   // Offline use: sw.js keeps the app's own files on the phone
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+  if (platform.useServiceWorker && 'serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();
 </script>
 </body>

@@ -89,6 +89,8 @@ Apart from API-Football, none of these is a published, documented API. They are 
 | `demo-data.json`, `demo-data-2.json`, `preview-data.json` | Recorded weeks for the demo views (see below) |
 | `manifest.webmanifest`, `icon-*.png`, `apple-touch-icon.png` | What makes it installable on a phone |
 | `sw.js` | Keeps the app on the phone so it opens offline |
+| `platform.js` | What the website does differently from the phone app (the app has its own version) |
+| `app/` | The Android app (Capacitor): the same screens built into a real app; see `app/README.md` |
 | `sport-icons/` | The 3D sport icons (SVG) used in the top row and on every game |
 | `scripts/build.mjs` | The update: runs every source and writes `data.json` |
 | `scripts/sources/*.mjs` | One module per source (fixtures and TV listings); `teamNames.mjs` has the full club names |

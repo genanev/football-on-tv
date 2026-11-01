@@ -233,10 +233,12 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Have ready: passport or driving licence, possibly a bank statement or bill as proof of address, a card for the fee, your mobile number, and the Pixel 9 (new personal accounts verify a real Android phone through the Play Console app).
   - Sign up at play.google.com/console/signup and choose "Yourself". Public developer name: **Telly Fixtures**. Contact email: the new Gmail until the support address on the domain works.
   - Check what each screen says will be shown publicly (see "Your public details" in Phase 0).
-- [ ] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Get your Pixel 9 ready for testing (developer options, USB debugging).
-- [ ] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it.
-- [ ] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking.)
+- [x] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Done 1 Nov 2026, with the Android SDK and an Android 16 emulator.
+  - [ ] Get your Pixel 9 ready for testing (developer options, USB debugging).
+- [x] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it. (1 Nov 2026: Capacitor 8; the icon and splash screen are the current TV icon on green until the real icon arrives; how to build it: `app/README.md`.)
+- [x] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking. 1 Nov 2026: the app reads it from the domain only.)
 - [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
+  - [x] Started 1 Nov 2026: `platform.js` (web) and `app/platform/android.js` (the back button, the status bar's colours). Billing, reminders and the subscription page are added there as they're built.
 - [ ] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). A bell on each fixture: "Remind me 30 min before". Android 13+ asks for permission the first time. Store reminders on the phone.
 - [ ] **Versioning:**
   - Version numbers like `1.0.0`.

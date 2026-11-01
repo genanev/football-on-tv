@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T23:00:11.790Z",
+ "generatedAt": "2026-11-01T23:30:18.923Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -624,7 +624,7 @@
    "title": "Mexico City Grand Prix",
    "session": "Race",
    "venue": "Mexico City",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

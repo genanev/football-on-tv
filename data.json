@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T15:00:23.039Z",
+ "generatedAt": "2026-11-01T15:30:16.851Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 30,
+   "events": 29,
    "errors": []
   },
   "tntSchedule": {
@@ -401,7 +401,7 @@
    "source": "worldcurling.org",
    "status": "upcoming",
    "kickoff": "2026-11-01T12:56:52.800Z",
-   "end": "2026-11-01T15:30:00.000Z",
+   "end": "2026-11-01T15:45:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",
@@ -442,15 +442,12 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -467,8 +464,8 @@
    "awayShort": "Tottenham Hotspur",
    "venue": "The DCS Stadium",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 1,
+   "awayScore": 3,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -501,7 +498,7 @@
    "awayShort": "Crystal Palace",
    "venue": "American Express Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
@@ -533,7 +530,7 @@
    "awayShort": "Liverpool",
    "venue": "London Stadium",
    "status": "live",
-   "homeScore": 3,
+   "homeScore": 4,
    "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",

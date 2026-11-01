@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T00:00:16.833Z",
+ "generatedAt": "2026-11-01T00:30:17.841Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 34,
+   "events": 32,
    "errors": []
   },
   "tntSchedule": {
@@ -33,7 +33,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 164
+   "events": 139
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -961,7 +961,7 @@
    "away": "Norwich City",
    "homeShort": "Derby",
    "awayShort": "Norwich",
-   "venue": "Pride Park",
+   "venue": "Pride Park Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1025,7 +1025,7 @@
    "away": "Sheffield United",
    "homeShort": "Preston",
    "awayShort": "Sheffield Utd",
-   "venue": "Deepdale",
+   "venue": "Deepdale Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1188,7 +1188,7 @@
    "away": "Bayern Munich",
    "homeShort": "Atletico Madrid",
    "awayShort": "Bayern München",
-   "venue": "Metropolitano Stadium",
+   "venue": "Riyadh Air Metropolitano",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1220,7 +1220,7 @@
    "away": "Aston Villa",
    "homeShort": "Barcelona",
    "awayShort": "Aston Villa",
-   "venue": "Camp Nou",
+   "venue": "Spotify Camp Nou",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1283,7 +1283,7 @@
    "away": "Inter",
    "homeShort": "Feyenoord",
    "awayShort": "Inter",
-   "venue": "De Kuip",
+   "venue": "Stadion Feijenoord",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1376,7 +1376,7 @@
    "away": "Paris Saint-Germain",
    "homeShort": "Villarreal",
    "awayShort": "Paris Saint Germain",
-   "venue": "Estadio de la Ceramica",
+   "venue": "Estadio de la Cerámica",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

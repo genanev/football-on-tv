@@ -1,0 +1,3 @@
+# Installed packages (npm install) and the copied screens (npm run web): both are rebuilt
+node_modules/
+www/

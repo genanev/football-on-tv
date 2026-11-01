@@ -1,0 +1,11 @@
+{
+  "appId": "uk.co.tellyfixtures",
+  "appName": "Telly Fixtures",
+  "webDir": "www",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "native",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

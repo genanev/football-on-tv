@@ -1,2 +1,4 @@
 # Shell scripts run on Linux (Google Cloud), so keep their line endings as LF even on Windows.
 *.sh text eol=lf
+# The Android build script runs on Linux and Mac build machines too
+app/android/gradlew text eol=lf

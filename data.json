@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T22:00:27.898Z",
+ "generatedAt": "2026-11-01T22:30:19.101Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -612,7 +612,7 @@
    "comp": "F1",
    "kind": "session",
    "kickoff": "2026-11-01T20:00:00.000Z",
-   "end": "2026-11-01T22:00:00.000Z",
+   "end": "2026-11-01T23:00:00.000Z",
    "title": "Mexico City Grand Prix",
    "session": "Race",
    "venue": "Mexico City",

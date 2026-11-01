@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T12:00:18.721Z",
+ "generatedAt": "2026-11-01T12:30:18.090Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -333,9 +333,9 @@
    "homeShort": "Arsenal",
    "awayShort": "Aston Villa",
    "venue": "Meadow Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -367,9 +367,9 @@
    "homeShort": "London City Lionesses",
    "awayShort": "Manchester City",
    "venue": "Princes Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

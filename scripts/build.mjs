@@ -173,7 +173,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
-    fetchF1(), fetchF2(), fetchF3(), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
+    fetchF1(windowStart, windowEnd), fetchF2(windowStart, windowEnd), fetchF3(windowStart, windowEnd), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
     fetchGolf(today, lastDay), fetchSnooker(today, lastDay), fetchCricket(today, lastDay),
     fetchGuide(today, DAYS_AHEAD + 1), fetchSkyListings(now), fetchTntSchedule(today, DAYS_AHEAD + 1), fetchPrimeUcl(now), fetchPremierSports(now),
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
@@ -327,8 +327,11 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // ---- F1 / F2
   for (const [key, res] of [['formula1', f1Res], ['formula2', f2Res], ['formula3', f3Res]]) {
     if (!ok(res)) { report[key] = fail(res); continue; }
-    const sessions = res.value.filter(inWindow);
-    report[key] = { ok: true, sessions: sessions.length };
+    // A calendar weekend whose sessions couldn't be read counts as a failure (the app's banner),
+    // though whatever was read is still shown
+    const { sessions: all, weekends, warning } = res.value;
+    const sessions = all.filter(inWindow);
+    report[key] = { ok: !warning, sessions: sessions.length, weekends, ...(warning ? { error: warning } : {}) };
     for (const s of sessions) events.push({ ...s, tv: motorsportTv(s, guide, skyListings) });
   }
 

@@ -7,6 +7,15 @@
 //   fixtures/f2-event-tracker-qatar.json  fiaformula2.com event tracker as returned on 12 Oct (next round)
 //   fixtures/motogp-events-2026.json      motogp.com events feed for 2026 (Japan, Australia, Malaysia
 //                                         weekends; trimmed), captured 20 Oct
+//   fixtures/f1-calendar-2026-11-01.json  formula1.com's 2026 calendar (its Schedule page's data), captured
+//                                         1 Nov, trimmed to the fields used
+//   fixtures/f1-meeting-1298-2026-11-01.json, f1-meeting-1299-2026-11-01.json  /event-tracker/meeting/<key>
+//                                         for Mexico City and São Paulo, and f1-event-tracker-2026-11-01.json
+//                                         (the tracker), captured 1 Nov at 22:30, after Mexico's race: the
+//                                         tracker still showed Mexico, which hid São Paulo (6-8 Nov)
+//   fixtures/f2-racing-2026-calendar-2026-11-01.html  fiaformula2.com's season page, captured 1 Nov,
+//                                         trimmed to the round cards
+//   fixtures/f2-racing-yas-marina-2026-11-01.html     its Abu Dhabi page, trimmed to the session list
 //   fixtures/f3-racing-monza-2026.json    F3's Monza weekend (4-6 Sept) in the event tracker's format, taken on
 //                                         20 Oct from fiaformula3.com/en/racing/2026/monza (the tracker itself
 //                                         only returns the next weekend, and the F3 season had ended)
@@ -43,7 +52,7 @@ import { mapWrMatch } from '../scripts/sources/rugby.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
 import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
-import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker } from '../scripts/sources/motorsport.mjs';
+import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker, mapSession, f1MeetingsIn, mapF1Meeting, fetchF1, fetchF2, parseRounds, parseRoundSessions } from '../scripts/sources/motorsport.mjs';
 import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/sources/skiing.mjs';
@@ -56,6 +65,23 @@ const F1 = await fx('f1-event-tracker-baku.json');
 const F2 = await fx('f2-event-tracker-baku.json');
 const F2_QATAR = await fx('f2-event-tracker-qatar.json');
 const F3_MONZA = await fx('f3-racing-monza-2026.json');
+const F1_CAL = await fx('f1-calendar-2026-11-01.json');
+const F1_MEX = await fx('f1-meeting-1298-2026-11-01.json');
+const F1_BRA = await fx('f1-meeting-1299-2026-11-01.json');
+const F1_TRACKER_NOV = await fx('f1-event-tracker-2026-11-01.json');
+const F2_SEASON = await readFile(new URL('fixtures/f2-racing-2026-calendar-2026-11-01.html', import.meta.url), 'utf8');
+const F2_YAS = await readFile(new URL('fixtures/f2-racing-yas-marina-2026-11-01.html', import.meta.url), 'utf8');
+// /event-tracker/meeting/<key> answers. Baku (1295) is its tracker answer from that week, in the meeting
+// endpoint's shape (the asked-for weekend in meetingContext).
+// Bahrain (1308, moved to 2-4 Oct, straight after Baku) is hand-written: its Friday is the window's last day.
+const F1_MEETINGS = {
+  1295: { ...F1, meetingContext: { meetingKey: '1295', timetables: F1.seasonContext.timetables } },
+  1308: { race: { meetingName: 'Bahrain Grand Prix' }, meetingContext: { meetingKey: '1308', timetables: [
+    { description: 'Qualifying', sessionType: 'Qualifying', startTime: '2026-10-03T19:00:00', endTime: '2026-10-03T20:00:00', gmtOffset: '+03:00', state: 'upcoming', meetingSessionKey: 99001 },
+    { description: 'Race', sessionType: 'Race', startTime: '2026-10-04T18:00:00', endTime: '2026-10-04T20:00:00', gmtOffset: '+03:00', state: 'upcoming', meetingSessionKey: 99002 },
+  ] } },
+  1298: F1_MEX, 1299: F1_BRA,
+};
 const MOTOGP = await fx('motogp-events-2026.json');
 const PDC = await fx('pdc-tournaments-2026.json');
 const FIS_WC = await readFile(new URL('fixtures/fis-alpine-wc-2027.ics', import.meta.url), 'utf8');
@@ -126,10 +152,22 @@ function skyDay(url) {
 }
 
 // ---------- mock fetch
-let guideDown = false, f2Feed = F2;
+let guideDown = false, f2Feed = F2, f1Tracker = F1, f1CalDown = false, f1MeetingDown = null, f2SiteDown = false;
 globalThis.fetch = async (url) => {
   const json = (b) => ({ ok: true, status: 200, json: async () => b });
-  if (url.includes('api.formula1.com/v1/event-tracker')) return json(F1);
+  const html = (t) => ({ ok: true, status: 200, text: async () => t });
+  if (url.includes('api.formula1.com/v1/editorial-eventlisting/events')) return f1CalDown ? { ok: false, status: 503 } : json(F1_CAL);
+  if (url.includes('api.formula1.com/v1/event-tracker/meeting/')) {
+    const key = url.split('/').pop();
+    return key === f1MeetingDown || !F1_MEETINGS[key] ? { ok: false, status: 404 } : json(F1_MEETINGS[key]);
+  }
+  if (url.includes('api.formula1.com/v1/event-tracker')) return json(f1Tracker);
+  if (url.startsWith('https://www.fiaformula2.com/en/racing/')) {
+    if (f2SiteDown) return { ok: false, status: 503 };
+    if (url.endsWith('/en/racing/2026')) return html(F2_SEASON);
+    if (url.endsWith('/en/racing/2026/yas-marina')) return html(F2_YAS);
+    return { ok: false, status: 404 };
+  }
   if (url.includes('core-event-tracker/f2')) return json(f2Feed);
   if (url.includes('api.motogp.pulselive.com/motogp/v1/events')) return json(/seasonYear=2026/.test(url) ? MOTOGP : []);
   if (url.includes('core-event-tracker/f3')) return json({ seasonContext: { seasonYear: '2026', seasonState: 'DURING-SEASON' } }); // as on 20 Oct: no next F3 weekend
@@ -174,6 +212,8 @@ const darts = data.events.filter(e => e.comp === 'DARTS');
 const find = (list, session) => list.find(e => e.session === session);
 
 assert.equal(data.report.formula1.ok, true);
+// From F1's calendar: Bahrain's Friday is in the window too (its qualifying and race are just after it)
+assert.deepEqual(data.report.formula1.weekends, ['Azerbaijan Grand Prix', 'Bahrain Grand Prix']);
 assert.equal(data.report.formula2.ok, true);
 assert.equal(data.report.darts.ok, true);
 assert.equal(data.report.tvGuide.ok, true);
@@ -320,6 +360,79 @@ const late = await build(Date.parse('2026-11-25T09:00:00Z'));
 const qatar = late.events.filter(e => e.comp === 'F2');
 assert.deepEqual(qatar.map(e => e.session), ['Qualifying', 'Sprint Race', 'Feature Race']);
 assert.ok(qatar.every(e => e.timeTbc));
+f2Feed = F2;
+
+// ---------- back-to-back weekends (George, 1 Nov 2026): the trackers keep the current weekend until well
+// after its race, so on Mexico City's race Sunday the São Paulo GP five days later was missing. F1's calendar
+// now finds every weekend in the window; F2/F3 read their season page when their weekend ends inside it.
+const NOV1 = Date.parse('2026-11-01T00:00:00Z'), NOV10 = NOV1 + 9 * 86400000;
+const titled = (list) => list.map(e => `${e.title}: ${e.session}`);
+assert.deepEqual(f1MeetingsIn(F1_CAL, NOV1, NOV10), [{ key: '1298', name: 'Mexico City Grand Prix' }, { key: '1299', name: 'São Paulo Grand Prix' }]);
+assert.deepEqual(f1MeetingsIn(F1_CAL, Date.parse('2026-11-09T00:00:00Z'), Date.parse('2026-11-18T00:00:00Z')), []); // the gap before Las Vegas
+// The meeting answer's seasonContext is still Mexico (the current weekend): São Paulo is in meetingContext
+assert.equal(F1_BRA.seasonContext.timetables[0].gmtOffset, '-06:00');
+const brazil = mapF1Meeting(F1_BRA, '1299');
+assert.deepEqual(brazil.map(e => `${e.session} ${uk(e.kickoff)}`), ['Qualifying Sat 07, 18:00', 'Race Sun 08, 17:00']);
+assert.ok(brazil.every(e => e.title === 'São Paulo Grand Prix' && e.status === 'upcoming'));
+assert.deepEqual(mapF1Meeting(F1_BRA, '1298'), []); // an answer for another weekend is never used
+const BOTH = ['Mexico City Grand Prix: Qualifying', 'Mexico City Grand Prix: Race', 'São Paulo Grand Prix: Qualifying', 'São Paulo Grand Prix: Race'];
+f1Tracker = F1_TRACKER_NOV;
+const nov = await fetchF1(NOV1, NOV10);
+assert.deepEqual(nov.weekends, ['Mexico City Grand Prix', 'São Paulo Grand Prix']);
+assert.deepEqual(titled(nov.sessions), BOTH);
+assert.equal(nov.warning, null);
+// One weekend unreadable: the other is still listed, and the warning names the missing one (banner)
+f1MeetingDown = '1299';
+const half = await fetchF1(NOV1, NOV10);
+f1MeetingDown = null;
+assert.deepEqual(titled(half.sessions), BOTH.slice(0, 2));
+assert.equal(half.warning, 'no sessions read for São Paulo Grand Prix');
+// Calendar down: the tracker's current weekend, with a warning
+f1CalDown = true;
+const noCal = await fetchF1(NOV1, NOV10);
+f1CalDown = false;
+assert.deepEqual(titled(noCal.sessions), BOTH.slice(0, 2));
+assert.match(noCal.warning, /F1 calendar unavailable/);
+// In the build at 22:30 on Mexico's race day: Mexico's race (still today) and São Paulo, report ok
+const raceSunday = await build(Date.parse('2026-11-01T22:30:00Z'));
+assert.equal(raceSunday.report.formula1.ok, true);
+assert.deepEqual(titled(raceSunday.events.filter(e => e.comp === 'F1')), BOTH.slice(1));
+f1MeetingDown = '1299';
+const raceSundayHalf = await build(Date.parse('2026-11-01T22:30:00Z'));
+f1MeetingDown = null;
+f1Tracker = F1;
+assert.equal(raceSundayHalf.report.formula1.ok, false);
+assert.equal(raceSundayHalf.report.formula1.error, 'no sessions read for São Paulo Grand Prix');
+
+// F2's season page: every round with its link, country and local dates
+const rounds = parseRounds(F2_SEASON);
+assert.deepEqual(rounds.filter(r => ['lusail', 'yas-marina'].includes(r.slug)), [
+  { slug: 'lusail', url: '/en/racing/2026/lusail', name: 'Lusail', country: 'Qatar', start: '2026-11-27', end: '2026-11-29' },
+  { slug: 'yas-marina', url: '/en/racing/2026/yas-marina', name: 'Yas Marina', country: 'Abu Dhabi', start: '2026-12-04', end: '2026-12-06' },
+]);
+assert.equal(new Set(rounds.map(r => r.slug)).size, rounds.length); // the highlight cards don't add rounds twice
+// Abu Dhabi's page: its sessions, before the times are out (every one at local midnight, "TBC")
+const yas = parseRoundSessions(F2_YAS);
+assert.deepEqual(yas.slice(1).map(s => `${s.shortName} ${s.startTime} ${s.sessionStatus}`), ['Qualifying 2026-12-04T00:00:00 TBC', 'Sprint Race 2026-12-05T00:00:00 TBC', 'Feature Race 2026-12-06T00:00:00 TBC']);
+// A midnight placeholder is "TBC" on its own day (not 20:00 the evening before in the UK)
+const tbcQ = mapSession('F2', yas[1], { meetingCountryName: 'Abu Dhabi' });
+assert.deepEqual([tbcQ.kickoff, tbcQ.allDay, tbcQ.timeTbc, tbcQ.end], ['2026-12-04T12:00:00.000Z', true, true, null]);
+assert.equal(motorsportTv(tbcQ, { programmes: [f3Prog('Live F2: Qualifying', '2026-12-04T11:00:00Z', 120)] }).note, 'TV channel to be confirmed'); // no time, so no guide match
+// Qatar's race Sunday (29 Nov): the tracker still shows Qatar; Abu Dhabi, the next weekend, comes from the season page
+f2Feed = F2_QATAR;
+const NOV29 = Date.parse('2026-11-29T00:00:00Z');
+const f2Late = await fetchF2(NOV29, NOV29 + 9 * 86400000);
+assert.deepEqual(f2Late.weekends, ['Qatar', 'Abu Dhabi']);
+assert.deepEqual(f2Late.sessions.filter(e => e.title === 'Abu Dhabi').map(e => `${e.session} ${ukDate(Date.parse(e.kickoff))} ${e.allDay}`), ['Qualifying 2026-12-04 true', 'Sprint Race 2026-12-05 true', 'Feature Race 2026-12-06 true']);
+assert.equal(f2Late.warning, null);
+// Season page down: Qatar still listed, with a warning (banner)
+f2SiteDown = true;
+const f2NoSite = await fetchF2(NOV29, NOV29 + 9 * 86400000);
+assert.deepEqual([...new Set(f2NoSite.sessions.map(e => e.title))], ['Qatar']);
+assert.match(f2NoSite.warning, /F2 calendar unavailable/);
+// Weeks before (12 Oct), Qatar ends after the window: the season page isn't read at all (it's down, no warning)
+assert.equal((await fetchF2(Date.parse('2026-10-12T00:00:00Z'), Date.parse('2026-10-21T00:00:00Z'))).warning, null);
+f2SiteDown = false;
 f2Feed = F2;
 
 // ---------- alpine skiing (George, 29 Oct 2026): FIS's calendar, one entry per run, TNT's channels

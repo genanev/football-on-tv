@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T07:30:17.577Z",
+ "generatedAt": "2026-11-01T08:00:15.997Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -249,7 +249,7 @@
    "kickoff": "2026-11-01T07:00:00.000Z",
    "end": "2026-11-01T08:15:00.000Z",
    "session": "Race",
-   "status": "live",
+   "status": "finished",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [

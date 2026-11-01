@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T05:30:14.923Z",
+ "generatedAt": "2026-11-01T06:00:20.177Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -39,27 +39,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-10-31T06:00:27.958Z",
+    "checkedAt": "2026-11-01T06:00:20.177Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-10-31T06:00:27.958Z",
+    "checkedAt": "2026-11-01T06:00:20.177Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-10-31T06:00:27.958Z",
+    "checkedAt": "2026-11-01T06:00:20.177Z",
     "corrections": 1
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-10-31T06:00:27.958Z",
+    "checkedAt": "2026-11-01T06:00:20.177Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-10-31T06:00:27.958Z",
+    "checkedAt": "2026-11-01T06:00:20.177Z",
     "corrections": 0
    },
    "changed": [
@@ -4786,57 +4786,9 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-10-31T06:00:27.958Z",
+   "checkedAt": "2026-11-01T06:00:20.177Z",
    "corrections": [],
    "matches": [
-    {
-     "sourceId": "2645278",
-     "home": "Chelsea",
-     "away": "Manchester United",
-     "kickoff": "2026-10-31T12:30:00.000Z"
-    },
-    {
-     "sourceId": "2645275",
-     "home": "Bournemouth",
-     "away": "Leeds United",
-     "kickoff": "2026-10-31T15:00:00.000Z"
-    },
-    {
-     "sourceId": "2645277",
-     "home": "Brentford",
-     "away": "Nottingham Forest",
-     "kickoff": "2026-10-31T15:00:00.000Z"
-    },
-    {
-     "sourceId": "2645279",
-     "home": "Coventry City",
-     "away": "Sunderland",
-     "kickoff": "2026-10-31T15:00:00.000Z"
-    },
-    {
-     "sourceId": "2645280",
-     "home": "Hull City",
-     "away": "Ipswich Town",
-     "kickoff": "2026-10-31T15:00:00.000Z"
-    },
-    {
-     "sourceId": "2645282",
-     "home": "Manchester City",
-     "away": "Brighton and Hove Albion",
-     "kickoff": "2026-10-31T15:00:00.000Z"
-    },
-    {
-     "sourceId": "2645284",
-     "home": "Tottenham Hotspur",
-     "away": "Crystal Palace",
-     "kickoff": "2026-10-31T17:30:00.000Z"
-    },
-    {
-     "sourceId": "2645276",
-     "home": "Aston Villa",
-     "away": "Fulham",
-     "kickoff": "2026-10-31T20:00:00.000Z"
-    },
     {
      "sourceId": "2645281",
      "home": "Liverpool",
@@ -4913,12 +4865,12 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-10-31T06:00:27.958Z",
+   "checkedAt": "2026-11-01T06:00:20.177Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-10-31T06:00:27.958Z",
+   "checkedAt": "2026-11-01T06:00:20.177Z",
    "corrections": [
     {
      "id": "af-1636324",
@@ -4935,12 +4887,12 @@
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-10-31T06:00:27.958Z",
+   "checkedAt": "2026-11-01T06:00:20.177Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-10-31T06:00:27.958Z",
+   "checkedAt": "2026-11-01T06:00:20.177Z",
    "corrections": []
   }
  }

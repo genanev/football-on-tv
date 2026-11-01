@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T06:30:28.676Z",
+ "generatedAt": "2026-11-01T07:00:25.963Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -222,7 +222,7 @@
    "kickoff": "2026-11-01T07:00:00.000Z",
    "end": "2026-11-01T11:00:00.000Z",
    "session": "5th T20I",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 3",

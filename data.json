@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-01T08:00:15.997Z",
+ "generatedAt": "2026-11-01T08:30:28.353Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4482,
+   "programmes": 4486,
    "errors": []
   },
   "skyListings": {
@@ -247,7 +247,7 @@
    "timeTbc": false,
    "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
    "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T08:15:00.000Z",
+   "end": "2026-11-01T08:00:00.000Z",
    "session": "Race",
    "status": "finished",
    "tv": {

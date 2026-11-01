@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-01T11:30:17.654Z",
+ "generatedAt": "2026-11-01T12:00:18.721Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4488,
+   "programmes": 4492,
    "errors": []
   },
   "skyListings": {
@@ -97,7 +97,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 8
+   "televised": 9
   },
   "scottishPremiership": {
    "ok": true,
@@ -4432,6 +4432,37 @@
     "broadcaster": "Sky Sports Premier League",
     "channels": [
      "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607725",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-08T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Tottenham Hotspur Women",
+   "away": "Brighton Women",
+   "homeShort": "Tottenham Hotspur",
+   "awayShort": "Brighton",
+   "venue": "Brisbane Road",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
     ],
     "alsoOn": [],
     "confirmed": true,

@@ -229,6 +229,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
 - [ ] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
+  - **Progress (1 Nov 2026):** account created and the $25 paid; now at Google's identity checks. Signing in on the Pixel 9 for the phone check gave "Google couldn't verify that this account belongs to you" (Google's block on a brand-new account signing in on a new device): wait a day or more, add a recovery phone and email from the PC, then add the account in the phone's Settings → Accounts rather than in the Play Console app.
   - Use a Google account just for the app, in your legal name, with two-step sign-in.
   - Have ready: passport or driving licence, possibly a bank statement or bill as proof of address, a card for the fee, your mobile number, and the Pixel 9 (new personal accounts verify a real Android phone through the Play Console app).
   - Sign up at play.google.com/console/signup and choose "Yourself". Public developer name: **Telly Fixtures**. Contact email: the new Gmail until the support address on the domain works.

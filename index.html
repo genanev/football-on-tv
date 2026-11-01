@@ -393,6 +393,9 @@
   const nowMs = () => demoNow ?? Date.now();
 
   const OWN_DATA = 'https://data.tellyfixtures.co.uk/data.json';
+  // platform.js (web or phone app). If it ever fails to load (e.g. an old offline copy without
+  // it), carry on as the website.
+  const platform = window.platform || { isApp: false, useServiceWorker: true, onBack() {}, themeChanged() {} };
 
   // Groups of addresses, tried in order: the first group whose reads succeed wins, and within a
   // group the newest copy wins.

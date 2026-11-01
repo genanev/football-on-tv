@@ -228,6 +228,8 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
+**Where we are (1 Nov 2026, paused here):** the Android app works and is merged into `main`. On an emulated Pixel 9 (Android 16) it opens with the live listings from data.tellyfixtures.co.uk, works offline (saved listings and the yellow "no connection" note), the back button closes a sheet, then returns to My TV, then puts the app away, the status bar follows Light/Dark, and the icon shows as "Telly Fixtures". **Next, in either order:** match reminders (no account needed), and putting the app on the Pixel by USB once it's ready for testing. Signing and internal testing wait for Google's identity checks on the developer account.
+
 - [ ] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
   - **Progress (1 Nov 2026):** account created and the $25 paid; now at Google's identity checks. Signing in on the Pixel 9 for the phone check gave "Google couldn't verify that this account belongs to you" (Google's block on a brand-new account signing in on a new device): wait a day or more, add a recovery phone and email from the PC, then add the account in the phone's Settings → Accounts rather than in the Play Console app.
   - Use a Google account just for the app, in your legal name, with two-step sign-in.
@@ -236,7 +238,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Check what each screen says will be shown publicly (see "Your public details" in Phase 0).
 - [x] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Done 1 Nov 2026, with the Android SDK and an Android 16 emulator.
   - [ ] Get your Pixel 9 ready for testing (developer options, USB debugging).
-- [x] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it. (1 Nov 2026: Capacitor 8; the icon and splash screen are the current TV icon on green until the real icon arrives; how to build it: `app/README.md`.)
+- [x] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it. (1 Nov 2026: Capacitor 8; the icon and splash screen are the current TV icon on green until the real icon arrives; how to build it: `app/README.md`. Tested on the Pixel9 emulator and merged into `main` the same day.)
 - [x] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking. 1 Nov 2026: the app reads it from the domain only.)
 - [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
   - [x] Started 1 Nov 2026: `platform.js` (web) and `app/platform/android.js` (the back button, the status bar's colours). Billing, reminders and the subscription page are added there as they're built.

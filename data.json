@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T15:30:16.851Z",
+ "generatedAt": "2026-11-01T16:00:15.406Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -401,7 +401,7 @@
    "source": "worldcurling.org",
    "status": "upcoming",
    "kickoff": "2026-11-01T12:56:52.800Z",
-   "end": "2026-11-01T15:45:00.000Z",
+   "end": "2026-11-01T15:48:42.042Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",
@@ -463,9 +463,9 @@
    "homeShort": "Birmingham City",
    "awayShort": "Tottenham Hotspur",
    "venue": "The DCS Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
-   "awayScore": 3,
+   "awayScore": 4,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -497,7 +497,7 @@
    "homeShort": "Brighton",
    "awayShort": "Crystal Palace",
    "venue": "American Express Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 1,
    "round": "Regular Season - 8",
@@ -529,9 +529,9 @@
    "homeShort": "West Ham",
    "awayShort": "Liverpool",
    "venue": "London Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 4,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -562,7 +562,7 @@
    "venue": "The Oakwood",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 4,
+   "awayScore": 6,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

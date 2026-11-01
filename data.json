@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T07:00:25.963Z",
+ "generatedAt": "2026-11-01T07:30:17.577Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -247,9 +247,9 @@
    "timeTbc": false,
    "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
    "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T08:00:00.000Z",
+   "end": "2026-11-01T08:15:00.000Z",
    "session": "Race",
-   "status": "upcoming",
+   "status": "live",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [

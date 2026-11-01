@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T14:30:25.225Z",
+ "generatedAt": "2026-11-01T15:00:23.039Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -432,7 +432,7 @@
    "homeShort": "Falkirk",
    "awayShort": "Celtic",
    "venue": "Falkirk Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 12",
@@ -468,7 +468,7 @@
    "venue": "The DCS Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -502,7 +502,7 @@
    "venue": "American Express Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {
@@ -533,7 +533,7 @@
    "awayShort": "Liverpool",
    "venue": "London Stadium",
    "status": "live",
-   "homeScore": 2,
+   "homeScore": 3,
    "awayScore": 0,
    "round": "Regular Season - 8",
    "source": "api-football.com",
@@ -563,9 +563,9 @@
    "homeShort": "Charlton Athletic",
    "awayShort": "Chelsea",
    "venue": "The Oakwood",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 4,
    "round": "Regular Season - 8",
    "source": "api-football.com",
    "tv": {

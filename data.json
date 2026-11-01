@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T10:30:26.655Z",
+ "generatedAt": "2026-11-01T11:00:18.267Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -218,9 +218,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-271650",
    "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T11:00:00.000Z",
+   "end": "2026-11-01T10:35:00.000Z",
    "session": "5th T20I",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 3",

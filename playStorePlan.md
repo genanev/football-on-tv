@@ -214,11 +214,11 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Apple's standard licence terms, if used later.
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
 - [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple).
-- [ ] **Accessibility** (the code, 31 Oct 2026; one check on the phone left):
+- [x] **Accessibility** (the code, 31 Oct 2026; checked on George's Pixel, 1 Nov 2026):
   - [x] Text follows the phone's font size and still fits when it's increased (checked up to 200%, at 320–412px wide). Needs Chrome 146 or later.
   - [x] Colour contrast meets WCAG AA in both themes (five colours darkened slightly, including Sky's orange).
   - [x] Every icon button has a label for screen readers; the animations stop when the phone asks for less motion.
-  - [ ] George: try the app once with **TalkBack** on the Pixel (Settings → Accessibility → TalkBack) and with the largest font size.
+  - [x] George tried it on the Pixel (1 Nov 2026): the largest font size, remove animations, TalkBack and no signal all worked.
 - [x] **Offline use** (31 Oct 2026): the phone keeps the app and the last listings, opens without a signal and says how old the listings are.
 - [ ] **Polish:**
   - Nothing that looks unfinished. "SOON" items are fine if clearly labelled.

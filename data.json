@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-01T22:30:19.101Z",
+ "generatedAt": "2026-11-01T23:00:11.790Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4487,
+   "programmes": 4476,
    "errors": []
   },
   "skyListings": {
@@ -114,15 +114,23 @@
   },
   "formula1": {
    "ok": true,
-   "sessions": 1
+   "sessions": 3,
+   "weekends": [
+    "Mexico City Grand Prix",
+    "São Paulo Grand Prix"
+   ]
   },
   "formula2": {
    "ok": true,
-   "sessions": 0
+   "sessions": 0,
+   "weekends": [
+    "Qatar"
+   ]
   },
   "formula3": {
    "ok": true,
-   "sessions": 0
+   "sessions": 0,
+   "weekends": []
   },
   "motogp": {
    "ok": true,
@@ -4193,6 +4201,32 @@
    }
   },
   {
+   "id": "f1-11408",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-11-07T18:00:00.000Z",
+   "end": "2026-11-07T19:00:00.000Z",
+   "title": "São Paulo Grand Prix",
+   "session": "Qualifying",
+   "venue": "Interlagos",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1646813",
    "sourceId": "1646813",
    "comp": "CUPS",
@@ -4663,6 +4697,34 @@
     "conflict": false,
     "sources": [
      "premierleague.com"
+    ]
+   }
+  },
+  {
+   "id": "f1-11412",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-11-08T17:00:00.000Z",
+   "end": "2026-11-08T19:00:00.000Z",
+   "title": "São Paulo Grand Prix",
+   "session": "Race",
+   "venue": "Interlagos",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

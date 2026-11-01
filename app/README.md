@@ -31,6 +31,13 @@ In Android Studio, the green ▶ (Run) button builds the app and puts it on the 
 an emulator). Without Android Studio: `cd android` then `gradlew assembleDebug` builds
 `android/app/build/outputs/apk/debug/app-debug.apk`.
 
+## Trying it without a phone
+
+There's an emulator (a pretend Pixel 9 with Android 16) called **Pixel9**: in Android Studio, pick it in the device
+list next to ▶. It's slow to start (a few minutes) and slower than a real phone. Its built-in web engine
+(WebView 134) is older than a Pixel's, so there the app sits below the status bar instead of drawing
+behind it; both look right.
+
 ## Icons and splash screen
 
 Made from `assets/logo.png` by Capacitor's asset tool:

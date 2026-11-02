@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T10:00:22.351Z",
+ "generatedAt": "2026-11-02T10:30:27.876Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4605,
+   "programmes": 4596,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1241,
+   "programmes": 1239,
    "errors": []
   },
   "primeVideo": {
@@ -90,7 +90,7 @@
    "ok": true,
    "matches": 9
   },
-  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "26/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -198,7 +198,7 @@
    "status": "upcoming",
    "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793599200",
    "kickoff": "2026-11-02T06:00:00.000Z",
-   "end": "2026-11-02T10:00:00.000Z",
+   "end": "2026-11-02T10:30:00.000Z",
    "session": "Morning session",
    "timeTbc": false,
    "tv": {
@@ -4215,14 +4215,18 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   },

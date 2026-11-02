@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T11:00:27.051Z",
+ "generatedAt": "2026-11-02T11:30:22.161Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4596,
+   "programmes": 4600,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1239,
+   "programmes": 1253,
    "errors": []
   },
   "primeVideo": {
@@ -3565,7 +3565,9 @@
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -4160,7 +4162,9 @@
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

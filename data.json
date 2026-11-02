@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T21:00:25.158Z",
+ "generatedAt": "2026-11-02T21:30:14.573Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -231,7 +231,7 @@
    "venue": "St James' Park",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {

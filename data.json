@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T20:00:14.195Z",
+ "generatedAt": "2026-11-02T20:30:13.446Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -229,9 +229,9 @@
    "homeShort": "Newcastle",
    "awayShort": "Everton",
    "venue": "St James' Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T07:00:25.471Z",
+ "generatedAt": "2026-11-02T07:30:16.949Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4583,
+   "programmes": 4600,
    "errors": []
   },
   "skyListings": {
@@ -19,17 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 20,
-   "amazonPicks": [
-    "Manchester United vs. Roma",
-    "Arsenal vs. Dortmund",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -146,7 +137,7 @@
     "World Wide Technology Championship",
     "Abu Dhabi Aldar Championship"
    ],
-   "rounds": 6,
+   "rounds": 8,
    "errors": []
   },
   "snooker": {
@@ -3867,6 +3858,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Abu Dhabi Aldar Championship",
+   "venue": "Yas Links",
+   "source": "europeantour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-08",
+   "kickoff": "2026-11-08T06:30:00.000Z",
+   "end": "2026-11-08T12:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1557458",
    "comp": "PL",
    "label": null,
@@ -4265,6 +4284,32 @@
     "broadcaster": "Sky Sports Tennis",
     "channels": [
      "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "World Wide Technology Championship",
+   "venue": "El Cardonal at Diamante",
+   "source": "pgatour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-pga-R2026457-2026-11-08",
+   "kickoff": "2026-11-08T20:00:00.000Z",
+   "end": "2026-11-08T23:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
     ],
     "alsoOn": [],
     "confirmed": true,

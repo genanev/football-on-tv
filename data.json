@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T05:30:25.949Z",
+ "generatedAt": "2026-11-02T06:00:22.454Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4558,
+   "programmes": 4564,
    "errors": []
   },
   "skyListings": {
@@ -39,27 +39,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-01T06:00:20.177Z",
+    "checkedAt": "2026-11-02T06:00:22.454Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-01T06:00:20.177Z",
+    "checkedAt": "2026-11-02T06:00:22.454Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-01T06:00:20.177Z",
-    "corrections": 1
+    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-01T06:00:20.177Z",
+    "checkedAt": "2026-11-02T06:00:22.454Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-01T06:00:20.177Z",
+    "checkedAt": "2026-11-02T06:00:22.454Z",
     "corrections": 0
    },
    "changed": []
@@ -4500,15 +4500,9 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-01T06:00:20.177Z",
+   "checkedAt": "2026-11-02T06:00:22.454Z",
    "corrections": [],
    "matches": [
-    {
-     "sourceId": "2645281",
-     "home": "Liverpool",
-     "away": "Arsenal",
-     "kickoff": "2026-11-01T16:30:00.000Z"
-    },
     {
      "sourceId": "2645283",
      "home": "Newcastle United",
@@ -4579,34 +4573,22 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-01T06:00:20.177Z",
+   "checkedAt": "2026-11-02T06:00:22.454Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-01T06:00:20.177Z",
-   "corrections": [
-    {
-     "id": "af-1636324",
-     "was": {
-      "kickoff": "2026-11-05T17:45:00.000Z",
-      "status": "upcoming"
-     },
-     "kickoff": "2026-11-04T15:30:00.000Z",
-     "status": "upcoming",
-     "timeTbc": false,
-     "source": "uefa.com"
-    }
-   ]
+   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-01T06:00:20.177Z",
+   "checkedAt": "2026-11-02T06:00:22.454Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-01T06:00:20.177Z",
+   "checkedAt": "2026-11-02T06:00:22.454Z",
    "corrections": []
   }
  }

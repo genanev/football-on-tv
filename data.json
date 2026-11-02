@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T09:30:29.299Z",
+ "generatedAt": "2026-11-02T10:00:22.351Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4599,
+   "programmes": 4605,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1243,
+   "programmes": 1241,
    "errors": []
   },
   "primeVideo": {
@@ -198,7 +198,7 @@
    "status": "upcoming",
    "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793599200",
    "kickoff": "2026-11-02T06:00:00.000Z",
-   "end": "2026-11-02T09:30:00.000Z",
+   "end": "2026-11-02T10:00:00.000Z",
    "session": "Morning session",
    "timeTbc": false,
    "tv": {
@@ -3078,13 +3078,19 @@
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

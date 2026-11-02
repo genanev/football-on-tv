@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-01T23:30:18.923Z",
+ "generatedAt": "2026-11-02T00:00:14.845Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4476,
+   "programmes": 4162,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1221,
+   "programmes": 1244,
    "errors": []
   },
   "primeVideo": {
@@ -66,13 +66,13 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 173,
+   "matches": 150,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 12
+   "matches": 11
   },
   "championsLeague": {
    "ok": true,
@@ -87,21 +87,21 @@
    "televisedTies": 1
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 10
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645283,2645288,2645291,2645289,2645285,2645293,2645286,2645287,2645290,2645294,2645292&pageSize=50"
   },
-  "footballChannels": "26/30 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
   },
   "wsl": {
    "ok": true,
-   "televised": 9
+   "televised": 3
   },
   "scottishPremiership": {
    "ok": true,
-   "matches": 7
+   "matches": 6
   },
   "efl": {
    "ok": true,
@@ -114,9 +114,8 @@
   },
   "formula1": {
    "ok": true,
-   "sessions": 3,
+   "sessions": 2,
    "weekends": [
-    "Mexico City Grand Prix",
     "São Paulo Grand Prix"
    ]
   },
@@ -133,8 +132,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 4
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026"
   },
   "darts": {
    "ok": true,
@@ -144,11 +143,10 @@
   "golf": {
    "ok": true,
    "tournaments": [
-    "VidantaWorld Mexico Open",
     "World Wide Technology Championship",
     "Abu Dhabi Aldar Championship"
    ],
-   "rounds": 7,
+   "rounds": 6,
    "errors": []
   },
   "snooker": {
@@ -157,11 +155,11 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 16
+   "sessions": 14
   },
   "cricket": {
    "ok": true,
-   "matches": 3
+   "matches": 2
   },
   "skiing": {
    "ok": true,
@@ -170,11 +168,11 @@
   },
   "tennis": {
    "ok": true,
-   "tournaments": [
-    "WTA Finals"
-   ],
-   "days": 2,
-   "errors": []
+   "tournaments": [],
+   "days": 0,
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-02&to=2026-11-10"
+   ]
   },
   "rugby": {
    "ok": true,
@@ -185,490 +183,12 @@
    "events": [
     "European Curling Championships 2026-10-27..2026-11-01"
    ],
-   "games": 2,
+   "games": 0,
    "errors": []
   },
   "scores": "on"
  },
  "events": [
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793512800",
-   "kickoff": "2026-11-01T06:00:00.000Z",
-   "end": "2026-11-01T10:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "New Zealand v India",
-   "venue": "Seddon Park, Hamilton",
-   "series": "India in New Zealand, 5 T20I Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-271650",
-   "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T10:35:00.000Z",
-   "session": "5th T20I",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Malaysia",
-   "venue": "Petronas Sepang International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-43682de4-47e6-4992-b2e6-a4b1c86149c3",
-   "kickoff": "2026-11-01T07:00:00.000Z",
-   "end": "2026-11-01T08:00:00.000Z",
-   "session": "Race",
-   "status": "finished",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793523413452",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Switzerland v Sweden",
-   "session": "Women's Final",
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-11-01T08:56:53.452Z",
-   "end": "2026-11-01T11:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "tntsports.co.uk",
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793532600",
-   "kickoff": "2026-11-01T11:30:00.000Z",
-   "end": "2026-11-01T15:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607713",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "Arsenal Women",
-   "away": "Aston Villa Women",
-   "homeShort": "Arsenal",
-   "awayShort": "Aston Villa",
-   "venue": "Meadow Park",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 1,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [
-     "Sky Sports Mix"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607717",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "London City Lionesses",
-   "away": "Manchester City Women",
-   "homeShort": "London City Lionesses",
-   "awayShort": "Manchester City",
-   "venue": "Princes Park",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 2,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "curling-SPECIAL_CURLING-1793537812800",
-   "comp": "SPECIAL_CURLING",
-   "kind": "session",
-   "label": null,
-   "title": "Italy v Scotland",
-   "session": "Men's Final",
-   "venue": "Ostrava, Czechia",
-   "source": "worldcurling.org",
-   "status": "upcoming",
-   "kickoff": "2026-11-01T12:56:52.800Z",
-   "end": "2026-11-01T15:48:42.042Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "tntsports.co.uk",
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1556695",
-   "comp": "SCOT",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T13:00:00.000Z",
-   "timeTbc": false,
-   "home": "Falkirk",
-   "away": "Celtic",
-   "homeShort": "Falkirk",
-   "awayShort": "Celtic",
-   "venue": "Falkirk Stadium",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 0,
-   "round": "Regular Season - 12",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607714",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Birmingham City Women",
-   "away": "Tottenham Hotspur Women",
-   "homeShort": "Birmingham City",
-   "awayShort": "Tottenham Hotspur",
-   "venue": "The DCS Stadium",
-   "status": "finished",
-   "homeScore": 1,
-   "awayScore": 4,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Mix",
-    "channels": [
-     "Sky Sports Mix"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607715",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Brighton Women",
-   "away": "Crystal Palace Women",
-   "homeShort": "Brighton",
-   "awayShort": "Crystal Palace",
-   "venue": "American Express Stadium",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1607718",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "West Ham Women",
-   "away": "Liverpool Women",
-   "homeShort": "West Ham",
-   "awayShort": "Liverpool",
-   "venue": "London Stadium",
-   "status": "finished",
-   "homeScore": 4,
-   "awayScore": 1,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com",
-     "previous-update"
-    ]
-   }
-  },
-  {
-   "id": "af-1607716",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T14:30:00.000Z",
-   "timeTbc": false,
-   "home": "Charlton Athletic Women",
-   "away": "Chelsea Women",
-   "homeShort": "Charlton Athletic",
-   "awayShort": "Chelsea",
-   "venue": "The Oakwood",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 6,
-   "round": "Regular Season - 8",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com",
-     "previous-update"
-    ]
-   }
-  },
-  {
-   "id": "af-1557453",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-01T16:30:00.000Z",
-   "timeTbc": false,
-   "home": "Liverpool",
-   "away": "Arsenal",
-   "homeShort": "Liverpool",
-   "awayShort": "Arsenal",
-   "venue": "Anfield",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "f1-11404",
-   "comp": "F1",
-   "kind": "session",
-   "kickoff": "2026-11-01T20:00:00.000Z",
-   "end": "2026-11-01T23:00:00.000Z",
-   "title": "Mexico City Grand Prix",
-   "session": "Race",
-   "venue": "Mexico City",
-   "status": "finished",
-   "timeTbc": false,
-   "source": "formula1.com",
-   "tv": {
-    "broadcaster": "Sky Sports F1",
-    "channels": [
-     "Sky Sports F1"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "VidantaWorld Mexico Open",
-   "venue": "Vidanta Vallarta",
-   "source": "pgatour.com",
-   "session": "Round 4",
-   "status": "upcoming",
-   "id": "golf-pga-R2026540-2026-11-01",
-   "kickoff": "2026-11-01T20:00:00.000Z",
-   "end": "2026-11-01T23:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "SNOOKER",
    "kind": "session",
@@ -3454,33 +2974,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-4f3bf8c8-d4e1-460d-acef-8743f03c3a4d",
-   "kickoff": "2026-11-07T11:40:00.000Z",
-   "end": "2026-11-07T12:20:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-54780758-13bb-414b-94d6-2095f217459c",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -4051,33 +3544,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-3453a511-7d69-4e2f-b574-9651cd0e796a",
-   "kickoff": "2026-11-07T16:00:00.000Z",
-   "end": "2026-11-07T16:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-20078fb5-fab3-4d28-ad54-d550b01b472d",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -4426,15 +3892,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -4618,33 +4082,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-ac8631ea-71b0-411a-8676-aa68b4f69b81",
-   "kickoff": "2026-11-08T16:00:00.000Z",
-   "end": "2026-11-08T17:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "af-1556701",
    "comp": "SCOT",
    "label": null,
@@ -4689,15 +4126,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -4719,62 +4154,6 @@
     ],
     "alsoOn": [
      "Sky Sports+"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 1",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-08",
-   "kickoff": "2026-11-08T19:30:00.000Z",
-   "end": "2026-11-09T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 2",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-09",
-   "kickoff": "2026-11-09T00:00:00.000Z",
-   "end": "2026-11-10T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
     ],
     "confirmed": true,
     "note": null,

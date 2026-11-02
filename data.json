@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T19:30:14.233Z",
+ "generatedAt": "2026-11-02T20:00:14.195Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -1097,7 +1097,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }

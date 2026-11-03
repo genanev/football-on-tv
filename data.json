@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T19:00:14.960Z",
+ "generatedAt": "2026-11-03T19:30:16.874Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -265,7 +265,7 @@
    "venue": "Stamford Bridge",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {

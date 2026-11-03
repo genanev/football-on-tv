@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T05:30:16.412Z",
+ "generatedAt": "2026-11-03T06:00:20.476Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -39,27 +39,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "checkedAt": "2026-11-03T06:00:20.476Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "checkedAt": "2026-11-03T06:00:20.476Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "checkedAt": "2026-11-03T06:00:20.476Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "checkedAt": "2026-11-03T06:00:20.476Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-02T06:00:22.454Z",
+    "checkedAt": "2026-11-03T06:00:20.476Z",
     "corrections": 0
    },
    "changed": []
@@ -4531,15 +4531,9 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "checkedAt": "2026-11-03T06:00:20.476Z",
    "corrections": [],
    "matches": [
-    {
-     "sourceId": "2645283",
-     "home": "Newcastle United",
-     "away": "Everton",
-     "kickoff": "2026-11-02T20:00:00.000Z"
-    },
     {
      "sourceId": "2645288",
      "home": "Everton",
@@ -4604,22 +4598,22 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "checkedAt": "2026-11-03T06:00:20.476Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "checkedAt": "2026-11-03T06:00:20.476Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "checkedAt": "2026-11-03T06:00:20.476Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-02T06:00:22.454Z",
+   "checkedAt": "2026-11-03T06:00:20.476Z",
    "corrections": []
   }
  }

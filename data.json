@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-02T23:30:13.833Z",
+ "generatedAt": "2026-11-03T00:00:16.373Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4590,
+   "programmes": 4366,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1246,
+   "programmes": 1263,
    "errors": []
   },
   "primeVideo": {
@@ -66,13 +66,13 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 150,
+   "matches": 142,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 11
+   "matches": 10
   },
   "championsLeague": {
    "ok": true,
@@ -88,9 +88,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 9
+   "matches": 8
   },
-  "footballChannels": "26/29 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/28 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -155,7 +155,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 14
+   "sessions": 13
   },
   "cricket": {
    "ok": true,
@@ -171,7 +171,7 @@
    "tournaments": [
     "WTA Finals"
    ],
-   "days": 3,
+   "days": 4,
    "errors": []
   },
   "rugby": {
@@ -189,67 +189,6 @@
   "scores": "on"
  },
  "events": [
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793599200",
-   "kickoff": "2026-11-02T06:00:00.000Z",
-   "end": "2026-11-02T11:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 3"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557455",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-02T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "Newcastle United",
-   "away": "Everton",
-   "homeShort": "Newcastle",
-   "awayShort": "Everton",
-   "venue": "St James' Park",
-   "status": "finished",
-   "homeScore": 0,
-   "awayScore": 1,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "SNOOKER",
    "kind": "session",
@@ -4499,6 +4438,35 @@
      "ITV4"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 4",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-11",
+   "kickoff": "2026-11-11T00:00:00.000Z",
+   "end": "2026-11-11T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

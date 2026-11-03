@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T15:00:15.917Z",
+ "generatedAt": "2026-11-03T15:30:26.831Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1261,
+   "programmes": 1264,
    "errors": []
   },
   "primeVideo": {
@@ -198,7 +198,7 @@
    "status": "upcoming",
    "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793705400",
    "kickoff": "2026-11-03T11:30:00.000Z",
-   "end": "2026-11-03T15:00:00.000Z",
+   "end": "2026-11-03T15:30:00.000Z",
    "session": "Morning session",
    "timeTbc": false,
    "tv": {

@@ -1,0 +1,131 @@
+{
+ "data": {
+  "programsByDate": {
+   "edges": [
+    {
+     "node": {
+      "id": "esp-e201524242c0ch561",
+      "status": "ONAIR",
+      "startTime": "2026-11-03T18:15:00.000Z",
+      "endTime": "2026-11-03T23:00:00.000Z",
+      "title": "Manchester United - Roma",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/5d6ae3ad-c009-5b62-8c16-c98683cdca2b?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "id": "Y2hhbm5lbDplc3AtNTYx",
+       "channelNetsportId": "esp-561",
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT",
+       "link": {
+        "url": "https://www.tntsports.co.uk/live-event-tnt-commercial-premises-1_ifcesp-561/video.shtml"
+       }
+      },
+      "allowedCountries": [
+       "GB",
+       "GG",
+       "IM",
+       "JE"
+      ]
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31810054c0ch504vcp",
+      "status": "SCHEDULED",
+      "startTime": "2026-11-03T19:45:00.000Z",
+      "endTime": "2026-11-03T22:00:00.000Z",
+      "title": "Villarreal - Paris Saint-Germain",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sports?utm_campaign=sportsEditorial-program-redirection&utm_source=wbd_tntsports_web&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "id": "Y2hhbm5lbDplc3AtNTA0dmNw",
+       "channelNetsportId": "esp-504vcp",
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT",
+       "link": {
+        "url": "https://www.tntsports.co.uk/tnt-sports-4---commercial-premises_ifcesp-504vcp/video.shtml"
+       }
+      },
+      "allowedCountries": [
+       "GB",
+       "GG",
+       "IM",
+       "JE"
+      ]
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e31810054c0ch504",
+      "status": "SCHEDULED",
+      "startTime": "2026-11-03T19:45:00.000Z",
+      "endTime": "2026-11-03T22:00:00.000Z",
+      "title": "Villarreal - Paris Saint-Germain",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/d22941e2-97fc-574e-b31c-24efd3d33913?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "id": "Y2hhbm5lbDplc3AtNTA0",
+       "channelNetsportId": "esp-504",
+       "name": "TNT Sports 4",
+       "family": "TNT_SPORTS_4",
+       "link": {
+        "url": "https://www.tntsports.co.uk/tnt-sports-4_ifcesp-504/video.shtml"
+       }
+      },
+      "allowedCountries": [
+       "GG",
+       "IM",
+       "JE",
+       "GB"
+      ]
+     }
+    },
+    {
+     "node": {
+      "id": "esp-e201672375c0ch20072",
+      "status": "SCHEDULED",
+      "startTime": "2026-11-03T19:54:20.000Z",
+      "endTime": "2026-11-03T22:00:00.000Z",
+      "title": "Feyenoord - Inter",
+      "subtitle": "UEFA Champions League | League Phase",
+      "programLink": {
+       "url": "https://play.hbomax.com/sport/4426e459-79e5-5333-b0ef-b79df9cfcdb1?utm_source=wbd_tntsports_web&utm_campaign=sportsEditorial-program-redirection&utm_medium=owned&utm_content=programsByDate_Program_url"
+      },
+      "isLive": true,
+      "sportName": "Football",
+      "channel": {
+       "id": "Y2hhbm5lbDplc3AtMjAwNzI=",
+       "channelNetsportId": "esp-20072",
+       "name": "TNT Sports",
+       "family": "TNT_SPORTS_LIVE_EVENT",
+       "link": {
+        "url": "https://www.tntsports.co.uk/live-event-bolt-72_ifcesp-20072/video.shtml"
+       }
+      },
+      "allowedCountries": [
+       "IM",
+       "GG",
+       "GB",
+       "JE"
+      ]
+     }
+    }
+   ],
+   "pageInfo": {
+    "hasNextPage": false
+   }
+  }
+ }
+}

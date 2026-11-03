@@ -16,8 +16,15 @@ const API = 'https://netsport.eurosport.io';
 const QUERY_HASH = '343f6cbe5b3958cd35c13c61c74d6ae3127f8b7802a8dad90d488ddad9828084'; // programsByDateQuery
 const HEADERS = { domain: 'www.tntsports.co.uk', Origin: 'https://www.tntsports.co.uk' };
 
-/** TNT labels HBO Max streams with the bare channel name "TNT Sports". */
+/**
+ * TNT labels HBO Max streams with the bare channel name "TNT Sports" (their channel links read
+ * "live-event-bolt-…"). Its feeds for pubs and bars are labelled the same way, so those are skipped
+ * by their link ("…commercial-premises…"): they show games people can't watch at home, such as
+ * Amazon's Champions League pick (Man Utd v Roma, 3 Nov 2026, "live-event-tnt-commercial-premises-1"),
+ * and a pub copy of each TNT channel ("tnt-sports-4---commercial-premises").
+ */
 export function tntChannel(n) {
+  if (/commercial[-_ ]?premises/i.test(`${n?.channel?.link?.url || ''} ${n?.channel?.name || ''}`)) return null;
   const name = String(n?.channel?.name || '').trim();
   if (/^TNT Sports \d+$/i.test(name) || /box office/i.test(name)) return name;
   if (/hbomax/i.test(n?.programLink?.url || '') || /^TNT Sports$/i.test(name)) return 'HBO Max';

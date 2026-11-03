@@ -9,6 +9,8 @@
 //   fixtures/skysports-football-on-sky-2026-10-13.html  skysports.com "Football on Sky" (listings only)
 //   fixtures/tnt-schedule-football-2026-10-13.json      TNT Sports' schedule 13-21 Oct (football only)
 //   fixtures/primevideo-ucl-tournament-2026-10-13.html  Prime Video's Champions League page (event cards)
+//   fixtures/tnt-schedule-ucl-2026-11-03.json      TNT's schedule API, 3 Nov 2026 (captured that evening):
+//                                         four Champions League entries, incl. two pub and bar feeds
 // The Premier League's broadcaster feed answers by the requester's country; from GitHub (US) it
 // gives no UK channels, so it's mocked as empty here and checked on its own below.
 //
@@ -20,6 +22,8 @@ import { readFile } from 'node:fs/promises';
 import { build, keepKnownChannels, teamSim, ukToUtc, parsePlKickoff, ukDate, mapPlBroadcasts } from '../scripts/build.mjs';
 import { footballTv } from '../scripts/sources/footballTv.mjs';
 import { guideProgrammesFor } from '../scripts/sources/football.mjs';
+import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
+import { parsePrimeTournament } from '../scripts/sources/amazonPrime.mjs';
 
 const fx = (name) => readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8');
 const GAMEWEEK = JSON.parse(await fx('pl-current-gameweek-2026-10-13.json'));
@@ -129,6 +133,21 @@ assert.deepEqual(ucl.find(e => e.home === 'Liverpool' && e.away === 'Villarreal'
 // TNT's games that Prime Video resells through the TNT Sports channel are not Amazon's
 assert.ok(!ucl.some(e => e.home === 'LASK' && e.tv.channels.includes('Amazon Prime Video')));
 assert.deepEqual(data.report.primeVideo.amazonPicks.slice(0, 2), ['Liverpool vs. Villarreal', 'Manchester United vs. Roma']);
+// TNT's pub and bar feeds aren't HBO Max (George, 3 Nov 2026): TNT's schedule listed Amazon's pick,
+// Man Utd v Roma, on "TNT Sports" with a "live-event-tnt-commercial-premises-1" link, which hid
+// Prime Video. Real entries (fixtures/tnt-schedule-ucl-2026-11-03.json, captured that evening): the
+// pub feed, a pub copy of TNT Sports 4 and the real TNT Sports 4 for Villarreal v PSG, and a genuine
+// HBO Max stream ("live-event-bolt-72") for Feyenoord v Inter.
+const TNT_NOV3 = { programmes: mapTntDay(JSON.parse(await fx('tnt-schedule-ucl-2026-11-03.json'))) };
+assert.deepEqual(TNT_NOV3.programmes.map(p => `${p.title}: ${p.channel}`), ['Villarreal - Paris Saint-Germain: TNT Sports 4', 'Feyenoord - Inter: HBO Max']);
+const PRIME_PICKS = parsePrimeTournament(PRIME, Date.parse('2026-10-13T09:00:00Z')); // lists Man Utd v Roma for 3 Nov
+const nov3 = (home, away) => ({ comp: 'UCL', kind: 'match', home, away, kickoff: '2026-11-03T20:00:00.000Z' });
+const roma = footballTv(nov3('Manchester United', 'Roma'), { tnt: TNT_NOV3, prime: { cards: PRIME_PICKS } });
+assert.deepEqual([roma.tv.channels, roma.tv.alsoOn, roma.tv.sources], [['Amazon Prime Video'], [], ['primevideo.com']]);
+const psg = footballTv(nov3('Villarreal', 'Paris Saint-Germain'), { tnt: TNT_NOV3 });
+assert.deepEqual([psg.tv.channels, psg.tv.alsoOn], [['TNT Sports 4'], []]); // no "also on HBO Max" from the pub copy
+assert.deepEqual(footballTv(nov3('Feyenoord', 'Inter'), { tnt: TNT_NOV3 }).tv.channels, ['HBO Max']);
+
 // TNT's team names read better than UEFA's short ones
 assert.ok(ucl.some(e => e.home === 'Manchester City' && e.away === 'Paris Saint-Germain'));
 assert.equal(data.report.footballChannels, '43/46 PL+UCL matches with a confirmed channel'); // the other 3: Saturday 15:00

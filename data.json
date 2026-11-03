@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T17:30:12.905Z",
+ "generatedAt": "2026-11-03T18:00:13.321Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1259,
+   "programmes": 1263,
    "errors": []
   },
   "primeVideo": {
@@ -229,9 +229,9 @@
    "homeShort": "Galatasaray",
    "awayShort": "VfB Stuttgart",
    "venue": "Rams Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -263,9 +263,9 @@
    "homeShort": "Shakhtar Donetsk",
    "awayShort": "Sporting CP",
    "venue": "Stamford Bridge",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {

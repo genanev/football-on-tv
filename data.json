@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T18:00:13.321Z",
+ "generatedAt": "2026-11-03T18:30:12.111Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -230,7 +230,7 @@
    "awayShort": "VfB Stuttgart",
    "venue": "Rams Park",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",

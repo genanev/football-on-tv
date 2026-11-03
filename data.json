@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-03T09:30:19.490Z",
+ "generatedAt": "2026-11-03T10:00:20.861Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4674,
+   "programmes": 4669,
    "errors": []
   },
   "skyListings": {
@@ -4161,9 +4161,7 @@
     "channels": [
      "Sky Sports F1"
     ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-03T18:30:12.111Z",
+ "generatedAt": "2026-11-03T19:00:14.960Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4672,
+   "programmes": 4670,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1263,
+   "programmes": 1020,
    "errors": []
   },
   "primeVideo": {
@@ -752,16 +752,16 @@
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "HBO Max",
+    "broadcaster": "Amazon Prime Video",
     "channels": [
-     "HBO Max"
+     "Amazon Prime Video"
     ],
     "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk"
+     "primevideo.com"
     ]
    }
   },
@@ -787,9 +787,7 @@
     "channels": [
      "TNT Sports 4"
     ],
-    "alsoOn": [
-     "HBO Max"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1040,9 +1038,7 @@
     "channels": [
      "TNT Sports 4"
     ],
-    "alsoOn": [
-     "HBO Max"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1628,9 +1624,7 @@
     "channels": [
      "TNT Sports 4"
     ],
-    "alsoOn": [
-     "HBO Max"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

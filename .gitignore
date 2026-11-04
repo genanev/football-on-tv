@@ -3,3 +3,7 @@ business/
 
 # Local secrets (API keys): never commit
 .env
+# The Google Play upload key belongs outside the repo (~/TellyFixtures-keys); this is a safety net
+*.jks
+*.keystore
+keystore.properties

@@ -16,12 +16,12 @@
     </style>
 
 
-    <!-- The splash screen while the app starts: the white TV on the app's green. Android 12 and later
+    <!-- The splash screen while the app starts: the app icon on the app's green. Android 12 and later
          draw it from the three settings below; older phones show @drawable/splash. -->
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="android:background">@drawable/splash</item>
         <item name="windowSplashScreenBackground">@color/ic_launcher_background</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
         <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
     </style>
 </resources>

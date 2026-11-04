@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-04T09:30:17.876Z",
+ "generatedAt": "2026-11-04T10:01:08.496Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4717,
+   "programmes": 4714,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1040,
+   "programmes": 1038,
    "errors": []
   },
   "primeVideo": {
@@ -200,9 +200,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-271651",
    "kickoff": "2026-11-04T02:00:00.000Z",
-   "end": "2026-11-04T10:00:00.000Z",
+   "end": "2026-11-04T09:40:00.000Z",
    "session": "1st ODI",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",

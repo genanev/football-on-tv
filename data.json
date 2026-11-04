@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-04T15:30:16.753Z",
+ "generatedAt": "2026-11-04T16:00:24.329Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4712,
+   "programmes": 4708,
    "errors": []
   },
   "skyListings": {
@@ -230,9 +230,9 @@
    "homeShort": "Rennes",
    "awayShort": "Olympiakos Piraeus",
    "venue": "Roazhon Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {

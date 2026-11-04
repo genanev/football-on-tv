@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T19:00:11.905Z",
+ "generatedAt": "2026-11-04T19:30:15.354Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -263,8 +263,8 @@
    "awayShort": "Real Madrid",
    "venue": "Allwyn Arena",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 1,
+   "homeScore": 2,
+   "awayScore": 2,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -297,8 +297,8 @@
    "awayShort": "Liverpool",
    "venue": "Chobani Stadium",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 1,
+   "homeScore": 3,
+   "awayScore": 2,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-04T05:00:33.982Z",
+ "generatedAt": "2026-11-04T05:30:14.410Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4672,
+   "programmes": 4689,
    "errors": []
   },
   "skyListings": {
@@ -87,8 +87,8 @@
    "televisedTies": 1
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 8
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645288,2645291,2645289,2645285,2645293,2645286,2645287,2645290,2645294,2645292&pageSize=50"
   },
   "footballChannels": "16/19 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -132,8 +132,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 3
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026"
   },
   "darts": {
    "ok": true,
@@ -170,11 +170,11 @@
   },
   "tennis": {
    "ok": true,
-   "tournaments": [
-    "WTA Finals"
-   ],
-   "days": 5,
-   "errors": []
+   "tournaments": [],
+   "days": 0,
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-04&to=2026-11-12"
+   ]
   },
   "rugby": {
    "ok": true,
@@ -2196,33 +2196,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-4f3bf8c8-d4e1-460d-acef-8743f03c3a4d",
-   "kickoff": "2026-11-07T11:40:00.000Z",
-   "end": "2026-11-07T12:20:00.000Z",
-   "session": "Qualifying",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-54780758-13bb-414b-94d6-2095f217459c",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -2906,35 +2879,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-3453a511-7d69-4e2f-b574-9651cd0e796a",
-   "kickoff": "2026-11-07T16:00:00.000Z",
-   "end": "2026-11-07T16:45:00.000Z",
-   "session": "Sprint",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "wr-20078fb5-fab3-4d28-ad54-d550b01b472d",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -3313,15 +3257,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -3505,35 +3447,6 @@
    }
   },
   {
-   "comp": "MOTOGP",
-   "kind": "session",
-   "title": "Grand Prix of Qatar",
-   "venue": "Lusail International Circuit",
-   "source": "motogp.com",
-   "timeTbc": false,
-   "id": "motogp-ac8631ea-71b0-411a-8676-aa68b4f69b81",
-   "kickoff": "2026-11-08T16:00:00.000Z",
-   "end": "2026-11-08T17:00:00.000Z",
-   "session": "Race",
-   "status": "upcoming",
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [
-     "HBO Max"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
-    ]
-   }
-  },
-  {
    "id": "af-1556701",
    "comp": "SCOT",
    "label": null,
@@ -3620,33 +3533,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 1",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-08",
-   "kickoff": "2026-11-08T19:30:00.000Z",
-   "end": "2026-11-09T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "GOLF",
    "kind": "session",
    "title": "World Wide Technology Championship",
@@ -3664,35 +3550,6 @@
      "Sky Sports Golf"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 2",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-09",
-   "kickoff": "2026-11-09T00:00:00.000Z",
-   "end": "2026-11-10T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3786,35 +3643,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 3",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-10",
-   "kickoff": "2026-11-10T00:00:00.000Z",
-   "end": "2026-11-11T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "New Zealand v India",
@@ -3894,35 +3722,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 4",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-11",
-   "kickoff": "2026-11-11T00:00:00.000Z",
-   "end": "2026-11-12T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Sportsbet.io Champion of Champions",
@@ -3966,35 +3765,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 5",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-12",
-   "kickoff": "2026-11-12T00:00:00.000Z",
-   "end": "2026-11-12T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

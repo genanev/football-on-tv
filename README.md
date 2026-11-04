@@ -19,18 +19,20 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 
 The plan is to turn it into a paid app called **Telly Fixtures** on Google Play: see `playStorePlan.md`.
 
-## Status (29 Oct 2026)
+## Status (4 Nov 2026)
 
 - **Live:** every sport above, updated every 30 minutes from Google Cloud in London. Football comes from API-Football, checked once a day against the official Premier League, UEFA and EFL feeds, which win if they disagree. A football game with no UK channel 48 hours before kick-off says "Not shown live on UK TV".
+- **Recent fixes:** F1, F2 and F3 now read each series' full season calendar, so a race weekend straight after another is never missing (the São Paulo GP was hidden on 1 Nov). TNT's feeds for pubs and bars are ignored, so Amazon's Champions League pick shows as Prime Video (Man Utd v Roma, 3 Nov). The text is a little smaller, so more listings fit on screen; it still follows the phone's font size.
 - **Still to connect:** rugby league's Super League (its 2027 fixtures aren't out yet), and more Specials, one real event at a time.
 - **Design:** Design A (see `designA.md`). A card style with one rounded box per event was mocked up (branch `mockup-cards`, not merged); the current design stays for now.
-- **Paid app:** the name (Telly Fixtures), app ID and domains are done; a personal Google Play developer account is decided but not opened yet. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 0 pricing and public details, then Phase 1: support email, privacy policy and terms; `data.json` is on the own domain since 31 Oct 2026).
+- **Paid app:** the name (Telly Fixtures), app ID and domains are done, and the app shows the new name. `data.json` is on the own domain (since 31 Oct 2026); the app works offline and follows the phone's accessibility settings (checked on the Pixel, 1 Nov). The Android app is built (`app/`, Capacitor) and tested on an emulated Pixel 9. The personal Google Play developer account is created and waiting for Google's identity checks. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 2: match reminders and trying the app on the Pixel; Phase 1 still has the privacy policy, terms, ICO and icon licence).
 
 ## Principles
 
 - **Proper sources only.** Football fixtures and scores come from API-Football, a paid football data service; every other sport's fixtures come from the competition's own data. TV channels come from the broadcasters' own listings, never from fan sites.
 - **No guessing.** A channel is shown only when a broadcaster's listing confirms it. Otherwise the app says "TV channel to be confirmed". The rule-based line is "Not shown live on UK TV": for Saturday 3pm football (the UK blackout), and for any football game with no channel listed 48 hours before kick-off (broadcasters announce their picks earlier than that), so people can plan.
 - **Each source fails on its own.** If one site can't be read, everything else still works, and the app shows a yellow banner saying what's affected.
+- **Every event in the window.** Each sport's fixtures come from its full season calendar or a date range, never a feed that only knows the next event. An event on the calendar whose details can't be read shows the yellow banner rather than quietly going missing.
 
 ## How it works
 
@@ -53,6 +55,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
 2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2; live since 31 Oct 2026, set up in `cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
 3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it. It works offline too: the phone keeps a copy of the app and of the last listings, and says how old they are when it can't get new ones (`sw.js`).
+4. **The phone app:** `app/` packages the same `index.html` into a real Android app with Capacitor (an iPhone version can follow). It reads `data.json` from our own domain only. The few things that differ between the website and the app (the back button, the status bar's colours) are in `platform.js` and `app/platform/android.js`. How to build it: `app/README.md`.
 
 ### Data sources
 

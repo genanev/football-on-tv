@@ -213,7 +213,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - "Listings can change: check with the broadcaster."
   - Apple's standard licence terms, if used later.
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
-- [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple): George's first one (a TV with a gold star) is in since 4 Nov 2026, in `app/store/`; confirm it's yours to use commercially too.
+- [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple): done, George's first one (a TV with a gold star) is in since 4 Nov 2026, in `app/store/`; he confirms it's original, generic and created from scratch, so it's fine to use commercially. The 3D sport icons are still to confirm.
 - [x] **Accessibility** (the code, 31 Oct 2026; checked on George's Pixel, 1 Nov 2026):
   - [x] Text follows the phone's font size and still fits when it's increased (checked up to 200%, at 320–412px wide). Needs Chrome 146 or later.
   - [x] Colour contrast meets WCAG AA in both themes (five colours darkened slightly, including Sky's orange).
@@ -228,7 +228,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
-**Where we are (4 Nov 2026, paused here):** the Android app works and is merged into `main`. On an emulated Pixel 9 (Android 16) it opens with the live listings from data.tellyfixtures.co.uk, works offline (saved listings and the yellow "no connection" note), the back button closes a sheet, then returns to My TV, then puts the app away, the status bar follows Light/Dark, and the icon shows as "Telly Fixtures". **Next, in either order:** match reminders (no account needed), and putting the app on the Pixel by USB once it's ready for testing. The developer account passed Google's identity checks on 4 Nov, so signing and internal testing can start too. **4 Nov:** versioning and the release build are ready (`npm run release`), the upload key is made and 1.0.0 was built for internal testing. George's app icon is in (`app/store/`, `npm run icons`) and built as 1.0.1; next, upload 1.0.1 and try it on the Pixel. Since then (1–3 Nov) only fixes to the listings and a slightly smaller text size; nothing in this phase has changed.
+**Where we are (4 Nov 2026, paused here):** the Android app works and is merged into `main`. On an emulated Pixel 9 (Android 16) it opens with the live listings from data.tellyfixtures.co.uk, works offline (saved listings and the yellow "no connection" note), the back button closes a sheet, then returns to My TV, then puts the app away, the status bar follows Light/Dark, and the icon shows as "Telly Fixtures". **Next, in either order:** match reminders (no account needed), and putting the app on the Pixel by USB once it's ready for testing. The developer account passed Google's identity checks on 4 Nov, so signing and internal testing can start too. **4 Nov:** versioning and the release build are ready (`npm run release`), the upload key is made and 1.0.0 is on internal testing, installed from the Play Store on the Pixel. George's app icon is in (`app/store/`, `npm run icons`) and built as 1.0.1; next, upload 1.0.1 and go through the checks below on the Pixel. Since then (1–3 Nov) only fixes to the listings and a slightly smaller text size; nothing in this phase has changed.
 
 - [x] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
   - **Done 4 Nov 2026:** account created and the $25 paid on 1 Nov; identity checks passed by 4 Nov. The phone check was done on a spare Android phone: signing in on the Pixel 9 gave "Google couldn't verify that this account belongs to you" (Google's block on a brand-new account signing in on a new device). Play Console now shows only "Create your first app".
@@ -247,11 +247,11 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Version numbers like `1.0.0`, set in `app/package.json` only (Play's version code is worked out from it: 1.2.3 = 10203).
   - `app/CHANGELOG.md` with one section per version, which becomes the store's "What's new" text.
   - Every store upload is tagged in git (`app-v1.0.0`); `npm run release` refuses a version that's already tagged.
-- [ ] **Signing:** let Google hold the app signing key (Play App Signing). Keep the upload key and its password in the password manager, with a backup.
+- [x] **Signing:** let Google hold the app signing key (Play App Signing). Keep the upload key and its password in the password manager, with a backup.
   - [x] 4 Nov 2026: `npm run release` builds the signed bundle (`app/release/telly-fixtures-<version>.aab`) with the upload key from `TellyFixtures-keys` in your user folder, outside the repo. Tested with a throwaway key.
   - [x] Made the real upload key on 4 Nov 2026 (`app/README.md`, "Once: make the upload key"), and built 1.0.0 with it. Keep a backup of its folder.
-  - [ ] Choose Google's signing key (Play App Signing) at the first upload.
-- [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9:
+  - [x] Google's signing key (Play App Signing) in use since the first upload, 4 Nov 2026.
+- [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9 (4 Nov 2026: 1.0.0 uploaded, then downloaded from the Play Store and opened on the Pixel; the checks below are still to do on 1.0.1):
   - First open.
   - Offline.
   - Both themes.

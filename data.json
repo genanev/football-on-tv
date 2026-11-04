@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T21:00:13.856Z",
+ "generatedAt": "2026-11-04T21:30:13.795Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -330,7 +330,7 @@
    "venue": "Cardiff City Stadium",
    "status": "live",
    "homeScore": 3,
-   "awayScore": 0,
+   "awayScore": 3,
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {
@@ -362,7 +362,7 @@
    "awayShort": "Middlesbrough",
    "venue": "Racecourse Ground",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 14",
    "source": "api-football.com",
@@ -428,7 +428,7 @@
    "awayShort": "Real Betis",
    "venue": "Signal Iduna Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
@@ -460,8 +460,8 @@
    "awayShort": "Como",
    "venue": "Stade Bollaert-Delelis",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 3,
+   "homeScore": 1,
+   "awayScore": 7,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -522,8 +522,8 @@
    "awayShort": "Club Brugge KV",
    "venue": "Philips Stadion",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -553,8 +553,8 @@
    "awayShort": "Manchester City",
    "venue": "Leipzig Red Bull Arena",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 2,
+   "awayScore": 2,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -619,7 +619,7 @@
    "awayShort": "Sabah FA",
    "venue": "SR-Bank Arena",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 1,
    "round": "League Stage - 4",
    "source": "api-football.com",

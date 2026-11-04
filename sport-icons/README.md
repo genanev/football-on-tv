@@ -24,5 +24,5 @@ Selected ring: inset 0 0 0 2px oklch(0.55 0.15 H) (My TV: oklch(0.32 0.09 155)).
 Source: the "Icons theme_3D" zip delivered on 18 Oct 2026 (kept outside the repository). The SVGs in this
 folder are copies with the embedded `<metadata>` block removed to save about 7 KB per file. That block
 was a C2PA "content credentials" manifest, which normally means the pictures were made or edited with an
-AI tool. Keep the original zip for provenance, and check the licence and ownership before a commercial
-release. The app's tile sizes differ from the spec above: 64 px tile, radius 20 px, icon 72% of the tile.
+AI tool. Keep the original zip for provenance. George confirmed on 4 Nov 2026 that all the icons are
+generic and created from scratch, so they're fine for the commercial release. The app's tile sizes differ from the spec above: 64 px tile, radius 20 px, icon 72% of the tile.

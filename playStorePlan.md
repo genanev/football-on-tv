@@ -123,7 +123,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 | The name clashes with an existing app or trademark | Medium | Medium | Check before the first upload (the Android package name can't change afterwards) |
 | Losing the app's upload key or account access | Low | High | Play App Signing; keys and passwords in a password manager with a backup; two-step sign-in on every account |
 | A key or token expires unnoticed (e.g. the GitHub key, Oct 2027) | Medium | Medium | Expiry dates in a calendar; moving the data file off GitHub (Phase 1) removes the GitHub key |
-| Icon licence unclear | Medium | Medium | Confirm the pack's licence or replace the icons before launch (Phase 1) |
+| Icon licence unclear | Closed | – | George confirmed on 4 Nov 2026 that all the icons are generic and created from scratch (Phase 1) |
 | Costs grow with users | Low | Low | `data.json` is ≈ 10 KB compressed; free tiers cover many thousands of users |
 | Personal workload (support, fixes) | Medium | Medium | Feedback via a form and sheet, a FAQ, a 3-day reply target, store refunds handled by the stores |
 
@@ -213,7 +213,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - "Listings can change: check with the broadcaster."
   - Apple's standard licence terms, if used later.
 - [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
-- [ ] **Icon licence:** confirm the 3D sport icons' licence and ownership (`sport-icons/README.md`), or replace them (the Tennis and Skiing icons are George's own, 29 Oct 2026). Commission or design the app icon (512×512 for Play, 1024×1024 for Apple): done, George's first one (a TV with a gold star) is in since 4 Nov 2026, in `app/store/`; he confirms it's original, generic and created from scratch, so it's fine to use commercially. The 3D sport icons are still to confirm.
+- [x] **Icon licence (4 Nov 2026):** George confirms all the 3D sport icons and the app icon are generic and created from scratch, so they're fine to use commercially (`sport-icons/README.md`; the Tennis and Skiing icons are his own, 29 Oct 2026). The app icon (512×512 for Play, 1024×1024 for Apple; a TV with a gold star) is in since 4 Nov 2026, in `app/store/`. Keep the original icon zip as the record of where they came from.
 - [x] **Accessibility** (the code, 31 Oct 2026; checked on George's Pixel, 1 Nov 2026):
   - [x] Text follows the phone's font size and still fits when it's increased (checked up to 200%, at 320–412px wide). Needs Chrome 146 or later.
   - [x] Colour contrast meets WCAG AA in both themes (five colours darkened slightly, including Sky's orange).

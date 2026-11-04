@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-04T08:30:14.526Z",
+ "generatedAt": "2026-11-04T09:00:18.389Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4711,
+   "programmes": 4716,
    "errors": []
   },
   "skyListings": {
@@ -3985,7 +3985,7 @@
    "label": null,
    "id": "tennis-808-2026-2026-11-12",
    "kickoff": "2026-11-12T00:00:00.000Z",
-   "end": "2026-11-12T03:00:00.000Z",
+   "end": "2026-11-13T00:00:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Tennis",

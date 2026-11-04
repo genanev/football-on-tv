@@ -1,5 +1,18 @@
 apply plugin: 'com.android.application'
 
+// The version is package.json's ("1.2.3"), the one place to change it before a store upload.
+// Google Play also needs a whole number that goes up with every upload: 1.2.3 -> 10203.
+def appVersion = new groovy.json.JsonSlurper().parse(file('../../package.json')).version
+def (vMajor, vMinor, vPatch) = appVersion.tokenize('.').collect { it as int }
+
+// The upload key lives outside the repo (the repo is public): keystore.properties in
+// ~/TellyFixtures-keys names the key file next to it (storeFile) and holds its passwords
+// (storePassword, keyAlias, keyPassword). TELLY_KEYS can point to another one (a throwaway key, to
+// test the build). Without it the release build is unsigned; release.mjs stops before that.
+def keysFile = file(System.getenv('TELLY_KEYS') ?: "${System.getProperty('user.home')}/TellyFixtures-keys/keystore.properties")
+def keys = new Properties()
+if (keysFile.exists()) keysFile.withInputStream { keys.load(it) }
+
 android {
     namespace = "uk.co.tellyfixtures"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,8 +20,8 @@ android {
         applicationId "uk.co.tellyfixtures"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode vMajor * 10000 + vMinor * 100 + vPatch
+        versionName appVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -16,8 +29,19 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        if (keys.storeFile) {
+            release {
+                storeFile new File(keysFile.parentFile, keys.storeFile)
+                storePassword keys.storePassword
+                keyAlias keys.keyAlias
+                keyPassword keys.keyPassword
+            }
+        }
+    }
     buildTypes {
         release {
+            if (keys.storeFile) signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

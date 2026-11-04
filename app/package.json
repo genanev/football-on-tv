@@ -16,6 +16,7 @@
   "scripts": {
     "web": "node build-web.mjs",
     "sync": "node build-web.mjs && cap sync android",
-    "open": "cap open android"
+    "open": "cap open android",
+    "release": "node release.mjs"
   }
 }

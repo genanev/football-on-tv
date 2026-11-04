@@ -1,3 +1,5 @@
 # Installed packages (npm install) and the copied screens (npm run web): both are rebuilt
 node_modules/
 www/
+# The app bundles npm run release makes for Google Play (rebuilt from the code and the upload key)
+release/

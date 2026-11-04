@@ -228,7 +228,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
-**Where we are (4 Nov 2026, paused here):** the Android app works and is merged into `main`. On an emulated Pixel 9 (Android 16) it opens with the live listings from data.tellyfixtures.co.uk, works offline (saved listings and the yellow "no connection" note), the back button closes a sheet, then returns to My TV, then puts the app away, the status bar follows Light/Dark, and the icon shows as "Telly Fixtures". **Next, in either order:** match reminders (no account needed), and putting the app on the Pixel by USB once it's ready for testing. The developer account passed Google's identity checks on 4 Nov, so signing and internal testing can start too. Since then (1–3 Nov) only fixes to the listings and a slightly smaller text size; nothing in this phase has changed.
+**Where we are (4 Nov 2026, paused here):** the Android app works and is merged into `main`. On an emulated Pixel 9 (Android 16) it opens with the live listings from data.tellyfixtures.co.uk, works offline (saved listings and the yellow "no connection" note), the back button closes a sheet, then returns to My TV, then puts the app away, the status bar follows Light/Dark, and the icon shows as "Telly Fixtures". **Next, in either order:** match reminders (no account needed), and putting the app on the Pixel by USB once it's ready for testing. The developer account passed Google's identity checks on 4 Nov, so signing and internal testing can start too. **4 Nov:** versioning and the release build are ready (`npm run release`); next, you make the upload key, create the app in Play Console (Free, English (UK)) and upload 1.0.0 to internal testing. Since then (1–3 Nov) only fixes to the listings and a slightly smaller text size; nothing in this phase has changed.
 
 - [x] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
   - **Done 4 Nov 2026:** account created and the $25 paid on 1 Nov; identity checks passed by 4 Nov. The phone check was done on a spare Android phone: signing in on the Pixel 9 gave "Google couldn't verify that this account belongs to you" (Google's block on a brand-new account signing in on a new device). Play Console now shows only "Create your first app".
@@ -243,11 +243,13 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
   - [x] Started 1 Nov 2026: `platform.js` (web) and `app/platform/android.js` (the back button, the status bar's colours). Billing, reminders and the subscription page are added there as they're built.
 - [ ] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). A bell on each fixture: "Remind me 30 min before". Android 13+ asks for permission the first time. Store reminders on the phone.
-- [ ] **Versioning:**
-  - Version numbers like `1.0.0`.
-  - A `CHANGELOG.md` with one line per change, which becomes the store's "What's new" text.
-  - Every store upload is tagged in git.
+- [x] **Versioning** (4 Nov 2026; `app/README.md` → "Releasing to Google Play"):
+  - Version numbers like `1.0.0`, set in `app/package.json` only (Play's version code is worked out from it: 1.2.3 = 10203).
+  - `app/CHANGELOG.md` with one section per version, which becomes the store's "What's new" text.
+  - Every store upload is tagged in git (`app-v1.0.0`); `npm run release` refuses a version that's already tagged.
 - [ ] **Signing:** let Google hold the app signing key (Play App Signing). Keep the upload key and its password in the password manager, with a backup.
+  - [x] 4 Nov 2026: `npm run release` builds the signed bundle (`app/release/telly-fixtures-<version>.aab`) with the upload key from `TellyFixtures-keys` in your user folder, outside the repo. Tested with a throwaway key.
+  - [ ] Make the real upload key (`app/README.md`, "Once: make the upload key") and back up its folder.
 - [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9:
   - First open.
   - Offline.

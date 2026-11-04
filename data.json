@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T12:00:28.690Z",
+ "generatedAt": "2026-11-04T12:30:14.313Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -174,9 +174,7 @@
     "WTA Finals"
    ],
    "days": 5,
-   "errors": [
-    "HTTP 504 for https://www.nittoatpfinals.com/en/"
-   ]
+   "errors": []
   },
   "rugby": {
    "ok": true,

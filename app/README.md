@@ -12,7 +12,7 @@ repo's own `index.html`, built into the app (not loaded from a website). Only th
 | Copies the screens into `www/` | `build-web.mjs` |
 | What the app does differently from the website (back button, status bar, where the listings come from) | `platform/android.js`; the website's version is `../platform.js` |
 | The Android project (open it in Android Studio) | `android/` |
-| Icon and splash screen source (the white TV, on the app's green `#0b6b3a`) | `assets/logo.png` |
+| The app icon's original files, one per size (the store listings take theirs from here) | `store/` |
 
 The npm packages (Capacitor) live here in `app/` only: the update scripts in `../scripts/` stay
 package-free.
@@ -83,12 +83,18 @@ behind it; both look right.
 
 ## Icons and splash screen
 
-Made from `assets/logo.png` by Capacitor's asset tool:
+To change the icon, replace the four files in `store/` (same names and sizes, square corners, no
+transparency: the phone rounds them itself, and Apple refuses an icon with a transparency channel, even
+an unused one), then:
 
 ```bash
-npx @capacitor/assets generate --android --iconBackgroundColor "#0b6b3a" --iconBackgroundColorDark "#0b6b3a" --splashBackgroundColor "#0b6b3a" --splashBackgroundColorDark "#0b6b3a"
+npm run icons
 ```
 
-That tool leaves the icons for Android 7 (`mipmap-*/ic_launcher.png` and `ic_launcher_round.png`) without
-the green background, so they were then replaced with `../icon-512.png` resized (square and round).
-Redo both steps when the real app icon arrives (`playStorePlan.md`, Phase 1: icon licence).
+`make-icons.mjs` copies them to the website's icons in the repo's root, makes `icon-maskable-512.png`
+and has Capacitor's asset tool make every Android icon and splash screen. Then raise the version and
+release as usual. The Play Store listing's icon is uploaded by hand in Play Console:
+`store/telly-fixtures-play-store-512.png`.
+
+`npm run sync` and the asset tool rewrite a few Android files with different line endings only (git
+shows them as changed with an empty diff): `git checkout` those.

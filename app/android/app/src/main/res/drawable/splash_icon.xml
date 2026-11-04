@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The icon on Android 12's splash screen: that screen crops to a circle two-thirds of this picture's
+     width, so the icon (edge to edge) is drawn at that size to show the whole TV. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/ic_launcher_foreground"
+    android:inset="16.7%" />

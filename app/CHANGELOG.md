@@ -4,6 +4,9 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.1
+- New app icon.
+
 ## 1.0.0
 - First test version of Telly Fixtures: what's on UK TV for the next eight days, with UK times and channels.
 - Football, motorsport, golf, cricket, rugby, darts, snooker, tennis, skiing and specials.

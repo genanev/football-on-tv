@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T17:30:20.533Z",
+ "generatedAt": "2026-11-04T18:00:11.011Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -262,9 +262,9 @@
    "homeShort": "AEK Athens FC",
    "awayShort": "Real Madrid",
    "venue": "Allwyn Arena",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -296,9 +296,9 @@
    "homeShort": "Fenerbahçe",
    "awayShort": "Liverpool",
    "venue": "Chobani Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {

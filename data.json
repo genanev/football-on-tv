@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-04T19:30:15.354Z",
+ "generatedAt": "2026-11-04T20:00:17.765Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4707,
+   "programmes": 4706,
    "errors": []
   },
   "skyListings": {
@@ -15,14 +15,15 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1037,
+   "programmes": 1036,
    "errors": []
   },
   "primeVideo": {
    "ok": true,
-   "events": 24,
+   "events": 25,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
     "Manchester United vs. Roma",
     "Liverpool vs. Villarreal",
     "Atlético Madrid vs. Manchester United",
@@ -262,9 +263,9 @@
    "homeShort": "AEK Athens FC",
    "awayShort": "Real Madrid",
    "venue": "Allwyn Arena",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -272,9 +273,7 @@
     "channels": [
      "TNT Sports 3"
     ],
-    "alsoOn": [
-     "HBO Max"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -296,7 +295,7 @@
    "homeShort": "Fenerbahçe",
    "awayShort": "Liverpool",
    "venue": "Chobani Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 3,
    "awayScore": 2,
    "round": "League Stage - 4",
@@ -329,9 +328,9 @@
    "homeShort": "Cardiff",
    "awayShort": "West Ham",
    "venue": "Cardiff City Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {
@@ -362,9 +361,9 @@
    "homeShort": "Wrexham",
    "awayShort": "Middlesbrough",
    "venue": "Racecourse Ground",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {

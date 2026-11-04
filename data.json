@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T12:30:14.313Z",
+ "generatedAt": "2026-11-04T13:00:18.679Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1035,
+   "programmes": 1036,
    "errors": []
   },
   "primeVideo": {
@@ -33,7 +33,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 116
+   "events": 135
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -2481,7 +2481,7 @@
    "comp": "WSL",
    "label": null,
    "kind": "match",
-   "kickoff": "2026-11-07T12:30:00.000Z",
+   "kickoff": "2026-11-07T12:45:00.000Z",
    "timeTbc": false,
    "home": "Chelsea Women",
    "away": "Everton Women",
@@ -2513,7 +2513,7 @@
    "comp": "WSL",
    "label": null,
    "kind": "match",
-   "kickoff": "2026-11-07T12:30:00.000Z",
+   "kickoff": "2026-11-07T12:45:00.000Z",
    "timeTbc": false,
    "home": "Manchester City Women",
    "away": "West Ham Women",

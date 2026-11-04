@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-04T23:00:17.554Z",
+ "generatedAt": "2026-11-04T23:30:24.267Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 23,
+   "events": 21,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
     "Barcelona vs. Manchester City",

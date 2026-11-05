@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T18:00:29.888Z",
+ "generatedAt": "2026-11-05T18:30:33.326Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -327,8 +327,8 @@
    "awayShort": "Ajax",
    "venue": "MCH Arena",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "League Stage - 3",
    "source": "api-football.com",
    "tv": {
@@ -358,7 +358,7 @@
    "awayShort": "Heart Of Midlothian",
    "venue": "Stockhorn Arena",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "League Stage - 3",
    "source": "api-football.com",
@@ -546,7 +546,7 @@
    "awayShort": "Red Bull Salzburg",
    "venue": "Lotto Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
@@ -674,7 +674,7 @@
    "venue": "Stadion de Goffert",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League Stage - 4",
    "source": "api-football.com",
    "tv": {
@@ -704,7 +704,7 @@
    "awayShort": "Lyon",
    "venue": "Anoeta Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",
@@ -735,7 +735,7 @@
    "awayShort": "Bournemouth",
    "venue": "Stadion Letná",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League Stage - 4",
    "source": "api-football.com",

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-05T06:00:17.486Z",
+ "generatedAt": "2026-11-05T06:30:16.053Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4728,
+   "programmes": 4733,
    "errors": []
   },
   "skyListings": {
@@ -3595,6 +3595,34 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Austin Championship presented by Compliance Solutions",
+   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "source": "pgatour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-pga-R2026558-2026-11-12",
+   "kickoff": "2026-11-12T14:30:00.000Z",
+   "end": "2026-11-12T22:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Sportsbet.io Champion of Champions",
@@ -3612,34 +3640,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
-   "source": "pgatour.com",
-   "session": "Round 1",
-   "status": "upcoming",
-   "id": "golf-pga-R2026558-2026-11-12",
-   "kickoff": "2026-11-12T19:00:00.000Z",
-   "end": "2026-11-12T22:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

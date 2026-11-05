@@ -17,13 +17,14 @@
 import { getJSON, ukDate } from '../lib/util.mjs';
 import { SPORT_CHANNELS, windowDates } from './skyGuide.mjs';
 import { tntChannelOrder } from './tntSchedule.mjs';
+import { SPECIALS } from './specials.mjs';
 
 const WCF_URL = 'https://worldcurling.org/wp-json/wp/v2/event';
 
-/** The championships World Curling runs that the app lists, by their event page's slug. */
+/** The championships World Curling runs that the app lists, by their event page's slug (names: SPECIALS). */
 export const CURLING_EVENTS = [
-  { comp: 'SPECIAL_CURLING', slug: 'europeans', name: 'European Curling Championships', tv: /european champ|curling ec\b/i },
-];
+  { comp: 'SPECIAL_CURLING', slug: 'europeans', tv: /european champ|curling ec\b/i },
+].map(d => ({ ...d, name: SPECIALS.find(s => s.comp === d.comp).name }));
 
 const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 const iso = (y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;

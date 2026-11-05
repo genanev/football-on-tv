@@ -480,24 +480,22 @@
     { id: 'skiing', icon: 'skiing', iconFile: 'skiing.png', hue: 205, name: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV', comps: [
       { id: 'SKI', name: 'Alpine skiing', tag: 'Skiing', color: 'var(--ski)', none: 'No alpine skiing on TV' },
     ] },
-    { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', listComps: true, comps: [
-      // One-off and yearly events (George, 29 Oct 2026: the placeholders went; each special is a real event)
-      { id: 'SPECIAL_CURLING', name: 'European Curling Championships', tag: 'Curling', color: 'var(--special)', none: 'No European Curling Championships on TV' },
-    ] },
+    // One-off and yearly events: the listings say which are in scope right now (syncSpecials)
+    { id: 'specials', icon: 'specials', hue: 88, name: 'Specials', color: 'var(--special)', none: 'No big events on TV', listComps: true, comps: [] },
   ];
   // My TV is not a sport but sits in the same row
   const MINE = { id: 'mine', icon: 'mytv', hue: 155, name: 'My TV' };
   const SPORT_BY_ID = Object.fromEntries(SPORTS.map(s => [s.id, s]));
   // Chips (and Customise buttons) for a sport's competitions: when it has several, or always for
   // Specials, whose events are too different to lump together (George, 29 Oct 2026)
-  const showsComps = (s) => s.comps.length > 1 || !!s.listComps;
+  const showsComps = (s) => s.comps.length > 1 || (!!s.listComps && s.comps.length > 0);
   // A sport's 3D icon on its tinted tile (the colours are set by CSS from --h)
   // A sport's icon file: SVG unless it says otherwise (George's Tennis and Skiing icons are PNGs)
   const iconSrc = (s) => `sport-icons/${s.iconFile || `${s.icon}.svg`}`;
   const tile = (s) => `<span class="tile${s.id === 'mine' ? ' mytv' : ''}" style="--h:${s.hue}"><img src="${iconSrc(s)}" alt=""></span>`;
   const COMP = {}, SPORT_OF = {};
   for (const s of SPORTS) for (const c of s.comps) { COMP[c.id] = c; SPORT_OF[c.id] = s.id; }
-  const ALL_COMPS = Object.keys(COMP);
+  let ALL_COMPS = Object.keys(COMP);
 
   // The data has one `comp` for both cups and one per sport for golf and cricket; split them here
   // (cup from `label`, golf tour from `source`, cricket format from `session`).
@@ -509,23 +507,27 @@
   }
 
   // My TV: the competitions picked in "Customise". Default: everything.
+  // A special out of scope keeps its tick for its next edition, so the picks can hold more than
+  // ALL_COMPS (the competitions on show).
   let picks = new Set(ALL_COMPS);
+  const known = new Set(ALL_COMPS);
   try {
     const saved = JSON.parse(localStorage.getItem('myComps'));
     if (Array.isArray(saved)) {
-      picks = new Set(saved.filter(c => COMP[c]));
+      picks = new Set(saved.filter(c => COMP[c] || c.startsWith('SPECIAL_')));
       // Competitions added to the app since the picks were saved start ticked, so they show up in
       // My TV. `myCompsKnown` lists what existed then; saved before it existed (20 Oct 2026), the
       // new ones are the Conference League, Scottish Premiership and WSL.
-      const known = JSON.parse(localStorage.getItem('myCompsKnown'));
-      const added = Array.isArray(known) ? ALL_COMPS.filter(c => !known.includes(c)) : ['UECL', 'SCOT', 'WSL'];
+      const seen = JSON.parse(localStorage.getItem('myCompsKnown'));
+      const added = Array.isArray(seen) ? ALL_COMPS.filter(c => !seen.includes(c)) : ['UECL', 'SCOT', 'WSL'];
       for (const c of added) picks.add(c);
+      if (Array.isArray(seen)) for (const c of seen) known.add(c);
     }
   } catch (e) {}
   const savePicks = () => {
     try {
       localStorage.setItem('myComps', JSON.stringify([...picks]));
-      localStorage.setItem('myCompsKnown', JSON.stringify(ALL_COMPS));
+      localStorage.setItem('myCompsKnown', JSON.stringify([...known]));
     } catch (e) {}
   };
   savePicks();
@@ -648,12 +650,34 @@
     </div>`;
   }
 
-  const inView = (cid) => view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport;
+  const inView = (cid) => !!COMP[cid] && (view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport);
+
+  // The Specials the listings name right now (data.json's `specials`: from a week before each starts
+  // until its last day, George, 5 Nov 2026). One seen for the first time starts ticked in My TV.
+  let specialsShown = '';
+  function syncSpecials() {
+    const list = data.specials || [];
+    const key = JSON.stringify(list);
+    if (key === specialsShown) return;
+    specialsShown = key;
+    const sp = SPORT_BY_ID.specials;
+    for (const c of sp.comps) { delete COMP[c.id]; delete SPORT_OF[c.id]; }
+    sp.comps = list.map(x => ({ id: x.comp, name: x.name, tag: x.tag, color: sp.color, none: `No ${x.name} on TV` }));
+    for (const c of sp.comps) {
+      COMP[c.id] = c; SPORT_OF[c.id] = sp.id;
+      if (!known.has(c.id)) { known.add(c.id); picks.add(c.id); }
+    }
+    ALL_COMPS = Object.keys(COMP);
+    for (const c of [...view.comps]) if (!COMP[c]) view.comps.delete(c); // its chip has gone
+    savePicks();
+    renderNav();
+  }
 
   // A short summary of My TV's picks: the sports with anything picked (not the competitions).
+  const nothingPicked = () => !ALL_COMPS.some(c => picks.has(c));
   function picksSummary() {
-    if (picks.size === ALL_COMPS.length) return 'Current Selection: <b>Everything</b>';
-    if (!picks.size) return 'Current Selection: <b>Nothing picked yet</b>';
+    if (ALL_COMPS.every(c => picks.has(c))) return 'Current Selection: <b>Everything</b>';
+    if (nothingPicked()) return 'Current Selection: <b>Nothing picked yet</b>';
     const names = SPORTS.filter(s => s.comps.some(c => picks.has(c.id))).map(s => s.name);
     return `Current Selection: <b>${esc(names.join(', '))}</b>`;
   }
@@ -683,6 +707,7 @@
 
   function render() {
     if (!data) return;
+    syncSpecials();
 
     $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
     // Football fixtures come from API-Football once the update job has its key (build.mjs)
@@ -697,7 +722,7 @@
       2: 'Demo: a recorded week (12 Oct 2026) to show how golf, snooker and cricket look.',
       3: 'Design preview: the real week of 17 Oct 2026, plus made-up events marked SAMPLE for sports that aren’t connected yet.',
     }[DEMO_ARG] || 'Demo: a recorded week (24 Sept 2026) to show how F1, F2 and darts look.');
-    if (offline) banners.push(`Couldn’t get the latest listings (no connection?), so these are the ones saved on this phone, from ${ago(data.generatedAt)}. Channels may have changed since.`);
+    if (offline) banners.push(`No internet connection, last update was ${ago(data.generatedAt)}`);
     else if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
@@ -729,14 +754,15 @@
     if (r.skiing && r.skiing.ok === false && show('SKI')) banners.push('Alpine skiing races couldn’t be loaded on the last update.');
     if (r.tennis && r.tennis.ok === false && show(...TENNIS)) banners.push('Tennis tournaments couldn’t be loaded on the last update.');
     if (r.rugby && r.rugby.ok === false && show(...RUGBY)) banners.push('Rugby fixtures couldn’t be loaded on the last update.');
-    if (r.curling && r.curling.ok === false && show('SPECIAL_CURLING')) banners.push('The curling championships couldn’t be loaded on the last update.');
+    // Also on Specials when it's out of scope: its dates couldn't be read, so it may be due
+    if (r.curling && r.curling.ok === false && (show('SPECIAL_CURLING') || view.sport === 'specials')) banners.push('The curling championships couldn’t be loaded on the last update.');
     let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
     // Competitions without a data source yet (only when one is picked on its own, or My TV is empty)
     const chosen = [...view.comps].map(id => COMP[id]);
     if (chosen.length && chosen.every(c => c.soon) && DEMO_ARG !== '3') {
       bannerHtml += `<div class="banner info">${esc(chosen.map(c => c.name).join(' and '))} ${chosen.length > 1 ? 'aren’t' : 'isn’t'} connected yet. Their listings will appear here once ${chosen.length > 1 ? 'they are' : 'it is'}.</div>`;
     }
-    if (view.sport === 'mine' && !picks.size) bannerHtml += '<div class="banner info">My TV is empty. <button id="edit2">Pick your sports</button> to fill it.</div>';
+    if (view.sport === 'mine' && nothingPicked()) bannerHtml += '<div class="banner info">My TV is empty. <button id="edit2">Pick your sports</button> to fill it.</div>';
     $('#banner').innerHTML = bannerHtml;
 
     const one = pickedDay();
@@ -830,7 +856,8 @@
 
   // "Customise My TV" sheet: a switch per sport, and a toggle per competition
   function renderPicker() {
-    $('#picker-body').innerHTML = SPORTS.map(s => {
+    const listed = SPORTS.filter(s => s.comps.length); // Specials has nothing to pick when no event is in scope
+    $('#picker-body').innerHTML = listed.map(s => {
       const on = s.comps.filter(c => picks.has(c.id)).length;
       return `<div class="grp" style="--sc:${s.color}">
         <label class="grp-h">${tile(s)}
@@ -839,7 +866,7 @@
         ${!showsComps(s) ? '' : `<div class="opts">${s.comps.map(c => `<button class="opt" data-c="${c.id}" aria-pressed="${picks.has(c.id)}">${esc(c.name)}${c.soon ? '<span class="soon">soon</span>' : ''}</button>`).join('')}</div>`}
       </div>`;
     }).join('') + '<div class="sheet-f"><button data-all="1">Select everything</button><button data-all="0">Clear all</button></div>';
-    for (const s of SPORTS) {
+    for (const s of listed) {
       const on = s.comps.filter(c => picks.has(c.id)).length;
       $(`.switch[data-sport="${s.id}"]`).indeterminate = on > 0 && on < s.comps.length;
     }
@@ -865,7 +892,7 @@
     const o = ev.target.closest('.opt');
     const a = ev.target.closest('[data-all]');
     if (o) picks.has(o.dataset.c) ? picks.delete(o.dataset.c) : picks.add(o.dataset.c);
-    else if (a) picks = new Set(a.dataset.all === '1' ? ALL_COMPS : []);
+    else if (a) picks = new Set(a.dataset.all === '1' ? [...picks, ...ALL_COMPS] : []);
     else return;
     savePicks(); renderPicker(); renderNav(); render();
   });

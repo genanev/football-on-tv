@@ -94,7 +94,9 @@ three Premiership games on TNT Sports 1 and two on HBO Max only.
 
 Specials are real events only (George, 29 Oct 2026): the four placeholders (Wimbledon & tennis,
 Tour de France, athletics, other big events) were removed; tennis became its own sport. Add each new
-special as its own competition once its source exists.
+special to the table in `scripts/sources/specials.mjs` once its source exists. The app shows an event
+only from a week before it starts until its last day (George, 5 Nov 2026): the list comes with the
+listings, so the table above is every special, not what's on screen today.
 
 **Splitting data comps in the app (`compOf`).** The build writes one `comp` for both cups
 (`CUPS`), for all golf (`GOLF`) and for all cricket (`CRICKET`). The page splits them as shown in

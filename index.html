@@ -1075,7 +1075,7 @@
         <div class="set-h">Colour theme</div>
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
-        <div class="set-h">Match reminders</div>
+        <div class="set-h">Fixtures reminders</div>
         <div class="set-p">Tap the bell on a fixture, and your phone will remind you before it starts.</div>
         <div class="opts">${LEADS.map(m => choice('data-lead', m, `${m} min before`, m === reminderLead)).join('')}</div>
       </div>`);

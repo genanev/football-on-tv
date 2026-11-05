@@ -406,6 +406,57 @@ read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Pa
 **Stopping the upload** (it carries on saving to GitHub):
 `gcloud run jobs update football-update --region="$REGION" --remove-env-vars="R2_URL" --remove-secrets="R2_UPLOAD_KEY"`.
 
+## Putting the website on your own domain (Cloudflare Pages)
+
+The `site/` folder is the public website: the landing page, privacy policy and terms. These steps put it on tellyfixtures.co.uk. They cost nothing. Do them only when you're happy with the pages, because **anything you connect is public straight away**.
+
+**Before you start**
+
+1. Decide what name and address to show. The pages have yellow placeholders for them, and they must not go live like that. Tell Claude what to put, and whether the "Draft" boxes stay.
+2. Have the `site/` folder merged into `main`. Cloudflare can't publish a folder that isn't there yet.
+
+**Connect the folder**
+
+3. In the [Cloudflare dashboard](https://dash.cloudflare.com), open **Workers & Pages** and choose **Create application**, then **Pages**, then **Connect to Git**. (If Cloudflare first offers to make a "Worker", look for the link about Pages instead.)
+4. Choose **GitHub** and sign in. When GitHub asks which repositories Cloudflare may see, pick **Only select repositories** and choose `football-on-tv`. Then press **Install & Authorize** and **Begin setup**.
+5. Fill in the build settings:
+   - **Project name:** `tellyfixtures`
+   - **Production branch:** `main`
+   - **Build command:** leave it empty (there's nothing to build)
+   - **Build output directory:** `site`
+6. Press **Save and Deploy**, wait about a minute, then **Continue to project**. The site is now live at an address ending `.pages.dev`. Open it and look through it on your phone.
+
+**Stop it rebuilding on every update (important)**
+
+The London job saves to `main` every 30 minutes, and each save would start a new build. That's about 1,400 a month, and the free plan allows 500.
+
+7. In the project, go to **Settings**, then **Build**, then **Build watch paths**. Under **Include paths** enter `site/*` and save. Now it only rebuilds when the website itself changes.
+8. On the same page, under **Branch control**, set preview deployments to **None**, so work in progress on other branches isn't published anywhere.
+
+**Use your own address**
+
+9. In the project, open **Custom domains** and choose **Set up a domain**. Enter `tellyfixtures.co.uk`, press **Continue** and confirm the record Cloudflare suggests.
+10. Do the same for `www.tellyfixtures.co.uk`. Don't add these records by hand first, as that can make it fail. `data.tellyfixtures.co.uk`, which holds the listings, isn't affected.
+11. Wait a few minutes, then open https://tellyfixtures.co.uk and check it has the padlock.
+
+**Leave analytics off**
+
+12. If Cloudflare offers **Web Analytics** for the site, say no. The privacy policy says the website has no analytics.
+
+**Set up the support address**
+
+The pages give support@tellyfixtures.co.uk, which **doesn't exist yet**, so mail sent to it is lost until you do this.
+
+13. In the Cloudflare dashboard, open tellyfixtures.co.uk, then **Email**, then **Email Routing**, and turn it on, accepting the records it adds.
+14. Add the address `support`, sending to your Gmail. Cloudflare emails Gmail a link to confirm it.
+15. Send a test message to support@tellyfixtures.co.uk from a different email account, and check that it arrives.
+
+**When the policy is live**
+
+16. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
+
+To take the site down, delete the project under **Settings** in Workers & Pages. The app isn't affected: it gets its listings from `data.tellyfixtures.co.uk`.
+
 ## Stopping it
 
 - **Pause** (keeps everything, runs stop):

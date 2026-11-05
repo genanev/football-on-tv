@@ -224,7 +224,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] George: created the bucket, the domain and the key (`cloud/SETUP.md` → "Saving data.json to your own domain"); the first upload ran on 31 Oct 2026 at 23:00 and the live app reads both copies.
   - Keep the GitHub commit for a few weeks as a fallback, then stop it.
   - This also removes the GitHub key that expires in Oct 2027.
-- [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews.
+- [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews. **Drafted 5 Nov 2026 in `site/` (landing page, privacy policy, terms), not published yet;** the steps to connect it are in `cloud/SETUP.md`.
 - [ ] Make the GitHub repository **private**.
 - [ ] **Privacy policy** in plain English (Google needs its web address before the closed test, so write it now; its final legal check is in Phase 5). Cover:
   - What's stored on the phone: picks, theme, reminders, the free month's start date and the chosen sport.
@@ -356,6 +356,14 @@ The project only moves past a gate when its question has a clear answer. Write t
   - The "1p a day" wording beside the real price (CAP code).
   - The seller's address (Phase 0): where UK rules also need it shown, such as the website and terms, and that it meets them. Check with George before publishing it beyond Google's payments profile.
   - Data rights and scores: still accepted risks (George, 29 Oct and 19 Oct 2026). Any replies or objections received by then.
+  - **Points from drafting `site/privacy.html` and `site/terms.html` (5 Nov 2026):**
+    - How long data is kept. The drafts suggest purchase records up to 6 years, promo code records 12 months after the 3 months end, feedback and emails 12 months. George to confirm these, and that he'll actually delete on time.
+    - What the suppliers really do: what Play Console shows sellers about a buyer (order details are described loosely, not checked in a live console), what RevenueCat receives beyond purchase history, locale and currency (its docs don't mention IP addresses), and the data agreements and US transfer safeguards for Google, RevenueCat and Cloudflare.
+    - The regulator's name and complaints: the ICO is named, so check whether it has become the Information Commission by then, and whether the Data (Use and Access) Act 2025 needs more on handling complaints.
+    - Terms: the 14-day cancellation wording for a digital subscription, "including any VAT", the liability wording, and "the law of the part of the UK where you live".
+    - Finding someone's data: the policy promises to explain how to find the anonymous ID, so My account needs to show it (Phase 3).
+    - Statements that must be true on the day: two-step sign-in on every account (Phase 0), no crash reporting of our own, email through Cloudflare to Gmail, and Android's backup (`allowBackup` is on in the manifest, and the policy says so).
+    - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered. Also, the goals above say "nothing is ever charged automatically", which means the free month: the subscription itself renews each year until cancelled, and the terms and landing page say so.
 - [ ] **Store listing:**
   - Name.
   - Short description (80 characters).

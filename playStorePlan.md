@@ -12,7 +12,7 @@ Google's and Apple's rules, prices and free tiers below were right as of mid-202
 
 **Product:** a UK app showing what sport is on TV today and the next 7 days, with UK times and the confirmed channel. It's for a wide audience: **no ads, no betting, no tracking**.
 
-**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually, after a free trial.
+**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually, after a **free month that needs only an email address, with no card and nothing charged automatically** (George, 5 Nov 2026). A promo code gives **3 months free** instead.
 
 **Launch scope:**
 - **Google Play first.**
@@ -20,14 +20,15 @@ Google's and Apple's rules, prices and free tiers below were right as of mid-202
 
 **In the app at launch:**
 - The current features (My TV, sports, competition chips, day picker).
-- A **paywall** with the free trial.
+- **Registration with an email address** for the free month, and a **promo code** option for 3 months free.
+- A **paywall** for when the free period ends.
 - A **My account** screen.
 - A **Feedback** button.
 - A privacy policy and terms.
 - Works offline.
 - **Match reminders** ("remind me 30 minutes before"): the first phone feature, useful on its own and needed for Apple later.
 
-**Not in scope for launch:** an iPhone version, sign-in accounts, push notifications sent from a server, countries other than the UK. (Rugby union, MotoGP, tennis, alpine skiing and a first Special, curling, were added in Oct 2026; Super League follows once its 2027 fixtures are out.)
+**Not in scope for launch:** an iPhone version, accounts beyond the email registration, push notifications sent from a server, countries other than the UK. (Rugby union, MotoGP, tennis, alpine skiing and a first Special, curling, were added in Oct 2026; Super League follows once its 2027 fixtures are out.)
 
 ## 2. Measures of success
 
@@ -36,7 +37,7 @@ Look at these monthly once launched. The targets are starting guesses; adjust th
 | Measure | Where it comes from | First target |
 |---|---|---|
 | Installs | Play Console | 500 in the first 3 months |
-| Trial → paid conversion | RevenueCat | 30% or more |
+| Trial → paid conversion | RevenueCat | 30% or more (set before the trial became no-card, when people must choose to pay; expect lower and reset it after the closed test) |
 | Paying subscribers | RevenueCat | 95 (covers running costs), then 250 |
 | Renewal rate after year 1 | RevenueCat | 60% or more |
 | Store rating | Play Console | 4.3 or higher |
@@ -71,8 +72,12 @@ Look at these monthly once launched. The targets are starting guesses; adjust th
 - **Capacitor** (free, open source) packages `index.html` inside a real Android app and a real iPhone app. The screens are **inside the app**, not loaded from a website. Only `data.json` comes from the internet. That's what Apple requires (review rule 4.2: no "website in a wrapper"), and it also makes the app open instantly and work offline.
 - **RevenueCat** handles subscriptions for both stores: starting the purchase, checking it's real, renewals, cancellations, refunds and restoring on a new phone. It's free until revenue reaches about $2,500 a month. That means no server of our own for billing.
 - **Phone-specific code stays in a few small files** (billing, reminders, opening the store's subscription page). The rest of the app doesn't know which phone it's on. This rule is what keeps the iPhone version a small job.
-- **No sign-in at launch.** The store account (Google, later Apple) is the person's account, and RevenueCat remembers the subscription against it.
-  - Limitation to accept: someone who pays on Android and later switches to an iPhone would have to subscribe again there. Real sign-in (Firebase Authentication, free) can be added later if people ask for it.
+- **The free month and promo codes run outside Google's billing (George, 5 Nov 2026).** Google's own free trials and promo codes need a payment method on the person's account, so they can't give a no-card month ([Google's promo code page](https://developer.android.com/google/play/billing/billing_promotions)). Instead:
+  - The person registers with an email address and confirms it. Firebase Authentication (free) is the likely way to do this; decide in Phase 3.
+  - A small server of ours (a Cloudflare Worker, free tier) tells RevenueCat to unlock the app for 1 month, or 3 with a valid promo code. RevenueCat calls this a [promotional entitlement](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/promotionals); it ends by itself, and the secret key that grants it has to stay on a server, never in the app.
+  - When the free period ends the app shows the paywall. Paying goes through Google Play at £3.65 a year; nothing is charged unless the person chooses to subscribe.
+- **Email registration is the only account.** There's no password-protected profile. RevenueCat remembers the free period and any subscription against the registered account.
+  - Because people can create an account, Google requires a way to delete it, both in the app and on a web page. Check Google's current rule in Phase 3.
   - If Google sign-in is ever offered on iPhone, Apple requires "Sign in with Apple" too.
 - **The data side doesn't change.** `scripts/`, the tests and the update job stay as they are; only where `data.json` is saved moves.
 - **The project's no-packages rule:** the update scripts stay package-free. The app shell needs Capacitor and RevenueCat's npm packages; keep these in a separate `app/` folder with its own `package.json`, so the data side stays untouched.
@@ -119,7 +124,9 @@ The project only moves past a gate when its question has a clear answer. Write t
 | A source changes its website and stops answering | High (happens often) | Medium | Already handled: each source fails on its own, with yellow banners and the keep rule. Add an email alert (Phase 6) |
 | Google rejects the app or delays production access | Low–Medium | Medium | Follow the store checklist (Phase 5); complete the 14-day closed test properly; keep notes for Google's questions |
 | Apple rejects the app as "just a website" (rule 4.2) | Medium if done thinly | Medium | Screens packaged inside the app, offline mode, reminders, and later push notifications or a widget |
-| Too few people pay | Medium | Medium | Free trial; measure conversion; consider a free tier at Gate G2 |
+| Too few people pay | Medium | Medium | Free month; measure conversion; consider a free tier at Gate G2. A no-card month brings more sign-ups but fewer of them go on to pay, because paying is a choice rather than the default. Test it in the closed test |
+| People repeat the free month with new email addresses | Medium | Low | **George's no-card decision (5 Nov 2026).** One free period per confirmed email address; at £3.65 a year nothing stronger is worth building. Review if it shows in the numbers |
+| The new UK subscription rules (expected January 2027) apply around launch | High | Medium | On the list in "Legal review before launch" (Phase 5) |
 | The name clashes with an existing app or trademark | Medium | Medium | Check before the first upload (the Android package name can't change afterwards) |
 | Losing the app's upload key or account access | Low | High | Play App Signing; keys and passwords in a password manager with a backup; two-step sign-in on every account |
 | A key or token expires unnoticed (e.g. the GitHub key, Oct 2027) | Medium | Medium | Expiry dates in a calendar; moving the data file off GitHub (Phase 1) removes the GitHub key |
@@ -164,8 +171,10 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] App ID: **`uk.co.tellyfixtures`** (Android and, later, Apple). **It can't change after the first upload.**
   - [x] Domains registered on Cloudflare (19 Oct 2026): **tellyfixtures.co.uk** (the main one, which the app ID matches) and **tellyfixtures.com**, auto-renewing yearly. tellyfixtures.app deliberately skipped (optional; can be bought later if still free).
   - [x] Rename the app itself (31 Oct 2026): title, heading, manifest and home-screen name. The icon waits for the app icon (see "Icon licence" below); the footer names no app. The web address keeps `football-on-tv` until the site moves to Cloudflare Pages.
-- [ ] **Pricing.** Recommended: **one-month free trial, then £3.65 a year**. The alternative, a free tier with the full week and My TV paid, gets more installs but is more to build. Decide before Phase 3.
-- [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the trial terms beside it.
+- [x] **Pricing (George, 5 Nov 2026):** £3.65 a year after **one month free, with just an email registration and no card**. A **promo code gives 3 months free**. No free tier. How it works is in section 3.
+  - Taken as read until George says otherwise: the code gives 3 months in place of the 1 (not 4 in total), and one free period per email address.
+  - Still to decide in Phase 3: whether codes are single-use or shareable, and who gets them.
+- [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the free month's terms beside it. Final check in the legal review (Phase 5).
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [ ] **Your public details.** Paid apps show the seller's contact details. Decide whether to use your home address or a virtual business address (≈ £5–15 a month), and set up a support email on the domain.
 - [x] **Sole trader or limited company before opening the store accounts?** Decided 29 Oct 2026: a **personal** Google Play account, as a sole trader (see the decisions log). George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
@@ -201,18 +210,19 @@ The project only moves past a gate when its question has a clear answer. Write t
   - This also removes the GitHub key that expires in Oct 2027.
 - [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews.
 - [ ] Make the GitHub repository **private**.
-- [ ] **Privacy policy** in plain English. Cover:
+- [ ] **Privacy policy** in plain English (Google needs its web address before the closed test, so write it now; its final legal check is in Phase 5). Cover:
   - What's stored on the phone: picks, theme, reminders.
+  - The **email address** given to register: why it's kept, for how long, who processes it, and how to delete the account.
   - That there's no tracking and no ads.
   - What the stores and RevenueCat process for purchases.
   - That feedback form answers are stored.
   - How to contact you, and who you are.
-- [ ] **Terms of use:**
-  - The subscription and the trial.
+- [ ] **Terms of use** (draft now; final legal check in Phase 5):
+  - The subscription, the free month and promo codes.
   - Cancelling and refunds, which go through the store.
   - "Listings can change: check with the broadcaster."
   - Apple's standard licence terms, if used later.
-- [ ] **ICO:** do the ICO's self-assessment for the data protection fee and record the answer.
+- **ICO:** moved to the legal review in Phase 5 (George, 5 Nov 2026). If email registration goes to testers before then, check whether the fee is already due.
 - [x] **Icon licence (4 Nov 2026):** George confirms all the 3D sport icons and the app icon are generic and created from scratch, so they're fine to use commercially (`sport-icons/README.md`; the Tennis and Skiing icons are his own, 29 Oct 2026). The app icon (512×512 for Play, 1024×1024 for Apple; a TV with a gold star) is in since 4 Nov 2026, in `app/store/`. Keep the original icon zip as the record of where they came from.
 - [x] **Accessibility** (the code, 31 Oct 2026; checked on George's Pixel, 1 Nov 2026):
   - [x] Text follows the phone's font size and still fits when it's increased (checked up to 200%, at 320–412px wide). Needs Chrome 146 or later.
@@ -228,7 +238,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: how phone apps are built and signed, Android Studio, app versions.*
 
-**Where we are (5 Nov 2026, paused here):** the Android app is on Play's internal testing track and George has installed it from the Play Store on his Pixel. **1.0.3** is the current version (tags `app-v1.0.0` to `app-v1.0.3`): his own app icon, the fixed bar below the status bar, a shorter offline note, Specials only while in scope, a Settings button and fixtures reminders with 15, 30 or 60 minutes' notice. George passed first open, offline, both themes, large font and the back button on 1.0.1, and confirms 1.0.3 works. Everything is merged into `main`. **The next app release** (1.0.4, nothing uploaded yet) carries two small wording changes already in `main`: "Fixtures reminders" in Settings (1.0.3 says "Match reminders") and the new "couldn't be checked" note. **Next:** the privacy policy (Google needs its web address before the closed test), then terms, the ICO check and polish in Phase 1; the store listing; the Google Group and tester recruitment. Worth confirming along the way: a reminder for a real fixture arriving on time on the Pixel, and an older or small-screen phone.
+**Where we are (5 Nov 2026, paused here):** the Android app is on Play's internal testing track and George has installed it from the Play Store on his Pixel. **1.0.3** is the current version (tags `app-v1.0.0` to `app-v1.0.3`): his own app icon, the fixed bar below the status bar, a shorter offline note, Specials only while in scope, a Settings button and fixtures reminders with 15, 30 or 60 minutes' notice. George passed first open, offline, both themes, large font and the back button on 1.0.1, and confirms 1.0.3 works. Everything is merged into `main`. **The next app release** (1.0.4, nothing uploaded yet) carries two small wording changes already in `main`: "Fixtures reminders" in Settings (1.0.3 says "Match reminders") and the new "couldn't be checked" note. A reminder for a real fixture came through on the Pixel (George, 5 Nov 2026; the phone was on vibrate, so no sound, as expected), and George will raise anything he finds in further use. **Next:** the privacy policy (Google needs its web address before the closed test), then terms and polish in Phase 1; the store listing; the Google Group and tester recruitment. Worth confirming along the way: an older or small-screen phone.
 
 - [x] Create the **Google Play developer account** (personal, $25; decided 29 Oct 2026). Do this early: identity checks take days, and Phase 4's 14-day test can't start without it.
   - **Done 4 Nov 2026:** account created and the $25 paid on 1 Nov; identity checks passed by 4 Nov. The phone check was done on a spare Android phone: signing in on the Pixel 9 gave "Google couldn't verify that this account belongs to you" (Google's block on a brand-new account signing in on a new device). Play Console now shows only "Create your first app".
@@ -242,7 +252,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [x] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking. 1 Nov 2026: the app reads it from the domain only.)
 - [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
   - [x] Started 1 Nov 2026: `platform.js` (web) and `app/platform/android.js` (the back button, the status bar's colours). Billing, reminders and the subscription page are added there as they're built.
-- [x] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). A bell on each fixture, with 15, 30 or 60 minutes chosen in Settings (George, 5 Nov 2026; default 30). Android 13+ asks for permission the first time. Store reminders on the phone. Built 5 Nov 2026 and tested on the emulator (permission, app closed, restart); George confirms 1.0.3 works on the Pixel. In the app it's called "Fixtures reminders".
+- [x] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). A bell on each fixture, with 15, 30 or 60 minutes chosen in Settings (George, 5 Nov 2026; default 30). Android 13+ asks for permission the first time. Store reminders on the phone. Built 5 Nov 2026 and tested on the emulator (permission, app closed, restart); George confirms 1.0.3 works on the Pixel, and a real fixture's reminder came through (5 Nov 2026). In the app it's called "Fixtures reminders".
 - [x] **Settings** (George, 5 Nov 2026): a gear button at the top right opens a sheet with the colour theme and the reminder timing. Phase 3's "My account" items (subscription and so on) go in it.
 - [x] **Versioning** (4 Nov 2026; `app/README.md` → "Releasing to Google Play"):
   - Version numbers like `1.0.0`, set in `app/package.json` only (Play's version code is worked out from it: 1.2.3 = 10203).
@@ -252,7 +262,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] 4 Nov 2026: `npm run release` builds the signed bundle (`app/release/telly-fixtures-<version>.aab`) with the upload key from `TellyFixtures-keys` in your user folder, outside the repo. Tested with a throwaway key.
   - [x] Made the real upload key on 4 Nov 2026 (`app/README.md`, "Once: make the upload key"), and built 1.0.0 with it. Keep a backup of its folder.
   - [x] Google's signing key (Play App Signing) in use since the first upload, 4 Nov 2026.
-- [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9 (4 Nov 2026: 1.0.0 uploaded, then downloaded from the Play Store and opened on the Pixel; 5 Nov 2026: on 1.0.1, George passed first open, offline, both themes, large font and the back button, and found the fixed bar sliding behind the status bar, fixed in 1.0.2; reminders and an older phone are still to do):
+- [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9 (4 Nov 2026: 1.0.0 uploaded, then downloaded from the Play Store and opened on the Pixel; 5 Nov 2026: on 1.0.1, George passed first open, offline, both themes, large font and the back button, and found the fixed bar sliding behind the status bar, fixed in 1.0.2; reminders confirmed 5 Nov 2026; an older phone is still to do):
   - First open.
   - Offline.
   - Both themes.
@@ -267,28 +277,37 @@ The project only moves past a gate when its question has a clear answer. Write t
 *You'll learn: store billing, subscriptions and trials, checking purchases, testing payments safely.*
 
 - [ ] **Payments set-up in Play Console:** payments profile, bank account, tax details (UK). Accept the paid apps terms.
-- [ ] Create the subscription product: `annual`, **£3.65**, with the **one-month free trial**, available in the UK only.
+- [ ] Create the subscription product: `annual`, **£3.65**, available in the UK only, **with no Google trial** (Google's trial needs a payment method; the free month runs outside it, see section 3).
 - [ ] Create the **RevenueCat** account (free).
   - Connect Google Play to it: this needs a Google Cloud service account, and RevenueCat's guide walks through it.
-  - Set up one entitlement (e.g. `full_access`) that the `annual` product unlocks. Apple's product will later unlock the same entitlement.
+  - Set up one entitlement (e.g. `full_access`) that the `annual` product unlocks, and that the free month and promo codes grant for a set time. Apple's product will later unlock the same entitlement.
+- [ ] **Registration and promo codes (George, 5 Nov 2026):**
+  - Registration with an email address, which the person confirms. Choose how (Firebase Authentication is the likely choice).
+  - The small server (a Cloudflare Worker) that checks the registration and any promo code, then grants 1 or 3 months through RevenueCat. One free period per email address.
+  - Promo codes: decide single-use or shareable and who gets them; keep the list on the server, where codes can be switched off.
+  - Deleting the account, in the app and on a web page, as Google requires.
+  - Check that Google's billing rules allow codes redeemed outside Google Play for free access; if not, change this before building it.
 - [ ] **In the app:**
-  - **Paywall:**
+  - **First open:** register with an email address to start the free month, with an "I have a promo code" option.
+  - **Paywall**, when the free period ends:
     - What you get.
     - The price: "£3.65 a year – 1p a day".
-    - The trial terms: "free for 1 month, then £3.65 a year, cancel any time in Google Play".
+    - That nothing was or will be charged without their choice; cancel any time in Google Play.
     - Buttons: Subscribe and Restore purchase.
     - Links to Terms and Privacy.
-  - **My account:**
-    - Subscription status and renewal date.
+  - **My account** (in Settings):
+    - The free period's end date, or subscription status and renewal date.
+    - Enter a promo code.
     - Manage or cancel (opens the store's subscription page).
     - Restore purchase.
+    - Delete account.
     - Feedback, Privacy, Terms, app version.
-  - **Without a subscription:** decide what shows, from the Phase 0 pricing decision (e.g. the paywall over a blurred preview).
+  - **Without a subscription or free period:** the paywall (e.g. over a blurred preview). A reminder a few days before the free month ends would be fair; decide when building it.
 - [ ] **Feedback button:** opens a Google Form with the app version, phone type and current view filled in. Answers go to a Google Sheet, with "email me on new responses" ticked.
 - [ ] **Protecting the data file:** at launch the app checks the subscription via RevenueCat and hides content without one. The data file itself is public but unlisted, which is acceptable at £3.65 a year. Later, if needed: a Cloudflare Worker that only serves the data file to apps with a valid RevenueCat subscription.
+- [ ] **Test the free periods:** register, confirm the email, the month ending, a promo code (valid, used, wrong), the same email a second time, deleting the account, a reinstall.
 - [ ] **Test with Play's licence testers** (test purchases are free and renew every few minutes):
-  - Start a trial.
-  - Convert to paid.
+  - Subscribe when the free period ends, and during it.
   - Cancel.
   - Lapse.
   - Restore after reinstalling.
@@ -310,6 +329,13 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: store listings, store policies, release management.*
 
+- [ ] **Legal review before launch (George, 5 Nov 2026): legal points wait until here, and are added to this list as they come up.** Writing the policies and building the app don't wait for it. Spend the optional hour of legal advice (section 4) on whatever is still open:
+  - **New UK subscription rules, expected January 2027** ([Stephenson Harwood](https://www.stephensonharwood.com/insights/subscription-reforms-brought-forward-to-january-2027-is-your-business-ready/); found 5 Nov 2026; the [final regulations weren't out](https://dwfgroup.com/en/news-and-insights/insights/2026/10/dmcca-subscription-contracts-regime-preparing-for-the-new-restrictions)): cooling-off periods, reminders before yearly renewals, ending a subscription easily. Do they apply to us or to Google, as the store selling it? Does a free month that doesn't roll into paying count as a trial under them?
+  - The final wording of the privacy policy and terms, including the free month and promo codes.
+  - ICO: the self-assessment for the data protection fee (the registered email addresses count as personal data).
+  - The "1p a day" wording beside the real price (CAP code).
+  - Your public details on the store, if not already settled (Phase 0).
+  - Data rights and scores: still accepted risks (George, 29 Oct and 19 Oct 2026). Any replies or objections received by then.
 - [ ] **Store listing:**
   - Name.
   - Short description (80 characters).
@@ -319,7 +345,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - 4–8 phone screenshots (light and dark).
   - Category: Sports.
   - Contact email, privacy policy link.
-- [ ] **Data safety form:** what the app collects. Purchases go through Google and RevenueCat; there's no personal data otherwise. The feedback form is optional and user-initiated.
+- [ ] **Data safety form:** what the app collects. The email address given to register; purchases go through Google and RevenueCat. The feedback form is optional and user-initiated. Update the form if the closed test's version collected less.
 - [ ] **Content rating** questionnaire (IARC): no gambling or violence, so expect "Everyone"/PEGI 3.
 - [ ] **Target audience:** adults/general, not aimed at children (that avoids extra rules).
 - [ ] **App access for reviewers:** add Google's review account as a licence tester, or explain in "App access" how to reach the paid content.
@@ -410,3 +436,5 @@ Record decisions here as they're made (date, what, why).
 - 5 Nov 2026: **A Settings button at the top right, and reminders with a choice of 15, 30 or 60 minutes.** Reason: George's picture of the app: the usual place for personal choices, where Light/Dark moves to and managing the subscription will go. Built on the phone only (no server, no account), so a moved game's reminder updates when the app is next opened.
 - 5 Nov 2026: **A Specials table in the back end: an event shows from a week before it starts until its last day.** Reason: a finished event's name shouldn't stay in the app, and each yearly event should come back by itself.
 - 5 Nov 2026: **A listed event stays when its source fails; only a source that answers without it removes it.** Reason: George spotted MotoGP's sessions disappearing on a one-off "too many requests" answer. A failed read says nothing about the schedule.
+- 5 Nov 2026: **Price: £3.65 a year after one month free, with only an email registration and no card; a promo code gives 3 months free.** This replaces the plan's Google Play trial and "no sign-in". Reason: George wants the free month to have no strings attached. Accepted in exchange: Google's trials and promo codes need a payment method, so the free periods run outside Google's billing, which adds email registration, account deletion, a small server of ours and personal data to look after. Fewer people are likely to go on to pay than with a card-first trial. The closed test will show how many.
+- 5 Nov 2026: **Legal points wait for one review just before launch (Phase 5), with open points collected there as they come up.** Reason: George wants them dealt with together at the end. The privacy policy and terms are still drafted early, because Google needs the policy's address before the closed test. The ICO check moves there too.

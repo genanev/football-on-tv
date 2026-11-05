@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T10:00:19.275Z",
+ "generatedAt": "2026-11-05T10:30:17.911Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -98,7 +98,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 7
+   "televised": 6
   },
   "scottishPremiership": {
    "ok": true,
@@ -111,7 +111,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 6
+   "ties": 7
   },
   "formula1": {
    "ok": true,
@@ -1749,68 +1749,6 @@
    }
   },
   {
-   "id": "af-1607719",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-07T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "Liverpool Women",
-   "away": "Arsenal Women",
-   "homeShort": "Liverpool",
-   "awayShort": "Arsenal",
-   "venue": "St Helens Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Premier League",
-    "channels": [
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1607720",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-07T12:00:00.000Z",
-   "timeTbc": false,
-   "home": "London City Lionesses",
-   "away": "Birmingham City Women",
-   "homeShort": "London City Lionesses",
-   "awayShort": "Birmingham City",
-   "venue": "Copperjax Community Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Mix",
-    "channels": [
-     "Sky Sports Mix"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
-   }
-  },
-  {
    "id": "af-1563253",
    "sourceId": "1563253",
    "comp": "CHAMP",
@@ -1941,37 +1879,6 @@
     "sources": [
      "sky-guide",
      "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "id": "af-1607721",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-07T12:30:00.000Z",
-   "timeTbc": false,
-   "home": "Aston Villa Women",
-   "away": "Manchester United Women",
-   "homeShort": "Aston Villa",
-   "awayShort": "Manchester United",
-   "venue": "Bescot Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Premier League",
-    "channels": [
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
     ]
    }
   },
@@ -2729,6 +2636,104 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1646915",
+   "sourceId": "1646915",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-08T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Stafford Rangers",
+   "away": "Grimsby Town",
+   "homeShort": "Stafford Rangers",
+   "awayShort": "Grimsby",
+   "venue": null,
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607721",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-08T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Aston Villa Women",
+   "away": "Manchester United Women",
+   "homeShort": "Aston Villa",
+   "awayShort": "Manchester United",
+   "venue": "Bescot Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "skysports.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1607719",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-08T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Liverpool Women",
+   "away": "Arsenal Women",
+   "homeShort": "Liverpool",
+   "awayShort": "Arsenal",
+   "venue": "St Helens Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 9",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

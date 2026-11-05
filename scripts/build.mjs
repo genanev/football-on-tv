@@ -114,6 +114,44 @@ const SOURCE_REPORT = {
  * broadcaster has dropped it: back to "TV channel to be confirmed".
  * Channels from the old fan-site listings (sources "listings", before 13 Oct 2026) are never kept.
  */
+// Which events each fixture source's report entry stands for
+const FROM_SOURCE = {
+  premierLeague: (e) => e.comp === 'PL',
+  championsLeague: (e) => e.comp === 'UCL',
+  europaLeague: (e) => e.comp === 'UEL',
+  conferenceLeague: (e) => e.comp === 'UECL',
+  scottishPremiership: (e) => e.comp === 'SCOT',
+  wsl: (e) => e.comp === 'WSL',
+  efl: (e) => e.comp === 'CHAMP' || (e.comp === 'CUPS' && e.label !== 'FA Cup'),
+  faCup: (e) => e.comp === 'CUPS' && e.label === 'FA Cup',
+  formula1: (e) => e.comp === 'F1',
+  formula2: (e) => e.comp === 'F2',
+  formula3: (e) => e.comp === 'F3',
+  motogp: (e) => e.comp === 'MOTOGP',
+  darts: (e) => e.comp === 'DARTS',
+  golf: (e) => e.comp === 'GOLF',
+  snooker: (e) => e.comp === 'SNOOKER',
+  cricket: (e) => e.comp === 'CRICKET',
+  skiing: (e) => e.comp === 'SKI',
+  tennis: (e) => e.comp.startsWith('TEN_'),
+  rugby: (e) => e.comp.startsWith('RU_'),
+  curling: (e) => e.comp === 'SPECIAL_CURLING',
+};
+
+// A listed event stays when its source fails (George, 5 Nov 2026): a source that couldn't be read says
+// nothing about the schedule, so the last update's events carry on, as they were, until it answers.
+// Only a source that answers without an event removes it. `report.<source>.keptEvents` tells the app.
+export function keepEventsOfFailedSources(events, previous, report, inWindow) {
+  const listed = new Set(events.map(e => e.id));
+  for (const [source, isFrom] of Object.entries(FROM_SOURCE)) {
+    if (report[source]?.ok !== false) continue;
+    const kept = (previous?.events || []).filter(e => isFrom(e) && inWindow(e) && !listed.has(e.id));
+    events.push(...kept);
+    if (kept.length) report[source].keptEvents = kept.length;
+  }
+  return events;
+}
+
 export function keepKnownChannels(events, previous, { report = {}, now = Date.now() } = {}) {
   const before = previousEvents(previous);
   for (const e of events) {
@@ -400,6 +438,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   } else report.curling = fail(curlingRes);
   // The Specials the app names right now: a week before each starts until its last day
   const specials = specialsInScope(ok(curlingRes) ? curlingRes.value.events : [], today, previous?.specials);
+
+  keepEventsOfFailedSources(events, previous, report, inWindow);
 
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));

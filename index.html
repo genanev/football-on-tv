@@ -831,6 +831,10 @@
     else if (ageH > 12) banners.push(`These listings haven't been refreshed for ${Math.round(ageH)} hours, so channels may be out of date.`);
     const r = DEMO && DEMO_ARG !== '3' ? {} : data.report || {}; // the older demo weeks have no football recorded
     const show = (...ids) => ids.some(inView);
+    // A source that fails keeps the last update's events (build.mjs), so usually they're still here
+    const notLoaded = (entry, what) => (entry.keptEvents
+      ? `${what} couldn’t be checked on the last update, so times may have changed.`
+      : `${what} couldn’t be loaded on the last update.`);
     const TENNIS = ['TEN_AO', 'TEN_RG', 'TEN_WIM', 'TEN_USO', 'TEN_ATPF', 'TEN_WTAF'];
     const RUGBY = ['RU_6N', 'RU_NATIONS', 'RU_PREM', 'RU_CUP'];
     const GUIDE = ['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3', 'MOTOGP', 'DARTS', 'PGA', 'DPWT', 'SNOOKER', 'TEST', 'ODI', 'T20I', ...TENNIS, 'SPECIAL_CURLING', ...RUGBY];
@@ -840,27 +844,27 @@
     if (r.tntSchedule && r.tntSchedule.ok === false && show('PL', 'UCL', 'UEL', 'UECL', 'MOTOGP', 'SKI', 'TEN_AO', 'TEN_RG', 'SPECIAL_CURLING', 'RU_PREM', 'RU_CUP', 'RU_NATIONS')) banners.push('TNT Sports’ schedule couldn’t be read on the last update, so games streamed on HBO Max may show “TV channel to be confirmed”.');
     if (r.skyListings && r.skyListings.ok === false && show('PL', 'CHAMP', 'SCOT', 'WSL', 'FAC', 'EFL', 'F1', 'F2', 'F3')) banners.push('Sky Sports’ listings couldn’t be read on the last update, so games streamed on Sky Sports+ may show “TV channel to be confirmed”.');
     if (r.premierSports && r.premierSports.ok === false && !r.premierSports.wrongRegion && show('SCOT', 'RU_CUP')) banners.push('Premier Sports’ listings couldn’t be read on the last update, so games on Premier Sports may show “TV channel to be confirmed”.');
-    if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push('Premier League fixtures couldn’t be loaded on the last update.');
-    if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push('Champions League fixtures couldn’t be loaded on the last update.');
-    if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push('Europa League fixtures couldn’t be loaded on the last update.');
-    if (r.efl && r.efl.ok === false && show('CHAMP', 'EFL')) banners.push('Championship and League Cup fixtures couldn’t be loaded on the last update.');
-    if (r.conferenceLeague && r.conferenceLeague.ok === false && show('UECL')) banners.push('Conference League fixtures couldn’t be loaded on the last update.');
-    if (r.scottishPremiership && r.scottishPremiership.ok === false && show('SCOT')) banners.push('Scottish Premiership fixtures couldn’t be loaded on the last update.');
-    if (r.wsl && r.wsl.ok === false && show('WSL')) banners.push('WSL fixtures couldn’t be loaded on the last update.');
-    if (r.faCup && r.faCup.ok === false && show('FAC')) banners.push('FA Cup ties couldn’t be loaded on the last update.');
-    if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push('Formula 1 sessions couldn’t be loaded on the last update.');
-    if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push('Formula 2 sessions couldn’t be loaded on the last update.');
-    if (r.formula3 && r.formula3.ok === false && show('F3')) banners.push('Formula 3 sessions couldn’t be loaded on the last update.');
-    if (r.motogp && r.motogp.ok === false && show('MOTOGP')) banners.push('MotoGP sessions couldn’t be loaded on the last update.');
-    if (r.darts && r.darts.ok === false && show('DARTS')) banners.push('Darts events couldn’t be loaded on the last update.');
-    if (r.golf && r.golf.ok === false && show('PGA', 'DPWT')) banners.push('Golf tournaments couldn’t be loaded on the last update.');
-    if (r.snooker && r.snooker.ok === false && show('SNOOKER')) banners.push('Snooker tournaments couldn’t be loaded on the last update.');
-    if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push('Cricket fixtures couldn’t be loaded on the last update.');
-    if (r.skiing && r.skiing.ok === false && show('SKI')) banners.push('Alpine skiing races couldn’t be loaded on the last update.');
-    if (r.tennis && r.tennis.ok === false && show(...TENNIS)) banners.push('Tennis tournaments couldn’t be loaded on the last update.');
-    if (r.rugby && r.rugby.ok === false && show(...RUGBY)) banners.push('Rugby fixtures couldn’t be loaded on the last update.');
+    if (r.premierLeague && r.premierLeague.ok === false && show('PL')) banners.push(notLoaded(r.premierLeague, 'Premier League fixtures'));
+    if (r.championsLeague && r.championsLeague.ok === false && show('UCL')) banners.push(notLoaded(r.championsLeague, 'Champions League fixtures'));
+    if (r.europaLeague && r.europaLeague.ok === false && show('UEL')) banners.push(notLoaded(r.europaLeague, 'Europa League fixtures'));
+    if (r.efl && r.efl.ok === false && show('CHAMP', 'EFL')) banners.push(notLoaded(r.efl, 'Championship and League Cup fixtures'));
+    if (r.conferenceLeague && r.conferenceLeague.ok === false && show('UECL')) banners.push(notLoaded(r.conferenceLeague, 'Conference League fixtures'));
+    if (r.scottishPremiership && r.scottishPremiership.ok === false && show('SCOT')) banners.push(notLoaded(r.scottishPremiership, 'Scottish Premiership fixtures'));
+    if (r.wsl && r.wsl.ok === false && show('WSL')) banners.push(notLoaded(r.wsl, 'WSL fixtures'));
+    if (r.faCup && r.faCup.ok === false && show('FAC')) banners.push(notLoaded(r.faCup, 'FA Cup ties'));
+    if (r.formula1 && r.formula1.ok === false && show('F1')) banners.push(notLoaded(r.formula1, 'Formula 1 sessions'));
+    if (r.formula2 && r.formula2.ok === false && show('F2')) banners.push(notLoaded(r.formula2, 'Formula 2 sessions'));
+    if (r.formula3 && r.formula3.ok === false && show('F3')) banners.push(notLoaded(r.formula3, 'Formula 3 sessions'));
+    if (r.motogp && r.motogp.ok === false && show('MOTOGP')) banners.push(notLoaded(r.motogp, 'MotoGP sessions'));
+    if (r.darts && r.darts.ok === false && show('DARTS')) banners.push(notLoaded(r.darts, 'Darts events'));
+    if (r.golf && r.golf.ok === false && show('PGA', 'DPWT')) banners.push(notLoaded(r.golf, 'Golf tournaments'));
+    if (r.snooker && r.snooker.ok === false && show('SNOOKER')) banners.push(notLoaded(r.snooker, 'Snooker tournaments'));
+    if (r.cricket && r.cricket.ok === false && show('TEST', 'ODI', 'T20I')) banners.push(notLoaded(r.cricket, 'Cricket fixtures'));
+    if (r.skiing && r.skiing.ok === false && show('SKI')) banners.push(notLoaded(r.skiing, 'Alpine skiing races'));
+    if (r.tennis && r.tennis.ok === false && show(...TENNIS)) banners.push(notLoaded(r.tennis, 'Tennis tournaments'));
+    if (r.rugby && r.rugby.ok === false && show(...RUGBY)) banners.push(notLoaded(r.rugby, 'Rugby fixtures'));
     // Also on Specials when it's out of scope: its dates couldn't be read, so it may be due
-    if (r.curling && r.curling.ok === false && (show('SPECIAL_CURLING') || view.sport === 'specials')) banners.push('The curling championships couldn’t be loaded on the last update.');
+    if (r.curling && r.curling.ok === false && (show('SPECIAL_CURLING') || view.sport === 'specials')) banners.push(notLoaded(r.curling, 'The curling championships'));
     let bannerHtml = banners.map(b => `<div class="banner">${esc(b)}</div>`).join('');
     // Competitions without a data source yet (only when one is picked on its own, or My TV is empty)
     const chosen = [...view.comps].map(id => COMP[id]);

@@ -246,6 +246,29 @@ assert.ok(lv(fromUSafterUK).tv.sources.includes('previous-update'));
   globalThis.fetch = realFetch;
 }
 
+// A site answering 429 ("too many requests") is asked again after a wait, twice at most; other errors aren't
+{
+  const { getJSON, RETRY_WAITS } = await import('../scripts/lib/util.mjs');
+  const realWaits = [...RETRY_WAITS];
+  RETRY_WAITS.splice(0, RETRY_WAITS.length, 1, 1);
+  const realFetch = globalThis.fetch;
+  const answers = (list) => { let calls = 0; globalThis.fetch = async () => { const status = list[Math.min(calls++, list.length - 1)]; return { ok: status === 200, status, json: async () => ({ calls }) }; }; };
+  answers([429, 200]);
+  assert.deepEqual(await getJSON('https://example.test/'), { calls: 2 });
+  answers([429, 429, 200]);
+  assert.deepEqual(await getJSON('https://example.test/'), { calls: 3 });
+  let tries = 0;
+  globalThis.fetch = async () => { tries++; return { ok: false, status: 429 }; };
+  await assert.rejects(getJSON('https://example.test/'), /HTTP 429/);
+  assert.equal(tries, 3);
+  tries = 0;
+  globalThis.fetch = async () => { tries++; return { ok: false, status: 500 }; };
+  await assert.rejects(getJSON('https://example.test/'), /HTTP 500/);
+  assert.equal(tries, 1);
+  globalThis.fetch = realFetch;
+  RETRY_WAITS.splice(0, RETRY_WAITS.length, ...realWaits);
+}
+
 console.log('\nAll tests passed');
 
 // Save a sample data.json so the app has something to show before the first live update

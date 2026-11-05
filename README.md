@@ -15,6 +15,8 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 
 You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby's Super League appears marked **SOON**: it's in the design but has no data connected yet. Specials lists each event as its own choice. The design is described in `designA.md`.
 
+The gear at the top right opens **Settings**: Light or Dark, and in the phone app the timing of **fixtures reminders**. In the app, tap the bell on a fixture and your phone reminds you 15, 30 or 60 minutes before it starts, even with the app closed. A special event appears from a week before it starts and goes once it's over.
+
 It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
 
 The plan is to turn it into a paid app called **Telly Fixtures** on Google Play: see `playStorePlan.md`.
@@ -25,7 +27,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 - **Recent fixes:** F1, F2 and F3 now read each series' full season calendar, so a race weekend straight after another is never missing (the São Paulo GP was hidden on 1 Nov). TNT's feeds for pubs and bars are ignored, so Amazon's Champions League pick shows as Prime Video (Man Utd v Roma, 3 Nov). The text is a little smaller, so more listings fit on screen; it still follows the phone's font size.
 - **Still to connect:** rugby league's Super League (its 2027 fixtures aren't out yet), and more Specials, one real event at a time.
 - **Design:** Design A (see `designA.md`). A card style with one rounded box per event was mocked up (branch `mockup-cards`, not merged); the current design stays for now.
-- **Paid app:** the name (Telly Fixtures), app ID and domains are done, and the app shows the new name. `data.json` is on the own domain (since 31 Oct 2026); the app works offline and follows the phone's accessibility settings (checked on the Pixel, 1 Nov). The Android app is built (`app/`, Capacitor) and tested on an emulated Pixel 9. The personal Google Play developer account is verified, and the app is on Play's internal testing track, installed from the Play Store on the Pixel. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 2: checks on the Pixel and match reminders; Phase 1 still has the privacy policy, terms and ICO).
+- **Paid app:** the name (Telly Fixtures), app ID and domains are done, and the app shows the new name. `data.json` is on the own domain (since 31 Oct 2026); the app works offline and follows the phone's accessibility settings (checked on the Pixel, 1 Nov). The Android app (`app/`, Capacitor) is at version 1.0.3 on Play's internal testing track, installed from the Play Store on the Pixel, with the app icon, Settings and reminders. The personal Google Play developer account is verified. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (next: the privacy policy, terms and ICO in Phase 1, then the store listing and testers).
 
 ## Principles
 

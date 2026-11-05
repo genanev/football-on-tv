@@ -12,7 +12,7 @@ Google's and Apple's rules, prices and free tiers below were right as of mid-202
 
 **Product:** a UK app showing what sport is on TV today and the next 7 days, with UK times and the confirmed channel. It's for a wide audience: **no ads, no betting, no tracking**.
 
-**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually. **No card and no email to start, and nothing is ever charged automatically** (George, 5 Nov 2026):
+**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually. **No card and no email to start, and nothing is charged unless the person chooses to subscribe** (George, 5 Nov 2026); once they do, the subscription renews yearly through Google Play until they cancel:
 - **First month:** full access from the first open. A promo code gives **3 months** instead.
 - **After that:** a **free tier** for as long as people want it: **one sport (all its competitions), today only**. Loss should be felt, so the subscription is the way back to everything.
 

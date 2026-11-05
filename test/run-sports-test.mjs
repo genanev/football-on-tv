@@ -51,7 +51,7 @@ import { build, markNotOnTv, keepEventsOfFailedSources } from '../scripts/build.
 import { mapWrMatch } from '../scripts/sources/rugby.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
-import { isLiveCoverage } from '../scripts/sources/skyGuide.mjs';
+import { isLiveCoverage, mapGuideDay } from '../scripts/sources/skyGuide.mjs';
 import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker, mapSession, f1MeetingsIn, mapF1Meeting, fetchF1, fetchF2, parseRounds, parseRoundSessions } from '../scripts/sources/motorsport.mjs';
 import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
@@ -59,7 +59,7 @@ import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/so
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/curling.mjs';
 import { specialsInScope } from '../scripts/sources/specials.mjs';
-import { mapWtaTournaments, parseAtpFinals } from '../scripts/sources/tennis.mjs';
+import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -544,6 +544,30 @@ assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && e.allDay).m
 // A tournament day the guide can't show (no listings for that date): "TV times to be confirmed"
 const wtaDay = (await build(Date.parse('2026-11-08T07:00:00Z'))).events.find(e => e.comp === 'TEN_WTAF');
 assert.deepEqual([wtaDay.session, wtaDay.allDay, wtaDay.tv.note], ['Day 1', true, 'TV times to be confirmed']);
+// Overnight coverage stays with the evening it began (Sky's real WTA Finals listings, captured 5 Nov 2026:
+// 19:30-03:00 UK from Indian Wells). Split by calendar date, day 2 read 00:00-24:00 and showed as live all day.
+const SKY_WTA = await fx('sky-guide-wta-finals-2026-11-05.json');
+const wtaProgs = Object.values(SKY_WTA).flatMap(mapGuideDay);
+const wtaGuide = { programmes: [...new Map(wtaProgs.map(p => [p.id, p])).values()], coveredDates: ['2026-11-08', '2026-11-09', '2026-11-10', '2026-11-11'] };
+const wtaT = tours.filter(t => t.comp === 'TEN_WTAF' && t.startDate === '2026-11-08');
+const wtaLine = (e) => `${e.session} ${uk(e.kickoff)}-${uk(e.end)}: ${e.tv.channels[0]}`;
+assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-08', 4).map(wtaLine), [
+  'Day 1 Sun 08, 19:30-Mon 09, 03:00: Sky Sports Tennis',
+  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+  'Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis', // the guide capture stops at midnight
+]);
+// Monday, after midnight: last night's coverage is still on air, so it stays listed (from midnight), then Day 2
+assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2).map(wtaLine), [
+  'Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
+  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+]);
+// A new day's coverage that starts around midnight (the Australian Open) isn't pulled back a day
+const tennisProg = (id, start, hours) => ({ id, sid: SKY_TENNIS, channel: 'Sky Sports Tennis', start: Date.parse(start), end: Date.parse(start) + hours * 3600000, title: 'Live: Australian Open', synopsis: '', live: true });
+assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T00:00:00Z', 12), tennisProg('b', '2027-01-19T00:00:00Z', 12)]).keys()], ['2027-01-18', '2027-01-19']);
+// ...nor is a programme after noon, even if coverage never stopped
+assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T18:00:00Z', 19), tennisProg('b', '2027-01-19T13:00:00Z', 2)]).keys()], ['2027-01-18', '2027-01-19']);
 // The WTA feed down: the ATP Finals still come from their own site
 wtaDown = true;
 const noWta = await build(Date.parse('2026-11-15T07:00:00Z'));

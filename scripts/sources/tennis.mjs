@@ -73,29 +73,67 @@ export async function fetchTennis(fromDate, toDate) {
 
 const isTennisProgramme = (text) => !/\bgolf\b|darts|snooker/i.test(text); // "US Open" is also golf
 
+const OVERNIGHT_GAP = 30 * 60000;
+
+/**
+ * Programmes -> the UK date their broadcast began. Overnight coverage stays with the evening it started:
+ * Sky's WTA Finals from Indian Wells run 19:30-03:00, and the part after midnight is still that day's play
+ * ("Day 1 Doubles" at 00:00 on day 2's date). Split by calendar date, day 2 read 00:00-24:00, and showed as
+ * live all day. Only a programme following straight on, before noon, carries over, so a new day's coverage
+ * (the Australian Open starts around midnight) stays its own.
+ */
+export function byBroadcastDay(progs) {
+  const days = new Map();
+  let prev = null;
+  for (const p of [...progs].sort((a, b) => a.start - b.start)) {
+    let date = ukDate(p.start);
+    if (prev && prev.date < date && p.start <= prev.end + OVERNIGHT_GAP && p.start < ukMidnight(date) + 12 * 3600000) date = prev.date;
+    if (!days.has(date)) days.set(date, []);
+    days.get(date).push(p);
+    prev = { date, end: prev?.date === date ? Math.max(prev.end, p.end) : p.end };
+  }
+  return days;
+}
+
 /** One entry per tournament per day it's live on UK TV ("Day 3"). */
 export function tennisEvents(tournaments, guide, tnt, fromDate, days) {
   const sids = SPORT_CHANNELS.tennis;
   const covered = new Set(guide?.coveredDates || []);
+  const windowStart = ukMidnight(fromDate);
+  const inWindow = new Set(windowDates(fromDate, days));
   const events = [];
-  for (const date of windowDates(fromDate, days)) {
+  const coverage = new Map(tournaments.map(t => {
+    const def = TOURNAMENTS.find(d => d.comp === t.comp);
+    const guideProgs = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid)
+      && def.tv.test(p.title) && isTennisProgramme(`${p.title} ${p.synopsis}`));
+    const tntProgs = (tnt?.programmes || []).filter(p => p.live && /tennis/i.test(p.sport || '')
+      && def.tv.test(`${p.title} ${p.subtitle}`));
+    const byDay = new Map();
+    for (const [date, progs] of byBroadcastDay([...guideProgs, ...tntProgs])) {
+      const key = date < t.startDate ? t.startDate : date; // coverage that starts late on the eve of day 1
+      byDay.set(key, [...(byDay.get(key) || []), ...progs]);
+    }
+    return [t, { byDay, guideProgs: new Set(guideProgs) }];
+  }));
+  // Yesterday too: last night's coverage may still be on air, though that day has left the window.
+  for (const date of [ukDate(windowStart - 3 * 3600000), ...inWindow]) {
     for (const t of tournaments.filter(t => t.startDate <= date && t.endDate >= date)) {
-      const def = TOURNAMENTS.find(d => d.comp === t.comp);
-      const fromGuide = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid) && ukDate(p.start) === date
-        && def.tv.test(p.title) && isTennisProgramme(`${p.title} ${p.synopsis}`));
-      const fromTnt = (tnt?.programmes || []).filter(p => p.live && /tennis/i.test(p.sport || '') && ukDate(p.start) === date
-        && def.tv.test(`${p.title} ${p.subtitle}`));
       const day = Math.round((Date.parse(`${date}T12:00:00Z`) - Date.parse(`${t.startDate}T12:00:00Z`)) / 86400000) + 1;
       const base = { comp: t.comp, kind: 'session', title: t.name, session: `Day ${day}`, venue: t.place, source: t.source, status: 'upcoming', label: null };
-      const progs = [...fromGuide, ...fromTnt];
-      if (progs.length) {
-        const start = Math.min(...progs.map(p => p.start)), end = Math.max(...progs.map(p => p.end));
+      const { byDay, guideProgs } = coverage.get(t);
+      const progs = byDay.get(date) || [];
+      const fromGuide = progs.filter(p => guideProgs.has(p));
+      const fromTnt = progs.filter(p => !guideProgs.has(p));
+      const end = progs.length ? Math.max(...progs.map(p => p.end)) : 0;
+      if (progs.length && (inWindow.has(date) || end > windowStart)) {
+        // Still on air from last night: listed under today, from midnight, so it shows as live.
+        const start = Math.max(Math.min(...progs.map(p => p.start)), inWindow.has(date) ? 0 : windowStart);
         const chans = [...channelList(fromGuide, sids)];
         for (const c of tntChannelOrder(fromTnt.map(p => p.channel))) if (!chans.includes(c)) chans.push(c);
         const sources = [...(fromGuide.length ? ['sky-guide'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : [])];
         events.push({ ...base, id: `tennis-${t.id}-${date}`, kickoff: new Date(start).toISOString(), end: new Date(end).toISOString(), timeTbc: false,
           tv: { broadcaster: chans[0], channels: [chans[0]], alsoOn: chans.slice(1), confirmed: true, note: null, conflict: false, sources } });
-      } else if (!covered.has(date)) {
+      } else if (!progs.length && inWindow.has(date) && !covered.has(date)) {
         events.push({ ...base, id: `tennis-${t.id}-${date}`, kickoff: new Date(ukMidnight(date) + 12 * 3600000).toISOString(), end: null, timeTbc: true, allDay: true,
           tv: { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: 'TV times to be confirmed', conflict: false, sources: [] } });
       }

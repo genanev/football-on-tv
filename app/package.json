@@ -1,13 +1,14 @@
 {
   "name": "telly-fixtures-app",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Telly Fixtures as a phone app (Capacitor). The screens are the repo's index.html, copied in by build-web.mjs.",
   "type": "module",
   "dependencies": {
     "@capacitor/android": "^8.6.0",
     "@capacitor/app": "^8.1.2",
-    "@capacitor/core": "^8.6.0"
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/local-notifications": "^8.3.1"
   },
   "devDependencies": {
     "@capacitor/assets": "^4.0.0",

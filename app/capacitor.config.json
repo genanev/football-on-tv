@@ -6,6 +6,10 @@
     "SystemBars": {
       "insetsHandling": "native",
       "initialViewportFitValueHint": "cover"
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_telly",
+      "iconColor": "#0b6b3a"
     }
   }
 }

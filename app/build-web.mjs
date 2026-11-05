@@ -26,13 +26,14 @@ cpSync(join(repo, 'sport-icons'), join(www, 'sport-icons'), {
   filter: (src) => !/\.md$/i.test(src),
 });
 
-// Capacitor's own code and its App plugin, as plain scripts (no bundler: they set the globals
-// capacitorExports and capacitorApp), then the Android platform layer. Their source-map comments
-// are dropped, as the maps aren't copied.
+// Capacitor's own code and its App and notifications plugins, as plain scripts (no bundler: they
+// set the globals capacitorExports, capacitorApp and capacitorLocalNotifications), then the Android
+// platform layer. Their source-map comments are dropped, as the maps aren't copied.
 const part = (p) => readFileSync(join(here, p), 'utf8').replace(/^\/\/# sourceMappingURL=.*$/m, '');
 writeFileSync(join(www, 'platform.js'), [
   part('node_modules/@capacitor/core/dist/capacitor.js'),
   part('node_modules/@capacitor/app/dist/plugin.js'),
+  part('node_modules/@capacitor/local-notifications/dist/plugin.js'),
   part('platform/android.js'),
 ].join('\n'));
 

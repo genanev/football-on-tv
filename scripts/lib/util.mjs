@@ -57,14 +57,27 @@ export function parseWithOffset(local, offset) {
 
 // ------------------------------------------------------------------- fetch
 
+// A site answering 429 ("too many requests"): wait and ask again. The Pulselive feeds (MotoGP and the
+// Premier League's broadcasters) did this together on about 1 update in 25 in Nov 2026, always clear by
+// the next update: they see the London job's Google Cloud address, which it shares with other users.
+export const RETRY_WAITS = [5000, 20000];
+async function fetchPatiently(url, options) {
+  for (const wait of RETRY_WAITS) {
+    const r = await fetch(url, options);
+    if (r.status !== 429) return r;
+    await new Promise(done => setTimeout(done, wait));
+  }
+  return fetch(url, options);
+}
+
 export async function getJSON(url, headers = {}) {
-  const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json', ...headers } });
+  const r = await fetchPatiently(url, { headers: { 'User-Agent': UA, Accept: 'application/json', ...headers } });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
   return r.json();
 }
 
 export async function getText(url, headers = {}) {
-  const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'text/html', 'Accept-Language': 'en-GB,en;q=0.9', ...headers } });
+  const r = await fetchPatiently(url, { headers: { 'User-Agent': UA, Accept: 'text/html', 'Accept-Language': 'en-GB,en;q=0.9', ...headers } });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
   return r.text();
 }

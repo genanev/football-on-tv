@@ -1,3 +1,9 @@
+// The notifications plugin is built with Java 21, and Android Studio only brings Java 25: this lets
+// Gradle fetch the Java version a part of the build asks for (once, into its own folder).
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
 include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')

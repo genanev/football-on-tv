@@ -15,4 +15,7 @@ window.platform = {
   // The colour theme changed ('light' or 'dark'). The browser takes the colour of its bars from the
   // page's theme-color, which index.html sets.
   themeChanged(theme) {},
+  // Match reminders are a phone app feature: a website can't notify while it's closed, so the page
+  // shows no bells.
+  reminders: { supported: false, ask: async () => false, schedule: async () => {}, cancel: async () => {} },
 };

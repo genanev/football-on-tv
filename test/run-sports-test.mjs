@@ -47,7 +47,7 @@
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
-import { build, markNotOnTv } from '../scripts/build.mjs';
+import { build, markNotOnTv, keepEventsOfFailedSources } from '../scripts/build.mjs';
 import { mapWrMatch } from '../scripts/sources/rugby.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
@@ -585,6 +585,37 @@ const noWr = await build(Date.parse('2026-10-30T06:00:00Z'));
 wrDown = false;
 assert.equal(noWr.report.rugby.ok, false);
 assert.equal(noWr.events.filter(e => e.comp.startsWith('RU_')).length, 0);
+assert.equal(noWr.report.rugby.keptEvents, undefined);
+
+// A listed event stays when its source fails (George, 5 Nov 2026), channel and all; the banner still shows
+const rugAt = Date.parse('2026-10-30T06:00:00Z');
+const rugNow = await build(rugAt);
+const rugIds = rugNow.events.filter(e => e.comp.startsWith('RU_')).map(e => e.id).sort();
+assert.ok(rugIds.length > 0);
+wrDown = true;
+const rugKept = await build(rugAt, rugNow);
+wrDown = false;
+assert.equal(rugKept.report.rugby.ok, false);
+assert.equal(rugKept.report.rugby.keptEvents, rugIds.length);
+assert.deepEqual(rugKept.events.filter(e => e.comp.startsWith('RU_')).map(e => e.id).sort(), rugIds);
+const rugSort = rugKept.events.map(e => e.kickoff);
+assert.deepEqual(rugSort, [...rugSort].sort(), 'kept events are in time order');
+// A source that answers without an event removes it: only a failure keeps it
+const gone = { events: [...rugNow.events, { id: 'wr-removed', comp: 'RU_PREM', kind: 'match', home: 'Removed', away: 'Game', kickoff: rugNow.events.find(e => e.comp.startsWith('RU_')).kickoff, tv: {} }] };
+assert.equal((await build(rugAt, gone)).events.some(e => e.id === 'wr-removed'), false);
+// Only events still in the window, and never a second copy of one the source did give
+const inWin = (e) => e.kickoff >= '2026-11-05';
+const prevEv = { events: [
+  { id: 'a', comp: 'MOTOGP', kickoff: '2026-11-07T10:00:00Z' }, { id: 'b', comp: 'MOTOGP', kickoff: '2026-11-01T10:00:00Z' },
+  { id: 'c', comp: 'MOTOGP', kickoff: '2026-11-08T10:00:00Z' }, { id: 'd', comp: 'F1', kickoff: '2026-11-07T10:00:00Z' },
+] };
+const repEv = { motogp: { ok: false, error: 'HTTP 429' }, formula1: { ok: true } };
+const kept = keepEventsOfFailedSources([{ id: 'c', comp: 'MOTOGP', kickoff: '2026-11-08T10:00:00Z', fresh: true }], prevEv, repEv, inWin);
+assert.deepEqual(kept.map(e => e.id), ['c', 'a']);
+assert.equal(kept[0].fresh, true);
+assert.equal(repEv.motogp.keptEvents, 1);
+assert.equal(repEv.formula1.keptEvents, undefined);
+assert.deepEqual(keepEventsOfFailedSources([], null, { motogp: { ok: false } }, inWin), []); // no earlier update
 
 console.log('\nAll sports tests passed');
 

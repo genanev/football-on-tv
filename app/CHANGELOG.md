@@ -4,6 +4,10 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.3
+- Match reminders: tap the bell on a fixture and your phone will remind you before it starts.
+- New Settings button at the top right: choose 15, 30 or 60 minutes for reminders, and Light or Dark.
+
 ## 1.0.2
 - The top bar now stays below the phone's status bar while you scroll.
 - Specials only appear from a week before they start, and go once they're over.

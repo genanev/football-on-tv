@@ -4,6 +4,11 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.2
+- The top bar now stays below the phone's status bar while you scroll.
+- Specials only appear from a week before they start, and go once they're over.
+- A shorter message when there's no internet connection.
+
 ## 1.0.1
 - New app icon.
 

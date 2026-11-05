@@ -58,6 +58,7 @@ import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
 import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/sources/skiing.mjs';
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/curling.mjs';
+import { specialsInScope } from '../scripts/sources/specials.mjs';
 import { mapWtaTournaments, parseAtpFinals } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
@@ -507,6 +508,22 @@ assert.deepEqual(curlWed.events.filter(e => e.comp === 'SPECIAL_CURLING' && ukDa
 assert.ok(curlWed.events.some(e => e.title === 'Czechia v Germany'));
 // After the championships: nothing (Specials are listed only while on)
 assert.equal((await build(Date.parse('2026-11-02T06:00:00Z'))).events.filter(e => e.comp === 'SPECIAL_CURLING').length, 0);
+
+// The Specials table (George, 5 Nov 2026): the app names an event from a week before it starts until its last day
+const CURLING_ROW = { comp: 'SPECIAL_CURLING', name: 'European Curling Championships', tag: 'Curling', startDate: '2026-10-27', endDate: '2026-11-01' };
+assert.deepEqual(curl.specials, [CURLING_ROW]);
+assert.deepEqual((await build(Date.parse('2026-11-02T06:00:00Z'))).specials, [], 'gone the day after it ends');
+const curlDates = [{ comp: 'SPECIAL_CURLING', startDate: '2026-10-27', endDate: '2026-11-01' }];
+assert.deepEqual(specialsInScope(curlDates, '2026-10-19'), [], 'eight days before: not yet');
+assert.deepEqual(specialsInScope(curlDates, '2026-10-20'), [CURLING_ROW], 'a week before it starts');
+assert.deepEqual(specialsInScope(curlDates, '2026-11-01'), [CURLING_ROW], 'its last day');
+assert.deepEqual(specialsInScope(curlDates, '2026-11-02'), []);
+// Next year's edition comes back by itself once World Curling publishes the new dates
+assert.equal(specialsInScope([{ comp: 'SPECIAL_CURLING', startDate: '2027-11-20', endDate: '2027-11-27' }], '2027-11-13')[0].startDate, '2027-11-20');
+// A failed read keeps the last update's dates while the event is in scope, but not after it
+assert.deepEqual(specialsInScope([], '2026-10-29', [CURLING_ROW]), [CURLING_ROW]);
+assert.deepEqual(specialsInScope([], '2026-11-02', [CURLING_ROW]), []);
+assert.deepEqual(specialsInScope([], '2026-10-29'), []);
 
 // ---------- tennis (George, 29 Oct 2026): Grand Slams, ATP Finals, WTA Finals
 const tours = mapWtaTournaments(WTA);

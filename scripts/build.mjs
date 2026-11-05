@@ -49,6 +49,7 @@ import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchSkiing, skiTv } from './sources/skiing.mjs';
 import { fetchTennis, tennisEvents } from './sources/tennis.mjs';
 import { fetchCurling, curlingEvents } from './sources/curling.mjs';
+import { specialsInScope } from './sources/specials.mjs';
 import { fetchRugby, rugbyTv } from './sources/rugby.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
@@ -397,6 +398,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     report.curling = { ok: true, events: curlingRes.value.events.map(e => `${e.name} ${e.startDate}..${e.endDate}`), games: curling.length, errors: curlingRes.value.errors };
     events.push(...curling);
   } else report.curling = fail(curlingRes);
+  // The Specials the app names right now: a week before each starts until its last day
+  const specials = specialsInScope(ok(curlingRes) ? curlingRes.value.events : [], today, previous?.specials);
 
   const label = (e) => e.home || e.title || '';
   events.sort((a, b) => a.kickoff.localeCompare(b.kickoff) || a.comp.localeCompare(b.comp) || label(a).localeCompare(label(b)));
@@ -406,7 +409,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
   report.scores = showScores ? 'on' : 'off';
   // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it
-  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, events, golden };
+  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, specials, events, golden };
 }
 
 const isMain = import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('build.mjs');

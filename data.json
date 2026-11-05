@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-05T00:30:25.171Z",
+ "generatedAt": "2026-11-05T01:00:17.416Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4441,
+   "programmes": 4442,
    "errors": []
   },
   "skyListings": {
@@ -191,6 +191,7 @@
   },
   "scores": "on"
  },
+ "specials": [],
  "events": [
   {
    "comp": "GOLF",
@@ -3658,7 +3659,7 @@
    "label": null,
    "id": "tennis-808-2026-2026-11-13",
    "kickoff": "2026-11-13T00:00:00.000Z",
-   "end": "2026-11-13T22:00:00.000Z",
+   "end": "2026-11-14T00:00:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Tennis",

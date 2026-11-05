@@ -191,7 +191,8 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Still to decide in Phase 3: whether codes are single-use or shareable, and who gets them.
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the free month's terms beside it. Final check in the legal review (Phase 5).
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
-- [ ] **Your public details.** Paid apps show the seller's contact details. Decide whether to use your home address or a virtual business address (≈ £5–15 a month), and set up a support email on the domain.
+- [x] **Your public details (George, 5 Nov 2026): his own address, not a virtual one.** Google shows a personal account's legal name, country and developer email, plus the full address [once the app makes money](https://support.google.com/googleplay/android-developer/answer/13628312?hl=en); the address comes from the payments profile (Phase 3). If the app picks up and moves to a company, the company's business address replaces it. The address itself is in `business/public-details.md`, not in this file, while the repository is public.
+- [ ] **Support email** on the domain (see Phase 1).
 - [x] **Sole trader or limited company before opening the store accounts?** Decided 29 Oct 2026: a **personal** Google Play account, as a sole trader (see the decisions log). George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
   - skips the 12-tester closed test;
   - shows the company's address instead of yours;
@@ -291,7 +292,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: store billing, subscriptions and trials, checking purchases, testing payments safely.*
 
-- [ ] **Payments set-up in Play Console:** payments profile, bank account, tax details (UK). Accept the paid apps terms.
+- [ ] **Payments set-up in Play Console:** payments profile, with the address in `business/public-details.md`; bank account, tax details (UK). Accept the paid apps terms. **The address becomes public at this step.**
 - [ ] Create the subscription product: `annual`, **£3.65**, available in the UK only, **with no Google trial** (Google's trial needs a payment method; the free month runs outside it, see section 3).
 - [ ] Create the **RevenueCat** account (free).
   - Connect Google Play to it: this needs a Google Cloud service account, and RevenueCat's guide walks through it.
@@ -353,7 +354,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - The final wording of the privacy policy and terms, including the free month and promo codes.
   - ICO: the self-assessment for the data protection fee.
   - The "1p a day" wording beside the real price (CAP code).
-  - Your public details on the store, if not already settled (Phase 0).
+  - The seller's address (Phase 0): where UK rules also need it shown, such as the website and terms, and that it meets them. Check with George before publishing it beyond Google's payments profile.
   - Data rights and scores: still accepted risks (George, 29 Oct and 19 Oct 2026). Any replies or objections received by then.
 - [ ] **Store listing:**
   - Name.
@@ -457,4 +458,5 @@ Record decisions here as they're made (date, what, why).
 - 5 Nov 2026: **A listed event stays when its source fails; only a source that answers without it removes it.** Reason: George spotted MotoGP's sessions disappearing on a one-off "too many requests" answer. A failed read says nothing about the schedule.
 - 5 Nov 2026: **Price: £3.65 a year after one month free, with only an email registration and no card; a promo code gives 3 months free.** This replaces the plan's Google Play trial and "no sign-in". Reason: George wants the free month to have no strings attached. Accepted in exchange: Google's trials and promo codes need a payment method, so the free periods run outside Google's billing, which adds email registration, account deletion, a small server of ours and personal data to look after. Fewer people are likely to go on to pay than with a card-first trial. The closed test will show how many.
 - 5 Nov 2026, later the same day: **The email registration above is dropped. One month of full access with no card and no email, then a free tier: one sport (all its competitions), today only, with a new choice each week. A promo code gives 3 months of full access.** Reason: George wants as many people as possible to try it, and a new email would have reset the month anyway, so registering added a step and most of the extra build without limiting anything. Compared with a plain free and paid split, people see everything first. The free tier is deliberately strict so the loss is felt; it's easier to loosen later than to tighten. An empty day just shows the usual message, with no sales message added. "No sign-in", the store account as the account, and almost no personal data all stay as they were first planned.
+- 5 Nov 2026: **The seller's address on Google Play is George's own, not a virtual address.** Reason: it costs nothing and needs no checking with Google, whereas it's unclear whether Google accepts a virtual address on a personal account. Accepted in exchange: his name and address are public once payments are set up (Phase 3). If the app picks up and moves to a company, the company's business address replaces it. The address itself is kept out of the repository while it's public.
 - 5 Nov 2026: **Legal points wait for one review just before launch (Phase 5), with open points collected there as they come up.** Reason: George wants them dealt with together at the end. The privacy policy and terms are still drafted early, because Google needs the policy's address before the closed test. The ICO check moves there too.

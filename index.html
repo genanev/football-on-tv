@@ -159,8 +159,12 @@
     background: var(--bg);
     color: var(--text);
     font: 0.9375rem/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    --safe-top: env(safe-area-inset-top, 0px);
+    padding: var(--safe-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
+  /* In the phone app the page runs behind the status bar: this strip keeps the clock and icons on a
+     plain background while the listings scroll underneath (no height on a normal web page) */
+  body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: var(--safe-top); z-index: 6; background: var(--bg); }
   button { -webkit-tap-highlight-color: transparent; }
   .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 40px; }
 
@@ -178,7 +182,7 @@
 
   /* Sticky navigation: a row of sport icons, and under it the competitions of the chosen sport */
   .filters {
-    position: sticky; top: 0; z-index: 5; background: var(--bg);
+    position: sticky; top: var(--safe-top); z-index: 5; background: var(--bg);
     padding: 6px 16px 10px; margin: 0 -16px; border-bottom: 1px solid transparent;
   }
   .filters.stuck { border-bottom-color: var(--line); }

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-05T01:00:17.416Z",
+ "generatedAt": "2026-11-05T01:30:16.284Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4442,
+   "programmes": 4701,
    "errors": []
   },
   "skyListings": {
@@ -158,7 +158,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 12
+   "sessions": 13
   },
   "cricket": {
    "ok": true,
@@ -3752,6 +3752,32 @@
     "alsoOn": [
      "Sky Sports Main Event"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "Sportsbet.io Champion of Champions",
+   "venue": "Leicester",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794595500",
+   "kickoff": "2026-11-13T18:45:00.000Z",
+   "end": "2026-11-13T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

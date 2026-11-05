@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T12:30:32.009Z",
+ "generatedAt": "2026-11-05T13:00:32.788Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -158,7 +158,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 13
+   "sessions": 11
   },
   "cricket": {
    "ok": true,
@@ -1353,32 +1353,6 @@
    }
   },
   {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793944800",
-   "kickoff": "2026-11-06T06:00:00.000Z",
-   "end": "2026-11-06T09:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "GOLF",
    "kind": "session",
    "title": "Abu Dhabi Aldar Championship",
@@ -1397,34 +1371,6 @@
     ],
     "alsoOn": [
      "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1793964600",
-   "kickoff": "2026-11-06T11:30:00.000Z",
-   "end": "2026-11-06T14:30:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [
-     "TNT Sports 3"
     ],
     "confirmed": true,
     "note": null,

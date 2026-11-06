@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T13:00:28.533Z",
+ "generatedAt": "2026-11-06T13:30:24.936Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -160,7 +160,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 12
+   "sessions": 11
   },
   "cricket": {
    "ok": true,
@@ -393,32 +393,6 @@
     "broadcaster": "TNT Sports 4",
     "channels": [
      "TNT Sports 4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1794031200",
-   "kickoff": "2026-11-07T06:00:00.000Z",
-   "end": "2026-11-07T09:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
     ],
     "alsoOn": [],
     "confirmed": true,

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T11:30:13.764Z",
+ "generatedAt": "2026-11-06T12:00:19.408Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 28,
+   "events": 21,
    "errors": []
   },
   "tntSchedule": {
@@ -19,18 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 21,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -98,7 +88,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 6
+   "televised": 5
   },
   "scottishPremiership": {
    "ok": true,
@@ -1037,13 +1027,17 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -1487,8 +1481,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1514,15 +1507,12 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [
-     "Sky Sports Mix"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1553,8 +1543,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1585,8 +1574,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1608,16 +1596,14 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Cricket",
-    "channels": [
-     "Sky Sports Cricket"
-    ],
+    "broadcaster": "Sky Sports",
+    "channels": [],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
+    "confirmed": false,
+    "note": "Exact channel to be confirmed",
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "premierleague.com"
     ]
    }
   },
@@ -1648,39 +1634,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
-    ]
-   }
-  },
-  {
-   "id": "af-1607724",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-08T14:00:00.000Z",
-   "timeTbc": false,
-   "home": "Crystal Palace Women",
-   "away": "Charlton Athletic Women",
-   "homeShort": "Crystal Palace",
-   "awayShort": "Charlton Athletic",
-   "venue": "Selhurst Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 9",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Mix",
-    "channels": [
-     "Sky Sports Mix"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1711,8 +1665,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1919,8 +1872,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

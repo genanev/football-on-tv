@@ -410,42 +410,46 @@ read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Pa
 
 The `site/` folder is the public website: the landing page, privacy policy and terms. These steps put it on tellyfixtures.co.uk. They cost nothing. Do them only when you're happy with the pages, because **anything you connect is public straight away**.
 
-**Before you start**
-
-1. Sort out your postal address in the terms. It must stay out of GitHub, and Cloudflare publishes what's on GitHub, so ask Claude to set up a way for Cloudflare to add it as it builds the site. The terms page has a yellow placeholder for it, which must not go live.
-2. Have the `site/` folder merged into `main`. Cloudflare can't publish a folder that isn't there yet.
+**Your postal address stays off GitHub.** The terms page on GitHub only has a yellow placeholder. You type your address into a setting in your Cloudflare account, and Cloudflare adds it to its own copy of the page each time it builds the site. If the setting is missing, the build stops and the placeholder doesn't go live.
 
 **Connect the folder**
 
-3. In the [Cloudflare dashboard](https://dash.cloudflare.com), open **Workers & Pages** and choose **Create application**, then **Pages**, then **Connect to Git**. (If Cloudflare first offers to make a "Worker", look for the link about Pages instead.)
-4. Choose **GitHub** and sign in. When GitHub asks which repositories Cloudflare may see, pick **Only select repositories** and choose `football-on-tv`. Then press **Install & Authorize** and **Begin setup**.
-5. Fill in the build settings:
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com), open **Workers & Pages** and choose **Create application**, then **Pages**, then **Connect to Git**. (If Cloudflare first offers to make a "Worker", look for the link about Pages instead.)
+2. Choose **GitHub** and sign in. When GitHub asks which repositories Cloudflare may see, pick **Only select repositories** and choose `football-on-tv`. Then press **Install & Authorize** and **Begin setup**.
+3. Fill in the build settings:
    - **Project name:** `tellyfixtures`
    - **Production branch:** `main`
-   - **Build command:** leave it empty (there's nothing to build)
+   - **Build command:** `node scripts/fill-address.mjs`
    - **Build output directory:** `site`
-6. Press **Save and Deploy**, wait about a minute, then **Continue to project**. The site is now live at an address ending `.pages.dev`. Open it and look through it on your phone.
+4. Open **Environment variables** on the same screen and add one, of the plain text type:
+   - **Variable name:** `POSTAL_ADDRESS`
+   - **Value:** your address, exactly as it should appear on the page
+5. Press **Save and Deploy**, wait about a minute, then **Continue to project**. The site is now live at an address ending `.pages.dev`. Open it on your phone, and check that the terms page shows your address and no yellow box.
+
+If the build fails with "POSTAL_ADDRESS is empty", the setting didn't save: add it under **Settings**, then **Variables and Secrets**, and press **Retry deployment** on the **Deployments** page.
+
+**To change the address later:** edit that setting, then press **Retry deployment**. The page doesn't change until you do.
 
 **Stop it rebuilding on every update (important)**
 
 The London job saves to `main` every 30 minutes, and each save would start a new build. That's about 1,400 a month, and the free plan allows 500.
 
-7. In the project, go to **Settings**, then **Build**, then **Build watch paths**. Under **Include paths** enter `site/*` and save. Now it only rebuilds when the website itself changes.
-8. On the same page, under **Branch control**, set preview deployments to **None**, so work in progress on other branches isn't published anywhere.
+6. In the project, go to **Settings**, then **Build**, then **Build watch paths**. Under **Include paths** enter `site/*` and `scripts/fill-address.mjs`, and save. Now it only rebuilds when the website itself changes.
+7. On the same page, under **Branch control**, set preview deployments to **None**, so work in progress on other branches isn't published anywhere.
 
 **Use your own address**
 
-9. In the project, open **Custom domains** and choose **Set up a domain**. Enter `tellyfixtures.co.uk`, press **Continue** and confirm the record Cloudflare suggests.
-10. Do the same for `www.tellyfixtures.co.uk`. Don't add these records by hand first, as that can make it fail. `data.tellyfixtures.co.uk`, which holds the listings, isn't affected.
-11. Wait a few minutes, then open https://tellyfixtures.co.uk and check it has the padlock.
+8. In the project, open **Custom domains** and choose **Set up a domain**. Enter `tellyfixtures.co.uk`, press **Continue** and confirm the record Cloudflare suggests.
+9. Do the same for `www.tellyfixtures.co.uk`. Don't add these records by hand first, as that can make it fail. `data.tellyfixtures.co.uk`, which holds the listings, isn't affected.
+10. Wait a few minutes, then open https://tellyfixtures.co.uk and check it has the padlock.
 
 **Leave analytics off**
 
-12. If Cloudflare offers **Web Analytics** for the site, say no. The privacy policy says the website has no analytics.
+11. If Cloudflare offers **Web Analytics** for the site, say no. The privacy policy says the website has no analytics.
 
 **When the policy is live**
 
-13. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
+12. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
 
 To take the site down, delete the project under **Settings** in Workers & Pages. The app isn't affected: it gets its listings from `data.tellyfixtures.co.uk`.
 

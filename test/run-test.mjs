@@ -24,6 +24,7 @@ import { footballTv } from '../scripts/sources/footballTv.mjs';
 import { guideProgrammesFor } from '../scripts/sources/football.mjs';
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 import { parsePrimeTournament } from '../scripts/sources/amazonPrime.mjs';
+import { fillAddress } from '../scripts/fill-address.mjs';
 
 const fx = (name) => readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8');
 const GAMEWEEK = JSON.parse(await fx('pl-current-gameweek-2026-10-13.json'));
@@ -267,6 +268,25 @@ assert.ok(lv(fromUSafterUK).tv.sources.includes('previous-update'));
   assert.equal(tries, 1);
   globalThis.fetch = realFetch;
   RETRY_WAITS.splice(0, RETRY_WAITS.length, ...realWaits);
+}
+
+// The website's postal address: filled in only by Cloudflare's build, so the repository's copy of
+// the terms must keep its placeholder. The address here is made up.
+{
+  const terms = await readFile(new URL('../site/terms.html', import.meta.url), 'utf8');
+  const filled = fillAddress(terms, '  1 Test & Co Street, Testville TE1 1ST ');
+  assert.ok(filled.includes('Telly Fixtures, 1 Test &amp; Co Street, Testville TE1 1ST. Email:'));
+  assert.ok(!filled.includes('class="placeholder"'));
+  assert.ok(!filled.includes('POSTAL ADDRESS'));
+  assert.ok(fillAddress(terms, 'a<b>').includes('a&lt;b&gt;'));
+  // A "$&" must stay as typed, not be read as a replacement pattern.
+  assert.ok(fillAddress(terms, 'Flat $& 2').includes('Flat $&amp; 2'));
+  // Without an address, or with the placeholder missing or doubled, the build must stop.
+  assert.throws(() => fillAddress(terms, ''), /empty/);
+  assert.throws(() => fillAddress(terms, '   '), /empty/);
+  assert.throws(() => fillAddress(terms, undefined), /empty/);
+  assert.throws(() => fillAddress('<p>no placeholder</p>', '1 Test Street'), /found 0/);
+  assert.throws(() => fillAddress(terms + terms, '1 Test Street'), /found 2/);
 }
 
 console.log('\nAll tests passed');

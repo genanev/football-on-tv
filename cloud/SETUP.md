@@ -443,17 +443,9 @@ The London job saves to `main` every 30 minutes, and each save would start a new
 
 12. If Cloudflare offers **Web Analytics** for the site, say no. The privacy policy says the website has no analytics.
 
-**Set up the support address**
-
-The pages give support@tellyfixtures.co.uk, which **doesn't exist yet**, so mail sent to it is lost until you do this.
-
-13. In the Cloudflare dashboard, open tellyfixtures.co.uk, then **Email**, then **Email Routing**, and turn it on, accepting the records it adds.
-14. Add the address `support`, sending to your Gmail. Cloudflare emails Gmail a link to confirm it.
-15. Send a test message to support@tellyfixtures.co.uk from a different email account, and check that it arrives.
-
 **When the policy is live**
 
-16. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
+13. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
 
 To take the site down, delete the project under **Settings** in Workers & Pages. The app isn't affected: it gets its listings from `data.tellyfixtures.co.uk`.
 

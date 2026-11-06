@@ -192,7 +192,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the free month's terms beside it. Final check in the legal review (Phase 5).
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [x] **Your public details (George, 5 Nov 2026): his own address, not a virtual one.** Google shows a personal account's legal name, country and developer email, plus the full address [once the app makes money](https://support.google.com/googleplay/android-developer/answer/13628312?hl=en); the address comes from the payments profile (Phase 3). If the app picks up and moves to a company, the company's business address replaces it. The address itself is in `business/public-details.md`, not in this file, while the repository is public.
-- [ ] **Support email** on the domain (see Phase 1).
+- [x] **Support email** on the domain (see Phase 1).
 - [x] **Sole trader or limited company before opening the store accounts?** Decided 29 Oct 2026: a **personal** Google Play account, as a sole trader (see the decisions log). George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
   - skips the 12-tester closed test;
   - shows the company's address instead of yours;
@@ -207,7 +207,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 *You'll learn: domains and DNS, hosting, cloud storage, privacy law basics.*
 
 - [x] Buy the domain and have its DNS on Cloudflare: done 19 Oct 2026 (registered on Cloudflare, so its DNS is already there).
-- [ ] Set up the support email (Cloudflare Email Routing, forwarding to Gmail; free).
+- [x] Set up the support email: support@tellyfixtures.co.uk works (George, 6 Nov 2026).
 - [x] **Football fixtures from API-Football** (decided 19 Oct 2026; **live since 20 Oct 2026**):
   - [x] Source module `apiFootball.mjs` with offline tests; also reads the Conference League and the WSL for the new app.
   - [x] Compared with the official feeds (Oct 2024 week, and the current week on the Pro plan): all shared games identical once a few name aliases were added. Full club names via `teamNames.mjs`.

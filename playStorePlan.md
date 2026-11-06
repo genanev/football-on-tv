@@ -208,7 +208,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 - [x] Buy the domain and have its DNS on Cloudflare: done 19 Oct 2026 (registered on Cloudflare, so its DNS is already there).
 - [x] Set up the support email (6 Nov 2026): support@tellyfixtures.co.uk forwards to the app's Gmail through Cloudflare Email Routing (free); George's test message arrived. It only receives: replies come from the Gmail address until we add a sending service. Decide on that before launch.
-  - [ ] Change the developer email in Play Console to this address, so the public contact doesn't show the Gmail.
+  - [x] Changed the developer email in Play Console to this address, so the public contact doesn't show the Gmail (George, 6 Nov 2026).
 - [x] **Football fixtures from API-Football** (decided 19 Oct 2026; **live since 20 Oct 2026**):
   - [x] Source module `apiFootball.mjs` with offline tests; also reads the Conference League and the WSL for the new app.
   - [x] Compared with the official feeds (Oct 2024 week, and the current week on the Pro plan): all shared games identical once a few name aliases were added. Full club names via `teamNames.mjs`.

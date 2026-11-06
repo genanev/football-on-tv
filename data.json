@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T06:00:32.574Z",
+ "generatedAt": "2026-11-06T06:30:29.855Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4749,
+   "programmes": 4760,
    "errors": []
   },
   "skyListings": {
@@ -19,18 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 21,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -141,7 +131,7 @@
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 2
+   "sessions": 3
   },
   "golf": {
    "ok": true,
@@ -151,7 +141,7 @@
     "Abu Dhabi Aldar Championship",
     "DP World Tour Championship"
    ],
-   "rounds": 11,
+   "rounds": 12,
    "errors": []
   },
   "snooker": {
@@ -2747,6 +2737,32 @@
    }
   },
   {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-1794661200",
+   "kickoff": "2026-11-14T13:00:00.000Z",
+   "end": "2026-11-14T17:00:00.000Z",
+   "session": "Afternoon session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "wr-6eb7ffc2-8084-49af-960e-c75efebbf975",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -2842,6 +2858,32 @@
     "broadcaster": "Sky Sports+",
     "channels": [
      "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Austin Championship presented by Compliance Solutions",
+   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "source": "pgatour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-pga-R2026558-2026-11-14",
+   "kickoff": "2026-11-14T19:00:00.000Z",
+   "end": "2026-11-14T22:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
     ],
     "alsoOn": [],
     "confirmed": true,

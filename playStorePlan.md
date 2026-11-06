@@ -362,6 +362,7 @@ The project only moves past a gate when its question has a clear answer. Write t
     - The regulator's name and complaints: the ICO is named, so check whether it has become the Information Commission by then, and whether the Data (Use and Access) Act 2025 needs more on handling complaints.
     - Terms: the 14-day cancellation wording for a digital subscription, "including any VAT", the liability wording, and "the law of the part of the UK where you live".
     - Finding someone's data: the policy promises to explain how to find the anonymous ID, so My account needs to show it (Phase 3).
+    - The seller's name and address (George, 6 Nov 2026): the policy and terms name "Telly Fixtures", and the postal address appears only in the terms, not on the landing page or in the policy. George is a sole trader, so check whether the website, policy and terms must also show his own name beside the trading name, whether the address in the terms alone is enough, and what Google shows.
     - Statements that must be true on the day: two-step sign-in on every account (Phase 0), no crash reporting of our own, email through Cloudflare to Gmail, and Android's backup (`allowBackup` is on in the manifest, and the policy says so).
     - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered. Also, the goals above say "nothing is ever charged automatically", which means the free month: the subscription itself renews each year until cancelled, and the terms and landing page say so.
 - [ ] **Store listing:**

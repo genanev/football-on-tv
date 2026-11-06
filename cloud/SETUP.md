@@ -412,7 +412,7 @@ The `site/` folder is the public website: the landing page, privacy policy and t
 
 **Before you start**
 
-1. Decide what name and address to show. The pages have yellow placeholders for them, and they must not go live like that. Tell Claude what to put, and whether the "Draft" boxes stay.
+1. Sort out your postal address in the terms. It must stay out of GitHub, and Cloudflare publishes what's on GitHub, so ask Claude to set up a way for Cloudflare to add it as it builds the site. The terms page has a yellow placeholder for it, which must not go live. Also tell Claude whether the "Draft" boxes stay.
 2. Have the `site/` folder merged into `main`. Cloudflare can't publish a folder that isn't there yet.
 
 **Connect the folder**

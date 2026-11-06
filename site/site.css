@@ -124,10 +124,6 @@ li { margin-bottom: .375rem; }
 .draft strong { display: block; }
 .draft a { color: inherit; }
 
-.brief { background: var(--accent-soft); border-radius: var(--radius); padding: .875rem 1rem; margin: 0 0 1rem; }
-.brief ul { margin-bottom: 0; }
-.brief li:last-child { margin-bottom: 0; }
-
 /* A placeholder George has to fill in before anything is published. Deliberately loud. */
 .placeholder { background: var(--warn-bg); color: var(--warn-text); border: 1px dashed var(--warn-line); border-radius: 4px; padding: 0 .3125rem; font-weight: 700; }
 

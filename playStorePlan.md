@@ -227,13 +227,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - This also removes the GitHub key that expires in Oct 2027.
 - [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews. **Drafted 5 Nov 2026 in `site/` (landing page, privacy policy, terms), not published yet;** the steps to connect it are in `cloud/SETUP.md`.
 - [ ] Make the GitHub repository **private**.
-- [ ] **Privacy policy** in plain English (Google needs its web address before the closed test, so write it now; its final legal check is in Phase 5). Cover:
-  - What's stored on the phone: picks, theme, reminders, the free month's start date and the chosen sport.
-  - That there's no tracking and no ads.
-  - That a promo code is checked by our server against an anonymous ID.
-  - What the stores and RevenueCat process for purchases.
-  - That feedback form answers are stored.
-  - How to contact you, and who you are.
+- [ ] **Privacy policy** (Google needs its web address before the closed test): **George's own wording is in `site/privacy.html` (6 Nov 2026), short and generic on purpose, with no draft label.** He amends it, and its date, if he's advised to change it. Tick this once it's live on the website.
 - [ ] **Terms of use** (draft now; final legal check in Phase 5):
   - The subscription, the free month, the free tier and promo codes.
   - Cancelling and refunds, which go through the store.
@@ -358,13 +352,12 @@ The project only moves past a gate when its question has a clear answer. Write t
   - The seller's address (Phase 0): where UK rules also need it shown, such as the website and terms, and that it meets them. Check with George before publishing it beyond Google's payments profile.
   - Data rights and scores: still accepted risks (George, 29 Oct and 19 Oct 2026). Any replies or objections received by then.
   - **Points from drafting `site/privacy.html` and `site/terms.html` (5 Nov 2026):**
-    - How long data is kept. The drafts suggest purchase records up to 6 years, promo code records 12 months after the 3 months end, feedback and emails 12 months. George to confirm these, and that he'll actually delete on time.
-    - What the suppliers really do: what Play Console shows sellers about a buyer (order details are described loosely, not checked in a live console), what RevenueCat receives beyond purchase history, locale and currency (its docs don't mention IP addresses), and the data agreements and US transfer safeguards for Google, RevenueCat and Cloudflare.
+    - How long data is kept: George's policy says purchase records up to 6 years, and other information no longer than 12 months after it's no longer needed. Check these, and that deleting on time actually happens.
+    - What the suppliers really do: what RevenueCat receives beyond purchase history, locale and currency (its docs don't mention IP addresses), and the data agreements and US transfer safeguards for Google, RevenueCat and Cloudflare.
     - The regulator's name and complaints: the ICO is named, so check whether it has become the Information Commission by then, and whether the Data (Use and Access) Act 2025 needs more on handling complaints.
     - Terms: the 14-day cancellation wording for a digital subscription, "including any VAT", the liability wording, and "the law of the part of the UK where you live".
-    - Finding someone's data: the policy promises to explain how to find the anonymous ID, so My account needs to show it (Phase 3).
     - The seller's name and address (George, 6 Nov 2026): the policy and terms name "Telly Fixtures", and the postal address appears only in the terms, not on the landing page or in the policy. George is a sole trader, so check whether the website, policy and terms must also show his own name beside the trading name, whether the address in the terms alone is enough, and what Google shows.
-    - Statements that must be true on the day: two-step sign-in on every account (Phase 0), no crash reporting of our own, email through Cloudflare to Gmail, and Android's backup (`allowBackup` is on in the manifest, and the policy says so).
+    - Statements that must be true on the day: "restricted and protected" accounts (two-step sign-in, Phase 0), and "deleted when you uninstall the app": `allowBackup` is on in the Android manifest, so Android's own backup can keep a copy in the person's Google account after they uninstall.
     - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered.
 - [ ] **Store listing:**
   - Name.

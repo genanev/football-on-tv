@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T14:30:26.660Z",
+ "generatedAt": "2026-11-06T15:00:16.842Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -34,7 +34,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 150
+   "events": 149
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1739,7 +1739,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }

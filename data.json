@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T21:00:11.079Z",
+ "generatedAt": "2026-11-06T21:30:18.231Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -237,8 +237,8 @@
    "awayShort": "Leicester",
    "venue": "Court Place Farm",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 2,
+   "homeScore": 2,
+   "awayScore": 4,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -270,7 +270,7 @@
    "awayShort": "Bolton",
    "venue": "Pride Park Stadium",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 1,
    "round": "Regular Season - 15",
    "source": "api-football.com",
@@ -328,8 +328,8 @@
    "awayShort": "Coventry",
    "venue": "Hill Dickinson Stadium",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 2,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

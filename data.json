@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T21:30:18.231Z",
+ "generatedAt": "2026-11-06T22:00:32.813Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 21,
+   "events": 18,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
     "Barcelona vs. Manchester City",
@@ -85,7 +85,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 1
+   "televisedTies": 0
   },
   "premierLeagueTv": {
    "ok": true,
@@ -236,7 +236,7 @@
    "homeShort": "Oxford City",
    "awayShort": "Leicester",
    "venue": "Court Place Farm",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 4,
    "round": "1/128-finals",
@@ -251,7 +251,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -269,8 +268,8 @@
    "homeShort": "Derby",
    "awayShort": "Bolton",
    "venue": "Pride Park Stadium",
-   "status": "live",
-   "homeScore": 2,
+   "status": "finished",
+   "homeScore": 3,
    "awayScore": 1,
    "round": "Regular Season - 15",
    "source": "api-football.com",
@@ -327,8 +326,8 @@
    "homeShort": "Everton",
    "awayShort": "Coventry",
    "venue": "Hill Dickinson Stadium",
-   "status": "live",
-   "homeScore": 2,
+   "status": "finished",
+   "homeScore": 3,
    "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",

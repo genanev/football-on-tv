@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T05:30:22.857Z",
+ "generatedAt": "2026-11-06T06:00:32.574Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4739,
+   "programmes": 4749,
    "errors": []
   },
   "skyListings": {
@@ -40,27 +40,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "changed": []
@@ -2938,7 +2938,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": [],
    "matches": [
     {
@@ -3005,22 +3005,22 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   }
  }

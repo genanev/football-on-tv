@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T00:30:27.865Z",
+ "generatedAt": "2026-11-06T01:00:16.471Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4464,
+   "programmes": 4509,
    "errors": []
   },
   "skyListings": {
@@ -176,7 +176,7 @@
    "tournaments": [
     "WTA Finals"
    ],
-   "days": 6,
+   "days": 7,
    "errors": []
   },
   "rugby": {
@@ -2819,6 +2819,33 @@
     "note": "TV channel to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 7",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-14",
+   "kickoff": "2026-11-14T19:30:00.000Z",
+   "end": "2026-11-15T00:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

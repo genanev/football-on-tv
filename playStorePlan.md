@@ -12,7 +12,7 @@ Google's and Apple's rules, prices and free tiers below were right as of mid-202
 
 **Product:** a UK app showing what sport is on TV today and the next 7 days, with UK times and the confirmed channel. It's for a wide audience: **no ads, no betting, no tracking**.
 
-**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually. **No card and no email to start, and nothing is ever charged automatically** (George, 5 Nov 2026):
+**Business model:** a subscription, advertised as **"1p a day" = £3.65 a year**, paid annually. **No card and no email to start, and nothing is charged unless the person chooses to subscribe** (George, 5 Nov 2026); once they do, the subscription renews yearly through Google Play until they cancel:
 - **First month:** full access from the first open. A promo code gives **3 months** instead.
 - **After that:** a **free tier** for as long as people want it: **one sport (all its competitions), today only**. Loss should be felt, so the subscription is the way back to everything.
 
@@ -192,7 +192,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the free month's terms beside it. Final check in the legal review (Phase 5).
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [x] **Your public details (George, 5 Nov 2026): his own address, not a virtual one.** Google shows a personal account's legal name, country and developer email, plus the full address [once the app makes money](https://support.google.com/googleplay/android-developer/answer/13628312?hl=en); the address comes from the payments profile (Phase 3). If the app picks up and moves to a company, the company's business address replaces it. The address itself is in `business/public-details.md`, not in this file, while the repository is public.
-- [x] **Support email** on the domain (see Phase 1).
+- [x] **Support email** on the domain (see Phase 1; done 6 Nov 2026).
 - [x] **Sole trader or limited company before opening the store accounts?** Decided 29 Oct 2026: a **personal** Google Play account, as a sole trader (see the decisions log). George is a sole trader (19 Oct 2026). Moving the domains to a company later is easy. A Google Play *personal* account can't become an *organisation* account: the app would have to be transferred to a new account. An organisation account:
   - skips the 12-tester closed test;
   - shows the company's address instead of yours;
@@ -207,7 +207,8 @@ The project only moves past a gate when its question has a clear answer. Write t
 *You'll learn: domains and DNS, hosting, cloud storage, privacy law basics.*
 
 - [x] Buy the domain and have its DNS on Cloudflare: done 19 Oct 2026 (registered on Cloudflare, so its DNS is already there).
-- [x] Set up the support email: support@tellyfixtures.co.uk works (George, 6 Nov 2026).
+- [x] Set up the support email (6 Nov 2026): support@tellyfixtures.co.uk forwards to the app's Gmail through Cloudflare Email Routing (free); George's test message arrived. It only receives: replies come from the Gmail address until we add a sending service. Decide on that before launch.
+  - [x] Changed the developer email in Play Console to this address, so the public contact doesn't show the Gmail (George, 6 Nov 2026).
 - [x] **Football fixtures from API-Football** (decided 19 Oct 2026; **live since 20 Oct 2026**):
   - [x] Source module `apiFootball.mjs` with offline tests; also reads the Conference League and the WSL for the new app.
   - [x] Compared with the official feeds (Oct 2024 week, and the current week on the Pro plan): all shared games identical once a few name aliases were added. Full club names via `teamNames.mjs`.
@@ -364,7 +365,7 @@ The project only moves past a gate when its question has a clear answer. Write t
     - Finding someone's data: the policy promises to explain how to find the anonymous ID, so My account needs to show it (Phase 3).
     - The seller's name and address (George, 6 Nov 2026): the policy and terms name "Telly Fixtures", and the postal address appears only in the terms, not on the landing page or in the policy. George is a sole trader, so check whether the website, policy and terms must also show his own name beside the trading name, whether the address in the terms alone is enough, and what Google shows.
     - Statements that must be true on the day: two-step sign-in on every account (Phase 0), no crash reporting of our own, email through Cloudflare to Gmail, and Android's backup (`allowBackup` is on in the manifest, and the policy says so).
-    - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered. Also, the goals above say "nothing is ever charged automatically", which means the free month: the subscription itself renews each year until cancelled, and the terms and landing page say so.
+    - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered.
 - [ ] **Store listing:**
   - Name.
   - Short description (80 characters).

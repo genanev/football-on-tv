@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T20:30:26.181Z",
+ "generatedAt": "2026-11-06T21:00:11.079Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4773,
+   "programmes": 4772,
    "errors": []
   },
   "skyListings": {
@@ -238,7 +238,7 @@
    "venue": "Court Place Farm",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -271,7 +271,7 @@
    "venue": "Pride Park Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {

@@ -120,10 +120,6 @@ li { margin-bottom: .375rem; }
 .doc { padding-top: 1.5rem; }
 .doc h2 { font-size: 1.1875rem; margin-top: 1.75rem; }
 
-.draft { background: var(--warn-bg); color: var(--warn-text); border: 2px solid var(--warn-line); border-radius: var(--radius); padding: .75rem .875rem; margin: 0 0 1.25rem; }
-.draft strong { display: block; }
-.draft a { color: inherit; }
-
 /* A placeholder George has to fill in before anything is published. Deliberately loud. */
 .placeholder { background: var(--warn-bg); color: var(--warn-text); border: 1px dashed var(--warn-line); border-radius: 4px; padding: 0 .3125rem; font-weight: 700; }
 

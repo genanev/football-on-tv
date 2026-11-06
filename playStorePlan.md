@@ -228,11 +228,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews. **Drafted 5 Nov 2026 in `site/` (landing page, privacy policy, terms), not published yet;** the steps to connect it are in `cloud/SETUP.md`.
 - [ ] Make the GitHub repository **private**.
 - [ ] **Privacy policy** (Google needs its web address before the closed test): **George's own wording is in `site/privacy.html` (6 Nov 2026), short and generic on purpose, with no draft label.** He amends it, and its date, if he's advised to change it. Tick this once it's live on the website.
-- [ ] **Terms of use** (draft now; final legal check in Phase 5):
-  - The subscription, the free month, the free tier and promo codes.
-  - Cancelling and refunds, which go through the store.
-  - "Listings can change: check with the broadcaster."
-  - Apple's standard licence terms, if used later.
+- [ ] **Terms of use:** George's wording is in `site/terms.html` (6 Nov 2026), with no draft label. He amends it, and its date, if he's advised to change it. Tick this once it's live on the website, which first needs the postal address added without it going on GitHub. Apple's standard licence terms, if used later.
 - **ICO:** moved to the legal review in Phase 5 (George, 5 Nov 2026).
 - [x] **Icon licence (4 Nov 2026):** George confirms all the 3D sport icons and the app icon are generic and created from scratch, so they're fine to use commercially (`sport-icons/README.md`; the Tennis and Skiing icons are his own, 29 Oct 2026). The app icon (512×512 for Play, 1024×1024 for Apple; a TV with a gold star) is in since 4 Nov 2026, in `app/store/`. Keep the original icon zip as the record of where they came from.
 - [x] **Accessibility** (the code, 31 Oct 2026; checked on George's Pixel, 1 Nov 2026):
@@ -357,8 +353,7 @@ The project only moves past a gate when its question has a clear answer. Write t
     - The regulator's name and complaints: the ICO is named, so check whether it has become the Information Commission by then, and whether the Data (Use and Access) Act 2025 needs more on handling complaints.
     - Terms: the 14-day cancellation wording for a digital subscription, "including any VAT", the liability wording, and "the law of the part of the UK where you live".
     - The seller's name and address (George, 6 Nov 2026): the policy and terms name "Telly Fixtures", and the postal address appears only in the terms, not on the landing page or in the policy. George is a sole trader, so check whether the website, policy and terms must also show his own name beside the trading name, whether the address in the terms alone is enough, and what Google shows.
-    - Statements that must be true on the day: "restricted and protected" accounts (two-step sign-in, Phase 0), and "deleted when you uninstall the app": `allowBackup` is on in the Android manifest, so Android's own backup can keep a copy in the person's Google account after they uninstall.
-    - An assumption in the terms for George to confirm in Phase 3: a promo code's 3 months run from the day it's entered.
+    - Statements that must be true on the day: "restricted and protected" accounts (two-step sign-in, Phase 0).
 - [ ] **Store listing:**
   - Name.
   - Short description (80 characters).

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T06:30:29.855Z",
+ "generatedAt": "2026-11-06T07:00:18.613Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4760,
+   "programmes": 4761,
    "errors": []
   },
   "skyListings": {
@@ -19,8 +19,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 21,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -2878,7 +2888,7 @@
    "status": "upcoming",
    "id": "golf-pga-R2026558-2026-11-14",
    "kickoff": "2026-11-14T19:00:00.000Z",
-   "end": "2026-11-14T22:00:00.000Z",
+   "end": "2026-11-15T00:00:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Golf",

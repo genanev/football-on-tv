@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-06T15:30:19.150Z",
+ "generatedAt": "2026-11-06T16:00:22.642Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,12 +15,22 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1029,
+   "programmes": 1026,
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
+   "ok": true,
+   "events": 21,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -1812,7 +1822,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }

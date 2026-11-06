@@ -4,6 +4,10 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.4
+- Settings now has links to our Privacy policy and Terms of use.
+- Small wording changes: reminders are now called "Fixtures reminders" in Settings, and clearer wording when a listing couldn't be checked on the last update.
+
 ## 1.0.3
 - Match reminders: tap the bell on a fixture and your phone will remind you before it starts.
 - New Settings button at the top right: choose 15, 30 or 60 minutes for reminders, and Light or Dark.

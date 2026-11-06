@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T16:00:22.642Z",
+ "generatedAt": "2026-11-06T16:30:34.173Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4770,
+   "programmes": 4771,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1026,
+   "programmes": 1024,
    "errors": []
   },
   "primeVideo": {
@@ -2299,7 +2299,7 @@
    "comp": "GOLF",
    "kind": "session",
    "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
    "source": "pgatour.com",
    "session": "Round 1",
    "status": "upcoming",
@@ -2465,7 +2465,7 @@
    "comp": "GOLF",
    "kind": "session",
    "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
    "source": "pgatour.com",
    "session": "Round 2",
    "status": "upcoming",
@@ -2818,7 +2818,7 @@
    "comp": "GOLF",
    "kind": "session",
    "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
    "source": "pgatour.com",
    "session": "Round 3",
    "status": "upcoming",

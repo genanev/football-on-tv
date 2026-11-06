@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T20:00:18.281Z",
+ "generatedAt": "2026-11-06T20:30:26.181Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4774,
+   "programmes": 4773,
    "errors": []
   },
   "skyListings": {
@@ -237,8 +237,8 @@
    "awayShort": "Leicester",
    "venue": "Court Place Farm",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -269,9 +269,9 @@
    "homeShort": "Derby",
    "awayShort": "Bolton",
    "venue": "Pride Park Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -327,9 +327,9 @@
    "homeShort": "Everton",
    "awayShort": "Coventry",
    "venue": "Hill Dickinson Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -361,7 +361,7 @@
    "homeShort": "Ireland",
    "awayShort": "Argentina",
    "venue": "Aviva Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

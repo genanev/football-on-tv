@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T01:30:25.527Z",
+ "generatedAt": "2026-11-06T22:30:12.534Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4723,
+   "programmes": 4772,
    "errors": []
   },
   "skyListings": {
@@ -15,12 +15,12 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1026,
+   "programmes": 1024,
    "errors": []
   },
   "primeVideo": {
    "ok": true,
-   "events": 21,
+   "events": 17,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
     "Barcelona vs. Manchester City",
@@ -34,33 +34,33 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 143
+   "events": 181
   },
   "footballSource": "api-football",
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-05T06:00:17.486Z",
+    "checkedAt": "2026-11-06T06:00:32.574Z",
     "corrections": 0
    },
    "changed": []
@@ -85,13 +85,13 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 1
+   "televisedTies": 0
   },
   "premierLeagueTv": {
    "ok": true,
    "matches": 8
   },
-  "footballChannels": "8/10 PL+UCL matches with a confirmed channel",
+  "footballChannels": "9/10 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -141,7 +141,7 @@
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 2
+   "sessions": 3
   },
   "golf": {
    "ok": true,
@@ -151,7 +151,7 @@
     "Abu Dhabi Aldar Championship",
     "DP World Tour Championship"
    ],
-   "rounds": 11,
+   "rounds": 12,
    "errors": []
   },
   "snooker": {
@@ -160,7 +160,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 12
+   "sessions": 11
   },
   "cricket": {
    "ok": true,
@@ -236,9 +236,9 @@
    "homeShort": "Oxford City",
    "awayShort": "Leicester",
    "venue": "Court Place Farm",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 4,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -251,7 +251,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -269,9 +268,9 @@
    "homeShort": "Derby",
    "awayShort": "Bolton",
    "venue": "Pride Park Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -284,8 +283,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -327,9 +325,9 @@
    "homeShort": "Everton",
    "awayShort": "Coventry",
    "venue": "Hill Dickinson Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -344,8 +342,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -361,7 +358,7 @@
    "homeShort": "Ireland",
    "awayShort": "Argentina",
    "venue": "Aviva Stadium",
-   "status": "upcoming",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -393,32 +390,6 @@
     "broadcaster": "TNT Sports 4",
     "channels": [
      "TNT Sports 4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "International Championship",
-   "venue": "Nanjing",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-7adc8423-9137-4dae-b89f-8b48620560bf-1794031200",
-   "kickoff": "2026-11-07T06:00:00.000Z",
-   "end": "2026-11-07T09:00:00.000Z",
-   "session": "Morning session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 3",
-    "channels": [
-     "TNT Sports 3"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -1037,13 +1008,17 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -1802,7 +1777,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }
@@ -1885,7 +1860,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }
@@ -2363,7 +2338,7 @@
    "comp": "GOLF",
    "kind": "session",
    "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
    "source": "pgatour.com",
    "session": "Round 1",
    "status": "upcoming",
@@ -2529,7 +2504,7 @@
    "comp": "GOLF",
    "kind": "session",
    "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Omni Barton Creek Resort & Spa (Fazio Canyons Course)",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
    "source": "pgatour.com",
    "session": "Round 2",
    "status": "upcoming",
@@ -2747,6 +2722,32 @@
    }
   },
   {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-1794661200",
+   "kickoff": "2026-11-14T13:00:00.000Z",
+   "end": "2026-11-14T17:00:00.000Z",
+   "session": "Afternoon session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "wr-6eb7ffc2-8084-49af-960e-c75efebbf975",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -2853,6 +2854,32 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Austin Championship presented by Compliance Solutions",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
+   "source": "pgatour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-pga-R2026558-2026-11-14",
+   "kickoff": "2026-11-14T19:00:00.000Z",
+   "end": "2026-11-15T00:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "DARTS",
    "kind": "session",
    "title": "Grand Slam of Darts",
@@ -2896,7 +2923,9 @@
     "channels": [
      "Sky Sports Tennis"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2936,7 +2965,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": [],
    "matches": [
     {
@@ -3003,22 +3032,22 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-05T06:00:17.486Z",
+   "checkedAt": "2026-11-06T06:00:32.574Z",
    "corrections": []
   }
  }

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T14:30:18.484Z",
+ "generatedAt": "2026-11-07T15:00:22.719Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 29,
+   "events": 26,
    "errors": []
   },
   "tntSchedule": {
@@ -363,8 +363,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -396,7 +395,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -430,8 +430,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -458,7 +457,7 @@
      "TNT Sports 1"
     ],
     "alsoOn": [
-     "HBO Max"
+     "TNT Sports UHD ULTIMATE"
     ],
     "confirmed": true,
     "note": null,
@@ -481,7 +480,7 @@
    "homeShort": "Chelsea",
    "awayShort": "Everton",
    "venue": "Wheatsheaf Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 9",
@@ -513,7 +512,7 @@
    "homeShort": "Manchester City",
    "awayShort": "West Ham",
    "venue": "Manchester Regional Arena",
-   "status": "live",
+   "status": "finished",
    "homeScore": 5,
    "awayScore": 0,
    "round": "Regular Season - 9",
@@ -594,7 +593,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },

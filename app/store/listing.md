@@ -103,7 +103,7 @@ Each section has a **Start** or **Manage** button.
 | Section | Answer |
 |---|---|
 | **Privacy policy** | https://tellyfixtures.co.uk/privacy |
-| **App access** | All functionality is available without any access restrictions |
+| **Sign in details** (was "App access") | No: no part of the app is restricted |
 | **Ads** | No, my app does not contain ads |
 | **Content rating** | See below |
 | **Target audience and content** | Ages 18 and over only. Not designed to appeal to children |
@@ -156,5 +156,6 @@ RevenueCat and Google Play Billing handle purchase history and an app user ID: u
 
 - Add the price, the free month, the free tier and promo codes to the full description (without scores).
 - Content rating: answer Yes to digital purchases.
+- Sign in details: answer Yes (the free tier restricts the app after the free month) and give Google a promo code for full access: its reviewers can't use free trials or make purchases.
 - Data safety: declare purchase history and the app user ID.
 - Remake the screenshots with `npm run store-images` in `app/`, so they show current fixtures.

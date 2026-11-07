@@ -346,6 +346,7 @@
   .opt.choice:not([aria-pressed="true"])::before { content: none; }
   .sheet-f { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; padding: 4px 0 6px; }
   /* Remind me, without Android's "Alarms & reminders" permission: it may come a few minutes late */
+  .sheet-f .rem-ask { flex-basis: 100%; text-align: center; color: var(--text); font-size: 0.875rem; font-weight: 600; }
   .rem-late { margin: 2px 0 6px; color: var(--muted); font-size: 0.8125rem; text-align: center; }
   .rem-late button { border: 0; background: none; color: var(--text); font: inherit; font-weight: 600; text-decoration: underline; padding: 8px 2px; cursor: pointer; }
   .sheet-f button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.875rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
@@ -968,8 +969,11 @@
 
   // Tap a fixture: choose how early to be reminded, change it or remove it. Only the times still ahead
   // are offered; "When it starts" always is. Without "Alarms & reminders" a line says it may be late,
-  // with a button to allow it.
+  // with a button to allow it. With two or more set, "Remove all reminders" too (George, 7 Nov 2026: ten
+  // removed one by one was too many), after a check, so one slip can't wipe them.
   let reminderOpen = null;
+  const removeLinks = (count) => `<button id="reminder-remove">Remove reminder</button>`
+    + (count > 1 ? `<button id="reminder-remove-all">Remove all reminders</button>` : '');
   function openReminder(key) {
     const e = data.events.find(x => reminderKey(x) === key);
     if (!e) return;
@@ -981,7 +985,7 @@
     $('#reminder-what').textContent = `${text.title}. ${text.body}.`;
     $('#reminder-body').innerHTML = ahead.map(m => `<button class="dayopt" data-lead="${m}" aria-pressed="${m === on}">${esc(LEAD_LABEL[m])}</button>`).join('')
       + (REM.askExact && !exactOk ? '<p class="rem-late">Your phone may deliver it a few minutes late. <button data-exact>Allow on-time reminders</button></p>' : '')
-      + (set ? '<div class="sheet-f"><button id="reminder-remove">Remove reminder</button></div>' : '');
+      + (set ? `<div class="sheet-f" id="reminder-foot">${removeLinks(Object.keys(reminders).length)}</div>` : '');
     const d = $('#reminder');
     if (d.showModal) d.showModal(); else d.setAttribute('open', '');
   }
@@ -1015,6 +1019,27 @@
       render();
       toast('Reminder removed');
       try { await REM.cancel([set.id]); } catch (e) {}
+      return;
+    }
+    const count = Object.keys(reminders).length;
+    if (ev.target.closest('#reminder-remove-all')) {
+      $('#reminder-foot').innerHTML = `<span class="rem-ask">Remove all ${count} reminders?</span>`
+        + '<button id="reminder-all-yes">Yes, remove all</button><button id="reminder-all-no">Cancel</button>';
+      $('#reminder-all-yes').focus();
+      return;
+    }
+    if (ev.target.closest('#reminder-all-no')) {
+      $('#reminder-foot').innerHTML = removeLinks(count);
+      return;
+    }
+    if (ev.target.closest('#reminder-all-yes')) {
+      closeReminder();
+      const ids = Object.values(reminders).map(r => r.id);
+      reminders = {};
+      saveReminders();
+      render();
+      toast(`All ${ids.length} reminders removed`);
+      try { await REM.cancel(ids); } catch (e) {}
       return;
     }
     const b = ev.target.closest('[data-lead]');

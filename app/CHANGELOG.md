@@ -5,6 +5,7 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `npm run release` prints ready to paste.
 
 ## 1.0.7
+- Remove all reminders at once: tap a fixture with a reminder, then "Remove all reminders".
 - Fixed: with a reminder set, some motorsport sessions showed stray text after their name.
 
 ## 1.0.6

@@ -4,6 +4,10 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.5
+- Simpler reminders: tap a fixture and choose 15 minutes, 30 minutes or 1 hour before it starts.
+- The big bells are gone: a small bell now shows only on the fixtures you've set a reminder for.
+
 ## 1.0.4
 - Settings now has links to our Privacy policy and Terms of use.
 - Small wording changes: reminders are now called "Fixtures reminders" in Settings, and clearer wording when a listing couldn't be checked on the last update.

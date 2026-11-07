@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T21:00:21.282Z",
+ "generatedAt": "2026-11-07T21:30:21.327Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -1059,11 +1059,11 @@
    "comp": "F1",
    "kind": "session",
    "kickoff": "2026-11-07T18:00:00.000Z",
-   "end": "2026-11-07T21:00:00.000Z",
+   "end": "2026-11-07T19:00:00.000Z",
    "title": "São Paulo Grand Prix",
    "session": "Qualifying",
    "venue": "Interlagos",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {
@@ -1155,7 +1155,7 @@
    "venue": "The SMiSA Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

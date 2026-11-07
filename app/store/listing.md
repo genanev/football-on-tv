@@ -23,7 +23,7 @@ Telly Fixtures
 **Short description** (80 characters at most):
 
 ```
-What sport is on UK TV, with UK times and channels. No ads. No betting.
+What sport is Live on UK TV, with UK times and channels. No ads. No betting.
 ```
 
 **Full description** (4,000 characters at most):

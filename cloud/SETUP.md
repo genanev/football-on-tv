@@ -414,7 +414,7 @@ The `site/` folder is the public website: the landing page, privacy policy and t
 
 **Connect the folder**
 
-1. In the [Cloudflare dashboard](https://dash.cloudflare.com), open **Workers & Pages** and choose **Create application**, then **Pages**, then **Connect to Git**. (If Cloudflare first offers to make a "Worker", look for the link about Pages instead.)
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com), open **Workers & Pages** and choose **Create application**. That opens the screen for making a "Worker", which is the wrong one: a **Deploy command** box means you're in the wrong place. At the bottom of that first screen, click the small link about deploying **Pages**, then choose to import an existing Git repository.
 2. Choose **GitHub** and sign in. When GitHub asks which repositories Cloudflare may see, pick **Only select repositories** and choose `football-on-tv`. Then press **Install & Authorize** and **Begin setup**.
 3. Fill in the build settings:
    - **Project name:** `tellyfixtures`
@@ -449,7 +449,7 @@ The London job saves to `main` every 30 minutes, and each save would start a new
 
 **When the policy is live**
 
-12. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy.html.
+12. Later, the address to give Google Play Console is https://tellyfixtures.co.uk/privacy. (Cloudflare drops the `.html` from page addresses; an old link ending in `.html` still arrives at the same page.)
 
 To take the site down, delete the project under **Settings** in Workers & Pages. The app isn't affected: it gets its listings from `data.tellyfixtures.co.uk`.
 

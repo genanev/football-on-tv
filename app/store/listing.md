@@ -114,6 +114,12 @@ Each section has a **Start** or **Manage** button.
 | **Health apps** | None of these (no health features) |
 | **Advertising ID** | No. The app doesn't use it (its permissions are internet, notifications, and starting after a restart for reminders, and, if the person allows it, alarms and reminders, so reminders come on the minute) |
 
+**Alarms & reminders (from 1.0.6):** the app asks for Android's "Alarms & reminders" permission
+(`SCHEDULE_EXACT_ALARM`), which each person allows in the phone's settings. No App content form covers
+it: Google Play restricts only `USE_EXACT_ALARM`, the automatic version reserved for alarm-clock and
+calendar apps, which this app doesn't use. If Play Console asks for an exact alarm declaration anyway,
+stop and check before answering.
+
 ### Content rating (IARC questionnaire)
 
 - **Email address:** support@tellyfixtures.co.uk

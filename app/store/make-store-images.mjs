@@ -146,7 +146,8 @@ try {
   console.log(`Clock set to ${new Date(AT).toISOString()}; saving to ${OUT}`);
   await shot('1-my-tv.png', { ...PHONE_SIZE, steps: `await remind(/ v /, 30);` }); // the first match of the day
   await shot('2-football.png', { ...PHONE_SIZE, theme: 'dark', steps: `sport('Football'); await wait(100);` });
-  await shot('3-reminder.png', { ...PHONE_SIZE, steps: `const r = row(/England v Australia/); r.scrollIntoView({ block: 'center' }); r.click();` });
+  await shot('3-reminder.png', { ...PHONE_SIZE, steps: `const r = row(/England v Australia/);
+    r.scrollIntoView({ block: 'start' }); window.scrollBy(0, -210); r.click();` }); // the row just below the fixed bar, above the sheet
   await shot('4-customise.png', { ...PHONE_SIZE, theme: 'dark', steps: `document.querySelector('#edit').click();` });
   await shot('5-pick-a-day.png', { ...PHONE_SIZE, steps: `document.querySelector('#dayBtn').click(); await wait(50);
     [...document.querySelectorAll('#day-body .dayopt')].at(-1).click(); await wait(100);` });

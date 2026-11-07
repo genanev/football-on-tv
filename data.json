@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T13:00:30.673Z",
+ "generatedAt": "2026-11-07T13:30:18.963Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,18 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -316,7 +306,7 @@
    "homeShort": "Italy",
    "awayShort": "South Africa",
    "venue": "Allianz Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -482,8 +472,8 @@
    "awayShort": "Everton",
    "venue": "Wheatsheaf Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -514,7 +504,7 @@
    "awayShort": "West Ham",
    "venue": "Manchester Regional Arena",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",

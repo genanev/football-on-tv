@@ -21,8 +21,11 @@
       SystemBars.setStyle({ style: theme === 'dark' ? SystemBarsStyle.Dark : SystemBarsStyle.Light }).catch(() => {});
     },
     // Match reminders: the phone keeps them, so they fire with the app closed, offline and after a
-    // restart. No exact-alarm permission (removed in AndroidManifest.xml): Android may deliver one a
-    // few minutes either side to save battery, which is fine for a warning 15-60 minutes ahead.
+    // restart. On time only with Android's "Alarms & reminders" permission (Settings → Apps → Special
+    // app access), which Android 14 and later leave off for new installs. Without it a reminder is an
+    // inexact alarm, which Android may hold back to save battery: up to three quarters of the time
+    // between setting it and its time, often a few minutes late in practice (George's Pixel, 7 Nov
+    // 2026: 15 and 30 minutes before came 3-4 minutes late, "when it starts" a minute late).
     reminders: {
       supported: true,
       // Android 13 and later ask the first time
@@ -31,11 +34,32 @@
         if (now.display === 'granted') return true;
         return (await LocalNotifications.requestPermissions()).display === 'granted';
       },
-      // Each { id, title, body, at (ms) }; the same id replaces an earlier one
+      // Whether reminders can be set to the minute ("Alarms & reminders" allowed)
+      async exact() {
+        return (await LocalNotifications.checkExactNotificationSetting()).exact_alarm === 'granted';
+      },
+      // Opens Android's "Alarms & reminders" page for the app; resolves with exact() once the person
+      // comes back. The plugin's own answer may never come (the emulator's didn't), so coming back to
+      // the app counts too.
+      askExact() {
+        return new Promise((resolve) => {
+          let done = false, listener = null;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            if (listener) listener.remove();
+            this.exact().then(resolve, () => resolve(false));
+          };
+          App.addListener('resume', finish).then((l) => { listener = l; if (done) l.remove(); });
+          LocalNotifications.changeExactNotificationSetting().then(finish, finish);
+        });
+      },
+      // Each { id, title, body, at (ms), exact }; the same id replaces an earlier one. `exact` only
+      // when exact() said so: asked for without the permission, the plugin would send people to
+      // Android's settings page itself, and its call never returns.
       schedule(items) {
         return LocalNotifications.schedule({
-          // isExactNotification: false, or the plugin sends people to Android's exact-alarm settings page
-          notifications: items.map(r => ({ id: r.id, title: r.title, body: r.body, isExactNotification: false, schedule: { at: new Date(r.at), allowWhileIdle: true } })),
+          notifications: items.map(r => ({ id: r.id, title: r.title, body: r.body, isExactNotification: !!r.exact, schedule: { at: new Date(r.at), allowWhileIdle: true } })),
         });
       },
       cancel(ids) {

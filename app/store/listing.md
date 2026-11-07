@@ -50,7 +50,7 @@ MY TV
 Tick the sports and competitions you follow, and My TV shows just those, every time you open the app. Pick a day to see only that day's sport.
 
 REMINDERS
-Tap a fixture and choose 15 minutes, 30 minutes or an hour before it starts. Your phone reminds you, even with the app closed. A small bell shows the ones you've set.
+Tap a fixture and choose an hour, 30 minutes or 15 minutes before it starts, or when it starts. Your phone reminds you, even with the app closed. A small bell shows the ones you've set.
 
 MADE FOR YOUR PHONE
 • All times in UK time
@@ -112,7 +112,7 @@ Each section has a **Start** or **Manage** button.
 | **Government apps** | No |
 | **Financial features** | My app doesn't provide any financial features |
 | **Health apps** | None of these (no health features) |
-| **Advertising ID** | No. The app doesn't use it (its permissions are internet, notifications, and starting after a restart for reminders) |
+| **Advertising ID** | No. The app doesn't use it (its permissions are internet, notifications, and starting after a restart for reminders, and, if the person allows it, alarms and reminders, so reminders come on the minute) |
 
 ### Content rating (IARC questionnaire)
 

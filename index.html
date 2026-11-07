@@ -344,7 +344,10 @@
   .set-p { color: var(--muted); font-size: 0.8125rem; margin-top: 2px; }
   /* A choice of one: no "+" on the ones not chosen */
   .opt.choice:not([aria-pressed="true"])::before { content: none; }
-  .sheet-f { display: flex; justify-content: center; gap: 18px; padding: 4px 0 6px; }
+  .sheet-f { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; padding: 4px 0 6px; }
+  /* Remind me, without Android's "Alarms & reminders" permission: it may come a few minutes late */
+  .rem-late { margin: 2px 0 6px; color: var(--muted); font-size: 0.8125rem; text-align: center; }
+  .rem-late button { border: 0; background: none; color: var(--text); font: inherit; font-weight: 600; text-decoration: underline; padding: 8px 2px; cursor: pointer; }
   .sheet-f button { border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.875rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
   /* Links out of the app: wrap at a large font size, and the padding makes a 44px tap target */
   .sheet-f.links { flex-wrap: wrap; column-gap: 14px; row-gap: 0; padding: 0; }
@@ -622,12 +625,19 @@
   }
 
   // Match reminders (George, 5 Nov 2026; tap a fixture to set one, 7 Nov 2026): the phone notifies
-  // 15, 30 or 60 minutes before the start, chosen per fixture. All kept on the phone.
-  // `reminders`: key -> { id, kickoff, title, body, at, lead }. `at` is when it's set to fire; `lead` is
-  // in minutes, 0 meaning at the start. Reminders set before 7 Nov 2026 have no `lead`, and keep the
-  // one that was chosen in Settings then.
+  // 1 hour, 30 or 15 minutes before the start, or when it starts, chosen per fixture. All kept on the
+  // phone. `reminders`: key -> { id, kickoff, title, body, at, lead, exact }. `at` is when it's set to
+  // fire; `lead` is in minutes, 0 meaning at the start; `exact` whether it was set to the minute (see
+  // `exactOk`). Reminders set before 7 Nov 2026 have no `lead`, and keep the one that was chosen in
+  // Settings then (one of LEADS).
   const LEADS = [15, 30, 60];
+  // The Remind me sheet's choices, in George's order (7 Nov 2026: "when it starts" always offered)
+  const LEAD_CHOICES = [60, 30, 15, 0];
   const LEAD_LABEL = { 0: 'When it starts', 15: '15 minutes before', 30: '30 minutes before', 60: '1 hour before' };
+  // Android's "Alarms & reminders" permission: without it reminders can come a few minutes late
+  // (app/platform/android.js). Checked on every sync, so a change in the phone's settings is picked up
+  // when the app is next opened, and every reminder is set again the new way.
+  let exactOk = false;
   let oldLead = 30;
   let reminders = {};
   try {
@@ -669,6 +679,7 @@
   // this happens only when the app is open. A game that's left the listings keeps its reminder as set.
   async function syncReminders() {
     if (!BELLS || !data) return;
+    try { exactOk = !!(REM.exact && await REM.exact()); } catch (e) { exactOk = false; }
     const now = nowMs(), schedule = [], cancel = [];
     for (const [key, r] of Object.entries(reminders)) {
       const e = data.events.find(ev => reminderKey(ev) === key);
@@ -685,8 +696,10 @@
       // Set too late for the chosen lead: it goes off at the start instead
       const at = want > now ? want : start;
       const text = e ? reminderText(e) : { title: r.title, body: r.body };
-      if (at === r.at && text.title === r.title && text.body === r.body) continue;
-      reminders[key] = { id: r.id, kickoff, ...text, at, lead };
+      // Also set again when "Alarms & reminders" has been switched on or off: Android deletes every
+      // exact reminder when it's switched off
+      if (at === r.at && text.title === r.title && text.body === r.body && !!r.exact === exactOk) continue;
+      reminders[key] = { id: r.id, kickoff, ...text, at, lead, exact: exactOk };
       schedule.push(reminders[key]);
     }
     saveReminders();
@@ -952,7 +965,8 @@
   }
 
   // Tap a fixture: choose how early to be reminded, change it or remove it. Only the times still ahead
-  // are offered; with under 15 minutes to go, the reminder goes off at the start.
+  // are offered; "When it starts" always is. Without "Alarms & reminders" a line says it may be late,
+  // with a button to allow it.
   let reminderOpen = null;
   function openReminder(key) {
     const e = data.events.find(x => reminderKey(x) === key);
@@ -960,10 +974,11 @@
     reminderOpen = key;
     const set = reminders[key];
     const text = reminderText(e);
-    const ahead = LEADS.filter(m => Date.parse(e.kickoff) - m * 60000 > nowMs());
+    const ahead = LEAD_CHOICES.filter(m => Date.parse(e.kickoff) - m * 60000 > nowMs());
     const on = set ? leadOf(set) : null;
     $('#reminder-what').textContent = `${text.title}. ${text.body}.`;
-    $('#reminder-body').innerHTML = (ahead.length ? ahead : [0]).map(m => `<button class="dayopt" data-lead="${m}" aria-pressed="${m === on}">${esc(LEAD_LABEL[m])}</button>`).join('')
+    $('#reminder-body').innerHTML = ahead.map(m => `<button class="dayopt" data-lead="${m}" aria-pressed="${m === on}">${esc(LEAD_LABEL[m])}</button>`).join('')
+      + (REM.askExact && !exactOk ? '<p class="rem-late">Your phone may deliver it a few minutes late. <button data-exact>Allow on-time reminders</button></p>' : '')
       + (set ? '<div class="sheet-f"><button id="reminder-remove">Remove reminder</button></div>' : '');
     const d = $('#reminder');
     if (d.showModal) d.showModal(); else d.setAttribute('open', '');
@@ -986,6 +1001,11 @@
   $('#reminder-body').addEventListener('click', async (ev) => {
     const key = reminderOpen;
     const set = reminders[key];
+    if (ev.target.closest('[data-exact]')) {
+      closeReminder();
+      allowExact();
+      return;
+    }
     if (ev.target.closest('#reminder-remove')) {
       closeReminder();
       delete reminders[key];
@@ -1012,6 +1032,15 @@
     toast(lead ? `Reminder set: ${LEAD_LABEL[lead].toLowerCase()}` : 'Reminder set for the start');
     await syncReminders();
   });
+  // Opens Android's "Alarms & reminders" page; back in the app, every reminder is set again the new way
+  async function allowExact() {
+    let ok = false;
+    try { ok = await REM.askExact(); } catch (e) {}
+    exactOk = ok;
+    await syncReminders();
+    if ($('#settings').open) renderSettings();
+    toast(exactOk ? 'Reminders will now come on time' : 'Not allowed, so reminders may come a few minutes late');
+  }
   $('#reminder-close').addEventListener('click', closeReminder);
   $('#reminder').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeReminder(); }); // tap outside the sheet
 
@@ -1148,8 +1177,11 @@
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
         <div class="set-h">Fixtures reminders</div>
-        <div class="set-p">Tap a fixture and choose how early you’d like your phone to remind you. A small bell shows which ones you’ve set.</div>
-      </div>`) + `<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`;
+        <div class="set-p">Tap a fixture and choose how early you’d like your phone to remind you. A small bell shows which ones you’ve set.${!REM.askExact ? '' : exactOk
+          ? ' Reminders come on time: Telly Fixtures is allowed to set alarms and reminders.'
+          : ' To save battery, your phone may deliver reminders a few minutes late. Nothing to do if that’s ok. If you want them on time to the minute, allow Telly Fixtures to set alarms and reminders.'}</div>
+        ${REM.askExact && !exactOk ? '<div class="opts"><button class="opt choice" data-exact>Allow on-time reminders</button></div>' : ''}
+      </div>`) +`<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`;
   }
   function closeSettings() {
     const d = $('#settings');
@@ -1160,8 +1192,11 @@
     renderSettings();
     const d = $('#settings');
     if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+    // The permission may have changed in the phone's settings since the last check
+    if (BELLS && REM.exact) REM.exact().then((ok) => { if (ok !== exactOk) { exactOk = ok; renderSettings(); syncReminders(); } }, () => {});
   });
   $('#settings-body').addEventListener('click', (ev) => {
+    if (ev.target.closest('[data-exact]')) { allowExact(); return; }
     const t = ev.target.closest('[data-theme-pick]');
     if (!t) return;
     theme = t.dataset.themePick;

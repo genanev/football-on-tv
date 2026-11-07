@@ -17,5 +17,7 @@ window.platform = {
   themeChanged(theme) {},
   // Match reminders are a phone app feature: a website can't notify while it's closed, so the page
   // shows no bells.
+  // (`exact` and `askExact`, Android's "Alarms & reminders" permission, are left out on purpose: the
+  // page shows nothing about it without them.)
   reminders: { supported: false, ask: async () => false, schedule: async () => {}, cancel: async () => {} },
 };

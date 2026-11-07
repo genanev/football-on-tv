@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-07T21:30:21.327Z",
+ "generatedAt": "2026-11-07T22:00:19.294Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4703,
+   "programmes": 4702,
    "errors": []
   },
   "skyListings": {
@@ -19,18 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 15,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -85,7 +75,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 6
+   "televisedTies": 5
   },
   "premierLeagueTv": {
    "ok": true,
@@ -1093,9 +1083,9 @@
    "homeShort": "Peterborough",
    "awayShort": "Reading",
    "venue": "ABAX Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 3,
+   "awayScore": 5,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -1110,7 +1100,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1153,7 +1142,7 @@
    "homeShort": "ST Mirren",
    "awayShort": "Rangers",
    "venue": "The SMiSA Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 2,
    "round": "Regular Season - 13",
@@ -1187,7 +1176,7 @@
    "homeShort": "France",
    "awayShort": "Fiji",
    "venue": "Groupama Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,

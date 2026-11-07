@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-07T01:00:24.092Z",
+ "generatedAt": "2026-11-07T01:30:30.113Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4465,
+   "programmes": 4691,
    "errors": []
   },
   "skyListings": {
@@ -98,7 +98,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 6
+   "televised": 7
   },
   "scottishPremiership": {
    "ok": true,
@@ -160,7 +160,7 @@
     "International Championship",
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 11
+   "sessions": 13
   },
   "cricket": {
    "ok": true,
@@ -2851,11 +2851,13 @@
    "end": "2026-11-15T12:30:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Main Event",
+    "broadcaster": "Sky Sports Golf",
     "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
      "Sky Sports Main Event"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2948,6 +2950,32 @@
    }
   },
   {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "Sportsbet.io Champion of Champions",
+   "venue": "Leicester",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794746700",
+   "kickoff": "2026-11-15T12:45:00.000Z",
+   "end": "2026-11-15T16:30:00.000Z",
+   "session": "Afternoon session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "DARTS",
    "kind": "session",
    "title": "Grand Slam of Darts",
@@ -2967,6 +2995,37 @@
     "alsoOn": [
      "Sky Sports+"
     ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607732",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-15T14:30:00.000Z",
+   "timeTbc": false,
+   "home": "Aston Villa Women",
+   "away": "Birmingham City Women",
+   "homeShort": "Aston Villa",
+   "awayShort": "Birmingham City",
+   "venue": "Bescot Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 10",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3000,6 +3059,32 @@
     "note": "TV channel to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "Sportsbet.io Champion of Champions",
+   "venue": "Leicester",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794768300",
+   "kickoff": "2026-11-15T18:45:00.000Z",
+   "end": "2026-11-15T22:00:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

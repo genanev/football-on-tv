@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-06T23:30:31.902Z",
+ "generatedAt": "2026-11-07T00:00:13.271Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4756,
+   "programmes": 4439,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1024,
+   "programmes": 1014,
    "errors": []
   },
   "primeVideo": {
@@ -67,13 +67,13 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 112,
+   "matches": 82,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 10
+   "matches": 9
   },
   "championsLeague": {
    "ok": true,
@@ -89,9 +89,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 8
+   "matches": 7
   },
-  "footballChannels": "9/10 PL+UCL matches with a confirmed channel",
+  "footballChannels": "8/9 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -106,12 +106,12 @@
   },
   "efl": {
    "ok": true,
-   "championship": 12,
+   "championship": 11,
    "leagueCup": 0
   },
   "faCup": {
    "ok": true,
-   "ties": 7
+   "ties": 6
   },
   "formula1": {
    "ok": true,
@@ -141,7 +141,7 @@
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 3
+   "sessions": 4
   },
   "golf": {
    "ok": true,
@@ -151,7 +151,7 @@
     "Abu Dhabi Aldar Championship",
     "DP World Tour Championship"
    ],
-   "rounds": 12,
+   "rounds": 11,
    "errors": []
   },
   "snooker": {
@@ -164,17 +164,18 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 4
+   "matches": 5
   },
   "skiing": {
    "ok": true,
-   "runs": 2,
+   "runs": 4,
    "errors": []
   },
   "tennis": {
    "ok": true,
    "tournaments": [
-    "WTA Finals"
+    "WTA Finals",
+    "ATP Finals"
    ],
    "days": 7,
    "errors": []
@@ -195,184 +196,6 @@
  },
  "specials": [],
  "events": [
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Abu Dhabi Aldar Championship",
-   "venue": "Yas Links",
-   "source": "europeantour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-11-05-abu-dhabi-aldar-championship-2026-11-06",
-   "kickoff": "2026-11-06T07:00:00.000Z",
-   "end": "2026-11-06T13:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1646811",
-   "sourceId": "1646811",
-   "comp": "CUPS",
-   "label": "FA Cup",
-   "kind": "match",
-   "kickoff": "2026-11-06T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Oxford City",
-   "away": "Leicester City",
-   "homeShort": "Oxford City",
-   "awayShort": "Leicester",
-   "venue": "Court Place Farm",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 4,
-   "round": "1/128-finals",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1563256",
-   "sourceId": "1563256",
-   "comp": "CHAMP",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-06T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "Derby County",
-   "away": "Bolton Wanderers",
-   "homeShort": "Derby",
-   "awayShort": "Bolton",
-   "venue": "Pride Park Stadium",
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 1,
-   "round": "Regular Season - 15",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Football",
-    "channels": [
-     "Sky Sports Football"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "World Wide Technology Championship",
-   "venue": "El Cardonal at Diamante",
-   "source": "pgatour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-pga-R2026457-2026-11-06",
-   "kickoff": "2026-11-06T20:00:00.000Z",
-   "end": "2026-11-06T23:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1557460",
-   "comp": "PL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-06T20:00:00.000Z",
-   "timeTbc": false,
-   "home": "Everton",
-   "away": "Coventry City",
-   "homeShort": "Everton",
-   "awayShort": "Coventry",
-   "venue": "Hill Dickinson Stadium",
-   "status": "finished",
-   "homeScore": 3,
-   "awayScore": 1,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "wr-1e74b48e-25fe-4ebe-beea-abb6cea010a0",
-   "comp": "RU_NATIONS",
-   "kind": "match",
-   "label": null,
-   "kickoff": "2026-11-06T20:10:00.000Z",
-   "timeTbc": false,
-   "home": "Ireland",
-   "away": "Argentina",
-   "homeShort": "Ireland",
-   "awayShort": "Argentina",
-   "venue": "Aviva Stadium",
-   "status": "finished",
-   "homeScore": null,
-   "awayScore": null,
-   "round": null,
-   "source": "world.rugby",
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",
@@ -2916,7 +2739,7 @@
    "label": null,
    "id": "tennis-808-2026-2026-11-14",
    "kickoff": "2026-11-14T19:30:00.000Z",
-   "end": "2026-11-15T00:00:00.000Z",
+   "end": "2026-11-15T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Tennis",
@@ -2946,6 +2769,170 @@
    "homeShort": "Ireland",
    "awayShort": "Fiji",
    "venue": "Aviva Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": null,
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Australia v England",
+   "venue": "Adelaide Oval, Adelaide",
+   "series": "England in Australia, 3 ODI Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-270240",
+   "kickoff": "2026-11-15T03:30:00.000Z",
+   "end": "2026-11-15T11:30:00.000Z",
+   "session": "2nd ODI",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "DP World Tour Championship",
+   "venue": "Earth course",
+   "source": "europeantour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-12-dp-world-tour-championship-2026-11-15",
+   "kickoff": "2026-11-15T06:30:00.000Z",
+   "end": "2026-11-15T12:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SKI",
+   "kind": "session",
+   "label": "World Cup",
+   "title": "Men's Slalom",
+   "source": "fis-ski.com",
+   "status": "upcoming",
+   "id": "ski-131580-1",
+   "session": "Levi · Run 1",
+   "kickoff": "2026-11-15T09:00:00.000Z",
+   "end": "2026-11-15T10:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "comp": "SKI",
+   "kind": "session",
+   "label": "World Cup",
+   "title": "Men's Slalom",
+   "source": "fis-ski.com",
+   "status": "upcoming",
+   "id": "ski-131580-2",
+   "session": "Levi · Run 2",
+   "kickoff": "2026-11-15T12:00:00.000Z",
+   "end": "2026-11-15T13:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-1794747600",
+   "kickoff": "2026-11-15T13:00:00.000Z",
+   "end": "2026-11-15T17:00:00.000Z",
+   "session": "Afternoon session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "wr-8eb3dfab-2f48-45ce-9ad4-9d5d0edb92cc",
+   "comp": "RU_NATIONS",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-11-15T15:10:00.000Z",
+   "timeTbc": false,
+   "home": "Scotland",
+   "away": "Australia",
+   "homeShort": "Scotland",
+   "awayShort": "Australia",
+   "venue": "Murrayfield",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

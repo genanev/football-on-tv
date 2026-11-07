@@ -15,7 +15,7 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 
 You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby's Super League appears marked **SOON**: it's in the design but has no data connected yet. Specials lists each event as its own choice. The design is described in `designA.md`.
 
-The gear at the top right opens **Settings**: Light or Dark, and in the phone app the timing of **fixtures reminders**. In the app, tap the bell on a fixture and your phone reminds you 15, 30 or 60 minutes before it starts, even with the app closed. A special event appears from a week before it starts and goes once it's over.
+The gear at the top right opens **Settings**: Light or Dark. In the phone app, tap a fixture to set a **fixtures reminder**: your phone reminds you 15, 30 or 60 minutes before it starts, even with the app closed, and a small bell shows which ones you've set. A special event appears from a week before it starts and goes once it's over.
 
 It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
 

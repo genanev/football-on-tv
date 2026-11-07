@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-11-07T19:30:31.285Z",
+ "generatedAt": "2026-11-07T20:00:22.424Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4705,
+   "programmes": 4704,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 24,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {
@@ -20,7 +20,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 17,
+   "events": 15,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
     "Barcelona vs. Manchester City",
@@ -1019,8 +1019,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -1036,9 +1035,9 @@
    "homeShort": "Aberdeen",
    "awayShort": "Hibernian",
    "venue": "Pittodrie Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
-   "awayScore": 3,
+   "awayScore": 4,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

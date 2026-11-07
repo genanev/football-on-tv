@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T00:00:13.271Z",
+ "generatedAt": "2026-11-07T00:30:12.319Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 28,
+   "events": 30,
    "errors": []
   },
   "tntSchedule": {
@@ -34,7 +34,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 181
+   "events": 173
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1865,7 +1865,7 @@
    "away": "Berkhamsted",
    "homeShort": "Plymouth Parkway",
    "awayShort": "Berkhamsted",
-   "venue": null,
+   "venue": "Bolitho Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

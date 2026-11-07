@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T12:00:20.486Z",
+ "generatedAt": "2026-11-07T12:30:13.735Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,12 +10,12 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 30,
+   "events": 29,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1014,
+   "programmes": 1015,
    "errors": []
   },
   "primeVideo": {
@@ -91,7 +91,7 @@
    "ok": true,
    "matches": 7
   },
-  "footballChannels": "8/9 PL+UCL matches with a confirmed channel",
+  "footballChannels": "7/9 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -288,7 +288,7 @@
    "kickoff": "2026-11-07T11:40:00.000Z",
    "end": "2026-11-07T12:20:00.000Z",
    "session": "Qualifying",
-   "status": "upcoming",
+   "status": "finished",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [
@@ -839,17 +839,13 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
+    "broadcaster": null,
+    "channels": [],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
+    "confirmed": false,
+    "note": "Not shown live on UK TV",
     "conflict": false,
-    "sources": [
-     "skysports.com"
-    ]
+    "sources": []
    }
   },
   {

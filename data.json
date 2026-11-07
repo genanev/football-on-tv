@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T19:00:14.886Z",
+ "generatedAt": "2026-11-07T19:30:31.285Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1014,
+   "programmes": 1013,
    "errors": []
   },
   "primeVideo": {
@@ -68,9 +68,7 @@
   "apiFootball": {
    "ok": true,
    "matches": 82,
-   "errors": [
-    "EFL Cup: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=48&season=2026&from=2026-11-06&to=2026-11-15&timezone=UTC"
-   ],
+   "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
@@ -107,9 +105,9 @@
    "matches": 6
   },
   "efl": {
-   "ok": false,
-   "error": "EFL Cup: HTTP 500 for https://v3.football.api-sports.io/fixtures?league=48&season=2026&from=2026-11-06&to=2026-11-15&timezone=UTC",
-   "keptEvents": 11
+   "ok": true,
+   "championship": 11,
+   "leagueCup": 0
   },
   "faCup": {
    "ok": true,
@@ -975,7 +973,7 @@
    "venue": "Moss Lane",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -1004,8 +1002,8 @@
    "homeShort": "Nottingham Forest",
    "awayShort": "Manchester City",
    "venue": "City Ground",
-   "status": "live",
-   "homeScore": 2,
+   "status": "finished",
+   "homeScore": 3,
    "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -1040,7 +1038,7 @@
    "venue": "Pittodrie Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 3,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -1062,7 +1060,7 @@
    "comp": "F1",
    "kind": "session",
    "kickoff": "2026-11-07T18:00:00.000Z",
-   "end": "2026-11-07T20:00:00.000Z",
+   "end": "2026-11-07T20:30:00.000Z",
    "title": "São Paulo Grand Prix",
    "session": "Qualifying",
    "venue": "Interlagos",

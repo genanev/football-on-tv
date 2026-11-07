@@ -177,14 +177,12 @@
     width: 2.5rem; height: 2.5rem; padding: 0; display: grid; place-items: center; cursor: pointer;
   }
   .settings-btn svg { width: 1.25rem; height: 1.25rem; }
-  /* The bell on a fixture (phone app only): a big tap area that doesn't make the row taller */
-  .bell {
-    margin: -0.5rem -0.5rem -0.5rem auto; width: 2.5rem; height: 2.5rem; padding: 0; flex: none; display: grid; place-items: center;
-    border: 0; background: none; color: var(--muted); cursor: pointer;
-  }
-  .bell svg { width: 1.25rem; height: 1.25rem; }
-  .bell[aria-pressed="true"] { color: var(--accent); }
-  .bell[aria-pressed="true"] svg { fill: currentColor; }
+  /* Reminders (phone app only): tap a fixture to set one. Only a fixture with a reminder shows a bell,
+     small and straight after its name, so it can't end up alone on a row (George, 7 Nov 2026) */
+  .match[data-r] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .match[data-r]:active { background: color-mix(in srgb, var(--text) 7%, transparent); }
+  .rem-bell { display: inline-block; margin-left: 5px; color: var(--accent); vertical-align: -1px; }
+  .rem-bell svg { display: block; width: 0.875rem; height: 0.875rem; fill: currentColor; }
   .toast {
     position: fixed; left: 16px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 7; max-width: 608px; margin: 0 auto;
     background: var(--text); color: var(--bg); border-radius: 12px; padding: 10px 14px; font-size: 0.875rem; font-weight: 600; text-align: center;
@@ -398,6 +396,12 @@
 <dialog class="sheet" id="settings" aria-labelledby="settings-title">
   <div class="sheet-h"><h3 id="settings-title">Settings</h3><button class="done" id="settings-done">Done</button></div>
   <div class="sheet-b" id="settings-body"></div>
+</dialog>
+
+<dialog class="sheet" id="reminder" aria-labelledby="reminder-title">
+  <div class="sheet-h"><h3 id="reminder-title">Remind me</h3><button class="done" id="reminder-close">Close</button></div>
+  <p class="sheet-p" id="reminder-what"></p>
+  <div class="sheet-b" id="reminder-body"></div>
 </dialog>
 
 <div class="toast" id="toast" role="status"></div>
@@ -616,21 +620,24 @@
     return `${Math.round(h / 24)} days ago`;
   }
 
-  // Match reminders (George, 5 Nov 2026): a bell on each upcoming fixture; the phone notifies
-  // `reminderLead` minutes before the start (15, 30 or 60, in Settings). All kept on the phone.
-  // `reminders`: key -> { id, kickoff, title, body, at }. `at` is when it's set to fire.
+  // Match reminders (George, 5 Nov 2026; tap a fixture to set one, 7 Nov 2026): the phone notifies
+  // 15, 30 or 60 minutes before the start, chosen per fixture. All kept on the phone.
+  // `reminders`: key -> { id, kickoff, title, body, at, lead }. `at` is when it's set to fire; `lead` is
+  // in minutes, 0 meaning at the start. Reminders set before 7 Nov 2026 have no `lead`, and keep the
+  // one that was chosen in Settings then.
   const LEADS = [15, 30, 60];
-  let reminderLead = 30;
+  const LEAD_LABEL = { 0: 'When it starts', 15: '15 minutes before', 30: '30 minutes before', 60: '1 hour before' };
+  let oldLead = 30;
   let reminders = {};
   try {
     const lead = +localStorage.getItem('reminderLead');
-    if (LEADS.includes(lead)) reminderLead = lead;
+    if (LEADS.includes(lead)) oldLead = lead;
     reminders = JSON.parse(localStorage.getItem('reminders')) || {};
   } catch (e) {}
+  const leadOf = (r) => (r.lead in LEAD_LABEL ? r.lead : oldLead);
   const saveReminders = () => {
     try {
       localStorage.setItem('reminders', JSON.stringify(reminders));
-      localStorage.setItem('reminderLead', String(reminderLead));
     } catch (e) {}
   };
   // Stays the same when a game moves, so its reminder can follow it: the feed's team names for
@@ -656,7 +663,7 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => { $('#toast').textContent = ''; }, 4000);
   }
-  // Brings the phone's reminders in line with the latest listings and the chosen lead: a moved game's
+  // Brings the phone's reminders in line with the latest listings and their chosen leads: a moved game's
   // reminder moves with it, a new channel updates its text, a postponed game's goes. With no server,
   // this happens only when the app is open. A game that's left the listings keeps its reminder as set.
   async function syncReminders() {
@@ -671,13 +678,14 @@
         cancel.push(r.id);
         continue;
       }
-      const want = start - reminderLead * 60000;
+      const lead = leadOf(r);
+      const want = start - lead * 60000;
       if (r.at && r.at <= now && want <= now) continue; // it has already gone off for this start time
       // Set too late for the chosen lead: it goes off at the start instead
       const at = want > now ? want : start;
       const text = e ? reminderText(e) : { title: r.title, body: r.body };
       if (at === r.at && text.title === r.title && text.body === r.body) continue;
-      reminders[key] = { id: r.id, kickoff, ...text, at };
+      reminders[key] = { id: r.id, kickoff, ...text, at, lead };
       schedule.push(reminders[key]);
     }
     saveReminders();
@@ -746,14 +754,19 @@
     const sample = m.sample ? '<span class="comp sample">SAMPLE</span>' : '';
     const sport = SPORT_BY_ID[SPORT_OF[compOf(m)]];
     const sico = sport ? `<img class="sico" src="${iconSrc(sport)}" alt="${esc(sport.name)}" title="${esc(sport.name)}">` : '';
-    // A bell only where a reminder makes sense: not started, a known time, and possibly on UK TV
-    const bell = BELLS && !started && !m.allDay && !m.timeTbc && m.status !== 'postponed' && m.status !== 'cancelled' && !/not shown/i.test(note || '')
-      ? `<button class="bell" data-r="${esc(reminderKey(m))}" aria-pressed="${!!reminders[reminderKey(m)]}" aria-label="Remind me before ${m.kind === 'match' ? `${esc(m.home)} v ${esc(m.away)}` : esc(m.title)}">${ICON.bell}</button>` : '';
+    // A fixture can be tapped for a reminder where one makes sense: not started, a known time, and
+    // possibly on UK TV. The word joiner keeps the bell on the same line as the last word of the name.
+    const canRemind = BELLS && !started && !m.allDay && !m.timeTbc && m.status !== 'postponed' && m.status !== 'cancelled' && !/not shown/i.test(note || '');
+    const rKey = canRemind ? reminderKey(m) : null;
+    const rSet = canRemind ? reminders[rKey] : null;
+    const bell = rSet ? `&#8288;<span class="rem-bell">${ICON.bell}</span>` : '';
+    const rText = canRemind ? reminderText(m) : null;
+    const tap = canRemind ? ` data-r="${esc(rKey)}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="${esc(`${rText.title}. ${rText.body}. ${rSet ? `Reminder set, ${LEAD_LABEL[leadOf(rSet)].toLowerCase()}. Change it` : 'Set a reminder'}`)}"` : '';
 
-    return `<div class="match${past ? ' past' : ''}">
+    return `<div class="match${past ? ' past' : ''}"${tap}>
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}${sico}</div>
-      <div class="teams">${headline}</div>
-      <div class="meta">${tag}${sample}${tvHtml}${bell}</div>
+      <div class="teams">${headline}${bell}</div>
+      <div class="meta">${tag}${sample}${tvHtml}</div>
       ${also}${warn}
     </div>`;
   }
@@ -922,15 +935,56 @@
     if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please check your connection and try again shortly.</div>`;
     render();
     syncReminders();
+    remindersHint();
   }
 
-  // Tap a bell: set or remove that fixture's reminder. Android asks permission the first time.
-  $('#main').addEventListener('click', async (ev) => {
-    const b = ev.target.closest('.bell');
-    if (!b) return;
-    const key = b.dataset.r;
+  // With no bells on show, say once that fixtures can be tapped
+  function remindersHint() {
+    if (!BELLS || !data || Object.keys(reminders).length) return;
+    try {
+      if (localStorage.getItem('reminderHint')) return;
+      localStorage.setItem('reminderHint', '1');
+      toast('Tip: tap a fixture to set a reminder');
+    } catch (e) {}
+  }
+
+  // Tap a fixture: choose how early to be reminded, change it or remove it. Only the times still ahead
+  // are offered; with under 15 minutes to go, the reminder goes off at the start.
+  let reminderOpen = null;
+  function openReminder(key) {
+    const e = data.events.find(x => reminderKey(x) === key);
+    if (!e) return;
+    reminderOpen = key;
     const set = reminders[key];
-    if (set) {
+    const text = reminderText(e);
+    const ahead = LEADS.filter(m => Date.parse(e.kickoff) - m * 60000 > nowMs());
+    const on = set ? leadOf(set) : null;
+    $('#reminder-what').textContent = `${text.title}. ${text.body}.`;
+    $('#reminder-body').innerHTML = (ahead.length ? ahead : [0]).map(m => `<button class="dayopt" data-lead="${m}" aria-pressed="${m === on}">${esc(LEAD_LABEL[m])}</button>`).join('')
+      + (set ? '<div class="sheet-f"><button id="reminder-remove">Remove reminder</button></div>' : '');
+    const d = $('#reminder');
+    if (d.showModal) d.showModal(); else d.setAttribute('open', '');
+  }
+  function closeReminder() {
+    const d = $('#reminder');
+    if (d.close) d.close(); else d.removeAttribute('open');
+  }
+  $('#main').addEventListener('click', (ev) => {
+    const row = ev.target.closest('.match[data-r]');
+    if (row) openReminder(row.dataset.r);
+  });
+  $('#main').addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const row = ev.target.closest('.match[data-r]');
+    if (!row) return;
+    ev.preventDefault();
+    openReminder(row.dataset.r);
+  });
+  $('#reminder-body').addEventListener('click', async (ev) => {
+    const key = reminderOpen;
+    const set = reminders[key];
+    if (ev.target.closest('#reminder-remove')) {
+      closeReminder();
       delete reminders[key];
       saveReminders();
       render();
@@ -938,16 +992,25 @@
       try { await REM.cancel([set.id]); } catch (e) {}
       return;
     }
+    const b = ev.target.closest('[data-lead]');
+    if (!b) return;
+    closeReminder();
     const e = data.events.find(x => reminderKey(x) === key);
     if (!e) return;
-    let allowed = false;
-    try { allowed = await REM.ask(); } catch (err) {}
-    if (!allowed) { toast('Notifications are off. To get reminders, allow them for Telly Fixtures in your phone’s settings.'); return; }
-    reminders[key] = { id: reminderId(key), kickoff: e.kickoff, ...reminderText(e) };
+    const lead = +b.dataset.lead;
+    // Android asks permission the first time
+    if (!set) {
+      let allowed = false;
+      try { allowed = await REM.ask(); } catch (err) {}
+      if (!allowed) { toast('Notifications are off. To get reminders, allow them for Telly Fixtures in your phone’s settings.'); return; }
+    }
+    reminders[key] = { ...(set || { id: reminderId(key), kickoff: e.kickoff, ...reminderText(e) }), lead };
     render();
-    toast(Date.parse(e.kickoff) - reminderLead * 60000 > nowMs() ? `Reminder set: ${reminderLead} min before the start` : 'Reminder set for the start');
+    toast(lead ? `Reminder set: ${LEAD_LABEL[lead].toLowerCase()}` : 'Reminder set for the start');
     await syncReminders();
   });
+  $('#reminder-close').addEventListener('click', closeReminder);
+  $('#reminder').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeReminder(); }); // tap outside the sheet
 
   // Navigation: tap a sport icon, then (optionally) one of its competitions
   function go(next, chipId) {
@@ -1071,7 +1134,7 @@
   applyTheme();
 
   // Settings (George, 5 Nov 2026): the button at the top right. The colour theme, and in the phone
-  // app the reminder timing. Managing the subscription joins them when subscriptions are built.
+  // app how reminders work. Managing the subscription joins them when subscriptions are built.
   // The links are plain links: a browser opens them in a new tab, and in the phone app Capacitor hands
   // any address outside the app to the phone's browser, so the platform layer needs nothing for them.
   function renderSettings() {
@@ -1082,8 +1145,7 @@
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
         <div class="set-h">Fixtures reminders</div>
-        <div class="set-p">Tap the bell on a fixture, and your phone will remind you before it starts.</div>
-        <div class="opts">${LEADS.map(m => choice('data-lead', m, `${m} min before`, m === reminderLead)).join('')}</div>
+        <div class="set-p">Tap a fixture and choose how early you’d like your phone to remind you. A small bell shows which ones you’ve set.</div>
       </div>`) + `<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`;
   }
   function closeSettings() {
@@ -1098,16 +1160,10 @@
   });
   $('#settings-body').addEventListener('click', (ev) => {
     const t = ev.target.closest('[data-theme-pick]');
-    const l = ev.target.closest('[data-lead]');
-    if (t) {
-      theme = t.dataset.themePick;
-      try { localStorage.setItem('theme', theme); } catch (e) {}
-      applyTheme();
-    } else if (l) {
-      reminderLead = +l.dataset.lead;
-      saveReminders();
-      syncReminders();
-    } else return;
+    if (!t) return;
+    theme = t.dataset.themePick;
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+    applyTheme();
     renderSettings();
   });
   $('#settings-done').addEventListener('click', closeSettings);
@@ -1119,6 +1175,7 @@
     if ($('#picker').open) { closePicker(); return true; }
     if ($('#dayPicker').open) { closeDayPicker(); return true; }
     if ($('#settings').open) { closeSettings(); return true; }
+    if ($('#reminder').open) { closeReminder(); return true; }
     if (view.sport !== 'mine') { go({ sport: 'mine', comps: new Set(), day: view.day }); return true; }
     return false;
   });

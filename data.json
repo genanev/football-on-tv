@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T17:30:20.788Z",
+ "generatedAt": "2026-11-07T18:00:22.011Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -75,7 +75,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 7
+   "televisedTies": 6
   },
   "premierLeagueTv": {
    "ok": true,
@@ -961,9 +961,9 @@
    "homeShort": "Altrincham",
    "awayShort": "Notts County",
    "venue": "Moss Lane",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -976,7 +976,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -993,9 +992,9 @@
    "homeShort": "Nottingham Forest",
    "awayShort": "Manchester City",
    "venue": "City Ground",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -1027,9 +1026,9 @@
    "homeShort": "Aberdeen",
    "awayShort": "Hibernian",
    "venue": "Pittodrie Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

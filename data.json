@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T17:00:11.887Z",
+ "generatedAt": "2026-11-07T17:30:20.788Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,18 +19,8 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 17,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8"
   },
   "premierSports": {
    "ok": true,
@@ -85,7 +75,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 0
+   "televisedTies": 7
   },
   "premierLeagueTv": {
    "ok": true,
@@ -111,7 +101,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 6
+   "ties": 7
   },
   "formula1": {
    "ok": true,
@@ -457,7 +447,7 @@
      "TNT Sports 1"
     ],
     "alsoOn": [
-     "TNT Sports UHD ULTIMATE"
+     "HBO Max"
     ],
     "confirmed": true,
     "note": null,
@@ -574,7 +564,7 @@
    "homeShort": "Birmingham",
    "awayShort": "Swansea",
    "venue": "St. Andrew's Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 1,
    "round": "Regular Season - 15",
@@ -635,7 +625,7 @@
    "homeShort": "Cardiff",
    "awayShort": "Burnley",
    "venue": "Cardiff City Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 5,
    "awayScore": 4,
    "round": "Regular Season - 15",
@@ -691,7 +681,7 @@
    "homeShort": "Preston",
    "awayShort": "Southampton",
    "venue": "Deepdale Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 15",
@@ -986,6 +976,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1111,6 +1102,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1262,6 +1254,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1550,6 +1543,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1582,6 +1576,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1761,6 +1756,38 @@
    }
   },
   {
+   "id": "af-1646810",
+   "sourceId": "1646810",
+   "comp": "CUPS",
+   "label": "FA Cup",
+   "kind": "match",
+   "kickoff": "2026-11-08T17:15:00.000Z",
+   "timeTbc": false,
+   "home": "Oldham Athletic",
+   "away": "Sheffield Wednesday",
+   "homeShort": "Oldham",
+   "awayShort": "Sheffield Wednesday",
+   "venue": "Boundary Park",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "1/128-finals",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "thefa.com"
+    ]
+   }
+  },
+  {
    "comp": "TEN_WTAF",
    "kind": "session",
    "title": "WTA Finals",
@@ -1893,6 +1920,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "thefa.com",
      "sky-guide"
     ]
    }

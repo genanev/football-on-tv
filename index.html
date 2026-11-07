@@ -775,7 +775,9 @@
     const canRemind = BELLS && !started && !m.allDay && !m.timeTbc && m.status !== 'postponed' && m.status !== 'cancelled' && !/not shown/i.test(note || '');
     const rKey = canRemind ? reminderKey(m) : null;
     const rSet = canRemind ? reminders[rKey] : null;
-    if (rSet) headline = headline.replace(/(\S+)((?:<\/span>)?)$/, `<span class="nw">$1<span class="rem-bell">${ICON.bell}</span></span>$2`);
+    // The last word is text only: in "… <span class="sess">Qualifying</span>" it's "Qualifying", not the
+    // tag before it (1.0.6 wrapped `class="sess">Qualifying`, which showed on screen)
+    if (rSet) headline = headline.replace(/([^\s<>]+)((?:<\/span>)?)$/, `<span class="nw">$1<span class="rem-bell">${ICON.bell}</span></span>$2`);
     const rText = canRemind ? reminderText(m) : null;
     const tap = canRemind ? ` data-r="${esc(rKey)}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="${esc(`${rText.title}. ${rText.body}. ${rSet ? `Reminder set, ${LEAD_LABEL[leadOf(rSet)].toLowerCase()}. Change it` : 'Set a reminder'}`)}"` : '';
 

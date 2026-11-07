@@ -38,6 +38,8 @@
 //                                         captured 29 Oct: our four competitions plus three others
 //   fixtures/tnt-schedule-rugby-2026-10-30.json        TNT's schedule, 30-31 Oct: the rugby programmes
 //   fixtures/sky-guide-rugby-2026-10-30.json           Sky's guide (raw), 30-31 Oct, TNT Sports 1-4
+//   fixtures/sky-guide-rugby-itv-2026-11-07.json       Sky's guide (raw), captured 7 Nov: ITV1's Nations
+//                                         Championship games on 7-15 Nov and its review show
 // Sky's TV guide only publishes today + ~8 days, so the guide entries below are written by hand
 // in Sky's exact response format, at the real session times.
 //
@@ -48,7 +50,8 @@ import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { build, markNotOnTv, keepEventsOfFailedSources } from '../scripts/build.mjs';
-import { mapWrMatch } from '../scripts/sources/rugby.mjs';
+import { mapWrMatch, rugbyTv } from '../scripts/sources/rugby.mjs';
+import { guideTeams } from '../scripts/sources/football.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
 import { isLiveCoverage, mapGuideDay } from '../scripts/sources/skyGuide.mjs';
@@ -599,6 +602,26 @@ assert.deepEqual(rug.events.filter(e => e.comp === 'RU_NATIONS').map(e => `${e.h
   'Ireland v Argentina: TV channel to be confirmed', 'Italy v South Africa: TV channel to be confirmed', 'Scotland v New Zealand: TV channel to be confirmed',
   'Wales v Japan: TV channel to be confirmed', 'France v Fiji: TV channel to be confirmed',
 ]); // England v Australia (Sun 8 Nov) is beyond the window
+// ITV1 writes the teams first and no "Live" ("Italy v South Africa: Nations Championship", real, 7 Nov 2026).
+// Reading only what follows the colon left all 11 games of 7-15 Nov at "TV channel to be confirmed".
+assert.deepEqual(guideTeams('Italy v South Africa: Nations Championship'), ['Italy', 'South Africa']);
+assert.deepEqual(guideTeams('Int Rugby U: Argentina v Australia'), ['Argentina', 'Australia']);
+assert.equal(guideTeams('The Debrief with Dan and ROG'), null);
+const itvRugby = { programmes: Object.values(await fx('sky-guide-rugby-itv-2026-11-07.json')).flatMap(mapGuideDay) };
+assert.equal(itvRugby.programmes.length, 12);
+assert.deepEqual(wr.filter(m => m.comp === 'RU_NATIONS' && m.home !== 'Ireland').map(m => {
+  const tv = rugbyTv(m, { guide: itvRugby });
+  return `${uk(m.kickoff)} ${m.home} v ${m.away}: ${tv.channels.join(', ') || tv.note} ${tv.sources}`;
+}), [
+  'Sat 07, 11:40 Italy v South Africa: ITV1 sky-guide',
+  'Sat 07, 14:10 Scotland v New Zealand: ITV1 sky-guide',
+  'Sat 07, 16:40 Wales v Japan: ITV1 sky-guide',
+  'Sat 07, 20:10 France v Fiji: ITV1 sky-guide',
+  'Sun 08, 15:10 England v Australia: ITV1 sky-guide',
+]);
+// The same teams on another day, or one team of a listed game, don't count as that game
+assert.equal(rugbyTv({ comp: 'RU_NATIONS', home: 'England', away: 'Australia', kickoff: '2026-11-07T15:10:00Z' }, { guide: itvRugby }).confirmed, false);
+assert.equal(rugbyTv({ comp: 'RU_NATIONS', home: 'France', away: 'Japan', kickoff: '2026-11-07T20:10:00Z' }, { guide: itvRugby }).confirmed, false);
 // The football-only 48-hour cut-off leaves rugby alone
 const allRead = { tvGuide: { ok: true }, skyListings: { ok: true }, tntSchedule: { ok: true }, premierSports: { ok: true }, primeVideo: { ok: true } };
 const ireland = { ...rug.events.find(e => e.home === 'Ireland'), tv: { channels: [], broadcaster: null, note: 'TV channel to be confirmed' } };

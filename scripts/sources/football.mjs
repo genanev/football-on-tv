@@ -218,12 +218,17 @@ export const fetchChampionsLeague = (now, daysAhead) => fetchUefa(now, daysAhead
 
 // ------------------------------------------------ TV guide (Sky EPG) matching
 
-/** "Live UEL: Lyon v Crystal Palace" -> ['Lyon', 'Crystal Palace']; null if the title isn't a match. */
+/**
+ * "Live UEL: Lyon v Crystal Palace" -> ['Lyon', 'Crystal Palace']; null if the title isn't a match.
+ * The teams can also come first: ITV writes "Italy v South Africa: Nations Championship".
+ */
 export function guideTeams(title) {
   const t = String(title || '').replace(/^live\b[:\s-]*/i, '');
-  const part = t.includes(':') ? t.slice(t.lastIndexOf(':') + 1) : t;
-  const m = /^\s*(.+?)\s+v\s+(.+?)\s*$/i.exec(part);
-  return m ? [m[1], m[2]] : null;
+  for (const part of t.split(':').reverse()) {
+    const m = /^\s*(.+?)\s+v\s+(.+?)\s*$/i.exec(part);
+    if (m) return [m[1], m[2]];
+  }
+  return null;
 }
 
 /**

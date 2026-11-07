@@ -14,7 +14,8 @@
 //
 // UK TV (no guessing), as for football: a live programme on a rugby channel in Sky's guide on air at
 // kick-off naming both teams ("Live: Bath Rugby v Sale Sharks", "Live: Northampton v Gloucester";
-// on BBC/ITV a programme counts as live by `isLiveCoverage`), TNT's schedule (title "Bath Rugby -
+// on BBC/ITV a programme counts as live by `isLiveCoverage`, as ITV1's "Italy v South Africa: Nations
+// Championship" has no "Live" and the teams first), TNT's schedule (title "Bath Rugby -
 // Sale Sharks", subtitle "Gallagher PREM | Round 5"; HBO Max streams), and Premier Sports' page for
 // the Champions Cup (streaming only, not in Sky's guide). Else "TV channel to be confirmed".
 

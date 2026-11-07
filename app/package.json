@@ -20,6 +20,7 @@
     "sync": "node build-web.mjs && cap sync android",
     "open": "cap open android",
     "icons": "node make-icons.mjs",
-    "release": "node release.mjs"
+    "release": "node release.mjs",
+    "store-images": "node store/make-store-images.mjs"
   }
 }

@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- The Play Store's feature graphic (1024×500), drawn by make-store-images.mjs. The green is the app
+     icon's (make-icons.mjs), the sport icons are the app's own. Google may crop the edges, so the words
+     stay well inside. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400..800&display=block">
+<style>
+  html, body { margin: 0; width: 1024px; height: 500px; overflow: hidden; }
+  body {
+    font-family: Roboto, sans-serif; color: #fff; display: flex; align-items: center; gap: 56px; padding: 0 72px; box-sizing: border-box;
+    background: radial-gradient(circle at 18% 22%, #2f9a64 0%, #13794a 38%, #0b6b3a 70%, #075a30 100%);
+  }
+  .icon { width: 280px; height: 280px; border-radius: 64px; box-shadow: 0 18px 40px rgba(0, 0, 0, .28); flex: none; }
+  h1 { margin: 0; font-size: 70px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; }
+  p { margin: 18px 0 0; font-size: 31px; font-weight: 500; line-height: 1.25; color: #e3f5ea; }
+  .sports { display: flex; gap: 14px; margin-top: 34px; }
+  .sports span { width: 60px; height: 60px; border-radius: 16px; background: rgba(255, 255, 255, .92); display: grid; place-items: center; }
+  .sports img { width: 44px; height: 44px; }
+</style>
+</head>
+<body>
+  <img class="icon" src="telly-fixtures-play-store-512.png" alt="">
+  <div>
+    <h1>Telly Fixtures</h1>
+    <p>What sport is on UK TV,<br>with times and channels</p>
+    <div class="sports">
+      <span><img src="../../sport-icons/football.svg" alt=""></span>
+      <span><img src="../../sport-icons/motorsport.svg" alt=""></span>
+      <span><img src="../../sport-icons/rugby.svg" alt=""></span>
+      <span><img src="../../sport-icons/cricket.svg" alt=""></span>
+      <span><img src="../../sport-icons/tennis.png" alt=""></span>
+      <span><img src="../../sport-icons/darts.svg" alt=""></span>
+    </div>
+  </div>
+</body>
+</html>

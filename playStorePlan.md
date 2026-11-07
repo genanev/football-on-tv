@@ -354,7 +354,8 @@ The project only moves past a gate when its question has a clear answer. Write t
     - Terms: the 14-day cancellation wording for a digital subscription, "including any VAT", the liability wording, and "the law of the part of the UK where you live".
     - The seller's name and address (George, 6 Nov 2026): the policy and terms name "Telly Fixtures", and the postal address appears only in the terms, not on the landing page or in the policy. George is a sole trader, so check whether the website, policy and terms must also show his own name beside the trading name, whether the address in the terms alone is enough, and what Google shows.
     - Statements that must be true on the day: "restricted and protected" accounts (two-step sign-in, Phase 0).
-- [ ] **Store listing:**
+  - **The store listing (drafted 7 Nov 2026):** it names competitions (Premier League, Formula 1, Six Nations…) to say what's covered, never a broadcaster, and says the app is independent. Check that this naming is fine, and whether the screenshots may show channel names, as they do in the app.
+- [ ] **Store listing:** drafted 7 Nov 2026 in `app/store/listing.md` (text, store settings and the App content answers), with pictures in `app/store/listing/` made by `npm run store-images` in `app/`. The first version has no price and no scores; add the pricing before launch.
   - Name.
   - Short description (80 characters).
   - Full description, leading with "No ads. No betting. Just what's on TV.", and showing the price, the free month and what the free tier includes clearly. **Don't advertise scores** (here, in screenshots' captions or on the paywall): they may have to be removed.

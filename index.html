@@ -181,6 +181,7 @@
      small and straight after its name, so it can't end up alone on a row (George, 7 Nov 2026) */
   .match[data-r] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .match[data-r]:active { background: color-mix(in srgb, var(--text) 7%, transparent); }
+  .nw { white-space: nowrap; }
   .rem-bell { display: inline-block; margin-left: 5px; color: var(--accent); vertical-align: -1px; }
   .rem-bell svg { display: block; width: 0.875rem; height: 0.875rem; fill: currentColor; }
   .toast {
@@ -755,17 +756,19 @@
     const sport = SPORT_BY_ID[SPORT_OF[compOf(m)]];
     const sico = sport ? `<img class="sico" src="${iconSrc(sport)}" alt="${esc(sport.name)}" title="${esc(sport.name)}">` : '';
     // A fixture can be tapped for a reminder where one makes sense: not started, a known time, and
-    // possibly on UK TV. The word joiner keeps the bell on the same line as the last word of the name.
+    // possibly on UK TV. The bell and the name's last word sit in one unbreakable span, so the bell can't
+    // drop onto a line of its own (a word joiner before it didn't stop that in Chrome). A fixture that
+    // can be reminded hasn't started, so it has no score: the name ends with a team, title or session.
     const canRemind = BELLS && !started && !m.allDay && !m.timeTbc && m.status !== 'postponed' && m.status !== 'cancelled' && !/not shown/i.test(note || '');
     const rKey = canRemind ? reminderKey(m) : null;
     const rSet = canRemind ? reminders[rKey] : null;
-    const bell = rSet ? `&#8288;<span class="rem-bell">${ICON.bell}</span>` : '';
+    if (rSet) headline = headline.replace(/(\S+)((?:<\/span>)?)$/, `<span class="nw">$1<span class="rem-bell">${ICON.bell}</span></span>$2`);
     const rText = canRemind ? reminderText(m) : null;
     const tap = canRemind ? ` data-r="${esc(rKey)}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="${esc(`${rText.title}. ${rText.body}. ${rSet ? `Reminder set, ${LEAD_LABEL[leadOf(rSet)].toLowerCase()}. Change it` : 'Set a reminder'}`)}"` : '';
 
     return `<div class="match${past ? ' past' : ''}"${tap}>
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}${sico}</div>
-      <div class="teams">${headline}${bell}</div>
+      <div class="teams">${headline}</div>
       <div class="meta">${tag}${sample}${tvHtml}</div>
       ${also}${warn}
     </div>`;

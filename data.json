@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-07T20:30:20.371Z",
+ "generatedAt": "2026-11-07T21:00:21.282Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4704,
+   "programmes": 4703,
    "errors": []
   },
   "skyListings": {
@@ -1095,7 +1095,7 @@
    "venue": "ABAX Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 1,
+   "awayScore": 3,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {

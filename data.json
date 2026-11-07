@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T16:00:28.885Z",
+ "generatedAt": "2026-11-07T16:30:19.772Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1015,
+   "programmes": 1014,
    "errors": []
   },
   "primeVideo": {
@@ -542,7 +542,7 @@
    "homeShort": "Scotland",
    "awayShort": "New Zealand",
    "venue": "Murrayfield",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -608,7 +608,7 @@
    "awayShort": "West Ham",
    "venue": "Ewood Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
@@ -636,8 +636,8 @@
    "awayShort": "Burnley",
    "venue": "Cardiff City Stadium",
    "status": "live",
-   "homeScore": 1,
-   "awayScore": 2,
+   "homeScore": 2,
+   "awayScore": 4,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -776,7 +776,7 @@
    "awayShort": "Millwall",
    "venue": "The Hawthorns",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
@@ -885,7 +885,7 @@
    "venue": "McDiarmid Park",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -909,7 +909,7 @@
    "kickoff": "2026-11-07T16:00:00.000Z",
    "end": "2026-11-07T16:45:00.000Z",
    "session": "Sprint",
-   "status": "upcoming",
+   "status": "live",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [

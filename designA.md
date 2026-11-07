@@ -19,7 +19,7 @@ then dropped on 17 Oct 2026.
  ┌──────────────────────────────────────────────┐  ← sticky
  │ (★)    (⚽)     (🏁)       (⛳)   (🏏)    (🏉 ›  │  3D sport icons on tiles, scroll sideways
  │ My TV Football Motorsport  Golf Cricket Da…  │
- │ [⚙ Customise My TV] [📅 All days]             │  ← on My TV
+ │ [⚙ My TV Choice] [📅 All days] [📺 All channels] │  ← on My TV
  │ Current Selection: Football, Golf, Darts     │
  │ [All football] [Premier League] [Champions…  │  ← on a sport: competition chips
  └──────────────────────────────────────────────┘
@@ -31,7 +31,7 @@ then dropped on 17 Oct 2026.
 ```
 
 1. **My TV** (star icon) is the default view. The app always opens on it, and it shows only the
-   competitions you ticked in **Customise**.
+   competitions you ticked in **My TV Choice**.
 2. The **sport icons** open a whole sport, for example all football.
 3. The **competition chips** under a sport narrow it to the competitions you tap, for example only
    the Premier League and the Champions League (see "Navigation details"). Darts and snooker have
@@ -40,7 +40,7 @@ then dropped on 17 Oct 2026.
 ## Section grouping
 
 The sports and their competitions are defined once, in `SPORTS` in `index.html`. Each
-competition has an `id`, a full `name` (used on chips and in Customise), a short `tag` (the outlined
+competition has an `id`, a full `name` (used on chips and in My TV Choice), a short `tag` (the outlined
 label on each listing), a colour, and its empty-day message (`none`).
 
 | Sport (icon) | Competition | id | Tag | Data today |
@@ -113,12 +113,12 @@ make the build write that `comp` id. When the source is ready, remove `soon`.
 A competition marked `soon: true` is shown everywhere, so people can see what's coming and pick it
 in advance:
 
-- **Chips and Customise:** its name has a small, faded uppercase **SOON** after it
+- **Chips and My TV Choice:** its name has a small, faded uppercase **SOON** after it
   ("MotoGP SOON").
 - **When its chip is selected:** a dashed, neutral (not yellow) note above the days says
   "*MotoGP isn't connected yet. Its listings will appear here once it is.*" Every day is still
   listed with the competition's own empty message ("No MotoGP sessions").
-- **Customise:** it can be ticked like any other competition and is ticked by default, so it
+- **My TV Choice:** it can be ticked like any other competition and is ticked by default, so it
   appears on My TV by itself as soon as it's connected.
 - **Whole sport / My TV:** no note. A sport with no data on a day just shows its empty message
   ("No big events on TV").
@@ -132,13 +132,23 @@ in advance:
   at, because My TV *is* your default view.
 - **What it shows:** every listing whose competition is in your picks, merged into one list
   grouped by day.
-- **Day button** (calendar icon, next to Customise): reads "All days" by default, or "Today",
+- **Day button** (calendar icon, next to My TV Choice): reads "All days" by default, or "Today",
   "Tomorrow" or the date ("Tue 20 Oct"). It opens a **Pick a day** sheet with "All days" and each of
   the 8 days; tapping one applies it and closes the sheet. With a day picked, My TV lists only that
-  day. The choice is kept while you use Customise, and resets to "All days" when you tap another
+  day. The choice is kept while you use My TV Choice or pick channels, and resets to "All days" when you tap another
   sport, or My TV again, or reload. It applies to My TV only, not to the sport views.
-- **Customise button** ("Customise My TV", on the left, under the icons) opens a sheet that slides up
-  from the bottom (`<dialog>`), titled *Customise My TV*:
+- **Channel button** (TV icon, after the day button; George, 7 Nov 2026): reads "All channels", one
+  broadcaster ("TNT Sports") or "Sky Sports +1". It opens a **Pick channels** sheet: "All channels"
+  and each broadcaster in this week's listings (Sky Sports, TNT Sports, HBO Max, Prime Video, BBC, ITV,
+  Channel 4, Channel 5, Premier Sports; `BRANDS` in `index.html`). Several can be ticked, and the
+  sheet stays open until Done. A fixture shows if any of its channels, "also on" ones included,
+  belongs to a ticked broadcaster; one with no channel yet is hidden. Day and channels combine: My TV
+  Choice + Tuesday + TNT Sports. Neither is saved: the app opens on All days and All channels.
+- **Back (swipe or button) on My TV:** with a day or channels picked it clears both; a second back
+  sends the app to the background (George, 7 Nov 2026: one swipe used to close the app with a day
+  still picked).
+- **My TV Choice button** (called "Customise My TV" until 7 Nov 2026; on the left, under the icons) opens a sheet that slides up
+  from the bottom (`<dialog>`), titled *My TV Choice*:
   - one card per sport: its icon, its name, a count ("All", "2 of 3", "None") and a **switch**
     for the whole sport. The switch is on when all competitions are ticked, off when none are,
     and in a half-way position when some are. Tapping it turns the whole sport on (or, if
@@ -148,7 +158,7 @@ in advance:
   - "Select everything" and "Clear all" at the bottom; **Done** (or tapping outside the sheet)
     closes it.
   - Changes apply straight away. Done returns to My TV.
-- **Summary line** (under the Customise button): "Current Selection: **Everything**" when everything
+- **Summary line** (under the My TV Choice button): "Current Selection: **Everything**" when everything
   is ticked, otherwise the sports with anything ticked, by sport name only (not the competitions),
   for example "Current Selection: **Football, Golf, Darts**". It wraps onto a second line if long.
 - **Saved on the phone:** `localStorage` key `myComps` (a list of competition ids). The first
@@ -156,7 +166,8 @@ in advance:
   (`theme` is shared on purpose, so both pages use the same Light/Dark choice).
 - **Empty states:** a day with nothing says "Nothing on TV from your picks". If nothing is
   ticked at all, a note says "My TV is empty. **Pick your sports** to fill it." (the link opens
-  Customise).
+  My TV Choice). With channels picked, an empty day says "Nothing from your picks on TNT Sports" (or
+  "on these channels").
 - Known gap: a competition added to `SPORTS` later isn't ticked for someone who has already saved
   picks. Fix if needed by also saving the list of competitions that existed when they saved.
 
@@ -171,7 +182,7 @@ in advance:
   (`--tl1`, `--tc1`, `--tl2`, `--tc2`, `--rl`, `--ll`, `--mring`) set for light and dark mode, plus
   `--h`, the hue, set per sport in `SPORTS` (`icon`, `hue`): football 255, motorsport 27, golf 145,
   cricket 60, rugby 290, darts 345, snooker 175, specials 88, My TV 155. The same tile, smaller, is
-  in Customise My TV. The icon files and the pack's own tile spec are in `sport-icons/`.
+  in My TV Choice. The icon files and the pack's own tile spec are in `sport-icons/`.
 - **Sport icon on every listing:** each card shows its sport's icon (38 px, no tile, no text) under
   the time and LIVE NOW, so it is clear what sport a game is even when the tag only says "Test" or
   "ODI". The time column spans the card's rows so the icon never pushes the tags down.
@@ -180,7 +191,7 @@ in advance:
   selected chips are filled dark (light in dark mode). "All football" is on when no competition chip
   is, and tapping it clears the selection. Switching off the last selected chip goes back to the
   whole sport. The chip just tapped is scrolled into view.
-- **Single-competition sports** (Darts, Snooker, Skiing; Specials while it has one event) show no chip row, and in Customise they are just
+- **Single-competition sports** (Darts, Snooker, Skiing; Specials while it has one event) show no chip row, and in My TV Choice they are just
   a switch ("On"/"Off") with no competition buttons.
 - The icons and chips/summary stay **sticky** at the top; a hairline appears under them once the
   list scrolls beneath. Switching view jumps back to the top of the list.

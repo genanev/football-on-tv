@@ -47,7 +47,7 @@ CHANNELS YOU CAN TRUST
 A channel is shown only when the broadcaster's own TV listings confirm it. Until then, the app says "TV channel to be confirmed", and it tells you when a game isn't shown live on UK TV, so you're never left guessing.
 
 MY TV
-Tick the sports and competitions you follow, and My TV shows just those, every time you open the app. Pick a day to see only that day's sport.
+Tick the sports and competitions you follow in My TV Choice, and My TV shows just those, every time you open the app. Pick a day, or the channels you have, to see just those: Tuesday on TNT Sports, say.
 
 REMINDERS
 Tap a fixture and choose an hour, 30 minutes or 15 minutes before it starts, or when it starts. Your phone reminds you, even with the app closed. A small bell shows the ones you've set.
@@ -71,8 +71,8 @@ Telly Fixtures is independent and isn't connected to any broadcaster, league or 
 1. `1-my-tv.png`: My TV, today's sport, with a reminder set (light)
 2. `2-football.png`: the Football view and its competitions (dark)
 3. `3-reminder.png`: setting a reminder (light)
-4. `4-customise.png`: Customise My TV (dark)
-5. `5-pick-a-day.png`: one day picked (light)
+4. `4-customise.png`: My TV Choice (dark)
+5. `5-pick-a-day.png`: one day and one channel picked (light)
 6. `6-motorsport.png`: the Motorsport view (dark)
 
 Leave the tablet, Chromebook and video sections empty.

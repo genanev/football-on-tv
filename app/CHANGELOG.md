@@ -5,6 +5,9 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `npm run release` prints ready to paste.
 
 ## 1.0.7
+- New channel filter on My TV: pick the channels you have, on their own or with a day, e.g. Tuesday on TNT Sports.
+- "Customise My TV" is now called "My TV Choice".
+- Going back now clears a picked day or channel first, rather than closing the app.
 - Remove all reminders at once: tap a fixture with a reminder, then "Remove all reminders".
 - Fixed: with a reminder set, some motorsport sessions showed stray text after their name.
 

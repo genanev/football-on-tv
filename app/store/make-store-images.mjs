@@ -150,7 +150,10 @@ try {
     r.scrollIntoView({ block: 'start' }); window.scrollBy(0, -210); r.click();` }); // the row just below the fixed bar, above the sheet
   await shot('4-customise.png', { ...PHONE_SIZE, theme: 'dark', steps: `document.querySelector('#edit').click();` });
   await shot('5-pick-a-day.png', { ...PHONE_SIZE, steps: `document.querySelector('#dayBtn').click(); await wait(50);
-    [...document.querySelectorAll('#day-body .dayopt')].at(-1).click(); await wait(100);` });
+    [...document.querySelectorAll('#day-body .dayopt')].at(-1).click(); await wait(100);
+    document.querySelector('#chanBtn').click(); await wait(50);
+    [...document.querySelectorAll('#chan-body .dayopt')].find(b => b.textContent === 'TNT Sports').click(); await wait(50);
+    document.querySelector('#chan-done').click(); await wait(100);` });
   await shot('6-motorsport.png', { ...PHONE_SIZE, theme: 'dark', steps: `sport('Motorsport'); await wait(100);` });
   await shot('feature-graphic.png', { width: 1024, height: 500, scale: 1, url: '/app/store/feature-graphic.html' });
 } finally {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T11:30:14.178Z",
+ "generatedAt": "2026-11-07T12:00:20.486Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -316,7 +316,7 @@
    "homeShort": "Italy",
    "awayShort": "South Africa",
    "venue": "Allianz Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

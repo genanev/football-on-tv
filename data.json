@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T15:00:22.719Z",
+ "generatedAt": "2026-11-07T15:30:31.117Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 26,
+   "events": 24,
    "errors": []
   },
   "tntSchedule": {
@@ -495,8 +495,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -522,15 +521,12 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [
-     "Sky Sports Premier League"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -578,9 +574,9 @@
    "homeShort": "Birmingham",
    "awayShort": "Swansea",
    "venue": "St. Andrew's Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -611,9 +607,9 @@
    "homeShort": "Blackburn",
    "awayShort": "West Ham",
    "venue": "Ewood Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -639,9 +635,9 @@
    "homeShort": "Cardiff",
    "awayShort": "Burnley",
    "venue": "Cardiff City Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 2,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -667,9 +663,9 @@
    "homeShort": "Charlton",
    "awayShort": "Sheffield Utd",
    "venue": "The Valley",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -695,9 +691,9 @@
    "homeShort": "Preston",
    "awayShort": "Southampton",
    "venue": "Deepdale Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -723,9 +719,9 @@
    "homeShort": "QPR",
    "awayShort": "Lincoln",
    "venue": "Loftus Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -751,9 +747,9 @@
    "homeShort": "Watford",
    "awayShort": "Middlesbrough",
    "venue": "Vicarage Road",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -779,9 +775,9 @@
    "homeShort": "West Brom",
    "awayShort": "Millwall",
    "venue": "The Hawthorns",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 15",
    "source": "api-football.com",
    "tv": {
@@ -806,9 +802,9 @@
    "homeShort": "Arsenal",
    "awayShort": "Hull City",
    "venue": "Emirates Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -833,9 +829,9 @@
    "homeShort": "Fulham",
    "awayShort": "Newcastle",
    "venue": "Craven Cottage",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -860,9 +856,9 @@
    "homeShort": "Dundee Utd",
    "awayShort": "Motherwell",
    "venue": "CalForth Construction Arena",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -887,9 +883,9 @@
    "homeShort": "ST Johnstone",
    "awayShort": "Dundee",
    "venue": "McDiarmid Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

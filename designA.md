@@ -144,6 +144,10 @@ in advance:
   sheet stays open until Done. A fixture shows if any of its channels, "also on" ones included,
   belongs to a ticked broadcaster; one with no channel yet is hidden. Day and channels combine: My TV
   Choice + Tuesday + TNT Sports. Neither is saved: the app opens on All days and All channels.
+- **One row for the three buttons (George, 8 Nov 2026):** if "All days" and "All channels" don't fit
+  (a larger font size: on George's Pixel 1.0.7 put "All channels" on a second row), they read "Days"
+  and "Channels" (`fitButtons` measures the row). Only if even that doesn't fit (very large text on a
+  narrow phone) do they wrap onto a second row.
 - **Back (swipe or button) on My TV:** with a day or channels picked it clears both; a second back
   sends the app to the background (George, 7 Nov 2026: one swipe used to close the app with a day
   still picked).

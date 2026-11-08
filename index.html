@@ -234,9 +234,14 @@
   .chip[aria-pressed="true"] { background: var(--text); border-color: var(--text); color: var(--bg); }
   .chip .soon { font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; opacity: .65; margin-left: 5px; }
   .mine { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-  /* Side by side and equally wide; with larger text they wrap onto a second line */
-  .mine .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  /* Side by side on one row, equally wide where they can be; fitButtons shortens the labels (.short)
+     and, only as a last resort with very large text, lets them wrap (.wrap) */
+  .mine .btns { display: flex; gap: 8px; }
+  .mine .btns.wrap { flex-wrap: wrap; }
   .mine .btns .edit { flex: 1 1 0; min-width: fit-content; justify-content: center; white-space: nowrap; padding-left: 8px; padding-right: 8px; }
+  .mine .btns .ls, .mine .btns.short .lf { display: none; }
+  .mine .btns.short .ls { display: inline; }
+  .mine .btns.short .edit { gap: 4px; padding-left: 6px; padding-right: 6px; }
   .mine .what { font-size: 0.8125rem; color: var(--muted); }
   .mine .what b { color: var(--text); font-weight: 600; }
   .edit {
@@ -849,20 +854,36 @@
     return `Current Selection: <b>${esc(names.join(', '))}</b>`;
   }
 
+  // The three My TV buttons stay on one row (George, 8 Nov 2026): full labels if they fit, else
+  // "Days" / "Channels", and only if even those don't fit (very large text on a narrow phone) a second row.
+  function fitButtons() {
+    const row = $('.mine .btns');
+    if (!row) return;
+    row.classList.remove('short', 'wrap');
+    const over = () => row.scrollWidth > row.clientWidth + 1;
+    if (over()) row.classList.add('short');
+    if (over()) row.classList.add('wrap');
+  }
+  addEventListener('resize', fitButtons);
+  if (document.fonts) document.fonts.ready.then(fitButtons);
+
   function renderNav() {
     $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mytab' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--h:${s.hue}">
       ${tile(s)}<span>${esc(s.name)}</span></button>`).join('');
     if (view.sport === 'mine') {
       const day = pickedDay();
       const chans = pickedChans() ? [...pickedChans()].sort(brandOrder) : [];
-      const chanLabel = !chans.length ? 'All channels' : chans.length === 1 ? chans[0] : `${chans[0]} +${chans.length - 1}`;
+      // "All days" / "All channels" shorten to "Days" / "Channels" when the row is too narrow (fitButtons)
+      const two = (long, short) => `<span class="lf">${long}</span><span class="ls">${short}</span>`;
+      const chanLabel = !chans.length ? two('All channels', 'Channels') : esc(chans.length === 1 ? chans[0] : `${chans[0]} +${chans.length - 1}`);
       $('#sub').innerHTML = `<div class="mine">
         <div class="btns">
           <button class="edit" id="edit">${ICON.edit}<span>My TV Choice</span></button>
-          <button class="edit" id="dayBtn">${ICON.calendar}<span>${day ? esc(dayName(day)) : 'All days'}</span></button>
-          <button class="edit" id="chanBtn" aria-label="Channels: ${esc(chans.length ? chans.join(', ') : 'all')}">${ICON.tv}<span>${esc(chanLabel)}</span></button>
+          <button class="edit" id="dayBtn">${ICON.calendar}<span>${day ? esc(dayName(day)) : two('All days', 'Days')}</span></button>
+          <button class="edit" id="chanBtn" aria-label="Channels: ${esc(chans.length ? chans.join(', ') : 'all')}">${ICON.tv}<span>${chanLabel}</span></button>
         </div>
         <div class="what">${picksSummary()}</div></div>`;
+      fitButtons();
     } else {
       const s = SPORTS.find(x => x.id === view.sport);
       // A sport with a single competition has nothing to choose between, so no chips (except Specials).

@@ -33,8 +33,8 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 
 - **Proper sources only.** Football fixtures and scores come from API-Football, a paid football data service; every other sport's fixtures come from the competition's own data. TV channels come from the broadcasters' own listings, never from fan sites.
 - **No guessing.** A channel is shown only when a broadcaster's listing confirms it. Otherwise the app says "TV channel to be confirmed". The rule-based line is "Not shown live on UK TV": for Saturday 3pm football (the UK blackout), and for any football game with no channel listed 48 hours before kick-off (broadcasters announce their picks earlier than that), so people can plan.
-- **Each source fails on its own.** If one site can't be read, everything else still works, and the app shows a yellow banner saying what's affected.
-- **Every event in the window.** Each sport's fixtures come from its full season calendar or a date range, never a feed that only knows the next event. An event on the calendar whose details can't be read shows the yellow banner rather than quietly going missing.
+- **Each source fails on its own.** If one site can't be read, everything else still works, and the last listings carry on. An hourly check emails George when a source has failed on two updates in a row, or the listings stop updating.
+- **Every event in the window.** Each sport's fixtures come from its full season calendar or a date range, never a feed that only knows the next event. An event on the calendar whose details can't be read counts as a failure of that source (and so an email) rather than quietly going missing.
 
 ## How it works
 
@@ -140,7 +140,7 @@ The "Run workflow" button on GitHub's Actions tab still works as a manual backup
 
 ## If something looks wrong
 
-- **A yellow banner** means a source couldn't be read on the last update. Everything else still works, and channels already confirmed are kept.
+- **A yellow banner** means there's no internet connection, or the listings haven't been refreshed for over 12 hours. A source that can't be read shows no banner: its listings carry on and George gets an email.
 - **Finding out what happened:** in Google Cloud, open Cloud Run → **Jobs** → `football-update` → **Executions** → a run → **Logs**; it prints the report for each source. The same report is saved in `data.json` under `report`.
 - **A channel says "TV channel to be confirmed"** when no broadcaster's listing has confirmed it yet. Broadcasters publish their picks a few days ahead.
 - **Football looks wrong** (wrong times, missing games): the report's `apiFootball` entry says whether API-Football answered, and `goldenCheck` says when the official feeds last checked it and which games they corrected (`changed`). `scripts/compare-api-football.mjs` compares it with the official feeds, and `cloud/SETUP.md` explains how to switch back to them.

@@ -126,7 +126,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 | A data source objects to commercial use, or the store removes the app after a rights complaint | Low while small | High | **Accepted risk (George, 29 Oct 2026).** Permission was asked from all 12 organisations (emails sent); none has replied, and we go ahead without waiting. Any objection is dealt with when it arises: one module per source, so any one can be switched off or swapped quickly. Review if the app grows |
 | Football DataCo objects to scores (live match data; its 2013 win against Sportradar) | Low while small | Medium | **Accepted risk (George, 19 Oct 2026).** Fixtures are facts. Scores are refreshed only every 5 minutes (never live), are **not a selling point** (not in the store listing or paywall), and sit behind one switch so they can be removed quickly. Review if the app grows or DataCo makes contact |
 | API-Football stops operating, changes terms or raises prices | Low–Medium | High (all football) | Accepted for now: focus on getting to market. Its own source module, so a swap is like-for-like; football-data.org is the known fallback (PL, Championship, UCL free; the rest paid) |
-| A source changes its website and stops answering | High (happens often) | Medium | Already handled: each source fails on its own, with yellow banners and the keep rule. Add an email alert (Phase 6) |
+| A source changes its website and stops answering | High (happens often) | Medium | Already handled: each source fails on its own, with the keep rule, and an hourly email alert since 8 Nov 2026 |
 | Google rejects the app or delays production access | Low–Medium | Medium | Follow the store checklist (Phase 5); complete the 14-day closed test properly; keep notes for Google's questions |
 | Apple rejects the app as "just a website" (rule 4.2) | Medium if done thinly | Medium | Screens packaged inside the app, offline mode, reminders, and later push notifications or a widget |
 | Too few people pay | Medium | Medium | Free month, then a deliberately limited free tier; measure conversion. A no-card month brings more people in, but fewer go on to pay because paying is a choice. Review at Gate G2 |
@@ -391,7 +391,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **Monthly:**
   - Review the measures of success (section 2) and costs.
   - Note what changed.
-- [ ] **Alerting:** an email when a source fails for several updates in a row, or the data file is older than 2 hours.
+- [x] **Alerting (done 8 Nov 2026):** an email when a source fails on two updates in a row, or the data file is older than 2 hours (`.github/workflows/watch.yml`, hourly; GitHub's "Run failed" email). The app no longer shows banners for failed sources. Later, if wanted: a proper email with a clear subject line through Cloudflare, and one email per problem rather than one an hour.
 - [ ] Make the update job **save only when something changed**, plus a heartbeat, before ever running it more often than every 30 minutes.
 - [ ] Connect the "SOON" competitions: each is a reason to subscribe and a "What's new" entry. Done: MotoGP and F3 (20 Oct 2026); rugby union, tennis, alpine skiing and the first Special, curling (29 Oct 2026). Still to do: Super League (once its 2027 fixtures are out) and more Specials.
 - [ ] **Privacy-friendly growth:**

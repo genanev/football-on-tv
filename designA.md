@@ -211,8 +211,8 @@ Listing cards (these changed from the old tab-bar app):
   together, "…to be confirmed" hidden once started, "Also on…", the conflict warning.
   Since 29 Oct 2026 finished games have no "FT" (greyed out is enough), and a football game that
   has kicked off with no channel says "Not shown live on UK TV" (while live and afterwards).
-- **Banners:** one per failed source, shown only when the view includes a competition that
-  source feeds (mapped to competition ids in `render()`).
+- **Banners:** only "No internet connection" and "not refreshed for N hours" (after 12 hours). No banner
+  for a failed source since 8 Nov 2026: the hourly watcher emails George instead.
 - Every day of the 8-day window is listed. Empty-day messages: My TV "Nothing on TV from your
   picks"; whole sport "No televised football" / "No motorsport sessions" / "No televised golf" /
   "No international cricket on TV" / "No televised darts" / "No televised snooker" / "No big events

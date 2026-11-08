@@ -152,6 +152,21 @@ export function keepEventsOfFailedSources(events, previous, report, inWindow) {
   return events;
 }
 
+// When each failing source started failing (George, 8 Nov 2026): the app no longer shows a banner for a
+// failed source; scripts/watch.mjs emails George instead, but only once a source has failed on two
+// updates in a row (a one-off 429 is cleared by the next update). `failingSince` is carried over from
+// the previous update while the source keeps failing. The daily check's feeds (`goldenCheck`) too.
+export function markFailingSince(report, previous, now) {
+  const mark = (entry, before) => {
+    if (entry?.ok !== false) return;
+    entry.failingSince = before?.ok === false && before.failingSince ? before.failingSince : new Date(now).toISOString();
+  };
+  const prev = previous?.report || {};
+  for (const [key, entry] of Object.entries(report)) mark(entry, prev[key]);
+  for (const [key, entry] of Object.entries(report.goldenCheck || {})) mark(entry, prev.goldenCheck?.[key]);
+  return report;
+}
+
 export function keepKnownChannels(events, previous, { report = {}, now = Date.now() } = {}) {
   const before = previousEvents(previous);
   for (const e of events) {
@@ -448,6 +463,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   markNotOnTv(events, report, now);
   if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
   report.scores = showScores ? 'on' : 'off';
+  markFailingSince(report, previous, now);
   // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it
   return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, specials, events, golden };
 }

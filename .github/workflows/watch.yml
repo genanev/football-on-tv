@@ -1,0 +1,25 @@
+name: Listings alert
+
+# Every hour: reads the listings file the phone app reads (data.tellyfixtures.co.uk) and fails if it's
+# more than 2 hours old or a source has failed on two updates in a row (scripts/watch.mjs). A failed run
+# is what makes GitHub email George, so the app needs no banners for failed sources (George, 8 Nov 2026).
+# Runs at 20 past (updates are at :00 and :30); GitHub may start scheduled runs a few minutes late.
+
+on:
+  schedule:
+    - cron: '20 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Check the listings
+        run: node scripts/watch.mjs

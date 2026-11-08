@@ -16,7 +16,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { build } from '../scripts/build.mjs';
 import { guideTeams } from '../scripts/sources/football.mjs';
-import { mapEflMatch, eflEvents } from '../scripts/sources/efl.mjs';
+import { mapEflMatch, eflEvents, fetchEfl } from '../scripts/sources/efl.mjs';
 import { parseFaFixtures } from '../scripts/sources/facup.mjs';
 
 const fx = (name) => readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8');
@@ -145,5 +145,19 @@ assert.deepEqual(uel(noTnt, 'Lyon').tv.channels, ['TNT Sports 1']);
 assert.deepEqual(uel(noTnt, 'Celta').tv.channels, []);
 assert.equal(uel(noTnt, 'Celta').tv.note, 'TV channel to be confirmed');
 assert.deepEqual(uel(withPrevious, 'Celta').tv.channels, ['HBO Max']);
+
+// A week with no EFL games (the international break, 8-16 Nov 2026): the feed answers 404 "No matches
+// found" (real answer, 8 Nov 2026). That is an empty week, not a failure; any other 404 still is.
+{
+  const realFetch = globalThis.fetch;
+  const answer = (status, body) => async () => ({ ok: status < 300, status, json: async () => body });
+  globalThis.fetch = answer(404, { errors: [{ detail: 'No matches found', title: 'Not Found', status: '404' }] });
+  assert.deepEqual(await fetchEfl('2026-11-08', '2026-11-16', 2026), []);
+  globalThis.fetch = answer(404, { errors: [{ detail: 'Route not found' }] });
+  await assert.rejects(fetchEfl('2026-11-08', '2026-11-16', 2026), /HTTP 404/);
+  globalThis.fetch = answer(500, {});
+  await assert.rejects(fetchEfl('2026-11-08', '2026-11-16', 2026), /HTTP 500/);
+  globalThis.fetch = realFetch;
+}
 
 console.log('\nAll Europa League, Championship and cup tests passed');

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T00:00:23.614Z",
+ "generatedAt": "2026-11-08T00:30:13.439Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,12 +10,12 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 38,
+   "events": 36,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1041,
+   "programmes": 1040,
    "errors": []
   },
   "primeVideo": {
@@ -34,7 +34,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 173
+   "events": 156
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -88,8 +88,8 @@
    "televisedTies": 5
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645286,2645287,2645290,2645294,2645292&pageSize=50"
+   "ok": true,
+   "matches": 5
   },
   "footballChannels": "5/5 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -133,9 +133,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
-   "keptEvents": 1
+   "ok": true,
+   "sessions": 1
   },
   "darts": {
    "ok": true,
@@ -174,12 +173,11 @@
   "tennis": {
    "ok": true,
    "tournaments": [
+    "WTA Finals",
     "ATP Finals"
    ],
-   "days": 1,
-   "errors": [
-    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-08&to=2026-11-16"
-   ]
+   "days": 9,
+   "errors": []
   },
   "rugby": {
    "ok": true,
@@ -787,6 +785,33 @@
    }
   },
   {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 1",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-08",
+   "kickoff": "2026-11-08T19:30:00.000Z",
+   "end": "2026-11-09T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "GOLF",
    "kind": "session",
    "title": "World Wide Technology Championship",
@@ -898,6 +923,35 @@
    }
   },
   {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 2",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-09",
+   "kickoff": "2026-11-09T19:30:00.000Z",
+   "end": "2026-11-10T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "New Zealand v India",
@@ -977,6 +1031,35 @@
    }
   },
   {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 3",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-10",
+   "kickoff": "2026-11-10T19:30:00.000Z",
+   "end": "2026-11-11T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Sportsbet.io Champion of Champions",
@@ -1020,6 +1103,35 @@
      "ITV4"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 4",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-11",
+   "kickoff": "2026-11-11T19:30:00.000Z",
+   "end": "2026-11-12T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1128,6 +1240,36 @@
      "ITV4"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 5",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-12",
+   "kickoff": "2026-11-12T19:30:00.000Z",
+   "end": "2026-11-13T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event",
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1264,6 +1406,35 @@
      "ITV4"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 6",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-13",
+   "kickoff": "2026-11-13T19:30:00.000Z",
+   "end": "2026-11-14T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1611,6 +1782,35 @@
    }
   },
   {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 7",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-14",
+   "kickoff": "2026-11-14T19:30:00.000Z",
+   "end": "2026-11-15T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "wr-fe091325-020d-4e1a-ae3c-5cc6ea911da8",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -1938,6 +2138,33 @@
     "broadcaster": "ITV4",
     "channels": [
      "ITV4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 8",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-15",
+   "kickoff": "2026-11-15T22:00:00.000Z",
+   "end": "2026-11-15T23:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
     ],
     "alsoOn": [],
     "confirmed": true,

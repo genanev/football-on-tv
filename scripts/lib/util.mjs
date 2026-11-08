@@ -76,6 +76,14 @@ export async function getJSON(url, headers = {}) {
   return r.json();
 }
 
+/** Like getJSON, but a 404 comes back as `{ notFound: <its body> }`: some feeds say "no results" that way. */
+export async function getJSONOr404(url, headers = {}) {
+  const r = await fetchPatiently(url, { headers: { 'User-Agent': UA, Accept: 'application/json', ...headers } });
+  if (r.status === 404) return { notFound: await r.json().catch(() => null) };
+  if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+  return r.json();
+}
+
 export async function getText(url, headers = {}) {
   const r = await fetchPatiently(url, { headers: { 'User-Agent': UA, Accept: 'text/html', 'Accept-Language': 'en-GB,en;q=0.9', ...headers } });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);

@@ -11,7 +11,7 @@
 // without a confirmed channel say "TV channel to be confirmed" (no guessing from who holds the rights).
 // League Cup: only ties confirmed on UK TV are listed (the cup tab is for televised ties).
 
-import { getJSON, londonParts } from '../lib/util.mjs';
+import { getJSONOr404, londonParts } from '../lib/util.mjs';
 import { footballTv } from './footballTv.mjs';
 
 const EFL_URL = 'https://multi-club-matches.webapi.gc.eflservices.co.uk/v2/matches';
@@ -56,7 +56,14 @@ export async function fetchEfl(fromDate, toDate, seasonID) {
   });
   const out = [];
   for (let page = 1; page <= 5; page++) {
-    const j = await getJSON(`${EFL_URL}?${q}&page.number=${page}`, { Origin: 'https://www.efl.com' });
+    const url = `${EFL_URL}?${q}&page.number=${page}`;
+    const j = await getJSONOr404(url, { Origin: 'https://www.efl.com' });
+    // A window with no games (the international break of 8-16 Nov 2026) is a 404 "No matches found",
+    // not an error; any other 404 is (e.g. the address changed)
+    if (j.notFound) {
+      if (j.notFound?.errors?.some(e => /no matches found/i.test(e.detail || ''))) break;
+      throw new Error(`HTTP 404 for ${url}`);
+    }
     out.push(...(j.data || []).map(mapEflMatch).filter(Boolean));
     if (!j.links?.next) break;
   }

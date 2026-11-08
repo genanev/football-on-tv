@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T12:30:21.529Z",
+ "generatedAt": "2026-11-08T13:00:15.156Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,9 +19,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
-   "failingSince": "2026-11-08T12:30:21.529Z"
+   "ok": true,
+   "events": 8,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -228,7 +237,7 @@
    "awayShort": "Grimsby",
    "venue": "Marston Road",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "1/128-finals",
    "source": "api-football.com",
@@ -293,7 +302,7 @@
    "venue": "West Lancashire College Stadium",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {

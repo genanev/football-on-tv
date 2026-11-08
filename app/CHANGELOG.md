@@ -4,6 +4,10 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.8
+- The My TV Choice, days and channels buttons now stay on one row: with larger text they read "Days" and "Channels".
+- No more yellow messages when a single source couldn't be checked: the listings carry on as before, and we're alerted behind the scenes.
+
 ## 1.0.7
 - New channel filter on My TV: pick the channels you have, on their own or with a day, e.g. Tuesday on TNT Sports.
 - "Customise My TV" is now called "My TV Choice".

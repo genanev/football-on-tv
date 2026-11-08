@@ -19,7 +19,8 @@
 
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { build, keepKnownChannels, teamSim, ukToUtc, parsePlKickoff, ukDate, mapPlBroadcasts } from '../scripts/build.mjs';
+import { problems } from '../scripts/watch.mjs';
+import { build, keepKnownChannels, markFailingSince, teamSim, ukToUtc, parsePlKickoff, ukDate, mapPlBroadcasts } from '../scripts/build.mjs';
 import { footballTv } from '../scripts/sources/footballTv.mjs';
 import { guideProgrammesFor } from '../scripts/sources/football.mjs';
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
@@ -161,6 +162,42 @@ down = null;
 assert.equal(noTnt.report.tntSchedule.ok, false);
 assert.deepEqual(noTnt.events.find(e => e.comp === 'PL' && e.home === 'Everton').tv.channels, ['TNT Sports 1']);
 assert.equal(noTnt.events.find(e => e.comp === 'UCL' && e.home === 'Villarreal').tv.note, 'TV channel to be confirmed');
+
+// When a source started failing (8 Nov 2026), for the hourly watcher's emails: this update's time on
+// the first failure, carried over while it keeps failing, gone once it answers
+assert.equal(noTnt.report.tntSchedule.failingSince, '2026-10-13T09:00:00.000Z');
+assert.equal(noTnt.report.tvGuide.failingSince, undefined);
+down = 'netsport.eurosport.io';
+const noTntAgain = await build(Date.parse('2026-10-13T09:30:00Z'), noTnt);
+down = null;
+assert.equal(noTntAgain.report.tntSchedule.failingSince, '2026-10-13T09:00:00.000Z');
+const tntBack = await build(Date.parse('2026-10-13T10:00:00Z'), noTntAgain);
+assert.equal(tntBack.report.tntSchedule.ok, true);
+assert.equal(tntBack.report.tntSchedule.failingSince, undefined);
+{
+  const report = { motogp: { ok: false }, goldenCheck: { efl: { ok: false }, premierLeague: { ok: true } } };
+  markFailingSince(report, { report: { goldenCheck: { efl: { ok: false, failingSince: '2026-11-07T06:00:00.000Z' } } } }, Date.parse('2026-11-08T00:00:00Z'));
+  assert.equal(report.motogp.failingSince, '2026-11-08T00:00:00.000Z');
+  assert.equal(report.goldenCheck.efl.failingSince, '2026-11-07T06:00:00.000Z');
+  assert.equal(report.goldenCheck.premierLeague.failingSince, undefined);
+}
+
+// The hourly watcher (scripts/watch.mjs): quiet for a one-off failure, a US run's wrong-country page
+// and a fresh file; an email (a failed run) for a source failing on two updates in a row, or an old file
+{
+  const at = (t) => Date.parse(`2026-11-08T${t}Z`);
+  const file = (report, generatedAt = '2026-11-08T00:30:00.000Z') => ({ generatedAt, report });
+  assert.deepEqual(problems(file({ motogp: { ok: true } }), at('01:20:00')), []);
+  assert.deepEqual(problems(file({ motogp: { ok: false, error: 'HTTP 429', failingSince: '2026-11-08T00:30:00.000Z' } }), at('01:20:00')), []);
+  assert.deepEqual(problems(file({ premierSports: { ok: false, wrongRegion: true, failingSince: '2026-11-07T00:00:00.000Z' } }), at('01:20:00')), []);
+  assert.deepEqual(problems(file({ motogp: { ok: false, error: 'HTTP 429', failingSince: '2026-11-08T00:00:00.000Z' } }), at('01:20:00')),
+    ['MotoGP has failed since Sun 8 Nov, 00:00: HTTP 429']);
+  assert.deepEqual(problems(file({ goldenCheck: { efl: { ok: false, error: 'HTTP 500', failingSince: '2026-11-07T06:00:00.000Z' } } }), at('01:20:00')),
+    ["The daily check's Championship and League Cup fixtures feed has failed since Sat 7 Nov, 06:00: HTTP 500"]);
+  assert.deepEqual(problems(file({}), at('02:30:00')), []);
+  assert.match(problems(file({}), at('02:31:00'))[0], /^The listings haven't been updated for 2 h 1 min \(last update Sun 8 Nov, 00:30\)/);
+  assert.deepEqual(problems({}), ['The listings file has no update time.']);
+}
 
 // Prime Video's page down: Amazon's game says "TV channel to be confirmed" (no guess)...
 down = 'primevideo.com';

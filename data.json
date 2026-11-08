@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T04:00:16.823Z",
+ "generatedAt": "2026-11-08T04:30:14.139Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -14,23 +14,14 @@
    "errors": []
   },
   "tntSchedule": {
-   "ok": false,
-   "error": "2026-11-08: PersistedQueryNotFound",
-   "failingSince": "2026-11-08T04:00:16.823Z"
+   "ok": true,
+   "programmes": 1041,
+   "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
+   "failingSince": "2026-11-08T04:30:14.139Z"
   },
   "premierSports": {
    "ok": true,
@@ -600,7 +591,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }
@@ -653,12 +644,15 @@
     "channels": [
      "TNT Sports 2"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "HBO Max"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "tntsports.co.uk"
     ]
    }
   },
@@ -684,7 +678,7 @@
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Not shown live on UK TV",
     "conflict": false,
     "sources": []
    }
@@ -1523,8 +1517,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk",
-     "previous-update"
+     "tntsports.co.uk"
     ]
    }
   },
@@ -1583,8 +1576,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk",
-     "previous-update"
+     "tntsports.co.uk"
     ]
    }
   },
@@ -1946,8 +1938,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk",
-     "previous-update"
+     "tntsports.co.uk"
     ]
    }
   },
@@ -2002,8 +1993,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "tntsports.co.uk",
-     "previous-update"
+     "tntsports.co.uk"
     ]
    }
   },

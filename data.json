@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T15:30:26.377Z",
+ "generatedAt": "2026-11-08T16:00:28.443Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1040,
+   "programmes": 1039,
    "errors": []
   },
   "primeVideo": {
@@ -336,7 +336,7 @@
    "homeShort": "Brighton",
    "awayShort": "Brentford",
    "venue": "American Express Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 10",
@@ -368,9 +368,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Liverpool",
    "venue": "Selhurst Park",
-   "status": "live",
-   "homeScore": 0,
-   "awayScore": 2,
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 3,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -400,8 +400,8 @@
    "homeShort": "Ipswich",
    "awayShort": "Bournemouth",
    "venue": "Portman Road Stadium",
-   "status": "live",
-   "homeScore": 0,
+   "status": "finished",
+   "homeScore": 1,
    "awayScore": 2,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -463,9 +463,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Charlton Athletic",
    "venue": "Selhurst Park",
-   "status": "live",
-   "homeScore": 1,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 2,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -494,7 +494,7 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Brighton",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 1,
    "round": "Regular Season - 9",
@@ -531,7 +531,7 @@
    "venue": "Flamingo Park",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -596,7 +596,7 @@
    "venue": "Tynecastle Park",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 2,
+   "awayScore": 4,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

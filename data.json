@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-08T10:30:31.685Z",
+ "generatedAt": "2026-11-08T11:00:11.790Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4788,
+   "programmes": 4796,
    "errors": []
   },
   "skyListings": {
@@ -19,9 +19,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
-   "failingSince": "2026-11-08T10:30:31.685Z"
+   "ok": true,
+   "events": 8,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -2149,7 +2158,7 @@
    "status": "upcoming",
    "label": null,
    "id": "tennis-808-2026-2026-11-15",
-   "kickoff": "2026-11-15T22:00:00.000Z",
+   "kickoff": "2026-11-15T19:00:00.000Z",
    "end": "2026-11-15T23:30:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -2158,6 +2167,35 @@
      "Sky Sports Tennis"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_ATPF",
+   "kind": "session",
+   "title": "ATP Finals",
+   "session": "Day 2",
+   "venue": "sh Italian Japanese Inalpi Arena, Torino",
+   "source": "nittoatpfinals.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-atpf-2026-2026-11-16",
+   "kickoff": "2026-11-16T10:30:00.000Z",
+   "end": "2026-11-16T21:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -2187,35 +2225,6 @@
     "note": "TV times to be confirmed",
     "conflict": false,
     "sources": []
-   }
-  },
-  {
-   "comp": "TEN_ATPF",
-   "kind": "session",
-   "title": "ATP Finals",
-   "session": "Day 2",
-   "venue": "sh Italian Japanese Inalpi Arena, Torino",
-   "source": "nittoatpfinals.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-atpf-2026-2026-11-16",
-   "kickoff": "2026-11-16T17:00:00.000Z",
-   "end": "2026-11-16T21:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
    }
   }
  ],

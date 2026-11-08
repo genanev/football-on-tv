@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T19:00:19.179Z",
+ "generatedAt": "2026-11-08T19:30:19.361Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1039,
+   "programmes": 1038,
    "errors": []
   },
   "primeVideo": {
@@ -716,7 +716,7 @@
    "title": "São Paulo Grand Prix",
    "session": "Race",
    "venue": "Interlagos",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

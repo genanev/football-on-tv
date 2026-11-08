@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-08T17:00:23.221Z",
+ "generatedAt": "2026-11-08T17:30:10.597Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4796,
+   "programmes": 4795,
    "errors": []
   },
   "skyListings": {
@@ -85,7 +85,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 2
+   "televisedTies": 1
   },
   "premierLeagueTv": {
    "ok": true,
@@ -636,7 +636,7 @@
    "timeTbc": false,
    "id": "motogp-ac8631ea-71b0-411a-8676-aa68b4f69b81",
    "kickoff": "2026-11-08T16:00:00.000Z",
-   "end": "2026-11-08T17:15:00.000Z",
+   "end": "2026-11-08T17:00:00.000Z",
    "session": "Race",
    "status": "finished",
    "tv": {
@@ -696,7 +696,7 @@
    "awayShort": "Aston Villa",
    "venue": "Old Trafford",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 2,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -726,7 +726,7 @@
    "title": "São Paulo Grand Prix",
    "session": "Race",
    "venue": "Interlagos",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {
@@ -756,9 +756,9 @@
    "homeShort": "Oldham",
    "awayShort": "Sheffield Wednesday",
    "venue": "Boundary Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -771,7 +771,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com"
+     "thefa.com",
+     "previous-update"
     ]
    }
   },

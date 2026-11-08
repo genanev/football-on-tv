@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T18:00:12.049Z",
+ "generatedAt": "2026-11-08T18:30:30.870Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -695,8 +695,8 @@
    "homeShort": "Manchester United",
    "awayShort": "Aston Villa",
    "venue": "Old Trafford",
-   "status": "live",
-   "homeScore": 2,
+   "status": "finished",
+   "homeScore": 4,
    "awayScore": 4,
    "round": "Regular Season - 10",
    "source": "api-football.com",

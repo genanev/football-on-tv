@@ -1,0 +1,14 @@
+# The listings alert: see worker.mjs. Deployed by hand (cloud/SETUP.md), not by the London job.
+name = "telly-fixtures-alert"
+main = "worker.mjs"
+compatibility_date = "2026-10-01"
+# No web address: it only runs on its schedule
+workers_dev = false
+preview_urls = false
+
+[triggers]
+# Times are UTC. Hourly check; "all well" on Mondays at 09:00. The hourly one must match HOURLY in worker.mjs.
+crons = ["20 * * * *", "0 9 * * 1"]
+
+[[send_email]]
+name = "EMAIL"

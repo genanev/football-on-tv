@@ -19,7 +19,8 @@
 
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { problems } from '../scripts/watch.mjs';
+import { problems } from '../scripts/watch-check.mjs';
+import worker, { runCheck, HOURLY } from '../cloud/watch-worker/worker.mjs';
 import { build, keepKnownChannels, markFailingSince, teamSim, ukToUtc, parsePlKickoff, ukDate, mapPlBroadcasts } from '../scripts/build.mjs';
 import { footballTv } from '../scripts/sources/footballTv.mjs';
 import { guideProgrammesFor } from '../scripts/sources/football.mjs';
@@ -197,6 +198,36 @@ assert.equal(tntBack.report.tntSchedule.failingSince, undefined);
   assert.deepEqual(problems(file({}), at('02:30:00')), []);
   assert.match(problems(file({}), at('02:31:00'))[0], /^The listings haven't been updated for 2 h 1 min \(last update Sun 8 Nov, 00:30\)/);
   assert.deepEqual(problems({}), ['The listings file has no update time.']);
+
+  // The Cloudflare alert: silent on an hourly run when all is well, an email for a problem or an
+  // unreadable file, and always an email from any other run (the weekly "all well", or a test)
+  const realFetch = globalThis.fetch;
+  const sent = [];
+  const env = { ALERT_TO: 'owner@example.test', EMAIL: { send: async (m) => { sent.push(m); } } };
+  const serve = (body, status = 200) => { globalThis.fetch = async () => ({ ok: status < 300, status, json: async () => body }); };
+  const now = at('01:20:00');
+  serve(file({ motogp: { ok: true } }));
+  assert.equal(await runCheck(env, HOURLY, now), 'all well, no email');
+  assert.equal(sent.length, 0);
+  await runCheck(env, '0 9 * * 1', now);
+  assert.equal(sent.pop().subject, 'Telly Fixtures: all well (weekly check)');
+  serve(file({ motogp: { ok: false, error: 'HTTP 429', failingSince: '2026-11-08T00:00:00.000Z' } }));
+  await runCheck(env, HOURLY, now);
+  const alert = sent.pop();
+  assert.equal(alert.subject, 'Telly Fixtures alert: a problem with the listings');
+  assert.equal(alert.to, 'owner@example.test');
+  assert.equal(alert.from, 'alerts@tellyfixtures.co.uk');
+  assert.match(alert.text, /^- MotoGP has failed since Sun 8 Nov, 00:00: HTTP 429\n/);
+  serve({}, 503);
+  await runCheck(env, HOURLY, now);
+  assert.match(sent.pop().text, /couldn't be read from https:\/\/data\.tellyfixtures\.co\.uk\/data\.json: HTTP 503/);
+  // The check itself asks for a fresh copy, and Cloudflare's schedule reaches the same code
+  let asked;
+  globalThis.fetch = async (url) => { asked = url; return { ok: true, status: 200, json: async () => file({}, new Date(Date.now()).toISOString()) }; };
+  await worker.scheduled({ cron: HOURLY }, env);
+  assert.match(asked, /^https:\/\/data\.tellyfixtures\.co\.uk\/data\.json\?watch=\d+$/);
+  assert.equal(sent.length, 0);
+  globalThis.fetch = realFetch;
 }
 
 // Prime Video's page down: Amazon's game says "TV channel to be confirmed" (no guess)...

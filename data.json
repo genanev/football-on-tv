@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T18:30:30.870Z",
+ "generatedAt": "2026-11-08T19:00:19.179Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 28,
+   "events": 27,
    "errors": []
   },
   "tntSchedule": {
@@ -19,18 +19,9 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
+   "failingSince": "2026-11-08T19:00:19.179Z"
   },
   "premierSports": {
    "ok": true,
@@ -712,8 +703,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -757,8 +747,8 @@
    "awayShort": "Sheffield Wednesday",
    "venue": "Boundary Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 0,
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {

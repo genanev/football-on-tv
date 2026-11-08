@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-08T16:30:13.649Z",
+ "generatedAt": "2026-11-08T17:00:23.221Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4795,
+   "programmes": 4796,
    "errors": []
   },
   "skyListings": {
@@ -85,7 +85,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 5
+   "televisedTies": 2
   },
   "premierLeagueTv": {
    "ok": true,
@@ -251,7 +251,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -519,7 +518,7 @@
    "homeShort": "Cray Wanderers",
    "awayShort": "Stockport County",
    "venue": "Flamingo Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 3,
    "round": "1/128-finals",
@@ -534,7 +533,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -552,8 +550,8 @@
    "homeShort": "Wimborne Town",
    "awayShort": "Crawley Town",
    "venue": "The Cuthbury",
-   "status": "live",
-   "homeScore": 1,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 0,
    "round": "1/128-finals",
    "source": "api-football.com",
@@ -567,7 +565,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -584,8 +581,8 @@
    "homeShort": "Heart Of Midlothian",
    "awayShort": "Falkirk",
    "venue": "Tynecastle Park",
-   "status": "live",
-   "homeScore": 1,
+   "status": "finished",
+   "homeScore": 2,
    "awayScore": 5,
    "round": "Regular Season - 13",
    "source": "api-football.com",
@@ -611,7 +608,7 @@
    "homeShort": "England",
    "awayShort": "Australia",
    "venue": "Allianz Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -641,7 +638,7 @@
    "kickoff": "2026-11-08T16:00:00.000Z",
    "end": "2026-11-08T17:15:00.000Z",
    "session": "Race",
-   "status": "live",
+   "status": "finished",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [
@@ -698,9 +695,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Aston Villa",
    "venue": "Old Trafford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 2,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

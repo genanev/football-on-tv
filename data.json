@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-11-08T16:00:28.443Z",
+ "generatedAt": "2026-11-08T16:30:13.649Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4796,
+   "programmes": 4795,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 34,
+   "events": 28,
    "errors": []
   },
   "tntSchedule": {
@@ -91,7 +91,7 @@
    "ok": true,
    "matches": 5
   },
-  "footballChannels": "5/5 PL+UCL matches with a confirmed channel",
+  "footballChannels": "4/5 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -278,15 +278,12 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -312,15 +309,12 @@
     "channels": [
      "Sky Sports Football"
     ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -351,8 +345,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -383,8 +376,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -415,7 +407,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -431,7 +424,7 @@
    "homeShort": "Sunderland",
    "awayShort": "Chelsea",
    "venue": "Stadium of Light",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 10",
@@ -446,8 +439,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -478,7 +470,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -504,15 +497,12 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -531,7 +521,7 @@
    "venue": "Flamingo Park",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 1,
+   "awayScore": 3,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -595,8 +585,8 @@
    "awayShort": "Falkirk",
    "venue": "Tynecastle Park",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 4,
+   "homeScore": 1,
+   "awayScore": 5,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {
@@ -649,9 +639,9 @@
    "timeTbc": false,
    "id": "motogp-ac8631ea-71b0-411a-8676-aa68b4f69b81",
    "kickoff": "2026-11-08T16:00:00.000Z",
-   "end": "2026-11-08T17:00:00.000Z",
+   "end": "2026-11-08T17:15:00.000Z",
    "session": "Race",
-   "status": "upcoming",
+   "status": "live",
    "tv": {
     "broadcaster": "TNT Sports 2",
     "channels": [
@@ -681,9 +671,9 @@
    "homeShort": "Celtic",
    "awayShort": "Kilmarnock",
    "venue": "Celtic Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 13",
    "source": "api-football.com",
    "tv": {

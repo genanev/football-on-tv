@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-08T01:00:19.970Z",
+ "generatedAt": "2026-11-08T01:30:11.054Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4447,
+   "programmes": 4763,
    "errors": []
   },
   "skyListings": {
@@ -19,18 +19,9 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
+   "failingSince": "2026-11-08T01:30:11.054Z"
   },
   "premierSports": {
    "ok": true,
@@ -2216,7 +2207,9 @@
     "channels": [
      "Sky Sports Tennis"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Main Event"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

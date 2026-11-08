@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T14:30:19.378Z",
+ "generatedAt": "2026-11-08T15:00:15.211Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -328,7 +328,7 @@
    "awayShort": "Brentford",
    "venue": "American Express Stadium",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -361,7 +361,7 @@
    "venue": "Selhurst Park",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -423,7 +423,7 @@
    "awayShort": "Chelsea",
    "venue": "Stadium of Light",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -521,7 +521,7 @@
    "awayShort": "Stockport County",
    "venue": "Flamingo Park",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "1/128-finals",
    "source": "api-football.com",

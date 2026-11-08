@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-08T14:00:27.994Z",
+ "generatedAt": "2026-11-08T14:30:19.378Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 36,
+   "events": 34,
    "errors": []
   },
   "tntSchedule": {
@@ -19,18 +19,9 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
+   "failingSince": "2026-11-08T14:30:19.378Z"
   },
   "premierSports": {
    "ok": true,
@@ -237,8 +228,8 @@
    "awayShort": "Grimsby",
    "venue": "Marston Road",
    "status": "live",
-   "homeScore": 2,
-   "awayScore": 2,
+   "homeScore": 3,
+   "awayScore": 3,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {
@@ -278,7 +269,9 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -311,7 +304,7 @@
      "Sky Sports Football"
     ],
     "alsoOn": [
-     "Sky Sports Mix"
+     "Sky Sports+"
     ],
     "confirmed": true,
     "note": null,
@@ -334,9 +327,9 @@
    "homeShort": "Brighton",
    "awayShort": "Brentford",
    "venue": "American Express Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -366,9 +359,9 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Liverpool",
    "venue": "Selhurst Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -398,9 +391,9 @@
    "homeShort": "Ipswich",
    "awayShort": "Bournemouth",
    "venue": "Portman Road Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -429,9 +422,9 @@
    "homeShort": "Sunderland",
    "awayShort": "Chelsea",
    "venue": "Stadium of Light",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -461,15 +454,15 @@
    "homeShort": "Crystal Palace",
    "awayShort": "Charlton Athletic",
    "venue": "Selhurst Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Mix",
+    "broadcaster": "Sky Sports+",
     "channels": [
-     "Sky Sports Mix"
+     "Sky Sports+"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -492,9 +485,9 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Brighton",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 9",
    "source": "api-football.com",
    "tv": {
@@ -502,7 +495,9 @@
     "channels": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -525,9 +520,9 @@
    "homeShort": "Cray Wanderers",
    "awayShort": "Stockport County",
    "venue": "Flamingo Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T05:30:30.897Z",
+ "generatedAt": "2026-11-09T06:00:32.873Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -40,27 +40,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-08T06:00:28.836Z",
+    "checkedAt": "2026-11-09T06:00:32.873Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-08T06:00:28.836Z",
+    "checkedAt": "2026-11-09T06:00:32.873Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-08T06:00:28.836Z",
+    "checkedAt": "2026-11-09T06:00:32.873Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-08T06:00:28.836Z",
+    "checkedAt": "2026-11-09T06:00:32.873Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-08T06:00:28.836Z",
+    "checkedAt": "2026-11-09T06:00:32.873Z",
     "corrections": 0
    },
    "changed": []
@@ -1636,59 +1636,28 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-08T06:00:28.836Z",
+   "checkedAt": "2026-11-09T06:00:32.873Z",
    "corrections": [],
-   "matches": [
-    {
-     "sourceId": "2645286",
-     "home": "Brighton and Hove Albion",
-     "away": "Brentford",
-     "kickoff": "2026-11-08T14:00:00.000Z"
-    },
-    {
-     "sourceId": "2645287",
-     "home": "Crystal Palace",
-     "away": "Liverpool",
-     "kickoff": "2026-11-08T14:00:00.000Z"
-    },
-    {
-     "sourceId": "2645290",
-     "home": "Ipswich Town",
-     "away": "Bournemouth",
-     "kickoff": "2026-11-08T14:00:00.000Z"
-    },
-    {
-     "sourceId": "2645294",
-     "home": "Sunderland",
-     "away": "Chelsea",
-     "kickoff": "2026-11-08T14:00:00.000Z"
-    },
-    {
-     "sourceId": "2645292",
-     "home": "Manchester United",
-     "away": "Aston Villa",
-     "kickoff": "2026-11-08T16:30:00.000Z"
-    }
-   ]
+   "matches": []
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-08T06:00:28.836Z",
+   "checkedAt": "2026-11-09T06:00:32.873Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-08T06:00:28.836Z",
+   "checkedAt": "2026-11-09T06:00:32.873Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-08T06:00:28.836Z",
+   "checkedAt": "2026-11-09T06:00:32.873Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-08T06:00:28.836Z",
+   "checkedAt": "2026-11-09T06:00:32.873Z",
    "corrections": []
   }
  }

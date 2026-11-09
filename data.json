@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-09T10:30:20.824Z",
+ "generatedAt": "2026-11-09T11:00:33.586Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4908,
+   "programmes": 4918,
    "errors": []
   },
   "skyListings": {
@@ -19,18 +19,9 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "no events found on the Prime Video Champions League page",
+   "failingSince": "2026-11-09T11:00:33.586Z"
   },
   "premierSports": {
    "ok": true,
@@ -94,7 +85,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 1
+   "televised": 2
   },
   "scottishPremiership": {
    "ok": true,
@@ -168,7 +159,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 11,
+   "days": 10,
    "errors": []
   },
   "rugby": {
@@ -303,14 +294,14 @@
    "comp": "TEN_WTAF",
    "kind": "session",
    "title": "WTA Finals",
-   "session": "Day 2",
+   "session": "Day 3",
    "venue": "Indian Wells",
    "source": "wtatennis.com",
    "status": "upcoming",
    "label": null,
-   "id": "tennis-808-2026-2026-11-09",
-   "kickoff": "2026-11-09T19:30:00.000Z",
-   "end": "2026-11-10T03:00:00.000Z",
+   "id": "tennis-808-2026-2026-11-10",
+   "kickoff": "2026-11-10T00:00:00.000Z",
+   "end": "2026-11-11T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Tennis",
@@ -399,35 +390,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 3",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-10",
-   "kickoff": "2026-11-10T19:30:00.000Z",
-   "end": "2026-11-11T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [
-     "Sky Sports Main Event"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1428,6 +1390,39 @@
     ],
     "alsoOn": [
      "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607731",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-15T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "West Ham Women",
+   "away": "Charlton Athletic Women",
+   "homeShort": "West Ham",
+   "awayShort": "Charlton Athletic",
+   "venue": "Chigwell Construction Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 10",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
     ],
     "confirmed": true,
     "note": null,

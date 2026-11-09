@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-09T20:30:32.031Z",
+ "generatedAt": "2026-11-09T21:00:27.440Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4929,
+   "programmes": 4928,
    "errors": []
   },
   "skyListings": {
@@ -254,7 +254,7 @@
    "venue": "Bolitho Park",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
    "tv": {

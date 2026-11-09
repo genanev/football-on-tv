@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-09T21:30:22.920Z",
+ "generatedAt": "2026-11-09T22:00:22.285Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4928,
+   "programmes": 4931,
    "errors": []
   },
   "skyListings": {
@@ -85,7 +85,7 @@
   },
   "faPage": {
    "ok": true,
-   "televisedTies": 1
+   "televisedTies": 0
   },
   "footballChannels": "0/0 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -143,7 +143,7 @@
     "Austin Championship presented by Compliance Solutions",
     "DP World Tour Championship"
    ],
-   "rounds": 7,
+   "rounds": 8,
    "errors": []
   },
   "snooker": {
@@ -222,7 +222,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794249900",
    "kickoff": "2026-11-09T18:45:00.000Z",
-   "end": "2026-11-09T22:00:00.000Z",
+   "end": "2026-11-09T22:30:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -253,7 +253,7 @@
    "awayShort": "Berkhamsted",
    "venue": "Bolitho Park",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 1,
    "round": "1/128-finals",
    "source": "api-football.com",
@@ -267,7 +267,6 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "thefa.com",
      "sky-guide"
     ]
    }
@@ -1547,6 +1546,32 @@
     "broadcaster": "Sky Sports Main Event",
     "channels": [
      "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Austin Championship presented by Compliance Solutions",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
+   "source": "pgatour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-pga-R2026558-2026-11-15",
+   "kickoff": "2026-11-15T19:00:00.000Z",
+   "end": "2026-11-16T00:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
     ],
     "alsoOn": [],
     "confirmed": true,

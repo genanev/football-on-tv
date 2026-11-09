@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T11:00:33.586Z",
+ "generatedAt": "2026-11-09T11:30:30.914Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -19,9 +19,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "no events found on the Prime Video Champions League page",
-   "failingSince": "2026-11-09T11:00:33.586Z"
+   "ok": true,
+   "events": 8,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,

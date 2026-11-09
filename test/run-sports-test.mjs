@@ -566,6 +566,10 @@ assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2).map(wtaLine
   'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
   'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
 ]);
+// ...but only while it's on air: once it has finished, the row goes (George, 9 Nov 2026)
+const lastNight = (t) => tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2, Date.parse(t)).map(e => e.session);
+assert.deepEqual(lastNight('2026-11-09T02:30:00Z'), ['Day 1', 'Day 2', 'Day 3']);
+assert.deepEqual(lastNight('2026-11-09T03:30:00Z'), ['Day 2', 'Day 3']);
 // A new day's coverage that starts around midnight (the Australian Open) isn't pulled back a day
 const tennisProg = (id, start, hours) => ({ id, sid: SKY_TENNIS, channel: 'Sky Sports Tennis', start: Date.parse(start), end: Date.parse(start) + hours * 3600000, title: 'Live: Australian Open', synopsis: '', live: true });
 assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T00:00:00Z', 12), tennisProg('b', '2027-01-19T00:00:00Z', 12)]).keys()], ['2027-01-18', '2027-01-19']);

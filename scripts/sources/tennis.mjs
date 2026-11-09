@@ -114,7 +114,7 @@ export function byBroadcastDay(progs) {
 }
 
 /** One entry per tournament per day it's live on UK TV ("Day 3"). */
-export function tennisEvents(tournaments, guide, tnt, fromDate, days) {
+export function tennisEvents(tournaments, guide, tnt, fromDate, days, now = 0) {
   const sids = SPORT_CHANNELS.tennis;
   const covered = new Set(guide?.coveredDates || []);
   const windowStart = ukMidnight(fromDate);
@@ -133,7 +133,8 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days) {
     }
     return [t, { byDay, guideProgs: new Set(guideProgs) }];
   }));
-  // Yesterday too: last night's coverage may still be on air, though that day has left the window.
+  // Yesterday too: last night's coverage may still be on air, though that day has left the window. Only while
+  // it is (George, 9 Nov 2026): a finished 00:00 row left each morning looked like today's session.
   for (const date of [ukDate(windowStart - 3 * 3600000), ...inWindow]) {
     for (const t of tournaments.filter(t => t.startDate <= date && t.endDate >= date)) {
       const day = Math.round((Date.parse(`${date}T12:00:00Z`) - Date.parse(`${t.startDate}T12:00:00Z`)) / 86400000) + 1;
@@ -143,7 +144,7 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days) {
       const fromGuide = progs.filter(p => guideProgs.has(p));
       const fromTnt = progs.filter(p => !guideProgs.has(p));
       const end = progs.length ? Math.max(...progs.map(p => p.end)) : 0;
-      if (progs.length && (inWindow.has(date) || end > windowStart)) {
+      if (progs.length && (inWindow.has(date) || end > Math.max(windowStart, now))) {
         // Still on air from last night: listed under today, from midnight, so it shows as live.
         const start = Math.max(Math.min(...progs.map(p => p.start)), inWindow.has(date) ? 0 : windowStart);
         const chans = [...channelList(fromGuide, sids)];

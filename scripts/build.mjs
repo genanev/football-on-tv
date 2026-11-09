@@ -452,7 +452,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
 
   // ---- tennis: one entry per tournament day live on UK TV
   if (ok(tennisRes)) {
-    const tennis = tennisEvents(tennisRes.value.tournaments, guide, tnt, today, DAYS_AHEAD + 1).filter(inWindow);
+    const tennis = tennisEvents(tennisRes.value.tournaments, guide, tnt, today, DAYS_AHEAD + 1, now).filter(inWindow);
     report.tennis = { ok: true, tournaments: tennisRes.value.tournaments.map(t => t.name), days: tennis.length, errors: tennisRes.value.errors };
     events.push(...tennis);
   } else report.tennis = fail(tennisRes);

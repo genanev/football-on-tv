@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T18:00:19.699Z",
+ "generatedAt": "2026-11-09T18:30:24.652Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -168,7 +168,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 10,
+   "days": 11,
    "errors": []
   },
   "rugby": {
@@ -303,22 +303,22 @@
    "comp": "TEN_WTAF",
    "kind": "session",
    "title": "WTA Finals",
-   "session": "Day 3",
+   "session": "Day 2",
    "venue": "Indian Wells",
    "source": "wtatennis.com",
    "status": "upcoming",
    "label": null,
-   "id": "tennis-808-2026-2026-11-10",
-   "kickoff": "2026-11-10T00:00:00.000Z",
-   "end": "2026-11-11T03:00:00.000Z",
+   "id": "tennis-808-2026-2026-11-09",
+   "kickoff": "2026-11-09T19:30:00.000Z",
+   "end": "2026-11-10T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,
@@ -408,6 +408,35 @@
    }
   },
   {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 3",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-10",
+   "kickoff": "2026-11-10T19:30:00.000Z",
+   "end": "2026-11-11T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Tennis"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Sportsbet.io Champion of Champions",
@@ -473,12 +502,12 @@
    "end": "2026-11-12T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,
@@ -501,12 +530,12 @@
    "end": "2026-11-12T13:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -555,12 +584,12 @@
    "end": "2026-11-12T22:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -610,12 +639,12 @@
    "end": "2026-11-13T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event",
+     "Sky Sports Tennis",
      "Sky Sports+"
     ],
     "confirmed": true,
@@ -693,12 +722,12 @@
    "end": "2026-11-13T13:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -721,12 +750,12 @@
    "end": "2026-11-13T22:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -776,12 +805,12 @@
    "end": "2026-11-14T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,
@@ -835,12 +864,12 @@
    "end": "2026-11-14T13:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -1143,12 +1172,12 @@
    "end": "2026-11-15T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,
@@ -1256,12 +1285,12 @@
    "end": "2026-11-15T12:30:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Golf",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Golf"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Golf"
     ],
     "confirmed": true,
     "note": null,
@@ -1596,12 +1625,12 @@
    "end": "2026-11-16T21:30:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,
@@ -1653,12 +1682,12 @@
    "end": "2026-11-17T21:30:00.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Tennis",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Tennis"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Main Event"
+     "Sky Sports Tennis"
     ],
     "confirmed": true,
     "note": null,

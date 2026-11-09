@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-09T22:00:22.285Z",
+ "generatedAt": "2026-11-09T22:30:15.704Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4931,
+   "programmes": 4946,
    "errors": []
   },
   "skyListings": {
@@ -155,7 +155,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 5
+   "matches": 8
   },
   "skiing": {
    "ok": true,
@@ -222,7 +222,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794249900",
    "kickoff": "2026-11-09T18:45:00.000Z",
-   "end": "2026-11-09T22:30:00.000Z",
+   "end": "2026-11-09T23:00:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -252,7 +252,7 @@
    "homeShort": "Plymouth Parkway",
    "awayShort": "Berkhamsted",
    "venue": "Bolitho Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 2,
    "awayScore": 1,
    "round": "1/128-finals",
@@ -1273,6 +1273,33 @@
    }
   },
   {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "The Wanderers Stadium, Johannesburg",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269796-d1",
+   "kickoff": "2026-11-15T08:00:00.000Z",
+   "end": "2026-11-15T15:00:00.000Z",
+   "session": "1st Test, Day 1",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SKI",
    "kind": "session",
    "label": "World Cup",
@@ -1610,6 +1637,35 @@
    }
   },
   {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "The Wanderers Stadium, Johannesburg",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269796-d2",
+   "kickoff": "2026-11-16T08:00:00.000Z",
+   "end": "2026-11-16T15:00:00.000Z",
+   "session": "1st Test, Day 2",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Cricket"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "TEN_ATPF",
    "kind": "session",
    "title": "ATP Finals",
@@ -1657,6 +1713,35 @@
     ],
     "alsoOn": [
      "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "The Wanderers Stadium, Johannesburg",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269796-d3",
+   "kickoff": "2026-11-17T08:00:00.000Z",
+   "end": "2026-11-17T15:00:00.000Z",
+   "session": "1st Test, Day 3",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Cricket"
     ],
     "confirmed": true,
     "note": null,

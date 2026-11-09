@@ -73,6 +73,12 @@ export async function fetchTennis(fromDate, toDate) {
 
 const isTennisProgramme = (text) => !/\bgolf\b|darts|snooker/i.test(text); // "US Open" is also golf
 
+// Sky doesn't always put the tournament in the title: on 9 Nov 2026 the WTA Finals' evening matches were
+// "Live Tennis: Sabalenka v Muchova", with "...first WTA Finals title..." in the description. So a title that
+// is just "Live Tennis: ..." may be identified by its description, which is Sky's own word for it. Any other
+// title has to name the tournament itself: "Live: WTA Tokyo" may well mention the race to the WTA Finals.
+const namesTournament = (p, re) => re.test(p.title) || (/^live tennis\b/i.test(p.title) && re.test(p.synopsis || ''));
+
 const OVERNIGHT_GAP = 30 * 60000;
 
 /**
@@ -81,13 +87,25 @@ const OVERNIGHT_GAP = 30 * 60000;
  * ("Day 1 Doubles" at 00:00 on day 2's date). Split by calendar date, day 2 read 00:00-24:00, and showed as
  * live all day. Only a programme following straight on, before noon, carries over, so a new day's coverage
  * (the Australian Open starts around midnight) stays its own.
+ *
+ * The night before isn't always among these programmes (a title that didn't name the tournament, or the guide
+ * has no past days), so early-hours coverage with a separate evening session on the same date also belongs to
+ * the day before. Otherwise it starts the new day: on 9 Nov 2026 "Day 3" read 00:00 on the 10th to 03:00 on
+ * the 11th, instead of 19:30.
  */
 export function byBroadcastDay(progs) {
   const days = new Map();
+  const sorted = [...progs].sort((a, b) => a.start - b.start);
+  const HOUR = 3600000;
   let prev = null;
-  for (const p of [...progs].sort((a, b) => a.start - b.start)) {
+  for (const p of sorted) {
     let date = ukDate(p.start);
-    if (prev && prev.date < date && p.start <= prev.end + OVERNIGHT_GAP && p.start < ukMidnight(date) + 12 * 3600000) date = prev.date;
+    const midnight = ukMidnight(date);
+    const carriedOver = prev && prev.date < date && p.start <= prev.end + OVERNIGHT_GAP && p.start < midnight + 12 * HOUR;
+    const beforeAnEvening = p.start < midnight + 6 * HOUR && p.end <= midnight + 12 * HOUR
+      && sorted.some(q => ukDate(q.start) === date && q.start >= midnight + 15 * HOUR);
+    if (carriedOver) date = prev.date;
+    else if (beforeAnEvening) date = ukDate(midnight - 3 * HOUR);
     if (!days.has(date)) days.set(date, []);
     days.get(date).push(p);
     prev = { date, end: prev?.date === date ? Math.max(prev.end, p.end) : p.end };
@@ -105,7 +123,7 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days) {
   const coverage = new Map(tournaments.map(t => {
     const def = TOURNAMENTS.find(d => d.comp === t.comp);
     const guideProgs = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid)
-      && def.tv.test(p.title) && isTennisProgramme(`${p.title} ${p.synopsis}`));
+      && namesTournament(p, def.tv) && isTennisProgramme(`${p.title} ${p.synopsis}`));
     const tntProgs = (tnt?.programmes || []).filter(p => p.live && /tennis/i.test(p.sport || '')
       && def.tv.test(`${p.title} ${p.subtitle}`));
     const byDay = new Map();

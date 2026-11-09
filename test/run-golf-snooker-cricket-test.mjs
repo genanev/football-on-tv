@@ -88,8 +88,8 @@ assert.equal(data.report.golf.ok, true);
 assert.deepEqual(golf.map(e => e.session), ['Round 1', 'Round 2', 'Round 3', 'Round 4']);
 assert.ok(golf.every(e => e.title === 'DP World India Championship' && e.venue === 'Delhi GC'));
 assert.equal(golf[0].kickoff, '2026-10-15T05:30:00.000Z'); // 06:30 UK, after the LPGA coverage ends
-assert.deepEqual(golf[0].tv.channels, ['Sky Sports Golf']);
-assert.deepEqual(golf[0].tv.alsoOn, ['Sky Sports Main Event']);
+assert.deepEqual(golf[0].tv.channels, ['Sky Sports Main Event']); // Main Event is always first
+assert.deepEqual(golf[0].tv.alsoOn, ['Sky Sports Golf']);
 
 // Snooker: Northern Ireland Open, TV days 19-20 Oct; two tables on TNT 1 and 4 count as one session
 assert.equal(data.report.snooker.ok, true);
@@ -108,8 +108,8 @@ assert.deepEqual(by('India v West Indies', '4th T20I').tv.channels, ['TNT Sports
 assert.deepEqual(by('India v West Indies', '5th T20I').tv.channels, ['TNT Sports 3']); // unlabelled "India - T20 International Cricket"
 assert.deepEqual(by('Pakistan v Sri Lanka', 'Match 1 (ODI)').tv.channels, ['Sky Sports+']);
 const eng = by('Pakistan v England', 'Match 2 (ODI)');
-assert.deepEqual(eng.tv.channels, ['Sky Sports Cricket']);
-assert.deepEqual(eng.tv.alsoOn, ['Sky Sports Main Event']); // not TNT's "The Breakdown: Harry Kane"
+assert.deepEqual(eng.tv.channels, ['Sky Sports Main Event']); // Main Event is always first
+assert.deepEqual(eng.tv.alsoOn, ['Sky Sports Cricket']); // not TNT's "The Breakdown: Harry Kane"
 assert.equal(by('South Africa v Australia', '2nd Test, Day 1').kickoff, '2026-10-18T08:00:00.000Z');
 assert.ok(!cricket.some(e => /Bangladesh|Zimbabwe|Afghanistan/.test(e.title))); // not on UK TV
 assert.ok(!cricket.some(e => e.title === 'Pakistan v Sri Lanka' && /T20I/.test(e.session))); // 13 Oct, not on UK TV

@@ -167,6 +167,25 @@ export function markFailingSince(report, previous, now) {
   return report;
 }
 
+// Sky Sports Main Event is always the primary channel, in every sport (George, 9 Nov 2026): the other
+// channel it displaces moves to "also on", as a single row shows one main channel.
+const MAIN_EVENT = 'Sky Sports Main Event';
+export function mainEventFirst(events) {
+  for (const e of events) {
+    const tv = e.tv;
+    if (!tv?.channels?.length || tv.channels[0] === MAIN_EVENT) continue;
+    const old = tv.channels[0];
+    if (tv.channels.includes(MAIN_EVENT)) {
+      tv.channels = [MAIN_EVENT, ...tv.channels.filter(c => c !== MAIN_EVENT)];
+    } else if (tv.alsoOn?.includes(MAIN_EVENT)) {
+      tv.channels = [MAIN_EVENT, ...tv.channels.slice(1)];
+      tv.alsoOn = [old, ...tv.alsoOn.filter(c => c !== MAIN_EVENT)];
+    } else continue;
+    if (tv.broadcaster === old) tv.broadcaster = MAIN_EVENT;
+  }
+  return events;
+}
+
 export function keepKnownChannels(events, previous, { report = {}, now = Date.now() } = {}) {
   const before = previousEvents(previous);
   for (const e of events) {
@@ -461,6 +480,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
 
   keepKnownChannels(events, previous, { report, now });
   markNotOnTv(events, report, now);
+  mainEventFirst(events);
   if (!showScores) for (const e of events) if (e.kind === 'match') { e.homeScore = null; e.awayScore = null; }
   report.scores = showScores ? 'on' : 'off';
   markFailingSince(report, previous, now);

@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-09T23:30:20.745Z",
+ "generatedAt": "2026-11-10T00:00:16.611Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4939,
+   "programmes": 4601,
    "errors": []
   },
   "skyListings": {
@@ -15,7 +15,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1087,
+   "programmes": 1067,
    "errors": []
   },
   "primeVideo": {
@@ -67,7 +67,7 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 24,
+   "matches": 8,
    "errors": [],
    "unknownClubs": []
   },
@@ -107,7 +107,7 @@
   },
   "faCup": {
    "ok": true,
-   "ties": 1
+   "ties": 0
   },
   "formula1": {
    "ok": true,
@@ -135,7 +135,7 @@
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 7
+   "sessions": 8
   },
   "golf": {
    "ok": true,
@@ -151,11 +151,11 @@
    "tournaments": [
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 12
+   "sessions": 10
   },
   "cricket": {
    "ok": true,
-   "matches": 8
+   "matches": 10
   },
   "skiing": {
    "ok": true,
@@ -188,90 +188,6 @@
  "specials": [],
  "events": [
   {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "Sportsbet.io Champion of Champions",
-   "venue": "Leicester",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794228300",
-   "kickoff": "2026-11-09T12:45:00.000Z",
-   "end": "2026-11-09T17:45:00.000Z",
-   "session": "Afternoon session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "Sportsbet.io Champion of Champions",
-   "venue": "Leicester",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794249900",
-   "kickoff": "2026-11-09T18:45:00.000Z",
-   "end": "2026-11-09T23:15:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1646814",
-   "sourceId": "1646814",
-   "comp": "CUPS",
-   "label": "FA Cup",
-   "kind": "match",
-   "kickoff": "2026-11-09T19:30:00.000Z",
-   "timeTbc": false,
-   "home": "Plymouth Parkway",
-   "away": "Berkhamsted",
-   "homeShort": "Plymouth Parkway",
-   "awayShort": "Berkhamsted",
-   "venue": "Bolitho Park",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "1/128-finals",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "TEN_WTAF",
    "kind": "session",
    "title": "WTA Finals",
@@ -281,7 +197,7 @@
    "status": "upcoming",
    "label": null,
    "id": "tennis-808-2026-2026-11-09",
-   "kickoff": "2026-11-09T19:30:00.000Z",
+   "kickoff": "2026-11-10T00:00:00.000Z",
    "end": "2026-11-10T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -1806,6 +1722,83 @@
     "sources": [
      "sky-guide"
     ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Australia v England",
+   "venue": "Bellerive Oval, Hobart",
+   "series": "England in Australia, 3 ODI Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-270241",
+   "kickoff": "2026-11-18T03:30:00.000Z",
+   "end": "2026-11-18T11:30:00.000Z",
+   "session": "3rd ODI",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "The Wanderers Stadium, Johannesburg",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269796-d4",
+   "kickoff": "2026-11-18T08:00:00.000Z",
+   "end": "2026-11-18T15:00:00.000Z",
+   "session": "1st Test, Day 4",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Cricket",
+    "channels": [
+     "Sky Sports Cricket"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-2026-11-18",
+   "kickoff": "2026-11-18T12:00:00.000Z",
+   "end": null,
+   "session": null,
+   "status": "upcoming",
+   "timeTbc": true,
+   "allDay": true,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV times to be confirmed",
+    "conflict": false,
+    "sources": []
    }
   }
  ],

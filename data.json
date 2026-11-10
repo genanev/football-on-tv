@@ -1,16 +1,16 @@
 {
- "generatedAt": "2026-11-10T21:30:13.888Z",
+ "generatedAt": "2026-11-10T22:00:15.585Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4935,
+   "programmes": 4934,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 34,
+   "events": 30,
    "errors": []
   },
   "tntSchedule": {
@@ -249,7 +249,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794336300",
    "kickoff": "2026-11-10T18:45:00.000Z",
-   "end": "2026-11-10T22:00:00.000Z",
+   "end": "2026-11-10T22:30:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {

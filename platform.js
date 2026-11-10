@@ -19,5 +19,7 @@ window.platform = {
   // shows no bells.
   // (`exact` and `askExact`, Android's "Alarms & reminders" permission, are left out on purpose: the
   // page shows nothing about it without them.)
+  // A page of the website (About, the policies): a new tab. The phone app opens it over the app.
+  openPage(url) { window.open(url, '_blank', 'noopener'); },
   reminders: { supported: false, ask: async () => false, schedule: async () => {}, cancel: async () => {} },
 };

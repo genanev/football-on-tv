@@ -5,6 +5,7 @@
   const { SystemBars, SystemBarsStyle } = capacitorExports;
   const { App } = capacitorApp;
   const { LocalNotifications } = capacitorLocalNotifications;
+  const { Browser } = capacitorBrowser;
 
   window.platform = {
     isApp: true,
@@ -19,6 +20,12 @@
     // The status bar's and navigation bar's icons: dark on the light theme, light on the dark one
     themeChanged(theme) {
       SystemBars.setStyle({ style: theme === 'dark' ? SystemBarsStyle.Dark : SystemBarsStyle.Light }).catch(() => {});
+    },
+    // A page of the website (About, the policies), opened over the app in an in-app browser (Chrome's
+    // Custom Tabs): its close button, or back, comes straight back to Telly Fixtures (George, 10 Nov 2026:
+    // leaving for the phone's browser felt odd). Its bar takes the app's theme colour.
+    openPage(url, theme) {
+      Browser.open({ url, toolbarColor: theme === 'dark' ? '#111412' : '#f4f5f2' }).catch(() => window.open(url, '_blank'));
     },
     // Match reminders: the phone keeps them, so they fire with the app closed, offline and after a
     // restart. On time only with Android's "Alarms & reminders" permission (Settings → Apps → Special

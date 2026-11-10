@@ -391,7 +391,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 - [ ] **Monthly:**
   - Review the measures of success (section 2) and costs.
   - Note what changed.
-- [x] **Alerting (done 8 Nov 2026):** an email when a source fails on two updates in a row, or the data file is older than 2 hours (`.github/workflows/watch.yml`, hourly; GitHub's "Run failed" email). The app no longer shows banners for failed sources. Later, if wanted: a proper email with a clear subject line through Cloudflare, and one email per problem rather than one an hour.
+- [x] **Alerting (done 8 Nov 2026):** an email when a source fails on two updates in a row, or the data file is older than 2 hours (a Cloudflare Worker, `cloud/watch-worker/`, hourly, with an "all well" email on Mondays; GitHub's own schedule, which ran once in its first 12 hours, stays as a back-up). The app no longer shows banners for failed sources. Later, if wanted: one email per problem rather than one an hour.
 - [ ] Make the update job **save only when something changed**, plus a heartbeat, before ever running it more often than every 30 minutes.
 - [ ] Connect the "SOON" competitions: each is a reason to subscribe and a "What's new" entry. Done: MotoGP and F3 (20 Oct 2026); rugby union, tennis, alpine skiing and the first Special, curling (29 Oct 2026). Still to do: Super League (once its 2027 fixtures are out) and more Specials.
 - [ ] **Privacy-friendly growth:**

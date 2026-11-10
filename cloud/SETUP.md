@@ -457,6 +457,23 @@ The London job saves to `main` every 30 minutes, and each save would start a new
 
 To take the site down, delete the project under **Settings** in Workers & Pages. The app isn't affected: it gets its listings from `data.tellyfixtures.co.uk`.
 
+## The listings alert (Cloudflare)
+
+Every hour a small Cloudflare program checks the file the phone app reads, and emails you if it's more
+than 2 hours old, can't be read, or a source has failed on two updates in a row. On Mondays it says "all
+well". It costs nothing. The program is in `cloud/watch-worker/`; the London job doesn't touch it, so
+after changing it, deploy it again (step 3).
+
+1. In Cloudflare: **Email → Email Routing → Destination addresses**. Check that the address you want the
+   alerts sent to says **Verified**.
+2. In a terminal, go to the folder and sign in (a browser page opens: press **Allow**):
+   `cd C:VSC_Testootball-on-tvcloudwatch-worker`, then `npx wrangler@4 login`.
+3. Put it on Cloudflare: `npx wrangler@4 deploy`.
+4. Give it your address (it asks you to type it, and it's stored privately, not in the code):
+   `npx wrangler@4 secret put ALERT_TO`.
+5. To test it: `npx wrangler@4 deploy --triggers "*/2 * * * *"`. An "all well" email should arrive within
+   about 3 minutes, and again every 2 minutes, so then put the normal schedule back: `npx wrangler@4 deploy`.
+
 ## Stopping it
 
 - **Pause** (keeps everything, runs stop):

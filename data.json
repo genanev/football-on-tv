@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-10T04:30:11.430Z",
+ "generatedAt": "2026-11-10T05:00:25.200Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4904,
+   "programmes": 4907,
    "errors": []
   },
   "skyListings": {

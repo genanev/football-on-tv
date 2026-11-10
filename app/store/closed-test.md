@@ -46,7 +46,7 @@ Add each address to the testers' email list in Play Console (section 2, step 3).
 6. When the review is through, send message 2.
 
 From then on, a new version goes to closed testing as well as internal testing (or straight to closed
-testing): testers get it as an ordinary Play Store update, and their 14 days carry on.
+testing): testers get it as an ordinary Play Store update, and their 14 days carry on. Every closed-testing release goes through Google's review first (after the first one, usually a few hours), so bundle changes into fewer releases; internal testing isn't reviewed.
 
 Later, before the subscriptions version: **Setup → License testing**, add the testers' addresses, so
 their purchases are test purchases and nobody is charged.
@@ -110,4 +110,5 @@ decided it was ready. Note things here as they happen.
 | Date | What happened (testers joined, feedback, fixes, versions) |
 |---|---|
 | 8 Nov 2026 | Closed testing (Alpha) with 1.0.8, the store listing and App content sent for Google's first review at 13:02; status Published (seen 10 Nov). Recruiting starts. |
+| 10 Nov 2026 | 1.0.9 (About in Settings; the website's pages open inside the app) uploaded to closed testing and sent for review. |
 | | |

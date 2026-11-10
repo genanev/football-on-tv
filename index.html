@@ -347,6 +347,10 @@
   .dayopt .dd { margin-left: auto; }
   .set-h { font-weight: 700; font-size: 1rem; }
   .set-p { color: var(--muted); font-size: 0.8125rem; margin-top: 2px; }
+  /* "About Telly Fixtures": a whole card that opens the website */
+  .grp.about { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--text); text-decoration: none; }
+  .grp.about .set-h, .grp.about .set-p { display: block; }
+  .about-go { color: var(--muted); font-size: 1.5rem; line-height: 1; }
   /* A choice of one: no "+" on the ones not chosen */
   .opt.choice:not([aria-pressed="true"])::before { content: none; }
   .sheet-f { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; padding: 4px 0 6px; }
@@ -1244,12 +1248,16 @@
 
   // Settings (George, 5 Nov 2026): the button at the top right. The colour theme, and in the phone
   // app how reminders work. Managing the subscription joins them when subscriptions are built.
-  // The links are plain links: a browser opens them in a new tab, and in the phone app Capacitor hands
-  // any address outside the app to the phone's browser, so the platform layer needs nothing for them.
+  // The links (the website's pages) open through platform.openPage: in the phone app over the app itself,
+  // with a close button that comes straight back (George, 10 Nov 2026: leaving for the browser felt odd).
   function renderSettings() {
     const choice = (attr, value, label, on) => `<button class="opt choice" ${attr}="${value}" aria-pressed="${on}">${esc(label)}</button>`;
-    const link = (page, label) => `<a href="https://tellyfixtures.co.uk/${page}" target="_blank" rel="noopener" aria-label="${label}, opens in your browser">${label}</a>`;
-    $('#settings-body').innerHTML = `<div class="grp" style="--sc:var(--accent)">
+    const link = (page, label) => `<a href="https://tellyfixtures.co.uk/${page}" target="_blank" rel="noopener" aria-label="${label}, opens a web page">${label}</a>`;
+    // First, "About Telly Fixtures" (George, 10 Nov 2026): the website's landing page, so the app links to it
+    $('#settings-body').innerHTML = `<a class="grp about" href="https://tellyfixtures.co.uk/" target="_blank" rel="noopener" aria-label="About Telly Fixtures, opens a web page">
+        <span><span class="set-h">About Telly Fixtures</span><span class="set-p">What it covers and how it works</span></span>
+        <span class="about-go" aria-hidden="true">›</span>
+      </a><div class="grp" style="--sc:var(--accent)">
         <div class="set-h">Colour theme</div>
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
@@ -1273,6 +1281,9 @@
     if (BELLS && REM.exact) REM.exact().then((ok) => { if (ok !== exactOk) { exactOk = ok; renderSettings(); syncReminders(); } }, () => {});
   });
   $('#settings-body').addEventListener('click', (ev) => {
+    // The website's pages (About, the policies): the phone app opens them over itself, the web in a new tab
+    const page = ev.target.closest('a[href]');
+    if (page && platform.openPage) { ev.preventDefault(); platform.openPage(page.href, theme); return; }
     if (ev.target.closest('[data-exact]')) { allowExact(); return; }
     const t = ev.target.closest('[data-theme-pick]');
     if (!t) return;

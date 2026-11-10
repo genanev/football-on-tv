@@ -1,0 +1,240 @@
+{
+ "20261109": {
+  "schedule": [
+   {
+    "sid": "1284",
+    "events": [
+     {
+      "st": 1794175201,
+      "d": 7199,
+      "eid": "E504-4b",
+      "t": "Live WTA Finals - Gauff v Pegula",
+      "sy": "For a fourth consecutive year, familiar American rivals Coco Gauff and Jess Pegula clash at the year-end WTA Finals. The pair have met 10 times, with the record split at five apiece."
+     },
+     {
+      "st": 1794182400,
+      "d": 10801,
+      "eid": "E504-91",
+      "t": "Live WTA Finals: Day 1 Doubles",
+      "sy": "World number ones Katerina Siniakova and Taylor Townsend take on Italians Jasmine Paolini and Sara Errani. Cristina Bucsa and Nicole Melichar-Martinez face Demi Schuurs and Ellen Perez."
+     },
+     {
+      "st": 1794225600,
+      "d": 14400,
+      "eid": "E504-101",
+      "t": "Live: ATP Stockholm",
+      "sy": "Britain's Cam Norrie arrives in Stockholm for the season's final ATP 250, getting underway against James Duckworth. Plus, last year's runner-up Ugo Humbert meets Adolfo Daniel Vallejo."
+     },
+     {
+      "st": 1794243600,
+      "d": 9000,
+      "eid": "E504-19d",
+      "t": "Live: ATP Stockholm",
+      "sy": "With Britain's Toby Samuel set to play home favourite Leo Borg - son of the great Bjorn Borg, the number five seed in Stockholm Tomas Martin Etcheverry takes on Sweden's own Max Dahlin."
+     },
+     {
+      "st": 1794252600,
+      "d": 9000,
+      "eid": "E504-1b7",
+      "t": "Live Tennis: Sabalenka v Muchova",
+      "sy": "Aryna Sabalenka returns to Indian Wells in pursuit of a first WTA Finals title, opening her campaign against Karolina Muchova - who makes her first appearance at the year-end event."
+     },
+     {
+      "st": 1794261600,
+      "d": 7200,
+      "eid": "E504-180",
+      "t": "Live Tennis: Andreeva v Svitolina",
+      "sy": "After seven years away, former champion Elina Svitolina returns - getting underway against WTA Finals debutant Mirra Andreeva, arriving here on the back a career-best season."
+     }
+    ]
+   },
+   {
+    "sid": "4002",
+    "events": [
+     {
+      "st": 1794252600,
+      "d": 9000,
+      "eid": "Efa2-1b8",
+      "t": "Live Tennis: Sabalenka v Muchova",
+      "sy": "Aryna Sabalenka returns to Indian Wells in pursuit of a first WTA Finals title, opening her campaign against Karolina Muchova - who makes her first appearance at the year-end event."
+     },
+     {
+      "st": 1794261600,
+      "d": 7200,
+      "eid": "Efa2-1d9",
+      "t": "Live Tennis: Andreeva v Svitolina",
+      "sy": "After seven years away, former champion Elina Svitolina returns - getting underway against WTA Finals debutant Mirra Andreeva, arriving here on the back a career-best season."
+     }
+    ]
+   }
+  ]
+ },
+ "20261110": {
+  "schedule": [
+   {
+    "sid": "1284",
+    "events": [
+     {
+      "st": 1794261600,
+      "d": 7200,
+      "eid": "E504-180",
+      "t": "Live Tennis: Andreeva v Svitolina",
+      "sy": "After seven years away, former champion Elina Svitolina returns - getting underway against WTA Finals debutant Mirra Andreeva, arriving here on the back a career-best season."
+     },
+     {
+      "st": 1794268800,
+      "d": 10800,
+      "eid": "E504-125",
+      "t": "Live WTA Finals: Day 2 Doubles",
+      "sy": "Jelena Ostapenko and Su-Wei Hsieh face Kristina Mladenovic and Guo Hanyu as Elise Mertens, one half of last year's winning pair, and Shuai Zhang play Gabriela Dabrowski and Luisa Stefani."
+     },
+     {
+      "st": 1794312000,
+      "d": 14400,
+      "eid": "E504-54",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794330000,
+      "d": 9000,
+      "eid": "E504-8",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794339000,
+      "d": 9000,
+      "eid": "E504-74",
+      "t": "Live WTA Finals: Kostyuk v Pegula",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "E504-9d",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   },
+   {
+    "sid": "4002",
+    "events": [
+     {
+      "st": 1794261600,
+      "d": 7200,
+      "eid": "Efa2-1d9",
+      "t": "Live Tennis: Andreeva v Svitolina",
+      "sy": "After seven years away, former champion Elina Svitolina returns - getting underway against WTA Finals debutant Mirra Andreeva, arriving here on the back a career-best season."
+     },
+     {
+      "st": 1794268800,
+      "d": 3600,
+      "eid": "Efa2-1e4",
+      "t": "Live WTA Finals: Day 2 Doubles",
+      "sy": "Jelena Ostapenko and Su-Wei Hsieh face Kristina Mladenovic and Guo Hanyu as Elise Mertens, one half of last year's winning pair, and Shuai Zhang play Gabriela Dabrowski and Luisa Stefani."
+     },
+     {
+      "st": 1794339000,
+      "d": 9000,
+      "eid": "Efa2-45e",
+      "t": "Live WTA Finals: Kostyuk v Pegula",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "Efa2-464",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   }
+  ]
+ },
+ "20261111": {
+  "schedule": [
+   {
+    "sid": "1284",
+    "events": [
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "E504-9d",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794355200,
+      "d": 10800,
+      "eid": "E504-17b",
+      "t": "Live WTA Finals: Indian Wells",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794398400,
+      "d": 14400,
+      "eid": "E504-159",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794416400,
+      "d": 9000,
+      "eid": "E504-137",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794425400,
+      "d": 9000,
+      "eid": "E504-126",
+      "t": "Live WTA Finals: Day 4 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "E504-15f",
+      "t": "Live WTA Finals: Day 4 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   },
+   {
+    "sid": "4002",
+    "events": [
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "Efa2-464",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794355200,
+      "d": 10800,
+      "eid": "Efa2-3ef",
+      "t": "Live WTA Finals: Day 3 Doubles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794425400,
+      "d": 9000,
+      "eid": "Efa2-10a",
+      "t": "Live WTA Finals: Day 4 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "Efa2-120",
+      "t": "Live WTA Finals: Day 4 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   }
+  ]
+ }
+}

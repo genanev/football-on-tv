@@ -49,7 +49,7 @@
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
-import { build, markNotOnTv, keepEventsOfFailedSources } from '../scripts/build.mjs';
+import { build, mainEventFirst, markNotOnTv, keepEventsOfFailedSources } from '../scripts/build.mjs';
 import { mapWrMatch, rugbyTv } from '../scripts/sources/rugby.mjs';
 import { guideTeams } from '../scripts/sources/football.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
@@ -228,8 +228,8 @@ assert.deepEqual(f1.map(e => e.session), ['Qualifying', 'Race']);
 assert.equal(find(f1, 'Qualifying').kickoff, '2026-09-25T12:00:00.000Z'); // 16:00 Baku = 13:00 UK
 assert.equal(find(f1, 'Race').kickoff, '2026-09-26T11:00:00.000Z');
 assert.equal(find(f1, 'Race').title, 'Azerbaijan Grand Prix');
-assert.deepEqual(find(f1, 'Qualifying').tv.channels, ['Sky Sports F1']);
-assert.deepEqual(find(f1, 'Qualifying').tv.alsoOn, ['Sky Sports Main Event']);
+assert.deepEqual(find(f1, 'Qualifying').tv.channels, ['Sky Sports Main Event']); // Main Event is always first
+assert.deepEqual(find(f1, 'Qualifying').tv.alsoOn, ['Sky Sports F1']);
 assert.deepEqual(find(f1, 'Race').tv.channels, ['Sky Sports F1']);
 assert.equal(find(f1, 'Race').tv.confirmed, true);
 
@@ -542,7 +542,7 @@ const atp = await build(Date.parse('2026-11-15T07:00:00Z'));
 // (The guide here has nothing at all for 16-22 Nov, so those days are "TV times to be confirmed".)
 assert.deepEqual(atp.report.tennis, { ok: true, tournaments: ['WTA Finals', 'ATP Finals'], days: 8, errors: [] });
 assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && !e.allDay).map(e => `${e.comp} ${e.title} · ${e.session} ${uk(e.kickoff)}-${uk(e.end).slice(-5)}: ${e.tv.channels[0]} + ${e.tv.alsoOn.join(', ')}`),
-  ['TEN_ATPF ATP Finals · Day 1 Sun 15, 11:00-22:00: Sky Sports Tennis + Sky Sports Main Event']);
+  ['TEN_ATPF ATP Finals · Day 1 Sun 15, 11:00-22:00: Sky Sports Main Event + Sky Sports Tennis']);
 assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && e.allDay).map(e => e.session), ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8']);
 // A tournament day the guide can't show (no listings for that date): "TV times to be confirmed"
 const wtaDay = (await build(Date.parse('2026-11-08T07:00:00Z'))).events.find(e => e.comp === 'TEN_WTAF');
@@ -566,11 +566,47 @@ assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2).map(wtaLine
   'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
   'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
 ]);
+// ...but only while it's on air: once it has finished, the row goes (George, 9 Nov 2026)
+const lastNight = (t) => tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2, Date.parse(t)).map(e => e.session);
+assert.deepEqual(lastNight('2026-11-09T02:30:00Z'), ['Day 1', 'Day 2', 'Day 3']);
+assert.deepEqual(lastNight('2026-11-09T03:30:00Z'), ['Day 2', 'Day 3']);
 // A new day's coverage that starts around midnight (the Australian Open) isn't pulled back a day
 const tennisProg = (id, start, hours) => ({ id, sid: SKY_TENNIS, channel: 'Sky Sports Tennis', start: Date.parse(start), end: Date.parse(start) + hours * 3600000, title: 'Live: Australian Open', synopsis: '', live: true });
 assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T00:00:00Z', 12), tennisProg('b', '2027-01-19T00:00:00Z', 12)]).keys()], ['2027-01-18', '2027-01-19']);
 // ...nor is a programme after noon, even if coverage never stopped
 assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T18:00:00Z', 19), tennisProg('b', '2027-01-19T13:00:00Z', 2)]).keys()], ['2027-01-18', '2027-01-19']);
+// Sky's real listings of 9-11 Nov 2026 (captured 9 Nov): the WTA Finals' evening matches on the 9th are
+// "Live Tennis: Sabalenka v Muchova", naming the tournament only in the description. Before the fix Day 2
+// was missing and Day 3 read 00:00 on the 10th to 03:00 on the 11th.
+const liveTennisProgs = Object.values(await fx('sky-guide-tennis-2026-11-09.json')).flatMap(mapGuideDay);
+const liveTennisGuide = { programmes: [...new Map(liveTennisProgs.map(p => [p.id, p])).values()], coveredDates: ['2026-11-09', '2026-11-10', '2026-11-11'] };
+assert.deepEqual(tennisEvents(wtaT, liveTennisGuide, null, '2026-11-09', 3).map(wtaLine), [
+  'Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
+  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+  'Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis',
+]);
+// Should Sky's titles and description name nothing at all, the night's last part still can't start the next
+// day at midnight: Tuesday's entry starts with Tuesday's evening
+const undescribed = { ...liveTennisGuide, programmes: liveTennisGuide.programmes.filter(p => !/^Live Tennis/.test(p.title)) };
+assert.ok(tennisEvents(wtaT, undescribed, null, '2026-11-09', 3).map(wtaLine).includes('Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis'));
+// Only a plain "Live Tennis" title may be identified by its description: another tournament's may mention it
+const stockholm = { programmes: [{ ...tennisProg('s', '2026-11-09T12:00:00Z', 4), title: 'Live: ATP Stockholm', synopsis: 'The last points on the road to the WTA Finals.' }], coveredDates: ['2026-11-09'] };
+assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
+// Sky Sports Main Event is always the primary channel (George, 9 Nov 2026), in any sport
+{
+  const tv = (channels, alsoOn = [], broadcaster = channels[0]) => ({ tv: { channels, alsoOn, broadcaster } });
+  const [also, listed, none, noChannel] = mainEventFirst([
+    tv(['Sky Sports Tennis'], ['Sky Sports Main Event', 'Sky Sports+']),
+    tv(['Sky Sports Premier League', 'Sky Sports Main Event', 'HBO Max']),
+    tv(['TNT Sports 1'], ['HBO Max']),
+    tv([], [], 'Sky Sports'),
+  ]);
+  assert.deepEqual(also.tv, { channels: ['Sky Sports Main Event'], alsoOn: ['Sky Sports Tennis', 'Sky Sports+'], broadcaster: 'Sky Sports Main Event' });
+  assert.deepEqual(listed.tv, { channels: ['Sky Sports Main Event', 'Sky Sports Premier League', 'HBO Max'], alsoOn: [], broadcaster: 'Sky Sports Main Event' });
+  assert.deepEqual(none.tv, { channels: ['TNT Sports 1'], alsoOn: ['HBO Max'], broadcaster: 'TNT Sports 1' });
+  assert.deepEqual(noChannel.tv, { channels: [], alsoOn: [], broadcaster: 'Sky Sports' });
+}
 // The WTA feed down: the ATP Finals still come from their own site
 wtaDown = true;
 const noWta = await build(Date.parse('2026-11-15T07:00:00Z'));

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-10T02:30:16.581Z",
+ "generatedAt": "2026-11-10T03:00:20.063Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -168,7 +168,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 11,
+   "days": 10,
    "errors": []
   },
   "rugby": {
@@ -187,35 +187,6 @@
  },
  "specials": [],
  "events": [
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 2",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-09",
-   "kickoff": "2026-11-10T00:00:00.000Z",
-   "end": "2026-11-10T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",

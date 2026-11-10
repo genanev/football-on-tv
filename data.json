@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-10T12:00:24.132Z",
+ "generatedAt": "2026-11-10T12:30:11.629Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4927,
+   "programmes": 4937,
    "errors": []
   },
   "skyListings": {
@@ -1762,7 +1762,7 @@
    "label": null,
    "id": "tennis-atpf-2026-2026-11-18",
    "kickoff": "2026-11-18T10:30:00.000Z",
-   "end": "2026-11-18T15:00:00.000Z",
+   "end": "2026-11-18T21:30:00.000Z",
    "timeTbc": false,
    "tv": {
     "broadcaster": "Sky Sports Main Event",
@@ -1786,21 +1786,26 @@
    "title": "Grand Slam of Darts",
    "venue": "Aldersley Leisure Village, Wolverhampton",
    "source": "pdc.tv",
-   "id": "darts-10871-2026-11-18",
-   "kickoff": "2026-11-18T12:00:00.000Z",
-   "end": null,
-   "session": null,
+   "id": "darts-10871-1795028400",
+   "kickoff": "2026-11-18T19:00:00.000Z",
+   "end": "2026-11-18T23:00:00.000Z",
+   "session": "Evening session",
    "status": "upcoming",
-   "timeTbc": true,
-   "allDay": true,
+   "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV times to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

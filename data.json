@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-10T21:00:38.662Z",
+ "generatedAt": "2026-11-10T21:30:13.888Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -10,7 +10,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 21,
+   "events": 34,
    "errors": []
   },
   "tntSchedule": {
@@ -94,7 +94,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 2
+   "televised": 3
   },
   "scottishPremiership": {
    "ok": true,
@@ -848,6 +848,37 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607726",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-14T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Chelsea Women",
+   "away": "Manchester City Women",
+   "homeShort": "Chelsea",
+   "awayShort": "Manchester City",
+   "venue": "Stamford Bridge",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 10",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
     ]
    }
   },

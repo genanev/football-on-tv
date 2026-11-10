@@ -1254,8 +1254,8 @@
     const choice = (attr, value, label, on) => `<button class="opt choice" ${attr}="${value}" aria-pressed="${on}">${esc(label)}</button>`;
     const link = (page, label) => `<a href="https://tellyfixtures.co.uk/${page}" target="_blank" rel="noopener" aria-label="${label}, opens in your browser">${label}</a>`;
     // First, "About Telly Fixtures" (George, 10 Nov 2026): the website's landing page, so the app links to it
-    $('#settings-body').innerHTML = `<a class="grp about" href="https://tellyfixtures.co.uk/" target="_blank" rel="noopener" aria-label="About Telly Fixtures, opens our website in your browser">
-        <span><span class="set-h">About Telly Fixtures</span><span class="set-p">What it covers and how it works, on our website</span></span>
+    $('#settings-body').innerHTML = `<a class="grp about" href="https://tellyfixtures.co.uk/" target="_blank" rel="noopener" aria-label="About Telly Fixtures, opens in your browser">
+        <span><span class="set-h">About Telly Fixtures</span><span class="set-p">What it covers and how it works</span></span>
         <span class="about-go" aria-hidden="true">›</span>
       </a><div class="grp" style="--sc:var(--accent)">
         <div class="set-h">Colour theme</div>

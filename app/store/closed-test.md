@@ -109,4 +109,5 @@ decided it was ready. Note things here as they happen.
 
 | Date | What happened (testers joined, feedback, fixes, versions) |
 |---|---|
+| 8 Nov 2026 | Closed testing (Alpha) with 1.0.8, the store listing and App content sent for Google's first review at 13:02; status Published (seen 10 Nov). Recruiting starts. |
 | | |

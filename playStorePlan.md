@@ -188,7 +188,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - **Before the month ends:** a gentle reminder inside the app a few days before.
   - **A lapsed subscription** drops to the same free tier.
   - Taken as read until George says otherwise: the code gives 3 months in place of the 1 (not 4 in total).
-  - Still to decide in Phase 3: whether codes are single-use or shareable, and who gets them.
+  - Codes are shareable (George, 11 Nov 2026): one code posted on a forum, for example, to bring in the first users. Each has an end date and a maximum number of uses, works once per phone, and is never sold.
 - [ ] **"1p a day" wording.** UK advertising rules (the CAP code) allow it if the real price is just as clear: "£3.65 a year – that's 1p a day", with the free month's terms beside it. Final check in the legal review (Phase 5).
 - [ ] **UK only at launch** (it's UK TV). This also avoids the EU's extra seller rules: EU stores must show a seller's address and phone number.
 - [x] **Your public details (George, 5 Nov 2026): his own address, not a virtual one.** Google shows a personal account's legal name, country and developer email, plus the full address [once the app makes money](https://support.google.com/googleplay/android-developer/answer/13628312?hl=en); the address comes from the payments profile (Phase 3). If the app picks up and moves to a company, the company's business address replaces it. The address itself is in `business/public-details.md`, not in this file, while the repository is public.
@@ -283,6 +283,8 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 *You'll learn: store billing, subscriptions and trials, checking purchases, testing payments safely.*
 
+**Where we are (11 Nov 2026):** the app's side is built and tested in the preview (add `?sub` to the preview's address for a pretend store): the free period, the free version with its weekly sport, the offer, My account with the promo code box, the testers' tools, the promo code server and the RevenueCat connection. Nothing is released: the app has no store until RevenueCat's key is in it, so it behaves as before. **Next, George's set-up (`cloud/SETUP.md` → "Subscriptions"):** the payments profile, a build with billing uploaded to internal testing, the `annual` subscription, the RevenueCat account and the promo code server. Then: try buying, restoring, cancelling and a code on the Pixel as a licence tester, and build the feedback button. Not yet tried on a phone: anything that needs the real store.
+
 - [ ] **Payments set-up in Play Console:** payments profile, with the address in `business/public-details.md`; bank account, tax details (UK). Accept the paid apps terms. **The address becomes public at this step.**
 - [ ] Create the subscription product: `annual`, **£3.65**, available in the UK only, **with no Google trial** (Google's trial needs a payment method; the free month runs outside it, see section 3).
 - [ ] Create the **RevenueCat** account (free).
@@ -290,8 +292,11 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Set up one entitlement (e.g. `full_access`) that the `annual` product and promo codes unlock. Apple's product will later unlock the same entitlement.
 - [ ] **Promo codes (George, 5 Nov 2026):**
   - The very small server (a Cloudflare Worker) that checks a code, then grants 3 months through RevenueCat against the phone's anonymous ID.
-  - Decide single-use or shareable and who gets them; keep the list on the server, where codes can be switched off.
-  - Check that Google's billing rules allow codes redeemed outside Google Play for free access; if not, change this before building it.
+  - **Shareable (George, 11 Nov 2026):** each code has an end date and a maximum number of uses, works once per phone, and is never sold. Keep the list on the server, where codes can be switched off.
+  - **Google's rules, checked 11 Nov 2026:** the [Payments policy](https://support.google.com/googleplay/android-developer/answer/9858738) covers apps "requiring or accepting payment" for features, and bans leading people to another *payment* method. A free code that is never sold involves no payment, and Google's own FAQ lets points that are awarded, not sold, unlock digital content without its billing. Nothing in the policy forbids a code box, but nothing names it as allowed either, so: the server can switch the box off (hidden in the app without a new release), the offer screen never mentions codes next to the price, and the "App access" notes tell reviewers the codes are free and never sold.
+  - **If Google objects (George, 11 Nov 2026):** the code box is switched off and the free period for new installs becomes 3 months instead of 1, until the app has enough users; then back to 1 month. The same on the iPhone, where a code box isn't allowed. So the length of the free period is a setting the listings carry (`data.json`), not a number built into the app, and a phone keeps the length it started with.
+  - Google's own custom codes (shareable, 3 to 90 days free, at least 2,000 uses) remain possible, but they start a subscription, so they need a payment method.
+  - **Apple forbids this** (a code box that unlocks features; its own offer codes must be used), so the box lives in the platform layer and the iPhone version leaves it out (Phase 7).
 - [ ] **In the app:**
   - **The free month:** counted on the phone from the first open (section 3), with "Free month: 12 days left" in Settings and a gentle reminder a few days before it ends.
   - **The free tier** (the rules are under "Pricing" in Phase 0):
@@ -299,7 +304,7 @@ The project only moves past a gate when its question has a clear answer. Write t
     - Only that sport, only today. Every other day and sport is locked, with a padlock on the sports.
     - The weekly question: keep this sport, or pick another.
     - An empty day shows the day and date and the usual message ("No televised snooker").
-    - Decide what happens to reminders set before the month ended.
+    - Reminders set before the month ended still go off (George, 11 Nov 2026); no new ones can be set, and tapping a fixture shows the subscription offer.
   - **Subscription offer**, when the free month ends and on tapping something locked:
     - What you get.
     - The price: "£3.65 a year – 1p a day".
@@ -406,7 +411,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 
 - [ ] Join the **Apple Developer Program** (≈ £79 a year, as an individual; your legal name is shown as the seller).
 - [ ] Set up **cloud iPhone builds** (Codemagic or similar; free monthly allowance, no Mac needed). Set up signing certificates through the service's guide.
-- [ ] Add the iPhone versions of the platform layer: Apple in-app purchase through RevenueCat (same entitlement, `annual` at £3.65, with the same free month and free tier on the phone), and reminders.
+- [ ] Add the iPhone versions of the platform layer: Apple in-app purchase through RevenueCat (same entitlement, `annual` at £3.65, with the same free month and free tier on the phone), and reminders. No promo code box: Apple doesn't allow an app's own codes to unlock features, so promo codes there would be Apple's offer codes.
 - [ ] **What Apple checks for:**
   - Screens packaged inside the app (already true).
   - A visible **Restore Purchases** button (already in My account).
@@ -465,3 +470,4 @@ Record decisions here as they're made (date, what, why).
 - 10 Nov 2026: **The website's pages (About, Privacy policy, Terms of use) open inside the app**, in Chrome's in-app browser, rather than in the phone's browser. Reason: George felt leaving the app was odd. The pages stay on the website: Google needs the privacy policy at a public address, people read them before installing or paying, and one copy changes without an app release.
 - 10 Nov 2026: **App releases are bundled.** Reason: every release to closed testing, and later production, goes through Google's review, so a version for one small wording change costs a review. Changes to the listings need no release, and internal testing (not reviewed) is used to try a build quickly.
 - 8 Nov 2026: **The closed test starts before subscriptions are built, and the subscriptions version goes to the same testers during it.** Reason: Google doesn't require a finished app in the closed test, and recruiting and the 14 days then overlap with building subscriptions, which saves a few weeks. Accepted in exchange: the subscriptions version must reach testers early enough to be properly used, or the test runs longer, since Google asks whether testers used every feature.
+- 11 Nov 2026: **Promo codes are shareable, free and never sold; reminders set during the free month still go off after it.** Each code has an end date and a maximum number of uses and works once per phone. Reason: a code posted on a forum is how George plans to bring in the first users. Google's payments policy is about payment, so free codes are within its wording, though it doesn't name them; the code box can be switched off from the server in case Google objects. Apple doesn't allow such a box, so the iPhone version won't have one. **If Google objects, and on the iPhone, the free period starts at 3 months instead of 1** to bring people in, and goes back to 1 month once there are enough users; its length is a setting, not built into the app.

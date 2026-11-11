@@ -1,0 +1,22 @@
+# The promo code server: see worker.mjs. Deployed by hand (cloud/SETUP.md), not by the London job.
+name = "telly-fixtures-codes"
+main = "worker.mjs"
+compatibility_date = "2026-10-01"
+# Reached only at its own address on the domain
+workers_dev = false
+preview_urls = false
+
+[[routes]]
+pattern = "codes.tellyfixtures.co.uk"
+custom_domain = true
+
+[vars]
+# What a code unlocks, as named in RevenueCat
+ENTITLEMENT = "full_access"
+
+# The codes and their counts. Replace the id with the one `wrangler kv namespace create CODES` prints.
+[[kv_namespaces]]
+binding = "CODES"
+id = "REPLACE_WITH_THE_NAMESPACE_ID"
+
+# The secret RC_SECRET (RevenueCat's secret API key) is set with `wrangler secret put RC_SECRET`.

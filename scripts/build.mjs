@@ -39,6 +39,7 @@ import { fetchEfl, eflEvents, eflSeason } from './sources/efl.mjs';
 import { fetchFaCup, faCupEvents, faChannelFor } from './sources/facup.mjs';
 import { fetchApiFootball, afSeason } from './sources/apiFootball.mjs';
 import { checkDue, findCorrections, applyCorrections } from './sources/goldenCheck.mjs';
+import { APP_SETTINGS } from './app-settings.mjs';
 import { unknownClubs } from './sources/teamNames.mjs';
 import { fetchF1, fetchF2, fetchF3, motorsportTv } from './sources/motorsport.mjs';
 import { fetchMotoGp, motoGpTv } from './sources/motogp.mjs';
@@ -485,7 +486,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   report.scores = showScores ? 'on' : 'off';
   markFailingSince(report, previous, now);
   // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it
-  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, report, specials, events, golden };
+  // `app`: settings the phone app reads (app-settings.mjs): the free period's length and so on
+  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, app: APP_SETTINGS, report, specials, events, golden };
 }
 
 const isMain = import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('build.mjs');

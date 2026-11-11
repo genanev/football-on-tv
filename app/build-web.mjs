@@ -18,7 +18,7 @@ mkdirSync(join(www, 'sport-icons'), { recursive: true });
 
 // Not copied: data.json (the app downloads the latest from data.tellyfixtures.co.uk), the demo
 // files and sw.js (the screens are built into the app, so it opens offline without one)
-for (const f of ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png']) {
+for (const f of ['index.html', 'access.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png']) {
   cpSync(join(repo, f), join(www, f));
 }
 cpSync(join(repo, 'sport-icons'), join(www, 'sport-icons'), {

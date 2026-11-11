@@ -474,6 +474,78 @@ after changing it, deploy it again (step 3).
 5. To test it: `npx wrangler@4 deploy --triggers "*/2 * * * *"`. An "all well" email should arrive within
    about 3 minutes, and again every 2 minutes, so then put the normal schedule back: `npx wrangler@4 deploy`.
 
+## Subscriptions (Google Play, RevenueCat and promo codes)
+
+What the app needs before people can subscribe (Phase 3 of `playStorePlan.md`). The app's side is
+built: until step D's key is in the app, it has no store and everything stays open, as now. Menus in
+Play Console and RevenueCat change now and then, so a name may differ slightly from what's written here.
+
+### A. Payments profile (Play Console)
+
+1. **Play Console → Settings → Payments profile** (or the "Set up a merchant account" prompt under
+   **Monetise with Play**). Fill in your name and address, as in `business/public-details.md`.
+   **This is the step where your address becomes public on the store.**
+2. Add your bank account (Google sends a small test deposit, which can take a few days) and the UK tax
+   details it asks for. Accept the paid apps terms.
+
+### B. A version of the app with billing in it
+
+Google only lets you create a subscription once a version containing its billing code has been
+uploaded. Ask Claude for that version; upload it to **Internal testing** as usual (it isn't reviewed).
+
+### C. The subscription (Play Console)
+
+1. **Monetise with Play → Products → Subscriptions → Create subscription.** Product ID: `annual`
+   (it can't be changed later). Name: `Telly Fixtures yearly`.
+2. **Add a base plan.** ID: `yearly`. Type: auto-renewing. Billing period: yearly. Price: **£3.65**,
+   United Kingdom only. No free trial and no offers (the free month runs in the app, not in Google).
+3. **Activate** the base plan.
+
+### D. RevenueCat
+
+RevenueCat checks purchases with Google and tells the app who has subscribed. Free at this size.
+
+1. Create an account at app.revenuecat.com and a project called **Telly Fixtures**.
+2. **Add an app → Google Play Store.** Package name: `uk.co.tellyfixtures`.
+3. It asks for **service account credentials**, a file that lets RevenueCat ask Google about
+   purchases. Follow RevenueCat's own guide for this (linked on that screen): it walks through making
+   the file in Google Cloud and giving it access in Play Console. Google can take up to a day and a
+   half to switch it on.
+4. **Product catalog → Products:** import `annual`. **Entitlements:** create `full_access` and attach
+   the product. **Offerings:** in the default offering, add an **Annual** package with that product.
+5. **API keys:** copy the **public** Google Play key (it starts `goog_`) and send it to Claude: it goes
+   into the app, and isn't a secret. Then create a **secret** key (it starts `sk_`). Keep that one in
+   your password manager: it's only used in step E, and must never be put in a chat or in the code.
+
+### E. The promo code server (Cloudflare)
+
+A small Cloudflare program checks a code typed into the app and tells RevenueCat to give that phone
+full access. It's in `cloud/codes-worker/`; like the listings alert, it's deployed by hand.
+
+1. In a terminal: `cd C:\VSC_Test\football-on-tv\cloud\codes-worker`, then `npx wrangler@4 login`.
+2. Make the store for the codes: `npx wrangler@4 kv namespace create CODES`. It prints an `id`: send it
+   to Claude, who puts it in `wrangler.toml` (it isn't a secret).
+3. Put it on Cloudflare: `npx wrangler@4 deploy`. This also creates the address codes.tellyfixtures.co.uk.
+4. Give it RevenueCat's secret key (it asks you to paste it): `npx wrangler@4 secret put RC_SECRET`.
+
+**To add a code:** Cloudflare dashboard → **Storage & Databases → KV → CODES → Add entry**. Key:
+`code:FORUM3` (the word after `code:` is what people type, in capitals, letters and digits only).
+Value: `{"days": 90, "ends": "2027-01-31", "max": 500}` – 90 days of full access, usable until the end
+of 31 January 2027, by at most 500 phones. Each phone can use a code once.
+
+**To switch a code off:** delete its entry, or add `"off": true` to its value. `uses:FORUM3` in the
+same list shows how many phones have used it.
+
+**To hide the code box in every app** (if Google objects): ask Claude to set `promoCodes` to `false` in
+`scripts/app-settings.mjs`. It takes effect on the next update, with no new app version. The same
+file holds the length of the free period (`freeDays`: 30, or 90 for the three-month start) and the
+testers' tools switch (`testTools`), which must be `false` before the app goes public.
+
+### F. Licence testers (Play Console)
+
+**Settings → License testing:** add the testers' Gmail addresses (and your own). Their purchases are
+then test purchases: nobody is charged, and a "year" renews every few minutes.
+
 ## Stopping it
 
 - **Pause** (keeps everything, runs stop):

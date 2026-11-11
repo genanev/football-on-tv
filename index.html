@@ -22,6 +22,8 @@
 </script>
 <!-- Web browser or phone app: everything that differs between them is in platform.js -->
 <script src="platform.js"></script>
+<!-- Who sees what: the free period, the free version and subscribers (the rules only) -->
+<script src="access.js"></script>
 <style>
   /* Every text colour meets WCAG AA (4.5:1) on the background it sits on, in both themes
      (checked 31 Oct 2026; UEL, UECL, tennis, Sky and Prime were darkened slightly for it) */
@@ -363,6 +365,50 @@
   .sheet-f.links { flex-wrap: wrap; column-gap: 14px; row-gap: 0; padding: 0; }
   .sheet-f.links a { color: var(--muted); font-size: 0.875rem; font-weight: 600; padding: 13px 4px; }
 
+  /* Subscriptions. The free version: a padlock on the sports that aren't the chosen one, and one card
+     under today's listings for the days that are locked */
+  .sport { position: relative; }
+  .sport.locked .tile img { opacity: .45; filter: grayscale(.7); }
+  .sport .lock {
+    position: absolute; top: 2px; right: 4px; width: 1.375rem; height: 1.375rem; border-radius: 50%;
+    display: grid; place-items: center; background: var(--text); color: var(--bg);
+  }
+  .sport .lock svg { width: 0.75rem; height: 0.75rem; }
+  .lockcard {
+    display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer;
+    background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); color: var(--text);
+    padding: 12px 14px; font: inherit;
+  }
+  .lockcard svg { flex: none; width: 1.25rem; height: 1.25rem; color: var(--muted); }
+  .lockcard > span:nth-child(2) { flex: 1; min-width: 0; }
+  .lockcard b { display: block; font-size: 0.9375rem; }
+  .lockcard .set-p { display: block; }
+  /* The subscription offer */
+  .ticks { list-style: none; margin: 10px 0 0; padding: 0; font-size: 0.9375rem; }
+  .ticks li { padding: 3px 0 3px 1.5rem; position: relative; }
+  .ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .price { margin: 12px 0 4px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .price b { font-size: 1.375rem; letter-spacing: -0.01em; }
+  .price span { color: var(--muted); font-size: 0.9375rem; font-weight: 600; }
+  .buy {
+    display: block; width: 100%; margin-top: 12px; border: 0; border-radius: 999px; background: var(--accent); color: var(--pill-text);
+    font: inherit; font-size: 1rem; font-weight: 700; padding: 12px 16px; cursor: pointer;
+  }
+  .buy[disabled] { opacity: .6; cursor: default; }
+  /* The free version's sport: a row per sport, with its tile */
+  .dayopt.sportopt { justify-content: flex-start; gap: 12px; padding: 8px 14px; }
+  .dayopt.sportopt .tile { width: 44px; height: 44px; border-radius: 14px; }
+  .dayopt.sportopt[aria-pressed="true"]::after { margin-left: auto; }
+  /* My account, in Settings: the promo code box */
+  .code-row { display: flex; gap: 8px; margin-top: 6px; }
+  .code-row input {
+    flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--text);
+    font: inherit; font-size: 1rem; padding: 8px 14px; text-transform: uppercase;
+  }
+  .code-row input::placeholder { text-transform: none; color: var(--faint); }
+  .acct-p { color: var(--text); font-size: 0.9375rem; margin-top: 4px; }
+  .ver { text-align: center; padding-bottom: 6px; }
+
   /* The phone's "remove animations" setting: no sliding sheets or lifting tiles */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -424,6 +470,17 @@
   <div class="sheet-b" id="reminder-body"></div>
 </dialog>
 
+<dialog class="sheet" id="offer" aria-labelledby="offer-title">
+  <div class="sheet-h"><h3 id="offer-title">Subscribe</h3><button class="done" id="offer-close">Close</button></div>
+  <div class="sheet-b" id="offer-body"></div>
+</dialog>
+
+<dialog class="sheet" id="sportPick" aria-labelledby="sport-title">
+  <div class="sheet-h"><h3 id="sport-title"></h3><button class="done" id="sport-close">Close</button></div>
+  <p class="sheet-p" id="sport-p"></p>
+  <div class="sheet-b" id="sport-body"></div>
+</dialog>
+
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -452,6 +509,11 @@
   // Match reminders: the phone app only, and not on the recorded demo weeks
   const REM = platform.reminders || { supported: false };
   const BELLS = !!REM.supported && !DEMO;
+  // Subscriptions (playStorePlan.md, Phase 3): only where there's a store to talk to (platform.billing:
+  // the phone app once it has its store key, or the preview's pretend store), and not on the recorded
+  // demo weeks. Without one everything is open, as on the website.
+  const ACCESS = window.tellyAccess;
+  const BILL = platform.billing && platform.billing.supported && ACCESS && !DEMO ? platform.billing : null;
 
   // Groups of addresses, tried in order: the first group whose reads succeed wins, and within a
   // group the newest copy wins.
@@ -473,6 +535,7 @@
     tv: svg('<rect x="3" y="7" width="18" height="12.5" rx="2.5"/><path d="M8.5 3.5 12 7l3.5-3.5"/>'),
     calendar: svg('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>'),
     edit: svg('<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>'),
+    lock: svg('<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>'),
   };
 
   // Sports and their competitions. `soon` = not connected to a data source yet.
@@ -599,6 +662,7 @@
   const ukKey = (d) => fDate.formatToParts(d).filter(p => p.type !== 'literal').map(p => p.value).reverse().join('-');
 
   const fShort = fmt({ weekday: 'short', day: 'numeric', month: 'short' });
+  const fLong = fmt({ day: 'numeric', month: 'short', year: 'numeric' });
 
   // The 8 days of the window, starting today (UK date)
   function windowDays() {
@@ -624,6 +688,48 @@
   function esc(s) {
     return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
+
+  // What this phone may see (the rules are in access.js). `acc` is kept on the phone: when the app was
+  // first opened, the free period's length, the newest listings seen (the clock for the rules) and the
+  // free version's sport. `ent` is what the store last said, kept so a subscriber is still one offline.
+  // Nothing here leaves the phone.
+  const DAY = 86400000;
+  let acc = { start: Date.now(), days: null, seen: 0, sport: null, sportAt: null };
+  let ent = null;
+  if (BILL) try {
+    const a = JSON.parse(localStorage.getItem('access'));
+    if (a && a.start) acc = { ...acc, ...a };
+    ent = JSON.parse(localStorage.getItem('entitlement'));
+  } catch (e) {}
+  const saveAcc = () => { if (BILL) try { localStorage.setItem('access', JSON.stringify(acc)); } catch (e) {} };
+  const setEnt = (e) => { ent = e || null; try { localStorage.setItem('entitlement', JSON.stringify(ent)); } catch (err) {} };
+  saveAcc();
+  // Settings the listings carry (scripts/app-settings.mjs), so they can change without a new app version
+  const appSettings = () => (data && data.app) || {};
+  // The listings bring our own time, and the free period's length for a phone that has none yet (a
+  // phone keeps the length it started with)
+  function noteListings() {
+    if (!BILL || !data) return;
+    const at = Date.parse(data.generatedAt);
+    if (at > acc.seen) acc.seen = at;
+    if (acc.days == null && appSettings().freeDays > 0) acc.days = appSettings().freeDays;
+    saveAcc();
+  }
+  noteListings();
+  const accNow = () => ACCESS.clock(Date.now(), acc.seen);
+  function stageNow() {
+    if (!BILL) return { stage: 'open', full: true };
+    const s = ACCESS.stage(acc, ent, accNow());
+    // A sport the app no longer has: choose again
+    if (s.stage === 'free' && s.sport && !SPORT_BY_ID[s.sport]) Object.assign(s, { sport: null, needPick: true, askWeek: false });
+    return s;
+  }
+  // `gate`: the stage as of the last render. In the free version (`!gate.full`) only `gate.sport` shows,
+  // today only; the other sports carry a padlock.
+  let gate = stageNow();
+  const locked = (sportId) => !gate.full && sportId !== 'mine' && sportId !== gate.sport;
+  const freeName = () => ACCESS.freeName(gate.days || acc.days);
+  const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
   // The channel filter on My TV (George, 7 Nov 2026) picks broadcasters, not single channels: "TNT Sports"
   // covers TNT Sports 1-4. A fixture counts if any of its channels, "also on" ones included, belongs to a
@@ -816,7 +922,8 @@
     // tag before it (1.0.6 wrapped `class="sess">Qualifying`, which showed on screen)
     if (rSet) headline = headline.replace(/([^\s<>]+)((?:<\/span>)?)$/, `<span class="nw">$1<span class="rem-bell">${ICON.bell}</span></span>$2`);
     const rText = canRemind ? reminderText(m) : null;
-    const tap = canRemind ? ` data-r="${esc(rKey)}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="${esc(`${rText.title}. ${rText.body}. ${rSet ? `Reminder set, ${LEAD_LABEL[leadOf(rSet)].toLowerCase()}. Change it` : 'Set a reminder'}`)}"` : '';
+    // In the free version a tap shows the subscription offer; a reminder set earlier can still be removed
+    const tap = canRemind ? ` data-r="${esc(rKey)}" role="button" tabindex="0" aria-haspopup="dialog" aria-label="${esc(`${rText.title}. ${rText.body}. ${rSet ? `Reminder set, ${LEAD_LABEL[leadOf(rSet)].toLowerCase()}. ${gate.full ? 'Change it' : 'Remove it'}` : gate.full ? 'Set a reminder' : 'Reminders are for subscribers'}`)}"` : '';
 
     return `<div class="match${past ? ' past' : ''}"${tap}>
       <div class="time">${m.allDay ? 'TBC' : fTime.format(ko)}${status}${sico}</div>
@@ -826,7 +933,8 @@
     </div>`;
   }
 
-  const inView = (cid) => !!COMP[cid] && (view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport);
+  const inView = (cid) => !!COMP[cid] && (gate.full || SPORT_OF[cid] === gate.sport)
+    && (view.sport === 'mine' ? picks.has(cid) : view.comps.size ? view.comps.has(cid) : SPORT_OF[cid] === view.sport);
 
   // The Specials the listings name right now (data.json's `specials`: from a week before each starts
   // until its last day, George, 5 Nov 2026). One seen for the first time starts ticked in My TV.
@@ -852,6 +960,7 @@
   // A short summary of My TV's picks: the sports with anything picked (not the competitions).
   const nothingPicked = () => !ALL_COMPS.some(c => picks.has(c));
   function picksSummary() {
+    if (!gate.full) return `Free version: <b>${esc(gate.sport ? `${SPORT_BY_ID[gate.sport].name}, today only` : 'no sport picked yet')}</b>`;
     if (ALL_COMPS.every(c => picks.has(c))) return 'Current Selection: <b>Everything</b>';
     if (nothingPicked()) return 'Current Selection: <b>Nothing picked yet</b>';
     const names = SPORTS.filter(s => s.comps.some(c => picks.has(c.id))).map(s => s.name);
@@ -872,8 +981,9 @@
   if (document.fonts) document.fonts.ready.then(fitButtons);
 
   function renderNav() {
-    $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mytab' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}" style="--h:${s.hue}">
-      ${tile(s)}<span>${esc(s.name)}</span></button>`).join('');
+    // In the free version the sports that aren't the chosen one carry a padlock (a tap shows the offer)
+    $('#rail').innerHTML = [MINE, ...SPORTS].map(s => `<button class="sport${s.id === 'mine' ? ' mytab' : ''}${locked(s.id) ? ' locked' : ''}" role="tab" data-s="${s.id}" aria-selected="${view.sport === s.id}"${locked(s.id) ? ` aria-label="${esc(s.name)}, for subscribers"` : ''} style="--h:${s.hue}">
+      ${tile(s)}<span>${esc(s.name)}</span>${locked(s.id) ? `<span class="lock">${ICON.lock}</span>` : ''}</button>`).join('');
     if (view.sport === 'mine') {
       const day = pickedDay();
       const chans = pickedChans() ? [...pickedChans()].sort(brandOrder) : [];
@@ -883,7 +993,8 @@
       $('#sub').innerHTML = `<div class="mine">
         <div class="btns">
           <button class="edit" id="edit">${ICON.edit}<span>My TV Choice</span></button>
-          <button class="edit" id="dayBtn">${ICON.calendar}<span>${day ? esc(dayName(day)) : two('All days', 'Days')}</span></button>
+          ${gate.full ? `<button class="edit" id="dayBtn">${ICON.calendar}<span>${day ? esc(dayName(day)) : two('All days', 'Days')}</span></button>`
+            : `<button class="edit" id="dayBtn" aria-label="Today only. Other days are for subscribers">${ICON.lock}<span>Today</span></button>`}
           <button class="edit" id="chanBtn" aria-label="Channels: ${esc(chans.length ? chans.join(', ') : 'all')}">${ICON.tv}<span>${chanLabel}</span></button>
         </div>
         <div class="what">${picksSummary()}</div></div>`;
@@ -900,9 +1011,18 @@
     updateFades();
   }
 
+  let gateShown = '';
   function render() {
     if (!data) return;
     syncSpecials();
+    // The free period may have ended, or a subscription started, since the last look
+    gate = stageNow();
+    if (!gate.full) {
+      if (locked(view.sport)) view = { sport: 'mine', comps: new Set(), chans: view.chans };
+      view.day = null; // today only
+    }
+    const gateKey = `${gate.stage}|${gate.sport || ''}`;
+    if (gateKey !== gateShown) { gateShown = gateKey; renderNav(); }
 
     $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
     // Football fixtures come from API-Football once the update job has its key (build.mjs)
@@ -928,11 +1048,19 @@
       bannerHtml += `<div class="banner info">${esc(chosen.map(c => c.name).join(' and '))} ${chosen.length > 1 ? 'aren’t' : 'isn’t'} connected yet. Their listings will appear here once ${chosen.length > 1 ? 'they are' : 'it is'}.</div>`;
     }
     if (view.sport === 'mine' && nothingPicked()) bannerHtml += '<div class="banner info">My TV is empty. <button id="edit2">Pick your sports</button> to fill it.</div>';
+    // The free period (or a promo code's) is about to end: a gentle note, a few days before. Once it has
+    // ended and no sport is chosen yet, how to choose one.
+    const left = gate.until ? gate.until - accNow() : 0;
+    const leftText = left <= DAY ? 'in less than a day' : `in ${plural(Math.ceil(left / DAY), 'day')}`;
+    const after = 'After that you keep one sport for free, with today’s listings, or you can <button data-offer>subscribe</button> for everything.';
+    if (gate.stage === 'trial' && gate.ending) bannerHtml += `<div class="banner info">Your ${freeName()} ends ${leftText}. ${after}</div>`;
+    if (gate.stage === 'promo' && gate.until && left <= ACCESS.WARN_DAYS * DAY) bannerHtml += `<div class="banner info">Your promo code’s full access ends ${leftText}. ${after}</div>`;
+    if (!gate.full && !gate.sport) bannerHtml += `<div class="banner info">Your ${freeName()} has ended. <button data-pick>Pick your free sport</button> to keep today’s listings, or <button data-offer>subscribe</button> for everything.</div>`;
     $('#banner').innerHTML = bannerHtml;
 
     const one = pickedDay();
     const chans = pickedChans();
-    const days = one ? [one] : windowDays();
+    const days = one ? [one] : gate.full ? windowDays() : windowDays().slice(0, 1);
     const byDay = {};
     for (const m of data.events || data.matches || []) {
       if (!inView(compOf(m))) continue;
@@ -940,7 +1068,8 @@
       (byDay[ukKey(new Date(m.kickoff))] ||= []).push(m);
     }
 
-    const none = view.sport === 'mine' ? (chans ? `Nothing from your picks on ${chans.size === 1 ? [...chans][0] : 'these channels'}` : 'Nothing on TV from your picks')
+    const none = !gate.full && !gate.sport ? 'Pick your free sport to see today’s listings'
+      : view.sport === 'mine' ? (chans ? `Nothing from your picks on ${chans.size === 1 ? [...chans][0] : 'these channels'}` : 'Nothing on TV from your picks')
       : view.comps.size === 1 ? COMP[[...view.comps][0]].none
       : view.comps.size ? 'Nothing on TV from your selection' : SPORTS.find(s => s.id === view.sport).none;
     let html = '';
@@ -952,6 +1081,9 @@
       html += list ? `<div class="list">${list.map(matchHtml).join('')}</div>` : `<div class="empty">${none}</div>`;
       html += '</section>';
     }
+    // The free version stops at today: one card stands for the days and sports that are locked
+    if (!gate.full) html += `<section class="day"><h2>Tomorrow and the rest of the week</h2>
+      <button class="lockcard" data-offer>${ICON.lock}<span><b>For subscribers</b><span class="set-p">Every sport, the whole week ahead and fixtures reminders</span></span><span class="about-go" aria-hidden="true">›</span></button></section>`;
     $('#main').innerHTML = html;
   }
 
@@ -970,6 +1102,7 @@
       for (const j of ok) if (!data || Date.parse(j.generatedAt) >= Date.parse(data.generatedAt)) data = j;
       if (DEMO) demoNow = Date.parse(data.generatedAt) + 4 * 3600000; // a few hours into the recorded day
       else if (data !== before) try { localStorage.setItem(SAVED, JSON.stringify(data)); } catch (e) {}
+      noteListings();
       lastErr = null;
       break;
     }
@@ -977,12 +1110,15 @@
     if (lastErr && !data) $('#main').innerHTML = `<div class="loading">Couldn’t load fixtures (${esc(lastErr.message)}). Please check your connection and try again shortly.</div>`;
     render();
     syncReminders();
+    // Ask the store before saying a free period has ended: the person may have subscribed
+    await refreshEnt();
+    accessPrompts();
     remindersHint();
   }
 
   // With no bells on show, say once that fixtures can be tapped
   function remindersHint() {
-    if (!BELLS || !data || Object.keys(reminders).length) return;
+    if (!BELLS || !data || !gate.full || Object.keys(reminders).length || document.querySelector('dialog[open]')) return;
     try {
       if (localStorage.getItem('reminderHint')) return;
       localStorage.setItem('reminderHint', '1');
@@ -1003,11 +1139,14 @@
     reminderOpen = key;
     const set = reminders[key];
     const text = reminderText(e);
-    const ahead = LEAD_CHOICES.filter(m => Date.parse(e.kickoff) - m * 60000 > nowMs());
+    // The free version sets no new reminders: one set earlier still goes off, and can be removed here
+    // (George, 11 Nov 2026)
+    const ahead = gate.full ? LEAD_CHOICES.filter(m => Date.parse(e.kickoff) - m * 60000 > nowMs()) : [];
     const on = set ? leadOf(set) : null;
     $('#reminder-what').textContent = `${text.title}. ${text.body}.`;
     $('#reminder-body').innerHTML = ahead.map(m => `<button class="dayopt" data-lead="${m}" aria-pressed="${m === on}">${esc(LEAD_LABEL[m])}</button>`).join('')
-      + (REM.askExact && !exactOk ? '<p class="rem-late">Your phone may deliver it a few minutes late. <button data-exact>Allow on-time reminders</button></p>' : '')
+      + (!gate.full ? `<p class="rem-late">Your reminder is set: ${esc(LEAD_LABEL[on].toLowerCase())}. New reminders are for subscribers.</p>` : '')
+      + (gate.full && REM.askExact && !exactOk ?'<p class="rem-late">Your phone may deliver it a few minutes late. <button data-exact>Allow on-time reminders</button></p>' : '')
       + (set ? `<div class="sheet-f" id="reminder-foot">${removeLinks(Object.keys(reminders).length)}</div>` : '');
     const d = $('#reminder');
     if (d.showModal) d.showModal(); else d.setAttribute('open', '');
@@ -1016,16 +1155,19 @@
     const d = $('#reminder');
     if (d.close) d.close(); else d.removeAttribute('open');
   }
+  // In the free version a fixture without a reminder shows the subscription offer instead
+  const tapFixture = (key) => (gate.full || reminders[key] ? openReminder(key) : openOffer());
   $('#main').addEventListener('click', (ev) => {
+    if (ev.target.closest('[data-offer]')) { openOffer(); return; }
     const row = ev.target.closest('.match[data-r]');
-    if (row) openReminder(row.dataset.r);
+    if (row) tapFixture(row.dataset.r);
   });
   $('#main').addEventListener('keydown', (ev) => {
     if (ev.key !== 'Enter' && ev.key !== ' ') return;
     const row = ev.target.closest('.match[data-r]');
     if (!row) return;
     ev.preventDefault();
-    openReminder(row.dataset.r);
+    tapFixture(row.dataset.r);
   });
   $('#reminder-body').addEventListener('click', async (ev) => {
     const key = reminderOpen;
@@ -1109,7 +1251,8 @@
   }
   $('#rail').addEventListener('click', (ev) => {
     const b = ev.target.closest('.sport');
-    if (b) go({ sport: b.dataset.s, comps: new Set() });
+    if (b && locked(b.dataset.s)) openOffer();
+    else if (b) go({ sport: b.dataset.s, comps: new Set() });
   });
   $('#sub').addEventListener('click', (ev) => {
     const chip = ev.target.closest('.chip');
@@ -1122,10 +1265,14 @@
       go({ sport: view.sport, comps }, id);
     }
     if (ev.target.closest('#edit')) openPicker();
-    if (ev.target.closest('#dayBtn')) openDayPicker();
+    if (ev.target.closest('#dayBtn')) gate.full ? openDayPicker() : openOffer();
     if (ev.target.closest('#chanBtn')) openChanPicker();
   });
-  $('#banner').addEventListener('click', (ev) => { if (ev.target.closest('#edit2')) openPicker(); });
+  $('#banner').addEventListener('click', (ev) => {
+    if (ev.target.closest('#edit2')) openPicker();
+    if (ev.target.closest('[data-offer]')) openOffer();
+    if (ev.target.closest('[data-pick]')) openSportPick();
+  });
 
   // Fade the edge of the icon row when more icons are hidden that way
   function updateFades() {
@@ -1234,6 +1381,216 @@
   $('#chan-done').addEventListener('click', closeChanPicker);
   $('#chanPicker').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeChanPicker(); });
 
+  // A sheet that slides up: open and close
+  const openSheet = (id) => { const d = $(id); if (d.showModal) d.showModal(); else d.setAttribute('open', ''); };
+  const closeSheet = (id) => { const d = $(id); if (d.close) d.close(); else d.removeAttribute('open'); };
+  // A link to one of the website's pages (About, the policies): the phone app opens it over itself,
+  // the web in a new tab. Returns true if the tap was on one.
+  const pageLink = (page, label) => `<a href="https://tellyfixtures.co.uk/${page}" target="_blank" rel="noopener" aria-label="${label}, opens a web page">${label}</a>`;
+  function openedPage(ev) {
+    const page = ev.target.closest('a[href]');
+    if (!page || !platform.openPage) return false;
+    ev.preventDefault();
+    platform.openPage(page.href, theme);
+    return true;
+  }
+
+  // Asks the store whether this phone has a subscription (or a promo code's access) and shows the result.
+  // Without a signal the last answer stands.
+  async function refreshEnt() {
+    if (!BILL) return;
+    try { setEnt(await BILL.status()); } catch (e) {}
+    render();
+    if ($('#settings').open) renderSettings();
+  }
+  // The price as the store gives it (in the person's currency); "£3.65" until it answers
+  let storePrice = null;
+  const readPrice = () => { if (BILL && !storePrice) BILL.price().then((p) => { if (p) { storePrice = p; if ($('#offer').open) renderOffer(); } }, () => {}); };
+  readPrice();
+  let appVersion = '';
+  if (platform.version) platform.version().then((v) => { appVersion = v || ''; }, () => {});
+
+  // The subscription offer: shown on tapping something locked, from the notes about the free period,
+  // and from Settings. It says what you get, the price, that nothing is charged without subscribing and
+  // how to cancel. It never mentions promo codes: those are free, never sold, and live in Settings.
+  function renderOffer() {
+    const price = storePrice || '£3.65';
+    const store = esc(BILL.store || 'your app store');
+    const now = gate.stage === 'trial' ? `You have ${plural(gate.daysLeft, 'free day')} left: you can subscribe now, or when they end. `
+      : gate.stage === 'promo' ? `Your promo code gives you full access until ${esc(fLong.format(new Date(gate.until)))}: you can subscribe now, or when it ends. ` : '';
+    $('#offer-body').innerHTML = `<div class="grp">
+        <div class="set-h">Everything in Telly Fixtures</div>
+        <ul class="ticks"><li>Every sport and competition</li><li>The whole week ahead, not just today</li><li>Fixtures reminders</li><li>No ads, no betting</li></ul>
+        <div class="price"><b>${esc(price)} a year</b>${price === '£3.65' ? '<span>that’s 1p a day</span>' : ''}</div>
+        <p class="set-p">${now}You pay nothing unless you choose to subscribe. The subscription renews each year until you cancel, which you can do at any time in ${store}.</p>
+        <button class="buy" id="offer-buy">Subscribe for ${esc(price)} a year</button>
+      </div>
+      <div class="sheet-f"><button id="offer-restore">Restore purchase</button><button id="offer-skip">${gate.full ? 'Not now' : 'Carry on with the free version'}</button></div>
+      <div class="sheet-f links">${pageLink('terms.html', 'Terms of use')}${pageLink('privacy.html', 'Privacy policy')}</div>`;
+  }
+  function openOffer() {
+    if (!BILL) return;
+    for (const d of document.querySelectorAll('dialog[open]')) d.close();
+    readPrice();
+    renderOffer();
+    openSheet('#offer');
+  }
+  const closeOffer = () => closeSheet('#offer');
+  async function subscribe() {
+    const b = $('#offer-buy');
+    if (b) b.disabled = true;
+    try {
+      setEnt(await BILL.subscribe());
+      closeOffer();
+      toast('Thank you! You’re subscribed.');
+    } catch (e) {
+      // Closing the store's own sheet isn't an error
+      if (!e || !e.cancelled) toast('The purchase couldn’t be completed. If you were charged, tap Restore purchase.');
+      if (b) b.disabled = false;
+    }
+    render();
+    if ($('#settings').open) renderSettings();
+    syncReminders();
+  }
+  async function restore() {
+    try {
+      setEnt(await BILL.restore());
+      const on = stageNow().stage;
+      toast(on === 'sub' || on === 'promo' ? 'Your subscription is restored' : `No subscription was found for this ${BILL.store || 'store'} account`);
+      if (on === 'sub' || on === 'promo') closeOffer();
+    } catch (e) {
+      toast('Couldn’t reach the store. Check your connection and try again.');
+    }
+    render();
+    if ($('#settings').open) renderSettings();
+  }
+  $('#offer-body').addEventListener('click', (ev) => {
+    if (openedPage(ev)) return;
+    if (ev.target.closest('#offer-buy')) subscribe();
+    if (ev.target.closest('#offer-restore')) restore();
+    if (ev.target.closest('#offer-skip')) closeOffer();
+  });
+  $('#offer-close').addEventListener('click', closeOffer);
+  $('#offer').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeOffer(); });
+
+  // The free version's sport (George, 5 Nov 2026): asked for when the free period ends, and again a
+  // week after each choice, the next time the app is opened. Closing the weekly question keeps the same
+  // sport for another week. There's no changing in between: subscribing is the way to more.
+  const freeSports = () => SPORTS.filter(s => s.comps.length); // Specials only while an event is in scope
+  function openSportPick() {
+    if (!BILL || gate.full || !(gate.needPick || gate.askWeek)) return;
+    const cur = gate.sport && SPORT_BY_ID[gate.sport];
+    $('#sport-title').textContent = cur ? 'A new week' : 'Pick your free sport';
+    $('#sport-p').textContent = cur ? `Keep ${cur.name} as your free sport for the next week, or pick another.`
+      : `Your ${freeName()} has ended. You can keep one sport for free, with today’s listings, and change it once a week.`;
+    $('#sport-close').textContent = cur ? `Keep ${cur.name}` : 'Close';
+    $('#sport-body').innerHTML = freeSports().map(s => `<button class="dayopt sportopt" data-sp="${s.id}" aria-pressed="${!!cur && cur.id === s.id}">${tile(s)}<span>${esc(s.name)}</span></button>`).join('')
+      + '<div class="sheet-f"><button data-offer>Or subscribe for everything</button></div>';
+    openSheet('#sportPick');
+  }
+  // Closing it: the weekly question keeps the sport and starts its next week
+  function closeSportPick() {
+    closeSheet('#sportPick');
+    if (!gate.full && gate.sport && gate.askWeek) { acc.sportAt = accNow(); saveAcc(); render(); }
+  }
+  $('#sport-body').addEventListener('click', (ev) => {
+    if (ev.target.closest('[data-offer]')) { openOffer(); return; }
+    const b = ev.target.closest('[data-sp]');
+    if (!b) return;
+    closeSheet('#sportPick');
+    acc.sport = b.dataset.sp;
+    acc.sportAt = accNow();
+    saveAcc();
+    go({ sport: acc.sport, comps: new Set() });
+    toast(`Your free sport is ${SPORT_BY_ID[acc.sport].name}. You can change it in a week.`);
+  });
+  $('#sport-close').addEventListener('click', closeSportPick);
+  $('#sportPick').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeSportPick(); });
+  // Asked once each time the app is opened, and never on top of another sheet. After that the note
+  // above the listings offers it.
+  let promptedAt = 0;
+  function accessPrompts() {
+    if (!BILL || gate.full || !(gate.needPick || gate.askWeek)) return;
+    if (document.querySelector('dialog[open]') || Date.now() - promptedAt < 60000) return;
+    promptedAt = Date.now();
+    openSportPick();
+  }
+
+  // My account, in Settings: where the person stands, and what they can do about it
+  function accountHtml() {
+    if (!BILL) return '';
+    const date = (ms) => esc(fLong.format(new Date(ms)));
+    const btn = (attr, label) => `<button class="opt choice" ${attr}>${label}</button>`;
+    const subscribed = gate.stage === 'sub';
+    let status;
+    if (subscribed) status = !gate.until ? 'You’re subscribed.' : gate.willRenew ? `You’re subscribed. It renews on ${date(gate.until)}.` : `You’re subscribed until ${date(gate.until)}. It won’t renew.`;
+    else if (gate.stage === 'promo') status = `Full access with a promo code until ${date(gate.until)}.`;
+    else if (gate.stage === 'trial') status = `Your ${freeName()}: ${plural(gate.daysLeft, 'day')} left, with full access to everything.`;
+    else if (gate.sport) status = `Free version: ${esc(SPORT_BY_ID[gate.sport].name)}, today only.${gate.changeOn ? ` You can change sport from ${date(gate.changeOn)}.` : ''}`;
+    else status = 'Free version: no sport picked yet.';
+    const buttons = [
+      subscribed ? btn('data-manage', 'Manage subscription') : btn('data-offer', 'Subscribe'),
+      !gate.full && (gate.needPick || gate.askWeek) ? btn('data-pick', gate.sport ? 'Change sport' : 'Pick your free sport') : '',
+      subscribed ? '' : btn('data-restore', 'Restore purchase'),
+    ].join('');
+    // The promo code box: free codes, never sold. The listings can switch it off (app-settings.mjs), and
+    // a platform that may not have one (the iPhone) leaves `codes` out.
+    const codes = BILL.codes && (appSettings().promoCodes === true || !!BILL.preview) && !subscribed;
+    return `<div class="grp" style="--sc:var(--accent)">
+        <div class="set-h">My account</div>
+        <div class="acct-p">${status}</div>
+        <div class="opts">${buttons}</div>
+        ${!codes ? '' : `<form id="code-form">
+          <label class="set-p" for="code-in" style="display:block;margin-top:12px">Have a promo code?</label>
+          <div class="code-row"><input id="code-in" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="20" placeholder="Enter it here"><button class="opt choice" type="submit">Apply</button></div>
+          <div class="set-p" id="code-msg" role="status"></div>
+        </form>`}
+      </div>`;
+  }
+  const CODE_SAYS = {
+    unknown: 'That code isn’t recognised. Please check it and try again.',
+    ended: 'That code has ended.',
+    full: 'That code has been used as many times as it allows.',
+    used: 'This phone has already used that code.',
+  };
+  async function redeem(code) {
+    const say = (t) => { const m = $('#code-msg'); if (m) m.textContent = t; };
+    if (!code) return;
+    say('Checking…');
+    let r = null;
+    try { r = await BILL.redeem(code); } catch (e) {}
+    if (!r || !r.ok) { say((r && CODE_SAYS[r.reason]) || 'Couldn’t check the code. Check your connection and try again.'); return; }
+    await refreshEnt();
+    closeSettings();
+    toast(gate.until && gate.stage === 'promo' ? `Code accepted: full access until ${fLong.format(new Date(gate.until))}` : 'Code accepted: you have full access');
+  }
+
+  // Testers' tools (only while the listings switch them on, or in the preview): a 14-day test never
+  // reaches the end of a free month by itself, so these move this phone's dates. They don't touch a
+  // subscription or a promo code.
+  const testTools = () => !!BILL && (appSettings().testTools === true || !!BILL.preview);
+  function testHtml() {
+    if (!testTools()) return '';
+    const btn = (what, label) => `<button class="opt choice" data-test="${what}">${label}</button>`;
+    return `<div class="grp" style="--sc:var(--accent)">
+        <div class="set-h">For testers</div>
+        <div class="set-p">Jump ahead to see each stage. These only change this phone’s dates, not a subscription or a promo code.</div>
+        <div class="opts">${btn('warn', '3 free days left')}${btn('end', 'End the free period')}${btn('week', 'A week later')}${btn('reset', 'Start again')}</div>
+      </div>`;
+  }
+  function runTest(what) {
+    const now = accNow(), days = acc.days > 0 ? acc.days : ACCESS.DEFAULT_DAYS;
+    if (what === 'warn') acc.start = now - (days - 3) * DAY - 3600000;
+    if (what === 'end') { acc.start = now - days * DAY - 1; acc.sport = null; acc.sportAt = null; }
+    if (what === 'week' && acc.sportAt) acc.sportAt -= ACCESS.WEEK_DAYS * DAY;
+    if (what === 'reset') { acc.start = now; acc.sport = null; acc.sportAt = null; }
+    saveAcc();
+    promptedAt = 0;
+    closeSettings();
+    render();
+    accessPrompts();
+  }
+
   // Colour theme: Light / Dark. First visit matches the phone; after that your choice is remembered.
   const THEMES = { light: 'Light', dark: 'Dark' };
   let theme = null;
@@ -1252,12 +1609,12 @@
   // with a close button that comes straight back (George, 10 Nov 2026: leaving for the browser felt odd).
   function renderSettings() {
     const choice = (attr, value, label, on) => `<button class="opt choice" ${attr}="${value}" aria-pressed="${on}">${esc(label)}</button>`;
-    const link = (page, label) => `<a href="https://tellyfixtures.co.uk/${page}" target="_blank" rel="noopener" aria-label="${label}, opens a web page">${label}</a>`;
+    const link = pageLink;
     // First, "About Telly Fixtures" (George, 10 Nov 2026): the website's landing page, so the app links to it
     $('#settings-body').innerHTML = `<a class="grp about" href="https://tellyfixtures.co.uk/" target="_blank" rel="noopener" aria-label="About Telly Fixtures, opens a web page">
         <span><span class="set-h">About Telly Fixtures</span><span class="set-p">What it covers and how it works</span></span>
         <span class="about-go" aria-hidden="true">›</span>
-      </a><div class="grp" style="--sc:var(--accent)">
+      </a>${accountHtml()}<div class="grp" style="--sc:var(--accent)">
         <div class="set-h">Colour theme</div>
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
@@ -1266,7 +1623,8 @@
           ? ' Reminders come on time: Telly Fixtures is allowed to set alarms and reminders.'
           : ' To save battery, your phone may deliver reminders a few minutes late. Nothing to do if that’s ok. If you want them on time to the minute, allow Telly Fixtures to set alarms and reminders.'}</div>
         ${REM.askExact && !exactOk ? '<div class="opts"><button class="opt choice" data-exact>Allow on-time reminders</button></div>' : ''}
-      </div>`) +`<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`;
+      </div>`) + testHtml() + `<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`
+      + (appVersion ? `<div class="set-p ver">Version ${esc(appVersion)}</div>` : '');
   }
   function closeSettings() {
     const d = $('#settings');
@@ -1282,15 +1640,25 @@
   });
   $('#settings-body').addEventListener('click', (ev) => {
     // The website's pages (About, the policies): the phone app opens them over itself, the web in a new tab
-    const page = ev.target.closest('a[href]');
-    if (page && platform.openPage) { ev.preventDefault(); platform.openPage(page.href, theme); return; }
+    if (openedPage(ev)) return;
     if (ev.target.closest('[data-exact]')) { allowExact(); return; }
+    // My account
+    if (ev.target.closest('[data-offer]')) { openOffer(); return; }
+    if (ev.target.closest('[data-pick]')) { closeSettings(); openSportPick(); return; }
+    if (ev.target.closest('[data-restore]')) { restore(); return; }
+    if (ev.target.closest('[data-manage]')) { BILL.manage(); return; }
+    const test = ev.target.closest('[data-test]');
+    if (test) { runTest(test.dataset.test); return; }
     const t = ev.target.closest('[data-theme-pick]');
     if (!t) return;
     theme = t.dataset.themePick;
     try { localStorage.setItem('theme', theme); } catch (e) {}
     applyTheme();
     renderSettings();
+  });
+  $('#settings-body').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    if (ev.target.id === 'code-form') redeem(ev.target.code.value.trim());
   });
   $('#settings-done').addEventListener('click', closeSettings);
   $('#settings').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) closeSettings(); }); // tap outside the sheet
@@ -1304,6 +1672,8 @@
     if ($('#chanPicker').open) { closeChanPicker(); return true; }
     if ($('#settings').open) { closeSettings(); return true; }
     if ($('#reminder').open) { closeReminder(); return true; }
+    if ($('#offer').open) { closeOffer(); return true; }
+    if ($('#sportPick').open) { closeSportPick(); return true; }
     if (view.sport !== 'mine') { go({ sport: 'mine', comps: new Set(), day: view.day, chans: view.chans }); return true; }
     if (pickedDay() || pickedChans()) { go({ sport: 'mine', comps: new Set(), day: null, chans: null }); return true; }
     return false;

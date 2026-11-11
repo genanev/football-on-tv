@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T15:00:14.738Z",
+ "generatedAt": "2026-11-11T15:30:32.215Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -15,26 +15,17 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1050,
+   "programmes": 1048,
    "errors": []
   },
   "primeVideo": {
-   "ok": true,
-   "events": 8,
-   "amazonPicks": [
-    "Arsenal vs. Dortmund",
-    "Barcelona vs. Manchester City",
-    "Manchester United vs. Roma",
-    "Liverpool vs. Villarreal",
-    "Atlético Madrid vs. Manchester United",
-    "Porto vs. Manchester City",
-    "LASK vs. Celtic FC",
-    "Fenerbahce vs. Lyon"
-   ]
+   "ok": false,
+   "error": "no events found on the Prime Video Champions League page",
+   "failingSince": "2026-11-11T15:30:32.215Z"
   },
   "premierSports": {
    "ok": true,
-   "events": 129
+   "events": 130
   },
   "footballSource": "api-football",
   "goldenCheck": {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T05:30:18.465Z",
+ "generatedAt": "2026-11-11T06:00:15.942Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
@@ -40,27 +40,27 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-10T06:00:15.731Z",
+    "checkedAt": "2026-11-11T06:00:15.942Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-10T06:00:15.731Z",
+    "checkedAt": "2026-11-11T06:00:15.942Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-10T06:00:15.731Z",
+    "checkedAt": "2026-11-11T06:00:15.942Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-10T06:00:15.731Z",
+    "checkedAt": "2026-11-11T06:00:15.942Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-10T06:00:15.731Z",
+    "checkedAt": "2026-11-11T06:00:15.942Z",
     "corrections": 0
    },
    "changed": []
@@ -127,8 +127,9 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 0
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "failingSince": "2026-11-11T06:00:15.942Z"
   },
   "darts": {
    "ok": true,
@@ -166,11 +167,12 @@
   "tennis": {
    "ok": true,
    "tournaments": [
-    "WTA Finals",
     "ATP Finals"
    ],
-   "days": 10,
-   "errors": []
+   "days": 5,
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-11&to=2026-11-19"
+   ]
   },
   "rugby": {
    "ok": true,
@@ -232,35 +234,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 4",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-11",
-   "kickoff": "2026-11-11T19:30:00.000Z",
-   "end": "2026-11-12T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -369,36 +342,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 5",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-12",
-   "kickoff": "2026-11-12T19:30:00.000Z",
-   "end": "2026-11-13T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis",
-     "Sky Sports+"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -535,35 +478,6 @@
      "ITV4"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 6",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-13",
-   "kickoff": "2026-11-13T19:30:00.000Z",
-   "end": "2026-11-14T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -933,35 +847,6 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 7",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-14",
-   "kickoff": "2026-11-14T19:30:00.000Z",
-   "end": "2026-11-15T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1421,33 +1306,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 8",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-15",
-   "kickoff": "2026-11-15T19:00:00.000Z",
-   "end": "2026-11-15T23:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "South Africa v Bangladesh",
@@ -1842,28 +1700,28 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-10T06:00:15.731Z",
+   "checkedAt": "2026-11-11T06:00:15.942Z",
    "corrections": [],
    "matches": []
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-10T06:00:15.731Z",
+   "checkedAt": "2026-11-11T06:00:15.942Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-10T06:00:15.731Z",
+   "checkedAt": "2026-11-11T06:00:15.942Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-10T06:00:15.731Z",
+   "checkedAt": "2026-11-11T06:00:15.942Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-10T06:00:15.731Z",
+   "checkedAt": "2026-11-11T06:00:15.942Z",
    "corrections": []
   }
  }

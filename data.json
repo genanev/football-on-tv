@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-11T14:30:14.080Z",
+ "generatedAt": "2026-11-11T15:00:14.738Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4929,
+   "programmes": 4920,
    "errors": []
   },
   "skyListings": {
@@ -332,7 +332,7 @@
    "session": "Round 1",
    "status": "upcoming",
    "id": "golf-pga-R2026558-2026-11-12",
-   "kickoff": "2026-11-12T14:30:00.000Z",
+   "kickoff": "2026-11-12T13:00:00.000Z",
    "end": "2026-11-12T22:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -498,7 +498,7 @@
    "session": "Round 2",
    "status": "upcoming",
    "id": "golf-pga-R2026558-2026-11-13",
-   "kickoff": "2026-11-13T14:30:00.000Z",
+   "kickoff": "2026-11-13T13:00:00.000Z",
    "end": "2026-11-13T22:00:00.000Z",
    "timeTbc": false,
    "tv": {

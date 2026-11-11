@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-11T06:30:21.983Z",
+ "generatedAt": "2026-11-11T07:00:19.201Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4897,
+   "programmes": 4912,
    "errors": []
   },
   "skyListings": {
@@ -144,7 +144,7 @@
     "The RSM Classic",
     "DP World Tour Championship"
    ],
-   "rounds": 8,
+   "rounds": 9,
    "errors": []
   },
   "snooker": {
@@ -156,7 +156,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 11
+   "matches": 12
   },
   "skiing": {
    "ok": true,
@@ -1760,6 +1760,35 @@
    }
   },
   {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "The Wanderers Stadium, Johannesburg",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269796-d5",
+   "kickoff": "2026-11-19T08:00:00.000Z",
+   "end": "2026-11-19T15:00:00.000Z",
+   "session": "1st Test, Day 5",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Cricket"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "TEN_ATPF",
    "kind": "session",
    "title": "ATP Finals",
@@ -1789,26 +1818,59 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "The RSM Classic",
+   "venue": "Sea Island Golf Club - Seaside Course",
+   "source": "pgatour.com",
+   "session": "Round 1",
+   "status": "upcoming",
+   "id": "golf-pga-R2026493-2026-11-19",
+   "kickoff": "2026-11-19T13:30:00.000Z",
+   "end": "2026-11-19T20:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Golf"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "DARTS",
    "kind": "session",
    "title": "Grand Slam of Darts",
    "venue": "Aldersley Leisure Village, Wolverhampton",
    "source": "pdc.tv",
-   "id": "darts-10871-2026-11-19",
-   "kickoff": "2026-11-19T12:00:00.000Z",
-   "end": null,
-   "session": null,
+   "id": "darts-10871-1795114800",
+   "kickoff": "2026-11-19T19:00:00.000Z",
+   "end": "2026-11-19T23:00:00.000Z",
+   "session": "Evening session",
    "status": "upcoming",
-   "timeTbc": true,
-   "allDay": true,
+   "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV times to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

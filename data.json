@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-11-11T00:30:13.866Z",
+ "generatedAt": "2026-11-11T01:00:14.349Z",
  "windowDays": 8,
  "report": {
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4570,
+   "programmes": 4575,
    "errors": []
   },
   "skyListings": {
@@ -169,7 +169,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 10,
+   "days": 11,
    "errors": []
   },
   "rugby": {
@@ -1778,6 +1778,33 @@
     "broadcaster": "TNT Sports 1",
     "channels": [
      "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_ATPF",
+   "kind": "session",
+   "title": "ATP Finals",
+   "session": "Day 5",
+   "venue": "sh Italian Japanese Inalpi Arena, Torino",
+   "source": "nittoatpfinals.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-atpf-2026-2026-11-19",
+   "kickoff": "2026-11-19T10:30:00.000Z",
+   "end": "2026-11-19T21:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
     ],
     "alsoOn": [],
     "confirmed": true,

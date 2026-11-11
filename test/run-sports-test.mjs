@@ -33,6 +33,8 @@
 //   fixtures/worldcurling-event-europeans-2026.json    World Curling's event (its page header only)
 //   fixtures/wta-tournaments-2026-10-29.json           WTA calendar from 25 Oct 2026: the Grand Slams
 //                                         and Finals, plus one WTA 1000 (ignored)
+//   fixtures/wta-matches-2026-11-11.json               the WTA Finals' order of play (captured 11 Nov 2026, 00:24)
+//   fixtures/nittoatpfinals-schedule-2026-11-11.html   the ATP Finals' timetable page (the article only)
 //   fixtures/nittoatpfinals-home-2026-10-29.html       the ATP Finals' home page (the dates only)
 //   fixtures/worldrugby-matches-2026-10-29.json        World Rugby's matches, 29 Oct - 8 Nov 2026,
 //                                         captured 29 Oct: our four competitions plus three others
@@ -62,7 +64,7 @@ import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/so
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/curling.mjs';
 import { specialsInScope } from '../scripts/sources/specials.mjs';
-import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents } from '../scripts/sources/tennis.mjs';
+import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents, tennisDays, mapWtaPlay, parseAtpSchedule } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -95,6 +97,9 @@ const TNT_CURLING = await fx('tnt-schedule-curling-2026-10-28.json');
 const SKY_REAL = await fx('sky-guide-curling-tennis-2026-10-29.json');
 const WCF = await fx('worldcurling-event-europeans-2026.json');
 const WTA = await fx('wta-tournaments-2026-10-29.json');
+const WTA_MATCHES = await fx('wta-matches-2026-11-11.json');
+const ATP_SCHEDULE = await readFile(new URL('fixtures/nittoatpfinals-schedule-2026-11-11.html', import.meta.url), 'utf8');
+let playReads = 0;
 const ATP_FINALS = await readFile(new URL('fixtures/nittoatpfinals-home-2026-10-29.html', import.meta.url), 'utf8');
 const WR = await fx('worldrugby-matches-2026-10-29.json');
 const TNT_RUGBY = await fx('tnt-schedule-rugby-2026-10-30.json');
@@ -188,6 +193,8 @@ globalThis.fetch = async (url) => {
   }
   if (url.includes('api.wr-rims-prod.pulselive.com')) return wrDown ? { ok: false, status: 503 } : json(WR);
   if (url.includes('worldcurling.org/wp-json/wp/v2/event')) return json(/slug=europeans/.test(url) ? [WCF] : []);
+  if (url.includes('api.wtatennis.com') && url.includes('/matches')) { playReads++; return json(WTA_MATCHES); }
+  if (url.includes('nittoatpfinals.com/en/event/tournament-schedule')) { playReads++; return { ok: true, status: 200, text: async () => ATP_SCHEDULE }; }
   if (url.includes('api.wtatennis.com')) return wtaDown ? { ok: false, status: 503 } : json(WTA);
   if (url.includes('nittoatpfinals.com')) return { ok: true, status: 200, text: async () => ATP_FINALS };
   return { ok: false, status: 404 }; // football sources are covered by run-test.mjs
@@ -605,6 +612,44 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
     'Day 4 Wed 11, 19:30-Thu 12, 03:00: Sky Sports Tennis',
     'Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis',
   ]);
+  // The tournaments' own start of play (George, 11 Nov 2026): the WTA's order of play has Wednesday's first
+  // match at 12:00 in Indian Wells, 20:00 UK, and the entry starts then, not with Sky's build-up at 19:30
+  const play = { TEN_WTAF: mapWtaPlay(WTA_MATCHES) };
+  assert.deepEqual(play.TEN_WTAF, { '2026-11-11': Date.parse('2026-11-11T20:00:00Z') });
+  const checked = tennisDays(wtaT, guide, null, '2026-11-11', 2, at, play);
+  assert.deepEqual(checked.events.map(wtaLine), [
+    'Day 4 Wed 11, 20:00-Thu 12, 03:00: Sky Sports Tennis',
+    'Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis', // its order of play isn't out yet
+  ]);
+  assert.deepEqual(checked.mismatches, []);
+  // What the check is for: the listings as they were read before the fix above, with Wednesday's entry
+  // starting at midnight, and a day with play that no TV listing names at all
+  const asBefore = { ...guide, programmes: guide.programmes.filter(p => !/^Live Tennis/.test(p.title)) };
+  assert.deepEqual(tennisDays(wtaT, asBefore, null, '2026-11-11', 2, at, play).mismatches,
+    ['WTA Finals: play starts Wed 11 Nov 20:00, but the TV listing found starts Thu 12 Nov 00:00']);
+  assert.deepEqual(tennisDays(wtaT, { programmes: [], coveredDates: ['2026-11-11'] }, null, '2026-11-11', 1, at, play).mismatches,
+    ['WTA Finals: play starts Wed 11 Nov 20:00, but no TV listing names it']);
+  // ...but not when the guide has no listings for that day at all ("TV times to be confirmed")
+  assert.deepEqual(tennisDays(wtaT, { programmes: [], coveredDates: [] }, null, '2026-11-11', 1, at, play).mismatches, []);
+  // The ATP Finals' timetable: local time (GMT+1), the day's first session
+  const atpPlay = parseAtpSchedule(ATP_SCHEDULE, 2026);
+  assert.deepEqual(Object.entries(atpPlay).map(([d, t]) => `${d} ${uk(t)}`).filter((x, i) => [0, 6, 7].includes(i)),
+    ['2026-11-15 Sun 15, 10:30', '2026-11-21 Sat 21, 11:00', '2026-11-22 Sun 22, 14:00']);
+  assert.equal(Object.keys(atpPlay).length, 8);
+  // In the build: read once a day (from 06:00 UK), kept for the updates in between, and reported
+  playReads = 0;
+  const first = await build(Date.parse('2026-11-15T07:00:00Z'));
+  assert.equal(playReads, 2);
+  assert.equal(first.playTimes.tennis.ok, true);
+  assert.equal(first.playTimes.tennis.starts.TEN_ATPF['2026-11-15'], '2026-11-15T10:30:00.000Z');
+  assert.equal(first.playTimes.tennis.starts.TEN_WTAF, undefined); // Wednesday's has gone by Sunday
+  assert.deepEqual(first.report.tennisSchedule, { ok: true, checkedAt: '2026-11-15T07:00:00.000Z', days: 8 });
+  const later = await build(Date.parse('2026-11-15T07:30:00Z'), first);
+  assert.equal(playReads, 2);
+  assert.deepEqual(later.playTimes, first.playTimes);
+  assert.deepEqual(later.report.tennisSchedule, first.report.tennisSchedule);
+  await build(Date.parse('2026-11-16T06:00:00Z'), later);
+  assert.equal(playReads, 3); // the WTA Finals ended on the 15th: only the ATP Finals' page
   // A plain match between two tournaments of ours can't be told apart, so it joins neither
   const plain = { ...tennisProg('p', '2026-11-15T17:00:00Z', 2), title: 'Live Tennis: Sabalenka v Gauff', synopsis: 'Enjoy live action from the ATP and WTA Tours.' };
   const atpDay = { ...tennisProg('a', '2026-11-15T10:30:00Z', 6.5), title: 'Live ATP Finals: Day 1' };

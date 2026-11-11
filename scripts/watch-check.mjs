@@ -19,7 +19,7 @@ const NAMES = {
   scottishPremiership: 'Scottish Premiership fixtures', efl: 'Championship and League Cup fixtures',
   faCup: 'FA Cup ties', faPage: "The FA's fixtures page", premierLeagueTv: "The Premier League's broadcaster feed",
   formula1: 'Formula 1', formula2: 'Formula 2', formula3: 'Formula 3', motogp: 'MotoGP', darts: 'Darts',
-  golf: 'Golf', snooker: 'Snooker', cricket: 'Cricket', skiing: 'Alpine skiing', tennis: 'Tennis',
+  golf: 'Golf', snooker: 'Snooker', cricket: 'Cricket', skiing: 'Alpine skiing', tennis: 'Tennis', tennisSchedule: "The check of tennis listings against the tournaments' own schedules",
   rugby: 'Rugby union', curling: 'Curling (Specials)',
 };
 

@@ -17,7 +17,7 @@
 // A tournament day is listed only when it's live on UK TV, from the first to the last programme
 // naming it ("Day 3"). If the guide is unavailable for a tournament day: "TV times to be confirmed".
 
-import { getJSON, getText, ukDate, ukMidnight } from '../lib/util.mjs';
+import { getJSON, getText, ukDate, ukHHMM, ukMidnight } from '../lib/util.mjs';
 import { SPORT_CHANNELS, channelList, windowDates } from './skyGuide.mjs';
 import { tntChannelOrder } from './tntSchedule.mjs';
 
@@ -71,7 +71,75 @@ export async function fetchTennis(fromDate, toDate) {
   return { tournaments, errors };
 }
 
-const isTennisProgramme = (text) => !/\bgolf\b|darts|snooker/i.test(text); // "US Open" is also golf
+// ---- when play starts, from the tournament itself (George, 11 Nov 2026): read once a day by build.mjs, to
+// show the first match's time rather than the start of TV coverage, and to check that every day with play
+// has a TV entry (the WTA Finals' Wednesday had none; the listings alone can't show what's missing).
+//   WTA Finals   api.wtatennis.com/tennis/tournaments/808/<year>/matches?states=U - the order of play, out the
+//                evening before and for one day only. The day's first match has a time ("Starting at 12:00 PM",
+//                `NotBeforeISOTime`, `MatchTimeStamp` 2026-11-11T12:00-08:00); the rest are "Followed By",
+//                stamped 23:59.
+//   ATP Finals   nittoatpfinals.com/en/event/tournament-schedule - a table of every day's sessions, local
+//                time ("15 NOV | 11:30am | NB 2pm | 6pm | NB 8:30pm", "all times are local (GMT+1)").
+// The Grand Slams aren't checked yet: their orders of play haven't been seen.
+const WTA_MATCHES_URL = (group, year) => `https://api.wtatennis.com/tennis/tournaments/${group}/${year}/matches?states=U`;
+const ATP_SCHEDULE_URL = 'https://www.nittoatpfinals.com/en/event/tournament-schedule';
+
+/** The WTA's order of play -> { UK date: when the first match starts (ms) }. */
+export function mapWtaPlay(j) {
+  const starts = {};
+  for (const m of j?.matches || []) {
+    const at = m.NotBeforeISOTime ? Date.parse(m.MatchTimeStamp) : NaN;
+    if (Number.isNaN(at)) continue;
+    const date = ukDate(at);
+    if (!(starts[date] <= at)) starts[date] = at;
+  }
+  return starts;
+}
+
+/** The ATP Finals' timetable -> { UK date: when the first match starts (ms) }. */
+export function parseAtpSchedule(html, year) {
+  const page = String(html || '').replace(/&nbsp;/g, ' ');
+  const offset = +(/GMT\s*([+-]\d{1,2})/.exec(page)?.[1] ?? 1);
+  const starts = {};
+  for (const [, row] of page.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)) {
+    const cells = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map(c => c[1].replace(/<[^>]+>/g, ' ').trim());
+    const day = /^(\d{1,2})\s+([A-Za-z]{3})/.exec(cells[0] || '');
+    const month = day ? MONTHS.findIndex(m => m.startsWith(day[2].toLowerCase())) : -1;
+    if (month < 0) continue;
+    const times = cells.slice(1).flatMap(c => {
+      const t = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i.exec(c);
+      return t ? [Date.UTC(year, month, +day[1], (+t[1] % 12) + (/pm/i.test(t[3]) ? 12 : 0) - offset, +(t[2] || 0))] : [];
+    });
+    if (times.length) starts[ukDate(Math.min(...times))] = Math.min(...times);
+  }
+  return starts;
+}
+
+/** When play starts on each day, per competition, for the tournaments that publish it; never rejects. */
+export async function fetchTennisPlay(tournaments) {
+  const jobs = tournaments.flatMap(t => {
+    const year = +t.startDate.slice(0, 4);
+    if (t.comp === 'TEN_WTAF') return [[t, getJSON(WTA_MATCHES_URL(TOURNAMENTS.find(d => d.comp === t.comp).wta, year)).then(mapWtaPlay)]];
+    if (t.comp === 'TEN_ATPF') {
+      return [[t, getText(ATP_SCHEDULE_URL).then(h => {
+        const s = parseAtpSchedule(h, year);
+        if (!Object.keys(s).length) throw new Error('no timetable on nittoatpfinals.com');
+        return s;
+      })]];
+    }
+    return [];
+  });
+  const res = await Promise.allSettled(jobs.map(j => j[1]));
+  const starts = {}, errors = [];
+  res.forEach((r, i) => {
+    const t = jobs[i][0];
+    if (r.status === 'rejected') errors.push(`${t.name}: ${r.reason.message}`);
+    else starts[t.comp] = { ...starts[t.comp], ...r.value };
+  });
+  return { starts, errors };
+}
+
+const isTennisProgramme =(text) => !/\bgolf\b|darts|snooker/i.test(text); // "US Open" is also golf
 
 // Sky doesn't always put the tournament in the title: on 9 Nov 2026 the WTA Finals' evening matches were
 // "Live Tennis: Sabalenka v Muchova", with "...first WTA Finals title..." in the description. So a title that
@@ -135,8 +203,23 @@ export function byBroadcastDay(progs) {
   return days;
 }
 
+// The listing and the tournament disagree when TV starts over an hour after play, or over three hours before
+const TV_LATE = 60 * 60000, TV_EARLY = 3 * 3600000;
+// Only today and the next two days are compared: Sky fills the guide's far days bit by bit (on 11 Nov 2026 the
+// 19th had three programmes on Sky Sports Tennis and no ATP Finals yet), which isn't a missing listing.
+const CHECK_DAYS = 3;
+const when = (ms) => `${new Date(ms).toLocaleDateString('en-GB', { timeZone: 'Europe/London', weekday: 'short', day: 'numeric', month: 'short' })} ${ukHHMM(ms)}`;
+
 /** One entry per tournament per day it's live on UK TV ("Day 3"). */
-export function tennisEvents(tournaments, guide, tnt, fromDate, days, now = 0) {
+export const tennisEvents = (...args) => tennisDays(...args).events;
+
+/**
+ * The entries, and where they disagree with the tournament's own start of play (`playStarts`: competition ->
+ * UK date -> ms or ISO time; see fetchTennisPlay). An entry starts with the first match when TV is on air by then.
+ */
+export function tennisDays(tournaments, guide, tnt, fromDate, days, now = 0, playStarts = null) {
+  const mismatches = [];
+  const checkedDates = new Set(windowDates(fromDate, CHECK_DAYS));
   const sids = SPORT_CHANNELS.tennis;
   const covered = new Set(guide?.coveredDates || []);
   const windowStart = ukMidnight(fromDate);
@@ -166,9 +249,19 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days, now = 0) {
       const fromGuide = progs.filter(p => guideProgs.has(p));
       const fromTnt = progs.filter(p => !guideProgs.has(p));
       const end = progs.length ? Math.max(...progs.map(p => p.end)) : 0;
+      const tvStart = progs.length ? Math.min(...progs.map(p => p.start)) : 0;
+      const play = new Date(playStarts?.[t.comp]?.[date] ?? NaN).getTime();
+      if (checkedDates.has(date) && !Number.isNaN(play)) {
+        const what = `${t.name}: play starts ${when(play)}`;
+        if (!progs.length) { if (covered.has(date)) mismatches.push(`${what}, but no TV listing names it`); }
+        else if (tvStart - play > TV_LATE) mismatches.push(`${what}, but the TV listing found starts ${when(tvStart)}`);
+        else if (play - tvStart > TV_EARLY) mismatches.push(`${what}, but the TV listing found starts ${when(tvStart)}`);
+      }
       if (progs.length && (inWindow.has(date) || end > Math.max(windowStart, now))) {
         // Still on air from last night: listed under today, from midnight, so it shows as live.
-        const start = Math.max(Math.min(...progs.map(p => p.start)), inWindow.has(date) ? 0 : windowStart);
+        let start = Math.max(tvStart, inWindow.has(date) ? 0 : windowStart);
+        // The first match's time, not the start of the build-up (George, 11 Nov 2026: 20:00, not Sky's 19:30)
+        if (play > start && play < end && play - tvStart <= TV_EARLY) start = play;
         const chans = [...channelList(fromGuide, sids)];
         for (const c of tntChannelOrder(fromTnt.map(p => p.channel))) if (!chans.includes(c)) chans.push(c);
         const sources = [...(fromGuide.length ? ['sky-guide'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : [])];
@@ -180,5 +273,5 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days, now = 0) {
       }
     }
   }
-  return events;
+  return { events, mismatches };
 }

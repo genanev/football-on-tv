@@ -48,7 +48,7 @@ import { fetchGolf, golfEvents } from './sources/golf.mjs';
 import { fetchTournaments as fetchSnooker, snookerEvents } from './sources/snooker.mjs';
 import { fetchCricket, cricketEvents } from './sources/cricket.mjs';
 import { fetchSkiing, skiTv } from './sources/skiing.mjs';
-import { fetchTennis, tennisEvents } from './sources/tennis.mjs';
+import { fetchTennis, fetchTennisPlay, tennisDays } from './sources/tennis.mjs';
 import { fetchCurling, curlingEvents } from './sources/curling.mjs';
 import { specialsInScope } from './sources/specials.mjs';
 import { fetchRugby, rugbyTv } from './sources/rugby.mjs';
@@ -244,6 +244,9 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // broadcaster feed is keyed by. The FA's page is read every time, for its "Live on" TV picks.
   const prevGolden = previous?.golden || {};
   const due = Object.fromEntries(Object.keys(GOLDEN).map(k => [k, !useAf || checkDue(prevGolden[k], now)]));
+  // When play starts at the tennis tournaments, from their own schedules: once a day too (tennis.mjs)
+  const prevPlay = previous?.playTimes?.tennis;
+  const playDue = checkDue(prevPlay, now);
   const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
@@ -253,7 +256,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     // from the day before: API-Football's dates are UTC, the window's edges are UK midnight
     useAf ? fetchApiFootball(ukDate(windowStart - 3600000), lastDay, afSeason(now)) : skip,
     useAf && due.conferenceLeague ? fetchUefa(now, DAYS_AHEAD, 'UECL') : skip, // no official-mode Conference League
-    fetchSkiing(today, lastDay), fetchTennis(today, lastDay), fetchCurling(),
+    fetchSkiing(today, lastDay), fetchTennis(today, lastDay).then(async t => ({ ...t, play: playDue ? await fetchTennisPlay(t.tournaments) : null })), fetchCurling(),
     fetchRugby(ukDate(windowStart - 3600000), lastDay), // from the day before, like API-Football
   ]);
 
@@ -452,10 +455,32 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   } else report.skiing = fail(skiRes);
 
   // ---- tennis: one entry per tournament day live on UK TV
+  const playTimes = prevPlay ? { tennis: prevPlay } : {};
   if (ok(tennisRes)) {
-    const tennis = tennisEvents(tennisRes.value.tournaments, guide, tnt, today, DAYS_AHEAD + 1, now).filter(inWindow);
-    report.tennis = { ok: true, tournaments: tennisRes.value.tournaments.map(t => t.name), days: tennis.length, errors: tennisRes.value.errors };
+    // The tournaments' own start of play (read once a day): a day's entry starts with its first match, and a
+    // day with play but no TV entry is reported, so the alert emails George (11 Nov 2026). The WTA only
+    // publishes the next day, so the days read earlier are kept; a failed read keeps them all.
+    const { tournaments, play } = tennisRes.value;
+    if (play) {
+      const starts = {};
+      for (const t of tournaments) {
+        const days = { ...prevPlay?.starts?.[t.comp], ...play.starts[t.comp] };
+        const kept = Object.entries(days).filter(([d]) => d >= today && d <= t.endDate).map(([d, at]) => [d, new Date(at).toISOString()]);
+        if (kept.length) starts[t.comp] = Object.fromEntries(kept);
+      }
+      playTimes.tennis = play.errors.length
+        ? { ...prevPlay, starts, ok: false, error: play.errors.join('; ') }
+        : { ok: true, checkedAt: new Date(now).toISOString(), starts };
+    }
+    const found = tennisDays(tournaments, guide, tnt, today, DAYS_AHEAD + 1, now, playTimes.tennis?.starts);
+    const tennis = found.events.filter(inWindow);
+    report.tennis = { ok: true, tournaments: tournaments.map(t => t.name), days: tennis.length, errors: tennisRes.value.errors };
     events.push(...tennis);
+    const tp = playTimes.tennis;
+    if (tp && (!tp.ok || Object.keys(tp.starts).length)) {
+      const wrong = [...(tp.ok ? [] : [tp.error]), ...found.mismatches];
+      report.tennisSchedule = { ok: !wrong.length, checkedAt: tp.checkedAt || null, days: Object.values(tp.starts).reduce((n, d) => n + Object.keys(d).length, 0), ...(wrong.length ? { error: wrong.join('; ') } : {}) };
+    }
   } else report.tennis = fail(tennisRes);
 
   // ---- rugby union: every match of the four competitions, channels as for football
@@ -486,8 +511,9 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   report.scores = showScores ? 'on' : 'off';
   markFailingSince(report, previous, now);
   // `golden`: what the daily check found (goldenCheck.mjs), for the next updates; the app ignores it
+  // `playTimes`: when play starts at the tennis tournaments (tennis.mjs), read once a day; the app ignores it
   // `app`: settings the phone app reads (app-settings.mjs): the free period's length and so on
-  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, app: APP_SETTINGS, report, specials, events, golden };
+  return { generatedAt: new Date(now).toISOString(), windowDays: DAYS_AHEAD, app: APP_SETTINGS, report, specials, events, golden, playTimes };
 }
 
 const isMain = import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('build.mjs');

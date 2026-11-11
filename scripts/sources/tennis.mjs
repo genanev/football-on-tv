@@ -81,6 +81,28 @@ const namesTournament = (p, re) => re.test(p.title) || (/^live tennis\b/i.test(p
 
 const OVERNIGHT_GAP = 30 * 60000;
 
+// A day or more ahead Sky's description is only a placeholder: on 11 Nov 2026 that evening's WTA Finals singles
+// were "Live Tennis: Svitolina v Muchova" and "Live Tennis: Sabalenka v Andreeva", both "Enjoy live action from
+// the ATP and WTA Tours.", so the day had no entry until "Live WTA Finals: Day 4 Doubles" at midnight. A plain
+// "Live Tennis: A v B" that names nothing belongs to the tournament when it runs straight into, or follows
+// straight on from, a programme of that tournament on the same channel (Sky's own running order), unless it
+// also touches another of our tournaments (15 Nov 2026: the ATP Finals' day ends as the WTA Finals' final starts).
+const isPlainMatch = (p) => /^live tennis\b.*\bv\b/i.test(p.title) && !TOURNAMENTS.some(d => d.tv.test(`${p.title} ${p.synopsis || ''}`));
+const touches = (a, b) => a.sid === b.sid && ((b.start >= a.end && b.start <= a.end + OVERNIGHT_GAP) || (a.start >= b.end && a.start <= b.end + OVERNIGHT_GAP));
+
+function sameBroadcast(live, def) {
+  const named = live.filter(p => namesTournament(p, def.tv));
+  const others = live.filter(p => TOURNAMENTS.some(d => d !== def && namesTournament(p, d.tv)));
+  const plain = live.filter(p => isPlainMatch(p) && !others.some(o => touches(p, o)));
+  for (let added = true; added;) {
+    added = false;
+    for (const p of plain) {
+      if (!named.includes(p) && named.some(n => touches(p, n))) { named.push(p); added = true; }
+    }
+  }
+  return named;
+}
+
 /**
  * Programmes -> the UK date their broadcast began. Overnight coverage stays with the evening it started:
  * Sky's WTA Finals from Indian Wells run 19:30-03:00, and the part after midnight is still that day's play
@@ -122,8 +144,8 @@ export function tennisEvents(tournaments, guide, tnt, fromDate, days, now = 0) {
   const events = [];
   const coverage = new Map(tournaments.map(t => {
     const def = TOURNAMENTS.find(d => d.comp === t.comp);
-    const guideProgs = (guide?.programmes || []).filter(p => p.live && sids.includes(p.sid)
-      && namesTournament(p, def.tv) && isTennisProgramme(`${p.title} ${p.synopsis}`));
+    const guideProgs = sameBroadcast((guide?.programmes || []).filter(p => p.live && sids.includes(p.sid)
+      && isTennisProgramme(`${p.title} ${p.synopsis}`)), def);
     const tntProgs = (tnt?.programmes || []).filter(p => p.live && /tennis/i.test(p.sport || '')
       && def.tv.test(`${p.title} ${p.subtitle}`));
     const byDay = new Map();

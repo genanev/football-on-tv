@@ -1,0 +1,170 @@
+{
+ "20261111": {
+  "schedule": [
+   {
+    "sid": "1284",
+    "events": [
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "E504-9d",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "With a path to the semi-finals clearly mapped out for both, opening-day winners Coco Gauff and Linda Noskova face off. Noskova claimed victory in the sole meeting of the two this year."
+     },
+     {
+      "st": 1794355200,
+      "d": 10800,
+      "eid": "E504-17b",
+      "t": "Live WTA Finals: Indian Wells",
+      "sy": "Former finalists Katerina Siniakova and Taylor Townsend face Ellen Perez and Demi Schuurs. Italians Sara Errani and Jasmine Paolini play Cristina Bucsa and Nicole Melichar-Martinez."
+     },
+     {
+      "st": 1794398400,
+      "d": 14400,
+      "eid": "E504-159",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794416400,
+      "d": 9000,
+      "eid": "E504-137",
+      "t": "Live: ATP Stockholm",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794425400,
+      "d": 9000,
+      "eid": "E504-126",
+      "t": "Live Tennis: Svitolina v Muchova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "E504-15f",
+      "t": "Live Tennis: Sabalenka v Andreeva",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   },
+   {
+    "sid": "4002",
+    "events": [
+     {
+      "st": 1794348000,
+      "d": 7200,
+      "eid": "Efa2-464",
+      "t": "Live WTA Finals: Gauff v Noskova",
+      "sy": "With a path to the semi-finals clearly mapped out for both, opening-day winners Coco Gauff and Linda Noskova face off. Noskova claimed victory in the sole meeting of the two this year."
+     },
+     {
+      "st": 1794355200,
+      "d": 10800,
+      "eid": "Efa2-3ef",
+      "t": "Live WTA Finals: Day 3 Doubles",
+      "sy": "Former finalists Katerina Siniakova and Taylor Townsend face Ellen Perez and Demi Schuurs. Italians Sara Errani and Jasmine Paolini play Cristina Bucsa and Nicole Melichar-Martinez."
+     },
+     {
+      "st": 1794425400,
+      "d": 9000,
+      "eid": "Efa2-10a",
+      "t": "Live Tennis: Svitolina v Muchova",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "Efa2-120",
+      "t": "Live Tennis: Sabalenka v Andreeva",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   }
+  ]
+ },
+ "20261112": {
+  "schedule": [
+   {
+    "sid": "1284",
+    "events": [
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "E504-15f",
+      "t": "Live Tennis: Sabalenka v Andreeva",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794441600,
+      "d": 10800,
+      "eid": "E504-166",
+      "t": "Live WTA Finals: Day 4 Doubles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794484800,
+      "d": 14400,
+      "eid": "E504-5a",
+      "t": "Live: ATP Stockholm Quarter Finals",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794504600,
+      "d": 7200,
+      "eid": "E504-1c2",
+      "t": "Live: ATP Stockholm Quarter Finals",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794511800,
+      "d": 9000,
+      "eid": "E504-1a4",
+      "t": "Live WTA Finals: Day 5 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794520800,
+      "d": 7200,
+      "eid": "E504-1a6",
+      "t": "Live WTA Finals: Day 5 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   },
+   {
+    "sid": "4002",
+    "events": [
+     {
+      "st": 1794434400,
+      "d": 7200,
+      "eid": "Efa2-120",
+      "t": "Live Tennis: Sabalenka v Andreeva",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794441600,
+      "d": 10800,
+      "eid": "Efa2-123",
+      "t": "Live WTA Finals: Day 4 Doubles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794511800,
+      "d": 9000,
+      "eid": "Efa2-40f",
+      "t": "Live WTA Finals: Day 5 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     },
+     {
+      "st": 1794520800,
+      "d": 7200,
+      "eid": "Efa2-20",
+      "t": "Live WTA Finals: Day 5 Singles",
+      "sy": "Enjoy live action from the ATP and WTA Tours."
+     }
+    ]
+   }
+  ]
+ }
+}

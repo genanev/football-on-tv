@@ -593,6 +593,28 @@ assert.ok(tennisEvents(wtaT, undescribed, null, '2026-11-09', 3).map(wtaLine).in
 // Only a plain "Live Tennis" title may be identified by its description: another tournament's may mention it
 const stockholm = { programmes: [{ ...tennisProg('s', '2026-11-09T12:00:00Z', 4), title: 'Live: ATP Stockholm', synopsis: 'The last points on the road to the WTA Finals.' }], coveredDates: ['2026-11-09'] };
 assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
+// Sky's real listings of 11-12 Nov 2026 (captured 11 Nov, 00:00; live tennis on Sky Sports Tennis and Main
+// Event): that evening's singles are "Live Tennis: Svitolina v Muchova" and "...Sabalenka v Andreeva" with a
+// placeholder description, followed by "Live WTA Finals: Day 4 Doubles" at midnight. Before the fix Day 4
+// read Thu 12, 00:00-03:00 and Wednesday had no entry (found by George).
+{
+  const progs = Object.values(await fx('sky-guide-tennis-2026-11-11.json')).flatMap(mapGuideDay);
+  const guide = { programmes: [...new Map(progs.map(p => [p.id, p])).values()], coveredDates: ['2026-11-11', '2026-11-12'] };
+  const at = Date.parse('2026-11-11T03:30:00Z');
+  assert.deepEqual(tennisEvents(wtaT, guide, null, '2026-11-11', 2, at).map(wtaLine), [
+    'Day 4 Wed 11, 19:30-Thu 12, 03:00: Sky Sports Tennis',
+    'Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis',
+  ]);
+  // A plain match between two tournaments of ours can't be told apart, so it joins neither
+  const plain = { ...tennisProg('p', '2026-11-15T17:00:00Z', 2), title: 'Live Tennis: Sabalenka v Gauff', synopsis: 'Enjoy live action from the ATP and WTA Tours.' };
+  const atpDay = { ...tennisProg('a', '2026-11-15T10:30:00Z', 6.5), title: 'Live ATP Finals: Day 1' };
+  const wtaFinal = { ...tennisProg('w', '2026-11-15T19:00:00Z', 4), title: 'Live WTA Finals: The Final' };
+  const both = tennisEvents(wtaT, { programmes: [atpDay, plain, wtaFinal], coveredDates: ['2026-11-15'] }, null, '2026-11-15', 1);
+  assert.deepEqual(both.map(wtaLine), ['Day 8 Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
+  // ...and one that touches no programme of the tournament stays out (Stockholm's, say)
+  const alone = tennisEvents(wtaT, { programmes: [{ ...plain, start: plain.start - 6 * 3600000, end: plain.end - 6 * 3600000 }, wtaFinal], coveredDates: ['2026-11-15'] }, null, '2026-11-15', 1);
+  assert.deepEqual(alone.map(wtaLine), ['Day 8 Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
+}
 // Sky Sports Main Event is always the primary channel (George, 9 Nov 2026), in any sport
 {
   const tv = (channels, alsoOn = [], broadcaster = channels[0]) => ({ tv: { channels, alsoOn, broadcaster } });

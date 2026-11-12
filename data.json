@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T12:00:17.921Z",
+ "generatedAt": "2026-11-12T12:30:32.046Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -134,8 +134,9 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 0
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "failingSince": "2026-11-12T12:30:32.046Z"
   },
   "darts": {
    "ok": true,

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T20:00:24.094Z",
+ "generatedAt": "2026-11-12T20:30:20.883Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -237,7 +237,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794487500",
    "kickoff": "2026-11-12T12:45:00.000Z",
-   "end": "2026-11-12T17:30:00.000Z",
+   "end": "2026-11-12T17:00:00.000Z",
    "session": "Afternoon session",
    "timeTbc": false,
    "tv": {

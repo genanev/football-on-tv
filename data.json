@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T02:00:15.160Z",
+ "generatedAt": "2026-11-12T02:30:24.759Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4681,
+   "programmes": 4702,
    "errors": []
   },
   "skyListings": {
@@ -163,7 +163,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 12
+   "matches": 13
   },
   "skiing": {
    "ok": true,
@@ -2008,6 +2008,35 @@
     "note": "TV times to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Cello Basin Reserve, Wellington",
+   "series": "India in New Zealand, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271656-d3",
+   "kickoff": "2026-11-20T22:00:00.000Z",
+   "end": "2026-11-21T05:00:00.000Z",
+   "session": "1st Test, Day 3",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 2"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ],

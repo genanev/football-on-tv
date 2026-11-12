@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T09:30:11.933Z",
+ "generatedAt": "2026-11-12T10:00:25.972Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -99,7 +99,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 6
+   "televised": 7
   },
   "scottishPremiership": {
    "ok": true,
@@ -1277,6 +1277,37 @@
    }
   },
   {
+   "id": "af-1607732",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-15T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Aston Villa Women",
+   "away": "Birmingham City Women",
+   "homeShort": "Aston Villa",
+   "awayShort": "Birmingham City",
+   "venue": "Bescot Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 10",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1607731",
    "comp": "WSL",
    "label": null,
@@ -1310,37 +1341,6 @@
    }
   },
   {
-   "id": "af-1607732",
-   "comp": "WSL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-15T14:30:00.000Z",
-   "timeTbc": false,
-   "home": "Aston Villa Women",
-   "away": "Birmingham City Women",
-   "homeShort": "Aston Villa",
-   "awayShort": "Birmingham City",
-   "venue": "Bescot Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "Regular Season - 10",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "Sky Sports Premier League",
-    "channels": [
-     "Sky Sports Premier League"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "wr-8eb3dfab-2f48-45ce-9ad4-9d5d0edb92cc",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -1363,6 +1363,39 @@
      "ITV1"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607727",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-15T16:30:00.000Z",
+   "timeTbc": false,
+   "home": "Arsenal Women",
+   "away": "London City Lionesses",
+   "homeShort": "Arsenal",
+   "awayShort": "London City Lionesses",
+   "venue": "Emirates Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 10",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

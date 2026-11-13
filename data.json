@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T02:30:11.648Z",
+ "generatedAt": "2026-11-13T03:00:12.923Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4436,
+   "programmes": 4437,
    "errors": []
   },
   "skyListings": {
@@ -180,7 +180,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 10,
+   "days": 9,
    "errors": []
   },
   "tennisSchedule": {
@@ -204,36 +204,6 @@
  },
  "specials": [],
  "events": [
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 5",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-12",
-   "kickoff": "2026-11-13T00:00:00.000Z",
-   "end": "2026-11-13T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis",
-     "Sky Sports+"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T04:00:37.957Z",
+ "generatedAt": "2026-11-13T04:30:18.486Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4556,
+   "programmes": 4765,
    "errors": []
   },
   "skyListings": {
@@ -93,9 +93,8 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303&pageSize=50",
-   "failingSince": "2026-11-13T04:00:37.957Z"
+   "ok": true,
+   "matches": 2
   },
   "footballChannels": "1/7 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -139,10 +138,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
-   "keptEvents": 2,
-   "failingSince": "2026-11-13T04:00:37.957Z"
+   "ok": true,
+   "sessions": 2
   },
   "darts": {
    "ok": true,
@@ -158,7 +155,7 @@
     "The RSM Classic",
     "DP World Tour Championship"
    ],
-   "rounds": 8,
+   "rounds": 9,
    "errors": []
   },
   "snooker": {
@@ -170,7 +167,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 14
+   "matches": 15
   },
   "skiing": {
    "ok": true,
@@ -180,12 +177,11 @@
   "tennis": {
    "ok": true,
    "tournaments": [
+    "WTA Finals",
     "ATP Finals"
    ],
-   "days": 6,
-   "errors": [
-    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-13&to=2026-11-21"
-   ]
+   "days": 10,
+   "errors": []
   },
   "tennisSchedule": {
    "ok": true,
@@ -336,6 +332,35 @@
      "ITV4"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 6",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-13",
+   "kickoff": "2026-11-13T20:00:00.000Z",
+   "end": "2026-11-14T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Tennis"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -803,6 +828,35 @@
      "Sky Sports Main Event"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 7",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-14",
+   "kickoff": "2026-11-14T19:30:00.000Z",
+   "end": "2026-11-15T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Tennis"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1284,6 +1338,33 @@
     "broadcaster": "Sky Sports Golf",
     "channels": [
      "Sky Sports Golf"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 8",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-15",
+   "kickoff": "2026-11-15T19:00:00.000Z",
+   "end": "2026-11-15T23:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -1900,11 +1981,13 @@
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {
-    "broadcaster": "Sky Sports F1",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
      "Sky Sports F1"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1927,13 +2010,19 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 3"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -1986,6 +2075,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2107,6 +2197,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2140,6 +2231,33 @@
    }
   },
   {
+   "comp": "TEN_ATPF",
+   "kind": "session",
+   "title": "ATP Finals",
+   "session": "Day 7",
+   "venue": "sh Italian Japanese Inalpi Arena, Torino",
+   "source": "nittoatpfinals.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-atpf-2026-2026-11-21",
+   "kickoff": "2026-11-21T12:30:00.000Z",
+   "end": "2026-11-21T21:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "wr-3642431c-f6c3-421d-8fba-8171e12e05e0",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -2157,13 +2275,17 @@
    "round": null,
    "source": "world.rugby",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV1",
+    "channels": [
+     "ITV1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2184,13 +2306,17 @@
    "round": null,
    "source": "world.rugby",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2439,6 +2565,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2704,13 +2831,17 @@
    "round": null,
    "source": "world.rugby",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV1",
+    "channels": [
+     "ITV1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2731,13 +2862,17 @@
    "round": null,
    "source": "world.rugby",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2758,13 +2893,15 @@
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -2795,6 +2932,32 @@
     "conflict": false,
     "sources": [
      "premiersports.com"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "The RSM Classic",
+   "venue": "Sea Island Golf Club - Seaside Course",
+   "source": "pgatour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-pga-R2026493-2026-11-21",
+   "kickoff": "2026-11-21T18:00:00.000Z",
+   "end": "2026-11-21T21:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Mix",
+    "channels": [
+     "Sky Sports Mix"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },
@@ -2868,13 +3031,17 @@
    "round": "Regular Season - 14",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2922,13 +3089,44 @@
    "round": null,
    "source": "world.rugby",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Cello Basin Reserve, Wellington",
+   "series": "India in New Zealand, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271656-d4",
+   "kickoff": "2026-11-21T22:00:00.000Z",
+   "end": "2026-11-22T05:00:00.000Z",
+   "session": "1st Test, Day 4",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ],

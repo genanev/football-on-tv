@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T22:30:21.432Z",
+ "generatedAt": "2026-11-13T23:00:23.227Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4972,
+   "programmes": 4957,
    "errors": []
   },
   "skyListings": {

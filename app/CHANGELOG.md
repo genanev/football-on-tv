@@ -4,6 +4,9 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.10
+- Behind the scenes: groundwork for subscriptions. Nothing looks different yet.
+
 ## 1.0.9
 - New in Settings: About Telly Fixtures.
 - About, the Privacy policy and the Terms of use now open inside the app, with a close button that brings you straight back.

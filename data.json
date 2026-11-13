@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T03:00:12.923Z",
+ "generatedAt": "2026-11-13T03:30:12.379Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4437,
+   "programmes": 4518,
    "errors": []
   },
   "skyListings": {
@@ -242,7 +242,7 @@
    "kickoff": "2026-11-13T03:30:00.000Z",
    "end": "2026-11-13T11:30:00.000Z",
    "session": "1st ODI",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",
@@ -2169,13 +2169,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

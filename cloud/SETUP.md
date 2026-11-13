@@ -259,7 +259,7 @@ gcloud run jobs update football-update --region="$REGION" \
    `gcloud run jobs execute football-update --region="$REGION" --wait`. The printed report should
    say `"footballSource": "api-football"` and `"apiFootball": { "ok": true, ... }`.
 
-Each update uses 9 of the Pro plan's 7,500 requests a day (about 430 a day at every 30 minutes).
+Each update uses 10 of the Pro plan's 7,500 requests a day (about 480 a day at every 30 minutes).
 
 **Going back to the official websites** (for example if API-Football stops working):
 

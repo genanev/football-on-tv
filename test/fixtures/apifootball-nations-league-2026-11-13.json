@@ -1,0 +1,1463 @@
+{
+ "_comment": "API-Football /fixtures?league=5&season=2026&from=2026-11-12&to=2026-11-21 (UEFA Nations League), captured 13 Nov 2026 at 21:05 UK, during that evening's games; only the fields we use kept",
+ "errors": [],
+ "results": 52,
+ "response": [
+  {
+   "fixture": {
+    "id": 1528958,
+    "date": "2026-11-12T17:00:00+00:00",
+    "venue": {
+     "name": "Gürsel Aksel Stadium"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Türkiye"
+    },
+    "away": {
+     "name": "Belgium"
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 2
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528959,
+    "date": "2026-11-12T17:00:00+00:00",
+    "venue": {
+     "name": "Vazgen Sargsyan Republican Stadium"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Armenia"
+    },
+    "away": {
+     "name": "Cyprus"
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528962,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "Wembley Stadium"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "England"
+    },
+    "away": {
+     "name": "Croatia"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528960,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "San Siro/Giuseppe Meazza"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Italy"
+    },
+    "away": {
+     "name": "France"
+    }
+   },
+   "goals": {
+    "home": 3,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528961,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "Stadion Letná"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Czech Republic"
+    },
+    "away": {
+     "name": "Spain"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 2
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528963,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "Arena Kombëtare"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Albania"
+    },
+    "away": {
+     "name": "Finland"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 0
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545613,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "Gradski Stadion"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Montenegro"
+    },
+    "away": {
+     "name": "Latvia"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528964,
+    "date": "2026-11-12T19:45:00+00:00",
+    "venue": {
+     "name": "San Marino Stadium"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "San Marino"
+    },
+    "away": {
+     "name": "Belarus"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 2
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528968,
+    "date": "2026-11-13T17:00:00+00:00",
+    "venue": {
+     "name": "Zimbru"
+    },
+    "status": {
+     "short": "FT"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Moldova"
+    },
+    "away": {
+     "name": "Kazakhstan"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528971,
+    "date": "2026-11-14T14:00:00+00:00",
+    "venue": {
+     "name": "Stadiumi Fadil Vokrri"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Kosovo"
+    },
+    "away": {
+     "name": "Israel"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528972,
+    "date": "2026-11-14T17:00:00+00:00",
+    "venue": {
+     "name": "Ullevaal Stadion"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Norway"
+    },
+    "away": {
+     "name": "Wales"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528973,
+    "date": "2026-11-14T17:00:00+00:00",
+    "venue": {
+     "name": "Boris Paichadze Dinamo Arena"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Georgia"
+    },
+    "away": {
+     "name": "Hungary"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528978,
+    "date": "2026-11-14T19:45:00+00:00",
+    "venue": {
+     "name": "Strawberry Arena"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Sweden"
+    },
+    "away": {
+     "name": "Bosnia & Herzegovina"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528974,
+    "date": "2026-11-14T19:45:00+00:00",
+    "venue": {
+     "name": "Estádio Municipal de Braga"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Portugal"
+    },
+    "away": {
+     "name": "Denmark"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528975,
+    "date": "2026-11-14T19:45:00+00:00",
+    "venue": {
+     "name": "Windsor Park"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Northern Ireland"
+    },
+    "away": {
+     "name": "Ukraine"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528977,
+    "date": "2026-11-14T19:45:00+00:00",
+    "venue": {
+     "name": "Arena Națională"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Romania"
+    },
+    "away": {
+     "name": "Poland"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528976,
+    "date": "2026-11-14T19:45:00+00:00",
+    "venue": {
+     "name": "Raiffeisen Arena"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Austria"
+    },
+    "away": {
+     "name": "Rep. Of Ireland"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545616,
+    "date": "2026-11-15T14:00:00+00:00",
+    "venue": {
+     "name": "Skonto"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Latvia"
+    },
+    "away": {
+     "name": "Armenia"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528979,
+    "date": "2026-11-15T14:00:00+00:00",
+    "venue": {
+     "name": "Alphamega Stadium"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Cyprus"
+    },
+    "away": {
+     "name": "Montenegro"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528981,
+    "date": "2026-11-15T17:00:00+00:00",
+    "venue": {
+     "name": "Bolt Arena"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Finland"
+    },
+    "away": {
+     "name": "San Marino"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528980,
+    "date": "2026-11-15T17:00:00+00:00",
+    "venue": {
+     "name": "Illovszky Rudolf Stadion"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Belarus"
+    },
+    "away": {
+     "name": "Albania"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528983,
+    "date": "2026-11-15T19:45:00+00:00",
+    "venue": {
+     "name": "Roi Baudouin"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Belgium"
+    },
+    "away": {
+     "name": "Italy"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528982,
+    "date": "2026-11-15T19:45:00+00:00",
+    "venue": {
+     "name": "Matmut Stadium"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "France"
+    },
+    "away": {
+     "name": "Türkiye"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528985,
+    "date": "2026-11-15T19:45:00+00:00",
+    "venue": {
+     "name": "Opus Arena"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Croatia"
+    },
+    "away": {
+     "name": "Czech Republic"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528984,
+    "date": "2026-11-15T19:45:00+00:00",
+    "venue": {
+     "name": "Riyadh Air Metropolitano"
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Spain"
+    },
+    "away": {
+     "name": "England"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528986,
+    "date": "2026-11-16T15:00:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Kazakhstan"
+    },
+    "away": {
+     "name": "Slovakia"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528987,
+    "date": "2026-11-16T15:00:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Faroe Islands"
+    },
+    "away": {
+     "name": "Moldova"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545617,
+    "date": "2026-11-16T17:00:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Iceland"
+    },
+    "away": {
+     "name": "Luxembourg"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528989,
+    "date": "2026-11-16T17:00:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League D - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Lithuania"
+    },
+    "away": {
+     "name": "Liechtenstein"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528988,
+    "date": "2026-11-16T17:00:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Estonia"
+    },
+    "away": {
+     "name": "Bulgaria"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545652,
+    "date": "2026-11-16T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Switzerland"
+    },
+    "away": {
+     "name": "Scotland"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528990,
+    "date": "2026-11-16T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Germany"
+    },
+    "away": {
+     "name": "Netherlands"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545618,
+    "date": "2026-11-16T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League D - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Gibraltar"
+    },
+    "away": {
+     "name": "Malta"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545662,
+    "date": "2026-11-16T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "FYR Macedonia"
+    },
+    "away": {
+     "name": "Slovenia"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528991,
+    "date": "2026-11-16T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Greece"
+    },
+    "away": {
+     "name": "Serbia"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528993,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Denmark"
+    },
+    "away": {
+     "name": "Norway"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528998,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Poland"
+    },
+    "away": {
+     "name": "Sweden"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528992,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Wales"
+    },
+    "away": {
+     "name": "Portugal"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528995,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Hungary"
+    },
+    "away": {
+     "name": "Northern Ireland"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528994,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Ukraine"
+    },
+    "away": {
+     "name": "Georgia"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528997,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Rep. Of Ireland"
+    },
+    "away": {
+     "name": "Kosovo"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528999,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Bosnia & Herzegovina"
+    },
+    "away": {
+     "name": "Romania"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528996,
+    "date": "2026-11-17T19:45:00+00:00",
+    "venue": {
+     "name": null
+    },
+    "status": {
+     "short": "NS"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 6"
+   },
+   "teams": {
+    "home": {
+     "name": "Israel"
+    },
+    "away": {
+     "name": "Austria"
+    }
+   },
+   "goals": {
+    "home": null,
+    "away": null
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528965,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Rajko Mitić Stadion"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Serbia"
+    },
+    "away": {
+     "name": "Germany"
+    }
+   },
+   "goals": {
+    "home": 1,
+    "away": 3
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528967,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Kosicka futbalova arena"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Slovakia"
+    },
+    "away": {
+     "name": "Faroe Islands"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 2
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545654,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Ljudski vrt"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Slovenia"
+    },
+    "away": {
+     "name": "Switzerland"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 0
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545614,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Stade de Luxembourg"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Luxembourg"
+    },
+    "away": {
+     "name": "Estonia"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528969,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Hristo Botev Stadium"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League C - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Bulgaria"
+    },
+    "away": {
+     "name": "Iceland"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 4
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528970,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Rheinpark Stadion"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League D - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Liechtenstein"
+    },
+    "away": {
+     "name": "Azerbaijan"
+    }
+   },
+   "goals": {
+    "home": 0,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545659,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Hampden Park Stadium"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League B - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Scotland"
+    },
+    "away": {
+     "name": "FYR Macedonia"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 1
+   }
+  },
+  {
+   "fixture": {
+    "id": 1545615,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Estadi de la FAF"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League D - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Andorra"
+    },
+    "away": {
+     "name": "Gibraltar"
+    }
+   },
+   "goals": {
+    "home": 2,
+    "away": 0
+   }
+  },
+  {
+   "fixture": {
+    "id": 1528966,
+    "date": "2026-11-13T19:45:00+00:00",
+    "venue": {
+     "name": "Johan Cruijff Arena"
+    },
+    "status": {
+     "short": "2H"
+    }
+   },
+   "league": {
+    "id": 5,
+    "round": "League A - 5"
+   },
+   "teams": {
+    "home": {
+     "name": "Netherlands"
+    },
+    "away": {
+     "name": "Greece"
+    }
+   },
+   "goals": {
+    "home": 7,
+    "away": 0
+   }
+  }
+ ]
+}

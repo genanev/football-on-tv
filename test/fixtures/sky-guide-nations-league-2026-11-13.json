@@ -1,0 +1,118 @@
+{
+ "_comment": "Sky EPG (awk.epgsky.com/hawk/linear/schedule), captured 13 Nov 2026 at 21:40 UK: BBC Two (2075), BBC Three (2080) and ITV1 (6504), 13-17 Nov 2026; only the Nations League football programmes and ITV1's rugby (Nations Championship) kept, with the fields we use",
+ "schedule": [
+  {
+   "sid": "2075",
+   "events": [
+    {
+     "st": 1794598200,
+     "d": 9000,
+     "eid": "E81b-1709",
+     "t": "International Football:...",
+     "sy": "...Scotland v North Macedonia. Live coverage from Hampden as Scotland host North Macedonia in the Nations League. [S] [HD]"
+    },
+    {
+     "st": 1794674700,
+     "d": 9000,
+     "eid": "E81b-1790",
+     "t": "Match of the Day Wales: Norway v Wales",
+     "sy": "Live coverage as Wales take on Norway in Oslo for their penultimate game in the Nations League. [S] [HD]"
+    },
+    {
+     "st": 1794683700,
+     "d": 9900,
+     "eid": "E81b-17c8",
+     "t": "International Football:...",
+     "sy": "...Northern Ireland v Ukraine. Live coverage as Northern Ireland host Ukraine in the Nations League with promotion to League A in sight. [S] [HD]"
+    },
+    {
+     "st": 1794857400,
+     "d": 9000,
+     "eid": "E81b-17b8",
+     "t": "International Football: Switzerland v Scotland",
+     "sy": "Live coverage of Scotland's Nations League trip to Switzerland. [S] [HD]"
+    },
+    {
+     "st": 1794943800,
+     "d": 9000,
+     "eid": "E81b-17ae",
+     "t": "Match of the Day Wales: Wales v Portugal",
+     "sy": "Live international football as Wales welcome Portugal to the Cardiff City Stadium in their final match of the Nations League. [S] [HD]"
+    }
+   ]
+  },
+  {
+   "sid": "2080",
+   "events": [
+    {
+     "st": 1794942900,
+     "d": 9900,
+     "eid": "E820-7a91",
+     "t": "International Football: Hungary v Northern Ireland",
+     "sy": "Northern Ireland's UEFA Nations League campaign reaches its conclusion at the Puskás Aréna in Budapest as they take on Hungary. [S] [HD]"
+    }
+   ]
+  },
+  {
+   "sid": "6504",
+   "events": [
+    {
+     "st": 1794597300,
+     "d": 12000,
+     "eid": "E1968-33a",
+     "t": "France v South Africa: Nations Championship",
+     "sy": "Jill Douglas presents live coverage of the Nations Championship as France face reigning world champions South Africa at the Stade de France in Paris."
+    },
+    {
+     "st": 1794654000,
+     "d": 9600,
+     "eid": "E1968-1f3",
+     "t": "Italy v Argentina: Nations Championship",
+     "sy": "Round Five of the Nations Championship as Italy host Argentina at the Stadio Luigi Ferraris in Genoa. Lauren Salter presents with Jamie Roberts and Sam Warburton."
+    },
+    {
+     "st": 1794663600,
+     "d": 10200,
+     "eid": "E1968-200",
+     "t": "Wales v New Zealand: Nations Championship",
+     "sy": "Live Rugby from Round Five of the Nations Championship as Wales host New Zealand in Cardiff. Lauren Salter presents with Sean Fitzpatrick, Sam Warburton and Dan Biggar."
+    },
+    {
+     "st": 1794673800,
+     "d": 9000,
+     "eid": "E1968-209",
+     "t": "England v Japan: Nations Championship",
+     "sy": "Mark Pougatch is joined by Ugo Monye and Maggie Alphonsi for live coverage of England against Japan in the Nations Championship."
+    },
+    {
+     "st": 1794684600,
+     "d": 11100,
+     "eid": "E1968-16d",
+     "t": "Ireland v Fiji: Nations Championship",
+     "sy": "Mark Pougatch is joined by Ugo Monye and Maggie Alphonsi for live coverage of Ireland against Fiji in the Nations Championship."
+    },
+    {
+     "st": 1794751200,
+     "d": 12900,
+     "eid": "E1968-156",
+     "t": "Scotland v Australia: Nations Championship",
+     "sy": "Jill Douglas presents live coverage of the Nations Championship as Scotland face next year's Rugby World Cup hosts, Australia at Murrayfield."
+    },
+    {
+     "st": 1794769200,
+     "d": 11100,
+     "eid": "E1968-31b",
+     "t": "Spain v England: UEFA Nations League",
+     "sy": "England take on Spain in the last group game of the Nations League, where they will want to make up for their 3-2 loss to the World Champions at Wembley in September."
+    },
+    {
+     "st": 1794784800,
+     "d": 3900,
+     "eid": "E1968-3cf",
+     "t": "New: The Debrief with Dan and ROG",
+     "sy": "Claire Thomas is joined by Dan Biggar and Ronan O'Gara to pick over all the talking points from a busy weekend of Nations Championship action. S1 Ep5"
+    }
+   ]
+  }
+ ]
+}

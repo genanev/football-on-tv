@@ -13,7 +13,8 @@
 //                      UK broadcaster feed needs (footballTv.mjs)
 //   championsLeague,   uefa.com
 //   europaLeague,
-//   conferenceLeague
+//   conferenceLeague,
+//   nationsLeague
 //   efl                efl.com: Championship, League Cup
 // The FA's page is read on every update anyway (for its "Live on" TV picks), so FA Cup ties are
 // checked against it each time (kick-offs only: the page lists every tie as upcoming).

@@ -9,6 +9,7 @@
 import { getJSON, ukDate, ukMidnight } from '../lib/util.mjs';
 
 const BASE = 'https://awk.epgsky.com/hawk/linear/schedule';
+const MAX_CHANNELS = 20; // per request
 
 /** Sky service IDs (from awk.epgsky.com/hawk/linear/services/4101/1) and display names. */
 export const CHANNELS = {
@@ -28,6 +29,7 @@ export const CHANNELS = {
   3000: 'BBC One',
   2075: 'BBC Two',
   2086: 'BBC Four',
+  2080: 'BBC Three',
   6504: 'ITV1',
   6534: 'ITV4',
   4075: 'Channel 4',
@@ -42,7 +44,8 @@ export const SPORT_CHANNELS = {
   golf: [4026, 4002, 3940, 4090, 2075, 3000],
   snooker: [3625, 3627, 3629, 4040, 3000, 2075, 2086, 4058, 6534, 6504],
   cricket: [4081, 4002, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075],
-  football: [4002, 4010, 3939, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075, 6504, 6534, 4058],
+  // BBC Three: Hungary v Northern Ireland (Nations League, 17 Nov 2026)
+  football: [4002, 4010, 3939, 3940, 4090, 3625, 3627, 3629, 4040, 3000, 2075, 2080, 6504, 6534, 4058],
   // Sky Sports (ATP/WTA Finals, US Open), BBC (Wimbledon), TNT (Australian Open, Roland-Garros)
   tennis: [1284, 4002, 3940, 4090, 3000, 2075, 3625, 3627, 3629, 4040],
   curling: [3625, 3627, 3629, 4040], // TNT Sports 1-4 (the European Championships, 2026)
@@ -58,7 +61,7 @@ export const isLiveTitle = (t) => /^live\b/i.test(String(t || '').trim());
  * On these channels, a programme of an hour or more that doesn't look like a replay counts as live
  * coverage - used only for a sport's own programmes on its tournament days (darts, snooker).
  */
-export const FREE_TO_AIR = new Set([3000, 2075, 2086, 6504, 6534, 4075, 4058]); // BBC One/Two/Four, ITV1, ITV4, Channel 4, Channel 5
+export const FREE_TO_AIR = new Set([3000, 2075, 2086, 2080, 6504, 6534, 4075, 4058]); // BBC One/Two/Four/Three, ITV1, ITV4, Channel 4, Channel 5
 const REPLAY = /highlights|\bhlts\b|\breview\b|\bclassics?\b|\bbest of\b|\breload\b|\brewind\b|round-?up|\bpreview\b|\(\d{1,2}\.\d{1,2}\)/i;
 export const isLiveCoverage = (p) => p.live
   || (FREE_TO_AIR.has(p.sid) && p.end - p.start >= 3600000 && !REPLAY.test(`${p.title} ${p.synopsis || ''}`));
@@ -97,8 +100,12 @@ export async function fetchGuide(from, days, sids = [...new Set(Object.values(SP
   for (let i = 0; i < days; i++) {
     const date = ukDate(ukMidnight(from) + i * 86400000 + 3 * 3600000); // +3h keeps DST days on the right date
     try {
-      const j = await getJSON(`${BASE}/${date.replace(/-/g, '')}/${sids.join(',')}`);
-      const progs = mapGuideDay(j);
+      // Sky answers HTTP 400 to more than 20 channels in one request (found on 13 Nov 2026, when
+      // BBC Three made it 21), so a day is read 20 channels at a time
+      const progs = [];
+      for (let c = 0; c < sids.length; c += MAX_CHANNELS) {
+        progs.push(...mapGuideDay(await getJSON(`${BASE}/${date.replace(/-/g, '')}/${sids.slice(c, c + MAX_CHANNELS).join(',')}`)));
+      }
       if (progs.length) coveredDates.add(date);
       for (const p of progs) seen.set(p.id, p);
     } catch (e) {

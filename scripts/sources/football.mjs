@@ -9,6 +9,7 @@
 //   UK TV channels            footballTv.mjs (Sky TV guide, Sky Sports, TNT Sports)
 
 import { getJSON, londonParts, ukToUtc, ukDate } from '../lib/util.mjs';
+import { isLiveCoverage } from './skyGuide.mjs';
 
 // ----------------------------------------------------------- name matching
 
@@ -36,6 +37,9 @@ const ALIASES = {
   'rfs': 'rigas fs', 'rigas futbola skola': 'rigas fs', 'gnk dinamo': 'dinamo zagreb',
   'n e c': 'nec nijmegen', 'nec': 'nec nijmegen', 'hearts': 'heart of midlothian',
   'st truiden': 'sint truiden', 'sint truidense': 'sint truiden', 'stvv': 'sint truiden',
+  // National teams (Nations League, 13 Nov 2026): API-Football's, UEFA's and the broadcasters' names
+  'fyr macedonia': 'north macedonia', 'rep of ireland': 'republic of ireland', 'n ireland': 'northern ireland',
+  'czechia': 'czech republic', 'turkiye': 'turkey', 'bosnia': 'bosnia herzegovina', 'holland': 'netherlands',
 };
 
 function stripAccents(s) {
@@ -204,7 +208,8 @@ export function mapUefaMatch(m, comp = 'UCL') {
   };
 }
 
-const UEFA_COMPETITION = { UCL: 1, UEL: 14, UECL: 2019 }; // UECL: only to check API-Football (goldenCheck.mjs)
+// UECL and UNL (the Nations League): only to check API-Football (goldenCheck.mjs)
+const UEFA_COMPETITION = { UCL: 1, UEL: 14, UECL: 2019, UNL: 2014 };
 
 export async function fetchUefa(now, daysAhead, comp = 'UCL') {
   const from = ukDate(now - 86400000);
@@ -232,6 +237,26 @@ export function guideTeams(title) {
 }
 
 /**
+ * The BBC cuts a long title short and carries on in the description: "International Football:..." +
+ * "...Scotland v North Macedonia. Live coverage from Hampden as…" (BBC Two, 13 Nov 2026).
+ */
+export function fullGuideTitle(p) {
+  const title = String(p.title || ''), more = String(p.synopsis || '');
+  if (!/\.{3}$/.test(title) || !/^\.{3}/.test(more)) return title;
+  return `${title.replace(/\.+$/, '')} ${more.replace(/^\.+/, '').split(/\.\s/)[0]}`;
+}
+
+// Free-to-air channels don't start live titles with "Live" (skyGuide.mjs): ITV1's "Spain v England:
+// UEFA Nations League", BBC Two's "Match of the Day Wales: Norway v Wales". For the Nations League,
+// whose home nations' games are on ITV and the BBC, such a programme counts when it runs an hour or
+// more, isn't a replay and says it's football (ITV1 also has rugby's "Ireland v Fiji: Nations
+// Championship").
+const FREE_TO_AIR_COMPS = new Set(['UNL']);
+const FOOTBALL_WORDS = /\bfootball\b|nations league/i;
+const showsLive = (p, match) => p.live
+  || (FREE_TO_AIR_COMPS.has(match.comp) && isLiveCoverage(p) && FOOTBALL_WORDS.test(`${p.title} ${p.synopsis || ''}`));
+
+/**
  * Live programmes showing this match: on air at kick-off (or starting up to 2h before it) on a
  * football channel, with both team names in the title (fuzzy, so "Oxford Utd" = "Oxford United").
  */
@@ -239,13 +264,14 @@ export function guideProgrammesFor(match, programmes, sids) {
   const ko = Date.parse(match.kickoff);
   const names = (side) => [match[side], match[`${side}Short`], match[`${side}Alt`]].filter(Boolean);
   return programmes.filter(p => {
-    if (!p.live || !sids.includes(p.sid)) return false;
+    if (!sids.includes(p.sid) || !showsLive(p, match)) return false;
     if (!(p.start <= ko + 15 * 60000 && p.end > ko + 15 * 60000 && p.start >= ko - 2 * 3600000)) return false;
-    const teams = guideTeams(p.title);
+    const title = fullGuideTitle(p);
+    const teams = guideTeams(title);
     if (!teams) return false;
     // "Atletico U19 v Man Utd U19", "Newcastle Women v …" are other teams
     const other = /\bU\d{2}\b|\bWomen\b|\bWSL\b/i;
-    if (other.test(p.title) && !names('home').concat(names('away')).some(n => other.test(n))) return false;
+    if (other.test(title) && !names('home').concat(names('away')).some(n => other.test(n))) return false;
     // ...and a WSL game ("Arsenal Women") needs a women's programme ("Live WSL: Arsenal v Chelsea"),
     // not the men's game between the same clubs
     const women = /\bWomen\b|\bWSL\b/i;

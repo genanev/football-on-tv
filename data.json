@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T00:00:18.053Z",
+ "generatedAt": "2026-11-13T00:30:32.086Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 125
+   "events": 121
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1183,7 +1183,7 @@
    "away": "Birmingham City Women",
    "homeShort": "Aston Villa",
    "awayShort": "Birmingham City",
-   "venue": "Bescot Stadium",
+   "venue": "Trevor Brown Memorial Ground",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1214,7 +1214,7 @@
    "away": "Charlton Athletic Women",
    "homeShort": "West Ham",
    "awayShort": "Charlton Athletic",
-   "venue": "Chigwell Construction Stadium",
+   "venue": "London Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1278,7 +1278,7 @@
    "away": "London City Lionesses",
    "homeShort": "Arsenal",
    "awayShort": "London City Lionesses",
-   "venue": "Emirates Stadium",
+   "venue": "Meadow Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

@@ -2,7 +2,7 @@
 
 A phone web app that lists what's on UK TV for **today and the next 7 days**, with **UK times** and the **UK TV channel**:
 
-- **Football:** Premier League, Champions League, Europa League, Championship, Scottish Premiership, and televised Conference League, Women's Super League, League Cup and FA Cup games
+- **Football:** Premier League, Champions League, Europa League, Championship, Scottish Premiership, and televised Conference League, Nations League, Women's Super League, League Cup and FA Cup games
 - **Motorsport:** Formula 1, Formula 2, Formula 3 and MotoGP (qualifying, sprint and race)
 - **Darts:** televised PDC events
 - **Golf:** PGA Tour, DP World Tour and the majors
@@ -63,7 +63,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 
 | | Source | Accessed by |
 |---|---|---|
-| **Fixtures** | All football (Premier League, Champions League, Europa League, Conference League, Championship, Scottish Premiership, WSL, FA Cup, League Cup): API-Football | a paid, documented data service (Pro plan, about $19 a month) |
+| **Fixtures** | All football (Premier League, Champions League, Europa League, Conference League, Nations League, Championship, Scottish Premiership, WSL, FA Cup, League Cup): API-Football | a paid, documented data service (Pro plan, about $19 a month) |
 | | Check and backup for football: the Premier League, UEFA, EFL and FA feeds | their data feeds and pages; read once a day to check API-Football (they win if the two disagree, e.g. a moved game), and used in full if API-Football is switched off |
 | | Formula 1 (formula1.com), Formula 2 (fiaformula2.com), Formula 3 (fiaformula3.com) | their data feeds (API) |
 | | MotoGP (motogp.com) | its data feed (API) |
@@ -130,7 +130,7 @@ The update prints a short report of every source, and the same report is stored 
 
 The regular update runs on Google Cloud in London: a Cloud Run job started every 30 minutes by Cloud Scheduler. From a UK address, Prime Video shows Amazon's Champions League pick, Premier Sports shows its UK listings, and the Premier League's broadcaster feed answers for the UK. `cloud/SETUP.md` explains how it was set up, how to change how often it runs, how to pause it, how to renew its GitHub key (the key expires after a year, around 18 Oct 2027), and how to switch football back to the backup feeds or turn scores off.
 
-The "Run workflow" button on GitHub's Actions tab still works as a manual backup. It runs from GitHub's US servers without the API-Football key, so it uses the backup football feeds (the Conference League, WSL and Scottish Premiership are missing until the next London run), and Prime Video's and Premier Sports' UK pages aren't available to it; channels already found are kept.
+The "Run workflow" button on GitHub's Actions tab still works as a manual backup. It runs from GitHub's US servers without the API-Football key, so it uses the backup football feeds (the Conference League, Nations League, WSL and Scottish Premiership are missing until the next London run), and Prime Video's and Premier Sports' UK pages aren't available to it; channels already found are kept.
 
 ## Working on it
 

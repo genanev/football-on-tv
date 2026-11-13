@@ -9,6 +9,13 @@
 //   fixtures/apifootball-fixtures-2026-10-19.json   /fixtures for 19-27 Oct 2026 (Pro plan, evening
 //     of 19 Oct), the same plus 848 Conference League and 44 WSL (added for the new app). The clocks
 //     go back on Sunday 25 Oct.
+// The UEFA Nations League (added 13 Nov 2026), all real, captured on 13 Nov 2026 at about 21:05 UK,
+// during that evening's games (Scotland v North Macedonia was in its second half):
+//   fixtures/apifootball-nations-league-2026-11-13.json   /fixtures for league 5, 12-21 Nov 2026: the
+//     last two rounds of the league phase, 52 games
+//   fixtures/uefa-nations-league-2026-11-13.json   uefa.com's feed for the same games (competition 2014)
+//   fixtures/sky-guide-nations-league-2026-11-13.json   Sky's guide for BBC Two, BBC Three and ITV1,
+//     13-17 Nov: the Nations League programmes, plus ITV1's rugby ("… Nations Championship")
 // The build checks are made with the other sources mocked, including the once-a-day check against
 // the official feeds (goldenCheck.mjs), whose answers are hand-written in each feed's format.
 //
@@ -20,10 +27,18 @@ import { ukHHMM, ukToUtc, ukDate } from '../scripts/lib/util.mjs';
 import { build, markNotOnTv } from '../scripts/build.mjs';
 import { unknownClubs } from '../scripts/sources/teamNames.mjs';
 import { parsePremierSports, parsePsTime } from '../scripts/sources/premierSports.mjs';
-import { mapAfFixture, afErrors, afSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
+import { mapAfFixture, afErrors, afSeason, leagueSeason, fetchApiFootball, AF_LEAGUES } from '../scripts/sources/apiFootball.mjs';
+import { guideProgrammesFor, fullGuideTitle, mapUefaMatch, teamSim } from '../scripts/sources/football.mjs';
+import { mapGuideDay, SPORT_CHANNELS } from '../scripts/sources/skyGuide.mjs';
+import { pairMatches } from '../scripts/sources/goldenCheck.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: await fx('apifootball-fixtures-2026-10-19.json') };
+// The Nations League (league 5): the mock doesn't filter by date, so the October builds are handed
+// these November games too, which are outside their window
+WEEKS[2026][5] = await fx('apifootball-nations-league-2026-11-13.json');
+const UEFA_UNL = await fx('uefa-nations-league-2026-11-13.json');
+const UNL_GUIDE = await fx('sky-guide-nations-league-2026-11-13.json');
 
 // ---------- the other sources the build reads (for the build checks at the end)
 // Sky TV guide entries, hand-written in Sky's format (UK local times; the guide has no past days)
@@ -41,10 +56,14 @@ const GUIDE = [
   prog(MAIN, '2026-10-24', '12:30', 150, 'Live WSL: Tottenham v Arsenal'),
   prog(PL_CH, '2026-10-25', '11:30', 150, 'Live PL: Crystal Palace v Chelsea'), // made up: a men's game at the time of the WSL one
   prog(MAIN, '2026-10-25', '11:30', 150, 'Live SPFL: Hibernian v Celtic'),
+  // real: the Nations League on the BBC and ITV1, 13-17 Nov 2026
+  ...UNL_GUIDE.schedule.flatMap(s => s.events.map(ev => ({ sid: Number(s.sid), ev }))),
 ];
+let guideReads = []; // the channels asked for in each request to Sky's guide
 const skyDay = (url) => {
   const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
   const date = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}-${ymd.slice(6)}`;
+  guideReads.push(sids.split(','));
   const schedule = sids.split(',').map(Number).map(sid => ({ sid: String(sid), events: GUIDE.filter(g => g.sid === sid && ukDate(g.ev.st * 1000) === date).map(g => g.ev) }));
   return { date: ymd, schedule };
 };
@@ -76,7 +95,11 @@ const EFL_FEED = { data: [
   eflMatch('e2', '2026-10-24 14:00:00', 'PreMatch', 'Leicester City', 'Sheffield Wednesday'),
   eflMatch('e3', '2026-10-24 14:00:00', 'PreMatch', 'Stoke City', 'Bristol City'),
 ], links: {} };
-let afDown = false, psDown = false, psForeign = false, uefaDown = false, faLate = false;
+let afDown = false, psDown = false, psForeign = false, uefaDown = false, faLate = false, unlMoved = false;
+// Made up for the daily check: UEFA has Switzerland v Scotland 15 minutes later than API-Football
+const uefaUnl = () => (unlMoved
+  ? UEFA_UNL.map(m => (m.homeTeam.internationalName === 'Switzerland' ? { ...m, kickOffTime: { dateTime: '2026-11-16T20:00:00Z' } } : m))
+  : UEFA_UNL);
 let officialReads = []; // requests to the official fixture feeds (read once a day with API-Football)
 // Premier Sports' fixtures page (streaming only, not in Sky's guide), trimmed; see the file's comment
 const PS_PAGE = await readFile(new URL('fixtures/premiersports-upcoming-fixtures-2026-10-20.html', import.meta.url), 'utf8');
@@ -90,7 +113,7 @@ function otherSource(url) {
   if (url.includes('current-gameweek')) return ok({ matchweek: 9 });
   if (url.includes('pulselive.com')) return ok(/matchweek=9&/.test(url) ? PL_WEEK : { data: [] });
   if (url.includes('api.premierleague.com/broadcasting')) return ok(PL_TV);
-  if (url.includes('match.uefa.com')) return uefaDown ? { ok: false, status: 503 } : ok(/competitionId=14&/.test(url) ? UEFA_UEL : []);
+  if (url.includes('match.uefa.com')) return uefaDown ? { ok: false, status: 503 } : ok(/competitionId=14&/.test(url) ? UEFA_UEL : /competitionId=2014&/.test(url) ? uefaUnl() : []);
   if (url.includes('eflservices.co.uk')) return ok(EFL_FEED);
   return { ok: false, status: 404 }; // other sports: covered by their own tests
 }
@@ -155,7 +178,10 @@ assert.deepEqual(psEvents.filter(e => e.competition === 'SPFL').map(e => `${e.ho
 // ---------- the captured week
 const { matches, errors } = await fetchApiFootball('2024-10-22', '2024-10-30', 2024, 'test-key');
 assert.deepEqual(errors, []);
-assert.equal(requests.length, 9); // one per competition
+assert.equal(requests.length, 10); // one per competition
+// The Nations League has a season every other year: the even ones (2027/28 is still "2026")
+assert.deepEqual([leagueSeason(5, 2026), leagueSeason(5, 2027), leagueSeason(5, 2028), leagueSeason(39, 2027)], [2026, 2026, 2028, 2027]);
+assert.equal(new URL(requests.find(r => new URL(r.url).searchParams.get('league') === '5').url).searchParams.get('season'), '2024');
 assert.ok(requests.every(r => r.key === 'test-key'));
 const q = new URL(requests[0].url).searchParams;
 assert.deepEqual([q.get('season'), q.get('from'), q.get('to'), q.get('timezone')], ['2024', '2024-10-22', '2024-10-30', 'UTC']);
@@ -331,7 +357,7 @@ afDown = true;
 const down = await build(NOW, null, { footballSource: 'api-football' });
 afDown = false;
 assert.equal(down.report.apiFootball.ok, false);
-assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'conferenceLeague', 'wsl', 'scottishPremiership'].every(k => down.report[k].ok === false));
+assert.ok(['premierLeague', 'championsLeague', 'europaLeague', 'efl', 'faCup', 'conferenceLeague', 'nationsLeague', 'wsl', 'scottishPremiership'].every(k => down.report[k].ok === false));
 assert.equal(down.events.filter(e => e.kind === 'match').length, 0);
 assert.equal(down.report.tvGuide.ok, true);
 
@@ -339,7 +365,7 @@ assert.equal(down.report.tvGuide.ok, true);
 // The first update (no earlier check) reads them all; where they disagree with API-Football, they win
 const g = data.report.goldenCheck;
 assert.deepEqual(Object.fromEntries(Object.entries(g).filter(([k]) => k !== 'changed').map(([k, v]) => [k, `${v.ok} ${v.corrections}`])),
-  { premierLeague: 'true 1', championsLeague: 'true 0', europaLeague: 'true 1', conferenceLeague: 'true 0', efl: 'true 2' });
+  { premierLeague: 'true 1', championsLeague: 'true 0', europaLeague: 'true 1', conferenceLeague: 'true 0', nationsLeague: 'true 0', efl: 'true 2' });
 assert.deepEqual(g.changed, [
   'PL Sunderland v Leeds United: Sun 10-25 16:30 -> Sun 10-25 17:30 (premierleague.com)',
   'UEL Juventus v Rennes: Thu 10-22 17:45 -> Wed 10-21 16:30 (uefa.com)',
@@ -355,7 +381,7 @@ assert.deepEqual([leicester.away, leicester.tv.note], ['Sheffield Wednesday', 'N
 assert.equal(ev('UEL', 'Lech Poznan').checkedBy, undefined); // agrees: unchanged
 assert.ok(officialReads.some(u => u.includes('match.uefa.com')) && officialReads.some(u => u.includes('eflservices')));
 // What the check found is saved in data.json, with the PL's match ids for its broadcaster feed
-assert.deepEqual(Object.keys(data.golden), ['premierLeague', 'championsLeague', 'europaLeague', 'conferenceLeague', 'efl']);
+assert.deepEqual(Object.keys(data.golden), ['premierLeague', 'championsLeague', 'europaLeague', 'conferenceLeague', 'nationsLeague', 'efl']);
 assert.ok(data.golden.premierLeague.matches.some(m => m.sourceId === '999'));
 assert.ok(!data.golden.premierLeague.matches.some(m => m.sourceId === '997')); // beyond the window
 
@@ -428,5 +454,74 @@ assert.equal(noteAfter(game('CHAMP', 10), { ...listingsOk, tvGuide: { ok: false 
 assert.equal(noteAfter(game('SCOT', 10), { ...listingsOk, premierSports: { ok: false, wrongRegion: true } }), 'TV channel to be confirmed');
 assert.equal(noteAfter(game('CHAMP', 10), { ...listingsOk, premierSports: { ok: false } }), 'Not shown live on UK TV'); // not a Premier Sports game
 assert.equal(noteAfter(game('UCL', 10), { ...listingsOk, primeVideo: { ok: false } }), 'TV channel to be confirmed');
+
+// ---------- the UEFA Nations League (George, 13 Nov 2026): televised games only, any nations
+// Friday 13 Nov 2026, 21:05 UK. Sky's page and TNT's schedule aren't mocked (neither listed it).
+const UNL_NOW = Date.parse('2026-11-13T21:05:00Z');
+guideReads = [];
+const unl = await build(UNL_NOW, null, { footballSource: 'api-football' });
+const unlGames = (d) => d.events.filter(e => e.comp === 'UNL');
+const when = (e) => `${ukDate(Date.parse(e.kickoff)).slice(5)} ${ukHHMM(Date.parse(e.kickoff))}`;
+// 43 games in the window, 7 on UK TV: the home nations', on the BBC and ITV1
+assert.deepEqual(unlGames(unl).map(e => `${when(e)} ${e.home} v ${e.away} on ${[...e.tv.channels, ...e.tv.alsoOn].join(', ')}`), [
+  '11-13 19:45 Scotland v North Macedonia on BBC Two',  // "International Football:..." + "...Scotland v North Macedonia. Live coverage…"
+  '11-14 17:00 Norway v Wales on BBC Two',              // "Match of the Day Wales: Norway v Wales"
+  '11-14 19:45 Northern Ireland v Ukraine on BBC Two',
+  '11-15 19:45 Spain v England on ITV1',                // "Spain v England: UEFA Nations League"
+  '11-16 19:45 Switzerland v Scotland on BBC Two',      // "International Football: Switzerland v Scotland"
+  '11-17 19:45 Hungary v Northern Ireland on BBC Three',
+  '11-17 19:45 Wales v Portugal on BBC Two',
+]);
+assert.ok(unlGames(unl).every(e => e.kind === 'match' && e.source === 'api-football.com' && e.tv.confirmed && e.tv.sources.join() === 'sky-guide'));
+assert.deepEqual(unl.report.nationsLeague, { ok: true, televised: 7 });
+// National teams as UEFA and the broadcasters write them; API-Football's name is kept for matching
+const scotland = unlGames(unl)[0];
+assert.deepEqual([scotland.away, scotland.awayShort, scotland.status, scotland.round], ['North Macedonia', 'FYR Macedonia', 'live', 'League B - 5']);
+const unlAll = WEEKS[2026][5].response.map(mapAfFixture);
+assert.equal(unlAll.find(m => m.awayShort === 'Rep. Of Ireland').away, 'Republic of Ireland');
+assert.equal(unlAll.find(m => m.awayShort === 'Bosnia & Herzegovina').away, 'Bosnia and Herzegovina');
+assert.ok(unlAll.every(m => m.comp === 'UNL' && m.label === null));
+// Sky's guide refuses more than 20 channels in one request (BBC Three made it 21)
+assert.ok(guideReads.length > 0 && guideReads.every(sids => sids.length <= 20));
+assert.ok(guideReads.some(sids => sids.includes('2080')));
+
+// The BBC's cut-off titles carry on in the description
+const unlProgs = mapGuideDay(UNL_GUIDE);
+const cutOff = unlProgs.find(p => p.sid === 2075 && p.synopsis.startsWith('...Scotland'));
+assert.deepEqual([cutOff.title, fullGuideTitle(cutOff)], ['International Football:...', 'International Football: Scotland v North Macedonia']);
+assert.equal(fullGuideTitle({ title: 'Live PL: Chelsea v Tottenham', synopsis: '...and more.' }), 'Live PL: Chelsea v Tottenham');
+// Free-to-air programmes aren't titled "Live": for the Nations League they count when they say they're
+// football. ITV1's rugby at the same time ("England v Japan: Nations Championship", real) doesn't.
+const progsFor = (m) => guideProgrammesFor(m, unlProgs, SPORT_CHANNELS.football).map(p => p.title);
+const unlGame = (comp, home, away, kickoff) => ({ comp, home, away, kickoff });
+assert.deepEqual(progsFor(unlGame('UNL', 'Spain', 'England', '2026-11-15T19:45:00Z')), ['Spain v England: UEFA Nations League']);
+assert.deepEqual(progsFor(unlGame('UNL', 'England', 'Japan', '2026-11-14T17:10:00Z')), []);
+// ...and other competitions still need Sky's "Live" (made up: the same game as a Premier League one)
+assert.deepEqual(progsFor(unlGame('PL', 'Spain', 'England', '2026-11-15T19:45:00Z')), []);
+// The other Ireland isn't confused: Austria v Republic of Ireland kicks off with Northern Ireland v Ukraine
+assert.deepEqual(progsFor(unlGame('UNL', 'Austria', 'Rep. Of Ireland', '2026-11-14T19:45:00Z')), []);
+assert.equal(teamSim('Türkiye', 'Turkey'), 1);
+
+// The daily check against uefa.com (competition 2014): every game pairs up, names and all ("Czechia" /
+// "Czech Republic", "Türki̇ye" / "Türkiye", "Republic of Ireland" / "Rep. Of Ireland"), nothing to correct
+const uefaUnlMatches = UEFA_UNL.map(m => mapUefaMatch(m, 'UNL'));
+const paired = pairMatches(uefaUnlMatches, unlAll);
+assert.deepEqual([paired.pairs.length, paired.missing.length, paired.extra.length], [52, 0, 0]);
+assert.ok(paired.pairs.every(({ o, a }) => o.kickoff === a.kickoff));
+assert.deepEqual([unl.report.goldenCheck.nationsLeague.ok, unl.report.goldenCheck.nationsLeague.corrections], [true, 0]);
+// UEFA's kick-off wins when they disagree (made up: Switzerland v Scotland 15 minutes later)
+unlMoved = true;
+const unlLate = await build(UNL_NOW, null, { footballSource: 'api-football' });
+unlMoved = false;
+const swiss = unlGames(unlLate).find(e => e.home === 'Switzerland');
+assert.deepEqual([swiss.kickoff, swiss.checkedBy, swiss.tv.channels[0]], ['2026-11-16T20:00:00.000Z', 'uefa.com', 'BBC Two']);
+// (the mock hands this build October's games and corrections too: only the Nations League's are looked at)
+assert.deepEqual(unlLate.report.goldenCheck.changed.filter(c => c.startsWith('UNL')), ['UNL Switzerland v Scotland: Mon 11-16 19:45 -> Mon 11-16 20:00 (uefa.com)']);
+
+// A televised game stays listed after it's over, until the end of its UK day, even when the guide no
+// longer answers (the keep rule); an untelevised one never appears
+const lateNight = await build(Date.parse('2026-11-13T23:30:00Z'), unl, { footballSource: 'api-football' });
+assert.equal(unlGames(lateNight)[0].home, 'Scotland');
+assert.ok(!unl.events.some(e => e.homeShort === 'Germany' || e.awayShort === 'Germany'));
 
 console.log('All API-Football tests passed');

@@ -1,0 +1,1510 @@
+[
+ {
+  "id": "2047873",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T17:00:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Türki̇ye",
+   "translations": {
+    "displayName": {
+     "EN": "Türki̇ye"
+    },
+    "displayOfficialName": {
+     "EN": "Türki̇ye"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Belgium",
+   "translations": {
+    "displayName": {
+     "EN": "Belgium"
+    },
+    "displayOfficialName": {
+     "EN": "Belgium"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047876",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T17:00:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Armenia",
+   "translations": {
+    "displayName": {
+     "EN": "Armenia"
+    },
+    "displayOfficialName": {
+     "EN": "Armenia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Cyprus",
+   "translations": {
+    "displayName": {
+     "EN": "Cyprus"
+    },
+    "displayOfficialName": {
+     "EN": "Cyprus"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047872",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Czechia",
+   "translations": {
+    "displayName": {
+     "EN": "Czechia"
+    },
+    "displayOfficialName": {
+     "EN": "Czechia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Spain",
+   "translations": {
+    "displayName": {
+     "EN": "Spain"
+    },
+    "displayOfficialName": {
+     "EN": "Spain"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047874",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Albania",
+   "translations": {
+    "displayName": {
+     "EN": "Albania"
+    },
+    "displayOfficialName": {
+     "EN": "Albania"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Finland",
+   "translations": {
+    "displayName": {
+     "EN": "Finland"
+    },
+    "displayOfficialName": {
+     "EN": "Finland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047875",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Montenegro",
+   "translations": {
+    "displayName": {
+     "EN": "Montenegro"
+    },
+    "displayOfficialName": {
+     "EN": "Montenegro"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Latvia",
+   "translations": {
+    "displayName": {
+     "EN": "Latvia"
+    },
+    "displayOfficialName": {
+     "EN": "Latvia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047877",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "San Marino",
+   "translations": {
+    "displayName": {
+     "EN": "San Marino"
+    },
+    "displayOfficialName": {
+     "EN": "San Marino"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Belarus",
+   "translations": {
+    "displayName": {
+     "EN": "Belarus"
+    },
+    "displayOfficialName": {
+     "EN": "Belarus"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047878",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Italy",
+   "translations": {
+    "displayName": {
+     "EN": "Italy"
+    },
+    "displayOfficialName": {
+     "EN": "Italy"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "France",
+   "translations": {
+    "displayName": {
+     "EN": "France"
+    },
+    "displayOfficialName": {
+     "EN": "France"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047879",
+  "kickOffTime": {
+   "dateTime": "2026-11-12T19:45:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "England",
+   "translations": {
+    "displayName": {
+     "EN": "England"
+    },
+    "displayOfficialName": {
+     "EN": "England"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Croatia",
+   "translations": {
+    "displayName": {
+     "EN": "Croatia"
+    },
+    "displayOfficialName": {
+     "EN": "Croatia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047883",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T17:00:00Z"
+  },
+  "status": "FINISHED",
+  "homeTeam": {
+   "internationalName": "Moldova",
+   "translations": {
+    "displayName": {
+     "EN": "Moldova"
+    },
+    "displayOfficialName": {
+     "EN": "Moldova"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Kazakhstan",
+   "translations": {
+    "displayName": {
+     "EN": "Kazakhstan"
+    },
+    "displayOfficialName": {
+     "EN": "Kazakhstan"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047880",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Slovakia",
+   "translations": {
+    "displayName": {
+     "EN": "Slovakia"
+    },
+    "displayOfficialName": {
+     "EN": "Slovakia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Faroe Islands",
+   "translations": {
+    "displayName": {
+     "EN": "Faroe Islands"
+    },
+    "displayOfficialName": {
+     "EN": "Faroe Islands"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047881",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Luxembourg",
+   "translations": {
+    "displayName": {
+     "EN": "Luxembourg"
+    },
+    "displayOfficialName": {
+     "EN": "Luxembourg"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Estonia",
+   "translations": {
+    "displayName": {
+     "EN": "Estonia"
+    },
+    "displayOfficialName": {
+     "EN": "Estonia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047882",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Bulgaria",
+   "translations": {
+    "displayName": {
+     "EN": "Bulgaria"
+    },
+    "displayOfficialName": {
+     "EN": "Bulgaria"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Iceland",
+   "translations": {
+    "displayName": {
+     "EN": "Iceland"
+    },
+    "displayOfficialName": {
+     "EN": "Iceland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047884",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Andorra",
+   "translations": {
+    "displayName": {
+     "EN": "Andorra"
+    },
+    "displayOfficialName": {
+     "EN": "Andorra"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Gibraltar",
+   "translations": {
+    "displayName": {
+     "EN": "Gibraltar"
+    },
+    "displayOfficialName": {
+     "EN": "Gibraltar"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047885",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Liechtenstein",
+   "translations": {
+    "displayName": {
+     "EN": "Liechtenstein"
+    },
+    "displayOfficialName": {
+     "EN": "Liechtenstein"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Azerbaijan",
+   "translations": {
+    "displayName": {
+     "EN": "Azerbaijan"
+    },
+    "displayOfficialName": {
+     "EN": "Azerbaijan"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047886",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Netherlands",
+   "translations": {
+    "displayName": {
+     "EN": "Netherlands"
+    },
+    "displayOfficialName": {
+     "EN": "Netherlands"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Greece",
+   "translations": {
+    "displayName": {
+     "EN": "Greece"
+    },
+    "displayOfficialName": {
+     "EN": "Greece"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047887",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Serbia",
+   "translations": {
+    "displayName": {
+     "EN": "Serbia"
+    },
+    "displayOfficialName": {
+     "EN": "Serbia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Germany",
+   "translations": {
+    "displayName": {
+     "EN": "Germany"
+    },
+    "displayOfficialName": {
+     "EN": "Germany"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047888",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Scotland",
+   "translations": {
+    "displayName": {
+     "EN": "Scotland"
+    },
+    "displayOfficialName": {
+     "EN": "Scotland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "North Macedonia",
+   "translations": {
+    "displayName": {
+     "EN": "North Macedonia"
+    },
+    "displayOfficialName": {
+     "EN": "North Macedonia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047889",
+  "kickOffTime": {
+   "dateTime": "2026-11-13T19:45:00Z"
+  },
+  "status": "LIVE",
+  "homeTeam": {
+   "internationalName": "Slovenia",
+   "translations": {
+    "displayName": {
+     "EN": "Slovenia"
+    },
+    "displayOfficialName": {
+     "EN": "Slovenia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Switzerland",
+   "translations": {
+    "displayName": {
+     "EN": "Switzerland"
+    },
+    "displayOfficialName": {
+     "EN": "Switzerland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047896",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T14:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Kosovo",
+   "translations": {
+    "displayName": {
+     "EN": "Kosovo"
+    },
+    "displayOfficialName": {
+     "EN": "Kosovo"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Israel",
+   "translations": {
+    "displayName": {
+     "EN": "Israel"
+    },
+    "displayOfficialName": {
+     "EN": "Israel"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047893",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Norway",
+   "translations": {
+    "displayName": {
+     "EN": "Norway"
+    },
+    "displayOfficialName": {
+     "EN": "Norway"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Wales",
+   "translations": {
+    "displayName": {
+     "EN": "Wales"
+    },
+    "displayOfficialName": {
+     "EN": "Wales"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047895",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Georgia",
+   "translations": {
+    "displayName": {
+     "EN": "Georgia"
+    },
+    "displayOfficialName": {
+     "EN": "Georgia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Hungary",
+   "translations": {
+    "displayName": {
+     "EN": "Hungary"
+    },
+    "displayOfficialName": {
+     "EN": "Hungary"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047890",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Sweden",
+   "translations": {
+    "displayName": {
+     "EN": "Sweden"
+    },
+    "displayOfficialName": {
+     "EN": "Sweden"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Bosnia and Herzegovina",
+   "translations": {
+    "displayName": {
+     "EN": "Bosnia and Herzegovina"
+    },
+    "displayOfficialName": {
+     "EN": "Bosnia and Herzegovina"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047891",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Romania",
+   "translations": {
+    "displayName": {
+     "EN": "Romania"
+    },
+    "displayOfficialName": {
+     "EN": "Romania"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Poland",
+   "translations": {
+    "displayName": {
+     "EN": "Poland"
+    },
+    "displayOfficialName": {
+     "EN": "Poland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047892",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Portugal",
+   "translations": {
+    "displayName": {
+     "EN": "Portugal"
+    },
+    "displayOfficialName": {
+     "EN": "Portugal"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Denmark",
+   "translations": {
+    "displayName": {
+     "EN": "Denmark"
+    },
+    "displayOfficialName": {
+     "EN": "Denmark"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047894",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Austria",
+   "translations": {
+    "displayName": {
+     "EN": "Austria"
+    },
+    "displayOfficialName": {
+     "EN": "Austria"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Republic of Ireland",
+   "translations": {
+    "displayName": {
+     "EN": "Republic of Ireland"
+    },
+    "displayOfficialName": {
+     "EN": "Republic of Ireland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047897",
+  "kickOffTime": {
+   "dateTime": "2026-11-14T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Northern Ireland",
+   "translations": {
+    "displayName": {
+     "EN": "Northern Ireland"
+    },
+    "displayOfficialName": {
+     "EN": "Northern Ireland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Ukraine",
+   "translations": {
+    "displayName": {
+     "EN": "Ukraine"
+    },
+    "displayOfficialName": {
+     "EN": "Ukraine"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047899",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T14:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Latvia",
+   "translations": {
+    "displayName": {
+     "EN": "Latvia"
+    },
+    "displayOfficialName": {
+     "EN": "Latvia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Armenia",
+   "translations": {
+    "displayName": {
+     "EN": "Armenia"
+    },
+    "displayOfficialName": {
+     "EN": "Armenia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047903",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T14:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Cyprus",
+   "translations": {
+    "displayName": {
+     "EN": "Cyprus"
+    },
+    "displayOfficialName": {
+     "EN": "Cyprus"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Montenegro",
+   "translations": {
+    "displayName": {
+     "EN": "Montenegro"
+    },
+    "displayOfficialName": {
+     "EN": "Montenegro"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047901",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Finland",
+   "translations": {
+    "displayName": {
+     "EN": "Finland"
+    },
+    "displayOfficialName": {
+     "EN": "Finland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "San Marino",
+   "translations": {
+    "displayName": {
+     "EN": "San Marino"
+    },
+    "displayOfficialName": {
+     "EN": "San Marino"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047905",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Belarus",
+   "translations": {
+    "displayName": {
+     "EN": "Belarus"
+    },
+    "displayOfficialName": {
+     "EN": "Belarus"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Albania",
+   "translations": {
+    "displayName": {
+     "EN": "Albania"
+    },
+    "displayOfficialName": {
+     "EN": "Albania"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047898",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "France",
+   "translations": {
+    "displayName": {
+     "EN": "France"
+    },
+    "displayOfficialName": {
+     "EN": "France"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Türki̇ye",
+   "translations": {
+    "displayName": {
+     "EN": "Türki̇ye"
+    },
+    "displayOfficialName": {
+     "EN": "Türki̇ye"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047900",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Belgium",
+   "translations": {
+    "displayName": {
+     "EN": "Belgium"
+    },
+    "displayOfficialName": {
+     "EN": "Belgium"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Italy",
+   "translations": {
+    "displayName": {
+     "EN": "Italy"
+    },
+    "displayOfficialName": {
+     "EN": "Italy"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047902",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Croatia",
+   "translations": {
+    "displayName": {
+     "EN": "Croatia"
+    },
+    "displayOfficialName": {
+     "EN": "Croatia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Czechia",
+   "translations": {
+    "displayName": {
+     "EN": "Czechia"
+    },
+    "displayOfficialName": {
+     "EN": "Czechia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047904",
+  "kickOffTime": {
+   "dateTime": "2026-11-15T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Spain",
+   "translations": {
+    "displayName": {
+     "EN": "Spain"
+    },
+    "displayOfficialName": {
+     "EN": "Spain"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "England",
+   "translations": {
+    "displayName": {
+     "EN": "England"
+    },
+    "displayOfficialName": {
+     "EN": "England"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047910",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T15:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Faroe Islands",
+   "translations": {
+    "displayName": {
+     "EN": "Faroe Islands"
+    },
+    "displayOfficialName": {
+     "EN": "Faroe Islands"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Moldova",
+   "translations": {
+    "displayName": {
+     "EN": "Moldova"
+    },
+    "displayOfficialName": {
+     "EN": "Moldova"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047913",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T15:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Kazakhstan",
+   "translations": {
+    "displayName": {
+     "EN": "Kazakhstan"
+    },
+    "displayOfficialName": {
+     "EN": "Kazakhstan"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Slovakia",
+   "translations": {
+    "displayName": {
+     "EN": "Slovakia"
+    },
+    "displayOfficialName": {
+     "EN": "Slovakia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047906",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Iceland",
+   "translations": {
+    "displayName": {
+     "EN": "Iceland"
+    },
+    "displayOfficialName": {
+     "EN": "Iceland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Luxembourg",
+   "translations": {
+    "displayName": {
+     "EN": "Luxembourg"
+    },
+    "displayOfficialName": {
+     "EN": "Luxembourg"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047907",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Estonia",
+   "translations": {
+    "displayName": {
+     "EN": "Estonia"
+    },
+    "displayOfficialName": {
+     "EN": "Estonia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Bulgaria",
+   "translations": {
+    "displayName": {
+     "EN": "Bulgaria"
+    },
+    "displayOfficialName": {
+     "EN": "Bulgaria"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047911",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T17:00:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Lithuania",
+   "translations": {
+    "displayName": {
+     "EN": "Lithuania"
+    },
+    "displayOfficialName": {
+     "EN": "Lithuania"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Liechtenstein",
+   "translations": {
+    "displayName": {
+     "EN": "Liechtenstein"
+    },
+    "displayOfficialName": {
+     "EN": "Liechtenstein"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047908",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Gibraltar",
+   "translations": {
+    "displayName": {
+     "EN": "Gibraltar"
+    },
+    "displayOfficialName": {
+     "EN": "Gibraltar"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Malta",
+   "translations": {
+    "displayName": {
+     "EN": "Malta"
+    },
+    "displayOfficialName": {
+     "EN": "Malta"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047909",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Germany",
+   "translations": {
+    "displayName": {
+     "EN": "Germany"
+    },
+    "displayOfficialName": {
+     "EN": "Germany"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Netherlands",
+   "translations": {
+    "displayName": {
+     "EN": "Netherlands"
+    },
+    "displayOfficialName": {
+     "EN": "Netherlands"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047912",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Greece",
+   "translations": {
+    "displayName": {
+     "EN": "Greece"
+    },
+    "displayOfficialName": {
+     "EN": "Greece"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Serbia",
+   "translations": {
+    "displayName": {
+     "EN": "Serbia"
+    },
+    "displayOfficialName": {
+     "EN": "Serbia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047914",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Switzerland",
+   "translations": {
+    "displayName": {
+     "EN": "Switzerland"
+    },
+    "displayOfficialName": {
+     "EN": "Switzerland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Scotland",
+   "translations": {
+    "displayName": {
+     "EN": "Scotland"
+    },
+    "displayOfficialName": {
+     "EN": "Scotland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047915",
+  "kickOffTime": {
+   "dateTime": "2026-11-16T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "North Macedonia",
+   "translations": {
+    "displayName": {
+     "EN": "North Macedonia"
+    },
+    "displayOfficialName": {
+     "EN": "North Macedonia"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Slovenia",
+   "translations": {
+    "displayName": {
+     "EN": "Slovenia"
+    },
+    "displayOfficialName": {
+     "EN": "Slovenia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047916",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Israel",
+   "translations": {
+    "displayName": {
+     "EN": "Israel"
+    },
+    "displayOfficialName": {
+     "EN": "Israel"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Austria",
+   "translations": {
+    "displayName": {
+     "EN": "Austria"
+    },
+    "displayOfficialName": {
+     "EN": "Austria"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047917",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Bosnia and Herzegovina",
+   "translations": {
+    "displayName": {
+     "EN": "Bosnia and Herzegovina"
+    },
+    "displayOfficialName": {
+     "EN": "Bosnia and Herzegovina"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Romania",
+   "translations": {
+    "displayName": {
+     "EN": "Romania"
+    },
+    "displayOfficialName": {
+     "EN": "Romania"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047918",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Ukraine",
+   "translations": {
+    "displayName": {
+     "EN": "Ukraine"
+    },
+    "displayOfficialName": {
+     "EN": "Ukraine"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Georgia",
+   "translations": {
+    "displayName": {
+     "EN": "Georgia"
+    },
+    "displayOfficialName": {
+     "EN": "Georgia"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047919",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Denmark",
+   "translations": {
+    "displayName": {
+     "EN": "Denmark"
+    },
+    "displayOfficialName": {
+     "EN": "Denmark"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Norway",
+   "translations": {
+    "displayName": {
+     "EN": "Norway"
+    },
+    "displayOfficialName": {
+     "EN": "Norway"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047920",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Wales",
+   "translations": {
+    "displayName": {
+     "EN": "Wales"
+    },
+    "displayOfficialName": {
+     "EN": "Wales"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Portugal",
+   "translations": {
+    "displayName": {
+     "EN": "Portugal"
+    },
+    "displayOfficialName": {
+     "EN": "Portugal"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047921",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Hungary",
+   "translations": {
+    "displayName": {
+     "EN": "Hungary"
+    },
+    "displayOfficialName": {
+     "EN": "Hungary"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Northern Ireland",
+   "translations": {
+    "displayName": {
+     "EN": "Northern Ireland"
+    },
+    "displayOfficialName": {
+     "EN": "Northern Ireland"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047922",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Poland",
+   "translations": {
+    "displayName": {
+     "EN": "Poland"
+    },
+    "displayOfficialName": {
+     "EN": "Poland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Sweden",
+   "translations": {
+    "displayName": {
+     "EN": "Sweden"
+    },
+    "displayOfficialName": {
+     "EN": "Sweden"
+    }
+   }
+  }
+ },
+ {
+  "id": "2047923",
+  "kickOffTime": {
+   "dateTime": "2026-11-17T19:45:00Z"
+  },
+  "status": "UPCOMING",
+  "homeTeam": {
+   "internationalName": "Republic of Ireland",
+   "translations": {
+    "displayName": {
+     "EN": "Republic of Ireland"
+    },
+    "displayOfficialName": {
+     "EN": "Republic of Ireland"
+    }
+   }
+  },
+  "awayTeam": {
+   "internationalName": "Kosovo",
+   "translations": {
+    "displayName": {
+     "EN": "Kosovo"
+    },
+    "displayOfficialName": {
+     "EN": "Kosovo"
+    }
+   }
+  }
+ }
+]

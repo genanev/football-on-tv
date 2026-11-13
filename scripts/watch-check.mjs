@@ -15,7 +15,7 @@ const NAMES = {
   tvGuide: 'Sky TV guide', skyListings: "Sky Sports' listings", tntSchedule: "TNT Sports' schedule",
   primeVideo: "Prime Video's Champions League page", premierSports: "Premier Sports' fixtures page",
   apiFootball: 'API-Football', premierLeague: 'Premier League fixtures', championsLeague: 'Champions League fixtures',
-  europaLeague: 'Europa League fixtures', conferenceLeague: 'Conference League fixtures', wsl: 'WSL fixtures',
+  europaLeague: 'Europa League fixtures', conferenceLeague: 'Conference League fixtures', nationsLeague: 'Nations League fixtures', wsl: 'WSL fixtures',
   scottishPremiership: 'Scottish Premiership fixtures', efl: 'Championship and League Cup fixtures',
   faCup: 'FA Cup ties', faPage: "The FA's fixtures page", premierLeagueTv: "The Premier League's broadcaster feed",
   formula1: 'Formula 1', formula2: 'Formula 2', formula3: 'Formula 3', motogp: 'MotoGP', darts: 'Darts',

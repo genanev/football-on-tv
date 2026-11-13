@@ -78,10 +78,12 @@ export const SHOW_SCORES = process.env.SHOW_SCORES !== 'off';
  * Competitions from API-Football only (no official feed in this app). Conference League and WSL games
  * are listed only when a TV source confirms a channel (George, 20 Oct 2026: many games, few on UK TV);
  * the Scottish Premiership lists every game, like the PL and the Championship.
+ * The UEFA Nations League too (George, 13 Nov 2026: England, Wales and Scotland play in it):
+ * televised games only, whichever nations play.
  */
-const AF_ONLY = ['UECL', 'WSL', 'SCOT'];
-const TELEVISED_ONLY = new Set(['UECL', 'WSL']);
-const AF_ONLY_REPORT = { UECL: 'conferenceLeague', WSL: 'wsl', SCOT: 'scottishPremiership' };
+const AF_ONLY = ['UECL', 'WSL', 'SCOT', 'UNL'];
+const TELEVISED_ONLY = new Set(['UECL', 'WSL', 'UNL']);
+const AF_ONLY_REPORT = { UECL: 'conferenceLeague', WSL: 'wsl', SCOT: 'scottishPremiership', UNL: 'nationsLeague' };
 
 /**
  * The official feeds API-Football is checked against once a day (goldenCheck.mjs; George, 29 Oct
@@ -92,6 +94,7 @@ const GOLDEN = {
   championsLeague: { groups: ['UCL'], source: 'uefa.com' },
   europaLeague: { groups: ['UEL'], source: 'uefa.com' },
   conferenceLeague: { groups: ['UECL'], source: 'uefa.com' },
+  nationsLeague: { groups: ['UNL'], source: 'uefa.com' },
   efl: { groups: ['CHAMP', 'EFL Cup'], source: 'efl.com' },
 };
 
@@ -121,6 +124,7 @@ const FROM_SOURCE = {
   championsLeague: (e) => e.comp === 'UCL',
   europaLeague: (e) => e.comp === 'UEL',
   conferenceLeague: (e) => e.comp === 'UECL',
+  nationsLeague: (e) => e.comp === 'UNL',
   scottishPremiership: (e) => e.comp === 'SCOT',
   wsl: (e) => e.comp === 'WSL',
   efl: (e) => e.comp === 'CHAMP' || (e.comp === 'CUPS' && e.label !== 'FA Cup'),
@@ -218,7 +222,7 @@ export function keptTv(e, old, report, now) {
  * otherwise a failed read would look like "not on TV". A channel found later replaces the note.
  */
 export const NO_TV_CUTOFF_HOURS = 48;
-const FOOTBALL_COMPS = new Set(['PL', 'UCL', 'UEL', 'UECL', 'CHAMP', 'SCOT', 'WSL', 'CUPS']); // not rugby
+const FOOTBALL_COMPS = new Set(['PL', 'UCL', 'UEL', 'UECL', 'UNL', 'CHAMP', 'SCOT', 'WSL', 'CUPS']); // not rugby
 export function markNotOnTv(events, report, now) {
   for (const e of events) {
     if (e.kind !== 'match' || !FOOTBALL_COMPS.has(e.comp) || e.status === 'postponed' || e.timeTbc || !e.tv || e.tv.channels?.length || e.tv.broadcaster) continue;
@@ -247,7 +251,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // When play starts at the tennis tournaments, from their own schedules: once a day too (tennis.mjs)
   const prevPlay = previous?.playTimes?.tennis;
   const playDue = checkDue(prevPlay, now);
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes, unlRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
     fetchF1(windowStart, windowEnd), fetchF2(windowStart, windowEnd), fetchF3(windowStart, windowEnd), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
@@ -258,6 +262,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     useAf && due.conferenceLeague ? fetchUefa(now, DAYS_AHEAD, 'UECL') : skip, // no official-mode Conference League
     fetchSkiing(today, lastDay), fetchTennis(today, lastDay).then(async t => ({ ...t, play: playDue ? await fetchTennisPlay(t.tournaments) : null })), fetchCurling(),
     fetchRugby(ukDate(windowStart - 3600000), lastDay), // from the day before, like API-Football
+    useAf && due.nationsLeague ? fetchUefa(now, DAYS_AHEAD, 'UNL') : skip, // no official-mode Nations League either
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -294,7 +299,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     // The daily check against the official feeds (goldenCheck.mjs): a feed read on this update is
     // compared with API-Football now; the others keep their last findings. Nothing is compared
     // when API-Football failed for that competition.
-    const officialRes = { premierLeague: plRes, championsLeague: uclRes, europaLeague: uelRes, conferenceLeague: ueclRes, efl: eflRes };
+    const officialRes = { premierLeague: plRes, championsLeague: uclRes, europaLeague: uelRes, conferenceLeague: ueclRes, nationsLeague: unlRes, efl: eflRes };
     for (const [key, { groups, source }] of Object.entries(GOLDEN)) {
       const res = officialRes[key], last = prevGolden[key];
       if (!due[key] || groups.some(errorOf)) { if (last) golden[key] = last; continue; }

@@ -20,10 +20,12 @@ import { tntProgrammesFor, tntTeams } from './tntSchedule.mjs';
 import { primePickFor, amazonTv } from './amazonPrime.mjs';
 
 // The competition as TNT writes it in a programme's subtitle (null: any subtitle; false: TNT doesn't
-// show it, so its schedule isn't searched - a men's "Arsenal - Chelsea" mustn't confirm the WSL game)
+// show it, so its schedule isn't searched - a men's "Arsenal - Chelsea" mustn't confirm the WSL game).
+// Nations League: nothing in TNT's schedule on 13-21 Nov 2026 (the last two league-phase rounds; the
+// games on UK TV were on ITV1 and the BBC, in Sky's guide), so it isn't searched.
 const COMPETITION = {
   PL: 'Premier League', UCL: 'Champions League', UEL: 'Europa League', UECL: 'Conference League',
-  CHAMP: 'Championship', CUPS: null, WSL: false, SCOT: false,
+  CHAMP: 'Championship', CUPS: null, WSL: false, SCOT: false, UNL: false,
 };
 
 // Competitions looked up on Premier Sports, as its page names them (Scottish Premiership first;

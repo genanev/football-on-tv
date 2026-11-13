@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T08:30:23.068Z",
+ "generatedAt": "2026-11-13T09:00:35.136Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4800,
+   "programmes": 4802,
    "errors": []
   },
   "skyListings": {
@@ -240,9 +240,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-270239",
    "kickoff": "2026-11-13T03:30:00.000Z",
-   "end": "2026-11-13T11:30:00.000Z",
+   "end": "2026-11-13T08:38:00.000Z",
    "session": "1st ODI",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",
@@ -2126,13 +2126,19 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

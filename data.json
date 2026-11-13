@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T08:00:11.701Z",
+ "generatedAt": "2026-11-13T08:30:23.068Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4796,
+   "programmes": 4800,
    "errors": []
   },
   "skyListings": {
@@ -213,9 +213,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-271654",
    "kickoff": "2026-11-13T02:00:00.000Z",
-   "end": "2026-11-13T10:00:00.000Z",
+   "end": "2026-11-13T08:26:00.000Z",
    "session": "4th ODI",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 2",
@@ -2081,6 +2081,33 @@
    }
   },
   {
+   "comp": "TEN_ATPF",
+   "kind": "session",
+   "title": "ATP Finals",
+   "session": "Day 7",
+   "venue": "sh Italian Japanese Inalpi Arena, Torino",
+   "source": "nittoatpfinals.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-atpf-2026-2026-11-21",
+   "kickoff": "2026-11-21T11:00:00.000Z",
+   "end": "2026-11-21T21:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1563267",
    "sourceId": "1563267",
    "comp": "CHAMP",
@@ -2227,33 +2254,6 @@
     "conflict": false,
     "sources": [
      "tntsports.co.uk"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_ATPF",
-   "kind": "session",
-   "title": "ATP Finals",
-   "session": "Day 7",
-   "venue": "sh Italian Japanese Inalpi Arena, Torino",
-   "source": "nittoatpfinals.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-atpf-2026-2026-11-21",
-   "kickoff": "2026-11-21T12:30:00.000Z",
-   "end": "2026-11-21T21:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Tennis",
-    "channels": [
-     "Sky Sports Tennis"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
     ]
    }
   },

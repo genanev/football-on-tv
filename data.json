@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T11:30:13.479Z",
+ "generatedAt": "2026-11-14T12:00:16.479Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -281,7 +281,7 @@
    "homeShort": "Italy",
    "awayShort": "Argentina",
    "venue": "Stadio Luigi Ferraris",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

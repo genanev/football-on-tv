@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T05:30:25.285Z",
+ "generatedAt": "2026-11-14T06:00:13.536Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T22:30:21.432Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "changed": []
@@ -194,7 +194,7 @@
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "days": 9
   },
   "rugby": {
@@ -681,35 +681,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 7",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-14",
-   "kickoff": "2026-11-14T19:30:00.000Z",
-   "end": "2026-11-15T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "af-1528975",
    "comp": "UNL",
    "label": null,
@@ -732,6 +703,35 @@
      "BBC Two"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 7",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-14",
+   "kickoff": "2026-11-14T20:00:00.000Z",
+   "end": "2026-11-15T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Tennis"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3454,7 +3454,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": [],
    "matches": [
     {
@@ -3510,42 +3510,48 @@
      "home": "Liverpool",
      "away": "Manchester United",
      "kickoff": "2026-11-22T16:30:00.000Z"
+    },
+    {
+     "sourceId": "2645297",
+     "home": "Brentford",
+     "away": "Everton",
+     "kickoff": "2026-11-23T20:00:00.000Z"
     }
    ]
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T22:30:21.432Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "starts": {
     "TEN_WTAF": {
-     "2026-11-13": "2026-11-13T20:00:00.000Z"
+     "2026-11-14": "2026-11-14T20:00:00.000Z"
     },
     "TEN_ATPF": {
      "2026-11-15": "2026-11-15T10:30:00.000Z",

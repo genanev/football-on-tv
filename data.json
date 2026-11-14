@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T17:00:24.105Z",
+ "generatedAt": "2026-11-14T17:30:28.893Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 26,
+   "events": 30,
    "errors": []
   },
   "tntSchedule": {
@@ -525,9 +525,9 @@
    "homeShort": "Norway",
    "awayShort": "Wales",
    "venue": "Ullevaal Stadion",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League A - 5",
    "source": "api-football.com",
    "tv": {
@@ -556,9 +556,9 @@
    "homeShort": "Brighton",
    "awayShort": "Liverpool",
    "venue": "American Express Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -1039,12 +1039,15 @@
     "channels": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1077,7 +1080,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1141,7 +1145,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2136,7 +2141,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2159,13 +2165,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -2196,7 +2206,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2455,13 +2466,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -2909,7 +2924,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -3049,7 +3065,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T16:00:17.900Z",
+ "generatedAt": "2026-11-14T16:30:29.635Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -431,7 +431,7 @@
    "homeShort": "Wales",
    "awayShort": "New Zealand",
    "venue": "Principality Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,

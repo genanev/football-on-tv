@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T02:00:26.581Z",
+ "generatedAt": "2026-11-14T19:00:11.703Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,12 +10,12 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4903,
+   "programmes": 4919,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 28,
+   "events": 30,
    "errors": []
   },
   "tntSchedule": {
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-13T22:30:21.432Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-13T06:00:21.645Z",
+    "checkedAt": "2026-11-14T06:00:13.536Z",
     "corrections": 0
    },
    "changed": []
@@ -189,12 +189,12 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 11,
+   "days": 10,
    "errors": []
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "days": 9
   },
   "rugby": {
@@ -213,35 +213,6 @@
  },
  "specials": [],
  "events": [
-  {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 6",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-13",
-   "kickoff": "2026-11-14T00:00:00.000Z",
-   "end": "2026-11-14T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "GOLF",
    "kind": "session",
@@ -310,7 +281,7 @@
    "homeShort": "Italy",
    "awayShort": "Argentina",
    "venue": "Stadio Luigi Ferraris",
-   "status": "upcoming",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -369,9 +340,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Crystal Palace",
    "venue": "Old Trafford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 2,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -429,9 +400,9 @@
    "homeShort": "Chelsea",
    "awayShort": "Manchester City",
    "venue": "Wheatsheaf Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 1,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -460,7 +431,7 @@
    "homeShort": "Wales",
    "awayShort": "New Zealand",
    "venue": "Principality Stadium",
-   "status": "upcoming",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -491,9 +462,9 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Everton",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -523,7 +494,7 @@
    "homeShort": "England",
    "awayShort": "Japan",
    "venue": "Allianz Stadium",
-   "status": "upcoming",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -554,9 +525,9 @@
    "homeShort": "Norway",
    "awayShort": "Wales",
    "venue": "Ullevaal Stadion",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "League A - 5",
    "source": "api-football.com",
    "tv": {
@@ -585,9 +556,9 @@
    "homeShort": "Brighton",
    "awayShort": "Liverpool",
    "venue": "American Express Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 3,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -710,35 +681,6 @@
    }
   },
   {
-   "comp": "TEN_WTAF",
-   "kind": "session",
-   "title": "WTA Finals",
-   "session": "Day 7",
-   "venue": "Indian Wells",
-   "source": "wtatennis.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-808-2026-2026-11-14",
-   "kickoff": "2026-11-14T19:30:00.000Z",
-   "end": "2026-11-15T03:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "af-1528975",
    "comp": "UNL",
    "label": null,
@@ -761,6 +703,35 @@
      "BBC Two"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Day 7",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-14",
+   "kickoff": "2026-11-14T20:00:00.000Z",
+   "end": "2026-11-15T03:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Tennis"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1068,12 +1039,15 @@
     "channels": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1106,7 +1080,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -1170,7 +1145,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2165,7 +2141,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2188,13 +2165,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -2225,7 +2206,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -2484,13 +2466,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "Not shown live on UK TV",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "skysports.com"
+    ]
    }
   },
   {
@@ -2938,7 +2924,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -3078,7 +3065,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "skysports.com"
     ]
    }
   },
@@ -3483,7 +3471,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": [],
    "matches": [
     {
@@ -3539,42 +3527,48 @@
      "home": "Liverpool",
      "away": "Manchester United",
      "kickoff": "2026-11-22T16:30:00.000Z"
+    },
+    {
+     "sourceId": "2645297",
+     "home": "Brentford",
+     "away": "Everton",
+     "kickoff": "2026-11-23T20:00:00.000Z"
     }
    ]
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-13T22:30:21.432Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-13T06:00:21.645Z",
+   "checkedAt": "2026-11-14T06:00:13.536Z",
    "starts": {
     "TEN_WTAF": {
-     "2026-11-13": "2026-11-13T20:00:00.000Z"
+     "2026-11-14": "2026-11-14T20:00:00.000Z"
     },
     "TEN_ATPF": {
      "2026-11-15": "2026-11-15T10:30:00.000Z",

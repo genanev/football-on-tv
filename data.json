@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T15:00:21.268Z",
+ "generatedAt": "2026-11-14T15:30:28.700Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -24,9 +24,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
-   "failingSince": "2026-11-14T15:00:21.268Z"
+   "ok": true,
+   "events": 8,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -391,7 +400,7 @@
    "homeShort": "Chelsea",
    "awayShort": "Manchester City",
    "venue": "Wheatsheaf Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 0,
    "round": "Regular Season - 10",
@@ -453,9 +462,9 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Everton",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

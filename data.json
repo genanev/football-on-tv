@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T22:00:20.508Z",
+ "generatedAt": "2026-11-14T22:30:25.642Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4918,
+   "programmes": 4917,
    "errors": []
   },
   "skyListings": {
@@ -597,7 +597,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794681900",
    "kickoff": "2026-11-14T18:45:00.000Z",
-   "end": "2026-11-14T22:30:00.000Z",
+   "end": "2026-11-14T22:22:00.000Z",
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
@@ -764,7 +764,7 @@
    "homeShort": "Ireland",
    "awayShort": "Fiji",
    "venue": "Aviva Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -1163,6 +1163,32 @@
    }
   },
   {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "Austin Championship presented by Compliance Solutions",
+   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
+   "source": "pgatour.com",
+   "session": "Round 4",
+   "status": "upcoming",
+   "id": "golf-pga-R2026558-2026-11-15",
+   "kickoff": "2026-11-15T17:30:01.000Z",
+   "end": "2026-11-16T00:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Golf",
+    "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Sportsbet.io Champion of Champions",
@@ -1204,32 +1230,6 @@
     "broadcaster": "Sky Sports Main Event",
     "channels": [
      "Sky Sports Main Event"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
-   "source": "pgatour.com",
-   "session": "Round 4",
-   "status": "upcoming",
-   "id": "golf-pga-R2026558-2026-11-15",
-   "kickoff": "2026-11-15T19:00:00.000Z",
-   "end": "2026-11-16T00:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Golf",
-    "channels": [
-     "Sky Sports Golf"
     ],
     "alsoOn": [],
     "confirmed": true,

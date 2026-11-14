@@ -1,0 +1,467 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:JP7794
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+DESCRIPTION:Category: World Cup\nGender: Mixed\Event: Team Large Hill
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Team Large Hill
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7795
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7796
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7797
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7798
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7799
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7800
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP8010
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP8011
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Lillehammer (NOR) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Lillehammer
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7801
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Ruka (FIN) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Ruka
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7802
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Ruka (FIN) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Ruka
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7803
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Ruka (FIN) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Ruka
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7818
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill Qualification
+SUMMARY:Hinzenbach (AUT) - Ski Jumping World Cup Individual Normal Hill Qualification
+LOCATION:Hinzenbach
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7819
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill
+SUMMARY:Hinzenbach (AUT) - Ski Jumping World Cup Individual Normal Hill
+LOCATION:Hinzenbach
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7820
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill
+SUMMARY:Hinzenbach (AUT) - Ski Jumping World Cup Individual Normal Hill
+LOCATION:Hinzenbach
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7804
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7805
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7806
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7821
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7822
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7823
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP8014
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP8015
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Wisla (POL) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Wisla
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7808
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Team Large Hill
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Team Large Hill
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7809
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7810
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7811
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7824
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7825
+DTSTART;VALUE=DATE:20261212
+DTEND;VALUE=DATE:20261213
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7826
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Titisee-Neustadt (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Titisee-Neustadt
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7812
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7813
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261219
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7814
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7815
+DTSTART;VALUE=DATE:20261219
+DTEND;VALUE=DATE:20261220
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7816
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7817
+DTSTART;VALUE=DATE:20261220
+DTEND;VALUE=DATE:20261221
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Engelberg (SUI) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Engelberg
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7827
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Oberstdorf (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Oberstdorf
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7828
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Oberstdorf (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Oberstdorf
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7829
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Oberstdorf (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Oberstdorf
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7830
+DTSTART;VALUE=DATE:20261229
+DTEND;VALUE=DATE:20261230
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Oberstdorf (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Oberstdorf
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7913
+DTSTART;VALUE=DATE:20261229
+DTEND;VALUE=DATE:20261230
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:FIS Four Hills Tournament (FIS) - Ski Jumping World Cup Individual Large Hill
+LOCATION:FIS Four Hills Tournament
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7914
+DTSTART;VALUE=DATE:20261229
+DTEND;VALUE=DATE:20261230
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:FIS Four Hills Tournament (FIS) - Ski Jumping World Cup Individual Large Hill
+LOCATION:FIS Four Hills Tournament
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7831
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Garmisch-Partenkirchen (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Garmisch-Partenkirchen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7832
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Garmisch-Partenkirchen (GER) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Garmisch-Partenkirchen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7833
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Garmisch-Partenkirchen (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Garmisch-Partenkirchen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7835
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Garmisch-Partenkirchen (GER) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Garmisch-Partenkirchen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7836
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Innsbruck (AUT) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Innsbruck
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7837
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Innsbruck (AUT) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Innsbruck
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7838
+DTSTART;VALUE=DATE:20270102
+DTEND;VALUE=DATE:20270103
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Innsbruck (AUT) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Innsbruck
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7839
+DTSTART;VALUE=DATE:20270103
+DTEND;VALUE=DATE:20270104
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Innsbruck (AUT) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Innsbruck
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7840
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill Qualification
+SUMMARY:Bischofshofen (AUT) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Bischofshofen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7841
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill Qualification
+SUMMARY:Bischofshofen (AUT) - Ski Jumping World Cup Individual Large Hill Qualification
+LOCATION:Bischofshofen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7842
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Large Hill
+SUMMARY:Bischofshofen (AUT) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Bischofshofen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7843
+DTSTART;VALUE=DATE:20270106
+DTEND;VALUE=DATE:20270107
+DESCRIPTION:Category: World Cup\nGender: Men\Event: Individual Large Hill
+SUMMARY:Bischofshofen (AUT) - Ski Jumping World Cup Individual Large Hill
+LOCATION:Bischofshofen
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7844
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill Qualification
+SUMMARY:Ljubno (SLO) - Ski Jumping World Cup Individual Normal Hill Qualification
+LOCATION:Ljubno
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7845
+DTSTART;VALUE=DATE:20270109
+DTEND;VALUE=DATE:20270110
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill
+SUMMARY:Ljubno (SLO) - Ski Jumping World Cup Individual Normal Hill
+LOCATION:Ljubno
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7846
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill Qualification
+SUMMARY:Ljubno (SLO) - Ski Jumping World Cup Individual Normal Hill Qualification
+LOCATION:Ljubno
+END:VEVENT
+BEGIN:VEVENT
+UID:JP7847
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+DESCRIPTION:Category: World Cup\nGender: Women\Event: Individual Normal Hill
+SUMMARY:Ljubno (SLO) - Ski Jumping World Cup Individual Normal Hill
+LOCATION:Ljubno
+END:VEVENT
+END:VCALENDAR

@@ -24,6 +24,10 @@
 //   Cup, Nations Championship, 6N)     listings)
 //   Specials: curling (European        sources/curling.mjs (dates: World Curling; games and channels:
 //   Championships)                     the TV listings)
+//   Specials: the Lionesses' World Cup sources/lionesses.mjs (API-Football; channels: the TV guide)
+//   play-off
+//   Specials: ski jumping's Four Hills sources/skiJumping.mjs (dates: FIS; times and channels: TNT)
+//   Specials: Christmas racing on ITV  sources/racing.mjs (dates by hand; entries: the TV guide)
 //   Football UK TV channels            sources/footballTv.mjs (Sky guide, Sky Sports, TNT Sports)
 //   UK TV guide (Sky, TNT, BBC, ITV)   sources/skyGuide.mjs
 //
@@ -51,6 +55,9 @@ import { fetchSkiing, skiTv } from './sources/skiing.mjs';
 import { fetchTennis, fetchTennisPlay, tennisDays } from './sources/tennis.mjs';
 import { fetchCurling, curlingEvents } from './sources/curling.mjs';
 import { specialsInScope } from './sources/specials.mjs';
+import { fetchLionesses, lionessesTv } from './sources/lionesses.mjs';
+import { fetchFourHills, fourHillsEvents } from './sources/skiJumping.mjs';
+import { christmasRacing, racingEvents } from './sources/racing.mjs';
 import { fetchRugby, rugbyTv } from './sources/rugby.mjs';
 import { fetchGuide } from './sources/skyGuide.mjs';
 import { fetchSkyListings } from './sources/skyListings.mjs';
@@ -141,6 +148,9 @@ const FROM_SOURCE = {
   tennis: (e) => e.comp.startsWith('TEN_'),
   rugby: (e) => e.comp.startsWith('RU_'),
   curling: (e) => e.comp === 'SPECIAL_CURLING',
+  lionesses: (e) => e.comp === 'SPECIAL_LIONESSES',
+  fourHills: (e) => e.comp === 'SPECIAL_FOURHILLS',
+  christmasRacing: (e) => e.comp === 'SPECIAL_RACING',
 };
 
 // A listed event stays when its source fails (George, 5 Nov 2026): a source that couldn't be read says
@@ -222,7 +232,7 @@ export function keptTv(e, old, report, now) {
  * otherwise a failed read would look like "not on TV". A channel found later replaces the note.
  */
 export const NO_TV_CUTOFF_HOURS = 48;
-const FOOTBALL_COMPS = new Set(['PL', 'UCL', 'UEL', 'UECL', 'UNL', 'CHAMP', 'SCOT', 'WSL', 'CUPS']); // not rugby
+const FOOTBALL_COMPS = new Set(['PL', 'UCL', 'UEL', 'UECL', 'UNL', 'CHAMP', 'SCOT', 'WSL', 'CUPS', 'SPECIAL_LIONESSES']); // not rugby
 export function markNotOnTv(events, report, now) {
   for (const e of events) {
     if (e.kind !== 'match' || !FOOTBALL_COMPS.has(e.comp) || e.status === 'postponed' || e.timeTbc || !e.tv || e.tv.channels?.length || e.tv.broadcaster) continue;
@@ -251,7 +261,7 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   // When play starts at the tennis tournaments, from their own schedules: once a day too (tennis.mjs)
   const prevPlay = previous?.playTimes?.tennis;
   const playDue = checkDue(prevPlay, now);
-  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes, unlRes] = await Promise.allSettled([
+  const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes, unlRes, lionessRes, fourHillsRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
     fetchF1(windowStart, windowEnd), fetchF2(windowStart, windowEnd), fetchF3(windowStart, windowEnd), fetchMotoGp(today, lastDay), fetchDarts(today, lastDay),
@@ -263,6 +273,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     fetchSkiing(today, lastDay), fetchTennis(today, lastDay).then(async t => ({ ...t, play: playDue ? await fetchTennisPlay(t.tournaments) : null })), fetchCurling(),
     fetchRugby(ukDate(windowStart - 3600000), lastDay), // from the day before, like API-Football
     useAf && due.nationsLeague ? fetchUefa(now, DAYS_AHEAD, 'UNL') : skip, // no official-mode Nations League either
+    useAf ? fetchLionesses() : skip, // Specials: API-Football only, like the WSL
+    fetchFourHills(today, lastDay),
   ]);
 
   // ---- UK TV guide (used by every competition)
@@ -501,8 +513,38 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     report.curling = { ok: true, events: curlingRes.value.events.map(e => `${e.name} ${e.startDate}..${e.endDate}`), games: curling.length, errors: curlingRes.value.errors };
     events.push(...curling);
   } else report.curling = fail(curlingRes);
+  // ---- Specials: the Lionesses' World Cup play-off, both legs, as football matches (API-Football).
+  // In official mode (no key) it isn't read: the previous update's dates and games carry on.
+  if (useAf) {
+    if (ok(lionessRes)) {
+      const games = lionessRes.value.matches.filter(inWindow);
+      report.lionesses = { ok: true, events: lionessRes.value.events.map(e => `${e.name} ${e.startDate}..${e.endDate}`), matches: games.length };
+      for (const m of games) events.push({ ...m, tv: lionessesTv(m, guide) });
+    } else report.lionesses = fail(lionessRes);
+  }
+  // ---- Specials: ski jumping's Four Hills, one entry per competition TNT shows live
+  if (ok(fourHillsRes)) {
+    const jumps = fourHillsEvents(fourHillsRes.value.competitions, tnt, today, DAYS_AHEAD + 1).filter(inWindow);
+    report.fourHills = { ok: true, events: fourHillsRes.value.events.map(e => `${e.name} ${e.startDate}..${e.endDate}`), competitions: jumps.length };
+    events.push(...jumps);
+  } else report.fourHills = fail(fourHillsRes);
+  // ---- Specials: Christmas racing, one entry per ITV programme (dates by hand: racing.mjs). It has no
+  // source of its own, so it stands or falls with the TV guide
+  const racingDays = christmasRacing(now);
+  if (lastDay >= racingDays.startDate && today <= racingDays.endDate) { // its days are in the window
+    if (guide) {
+      const racing = racingEvents(racingDays, guide, today, DAYS_AHEAD + 1).filter(inWindow);
+      report.christmasRacing = { ok: true, programmes: racing.length };
+      events.push(...racing);
+    } else report.christmasRacing = { ok: false, error: 'the TV guide could not be read' };
+  }
   // The Specials the app names right now: a week before each starts until its last day
-  const specials = specialsInScope(ok(curlingRes) ? curlingRes.value.events : [], today, previous?.specials);
+  const specials = specialsInScope([
+    ...(ok(curlingRes) ? curlingRes.value.events : []),
+    ...(useAf && ok(lionessRes) ? lionessRes.value.events : []),
+    ...(ok(fourHillsRes) ? fourHillsRes.value.events : []),
+    racingDays,
+  ], today, previous?.specials);
 
   keepEventsOfFailedSources(events, previous, report, inWindow);
 

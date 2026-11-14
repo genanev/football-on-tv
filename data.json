@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T00:00:18.305Z",
+ "generatedAt": "2026-11-14T00:30:11.382Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 159
+   "events": 150
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1407,7 +1407,7 @@
    "away": "Scotland",
    "homeShort": "Switzerland",
    "awayShort": "Scotland",
-   "venue": null,
+   "venue": "Kybunpark",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

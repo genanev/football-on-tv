@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T23:30:16.363Z",
+ "generatedAt": "2026-11-14T00:00:18.305Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4957,
+   "programmes": 4598,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1015,
+   "programmes": 1021,
    "errors": []
   },
   "primeVideo": {
@@ -77,13 +77,13 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 83,
+   "matches": 85,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 7
+   "matches": 9
   },
   "championsLeague": {
    "ok": true,
@@ -99,9 +99,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 2
+   "matches": 4
   },
-  "footballChannels": "2/7 PL+UCL matches with a confirmed channel",
+  "footballChannels": "2/9 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -116,11 +116,11 @@
   },
   "nationsLeague": {
    "ok": true,
-   "televised": 7
+   "televised": 6
   },
   "efl": {
    "ok": true,
-   "championship": 11,
+   "championship": 12,
    "leagueCup": 0
   },
   "faCup": {
@@ -129,7 +129,7 @@
   },
   "formula1": {
    "ok": true,
-   "sessions": 1,
+   "sessions": 2,
    "weekends": [
     "Las Vegas Grand Prix"
    ]
@@ -148,14 +148,14 @@
   },
   "motogp": {
    "ok": true,
-   "sessions": 2
+   "sessions": 3
   },
   "darts": {
    "ok": true,
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 13
+   "sessions": 14
   },
   "golf": {
    "ok": true,
@@ -164,7 +164,7 @@
     "The RSM Classic",
     "DP World Tour Championship"
    ],
-   "rounds": 9,
+   "rounds": 7,
    "errors": []
   },
   "snooker": {
@@ -172,15 +172,15 @@
    "tournaments": [
     "Sportsbet.io Champion of Champions"
    ],
-   "sessions": 4
+   "sessions": 3
   },
   "cricket": {
    "ok": true,
-   "matches": 15
+   "matches": 13
   },
   "skiing": {
    "ok": true,
-   "runs": 6,
+   "runs": 8,
    "errors": []
   },
   "tennis": {
@@ -199,7 +199,7 @@
   },
   "rugby": {
    "ok": true,
-   "matches": 12
+   "matches": 11
   },
   "curling": {
    "ok": true,
@@ -214,173 +214,6 @@
  "specials": [],
  "events": [
   {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "New Zealand v India",
-   "venue": "Bay Oval, Mount Maunganui",
-   "series": "India in New Zealand, 5 ODI Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-271654",
-   "kickoff": "2026-11-13T02:00:00.000Z",
-   "end": "2026-11-13T08:26:00.000Z",
-   "session": "4th ODI",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 2",
-    "channels": [
-     "TNT Sports 2"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "Australia v England",
-   "venue": "Perth Stadium, Perth",
-   "series": "England in Australia, 3 ODI Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-270239",
-   "kickoff": "2026-11-13T03:30:00.000Z",
-   "end": "2026-11-13T08:38:00.000Z",
-   "session": "1st ODI",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "DP World Tour Championship",
-   "venue": "Earth course",
-   "source": "europeantour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-dpwt-2026-11-12-dp-world-tour-championship-2026-11-13",
-   "kickoff": "2026-11-13T07:00:00.000Z",
-   "end": "2026-11-13T13:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Golf"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "GOLF",
-   "kind": "session",
-   "title": "Austin Championship presented by Compliance Solutions",
-   "venue": "Fazio Canyons Course - Omni Barton Creek Resort & Spa",
-   "source": "pgatour.com",
-   "session": "Round 2",
-   "status": "upcoming",
-   "id": "golf-pga-R2026558-2026-11-13",
-   "kickoff": "2026-11-13T13:00:00.000Z",
-   "end": "2026-11-13T22:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Golf"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "Sportsbet.io Champion of Champions",
-   "venue": "Leicester",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794595500",
-   "kickoff": "2026-11-13T18:45:00.000Z",
-   "end": "2026-11-13T22:15:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "ITV4",
-    "channels": [
-     "ITV4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "af-1545659",
-   "comp": "UNL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-13T19:45:00.000Z",
-   "timeTbc": false,
-   "home": "Scotland",
-   "away": "North Macedonia",
-   "homeShort": "Scotland",
-   "awayShort": "FYR Macedonia",
-   "venue": "Hampden Park Stadium",
-   "status": "finished",
-   "homeScore": 2,
-   "awayScore": 1,
-   "round": "League B - 5",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "BBC Two",
-    "channels": [
-     "BBC Two"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "TEN_WTAF",
    "kind": "session",
    "title": "WTA Finals",
@@ -390,7 +223,7 @@
    "status": "upcoming",
    "label": null,
    "id": "tennis-808-2026-2026-11-13",
-   "kickoff": "2026-11-13T20:00:00.000Z",
+   "kickoff": "2026-11-14T00:00:00.000Z",
    "end": "2026-11-14T03:00:00.000Z",
    "timeTbc": false,
    "tv": {
@@ -401,37 +234,6 @@
     "alsoOn": [
      "Sky Sports Tennis"
     ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "id": "wr-5dd5bcc0-29dc-4855-bf16-744cc913c569",
-   "comp": "RU_NATIONS",
-   "kind": "match",
-   "label": null,
-   "kickoff": "2026-11-13T20:10:00.000Z",
-   "timeTbc": false,
-   "home": "France",
-   "away": "South Africa",
-   "homeShort": "France",
-   "awayShort": "South Africa",
-   "venue": "Stade de France",
-   "status": "finished",
-   "homeScore": null,
-   "awayScore": null,
-   "round": null,
-   "source": "world.rugby",
-   "tv": {
-    "broadcaster": "ITV1",
-    "channels": [
-     "ITV1"
-    ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -3362,6 +3164,226 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "f1-11420",
+   "comp": "F1",
+   "kind": "session",
+   "kickoff": "2026-11-22T04:00:00.000Z",
+   "end": "2026-11-22T06:00:00.000Z",
+   "title": "Las Vegas Grand Prix",
+   "session": "Race",
+   "venue": "Las Vegas",
+   "status": "upcoming",
+   "timeTbc": false,
+   "source": "formula1.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports F1"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SKI",
+   "kind": "session",
+   "label": "World Cup",
+   "title": "Men's Slalom",
+   "source": "fis-ski.com",
+   "status": "upcoming",
+   "id": "ski-131582-1",
+   "session": "Gurgl · Run 1",
+   "kickoff": "2026-11-22T09:30:00.000Z",
+   "end": "2026-11-22T11:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [
+     "TNT Sports 4",
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1563264",
+   "sourceId": "1563264",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-22T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Burnley",
+   "away": "Blackburn Rovers",
+   "homeShort": "Burnley",
+   "awayShort": "Blackburn",
+   "venue": "Turf Moor",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 16",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-2026-11-22",
+   "kickoff": "2026-11-22T12:00:00.000Z",
+   "end": null,
+   "session": null,
+   "status": "upcoming",
+   "timeTbc": true,
+   "allDay": true,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV times to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "comp": "SKI",
+   "kind": "session",
+   "label": "World Cup",
+   "title": "Men's Slalom",
+   "source": "fis-ski.com",
+   "status": "upcoming",
+   "id": "ski-131582-2",
+   "session": "Gurgl · Run 2",
+   "kickoff": "2026-11-22T12:30:00.000Z",
+   "end": "2026-11-22T14:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 4",
+    "channels": [
+     "TNT Sports 4"
+    ],
+    "alsoOn": [
+     "HBO Max"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "comp": "MOTOGP",
+   "kind": "session",
+   "title": "Grand Prix of Portugal",
+   "venue": "Autódromo Internacional do Algarve",
+   "source": "motogp.com",
+   "timeTbc": false,
+   "id": "motogp-312d0d2d-f052-4c13-821a-dfdeb0513054",
+   "kickoff": "2026-11-22T13:00:00.000Z",
+   "end": "2026-11-22T14:00:00.000Z",
+   "session": "Race",
+   "status": "upcoming",
+   "tv": {
+    "broadcaster": "TNT Sports 2",
+    "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "tntsports.co.uk"
+    ]
+   }
+  },
+  {
+   "id": "af-1557472",
+   "comp": "PL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-22T14:00:00.000Z",
+   "timeTbc": false,
+   "home": "Hull City",
+   "away": "Brighton and Hove Albion",
+   "homeShort": "Hull City",
+   "awayShort": "Brighton",
+   "venue": "MKM Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Exact channel to be confirmed",
+    "conflict": false,
+    "sources": [
+     "premierleague.com"
+    ]
+   }
+  },
+  {
+   "id": "af-1557473",
+   "comp": "PL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-22T16:30:00.000Z",
+   "timeTbc": false,
+   "home": "Liverpool",
+   "away": "Manchester United",
+   "homeShort": "Liverpool",
+   "awayShort": "Manchester United",
+   "venue": "Anfield",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Exact channel to be confirmed",
+    "conflict": false,
+    "sources": [
+     "premierleague.com"
     ]
    }
   }

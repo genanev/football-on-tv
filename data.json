@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T19:30:11.216Z",
+ "generatedAt": "2026-11-14T20:00:17.863Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 29,
+   "events": 28,
    "errors": []
   },
   "tntSchedule": {
@@ -704,9 +704,9 @@
    "homeShort": "Northern Ireland",
    "awayShort": "Ukraine",
    "venue": "Windsor Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League B - 5",
    "source": "api-football.com",
    "tv": {

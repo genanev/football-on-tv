@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T19:00:11.703Z",
+ "generatedAt": "2026-11-14T19:30:11.216Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 30,
+   "events": 29,
    "errors": []
   },
   "tntSchedule": {
@@ -209,6 +209,20 @@
    "games": 0,
    "errors": []
   },
+  "lionesses": {
+   "ok": true,
+   "events": [
+    "Women's World Cup play-off 2026-12-01..2026-12-05"
+   ],
+   "matches": 0
+  },
+  "fourHills": {
+   "ok": true,
+   "events": [
+    "Four Hills Tournament 2026-12-28..2027-01-06"
+   ],
+   "competitions": 0
+  },
   "scores": "on"
  },
  "specials": [],
@@ -357,8 +371,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -415,7 +428,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "skysports.com"
+     "skysports.com",
+     "previous-update"
     ]
    }
   },
@@ -477,8 +491,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -556,7 +569,7 @@
    "homeShort": "Brighton",
    "awayShort": "Liverpool",
    "venue": "American Express Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 3,
    "round": "Regular Season - 10",
@@ -571,8 +584,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },

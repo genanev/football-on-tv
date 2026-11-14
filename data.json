@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T00:30:11.382Z",
+ "generatedAt": "2026-11-14T01:00:17.438Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4598,
+   "programmes": 4609,
    "errors": []
   },
   "skyListings": {
@@ -189,7 +189,7 @@
     "WTA Finals",
     "ATP Finals"
    ],
-   "days": 10,
+   "days": 11,
    "errors": []
   },
   "tennisSchedule": {
@@ -3355,6 +3355,33 @@
     "conflict": false,
     "sources": [
      "premierleague.com"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_ATPF",
+   "kind": "session",
+   "title": "ATP Finals",
+   "session": "Day 8",
+   "venue": "sh Italian Japanese Inalpi Arena, Torino",
+   "source": "nittoatpfinals.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-atpf-2026-2026-11-22",
+   "kickoff": "2026-11-22T14:00:00.000Z",
+   "end": "2026-11-22T19:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   },

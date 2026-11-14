@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T16:30:29.635Z",
+ "generatedAt": "2026-11-14T17:00:24.105Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -462,7 +462,7 @@
    "homeShort": "Tottenham Hotspur",
    "awayShort": "Everton",
    "venue": "Tottenham Hotspur Stadium",
-   "status": "live",
+   "status": "finished",
    "homeScore": 0,
    "awayScore": 0,
    "round": "Regular Season - 10",
@@ -494,7 +494,7 @@
    "homeShort": "England",
    "awayShort": "Japan",
    "venue": "Allianz Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

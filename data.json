@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T01:00:17.438Z",
+ "generatedAt": "2026-11-14T01:30:26.794Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4609,
+   "programmes": 4903,
    "errors": []
   },
   "skyListings": {
@@ -101,7 +101,7 @@
    "ok": true,
    "matches": 4
   },
-  "footballChannels": "2/9 PL+UCL matches with a confirmed channel",
+  "footballChannels": "3/9 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -155,7 +155,7 @@
    "tournaments": [
     "Grand Slam of Darts"
    ],
-   "sessions": 14
+   "sessions": 15
   },
   "golf": {
    "ok": true,
@@ -176,7 +176,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 13
+   "matches": 14
   },
   "skiing": {
    "ok": true,
@@ -3243,36 +3243,17 @@
    "round": "Regular Season - 16",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "Grand Slam of Darts",
-   "venue": "Aldersley Leisure Village, Wolverhampton",
-   "source": "pdc.tv",
-   "id": "darts-10871-2026-11-22",
-   "kickoff": "2026-11-22T12:00:00.000Z",
-   "end": null,
-   "session": null,
-   "status": "upcoming",
-   "timeTbc": true,
-   "allDay": true,
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV times to be confirmed",
-    "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -3304,6 +3285,32 @@
    }
   },
   {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-1795352400",
+   "kickoff": "2026-11-22T13:00:00.000Z",
+   "end": "2026-11-22T17:00:00.000Z",
+   "session": "Afternoon session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "MOTOGP",
    "kind": "session",
    "title": "Grand Prix of Portugal",
@@ -3325,6 +3332,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3347,14 +3355,18 @@
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   },
@@ -3411,6 +3423,59 @@
     "conflict": false,
     "sources": [
      "premierleague.com"
+    ]
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Grand Slam of Darts",
+   "venue": "Aldersley Leisure Village, Wolverhampton",
+   "source": "pdc.tv",
+   "id": "darts-10871-1795375800",
+   "kickoff": "2026-11-22T19:30:00.000Z",
+   "end": "2026-11-22T21:45:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Cello Basin Reserve, Wellington",
+   "series": "India in New Zealand, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271656-d5",
+   "kickoff": "2026-11-22T22:00:00.000Z",
+   "end": "2026-11-23T05:00:00.000Z",
+   "session": "1st Test, Day 5",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
     ]
    }
   }

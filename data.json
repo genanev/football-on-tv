@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T20:00:17.863Z",
+ "generatedAt": "2026-11-14T20:30:11.460Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -764,7 +764,7 @@
    "homeShort": "Ireland",
    "awayShort": "Fiji",
    "venue": "Aviva Stadium",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

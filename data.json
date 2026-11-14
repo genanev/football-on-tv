@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T18:30:12.323Z",
+ "generatedAt": "2026-11-14T19:00:11.703Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -525,9 +525,9 @@
    "homeShort": "Norway",
    "awayShort": "Wales",
    "venue": "Ullevaal Stadion",
-   "status": "live",
-   "homeScore": 2,
-   "awayScore": 0,
+   "status": "finished",
+   "homeScore": 3,
+   "awayScore": 1,
    "round": "League A - 5",
    "source": "api-football.com",
    "tv": {
@@ -558,7 +558,7 @@
    "venue": "American Express Stadium",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

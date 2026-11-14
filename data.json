@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-14T12:30:11.654Z",
+ "generatedAt": "2026-11-14T13:00:20.016Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -340,9 +340,9 @@
    "homeShort": "Manchester United",
    "awayShort": "Crystal Palace",
    "venue": "Old Trafford",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

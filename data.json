@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T20:30:26.285Z",
+ "generatedAt": "2026-11-15T21:00:13.845Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -747,7 +747,7 @@
    "venue": "Riyadh Air Metropolitano",
    "status": "live",
    "homeScore": 0,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League A - 6",
    "source": "api-football.com",
    "tv": {

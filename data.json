@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T21:00:13.845Z",
+ "generatedAt": "2026-11-15T21:30:21.061Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -746,8 +746,8 @@
    "awayShort": "England",
    "venue": "Riyadh Air Metropolitano",
    "status": "live",
-   "homeScore": 0,
-   "awayScore": 1,
+   "homeScore": 2,
+   "awayScore": 3,
    "round": "League A - 6",
    "source": "api-football.com",
    "tv": {

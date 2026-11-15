@@ -30,9 +30,18 @@ export const TOURNAMENTS = [
   { comp: 'TEN_RG', wta: 903, name: 'Roland-Garros', tv: /roland[\s-]*garros|french open/i },
   { comp: 'TEN_WIM', wta: 904, name: 'Wimbledon', tv: /wimbledon/i },
   { comp: 'TEN_USO', wta: 905, name: 'US Open', tv: /\bus open\b/i },
-  { comp: 'TEN_ATPF', wta: null, name: 'ATP Finals', tv: /\batp (tour )?finals\b|nitto/i },
-  { comp: 'TEN_WTAF', wta: 808, name: 'WTA Finals', tv: /\bwta finals\b/i },
+  { comp: 'TEN_ATPF', wta: null, name: 'ATP Finals', tv: /\batp (tour )?finals\b|nitto/i, finals: true },
+  { comp: 'TEN_WTAF', wta: 808, name: 'WTA Finals', tv: /\bwta finals\b/i, finals: true },
 ];
+
+// The season finals' stage (George, 15 Nov 2026, from the closed testers). Both events have the same format: a
+// group stage (round robin), the semi-finals on the second-last day and the final on the last, with no
+// quarter-finals. Sky's titles agree ("Live ATP Finals: Semi-Final" on Sat 21 Nov, "...: Singles Final" on the 22nd).
+function stageOf(t, date) {
+  if (!TOURNAMENTS.find(d => d.comp === t.comp)?.finals) return null;
+  if (date === t.endDate) return 'Final';
+  return date === new Date(Date.parse(`${t.endDate}T12:00:00Z`) - 86400000).toISOString().slice(0, 10) ? 'Semi-Finals' : 'Group Stage';
+}
 
 /** WTA feed -> our tournaments, with their dates and place. */
 export function mapWtaTournaments(j) {
@@ -49,7 +58,10 @@ const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 
 
 /** The ATP Finals' home page ("Inalpi Arena, Torino. 15-22 November 2026") -> the tournament. */
 export function parseAtpFinals(html) {
-  const text = String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  // The page's own element for it, as the whole page read as text has the language menu just before it ("English
+  // Spanish Italian Japanese Inalpi Arena, Torino"), which became the venue until 15 Nov 2026
+  const located = /<div[^>]*class="location"[^>]*>([^<]*)</.exec(String(html || ''))?.[1];
+  const text = (located || String(html || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
   const m = /(?:([^.]{2,40})\.\s*)?(\d{1,2})\s*[-–]\s*(\d{1,2})\s+([A-Za-z]+)\s+(20\d\d)/.exec(text);
   const month = m ? MONTHS.indexOf(m[4].toLowerCase()) + 1 : 0;
   if (!month) return null;
@@ -96,47 +108,69 @@ export function mapWtaPlay(j) {
   return starts;
 }
 
-/** The ATP Finals' timetable -> { UK date: when the first match starts (ms) }. */
-export function parseAtpSchedule(html, year) {
+/**
+ * The ATP Finals' timetable -> { UK date: [{ start, singles }] (ms) }: each day's sessions in order. The table's
+ * columns are DAY (doubles, singles) and EVENING (doubles, singles): "15 NOV | 11:30am | NB 2pm | 6pm | NB 8:30pm";
+ * the last day has only the first ("22 NOV | 3pm | NB 6pm | - | -"). A session starts with its doubles match, and
+ * its singles are "not before" (NB) the second time.
+ */
+export function parseAtpSessions(html, year) {
   const page = String(html || '').replace(/&nbsp;/g, ' ');
   const offset = +(/GMT\s*([+-]\d{1,2})/.exec(page)?.[1] ?? 1);
-  const starts = {};
+  const sessions = {};
   for (const [, row] of page.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)) {
     const cells = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map(c => c[1].replace(/<[^>]+>/g, ' ').trim());
     const day = /^(\d{1,2})\s+([A-Za-z]{3})/.exec(cells[0] || '');
     const month = day ? MONTHS.findIndex(m => m.startsWith(day[2].toLowerCase())) : -1;
     if (month < 0) continue;
-    const times = cells.slice(1).flatMap(c => {
-      const t = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i.exec(c);
-      return t ? [Date.UTC(year, month, +day[1], (+t[1] % 12) + (/pm/i.test(t[3]) ? 12 : 0) - offset, +(t[2] || 0))] : [];
-    });
-    if (times.length) starts[ukDate(Math.min(...times))] = Math.min(...times);
+    const time = (c) => {
+      const t = /(\d{1,2})(?::(\d{2}))?\s*(am|pm)/i.exec(c || '');
+      return t ? Date.UTC(year, month, +day[1], (+t[1] % 12) + (/pm/i.test(t[3]) ? 12 : 0) - offset, +(t[2] || 0)) : null;
+    };
+    const list = [];
+    for (let i = 1; i < cells.length; i += 2) {
+      const [doubles, singles] = [time(cells[i]), time(cells[i + 1])];
+      const times = [doubles, singles].filter(t => t !== null);
+      if (times.length) list.push({ start: Math.min(...times), singles });
+    }
+    if (list.length) sessions[ukDate(list[0].start)] = list;
   }
-  return starts;
+  return sessions;
 }
 
-/** When play starts on each day, per competition, for the tournaments that publish it; never rejects. */
+/** The ATP Finals' timetable -> { UK date: when the first match starts (ms) }. */
+export function parseAtpSchedule(html, year) {
+  return Object.fromEntries(Object.entries(parseAtpSessions(html, year)).map(([d, list]) => [d, list[0].start]));
+}
+
+/**
+ * When play starts on each day, per competition, for the tournaments that publish it (`starts`), and the ATP
+ * Finals' day and evening sessions (`sessions`: competition -> UK date -> [{ start, singles }]); never rejects.
+ */
 export async function fetchTennisPlay(tournaments) {
   const jobs = tournaments.flatMap(t => {
     const year = +t.startDate.slice(0, 4);
-    if (t.comp === 'TEN_WTAF') return [[t, getJSON(WTA_MATCHES_URL(TOURNAMENTS.find(d => d.comp === t.comp).wta, year)).then(mapWtaPlay)]];
+    if (t.comp === 'TEN_WTAF') return [[t, getJSON(WTA_MATCHES_URL(TOURNAMENTS.find(d => d.comp === t.comp).wta, year)).then(j => ({ starts: mapWtaPlay(j) }))]];
     if (t.comp === 'TEN_ATPF') {
       return [[t, getText(ATP_SCHEDULE_URL).then(h => {
-        const s = parseAtpSchedule(h, year);
-        if (!Object.keys(s).length) throw new Error('no timetable on nittoatpfinals.com');
-        return s;
+        const sessions = parseAtpSessions(h, year);
+        if (!Object.keys(sessions).length) throw new Error('no timetable on nittoatpfinals.com');
+        return { starts: parseAtpSchedule(h, year), sessions };
       })]];
     }
     return [];
   });
   const res = await Promise.allSettled(jobs.map(j => j[1]));
-  const starts = {}, errors = [];
+  const starts = {}, sessions = {}, errors = [];
   res.forEach((r, i) => {
     const t = jobs[i][0];
     if (r.status === 'rejected') errors.push(`${t.name}: ${r.reason.message}`);
-    else starts[t.comp] = { ...starts[t.comp], ...r.value };
+    else {
+      starts[t.comp] = { ...starts[t.comp], ...r.value.starts };
+      if (r.value.sessions) sessions[t.comp] = { ...sessions[t.comp], ...r.value.sessions };
+    }
   });
-  return { starts, errors };
+  return { starts, sessions, errors };
 }
 
 const isTennisProgramme =(text) => !/\bgolf\b|darts|snooker/i.test(text); // "US Open" is also golf
@@ -217,7 +251,7 @@ export const tennisEvents = (...args) => tennisDays(...args).events;
  * The entries, and where they disagree with the tournament's own start of play (`playStarts`: competition ->
  * UK date -> ms or ISO time; see fetchTennisPlay). An entry starts with the first match when TV is on air by then.
  */
-export function tennisDays(tournaments, guide, tnt, fromDate, days, now = 0, playStarts = null) {
+export function tennisDays(tournaments, guide, tnt, fromDate, days, now = 0, playStarts = null, playSessions = null) {
   const mismatches = [];
   const checkedDates = new Set(windowDates(fromDate, CHECK_DAYS));
   const sids = SPORT_CHANNELS.tennis;
@@ -243,11 +277,11 @@ export function tennisDays(tournaments, guide, tnt, fromDate, days, now = 0, pla
   for (const date of [ukDate(windowStart - 3 * 3600000), ...inWindow]) {
     for (const t of tournaments.filter(t => t.startDate <= date && t.endDate >= date)) {
       const day = Math.round((Date.parse(`${date}T12:00:00Z`) - Date.parse(`${t.startDate}T12:00:00Z`)) / 86400000) + 1;
-      const base = { comp: t.comp, kind: 'session', title: t.name, session: `Day ${day}`, venue: t.place, source: t.source, status: 'upcoming', label: null };
+      const stage = stageOf(t, date);
+      const dayName = stage === 'Group Stage' ? `${stage} · Day ${day}` : stage || `Day ${day}`;
+      const base = { comp: t.comp, kind: 'session', title: t.name, session: dayName, venue: t.place, source: t.source, status: 'upcoming', label: null };
       const { byDay, guideProgs } = coverage.get(t);
       const progs = byDay.get(date) || [];
-      const fromGuide = progs.filter(p => guideProgs.has(p));
-      const fromTnt = progs.filter(p => !guideProgs.has(p));
       const end = progs.length ? Math.max(...progs.map(p => p.end)) : 0;
       const tvStart = progs.length ? Math.min(...progs.map(p => p.start)) : 0;
       const play = new Date(playStarts?.[t.comp]?.[date] ?? NaN).getTime();
@@ -258,15 +292,39 @@ export function tennisDays(tournaments, guide, tnt, fromDate, days, now = 0, pla
         else if (play - tvStart > TV_EARLY) mismatches.push(`${what}, but the TV listing found starts ${when(tvStart)}`);
       }
       if (progs.length && (inWindow.has(date) || end > Math.max(windowStart, now))) {
-        // Still on air from last night: listed under today, from midnight, so it shows as live.
-        let start = Math.max(tvStart, inWindow.has(date) ? 0 : windowStart);
-        // The first match's time, not the start of the build-up (George, 11 Nov 2026: 20:00, not Sky's 19:30)
-        if (play > start && play < end && play - tvStart <= TV_EARLY) start = play;
-        const chans = [...channelList(fromGuide, sids)];
-        for (const c of tntChannelOrder(fromTnt.map(p => p.channel))) if (!chans.includes(c)) chans.push(c);
-        const sources = [...(fromGuide.length ? ['sky-guide'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : [])];
-        events.push({ ...base, id: `tennis-${t.id}-${date}`, kickoff: new Date(start).toISOString(), end: new Date(end).toISOString(), timeTbc: false,
-          tv: { broadcaster: chans[0], channels: [chans[0]], alsoOn: chans.slice(1), confirmed: true, note: null, conflict: false, sources } });
+        // The ATP Finals have a day and an evening session (George, 15 Nov 2026, from the closed testers: one entry
+        // from 10:30 to 21:30 hid that there are two). Each programme goes with the last session starting by an
+        // hour after it does (Sky's 12:00 singles block is the day session's; its 17:00 doubles the evening's).
+        const list = (playSessions?.[t.comp]?.[date] || []).map(s => ({ start: Date.parse(s.start), singles: s.singles ? Date.parse(s.singles) : NaN }))
+          .filter(s => !Number.isNaN(s.start)).sort((a, b) => a.start - b.start);
+        const parts = list.length ? list.map(s => ({ ...s, progs: [] })) : [{ start: play, singles: NaN, progs }];
+        if (list.length) {
+          for (const p of progs) {
+            const i = parts.findLastIndex(s => s.start <= p.start + TV_LATE);
+            parts[Math.max(i, 0)].progs.push(p);
+          }
+        }
+        const named = parts.length > 1;
+        parts.forEach((part, i) => {
+          if (!part.progs.length) return;
+          const pEnd = Math.max(...part.progs.map(p => p.end));
+          const pTv = Math.min(...part.progs.map(p => p.start));
+          if (!inWindow.has(date) && !(pEnd > Math.max(windowStart, now))) return;
+          // Still on air from last night: listed under today, from midnight, so it shows as live.
+          let start = Math.max(pTv, inWindow.has(date) ? 0 : windowStart);
+          // The first match's time, not the start of the build-up (George, 11 Nov 2026: 20:00, not Sky's 19:30)
+          if (part.start > start && part.start < pEnd && part.start - pTv <= TV_EARLY) start = part.start;
+          // The singles' time when they're on air too (George chose the doubles' start, with the singles named)
+          const singles = part.singles > start && part.singles < pEnd ? `singles from ${ukHHMM(part.singles)}` : null;
+          const session = list.length ? [stage || `Day ${day}`, named ? (i ? 'Evening session' : 'Day session') : null, singles].filter(Boolean).join(' · ') : dayName;
+          const fromGuide = part.progs.filter(p => guideProgs.has(p));
+          const fromTnt = part.progs.filter(p => !guideProgs.has(p));
+          const chans = [...channelList(fromGuide, sids)];
+          for (const c of tntChannelOrder(fromTnt.map(p => p.channel))) if (!chans.includes(c)) chans.push(c);
+          const sources = [...(fromGuide.length ? ['sky-guide'] : []), ...(fromTnt.length ? ['tntsports.co.uk'] : [])];
+          events.push({ ...base, session, id: `tennis-${t.id}-${date}${i ? `-${i + 1}` : ''}`, kickoff: new Date(start).toISOString(), end: new Date(pEnd).toISOString(), timeTbc: false,
+            tv: { broadcaster: chans[0], channels: [chans[0]], alsoOn: chans.slice(1), confirmed: true, note: null, conflict: false, sources } });
+        });
       } else if (!progs.length && inWindow.has(date) && !covered.has(date)) {
         events.push({ ...base, id: `tennis-${t.id}-${date}`, kickoff: new Date(ukMidnight(date) + 12 * 3600000).toISOString(), end: null, timeTbc: true, allDay: true,
           tv: { broadcaster: null, channels: [], alsoOn: [], confirmed: false, note: 'TV times to be confirmed', conflict: false, sources: [] } });

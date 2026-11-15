@@ -304,8 +304,6 @@
   .also { grid-column: 2; font-size: 0.6875rem; color: var(--faint); }
   .warn { grid-column: 2; font-size: 0.75rem; color: var(--warn-text); background: var(--warn-bg); border-radius: 8px; padding: 4px 8px; }
 
-  footer { color: var(--faint); font-size: 0.75rem; margin-top: 28px; line-height: 1.5; }
-  footer a { color: inherit; }
   .loading { color: var(--muted); padding: 40px 0; text-align: center; }
 
   /* "My TV Choice": a sheet that slides up from the bottom */
@@ -437,11 +435,7 @@
 
   <div id="banner"></div>
   <main id="main"><div class="loading">Loading fixtures…</div></main>
-
-  <footer>
-    Fixtures from <span id="football-src">premierleague.com, uefa.com,</span> formula1.com, fiaformula2.com, fiaformula3.com, motogp.com, pdc.tv, pgatour.com, europeantour.com, wst.tv,
-    icc-cricket.com, world.rugby, wtatennis.com, nittoatpfinals.com, fis-ski.com, worldcurling.org<span id="football-src2">, efl.com and thefa.com</span>. Channels from the Sky TV guide, Sky Sports, TNT Sports, Prime Video, Premier Sports, the Premier League and the FA.
-  </footer>
+  <!-- No list of sources at the foot of the page (George, 15 Nov 2026, from the closed testers: too long, and nobody asked for it) -->
 </div>
 
 <dialog class="sheet" id="picker" aria-labelledby="picker-title">
@@ -1029,11 +1023,6 @@
     if (gateKey !== gateShown) { gateShown = gateKey; renderNav(); }
 
     $('#updated').textContent = `UK times · updated ${ago(data.generatedAt)}`;
-    // Football fixtures come from API-Football once the update job has its key (build.mjs)
-    if (data.report && data.report.footballSource === 'api-football') {
-      $('#football-src').textContent = 'api-football.com (football),';
-      $('#football-src2').textContent = '';
-    }
 
     const banners = [];
     const ageH = (nowMs() - Date.parse(data.generatedAt)) / 3600000;
@@ -1541,7 +1530,7 @@
     // a platform that may not have one (the iPhone) leaves `codes` out.
     const codes = BILL.codes && (appSettings().promoCodes === true || !!BILL.preview) && !subscribed;
     return `<div class="grp" style="--sc:var(--accent)">
-        <div class="set-h">My account</div>
+        <div class="set-h">My Account</div>
         <div class="acct-p">${status}</div>
         <div class="opts">${buttons}</div>
         ${!codes ? '' : `<form id="code-form">
@@ -1577,7 +1566,7 @@
     if (!testTools()) return '';
     const btn = (what, label) => `<button class="opt choice" data-test="${what}">${label}</button>`;
     return `<div class="grp" style="--sc:var(--accent)">
-        <div class="set-h">For testers</div>
+        <div class="set-h">For Testers</div>
         <div class="set-p">Jump ahead to see each stage. These only change this phone’s dates, not a subscription or a promo code.</div>
         <div class="opts">${btn('warn', '3 free days left')}${btn('end', 'End the free period')}${btn('week', 'A week later')}${btn('reset', 'Start again')}</div>
       </div>`;
@@ -1619,15 +1608,15 @@
         <span><span class="set-h">About Telly Fixtures</span><span class="set-p">What it covers and how it works</span></span>
         <span class="about-go" aria-hidden="true">›</span>
       </a>${accountHtml()}<div class="grp" style="--sc:var(--accent)">
-        <div class="set-h">Colour theme</div>
+        <div class="set-h">Colour Theme</div>
         <div class="opts">${Object.entries(THEMES).map(([t, label]) => choice('data-theme-pick', t, label, t === theme)).join('')}</div>
       </div>` + (!BELLS ? '' : `<div class="grp" style="--sc:var(--accent)">
-        <div class="set-h">Fixtures reminders</div>
-        <div class="set-p">Tap a fixture and choose how early you’d like your phone to remind you. A small bell shows which ones you’ve set.${!REM.askExact ? '' : exactOk
+        <div class="set-h">Fixtures Reminders</div>
+        <div class="set-p">Tap a fixture and choose how early you’d like your phone to remind you.${!REM.askExact ? '' : exactOk
           ? ' Reminders come on time: Telly Fixtures is allowed to set alarms and reminders.'
           : ' To save battery, your phone may deliver reminders a few minutes late. Nothing to do if that’s ok. If you want them on time to the minute, allow Telly Fixtures to set alarms and reminders.'}</div>
         ${REM.askExact && !exactOk ? '<div class="opts"><button class="opt choice" data-exact>Allow on-time reminders</button></div>' : ''}
-      </div>`) + testHtml() + `<div class="sheet-f links">${link('privacy.html', 'Privacy policy')}${link('terms.html', 'Terms of use')}</div>`
+      </div>`) + testHtml() + `<div class="sheet-f links">${link('privacy.html', 'Privacy Policy')}${link('terms.html', 'Terms of Use')}</div>`
       + (appVersion ? `<div class="set-p ver">Version ${esc(appVersion)}</div>` : '');
   }
   function closeSettings() {

@@ -260,7 +260,8 @@ export async function build(now = Date.now(), previous = null, { footballSource 
   const due = Object.fromEntries(Object.keys(GOLDEN).map(k => [k, !useAf || checkDue(prevGolden[k], now)]));
   // When play starts at the tennis tournaments, from their own schedules: once a day too (tennis.mjs)
   const prevPlay = previous?.playTimes?.tennis;
-  const playDue = checkDue(prevPlay, now);
+  // (a saved copy from before 15 Nov 2026 has no ATP Finals sessions: read again rather than wait for 06:00)
+  const playDue = checkDue(prevPlay, now) || (prevPlay?.ok && !prevPlay.sessions);
   const [plRes, uclRes, uelRes, eflRes, faRes, f1Res, f2Res, f3Res, motogpRes, dartsRes, golfRes, snookerRes, cricketRes, guideRes, skyRes, tntRes, primeRes, psRes, afRes, ueclRes, skiRes, tennisRes, curlingRes, rugbyRes, unlRes, lionessRes, fourHillsRes] = await Promise.allSettled([
     due.premierLeague ? fetchPremierLeague(now) : skip, due.championsLeague ? fetchChampionsLeague(now, DAYS_AHEAD) : skip,
     due.europaLeague ? fetchUefa(now, DAYS_AHEAD, 'UEL') : skip, due.efl ? fetchEfl(today, lastDay, eflSeason(now)) : skip, fetchFaCup(),
@@ -479,17 +480,22 @@ export async function build(now = Date.now(), previous = null, { footballSource 
     // publishes the next day, so the days read earlier are kept; a failed read keeps them all.
     const { tournaments, play } = tennisRes.value;
     if (play) {
-      const starts = {};
+      const starts = {}, sessions = {};
+      const iso = (at) => (at === null || at === undefined ? null : new Date(at).toISOString());
       for (const t of tournaments) {
         const days = { ...prevPlay?.starts?.[t.comp], ...play.starts[t.comp] };
-        const kept = Object.entries(days).filter(([d]) => d >= today && d <= t.endDate).map(([d, at]) => [d, new Date(at).toISOString()]);
+        const kept = Object.entries(days).filter(([d]) => d >= today && d <= t.endDate).map(([d, at]) => [d, iso(at)]);
         if (kept.length) starts[t.comp] = Object.fromEntries(kept);
+        // The ATP Finals' day and evening sessions, from the same timetable
+        const sess = Object.entries({ ...prevPlay?.sessions?.[t.comp], ...play.sessions?.[t.comp] }).filter(([d]) => d >= today && d <= t.endDate)
+          .map(([d, list]) => [d, list.map(s => ({ start: iso(s.start), singles: iso(s.singles) }))]);
+        if (sess.length) sessions[t.comp] = Object.fromEntries(sess);
       }
       playTimes.tennis = play.errors.length
-        ? { ...prevPlay, starts, ok: false, error: play.errors.join('; ') }
-        : { ok: true, checkedAt: new Date(now).toISOString(), starts };
+        ? { ...prevPlay, starts, sessions, ok: false, error: play.errors.join('; ') }
+        : { ok: true, checkedAt: new Date(now).toISOString(), starts, sessions };
     }
-    const found = tennisDays(tournaments, guide, tnt, today, DAYS_AHEAD + 1, now, playTimes.tennis?.starts);
+    const found = tennisDays(tournaments, guide, tnt, today, DAYS_AHEAD + 1, now, playTimes.tennis?.starts, playTimes.tennis?.sessions);
     const tennis = found.events.filter(inWindow);
     report.tennis = { ok: true, tournaments: tournaments.map(t => t.name), days: tennis.length, errors: tennisRes.value.errors };
     events.push(...tennis);

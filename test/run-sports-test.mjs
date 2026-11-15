@@ -41,7 +41,9 @@
 //                                         and Finals, plus one WTA 1000 (ignored)
 //   fixtures/wta-matches-2026-11-11.json               the WTA Finals' order of play (captured 11 Nov 2026, 00:24)
 //   fixtures/nittoatpfinals-schedule-2026-11-11.html   the ATP Finals' timetable page (the article only)
-//   fixtures/nittoatpfinals-home-2026-10-29.html       the ATP Finals' home page (the dates only)
+//   fixtures/nittoatpfinals-home-2026-10-29.html       the ATP Finals' home page (the dates, and the language menu before them)
+//   fixtures/sky-guide-atp-finals-2026-11-15.json      Sky's guide, 15-22 Nov 2026, Sky Sports Tennis and Main Event:
+//                                                      the ATP and WTA Finals' programmes only (captured 15 Nov 2026)
 //   fixtures/worldrugby-matches-2026-10-29.json        World Rugby's matches, 29 Oct - 8 Nov 2026,
 //                                         captured 29 Oct: our four competitions plus three others
 //   fixtures/tnt-schedule-rugby-2026-10-30.json        TNT's schedule, 30-31 Oct: the rugby programmes
@@ -62,7 +64,7 @@ import { mapWrMatch, rugbyTv } from '../scripts/sources/rugby.mjs';
 import { guideTeams } from '../scripts/sources/football.mjs';
 import { ukDate, ukToUtc } from '../scripts/lib/util.mjs';
 import { cleanName, dartsEvents } from '../scripts/sources/darts.mjs';
-import { isLiveCoverage, mapGuideDay } from '../scripts/sources/skyGuide.mjs';
+import { isLiveCoverage, mapGuideDay, windowDates } from '../scripts/sources/skyGuide.mjs';
 import { seriesOf, motorsportTv, sessionMatches, mapF3Tracker, mapSession, f1MeetingsIn, mapF1Meeting, fetchF1, fetchF2, parseRounds, parseRoundSessions } from '../scripts/sources/motorsport.mjs';
 import { mapMotoGpEvent, motoGpTitle, motoGpTv } from '../scripts/sources/motogp.mjs';
 import { parseSkyPage } from '../scripts/sources/skyListings.mjs';
@@ -72,7 +74,7 @@ import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/
 import { specialsInScope } from '../scripts/sources/specials.mjs';
 import { fourHillsOf, fetchFourHills, fourHillsEvents } from '../scripts/sources/skiJumping.mjs';
 import { christmasRacing, racingEvents } from '../scripts/sources/racing.mjs';
-import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents, tennisDays, mapWtaPlay, parseAtpSchedule } from '../scripts/sources/tennis.mjs';
+import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents, tennisDays, mapWtaPlay, parseAtpSchedule, parseAtpSessions } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const F1 = await fx('f1-event-tracker-baku.json');
@@ -647,13 +649,18 @@ assert.deepEqual(parseAtpFinals(ATP_FINALS), { comp: 'TEN_ATPF', name: 'ATP Fina
 // programme naming it in the guide, so it isn't listed.
 const atp = await build(Date.parse('2026-11-15T07:00:00Z'));
 // (The guide here has nothing at all for 16-22 Nov, so those days are "TV times to be confirmed".)
-assert.deepEqual(atp.report.tennis, { ok: true, tournaments: ['WTA Finals', 'ATP Finals'], days: 8, errors: [] });
-assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && !e.allDay).map(e => `${e.comp} ${e.title} · ${e.session} ${uk(e.kickoff)}-${uk(e.end).slice(-5)}: ${e.tv.channels[0]} + ${e.tv.alsoOn.join(', ')}`),
-  ['TEN_ATPF ATP Finals · Day 1 Sun 15, 11:00-22:00: Sky Sports Main Event + Sky Sports Tennis']);
-assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && e.allDay).map(e => e.session), ['Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8']);
+// The ATP Finals' timetable splits the day into its day and evening sessions (George, 15 Nov 2026), each named
+// with its stage and, when on air, the singles' time
+assert.deepEqual(atp.report.tennis, { ok: true, tournaments: ['WTA Finals', 'ATP Finals'], days: 9, errors: [] });
+assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && !e.allDay).map(e => `${e.comp} ${e.title} · ${e.session} ${uk(e.kickoff)}-${uk(e.end).slice(-5)}: ${e.tv.channels[0]} + ${e.tv.alsoOn.join(', ')}`), [
+  'TEN_ATPF ATP Finals · Group Stage · Day session · singles from 13:00 Sun 15, 11:00-16:00: Sky Sports Tennis + ',
+  'TEN_ATPF ATP Finals · Group Stage · Evening session · singles from 19:30 Sun 15, 18:30-22:00: Sky Sports Main Event + ',
+]);
+assert.deepEqual(atp.events.filter(e => e.comp.startsWith('TEN_') && e.allDay).map(e => e.session),
+  ['Group Stage · Day 2', 'Group Stage · Day 3', 'Group Stage · Day 4', 'Group Stage · Day 5', 'Group Stage · Day 6', 'Semi-Finals', 'Final']);
 // A tournament day the guide can't show (no listings for that date): "TV times to be confirmed"
 const wtaDay = (await build(Date.parse('2026-11-08T07:00:00Z'))).events.find(e => e.comp === 'TEN_WTAF');
-assert.deepEqual([wtaDay.session, wtaDay.allDay, wtaDay.tv.note], ['Day 1', true, 'TV times to be confirmed']);
+assert.deepEqual([wtaDay.session, wtaDay.allDay, wtaDay.tv.note], ['Group Stage · Day 1', true, 'TV times to be confirmed']);
 // Overnight coverage stays with the evening it began (Sky's real WTA Finals listings, captured 5 Nov 2026:
 // 19:30-03:00 UK from Indian Wells). Split by calendar date, day 2 read 00:00-24:00 and showed as live all day.
 const SKY_WTA = await fx('sky-guide-wta-finals-2026-11-05.json');
@@ -662,21 +669,21 @@ const wtaGuide = { programmes: [...new Map(wtaProgs.map(p => [p.id, p])).values(
 const wtaT = tours.filter(t => t.comp === 'TEN_WTAF' && t.startDate === '2026-11-08');
 const wtaLine = (e) => `${e.session} ${uk(e.kickoff)}-${uk(e.end)}: ${e.tv.channels[0]}`;
 assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-08', 4).map(wtaLine), [
-  'Day 1 Sun 08, 19:30-Mon 09, 03:00: Sky Sports Tennis',
-  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
-  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
-  'Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis', // the guide capture stops at midnight
+  'Group Stage · Day 1 Sun 08, 19:30-Mon 09, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis', // the guide capture stops at midnight
 ]);
 // Monday, after midnight: last night's coverage is still on air, so it stays listed (from midnight), then Day 2
 assert.deepEqual(tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2).map(wtaLine), [
-  'Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
-  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
-  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
 ]);
 // ...but only while it's on air: once it has finished, the row goes (George, 9 Nov 2026)
 const lastNight = (t) => tennisEvents(wtaT, wtaGuide, null, '2026-11-09', 2, Date.parse(t)).map(e => e.session);
-assert.deepEqual(lastNight('2026-11-09T02:30:00Z'), ['Day 1', 'Day 2', 'Day 3']);
-assert.deepEqual(lastNight('2026-11-09T03:30:00Z'), ['Day 2', 'Day 3']);
+assert.deepEqual(lastNight('2026-11-09T02:30:00Z'), ['Group Stage · Day 1', 'Group Stage · Day 2', 'Group Stage · Day 3']);
+assert.deepEqual(lastNight('2026-11-09T03:30:00Z'), ['Group Stage · Day 2', 'Group Stage · Day 3']);
 // A new day's coverage that starts around midnight (the Australian Open) isn't pulled back a day
 const tennisProg = (id, start, hours) => ({ id, sid: SKY_TENNIS, channel: 'Sky Sports Tennis', start: Date.parse(start), end: Date.parse(start) + hours * 3600000, title: 'Live: Australian Open', synopsis: '', live: true });
 assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T00:00:00Z', 12), tennisProg('b', '2027-01-19T00:00:00Z', 12)]).keys()], ['2027-01-18', '2027-01-19']);
@@ -688,15 +695,15 @@ assert.deepEqual([...byBroadcastDay([tennisProg('a', '2027-01-18T18:00:00Z', 19)
 const liveTennisProgs = Object.values(await fx('sky-guide-tennis-2026-11-09.json')).flatMap(mapGuideDay);
 const liveTennisGuide = { programmes: [...new Map(liveTennisProgs.map(p => [p.id, p])).values()], coveredDates: ['2026-11-09', '2026-11-10', '2026-11-11'] };
 assert.deepEqual(tennisEvents(wtaT, liveTennisGuide, null, '2026-11-09', 3).map(wtaLine), [
-  'Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
-  'Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
-  'Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
-  'Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis',
+  'Group Stage · Day 1 Mon 09, 00:00-Mon 09, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 2 Mon 09, 19:30-Tue 10, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis',
+  'Group Stage · Day 4 Wed 11, 19:30-Thu 12, 00:00: Sky Sports Tennis',
 ]);
 // Should Sky's titles and description name nothing at all, the night's last part still can't start the next
 // day at midnight: Tuesday's entry starts with Tuesday's evening
 const undescribed = { ...liveTennisGuide, programmes: liveTennisGuide.programmes.filter(p => !/^Live Tennis/.test(p.title)) };
-assert.ok(tennisEvents(wtaT, undescribed, null, '2026-11-09', 3).map(wtaLine).includes('Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis'));
+assert.ok(tennisEvents(wtaT, undescribed, null, '2026-11-09', 3).map(wtaLine).includes('Group Stage · Day 3 Tue 10, 19:30-Wed 11, 03:00: Sky Sports Tennis'));
 // Only a plain "Live Tennis" title may be identified by its description: another tournament's may mention it
 const stockholm = { programmes: [{ ...tennisProg('s', '2026-11-09T12:00:00Z', 4), title: 'Live: ATP Stockholm', synopsis: 'The last points on the road to the WTA Finals.' }], coveredDates: ['2026-11-09'] };
 assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
@@ -709,8 +716,8 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
   const guide = { programmes: [...new Map(progs.map(p => [p.id, p])).values()], coveredDates: ['2026-11-11', '2026-11-12'] };
   const at = Date.parse('2026-11-11T03:30:00Z');
   assert.deepEqual(tennisEvents(wtaT, guide, null, '2026-11-11', 2, at).map(wtaLine), [
-    'Day 4 Wed 11, 19:30-Thu 12, 03:00: Sky Sports Tennis',
-    'Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis',
+    'Group Stage · Day 4 Wed 11, 19:30-Thu 12, 03:00: Sky Sports Tennis',
+    'Group Stage · Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis',
   ]);
   // The tournaments' own start of play (George, 11 Nov 2026): the WTA's order of play has Wednesday's first
   // match at 12:00 in Indian Wells, 20:00 UK, and the entry starts then, not with Sky's build-up at 19:30
@@ -718,8 +725,8 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
   assert.deepEqual(play.TEN_WTAF, { '2026-11-11': Date.parse('2026-11-11T20:00:00Z') });
   const checked = tennisDays(wtaT, guide, null, '2026-11-11', 2, at, play);
   assert.deepEqual(checked.events.map(wtaLine), [
-    'Day 4 Wed 11, 20:00-Thu 12, 03:00: Sky Sports Tennis',
-    'Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis', // its order of play isn't out yet
+    'Group Stage · Day 4 Wed 11, 20:00-Thu 12, 03:00: Sky Sports Tennis',
+    'Group Stage · Day 5 Thu 12, 19:30-Fri 13, 00:00: Sky Sports Tennis', // its order of play isn't out yet
   ]);
   assert.deepEqual(checked.mismatches, []);
   // What the check is for: the listings as they were read before the fix above, with Wednesday's entry
@@ -736,6 +743,37 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
   assert.deepEqual(Object.entries(atpPlay).map(([d, t]) => `${d} ${uk(t)}`).filter((x, i) => [0, 6, 7].includes(i)),
     ['2026-11-15 Sun 15, 10:30', '2026-11-21 Sat 21, 11:00', '2026-11-22 Sun 22, 14:00']);
   assert.equal(Object.keys(atpPlay).length, 8);
+  // ...and each day's sessions (George, 15 Nov 2026, from the closed testers: one entry from 10:30 hid the day
+  // and evening sessions): DAY and EVENING columns, each its doubles' start and the singles' "not before"
+  const atpSess = parseAtpSessions(ATP_SCHEDULE, 2026);
+  const sessLine = (d) => atpSess[d].map(s => `${uk(s.start).slice(-5)}/${uk(s.singles).slice(-5)}`).join(' ');
+  assert.deepEqual(['2026-11-15', '2026-11-21', '2026-11-22'].map(sessLine), ['10:30/13:00 17:00/19:30', '11:00/13:30 17:00/19:30', '14:00/17:00']);
+  // Sky's real listings for the week (captured 15 Nov 2026, the ATP and WTA Finals' programmes on Sky Sports Tennis
+  // and Main Event): one entry per session, its stage, and the singles' time while they're on air. Today Sky's
+  // evening is doubles only, as the WTA Finals' final follows at 19:00.
+  const atpProgs = Object.values(await fx('sky-guide-atp-finals-2026-11-15.json')).flatMap(mapGuideDay);
+  const atpGuide = { programmes: [...new Map(atpProgs.map(p => [p.id, p])).values()], coveredDates: windowDates('2026-11-15', 8) };
+  const isoSess = Object.fromEntries(Object.entries(atpSess).map(([d, l]) => [d, l.map(s => ({ start: new Date(s.start).toISOString(), singles: new Date(s.singles).toISOString() }))]));
+  const atpT = [parseAtpFinals(ATP_FINALS)];
+  const week = tennisDays(atpT, atpGuide, null, '2026-11-15', 8, Date.parse('2026-11-15T07:00:00Z'), { TEN_ATPF: atpPlay }, { TEN_ATPF: isoSess });
+  const sessRow = (e) => `${e.session} ${uk(e.kickoff)}-${uk(e.end).slice(-5)}: ${[...e.tv.channels, ...e.tv.alsoOn].join(' + ')}`;
+  assert.deepEqual(week.events.filter(e => e.kickoff < '2026-11-17').map(sessRow), [
+    'Group Stage · Day session · singles from 13:00 Sun 15, 10:30-17:00: Sky Sports Tennis',
+    'Group Stage · Evening session Sun 15, 17:00-19:00: Sky Sports Tennis',
+    'Group Stage · Day session · singles from 13:00 Mon 16, 10:30-15:00: Sky Sports Tennis + Sky Sports Main Event',
+    'Group Stage · Evening session · singles from 19:30 Mon 16, 17:00-21:30: Sky Sports Tennis + Sky Sports Main Event',
+  ]);
+  assert.deepEqual(week.events.filter(e => e.kickoff >= '2026-11-21').map(sessRow), [
+    'Semi-Finals · Day session · singles from 13:30 Sat 21, 11:00-17:00: Sky Sports Tennis',
+    'Semi-Finals · Evening session · singles from 19:30 Sat 21, 17:00-21:30: Sky Sports Tennis',
+    'Final · singles from 17:00 Sun 22, 14:00-19:00: Sky Sports Tennis', // the doubles final at 14:00, not Sky's 13:45
+  ]);
+  assert.equal(week.events.length, 15);
+  assert.deepEqual([...new Set(week.events.map(e => e.id))].length, 15);
+  assert.deepEqual(week.mismatches, []);
+  // Without the timetable's sessions (its page down): one entry a day, with the stage
+  assert.deepEqual(tennisDays(atpT, atpGuide, null, '2026-11-21', 2, 0, { TEN_ATPF: atpPlay }).events.map(sessRow),
+    ['Semi-Finals Sat 21, 11:00-21:30: Sky Sports Tennis', 'Final Sun 22, 14:00-19:00: Sky Sports Tennis']);
   // In the build: read once a day (from 06:00 UK), kept for the updates in between, and reported
   playReads = 0;
   const first = await build(Date.parse('2026-11-15T07:00:00Z'));
@@ -744,6 +782,12 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
   assert.equal(first.playTimes.tennis.starts.TEN_ATPF['2026-11-15'], '2026-11-15T10:30:00.000Z');
   assert.equal(first.playTimes.tennis.starts.TEN_WTAF, undefined); // Wednesday's has gone by Sunday
   assert.deepEqual(first.report.tennisSchedule, { ok: true, checkedAt: '2026-11-15T07:00:00.000Z', days: 8 });
+  assert.deepEqual(first.playTimes.tennis.sessions.TEN_ATPF['2026-11-22'], [{ start: '2026-11-22T14:00:00.000Z', singles: '2026-11-22T17:00:00.000Z' }]);
+  // A saved copy from before the sessions were kept is read again at once, not at 06:00 the next day
+  const { sessions: _, ...oldPlay } = first.playTimes.tennis;
+  await build(Date.parse('2026-11-15T07:30:00Z'), { ...first, playTimes: { tennis: oldPlay } });
+  assert.equal(playReads, 4); // both tournaments' pages again
+  playReads = 2;
   const later = await build(Date.parse('2026-11-15T07:30:00Z'), first);
   assert.equal(playReads, 2);
   assert.deepEqual(later.playTimes, first.playTimes);
@@ -755,10 +799,10 @@ assert.deepEqual(tennisEvents(wtaT, stockholm, null, '2026-11-09', 1), []);
   const atpDay = { ...tennisProg('a', '2026-11-15T10:30:00Z', 6.5), title: 'Live ATP Finals: Day 1' };
   const wtaFinal = { ...tennisProg('w', '2026-11-15T19:00:00Z', 4), title: 'Live WTA Finals: The Final' };
   const both = tennisEvents(wtaT, { programmes: [atpDay, plain, wtaFinal], coveredDates: ['2026-11-15'] }, null, '2026-11-15', 1);
-  assert.deepEqual(both.map(wtaLine), ['Day 8 Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
+  assert.deepEqual(both.map(wtaLine), ['Final Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
   // ...and one that touches no programme of the tournament stays out (Stockholm's, say)
   const alone = tennisEvents(wtaT, { programmes: [{ ...plain, start: plain.start - 6 * 3600000, end: plain.end - 6 * 3600000 }, wtaFinal], coveredDates: ['2026-11-15'] }, null, '2026-11-15', 1);
-  assert.deepEqual(alone.map(wtaLine), ['Day 8 Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
+  assert.deepEqual(alone.map(wtaLine), ['Final Sun 15, 19:00-Sun 15, 23:00: Sky Sports Tennis']);
 }
 // Sky Sports Main Event is always the primary channel (George, 9 Nov 2026), in any sport
 {

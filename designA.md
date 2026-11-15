@@ -91,6 +91,9 @@ three Premiership games on TNT Sports 1 and two on HBO Max only.
 | | WTA Finals | `TEN_WTAF` | WTA Finals | ✅ |
 | **Skiing** (mountains and slalom gates, ice blue; George's PNG) | Alpine skiing | `SKI` | World Cup / World Championships (the event's label) | ✅ |
 | **Specials** (trophy, pink) | European Curling Championships | `SPECIAL_CURLING` | Curling | ✅ |
+| | Women's World Cup play-off (the Lionesses; 14 Nov 2026) | `SPECIAL_LIONESSES` | Lionesses | ✅ |
+| | Christmas racing (ITV; 14 Nov 2026) | `SPECIAL_RACING` | Racing | ✅ |
+| | Four Hills Tournament (ski jumping; 14 Nov 2026) | `SPECIAL_FOURHILLS` | Ski jumping | ✅ |
 
 Specials are real events only (George, 29 Oct 2026): the four placeholders (Wimbledon & tennis,
 Tour de France, athletics, other big events) were removed; tennis became its own sport. Add each new

@@ -13,9 +13,9 @@
   // Android code is called directly through Capacitor.
   const Purchases = capacitorExports.registerPlugin('Purchases');
   // RevenueCat's public key for the Android app ("goog_…", from its dashboard: cloud/SETUP.md). It is
-  // meant to be in the app, so it can be in this file. While it's empty the app has no store, and
-  // everything is open, as before subscriptions.
-  const RC_KEY = '';
+  // meant to be in the app, so it can be in this file (George's, 14 Nov 2026: the "Telly Fixtures (Play
+  // Store)" key, not the "Test Store" one). Emptied, the app has no store and everything is open.
+  const RC_KEY = 'goog_obFYKiAqrDVRvvQmfjtePRJxRvR';
   // What a subscription or a promo code unlocks, as named in RevenueCat
   const ENTITLEMENT = 'full_access';
   // The promo code server (cloud/codes-worker)

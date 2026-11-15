@@ -11,7 +11,7 @@ A phone web app that lists what's on UK TV for **today and the next 7 days**, wi
 - **Rugby:** Premiership, Champions Cup, Nations Championship and Six Nations (Super League to follow)
 - **Tennis:** the four Grand Slams, the ATP Finals and the WTA Finals, one entry per day on UK TV
 - **Alpine skiing:** every World Cup and World Championships race, one entry per run
-- **Specials:** real one-off or yearly events, so far the European Curling Championships (televised games)
+- **Specials:** real one-off or yearly events, so far the European Curling Championships (televised games), the Lionesses' World Cup play-off, ITV's Christmas racing and ski jumping's Four Hills Tournament
 
 You pick a sport with a 3D icon at the top, and every game shows its sport's icon beside the time. **My TV** is the home view: you choose which sports and competitions it shows (and can narrow it to one day). Inside a sport you can switch on several competitions at once, for example just the Premier League and the Champions League. Rugby's Super League appears marked **SOON**: it's in the design but has no data connected yet. Specials lists each event as its own choice. The design is described in `designA.md`.
 
@@ -21,13 +21,13 @@ It's a single web page hosted free on GitHub Pages. You can add it to a phone's 
 
 The plan is to turn it into a paid app called **Telly Fixtures** on Google Play: see `playStorePlan.md`.
 
-## Status (10 Nov 2026)
+## Status (14 Nov 2026)
 
 - **Live:** every sport above, updated every 30 minutes from Google Cloud in London. Football comes from API-Football, checked once a day against the official Premier League, UEFA and EFL feeds, which win if they disagree. A football game with no UK channel 48 hours before kick-off says "Not shown live on UK TV".
-- **Recent changes:** an email alert (a small Cloudflare program, hourly, with an "all well" email on Mondays) replaces the app's yellow messages for a source that couldn't be read. Sky Sports Main Event is always shown as the main channel. Tennis copes with Sky's plain "Live Tennis: A v B" titles and never starts a day at midnight. The EFL's empty weeks (international breaks) are no longer read as failures. My TV has a channel filter next to the day button.
+- **Recent changes:** the UEFA Nations League (televised games only, 13 Nov) and three more Specials (14 Nov): the Lionesses' World Cup play-off against Ukraine (1 and 5 Dec), ITV's Christmas racing (26–29 Dec) and ski jumping's Four Hills (28 Dec–6 Jan); each appears a week before it starts. Earlier: an email alert (a small Cloudflare program, hourly, with an "all well" email on Mondays) replaces the app's yellow messages for a source that couldn't be read. Sky Sports Main Event is always shown as the main channel. Tennis copes with Sky's plain "Live Tennis: A v B" titles and never starts a day at midnight. The EFL's empty weeks (international breaks) are no longer read as failures. My TV has a channel filter next to the day button.
 - **Still to connect:** rugby league's Super League (its 2027 fixtures aren't out yet), and more Specials, one real event at a time.
 - **Design:** Design A (see `designA.md`). A card style with one rounded box per event was mocked up (branch `mockup-cards`, not merged); the current design stays for now.
-- **Paid app:** the name (Telly Fixtures), app ID and domains are done, and the app shows the new name. `data.json` is on the own domain (since 31 Oct 2026); the app works offline and follows the phone's accessibility settings (checked on the Pixel, 1 Nov). The website (tellyfixtures.co.uk), privacy policy and terms are live. The Android app (`app/`, Capacitor) is at version 1.0.8 on Play's internal and closed testing tracks, and 1.0.9 (approved by Google on 10 Nov) on closed testing. The store listing is entered and passed Google's first review on 8 Nov, and recruiting testers for the 14-day closed test has started. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (next: the closed test, then subscriptions).
+- **Paid app:** the name (Telly Fixtures), app ID and domains are done, and the app shows the new name. `data.json` is on the own domain (since 31 Oct 2026); the app works offline and follows the phone's accessibility settings (checked on the Pixel, 1 Nov). The website (tellyfixtures.co.uk), privacy policy and terms are live. The Android app (`app/`, Capacitor) is at version 1.0.8 on Play's internal and closed testing tracks, and 1.0.9 (approved by Google on 10 Nov) on closed testing. The store listing is entered and passed Google's first review on 8 Nov, and recruiting testers for the 14-day closed test has started. **Subscriptions** are built (a free month, then one sport for free or £3.65 a year; My account in Settings; free promo codes): the yearly subscription is active in Google Play and connected through RevenueCat, 1.0.10 (groundwork) is on internal testing, and 1.0.11, the first version that can buy, is on internal testing, where a test purchase on the Pixel went through (15 Nov). Still to do there: the promo code server, the feedback button, and sending the subscriptions version to the closed testers. Data rights: the 12 permission emails went out with no replies so far, and the project goes ahead without waiting. Next steps are in `playStorePlan.md` (Phase 3 "Where we are").
 
 ## Principles
 
@@ -46,8 +46,8 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 │  │             F1, F2, F3, MotoGP, PDC,       │ ─────► │  app: reads   │
 │  │             PGA Tour, DP World Tour, WST,  │ data.  │  data.json)   │
 │  │             ICC, World Rugby, WTA,         │ json   └───────────────┘
-│  │             ATP Finals site, FIS (skiing), │
-│  │             World Curling                  │
+│  │             ATP Finals site, FIS (skiing,  │
+│  │             ski jumping), World Curling    │
 │  └─ channels:  Sky TV guide, Sky Sports,      │
 │                TNT Sports, Prime Video,       │
 │                Premier Sports, FA, PL         │
@@ -74,6 +74,9 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 | | Tennis dates (wtatennis.com; the ATP Finals from nittoatpfinals.com) | the WTA's data feed (API); reading the ATP Finals' page |
 | | Alpine skiing (fis-ski.com) | its calendar feed (iCal) |
 | | Curling championships (worldcurling.org) | its event pages' data feed |
+| | The Lionesses' World Cup play-off | API-Football, as for all football |
+| | Ski jumping's Four Hills (fis-ski.com) | its calendar feed (iCal) for the days; the times come from TNT Sports' schedule |
+| | Christmas racing | no feed: its four days (26–29 December) are fixed, and ITV's programmes in the Sky TV guide give the entries |
 | | Rugby union (world.rugby) | World Rugby's data feed (API) |
 | **TV channels** | Sky TV guide (every channel on Sky: Sky Sports, TNT, BBC, ITV, Channel 4/5) | its data feed (API), the main source |
 | | Sky Sports' "on Sky" pages (incl. Sky Sports+ streams) | reading the pages |

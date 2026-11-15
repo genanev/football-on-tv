@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T00:00:15.128Z",
+ "generatedAt": "2026-11-15T00:30:17.764Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 150
+   "events": 145
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -985,7 +985,7 @@
    "away": "Northern Ireland",
    "homeShort": "Hungary",
    "awayShort": "Northern Ireland",
-   "venue": null,
+   "venue": "Puskás Aréna",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1016,7 +1016,7 @@
    "away": "Portugal",
    "homeShort": "Wales",
    "awayShort": "Portugal",
-   "venue": null,
+   "venue": "Cardiff City Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

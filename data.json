@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T05:30:27.343Z",
+ "generatedAt": "2026-11-15T06:00:22.985Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-14T06:00:13.536Z",
+    "checkedAt": "2026-11-15T06:00:22.985Z",
     "corrections": 0
    },
    "changed": []
@@ -3155,7 +3155,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": [],
    "matches": [
     {
@@ -3222,27 +3222,27 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-14T06:00:13.536Z",
+   "checkedAt": "2026-11-15T06:00:22.985Z",
    "corrections": []
   }
  },

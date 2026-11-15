@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T15:00:10.639Z",
+ "generatedAt": "2026-11-15T15:30:25.785Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -518,7 +518,7 @@
    "awayShort": "Charlton Athletic",
    "venue": "London Stadium",
    "status": "live",
-   "homeScore": 1,
+   "homeScore": 2,
    "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
@@ -552,7 +552,7 @@
    "homeShort": "Scotland",
    "awayShort": "Australia",
    "venue": "Murrayfield",
-   "status": "upcoming",
+   "status": "live",
    "homeScore": null,
    "awayScore": null,
    "round": null,

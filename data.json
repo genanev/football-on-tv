@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T18:30:15.750Z",
+ "generatedAt": "2026-11-15T19:00:23.375Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,12 +10,12 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4965,
+   "programmes": 4967,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 25,
+   "events": 24,
    "errors": []
   },
   "tntSchedule": {
@@ -101,7 +101,7 @@
    "ok": true,
    "matches": 5
   },
-  "footballChannels": "4/10 PL+UCL matches with a confirmed channel",
+  "footballChannels": "5/10 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -491,19 +491,16 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Main Event",
+    "broadcaster": "Sky Sports Premier League",
     "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
      "Sky Sports Premier League"
     ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -600,8 +597,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -3053,14 +3049,18 @@
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
     "sources": [
-     "premierleague.com"
+     "sky-guide"
     ]
    }
   },

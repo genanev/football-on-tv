@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T18:00:17.294Z",
+ "generatedAt": "2026-11-15T18:30:15.750Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1024,
+   "programmes": 1028,
    "errors": []
   },
   "primeVideo": {
@@ -583,7 +583,7 @@
    "homeShort": "Arsenal",
    "awayShort": "London City Lionesses",
    "venue": "Meadow Park",
-   "status": "live",
+   "status": "finished",
    "homeScore": 1,
    "awayScore": 1,
    "round": "Regular Season - 10",

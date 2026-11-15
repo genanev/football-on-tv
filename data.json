@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T16:00:12.421Z",
+ "generatedAt": "2026-11-15T16:30:12.398Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,12 +10,12 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4963,
+   "programmes": 4965,
    "errors": []
   },
   "skyListings": {
    "ok": true,
-   "events": 27,
+   "events": 26,
    "errors": []
   },
   "tntSchedule": {
@@ -98,9 +98,8 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297&pageSize=50",
-   "failingSince": "2026-11-15T16:00:12.421Z"
+   "ok": true,
+   "matches": 5
   },
   "footballChannels": "4/10 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -148,10 +147,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
-   "keptEvents": 3,
-   "failingSince": "2026-11-15T16:00:12.421Z"
+   "ok": true,
+   "sessions": 3
   },
   "darts": {
    "ok": true,
@@ -189,12 +186,11 @@
   "tennis": {
    "ok": true,
    "tournaments": [
+    "WTA Finals",
     "ATP Finals"
    ],
-   "days": 15,
-   "errors": [
-    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-15&to=2026-11-23"
-   ]
+   "days": 16,
+   "errors": []
   },
   "tennisSchedule": {
    "ok": true,
@@ -432,7 +428,7 @@
    "status": "upcoming",
    "id": "snooker-31cd828e-2ab7-42b2-8e02-5141bb0d61b7-1794746700",
    "kickoff": "2026-11-15T12:45:00.000Z",
-   "end": "2026-11-15T16:30:00.000Z",
+   "end": "2026-11-15T16:00:00.000Z",
    "session": "Afternoon session",
    "timeTbc": false,
    "tv": {
@@ -499,7 +495,9 @@
     "channels": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -532,8 +530,7 @@
      "Sky Sports Football"
     ],
     "alsoOn": [
-     "Sky Sports Mix",
-     "Sky Sports Premier League"
+     "Sky Sports Mix"
     ],
     "confirmed": true,
     "note": null,
@@ -704,6 +701,33 @@
     "broadcaster": "Sky Sports Main Event",
     "channels": [
      "Sky Sports Main Event"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "TEN_WTAF",
+   "kind": "session",
+   "title": "WTA Finals",
+   "session": "Final",
+   "venue": "Indian Wells",
+   "source": "wtatennis.com",
+   "status": "upcoming",
+   "label": null,
+   "id": "tennis-808-2026-2026-11-15",
+   "kickoff": "2026-11-15T19:00:00.000Z",
+   "end": "2026-11-15T23:30:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Tennis",
+    "channels": [
+     "Sky Sports Tennis"
     ],
     "alsoOn": [],
     "confirmed": true,
@@ -3030,13 +3054,15 @@
    "round": "Regular Season - 11",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T01:30:22.076Z",
+ "generatedAt": "2026-11-15T02:00:18.220Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -267,7 +267,7 @@
    "kickoff": "2026-11-15T02:00:00.000Z",
    "end": "2026-11-15T10:00:00.000Z",
    "session": "5th ODI",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 3",

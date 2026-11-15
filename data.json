@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T16:30:12.398Z",
+ "generatedAt": "2026-11-15T17:00:23.272Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 26,
+   "events": 25,
    "errors": []
   },
   "tntSchedule": {
@@ -491,12 +491,12 @@
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports Premier League",
+    "broadcaster": "Sky Sports Main Event",
     "channels": [
-     "Sky Sports Premier League"
+     "Sky Sports Main Event"
     ],
     "alsoOn": [
-     "Sky Sports Mix"
+     "Sky Sports Premier League"
     ],
     "confirmed": true,
     "note": null,
@@ -536,8 +536,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "skysports.com"
+     "sky-guide"
     ]
    }
   },
@@ -553,7 +552,7 @@
    "homeShort": "Scotland",
    "awayShort": "Australia",
    "venue": "Murrayfield",
-   "status": "live",
+   "status": "finished",
    "homeScore": null,
    "awayScore": null,
    "round": null,
@@ -584,9 +583,9 @@
    "homeShort": "Arsenal",
    "awayShort": "London City Lionesses",
    "venue": "Meadow Park",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

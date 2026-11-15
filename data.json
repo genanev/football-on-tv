@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T14:00:11.258Z",
+ "generatedAt": "2026-11-15T14:30:11.943Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -485,9 +485,9 @@
    "homeShort": "Aston Villa",
    "awayShort": "Birmingham City",
    "venue": "Trevor Brown Memorial Ground",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {
@@ -517,9 +517,9 @@
    "homeShort": "West Ham",
    "awayShort": "Charlton Athletic",
    "venue": "London Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "Regular Season - 10",
    "source": "api-football.com",
    "tv": {

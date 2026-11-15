@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T19:30:20.213Z",
+ "generatedAt": "2026-11-15T20:00:24.645Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4967,
+   "programmes": 4965,
    "errors": []
   },
   "skyListings": {
@@ -745,9 +745,9 @@
    "homeShort": "Spain",
    "awayShort": "England",
    "venue": "Riyadh Air Metropolitano",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League A - 6",
    "source": "api-football.com",
    "tv": {

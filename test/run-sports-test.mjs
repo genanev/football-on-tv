@@ -31,6 +31,12 @@
 //   fixtures/sky-guide-curling-tennis-2026-10-29.json  Sky's guide (raw), 29 Oct - 2 Nov, trimmed to
 //                                         the curling and tennis programmes (TNT 1-4, Sky Sports)
 //   fixtures/worldcurling-event-europeans-2026.json    World Curling's event (its page header only)
+//   fixtures/fis-skijumping-wc-2027.ics   FIS's ski jumping World Cup calendar (iCal), captured 14 Nov 2026,
+//                                         trimmed to 20 Nov - 10 Jan (the Four Hills and the weekends
+//                                         before it) and to the fields used. The Four Hills' TNT
+//                                         programmes and the Christmas racing guide entries (Dec 2026)
+//                                         weren't published yet: hand-written in TNT's and ITV's formats,
+//                                         from the real ones of 14-21 Nov 2026 (Lillehammer; Cheltenham).
 //   fixtures/wta-tournaments-2026-10-29.json           WTA calendar from 25 Oct 2026: the Grand Slams
 //                                         and Finals, plus one WTA 1000 (ignored)
 //   fixtures/wta-matches-2026-11-11.json               the WTA Finals' order of play (captured 11 Nov 2026, 00:24)
@@ -64,6 +70,8 @@ import { parseIcs, mapFisRace, skiTv, placeName, fisSeason } from '../scripts/so
 import { mapTntDay } from '../scripts/sources/tntSchedule.mjs';
 import { parseDateRange, mapWcfEvent, CURLING_EVENTS } from '../scripts/sources/curling.mjs';
 import { specialsInScope } from '../scripts/sources/specials.mjs';
+import { fourHillsOf, fetchFourHills, fourHillsEvents } from '../scripts/sources/skiJumping.mjs';
+import { christmasRacing, racingEvents } from '../scripts/sources/racing.mjs';
 import { byBroadcastDay, mapWtaTournaments, parseAtpFinals, tennisEvents, tennisDays, mapWtaPlay, parseAtpSchedule } from '../scripts/sources/tennis.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
@@ -105,6 +113,25 @@ const WR = await fx('worldrugby-matches-2026-10-29.json');
 const TNT_RUGBY = await fx('tnt-schedule-rugby-2026-10-30.json');
 const SKY_RUGBY = await fx('sky-guide-rugby-2026-10-30.json');
 let fisDown = false, wtaDown = false, wrDown = false;
+const FIS_JP = await readFile(new URL('fixtures/fis-skijumping-wc-2027.ics', import.meta.url), 'utf8');
+let fisJp = FIS_JP;
+// TNT's schedule for the Four Hills, in its format (see the header): "<town> | Men's HS <size>"
+const tntNode = (start, end, title, subtitle, channel, live = true) => ({ node: {
+  id: `jump-${start}-${channel}`, startTime: start, endTime: end, title, subtitle, sportName: 'Ski Jumping', isLive: live, channel: { name: channel }, programLink: { url: 'https://play.hbomax.com/sport/x' },
+} });
+const tntDay = (...edges) => ({ data: { programsByDate: { edges } } });
+const TNT_JUMP = {
+  '2026-12-28': tntDay(
+    tntNode('2026-12-28T13:25:00Z', '2026-12-28T14:30:00Z', "Oberstdorf | Men's HS 137", 'World Cup | Qualifying', 'TNT Sports 1'),   // qualifying: left out
+    tntNode('2026-12-28T15:10:00Z', '2026-12-28T16:45:00Z', "Oberstdorf | Women's HS 137", 'World Cup', 'TNT Sports'),               // bare "TNT Sports" = HBO Max
+  ),
+  '2026-12-29': tntDay(
+    tntNode('2026-12-29T15:25:00Z', '2026-12-29T17:45:00Z', "Oberstdorf | Men's HS 137", 'World Cup', 'TNT Sports 2'),
+    tntNode('2026-12-29T15:30:00Z', '2026-12-29T17:45:00Z', "Oberstdorf | Men's HS 137", 'World Cup', 'TNT Sports'),
+    tntNode('2026-12-29T21:00:00Z', '2026-12-29T21:30:00Z', "Oberstdorf | Men's HS 137 | Highlights", 'World Cup', 'TNT Sports 4', false),
+  ),
+  '2027-01-01': tntDay(tntNode('2027-01-01T13:00:00Z', '2027-01-01T15:15:00Z', "Garmisch-Partenkirchen | Men's HS 142", 'World Cup', 'TNT Sports 1')),
+};
 
 // ---------- Sky TV guide entries (UK local times)
 const SKY_F1 = 3835, MAIN = 4002, PLUS = 3940, MIX = 4090;
@@ -151,6 +178,14 @@ GUIDE.push(
   prog(PLUS, '2026-11-15', '09:30', 450, 'Live: ATP/WTA Tennis', 'Enjoy live action from the ATP and WTA Tours.'), // names no tournament
   prog(MAIN, '2026-11-15', '08:00', 120, 'Live: US Open Golf Review', 'Highlights.'),                              // golf, not tennis
 );
+// Christmas racing on ITV (see the header): ITV's titles, as for Cheltenham on 14 Nov 2026
+const ITV1 = 6504, ITV4 = 6534;
+GUIDE.push(
+  prog(ITV4, '2026-12-26', '09:30', 60, 'ITV Racing: The Opening Show', 'Oli Bell and the team are at Kempton ahead of the King George VI Chase.'), // a preview
+  prog(ITV1, '2026-12-26', '12:40', 185, 'ITV Racing: Live from Kempton', "Ed Chamberlin presents live action from Kempton and Wetherby. Today's feature race is the King George VI Chase."),
+  prog(ITV4, '2026-12-27', '12:55', 175, 'ITV Racing: Live from Kempton', 'Ed Chamberlin presents live action from Kempton and Chepstow.'),
+  prog(ITV4, '2026-12-30', '13:00', 180, 'ITV Racing: Live from Haydock', 'Live action from Haydock.'),                                             // not one of the four days
+);
 
 function skyDay(url) {
   const [, ymd, sids] = /schedule\/(\d{8})\/([\d,]+)/.exec(url);
@@ -183,12 +218,12 @@ globalThis.fetch = async (url) => {
   if (url.includes('tournaments.darts')) return json(/seasonID=2026/.test(url) ? PDC : { data: [], meta: { totalCount: 0 } });
   if (url.includes('awk.epgsky.com')) return guideDown ? { ok: false, status: 503 } : json(skyDay(url));
   if (url.includes('fis-ski.com')) {
-    const ics = /seasoncode=2027/.test(url) ? (/categorycode=WSC/.test(url) ? FIS_WSC : FIS_WC) : null;
+    const ics = /seasoncode=2027/.test(url) ? (/sectorcode=JP/.test(url) ? fisJp : /categorycode=WSC/.test(url) ? FIS_WSC : FIS_WC) : null;
     return fisDown || !ics ? { ok: false, status: 404 } : { ok: true, status: 200, text: async () => ics };
   }
   if (url.includes('netsport.eurosport.io')) { // TNT's schedule: the Sölden weekend, nothing on other days
     const day = ukDate(Date.parse(JSON.parse(new URL(url).searchParams.get('variables')).date) + 3600000);
-    const edges = [TNT_SKI, TNT_CURLING, TNT_RUGBY].flatMap(f => f[day]?.data.programsByDate.edges || []);
+    const edges = [TNT_SKI, TNT_CURLING, TNT_RUGBY, TNT_JUMP].flatMap(f => f[day]?.data.programsByDate.edges || []);
     return json({ data: { programsByDate: { edges, pageInfo: { hasNextPage: false } } } });
   }
   if (url.includes('api.wr-rims-prod.pulselive.com')) return wrDown ? { ok: false, status: 503 } : json(WR);
@@ -331,8 +366,7 @@ assert.equal(motoGpTv(aus[0], { programmes: [] }, null).note, 'TV channel to be 
 // ITV doesn't start live titles with "Live": the European Championship on ITV4 (real guide entries,
 // captured 20 Oct 2026) is still one session per programme, while a highlights show and a short
 // programme on the same days are not
-const ITV4 = 6534;
-const ec = { id: 'ec', name: 'European Championship', venue: 'Westfalenhallen, Dortmund', startDate: '2026-10-22', endDate: '2026-10-25', televised: true };
+const ec ={ id: 'ec', name: 'European Championship', venue: 'Westfalenhallen, Dortmund', startDate: '2026-10-22', endDate: '2026-10-25', televised: true };
 const itv = (start, mins, title, synopsis) => ({ id: `itv-${start}`, sid: ITV4, channel: 'ITV4', start: Date.parse(start), end: Date.parse(start) + mins * 60000, live: false, title, synopsis });
 const itvGuide = { programmes: [
   itv('2026-10-22T17:00:00Z', 240, 'Darts: European Championship', 'Pete Graces, Chris Mason and Maxx Hopp present day one of the European Championship Darts from Westfalenhallen in Dortmund, featuring eight first-round ties.'),
@@ -534,6 +568,72 @@ assert.equal(specialsInScope([{ comp: 'SPECIAL_CURLING', startDate: '2027-11-20'
 assert.deepEqual(specialsInScope([], '2026-10-29', [CURLING_ROW]), [CURLING_ROW]);
 assert.deepEqual(specialsInScope([], '2026-11-02', [CURLING_ROW]), []);
 assert.deepEqual(specialsInScope([], '2026-10-29'), []);
+
+// ---------- more Specials (George, 14 Nov 2026): ski jumping's Four Hills and ITV's Christmas racing
+// FIS's calendar: the eight competitions at the four hills, women a day before the men; qualifying, the
+// "FIS Four Hills Tournament" standings rows and the other World Cup weekends aren't part of it
+const hills = fourHillsOf(parseIcs(FIS_JP), 2027);
+assert.deepEqual(hills.map(c => `${c.date} ${c.gender} ${c.place} ${c.discipline}`), [
+  '2026-12-28 Women Oberstdorf Large Hill', '2026-12-29 Men Oberstdorf Large Hill',
+  '2026-12-31 Women Garmisch-Partenkirchen Large Hill', '2027-01-01 Men Garmisch-Partenkirchen Large Hill',
+  '2027-01-02 Women Innsbruck Large Hill', '2027-01-03 Men Innsbruck Large Hill',
+  '2027-01-05 Women Bischofshofen Large Hill', '2027-01-06 Men Bischofshofen Large Hill',
+]);
+assert.deepEqual((await fetchFourHills('2026-12-26', '2027-01-03')).events, [
+  { comp: 'SPECIAL_FOURHILLS', name: 'Four Hills Tournament', startDate: '2026-12-28', endDate: '2027-01-06', source: 'fis-ski.com' },
+]);
+// Racing's four days are written by hand: 26-29 December of the year
+assert.deepEqual(christmasRacing(Date.parse('2026-11-14T12:00:00Z')), { comp: 'SPECIAL_RACING', name: 'Christmas racing', startDate: '2026-12-26', endDate: '2026-12-29', source: 'sky-guide' });
+assert.equal(christmasRacing(Date.parse('2027-01-02T12:00:00Z')).startDate, '2027-12-26');
+// ITV's real Cheltenham programmes (ITV4, 14 Nov 2026): the afternoon is listed, the morning preview isn't
+const chelt = mapGuideDay({ schedule: [{ sid: '6534', events: [
+  prog(ITV4, '2026-11-14', '09:30', 60, 'ITV Racing: The Opening Show', 'Oli Bell and the team are at Cheltenham ahead of the Paddy Power Gold Cup meeting.').ev,
+  prog(ITV4, '2026-11-14', '13:00', 180, 'ITV Racing: Live from Cheltenham', "Ed Chamberlin presents live action from Cheltenham and Windsor. Today's feature race is the Paddy Power Gold Cup.").ev,
+] }] });
+const cheltDay = racingEvents({ comp: 'SPECIAL_RACING', startDate: '2026-11-14', endDate: '2026-11-14', source: 'sky-guide' }, { programmes: chelt }, '2026-11-14', 9);
+assert.deepEqual(cheltDay.map(e => `${uk(e.kickoff)} ${e.title} · ${e.session}: ${e.tv.channels.join(', ')}`), ['Sat 14, 13:00 Cheltenham · Paddy Power Gold Cup: ITV4']);
+
+// The build on Boxing Day 2026: racing's four days and the Four Hills' first competitions
+const xmas = await build(Date.parse('2026-12-26T08:00:00Z'));
+const specLine = (e) => `${uk(e.kickoff)} ${e.title}${e.session ? ` · ${e.session}` : ''}: ${[...e.tv.channels, ...e.tv.alsoOn].join(', ')}`;
+assert.deepEqual(xmas.events.filter(e => e.comp === 'SPECIAL_RACING').map(specLine), [
+  'Sat 26, 12:40 Kempton · King George VI Chase: ITV1',
+  'Sun 27, 12:55 Kempton: ITV4', // no feature race named; nothing in the guide yet for the 28th and 29th
+]); // "The Opening Show" and Haydock on the 30th aren't listed
+assert.equal(xmas.report.christmasRacing.ok, true);
+assert.deepEqual(xmas.events.filter(e => e.comp === 'SPECIAL_FOURHILLS').map(specLine), [
+  "Mon 28, 15:10 Women's Large Hill · Oberstdorf: HBO Max",               // streamed only; the men's qualifying isn't listed
+  "Tue 29, 15:25 Men's Large Hill · Oberstdorf: TNT Sports 2, HBO Max",   // TNT's channel and its stream are one entry; highlights aren't live
+  "Fri 01, 13:00 Men's Large Hill · Garmisch-Partenkirchen: TNT Sports 1",
+]); // televised competitions only: the women at Garmisch (31 Dec) aren't in TNT's schedule here
+assert.ok(xmas.events.filter(e => e.comp.startsWith('SPECIAL_')).every(e => e.kind === 'session' && e.tv.confirmed && e.end));
+assert.deepEqual(xmas.report.fourHills, { ok: true, events: ['Four Hills Tournament 2026-12-28..2027-01-06'], competitions: 3 });
+assert.deepEqual(xmas.specials.map(s => `${s.comp} ${s.tag} ${s.startDate}..${s.endDate}`), [
+  'SPECIAL_RACING Racing 2026-12-26..2026-12-29', 'SPECIAL_FOURHILLS Ski jumping 2026-12-28..2027-01-06',
+]);
+// In scope a week before: racing from 19 Dec, the Four Hills from 21 Dec; nothing is listed yet
+const dec19 = await build(Date.parse('2026-12-19T08:00:00Z'));
+assert.deepEqual(dec19.specials.map(s => s.comp), ['SPECIAL_RACING']);
+assert.deepEqual((await build(Date.parse('2026-12-21T08:00:00Z'))).specials.map(s => s.comp), ['SPECIAL_RACING', 'SPECIAL_FOURHILLS']);
+assert.equal((await build(Date.parse('2026-12-17T08:00:00Z'))).report.christmasRacing, undefined, 'no report entry while its days are outside the window');
+// The guide can't be read: racing's entries from the last update carry on
+guideDown = true;
+const xmasNoGuide = await build(Date.parse('2026-12-26T08:30:00Z'), xmas);
+guideDown = false;
+assert.equal(xmasNoGuide.report.christmasRacing.ok, false);
+assert.equal(xmasNoGuide.events.filter(e => e.comp === 'SPECIAL_RACING').length, 2);
+// FIS's calendar answers without the Four Hills in December: a failure, never a silent gap (the last
+// update's entries and dates carry on); in the summer it just isn't out yet
+fisJp = FIS_JP.replace(/LOCATION:(Oberstdorf|Garmisch-Partenkirchen|Innsbruck|Bischofshofen)/g, 'LOCATION:Elsewhere');
+const noHills = await build(Date.parse('2026-12-26T08:30:00Z'), xmas);
+assert.equal(noHills.report.fourHills.ok, false);
+assert.match(noHills.report.fourHills.error, /no Four Hills competitions/);
+assert.equal(noHills.events.filter(e => e.comp === 'SPECIAL_FOURHILLS').length, 3);
+assert.ok(noHills.specials.some(s => s.comp === 'SPECIAL_FOURHILLS'));
+assert.deepEqual(await fetchFourHills('2026-09-01', '2026-09-09'), { events: [], competitions: [] });
+fisJp = FIS_JP;
+// The same town in another title doesn't count for the other gender, and a day without TNT has no entry
+assert.deepEqual(fourHillsEvents(hills, { programmes: [] }, '2026-12-26', 9), []);
 
 // ---------- tennis (George, 29 Oct 2026): Grand Slams, ATP Finals, WTA Finals
 const tours = mapWtaTournaments(WTA);

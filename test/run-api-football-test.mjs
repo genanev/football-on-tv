@@ -16,6 +16,10 @@
 //   fixtures/uefa-nations-league-2026-11-13.json   uefa.com's feed for the same games (competition 2014)
 //   fixtures/sky-guide-nations-league-2026-11-13.json   Sky's guide for BBC Two, BBC Three and ITV1,
 //     13-17 Nov: the Nations League programmes, plus ITV1's rugby ("… Nations Championship")
+//   fixtures/api-football-lionesses-2026-11-14.json   /fixtures?league=880&season=2027&team=1721: England
+//     Women's ten games of the 2027 World Cup qualifiers, captured 14 Nov 2026 (trimmed to the fields
+//     used); the last two are the play-off against Ukraine. Its TV listings weren't published yet: the
+//     guide entries are hand-written in ITV's format.
 // The build checks are made with the other sources mocked, including the once-a-day check against
 // the official feeds (goldenCheck.mjs), whose answers are hand-written in each feed's format.
 //
@@ -31,6 +35,7 @@ import { mapAfFixture, afErrors, afSeason, leagueSeason, fetchApiFootball, AF_LE
 import { guideProgrammesFor, fullGuideTitle, mapUefaMatch, teamSim } from '../scripts/sources/football.mjs';
 import { mapGuideDay, SPORT_CHANNELS } from '../scripts/sources/skyGuide.mjs';
 import { pairMatches } from '../scripts/sources/goldenCheck.mjs';
+import { mapPlayoffFixture, lionessesTv } from '../scripts/sources/lionesses.mjs';
 
 const fx = async (name) => JSON.parse(await readFile(new URL(`fixtures/${name}`, import.meta.url), 'utf8'));
 const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: await fx('apifootball-fixtures-2026-10-19.json') };
@@ -38,6 +43,9 @@ const WEEKS = { 2024: await fx('apifootball-fixtures-2024-10-22.json'), 2026: aw
 // these November games too, which are outside their window
 WEEKS[2026][5] = await fx('apifootball-nations-league-2026-11-13.json');
 const UEFA_UNL = await fx('uefa-nations-league-2026-11-13.json');
+// The Lionesses' World Cup qualifiers (league 880, asked for season 2027)
+const LIONESSES = await fx('api-football-lionesses-2026-11-14.json');
+WEEKS[2027] = { 880: LIONESSES };
 const UNL_GUIDE = await fx('sky-guide-nations-league-2026-11-13.json');
 
 // ---------- the other sources the build reads (for the build checks at the end)
@@ -58,6 +66,9 @@ const GUIDE = [
   prog(MAIN, '2026-10-25', '11:30', 150, 'Live SPFL: Hibernian v Celtic'),
   // real: the Nations League on the BBC and ITV1, 13-17 Nov 2026
   ...UNL_GUIDE.schedule.flatMap(s => s.events.map(ev => ({ sid: Number(s.sid), ev }))),
+  // hand-written, in ITV's format: the Lionesses' play-off at Wembley, and the men's Under-21s the same evening
+  prog(6504, '2026-12-05', '17:00', 150, "Women's World Cup Play-Off: England v Ukraine"),
+  prog(6534, '2026-12-05', '17:15', 135, 'Under-21 International Football: England v Ukraine'),
 ];
 let guideReads = []; // the channels asked for in each request to Sky's guide
 const skyDay = (url) => {
@@ -523,5 +534,45 @@ assert.deepEqual(unlLate.report.goldenCheck.changed.filter(c => c.startsWith('UN
 const lateNight = await build(Date.parse('2026-11-13T23:30:00Z'), unl, { footballSource: 'api-football' });
 assert.equal(unlGames(lateNight)[0].home, 'Scotland');
 assert.ok(!unl.events.some(e => e.homeShort === 'Germany' || e.awayShort === 'Germany'));
+
+// ---------- a Special (George, 14 Nov 2026): the Lionesses' World Cup play-off, both legs
+// Only the play-off round's games count: the group games and semi-finals in the same answer don't
+assert.equal(LIONESSES.response.length, 10);
+assert.equal(LIONESSES.response.map(f => mapPlayoffFixture(f)).filter(Boolean).length, 2);
+requests = [];
+const lio = await build(Date.parse('2026-11-28T09:00:00Z'), null, { footballSource: 'api-football' });
+const lioReq = new URL(requests.find(r => new URL(r.url).searchParams.get('league') === '880').url).searchParams;
+assert.deepEqual([lioReq.get('season'), lioReq.get('team'), lioReq.get('timezone')], ['2027', '1721', 'UTC']);
+assert.equal(requests.length, 11, 'one request more per update');
+const lioGames = lio.events.filter(e => e.comp === 'SPECIAL_LIONESSES');
+assert.deepEqual(lioGames.map(e => `${ukDate(Date.parse(e.kickoff)).slice(5)} ${ukHHMM(Date.parse(e.kickoff))} ${e.home} v ${e.away}: ${e.tv.channels.join(', ') || e.tv.note}`), [
+  '12-01 17:00 Ukraine Women v England Women: TV channel to be confirmed', // nothing in the guide for the away leg
+  '12-05 17:30 England Women v Ukraine Women: ITV1',                       // not ITV4's Under-21 game at the same time
+]);
+assert.ok(lioGames.every(e => e.kind === 'match' && e.source === 'api-football.com' && e.status === 'upcoming'));
+assert.deepEqual(lio.report.lionesses, { ok: true, events: ["Women's World Cup play-off 2026-12-01..2026-12-05"], matches: 2 });
+assert.deepEqual(lio.specials.filter(s => s.comp === 'SPECIAL_LIONESSES'), [
+  { comp: 'SPECIAL_LIONESSES', name: "Women's World Cup play-off", tag: 'Lionesses', startDate: '2026-12-01', endDate: '2026-12-05' },
+]);
+// Named a week before the first leg, gone the day after the second
+const inScope = async (iso) => (await build(Date.parse(iso), null, { footballSource: 'api-football' })).specials.some(s => s.comp === 'SPECIAL_LIONESSES');
+assert.deepEqual([await inScope('2026-11-23T09:00:00Z'), await inScope('2026-11-24T09:00:00Z'), await inScope('2026-12-05T20:00:00Z'), await inScope('2026-12-06T09:00:00Z')], [false, true, true, false]);
+// A women's programme naming both nations counts whatever its wording; a men's one never does
+const wembley = lioGames[1];
+const itvProg = (title, synopsis = '') => ({ sid: 6504, channel: 'ITV1', start: Date.parse('2026-12-05T17:00:00Z'), end: Date.parse('2026-12-05T19:30:00Z'), live: false, title, synopsis });
+assert.equal(lionessesTv(wembley, { programmes: [itvProg('Live International Football', 'The Lionesses face Ukraine at Wembley for a place at the World Cup. England need a win.')] }).channels[0], 'ITV1');
+assert.equal(lionessesTv(wembley, { programmes: [itvProg('International Football: England v Ukraine')] }).confirmed, false);
+assert.equal(lionessesTv(wembley, { programmes: [itvProg("Women's Football Highlights: England v Ukraine")] }).confirmed, false);
+// API-Football down: a failure, and the last update's games and dates carry on
+afDown = true;
+const lioDown = await build(Date.parse('2026-11-28T09:30:00Z'), lio, { footballSource: 'api-football' });
+afDown = false;
+assert.equal(lioDown.report.lionesses.ok, false);
+assert.equal(lioDown.events.filter(e => e.comp === 'SPECIAL_LIONESSES').length, 2);
+assert.ok(lioDown.specials.some(s => s.comp === 'SPECIAL_LIONESSES'));
+// Official mode (no key): not read, no report entry, but still named from the last update
+const lioOfficial = await build(Date.parse('2026-11-28T09:30:00Z'), lio, { footballSource: 'official' });
+assert.equal(lioOfficial.report.lionesses, undefined);
+assert.ok(lioOfficial.specials.some(s => s.comp === 'SPECIAL_LIONESSES'));
 
 console.log('All API-Football tests passed');

@@ -9,6 +9,11 @@
 
 export const SPECIALS = [
   { comp: 'SPECIAL_CURLING', name: 'European Curling Championships', tag: 'Curling' },
+  // George, 14 Nov 2026: the Lionesses' play-off (lionesses.mjs), ski jumping's Four Hills
+  // (skiJumping.mjs) and ITV's Christmas racing (racing.mjs)
+  { comp: 'SPECIAL_LIONESSES', name: "Women's World Cup play-off", tag: 'Lionesses' },
+  { comp: 'SPECIAL_RACING', name: 'Christmas racing', tag: 'Racing' },
+  { comp: 'SPECIAL_FOURHILLS', name: 'Four Hills Tournament', tag: 'Ski jumping' },
 ];
 
 export const SCOPE_DAYS = 7;

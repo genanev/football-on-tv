@@ -4,6 +4,10 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
+## 1.0.12
+- A tidier front page: the list of where the listings come from is gone.
+- Settings: clearer section headings, and a shorter note on fixtures reminders.
+
 ## 1.0.11
 - For internal testing: subscriptions switched on. A free month, then one sport for free or £3.65 a year; My account is in Settings.
 

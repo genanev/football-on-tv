@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-15T13:30:13.076Z",
+ "generatedAt": "2026-11-15T14:00:11.258Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 28,
+   "events": 27,
    "errors": []
   },
   "tntSchedule": {
@@ -495,9 +495,7 @@
     "channels": [
      "Sky Sports Premier League"
     ],
-    "alsoOn": [
-     "Sky Sports Football"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -530,7 +528,8 @@
      "Sky Sports Football"
     ],
     "alsoOn": [
-     "Sky Sports Mix"
+     "Sky Sports Mix",
+     "Sky Sports Premier League"
     ],
     "confirmed": true,
     "note": null,

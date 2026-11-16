@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T00:00:20.109Z",
+ "generatedAt": "2026-11-16T00:30:24.312Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 145
+   "events": 137
   },
   "footballSource": "api-football",
   "goldenCheck": {

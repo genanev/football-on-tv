@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T21:00:23.999Z",
+ "generatedAt": "2026-11-16T21:30:17.008Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -98,8 +98,9 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 5
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297&pageSize=50",
+   "failingSince": "2026-11-16T21:30:17.008Z"
   },
   "footballChannels": "14/19 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -147,8 +148,10 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 3
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "keptEvents": 3,
+   "failingSince": "2026-11-16T21:30:17.008Z"
   },
   "darts": {
    "ok": true,
@@ -185,7 +188,9 @@
     "ATP Finals"
    ],
    "days": 13,
-   "errors": []
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-16&to=2026-11-24"
+   ]
   },
   "tennisSchedule": {
    "ok": true,

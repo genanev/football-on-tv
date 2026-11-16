@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T19:30:26.943Z",
+ "generatedAt": "2026-11-16T20:00:20.632Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 5063,
+   "programmes": 5061,
    "errors": []
   },
   "skyListings": {
@@ -349,9 +349,9 @@
    "homeShort": "Switzerland",
    "awayShort": "Scotland",
    "venue": "Kybunpark",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League B - 6",
    "source": "api-football.com",
    "tv": {

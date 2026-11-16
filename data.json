@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T16:30:20.754Z",
+ "generatedAt": "2026-11-16T17:00:17.662Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 5065,
+   "programmes": 5059,
    "errors": []
   },
   "skyListings": {
@@ -1012,9 +1012,7 @@
     "channels": [
      "TNT Sports 1"
     ],
-    "alsoOn": [
-     "TNT Sports 2"
-    ],
+    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,

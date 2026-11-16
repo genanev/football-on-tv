@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T20:00:20.632Z",
+ "generatedAt": "2026-11-16T20:30:12.801Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -350,7 +350,7 @@
    "awayShort": "Scotland",
    "venue": "Kybunpark",
    "status": "live",
-   "homeScore": 0,
+   "homeScore": 1,
    "awayScore": 0,
    "round": "League B - 6",
    "source": "api-football.com",

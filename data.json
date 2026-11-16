@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T01:00:24.483Z",
+ "generatedAt": "2026-11-16T01:30:16.423Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4657,
+   "programmes": 5015,
    "errors": []
   },
   "skyListings": {
@@ -2622,13 +2622,17 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -2658,6 +2662,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2689,6 +2694,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -2962,13 +2968,17 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -3031,6 +3041,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3095,6 +3106,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }
@@ -3159,6 +3171,7 @@
     "note": null,
     "conflict": false,
     "sources": [
+     "sky-guide",
      "tntsports.co.uk"
     ]
    }

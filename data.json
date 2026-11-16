@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T09:30:24.443Z",
+ "generatedAt": "2026-11-16T10:00:19.634Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 5063,
+   "programmes": 5057,
    "errors": []
   },
   "skyListings": {
@@ -3026,13 +3026,17 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "Sky Sports Football",
+    "channels": [
+     "Sky Sports Football"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

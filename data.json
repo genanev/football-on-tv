@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T07:00:28.282Z",
+ "generatedAt": "2026-11-16T07:30:16.633Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 5037,
+   "programmes": 5056,
    "errors": []
   },
   "skyListings": {
@@ -172,7 +172,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 12
+   "matches": 13
   },
   "skiing": {
    "ok": true,
@@ -2567,6 +2567,35 @@
      "TNT Sports 1"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "SuperSport Park, Centurion",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269797-d1",
+   "kickoff": "2026-11-23T08:00:00.000Z",
+   "end": "2026-11-23T15:00:00.000Z",
+   "session": "2nd Test, Day 1",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Cricket"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

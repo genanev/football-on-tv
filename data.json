@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-16T05:30:19.368Z",
+ "generatedAt": "2026-11-16T06:00:20.996Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -24,9 +24,18 @@
    "errors": []
   },
   "primeVideo": {
-   "ok": false,
-   "error": "HTTP 503 for https://www.primevideo.com/tournament/amzn1.dv.icid.f40b96cd-f09e-48db-a9ec-0b0e298a39c8",
-   "failingSince": "2026-11-16T05:00:30.284Z"
+   "ok": true,
+   "events": 8,
+   "amazonPicks": [
+    "Arsenal vs. Dortmund",
+    "Barcelona vs. Manchester City",
+    "Manchester United vs. Roma",
+    "Liverpool vs. Villarreal",
+    "Atlético Madrid vs. Manchester United",
+    "Porto vs. Manchester City",
+    "LASK vs. Celtic FC",
+    "Fenerbahce vs. Lyon"
+   ]
   },
   "premierSports": {
    "ok": true,
@@ -36,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-15T06:00:22.985Z",
+    "checkedAt": "2026-11-16T06:00:20.996Z",
     "corrections": 0
    },
    "changed": []
@@ -92,7 +101,7 @@
    "ok": true,
    "matches": 5
   },
-  "footballChannels": "13/19 PL+UCL matches with a confirmed channel",
+  "footballChannels": "14/19 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 0
@@ -180,8 +189,8 @@
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-15T02:30:17.837Z",
-   "days": 8
+   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "days": 7
   },
   "rugby": {
    "ok": true,
@@ -2980,7 +2989,7 @@
    "kickoff": "2026-11-24T20:00:00.000Z",
    "timeTbc": false,
    "home": "Arsenal",
-   "away": "Borussia Dortmund",
+   "away": "Dortmund",
    "homeShort": "Arsenal",
    "awayShort": "Borussia Dortmund",
    "venue": "Emirates Stadium",
@@ -2999,8 +3008,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "primevideo.com",
-     "previous-update"
+     "primevideo.com"
     ]
    }
   },
@@ -3203,7 +3211,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": [],
    "matches": [
     {
@@ -3270,37 +3278,36 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-15T06:00:22.985Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-15T02:30:17.837Z",
+   "checkedAt": "2026-11-16T06:00:20.996Z",
    "starts": {
     "TEN_ATPF": {
-     "2026-11-15": "2026-11-15T10:30:00.000Z",
      "2026-11-16": "2026-11-16T10:30:00.000Z",
      "2026-11-17": "2026-11-17T10:30:00.000Z",
      "2026-11-18": "2026-11-18T10:30:00.000Z",
@@ -3312,16 +3319,6 @@
    },
    "sessions": {
     "TEN_ATPF": {
-     "2026-11-15": [
-      {
-       "start": "2026-11-15T10:30:00.000Z",
-       "singles": "2026-11-15T13:00:00.000Z"
-      },
-      {
-       "start": "2026-11-15T17:00:00.000Z",
-       "singles": "2026-11-15T19:30:00.000Z"
-      }
-     ],
      "2026-11-16": [
       {
        "start": "2026-11-16T10:30:00.000Z",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T10:30:29.745Z",
+ "generatedAt": "2026-11-17T11:00:34.187Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1046,
+   "programmes": 1043,
    "errors": []
   },
   "primeVideo": {
@@ -1507,11 +1507,12 @@
    "session": "Sprint",
    "status": "upcoming",
    "tv": {
-    "broadcaster": "TNT Sports 2",
+    "broadcaster": "TNT Sports 1",
     "channels": [
-     "TNT Sports 2"
+     "TNT Sports 1"
     ],
     "alsoOn": [
+     "TNT Sports 2",
      "HBO Max"
     ],
     "confirmed": true,

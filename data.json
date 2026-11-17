@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T05:30:18.506Z",
+ "generatedAt": "2026-11-17T06:00:18.946Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-16T06:00:20.996Z",
+    "checkedAt": "2026-11-17T06:00:18.946Z",
     "corrections": 0
    },
    "changed": []
@@ -189,8 +189,8 @@
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
-   "days": 7
+   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "days": 6
   },
   "rugby": {
    "ok": true,
@@ -3530,7 +3530,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": [],
    "matches": [
     {
@@ -3597,37 +3597,36 @@
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-16T06:00:20.996Z",
+   "checkedAt": "2026-11-17T06:00:18.946Z",
    "starts": {
     "TEN_ATPF": {
-     "2026-11-16": "2026-11-16T10:30:00.000Z",
      "2026-11-17": "2026-11-17T10:30:00.000Z",
      "2026-11-18": "2026-11-18T10:30:00.000Z",
      "2026-11-19": "2026-11-19T10:30:00.000Z",
@@ -3638,16 +3637,6 @@
    },
    "sessions": {
     "TEN_ATPF": {
-     "2026-11-16": [
-      {
-       "start": "2026-11-16T10:30:00.000Z",
-       "singles": "2026-11-16T13:00:00.000Z"
-      },
-      {
-       "start": "2026-11-16T17:00:00.000Z",
-       "singles": "2026-11-16T19:30:00.000Z"
-      }
-     ],
      "2026-11-17": [
       {
        "start": "2026-11-17T10:30:00.000Z",

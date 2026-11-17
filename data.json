@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T11:00:34.187Z",
+ "generatedAt": "2026-11-17T11:30:17.998Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1043,
+   "programmes": 1045,
    "errors": []
   },
   "primeVideo": {

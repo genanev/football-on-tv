@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T21:00:21.277Z",
+ "generatedAt": "2026-11-17T21:30:29.737Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,12 +15,12 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 24,
+   "events": 23,
    "errors": []
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1046,
+   "programmes": 1047,
    "errors": []
   },
   "primeVideo": {
@@ -351,7 +351,7 @@
    "venue": "Puskás Aréna",
    "status": "live",
    "homeScore": 1,
-   "awayScore": 0,
+   "awayScore": 1,
    "round": "League B - 6",
    "source": "api-football.com",
    "tv": {
@@ -382,7 +382,7 @@
    "venue": "Cardiff City Stadium",
    "status": "live",
    "homeScore": 2,
-   "awayScore": 2,
+   "awayScore": 3,
    "round": "League A - 6",
    "source": "api-football.com",
    "tv": {

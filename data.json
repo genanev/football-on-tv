@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T19:30:14.498Z",
+ "generatedAt": "2026-11-17T20:00:20.595Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 5059,
+   "programmes": 5057,
    "errors": []
   },
   "skyListings": {
@@ -349,9 +349,9 @@
    "homeShort": "Hungary",
    "awayShort": "Northern Ireland",
    "venue": "Puskás Aréna",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 0,
+   "awayScore": 0,
    "round": "League B - 6",
    "source": "api-football.com",
    "tv": {
@@ -380,9 +380,9 @@
    "homeShort": "Wales",
    "awayShort": "Portugal",
    "venue": "Cardiff City Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
+   "status": "live",
+   "homeScore": 1,
+   "awayScore": 1,
    "round": "League A - 6",
    "source": "api-football.com",
    "tv": {

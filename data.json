@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T19:00:26.865Z",
+ "generatedAt": "2026-11-17T19:30:14.498Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -25,7 +25,7 @@
   },
   "primeVideo": {
    "ok": true,
-   "events": 10,
+   "events": 11,
    "amazonPicks": [
     "Arsenal vs. Dortmund",
     "Barcelona vs. Manchester City",

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18T03:00:29.565Z",
+ "generatedAt": "2026-11-18T03:30:21.041Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -234,7 +234,7 @@
    "kickoff": "2026-11-18T03:30:00.000Z",
    "end": "2026-11-18T11:30:00.000Z",
    "session": "3rd ODI",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",

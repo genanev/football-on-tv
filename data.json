@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18T11:30:25.872Z",
+ "generatedAt": "2026-11-18T12:00:14.856Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1052,
+   "programmes": 1061,
    "errors": []
   },
   "primeVideo": {
@@ -246,7 +246,8 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide"
+     "sky-guide",
+     "previous-update"
     ]
    }
   },

@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18T05:30:11.940Z",
+ "generatedAt": "2026-11-18T06:00:11.846Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4988,
+   "programmes": 4997,
    "errors": []
   },
   "skyListings": {
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-17T06:00:18.946Z",
+    "checkedAt": "2026-11-18T06:00:11.846Z",
     "corrections": 0
    },
    "changed": []
@@ -173,7 +173,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 14
+   "matches": 15
   },
   "skiing": {
    "ok": true,
@@ -190,8 +190,8 @@
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
-   "days": 6
+   "checkedAt": "2026-11-18T06:00:11.846Z",
+   "days": 5
   },
   "rugby": {
    "ok": true,
@@ -3389,6 +3389,35 @@
    }
   },
   {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "South Africa v Bangladesh",
+   "venue": "SuperSport Park, Centurion",
+   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-269797-d4",
+   "kickoff": "2026-11-26T08:00:00.000Z",
+   "end": "2026-11-26T15:00:00.000Z",
+   "session": "2nd Test, Day 4",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Cricket"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "id": "af-1636435",
    "comp": "UECL",
    "label": null,
@@ -4553,7 +4582,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": [],
    "matches": [
     {
@@ -4615,42 +4644,47 @@
      "home": "Brentford",
      "away": "Everton",
      "kickoff": "2026-11-23T20:00:00.000Z"
+    },
+    {
+     "sourceId": "2645313",
+     "home": "Nottingham Forest",
+     "away": "Chelsea",
+     "kickoff": "2026-11-27T20:00:00.000Z"
     }
    ]
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-17T06:00:18.946Z",
+   "checkedAt": "2026-11-18T06:00:11.846Z",
    "starts": {
     "TEN_ATPF": {
-     "2026-11-17": "2026-11-17T10:30:00.000Z",
      "2026-11-18": "2026-11-18T10:30:00.000Z",
      "2026-11-19": "2026-11-19T10:30:00.000Z",
      "2026-11-20": "2026-11-20T10:30:00.000Z",
@@ -4660,16 +4694,6 @@
    },
    "sessions": {
     "TEN_ATPF": {
-     "2026-11-17": [
-      {
-       "start": "2026-11-17T10:30:00.000Z",
-       "singles": "2026-11-17T13:00:00.000Z"
-      },
-      {
-       "start": "2026-11-17T17:00:00.000Z",
-       "singles": "2026-11-17T19:30:00.000Z"
-      }
-     ],
      "2026-11-18": [
       {
        "start": "2026-11-18T10:30:00.000Z",

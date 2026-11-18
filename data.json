@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18T11:00:20.440Z",
+ "generatedAt": "2026-11-18T11:30:25.872Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -108,7 +108,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 0
+   "televised": 2
   },
   "scottishPremiership": {
    "ok": true,
@@ -232,9 +232,9 @@
    "source": "icc-cricket.com",
    "id": "cricket-270241",
    "kickoff": "2026-11-18T03:30:00.000Z",
-   "end": "2026-11-18T11:30:00.000Z",
+   "end": "2026-11-18T11:04:00.000Z",
    "session": "3rd ODI",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "tv": {
     "broadcaster": "TNT Sports 1",
@@ -1029,6 +1029,40 @@
    }
   },
   {
+   "id": "af-1607737",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-21T12:45:00.000Z",
+   "timeTbc": false,
+   "home": "Liverpool Women",
+   "away": "Chelsea Women",
+   "homeShort": "Liverpool",
+   "awayShort": "Chelsea",
+   "venue": "St Helens Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Premier League",
+    "channels": [
+     "Sky Sports Premier League"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide",
+     "skysports.com"
+    ]
+   }
+  },
+  {
    "id": "wr-3642431c-f6c3-421d-8fba-8171e12e05e0",
    "comp": "RU_NATIONS",
    "kind": "match",
@@ -1677,6 +1711,37 @@
     "conflict": false,
     "sources": [
      "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607738",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-21T17:15:00.000Z",
+   "timeTbc": false,
+   "home": "London City Lionesses",
+   "away": "Crystal Palace Women",
+   "homeShort": "London City Lionesses",
+   "awayShort": "Crystal Palace",
+   "venue": "Copperjax Community Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports+",
+    "channels": [
+     "Sky Sports+"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "skysports.com"
     ]
    }
   },

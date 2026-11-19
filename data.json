@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T00:00:15.530Z",
+ "generatedAt": "2026-11-19T00:30:24.024Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 148
+   "events": 143
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -872,7 +872,7 @@
    "away": "Chelsea Women",
    "homeShort": "Liverpool",
    "awayShort": "Chelsea",
-   "venue": "St Helens Stadium",
+   "venue": "West Lancashire College Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -997,7 +997,7 @@
    "away": "Wrexham",
    "homeShort": "Lincoln",
    "awayShort": "Wrexham",
-   "venue": "LNER stadium",
+   "venue": "Sincil Bank",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1081,7 +1081,7 @@
    "away": "Birmingham City",
    "homeShort": "Stoke City",
    "awayShort": "Birmingham",
-   "venue": "Bet365 Stadium",
+   "venue": "bet365 Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1442,7 +1442,7 @@
    "away": "Aberdeen",
    "homeShort": "Kilmarnock",
    "awayShort": "Aberdeen",
-   "venue": "Rugby Park",
+   "venue": "The BBSP Stadium Rugby Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1558,7 +1558,7 @@
    "away": "Crystal Palace Women",
    "homeShort": "London City Lionesses",
    "awayShort": "Crystal Palace",
-   "venue": "Copperjax Community Stadium",
+   "venue": "Princes Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -1589,7 +1589,7 @@
    "away": "Arsenal",
    "homeShort": "Newcastle",
    "awayShort": "Arsenal",
-   "venue": "St. James' Park",
+   "venue": "St James' Park",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

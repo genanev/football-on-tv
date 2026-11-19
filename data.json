@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T09:00:24.056Z",
+ "generatedAt": "2026-11-19T09:30:28.530Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4991,
+   "programmes": 4992,
    "errors": []
   },
   "skyListings": {
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 143
+   "events": 146
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -108,7 +108,7 @@
   },
   "wsl": {
    "ok": true,
-   "televised": 2
+   "televised": 3
   },
   "scottishPremiership": {
    "ok": true,
@@ -1919,6 +1919,39 @@
      "Sky Sports Football"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "id": "af-1607739",
+   "comp": "WSL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-22T12:00:00.000Z",
+   "timeTbc": false,
+   "home": "Manchester City Women",
+   "away": "Tottenham Hotspur Women",
+   "homeShort": "Manchester City",
+   "awayShort": "Tottenham Hotspur",
+   "venue": "Academy Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 11",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Mix"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

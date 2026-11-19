@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18T23:30:31.168Z",
+ "generatedAt": "2026-11-19T00:00:15.530Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4989,
+   "programmes": 4697,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1052,
+   "programmes": 1062,
    "errors": []
   },
   "primeVideo": {
@@ -77,13 +77,13 @@
   },
   "apiFootball": {
    "ok": true,
-   "matches": 111,
+   "matches": 105,
    "errors": [],
    "unknownClubs": []
   },
   "premierLeague": {
    "ok": true,
-   "matches": 10
+   "matches": 11
   },
   "championsLeague": {
    "ok": true,
@@ -99,9 +99,9 @@
   },
   "premierLeagueTv": {
    "ok": true,
-   "matches": 5
+   "matches": 6
   },
-  "footballChannels": "23/28 PL+UCL matches with a confirmed channel",
+  "footballChannels": "23/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
    "televised": 18
@@ -120,7 +120,7 @@
   },
   "efl": {
    "ok": true,
-   "championship": 24,
+   "championship": 25,
    "leagueCup": 0
   },
   "faCup": {
@@ -131,12 +131,13 @@
    "ok": true,
    "sessions": 2,
    "weekends": [
-    "Las Vegas Grand Prix"
+    "Las Vegas Grand Prix",
+    "Qatar Grand Prix"
    ]
   },
   "formula2": {
    "ok": true,
-   "sessions": 0,
+   "sessions": 1,
    "weekends": [
     "Qatar"
    ]
@@ -153,7 +154,8 @@
   "darts": {
    "ok": true,
    "tournaments": [
-    "Grand Slam of Darts"
+    "Grand Slam of Darts",
+    "Players Championship Finals"
    ],
    "sessions": 8
   },
@@ -173,7 +175,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 15
+   "matches": 13
   },
   "skiing": {
    "ok": true,
@@ -185,7 +187,7 @@
    "tournaments": [
     "ATP Finals"
    ],
-   "days": 9,
+   "days": 7,
    "errors": []
   },
   "tennisSchedule": {
@@ -195,7 +197,7 @@
   },
   "rugby": {
    "ok": true,
-   "matches": 6
+   "matches": 8
   },
   "curling": {
    "ok": true,
@@ -223,176 +225,6 @@
  },
  "specials": [],
  "events": [
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "Australia v England",
-   "venue": "Bellerive Oval, Hobart",
-   "series": "England in Australia, 3 ODI Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-270241",
-   "kickoff": "2026-11-18T03:30:00.000Z",
-   "end": "2026-11-18T11:04:00.000Z",
-   "session": "3rd ODI",
-   "status": "finished",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide",
-     "previous-update"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "South Africa v Bangladesh",
-   "venue": "The Wanderers Stadium, Johannesburg",
-   "series": "Bangladesh in South Africa, 2 Test Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-269796-d4",
-   "kickoff": "2026-11-18T08:00:00.000Z",
-   "end": "2026-11-18T15:00:00.000Z",
-   "session": "1st Test, Day 4",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Cricket"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_ATPF",
-   "kind": "session",
-   "title": "ATP Finals",
-   "session": "Group Stage · Day session · singles from 13:00",
-   "venue": "Inalpi Arena, Torino",
-   "source": "nittoatpfinals.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-atpf-2026-2026-11-18",
-   "kickoff": "2026-11-18T10:30:00.000Z",
-   "end": "2026-11-18T15:00:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "TEN_ATPF",
-   "kind": "session",
-   "title": "ATP Finals",
-   "session": "Group Stage · Evening session · singles from 19:30",
-   "venue": "Inalpi Arena, Torino",
-   "source": "nittoatpfinals.com",
-   "status": "upcoming",
-   "label": null,
-   "id": "tennis-atpf-2026-2026-11-18-2",
-   "kickoff": "2026-11-18T17:00:00.000Z",
-   "end": "2026-11-18T21:30:00.000Z",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports Tennis"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "Grand Slam of Darts",
-   "venue": "Aldersley Leisure Village, Wolverhampton",
-   "source": "pdc.tv",
-   "id": "darts-10871-1795028400",
-   "kickoff": "2026-11-18T19:00:00.000Z",
-   "end": "2026-11-18T23:00:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [
-     "Sky Sports+"
-    ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "CRICKET",
-   "kind": "session",
-   "title": "New Zealand v India",
-   "venue": "Cello Basin Reserve, Wellington",
-   "series": "India in New Zealand, 2 Test Series, 2026",
-   "source": "icc-cricket.com",
-   "id": "cricket-271656-d1",
-   "kickoff": "2026-11-18T22:00:00.000Z",
-   "end": "2026-11-19T05:00:00.000Z",
-   "session": "1st Test, Day 1",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
   {
    "comp": "CRICKET",
    "kind": "session",
@@ -4674,6 +4506,185 @@
     "sources": [
      "sky-guide"
     ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "Australia v England",
+   "venue": "The Gabba, Brisbane",
+   "series": "England in Australia, 5 T20I Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-270244",
+   "kickoff": "2026-11-27T08:15:00.000Z",
+   "end": "2026-11-27T12:15:00.000Z",
+   "session": "3rd T20I",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Players Championship Finals",
+   "venue": "Butlins, Minehead",
+   "source": "pdc.tv",
+   "id": "darts-10872-2026-11-27",
+   "kickoff": "2026-11-27T12:00:00.000Z",
+   "end": null,
+   "session": null,
+   "status": "upcoming",
+   "timeTbc": true,
+   "allDay": true,
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV times to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "f2-11644",
+   "comp": "F2",
+   "kind": "session",
+   "kickoff": "2026-11-27T13:00:00.000Z",
+   "end": "2026-11-27T14:00:00.000Z",
+   "title": "Qatar",
+   "session": "Qualifying",
+   "venue": "Lusail",
+   "status": "upcoming",
+   "timeTbc": true,
+   "source": "fiaformula2.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "wr-e7d020c9-fe59-405e-ab5e-39696c8ce9b7",
+   "comp": "RU_NATIONS",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-11-27T16:40:00.000Z",
+   "timeTbc": false,
+   "home": "NTH 6th",
+   "away": "STH 6th",
+   "homeShort": "NTH 6th",
+   "awayShort": "STH 6th",
+   "venue": "TBC",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": null,
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1563294",
+   "sourceId": "1563294",
+   "comp": "CHAMP",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-27T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Southampton",
+   "away": "Middlesbrough",
+   "homeShort": "Southampton",
+   "awayShort": "Middlesbrough",
+   "venue": "St. Mary's Stadium",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 18",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
+   }
+  },
+  {
+   "id": "af-1557485",
+   "comp": "PL",
+   "label": null,
+   "kind": "match",
+   "kickoff": "2026-11-27T20:00:00.000Z",
+   "timeTbc": false,
+   "home": "Nottingham Forest",
+   "away": "Chelsea",
+   "homeShort": "Nottingham Forest",
+   "awayShort": "Chelsea",
+   "venue": "City Ground",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": "Regular Season - 12",
+   "source": "api-football.com",
+   "tv": {
+    "broadcaster": "Sky Sports",
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "Exact channel to be confirmed",
+    "conflict": false,
+    "sources": [
+     "premierleague.com"
+    ]
+   }
+  },
+  {
+   "id": "wr-b1d07ba6-de16-4c54-99c1-fbc145c18c75",
+   "comp": "RU_NATIONS",
+   "kind": "match",
+   "label": null,
+   "kickoff": "2026-11-27T20:10:00.000Z",
+   "timeTbc": false,
+   "home": "NTH 3rd",
+   "away": "STH 3rd",
+   "homeShort": "NTH 3rd",
+   "awayShort": "STH 3rd",
+   "venue": "TBC",
+   "status": "upcoming",
+   "homeScore": null,
+   "awayScore": null,
+   "round": null,
+   "source": "world.rugby",
+   "tv": {
+    "broadcaster": null,
+    "channels": [],
+    "alsoOn": [],
+    "confirmed": false,
+    "note": "TV channel to be confirmed",
+    "conflict": false,
+    "sources": []
    }
   }
  ],

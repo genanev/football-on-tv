@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T01:30:18.464Z",
+ "generatedAt": "2026-11-19T02:00:28.645Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4953,
+   "programmes": 4963,
    "errors": []
   },
   "skyListings": {
@@ -3484,7 +3484,7 @@
    "away": "Lincoln Red Imps FC",
    "homeShort": "Egnatia Rrogozhinë",
    "awayShort": "Lincoln Red Imps FC",
-   "venue": "Demrozi Stadium",
+   "venue": "Arena Kombetare",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -4541,21 +4541,24 @@
    "title": "Players Championship Finals",
    "venue": "Butlins, Minehead",
    "source": "pdc.tv",
-   "id": "darts-10872-2026-11-27",
-   "kickoff": "2026-11-27T12:00:00.000Z",
-   "end": null,
-   "session": null,
+   "id": "darts-10872-1795784400",
+   "kickoff": "2026-11-27T13:00:00.000Z",
+   "end": "2026-11-27T17:00:00.000Z",
+   "session": "Afternoon session",
    "status": "upcoming",
-   "timeTbc": true,
-   "allDay": true,
+   "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV times to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

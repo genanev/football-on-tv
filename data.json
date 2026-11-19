@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T01:00:20.832Z",
+ "generatedAt": "2026-11-19T01:30:18.464Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4700,
+   "programmes": 4953,
    "errors": []
   },
   "skyListings": {
@@ -98,9 +98,8 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297,2645313&pageSize=50",
-   "failingSince": "2026-11-19T01:00:20.832Z"
+   "ok": true,
+   "matches": 6
   },
   "footballChannels": "23/29 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -149,10 +148,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
-   "keptEvents": 3,
-   "failingSince": "2026-11-19T01:00:20.832Z"
+   "ok": true,
+   "sessions": 3
   },
   "darts": {
    "ok": true,
@@ -178,7 +175,7 @@
   },
   "cricket": {
    "ok": true,
-   "matches": 13
+   "matches": 14
   },
   "skiing": {
    "ok": true,
@@ -191,9 +188,7 @@
     "ATP Finals"
    ],
    "days": 7,
-   "errors": [
-    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-19&to=2026-11-27"
-   ]
+   "errors": []
   },
   "tennisSchedule": {
    "ok": true,
@@ -4527,13 +4522,17 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": null,
-    "channels": [],
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
     "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -4654,13 +4653,15 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
+    "broadcaster": "Sky Sports",
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "note": "Exact channel to be confirmed",
     "conflict": false,
-    "sources": []
+    "sources": [
+     "premierleague.com"
+    ]
    }
   },
   {
@@ -4688,6 +4689,33 @@
     "note": "TV channel to be confirmed",
     "conflict": false,
     "sources": []
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Hagley Oval, Christchurch",
+   "series": "India in New Zealand, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271657-d2",
+   "kickoff": "2026-11-27T22:00:00.000Z",
+   "end": "2026-11-28T05:00:00.000Z",
+   "session": "2nd Test, Day 2",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
    }
   }
  ],

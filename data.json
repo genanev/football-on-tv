@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T17:00:40.957Z",
+ "generatedAt": "2026-11-19T17:30:10.829Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1067,
+   "programmes": 1064,
    "errors": []
   },
   "primeVideo": {
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 150
+   "events": 167
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -3388,7 +3388,7 @@
    "kickoff": "2026-11-26T15:30:00.000Z",
    "timeTbc": false,
    "home": "Kairat Almaty",
-   "away": "Mjällby AIF",
+   "away": "Mjallby AIF",
    "homeShort": "Kairat Almaty",
    "awayShort": "Mjallby AIF",
    "venue": "Almaty Central Stadium",
@@ -3407,8 +3407,7 @@
     "note": null,
     "conflict": false,
     "sources": [
-     "sky-guide",
-     "tntsports.co.uk"
+     "sky-guide"
     ]
    }
   },
@@ -4684,7 +4683,7 @@
    "away": "STH 6th",
    "homeShort": "NTH 6th",
    "awayShort": "STH 6th",
-   "venue": "TBC",
+   "venue": "Allianz Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,
@@ -4772,7 +4771,7 @@
    "away": "STH 3rd",
    "homeShort": "NTH 3rd",
    "awayShort": "STH 3rd",
-   "venue": "TBC",
+   "venue": "Allianz Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

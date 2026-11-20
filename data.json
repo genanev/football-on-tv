@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T06:30:32.850Z",
+ "generatedAt": "2026-11-20T07:00:25.706Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4920,
+   "programmes": 4931,
    "errors": []
   },
   "skyListings": {
@@ -165,7 +165,7 @@
     "The RSM Classic",
     "BMW Australian PGA Championship"
    ],
-   "rounds": 4,
+   "rounds": 5,
    "errors": []
   },
   "snooker": {
@@ -4640,6 +4640,34 @@
      "TNT Sports 1"
     ],
     "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "GOLF",
+   "kind": "session",
+   "title": "BMW Australian PGA Championship",
+   "venue": "The Lakes GC",
+   "source": "europeantour.com",
+   "session": "Round 3",
+   "status": "upcoming",
+   "id": "golf-dpwt-2026-11-26-bmw-australian-pga-championship-2026-11-28",
+   "kickoff": "2026-11-28T01:00:00.000Z",
+   "end": "2026-11-28T06:00:00.000Z",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Golf"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

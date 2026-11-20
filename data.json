@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T09:00:35.436Z",
+ "generatedAt": "2026-11-20T09:30:19.467Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4931,
+   "programmes": 4934,
    "errors": []
   },
   "skyListings": {
@@ -4804,13 +4804,19 @@
    "round": "Regular Season - 18",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Football"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {

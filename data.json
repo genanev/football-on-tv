@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T10:00:14.352Z",
+ "generatedAt": "2026-11-20T10:30:15.095Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4935,
+   "programmes": 4930,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1097,
+   "programmes": 1096,
    "errors": []
   },
   "primeVideo": {
@@ -98,14 +98,13 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297,2645313,2645312,2645311,2645310&pageSize=50",
-   "failingSince": "2026-11-20T10:00:14.352Z"
+   "ok": true,
+   "matches": 7
   },
-  "footballChannels": "24/32 PL+UCL matches with a confirmed channel",
+  "footballChannels": "25/32 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
    "ok": true,
-   "televised": 18
+   "televised": 17
   },
   "wsl": {
    "ok": true,
@@ -149,10 +148,8 @@
    "weekends": []
   },
   "motogp": {
-   "ok": false,
-   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
-   "keptEvents": 5,
-   "failingSince": "2026-11-20T10:00:14.352Z"
+   "ok": true,
+   "sessions": 5
   },
   "darts": {
    "ok": true,
@@ -176,7 +173,7 @@
    "tournaments": [
     "Leasing Options UK Championship"
    ],
-   "sessions": 4
+   "sessions": 3
   },
   "cricket": {
    "ok": true,
@@ -193,9 +190,7 @@
     "ATP Finals"
    ],
    "days": 5,
-   "errors": [
-    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-20&to=2026-11-28"
-   ]
+   "errors": []
   },
   "tennisSchedule": {
    "ok": true,
@@ -3220,37 +3215,6 @@
    }
   },
   {
-   "id": "af-1636435",
-   "comp": "UECL",
-   "label": null,
-   "kind": "match",
-   "kickoff": "2026-11-26T15:30:00.000Z",
-   "timeTbc": false,
-   "home": "Kairat Almaty",
-   "away": "Mjallby AIF",
-   "homeShort": "Kairat Almaty",
-   "awayShort": "Mjallby AIF",
-   "venue": "Almaty Central Stadium",
-   "status": "upcoming",
-   "homeScore": null,
-   "awayScore": null,
-   "round": "League Stage - 4",
-   "source": "api-football.com",
-   "tv": {
-    "broadcaster": "TNT Sports 4",
-    "channels": [
-     "TNT Sports 4"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "id": "af-1636381",
    "comp": "UECL",
    "label": null,
@@ -5363,13 +5327,19 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports Main Event",
+    "channels": [
+     "Sky Sports Main Event"
+    ],
+    "alsoOn": [
+     "Sky Sports Premier League"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -5543,32 +5513,6 @@
    }
   },
   {
-   "comp": "SNOOKER",
-   "kind": "session",
-   "title": "Leasing Options UK Championship",
-   "venue": "York",
-   "source": "wst.tv",
-   "status": "upcoming",
-   "id": "snooker-0927fcad-18aa-4b62-bea9-2fdf915d15f5-1795900500",
-   "kickoff": "2026-11-28T21:15:00.000Z",
-   "end": "2026-11-28T22:30:00.000Z",
-   "session": "Evening session",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "TNT Sports 1",
-    "channels": [
-     "TNT Sports 1"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
    "comp": "CRICKET",
    "kind": "session",
    "title": "New Zealand v India",
@@ -5582,9 +5526,9 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "TNT Sports 3",
+    "broadcaster": "TNT Sports 1",
     "channels": [
-     "TNT Sports 3"
+     "TNT Sports 1"
     ],
     "alsoOn": [],
     "confirmed": true,

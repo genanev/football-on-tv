@@ -254,11 +254,12 @@ The project only moves past a gate when its question has a clear answer. Write t
   - Sign up at play.google.com/console/signup and choose "Yourself". Public developer name: **Telly Fixtures**. Contact email: the new Gmail until the support address on the domain works.
   - Check what each screen says will be shown publicly (see "Your public details" in Phase 0).
 - [x] Install the tools on your PC: Node.js (already there) and Android Studio (free; it includes the Android SDK and Java). Done 1 Nov 2026, with the Android SDK and an Android 16 emulator.
-  - [ ] Get your Pixel 9 ready for testing (developer options, USB debugging).
+  - Getting the Pixel 9 ready for USB testing (developer options, USB debugging): not needed so far (20 Nov 2026), as test builds reach it through Play's internal testing track and the emulator covers the rest.
 - [x] Create the `app/` folder: Capacitor project, app ID, name and icons. The web build step copies `index.html`, the icons and `sport-icons/` into it. (1 Nov 2026: Capacitor 8; the icon and splash screen are the current TV icon on green until the real icon arrives; how to build it: `app/README.md`. Tested on the Pixel9 emulator and merged into `main` the same day.)
 - [x] Change the app to **download `data.json` from the domain**, keep the last copy on the phone, and show it offline with "Last updated …". (The web app already does this since 31 Oct 2026; in the app shell it only needs checking. 1 Nov 2026: the app reads it from the domain only.)
-- [ ] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
+- [x] Create the **platform layer**: small files for billing, reminders and "open subscription settings", each with an Android version and a stand-in for the web preview. Nothing else in the app knows which phone it's on.
   - [x] Started 1 Nov 2026: `platform.js` (web) and `app/platform/android.js` (the back button, the status bar's colours). Billing, reminders and the subscription page are added there as they're built.
+  - [x] Reminders (5 Nov 2026), the website's pages inside the app (10 Nov 2026) and billing with the store's subscription page (11 Nov 2026) are all in it. Anything phone-specific added later goes there too.
 - [x] **Match reminders** (Capacitor Local Notifications: scheduled on the phone, no server). Tap a fixture and choose 1 hour, 30 or 15 minutes before it starts, or when it starts; a small bell shows only on the ones set (George, 7 Nov 2026; until then a big bell on every fixture, with the timing in Settings). On the minute only when the person allows "Alarms & reminders" (1.0.6; without it Android delivered some a few minutes late). During the free month and for subscribers, not in the free tier (Phase 3). Android 13+ asks for permission the first time. Store reminders on the phone. Built 5 Nov 2026 and tested on the emulator (permission, app closed, restart); George confirms 1.0.3 works on the Pixel, and a real fixture's reminder came through (5 Nov 2026). In the app it's called "Fixtures reminders".
 - [x] **Settings** (George, 5 Nov 2026): a gear button at the top right opens a sheet with the colour theme and the reminder timing. Phase 3's "My account" items (subscription and so on) go in it.
 - [x] **Versioning** (4 Nov 2026; `app/README.md` → "Releasing to Google Play"):
@@ -269,14 +270,14 @@ The project only moves past a gate when its question has a clear answer. Write t
   - [x] 4 Nov 2026: `npm run release` builds the signed bundle (`app/release/telly-fixtures-<version>.aab`) with the upload key from `TellyFixtures-keys` in your user folder, outside the repo. Tested with a throwaway key.
   - [x] Made the real upload key on 4 Nov 2026 (`app/README.md`, "Once: make the upload key"), and built 1.0.0 with it. Keep a backup of its folder.
   - [x] Google's signing key (Play App Signing) in use since the first upload, 4 Nov 2026.
-- [ ] Upload to Play's **internal testing** track (just you) and test on the Pixel 9 (4 Nov 2026: 1.0.0 uploaded, then downloaded from the Play Store and opened on the Pixel; 5 Nov 2026: on 1.0.1, George passed first open, offline, both themes, large font and the back button, and found the fixed bar sliding behind the status bar, fixed in 1.0.2; reminders confirmed 5 Nov 2026; an older phone is still to do):
-  - First open.
-  - Offline.
-  - Both themes.
-  - Large font.
-  - The back button.
-  - Reminders firing.
-  - An older or small-screen Android phone if you can borrow one.
+- [x] Upload to Play's **internal testing** track (just you) and test on the Pixel 9 (4 Nov 2026: 1.0.0 uploaded, then downloaded from the Play Store and opened on the Pixel; 5 Nov 2026: on 1.0.1, George passed first open, offline, both themes, large font and the back button, and found the fixed bar sliding behind the status bar, fixed in 1.0.2; reminders confirmed 5 Nov 2026):
+  - [x] First open.
+  - [x] Offline.
+  - [x] Both themes.
+  - [x] Large font.
+  - [x] The back button.
+  - [x] Reminders firing.
+  - [ ] An older or small-screen Android phone if you can borrow one.
 - [ ] **iPhone readiness check:** confirm nothing Android-only crept outside the platform layer. Ideally do a test iPhone build with Codemagic's free tier now, to find surprises early.
 
 ## Phase 3: subscriptions
@@ -288,11 +289,13 @@ The project only moves past a gate when its question has a clear answer. Write t
 **What was built (11 Nov 2026):** the app's side is built and tested in the preview (add `?sub` to the preview's address for a pretend store): the free period, the free version with its weekly sport, the offer, My account with the promo code box, the testers' tools, the promo code server and the RevenueCat connection. Nothing is released: the app has no store until RevenueCat's key is in it, so it behaves as before. **Next, George's set-up (`cloud/SETUP.md` → "Subscriptions"):** the payments profile, a build with billing uploaded to internal testing, the `annual` subscription, the RevenueCat account and the promo code server. Then: try buying, restoring, cancelling and a code on the Pixel as a licence tester, and build the feedback button. Tried on the Pixel on 15 Nov 2026 (see above); not yet: a real promo code.
 
 - [ ] **Payments set-up in Play Console:** payments profile, with the address in `business/public-details.md`; bank account, tax details (UK). Accept the paid apps terms. **The address becomes public at this step.**
-  - 13 Nov 2026 (George): the payments profile and bank account are entered; waiting for Google's test deposit to verify the bank account. **Enrolled for Google's 15% service fee** the same day (an account group with only the Telly Fixtures developer account, no associated accounts; status at the bottom of Play Console's "Associated developer accounts" page).
+  - [x] 13 Nov 2026 (George): the payments profile and bank account are entered. **Enrolled for Google's 15% service fee** the same day (an account group with only the Telly Fixtures developer account, no associated accounts; status at the bottom of Play Console's "Associated developer accounts" page).
+  - [ ] The bank account verified: waiting for Google's test deposit (the only part left, 20 Nov 2026).
 - [x] Create the subscription product: `annual`, **£3.65**, available in the UK only, **with no Google trial** (Google's trial needs a payment method; the free month runs outside it, see section 3).
   - **Done 13 Nov 2026 (George):** "Telly Fixtures yearly", product `annual`, base plan `yearly`, active: auto-renewing, yearly, £3.65 including VAT, Google's defaults for the rest (14-day grace period, account hold worked out automatically, resubscribe allowed). It needed a version with billing in it first: **1.0.10** (RevenueCat's plugin and Google's billing permission, no store key, so nothing looks different), uploaded to internal testing only the same day (tag `app-v1.0.10`). Google warned that it's about 3 MB bigger: try Android's code shrinker (R8) before the subscriptions version goes to closed testing.
-- [ ] Create the **RevenueCat** account (free).
-  - **14 Nov 2026 (George):** account and project made; the Play Store app added with its service account file (the two catalog checks pass; "can validate purchases" was still waiting on Google, which can take a day and a half); product `annual:yearly` imported, entitlement `full_access` with it, and one package in the `default` offering. Licence testing in Play Console has the "TF Test" list. The public key (the "Telly Fixtures (Play Store)" one, not the "Test Store" one) went into the app the same day, as version 1.0.11 for internal testing. Still to do: a test purchase on the Pixel, and the promo code server with RevenueCat's secret key (which never goes into a chat or the code).
+- [x] Create the **RevenueCat** account (free).
+  - **14 Nov 2026 (George):** account and project made; the Play Store app added with its service account file (the two catalog checks pass; "can validate purchases" was still waiting on Google, which can take a day and a half); product `annual:yearly` imported, entitlement `full_access` with it, and one package in the `default` offering. Licence testing in Play Console has the "TF Test" list. The public key (the "Telly Fixtures (Play Store)" one, not the "Test Store" one) went into the app the same day, as version 1.0.11 for internal testing.
+  - **15 Nov 2026 (George):** the credentials are valid and a test purchase on the Pixel went through. RevenueCat's secret key is still to go into the promo code server (below; it never goes into a chat or the code).
   - Connect Google Play to it: this needs a Google Cloud service account, and RevenueCat's guide walks through it.
   - Set up one entitlement (e.g. `full_access`) that the `annual` product and promo codes unlock. Apple's product will later unlock the same entitlement.
 - [ ] **Promo codes (George, 5 Nov 2026):**
@@ -302,7 +305,7 @@ The project only moves past a gate when its question has a clear answer. Write t
   - **If Google objects (George, 11 Nov 2026):** the code box is switched off and the free period for new installs becomes 3 months instead of 1, until the app has enough users; then back to 1 month. The same on the iPhone, where a code box isn't allowed. So the length of the free period is a setting the listings carry (`data.json`), not a number built into the app, and a phone keeps the length it started with.
   - Google's own custom codes (shareable, 3 to 90 days free, at least 2,000 uses) remain possible, but they start a subscription, so they need a payment method.
   - **Apple forbids this** (a code box that unlocks features; its own offer codes must be used), so the box lives in the platform layer and the iPhone version leaves it out (Phase 7).
-- [ ] **In the app:**
+- [x] **In the app** (built 11 Nov 2026; the one piece missing is the Feedback link in My account, which comes with the feedback button below):
   - **The free month:** counted on the phone from the first open (section 3), with "Free month: 12 days left" in Settings and a gentle reminder a few days before it ends.
   - **The free tier** (the rules are under "Pricing" in Phase 0):
     - "Your free month has ended": pick your favourite sport, or subscribe.

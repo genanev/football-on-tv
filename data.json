@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T05:30:19.295Z",
+ "generatedAt": "2026-11-20T06:00:17.899Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -45,32 +45,32 @@
   "goldenCheck": {
    "premierLeague": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "championsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "europaLeague": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "conferenceLeague": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "nationsLeague": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "efl": {
     "ok": true,
-    "checkedAt": "2026-11-19T06:00:15.834Z",
+    "checkedAt": "2026-11-20T06:00:17.899Z",
     "corrections": 0
    },
    "changed": []
@@ -98,8 +98,9 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 7
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297,2645313,2645312,2645311,2645310&pageSize=50",
+   "failingSince": "2026-11-20T06:00:17.899Z"
   },
   "footballChannels": "24/32 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -148,8 +149,10 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 5
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "keptEvents": 5,
+   "failingSince": "2026-11-20T06:00:17.899Z"
   },
   "darts": {
    "ok": true,
@@ -190,12 +193,14 @@
     "ATP Finals"
    ],
    "days": 5,
-   "errors": []
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-20&to=2026-11-28"
+   ]
   },
   "tennisSchedule": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
-   "days": 4
+   "checkedAt": "2026-11-20T06:00:17.899Z",
+   "days": 3
   },
   "rugby": {
    "ok": true,
@@ -5320,15 +5325,13 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -5558,7 +5561,7 @@
  "golden": {
   "premierLeague": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": [],
    "matches": [
     {
@@ -5644,42 +5647,77 @@
      "home": "Ipswich Town",
      "away": "Aston Villa",
      "kickoff": "2026-11-28T17:30:00.000Z"
+    },
+    {
+     "sourceId": "2645308",
+     "home": "Everton",
+     "away": "Liverpool",
+     "kickoff": "2026-11-29T12:00:00.000Z"
+    },
+    {
+     "sourceId": "2645306",
+     "home": "Brighton and Hove Albion",
+     "away": "Newcastle United",
+     "kickoff": "2026-11-29T14:05:00.000Z"
+    },
+    {
+     "sourceId": "2645307",
+     "home": "Crystal Palace",
+     "away": "Hull City",
+     "kickoff": "2026-11-29T14:05:00.000Z"
+    },
+    {
+     "sourceId": "2645309",
+     "home": "Fulham",
+     "away": "Bournemouth",
+     "kickoff": "2026-11-29T14:05:00.000Z"
+    },
+    {
+     "sourceId": "2645314",
+     "home": "Sunderland",
+     "away": "Tottenham Hotspur",
+     "kickoff": "2026-11-29T14:05:00.000Z"
+    },
+    {
+     "sourceId": "2645305",
+     "home": "Arsenal",
+     "away": "Manchester City",
+     "kickoff": "2026-11-29T16:30:00.000Z"
     }
    ]
   },
   "championsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": []
   },
   "europaLeague": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": []
   },
   "conferenceLeague": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": []
   },
   "nationsLeague": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": []
   },
   "efl": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "corrections": []
   }
  },
  "playTimes": {
   "tennis": {
    "ok": true,
-   "checkedAt": "2026-11-19T06:00:15.834Z",
+   "checkedAt": "2026-11-20T06:00:17.899Z",
    "starts": {
     "TEN_ATPF": {
-     "2026-11-19": "2026-11-19T10:30:00.000Z",
      "2026-11-20": "2026-11-20T10:30:00.000Z",
      "2026-11-21": "2026-11-21T11:00:00.000Z",
      "2026-11-22": "2026-11-22T14:00:00.000Z"
@@ -5687,16 +5725,6 @@
    },
    "sessions": {
     "TEN_ATPF": {
-     "2026-11-19": [
-      {
-       "start": "2026-11-19T10:30:00.000Z",
-       "singles": "2026-11-19T13:00:00.000Z"
-      },
-      {
-       "start": "2026-11-19T17:00:00.000Z",
-       "singles": "2026-11-19T19:30:00.000Z"
-      }
-     ],
      "2026-11-20": [
       {
        "start": "2026-11-20T10:30:00.000Z",

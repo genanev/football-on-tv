@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T09:30:19.467Z",
+ "generatedAt": "2026-11-20T10:00:14.352Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4934,
+   "programmes": 4935,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1096,
+   "programmes": 1097,
    "errors": []
   },
   "primeVideo": {
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 147
+   "events": 154
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -98,8 +98,9 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 7
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297,2645313,2645312,2645311,2645310&pageSize=50",
+   "failingSince": "2026-11-20T10:00:14.352Z"
   },
   "footballChannels": "24/32 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -148,8 +149,10 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 5
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "keptEvents": 5,
+   "failingSince": "2026-11-20T10:00:14.352Z"
   },
   "darts": {
    "ok": true,
@@ -190,7 +193,9 @@
     "ATP Finals"
    ],
    "days": 5,
-   "errors": []
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-20&to=2026-11-28"
+   ]
   },
   "tennisSchedule": {
    "ok": true,
@@ -5358,15 +5363,13 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {

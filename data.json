@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T22:00:18.496Z",
+ "generatedAt": "2026-11-20T22:30:23.137Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 23,
+   "events": 22,
    "errors": []
   },
   "tntSchedule": {

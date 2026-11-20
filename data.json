@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T00:00:19.576Z",
+ "generatedAt": "2026-11-20T00:30:16.387Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -1772,7 +1772,7 @@
    "away": "Tottenham Hotspur Women",
    "homeShort": "Manchester City",
    "awayShort": "Tottenham Hotspur",
-   "venue": "Academy Stadium",
+   "venue": "Manchester Regional Arena",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

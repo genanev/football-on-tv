@@ -14,9 +14,9 @@ custom_domain = true
 # What a code unlocks, as named in RevenueCat
 ENTITLEMENT = "full_access"
 
-# The codes and their counts. Replace the id with the one `wrangler kv namespace create CODES` prints.
+# The codes and their counts: the namespace `wrangler kv namespace create CODES` made (20 Nov 2026)
 [[kv_namespaces]]
 binding = "CODES"
-id = "REPLACE_WITH_THE_NAMESPACE_ID"
+id = "e5a75567aa604c368ff5b4aef14d56bc"
 
 # The secret RC_SECRET (RevenueCat's secret API key) is set with `wrangler secret put RC_SECRET`.

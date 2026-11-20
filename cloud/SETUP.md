@@ -514,8 +514,10 @@ RevenueCat checks purchases with Google and tells the app who has subscribed. Fr
 4. **Product catalog → Products:** import `annual`. **Entitlements:** create `full_access` and attach
    the product. **Offerings:** in the default offering, add an **Annual** package with that product.
 5. **API keys:** copy the **public** Google Play key (it starts `goog_`) and send it to Claude: it goes
-   into the app, and isn't a secret. Then create a **secret** key (it starts `sk_`). Keep that one in
-   your password manager: it's only used in step E, and must never be put in a chat or in the code.
+   into the app, and isn't a secret. Then create a **secret** key of **API version V1** (it starts
+   `sk_`; the promo code server uses RevenueCat's version 1 address, which answers a V2 key with
+   "HTTP 401"). Keep that one in your password manager: it's only used in step E, and must never be
+   put in a chat or in the code.
 
 ### E. The promo code server (Cloudflare)
 
@@ -573,6 +575,7 @@ then test purchases: nobody is charged, and a "year" renews every few minutes.
 | Log says **Upload to R2 failed: HTTP 403** (`SignatureDoesNotMatch`, `InvalidAccessKeyId` or `AccessDenied`) | The R2 key was pasted wrongly, or the token can't write to `tellyfixtures-data`. Follow "Replacing the R2 key" (end of R2 step F). |
 | Log says **Upload to R2 failed: HTTP 404** (`NoSuchBucket`) | `R2_URL` doesn't end with the bucket's name. Rerun the last command of R2 step E with the S3 API address copied exactly. |
 | **data.tellyfixtures.co.uk** doesn't open, but the log says "Uploaded" | The custom domain is still being set up (R2 step B shows "Initializing"): wait 10 minutes. |
+| The app says **"Couldn't check the code"** for a promo code that's in the CODES list | Run `npx --yes wrangler@4 tail` in `cloud\codes-worker` and try the code again. **RevenueCat refused …: HTTP 401** means RevenueCat didn't accept the secret key (20 Nov 2026): make a **V1** secret key in RevenueCat (Subscriptions step D, part 5) and rerun `npx --yes wrangler@4 secret put RC_SECRET`. Nothing is counted against a code that fails like this. |
 
 ## For Claude (not needed to follow the steps)
 

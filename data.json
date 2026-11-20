@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T12:30:34.505Z",
+ "generatedAt": "2026-11-20T13:00:14.324Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4930,
+   "programmes": 4931,
    "errors": []
   },
   "skyListings": {
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1096,
+   "programmes": 1093,
    "errors": []
   },
   "primeVideo": {

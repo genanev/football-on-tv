@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T01:00:12.407Z",
+ "generatedAt": "2026-11-20T01:30:16.105Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4664,
+   "programmes": 4890,
    "errors": []
   },
   "skyListings": {
@@ -173,11 +173,11 @@
    "tournaments": [
     "Leasing Options UK Championship"
    ],
-   "sessions": 3
+   "sessions": 4
   },
   "cricket": {
    "ok": true,
-   "matches": 13
+   "matches": 14
   },
   "skiing": {
    "ok": true,
@@ -4698,29 +4698,6 @@
    }
   },
   {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "Players Championship Finals",
-   "venue": "Butlins, Minehead",
-   "source": "pdc.tv",
-   "id": "darts-10872-2026-11-28",
-   "kickoff": "2026-11-28T12:00:00.000Z",
-   "end": null,
-   "session": null,
-   "status": "upcoming",
-   "timeTbc": true,
-   "allDay": true,
-   "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV times to be confirmed",
-    "conflict": false,
-    "sources": []
-   }
-  },
-  {
    "id": "af-1563288",
    "sourceId": "1563288",
    "comp": "CHAMP",
@@ -5427,13 +5404,19 @@
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {
-    "broadcaster": null,
-    "channels": [],
-    "alsoOn": [],
-    "confirmed": false,
-    "note": "TV channel to be confirmed",
+    "broadcaster": "Sky Sports F1",
+    "channels": [
+     "Sky Sports F1"
+    ],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
+    "confirmed": true,
+    "note": null,
     "conflict": false,
-    "sources": []
+    "sources": [
+     "sky-guide"
+    ]
    }
   },
   {
@@ -5465,6 +5448,32 @@
    }
   },
   {
+   "comp": "DARTS",
+   "kind": "session",
+   "title": "Players Championship Finals",
+   "venue": "Butlins, Minehead",
+   "source": "pdc.tv",
+   "id": "darts-10872-1795892400",
+   "kickoff": "2026-11-28T19:00:00.000Z",
+   "end": "2026-11-28T23:00:00.000Z",
+   "session": "Evening session",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "ITV4",
+    "channels": [
+     "ITV4"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
    "comp": "SNOOKER",
    "kind": "session",
    "title": "Leasing Options UK Championship",
@@ -5477,9 +5486,64 @@
    "session": "Evening session",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "BBC Four",
+    "broadcaster": "TNT Sports 2",
     "channels": [
+     "TNT Sports 2"
+    ],
+    "alsoOn": [
      "BBC Four"
+    ],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "SNOOKER",
+   "kind": "session",
+   "title": "Leasing Options UK Championship",
+   "venue": "York",
+   "source": "wst.tv",
+   "status": "upcoming",
+   "id": "snooker-0927fcad-18aa-4b62-bea9-2fdf915d15f5-1795900500",
+   "kickoff": "2026-11-28T21:15:00.000Z",
+   "end": "2026-11-28T22:30:00.000Z",
+   "session": "Evening session",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 1",
+    "channels": [
+     "TNT Sports 1"
+    ],
+    "alsoOn": [],
+    "confirmed": true,
+    "note": null,
+    "conflict": false,
+    "sources": [
+     "sky-guide"
+    ]
+   }
+  },
+  {
+   "comp": "CRICKET",
+   "kind": "session",
+   "title": "New Zealand v India",
+   "venue": "Hagley Oval, Christchurch",
+   "series": "India in New Zealand, 2 Test Series, 2026",
+   "source": "icc-cricket.com",
+   "id": "cricket-271657-d3",
+   "kickoff": "2026-11-28T22:00:00.000Z",
+   "end": "2026-11-29T05:00:00.000Z",
+   "session": "2nd Test, Day 3",
+   "status": "upcoming",
+   "timeTbc": false,
+   "tv": {
+    "broadcaster": "TNT Sports 3",
+    "channels": [
+     "TNT Sports 3"
     ],
     "alsoOn": [],
     "confirmed": true,

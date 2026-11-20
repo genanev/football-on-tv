@@ -387,6 +387,22 @@ assert.deepEqual(ecEvents.map(e => `${ukDate(Date.parse(e.kickoff))} ${e.session
   '2026-10-25 Afternoon session ITV4', '2026-10-25 Evening session ITV4',
 ]);
 assert.ok(ecEvents.every(e => !e.allDay && e.tv.note == null));
+
+// Grand Slam of Darts quarter-finals, 20 Nov 2026 (Sky's real guide): Sky Sports+ 19:00-23:00 throughout,
+// Main Event 19:00-20:00, then EFL football, then darts again 22:00-23:00. One session, not two
+// (the second one showed LIVE NOW alongside the first)
+const gsdSyn = "Jermaine Wattimena and Kevin Doets' all-Dutch affair gets the Grand Slam of Darts quarter-finals underway";
+const gsdProg = (sid, from, to) => ({ sid, live: true, title: 'Live Grand Slam Of Darts Q/Final', synopsis: gsdSyn,
+  channel: sid === 4002 ? 'Sky Sports Main Event' : 'Sky Sports+', start: Date.parse(`2026-11-20T${from}:00Z`), end: Date.parse(`2026-11-20T${to}:00Z`) });
+const gsd = { id: 10871, name: 'Grand Slam of Darts', venue: 'Wolverhampton', startDate: '2026-11-14', endDate: '2026-11-22' };
+const gsdEvents = dartsEvents([gsd], { programmes: [gsdProg(4002, '19:00', '20:00'), gsdProg(3940, '19:00', '23:00'), gsdProg(4002, '22:00', '23:00')] }, '2026-11-20', 1);
+assert.equal(gsdEvents.length, 1);
+assert.equal(gsdEvents[0].kickoff, '2026-11-20T19:00:00.000Z');
+assert.equal(gsdEvents[0].end, '2026-11-20T23:00:00.000Z');
+assert.deepEqual([...gsdEvents[0].tv.channels, ...gsdEvents[0].tv.alsoOn], ['Sky Sports Main Event', 'Sky Sports+']);
+// …but an evening session starting as the afternoon one overruns on another channel stays separate
+const overrun = dartsEvents([gsd], { programmes: [gsdProg(3940, '13:00', '17:10'), gsdProg(4002, '17:00', '21:00')] }, '2026-11-20', 1);
+assert.deepEqual(overrun.map(e => e.session), ['Afternoon session', 'Evening session']);
 // Sky's own non-"Live" darts programmes are still not live coverage (e.g. "PDC Classics" above)
 assert.ok(!isLiveCoverage({ sid: 4090, live: false, title: 'PDC Classics 2023', synopsis: '', start: 0, end: 3600000 }));
 

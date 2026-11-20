@@ -155,12 +155,20 @@ export function nameWords(s, minLen = 4) {
     .filter(w => w.length >= minLen && !NAME_STOP.has(w) && !/^\d+(st|nd|rd|th)?$/.test(w));
 }
 
-/** Group programmes into sessions: simulcasts (same start) and back-to-back parts on one channel merge. */
+/**
+ * Group programmes into sessions: simulcasts (same start), back-to-back parts on one channel, and a
+ * channel joining coverage that's already on air elsewhere merge. The last one is for 20 Nov 2026's
+ * Grand Slam of Darts: Sky Sports+ 19:00-23:00 throughout, Main Event 19:00-20:00, then football,
+ * then darts again 22:00-23:00, which became a second "Evening session" and showed LIVE NOW twice.
+ * A programme must start at least 15 minutes before the session ends, so an evening session
+ * starting just as the afternoon one overruns stays separate.
+ */
 export function groupSessions(progs) {
   const sessions = [];
   for (const p of [...progs].sort((a, b) => a.start - b.start)) {
     const s = sessions.find(s => Math.abs(s.start - p.start) <= 10 * 60000 ||
-      (s.progs.some(q => q.sid === p.sid && p.start - q.end <= 5 * 60000 && p.start >= q.start)));
+      (s.progs.some(q => q.sid === p.sid && p.start - q.end <= 5 * 60000 && p.start >= q.start)) ||
+      (p.start >= s.start && p.start <= s.end - 15 * 60000));
     if (s) { s.progs.push(p); s.end = Math.max(s.end, p.end); }
     else sessions.push({ start: p.start, end: p.end, progs: [p] });
   }

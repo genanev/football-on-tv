@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T22:30:23.137Z",
+ "generatedAt": "2026-11-20T23:00:20.289Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4944,
+   "programmes": 4932,
    "errors": []
   },
   "skyListings": {
@@ -157,7 +157,7 @@
     "Grand Slam of Darts",
     "Players Championship Finals"
    ],
-   "sessions": 8
+   "sessions": 6
   },
   "golf": {
    "ok": true,
@@ -360,32 +360,6 @@
     "alsoOn": [
      "TNT Sports 2"
     ],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "Grand Slam of Darts",
-   "venue": "Aldersley Leisure Village, Wolverhampton",
-   "source": "pdc.tv",
-   "id": "darts-10871-1795212000",
-   "kickoff": "2026-11-20T22:00:00.000Z",
-   "end": "2026-11-20T23:00:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
-    "broadcaster": "Sky Sports Main Event",
-    "channels": [
-     "Sky Sports Main Event"
-    ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1487,14 +1461,16 @@
    "status": "upcoming",
    "id": "golf-pga-R2026493-2026-11-21",
    "kickoff": "2026-11-21T18:00:00.000Z",
-   "end": "2026-11-21T21:00:00.000Z",
+   "end": "2026-11-21T21:00:01.000Z",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports Mix",
+    "broadcaster": "Sky Sports Golf",
     "channels": [
+     "Sky Sports Golf"
+    ],
+    "alsoOn": [
      "Sky Sports Mix"
     ],
-    "alsoOn": [],
     "confirmed": true,
     "note": null,
     "conflict": false,
@@ -1516,37 +1492,13 @@
    "status": "upcoming",
    "timeTbc": false,
    "tv": {
-    "broadcaster": "Sky Sports+",
-    "channels": [
-     "Sky Sports+"
-    ],
-    "alsoOn": [],
-    "confirmed": true,
-    "note": null,
-    "conflict": false,
-    "sources": [
-     "sky-guide"
-    ]
-   }
-  },
-  {
-   "comp": "DARTS",
-   "kind": "session",
-   "title": "Grand Slam of Darts",
-   "venue": "Aldersley Leisure Village, Wolverhampton",
-   "source": "pdc.tv",
-   "id": "darts-10871-1795291200",
-   "kickoff": "2026-11-21T20:00:00.000Z",
-   "end": "2026-11-21T23:00:00.000Z",
-   "session": "Evening session",
-   "status": "upcoming",
-   "timeTbc": false,
-   "tv": {
     "broadcaster": "Sky Sports Main Event",
     "channels": [
      "Sky Sports Main Event"
     ],
-    "alsoOn": [],
+    "alsoOn": [
+     "Sky Sports+"
+    ],
     "confirmed": true,
     "note": null,
     "conflict": false,

@@ -131,7 +131,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 | Apple rejects the app as "just a website" (rule 4.2) | Medium if done thinly | Medium | Screens packaged inside the app, offline mode, reminders, and later push notifications or a widget |
 | Too few people pay | Medium | Medium | Free month, then a deliberately limited free tier; measure conversion. A no-card month brings more people in, but fewer go on to pay because paying is a choice. Review at Gate G2 |
 | The free tier is so limited that people uninstall | Medium | Medium | **George's choice (5 Nov 2026): start strict.** Loosening it later feels like a gift, while tightening it would annoy people and could hurt ratings. Watch uninstalls and loosen if needed |
-| People restart the free month by reinstalling | Low | Low | **Accepted (5 Nov 2026).** They'd have to set up My TV and reminders again each time, for an app costing 1p a day. Review if it shows in the numbers |
+| People restart the free month, or use a promo code again, by reinstalling | Low | Low | **Accepted (5 Nov 2026).** They'd have to set up reminders and their permissions again each time, for an app costing 1p a day. Seen on George's Pixel, 21 Nov 2026: each reinstall gave a new free month and a new anonymous ID (so the code worked again), while My TV came back, most likely from Android's own backup of the app's data, which runs about once a day. A subscription survives because Google ties it to the Google account. Remembering the free month would need a server record per phone, against "no tracking". Review if it shows in the numbers |
 | The new UK subscription rules (expected January 2027) apply around launch | High | Medium | On the list in "Legal review before launch" (Phase 5) |
 | The name clashes with an existing app or trademark | Medium | Medium | Check before the first upload (the Android package name can't change afterwards) |
 | Losing the app's upload key or account access | Low | High | Play App Signing; keys and passwords in a password manager with a backup; two-step sign-in on every account |
@@ -329,12 +329,12 @@ The project only moves past a gate when its question has a clear answer. Write t
   - All of this goes through the platform layer, with a web stand-in, so the preview can show each stage. Test builds need a way to jump to any stage, because a 14-day closed test never reaches the end of a 30-day month.
 - [ ] **Feedback button (parked until after launch, George, 21 Nov 2026; until then feedback comes by email or privately in the Play Store):** opens a Google Form with the app version, phone type and current view filled in. Answers go to a Google Sheet, with "email me on new responses" ticked.
 - [ ] **Protecting the data file:** at launch the app checks the subscription via RevenueCat and hides content without one. The data file itself is public but unlisted, which is acceptable at £3.65 a year. Later, if needed: a Cloudflare Worker that only serves the data file to apps with a valid RevenueCat subscription.
-- [ ] **Test the free stages:** the month's reminder and its end, picking a sport, the weekly question (keep, change, dismiss), an empty day, a locked sport, changing the phone's clock, offline, a promo code (valid, used, wrong), a reinstall.
+- [x] **Test the free stages:** the month's reminder and its end, picking a sport, the weekly question (keep, change, dismiss), an empty day, a locked sport, changing the phone's clock, offline, a promo code (valid, used, wrong), a reinstall. Done by George on his Pixel, 20-21 Nov 2026 (what a reinstall keeps: the risk register).
 - [ ] **Test with Play's licence testers** (test purchases are free and renew every few minutes):
   - Subscribe during the free month, and from the free tier.
   - Cancel.
   - Lapse.
-  - Restore after reinstalling.
+  - [x] Restore after reinstalling (21 Nov 2026: the subscription came back by itself).
   - Refund.
   - No internet during purchase.
   - Check RevenueCat shows each event.

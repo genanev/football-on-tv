@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T00:00:13.762Z",
+ "generatedAt": "2026-11-21T00:30:18.401Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -15,7 +15,7 @@
   },
   "skyListings": {
    "ok": true,
-   "events": 22,
+   "events": 24,
    "errors": []
   },
   "tntSchedule": {
@@ -39,7 +39,7 @@
   },
   "premierSports": {
    "ok": true,
-   "events": 152
+   "events": 145
   },
   "footballSource": "api-football",
   "goldenCheck": {
@@ -1874,7 +1874,7 @@
    "away": "Everton",
    "homeShort": "Brentford",
    "awayShort": "Everton",
-   "venue": "Brentford Community Stadium",
+   "venue": "Gtech Community Stadium",
    "status": "upcoming",
    "homeScore": null,
    "awayScore": null,

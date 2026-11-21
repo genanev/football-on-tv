@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T05:00:22.198Z",
+ "generatedAt": "2026-11-21T05:30:26.550Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -10,7 +10,7 @@
   "tvGuide": {
    "ok": true,
    "days": 9,
-   "programmes": 4823,
+   "programmes": 4834,
    "errors": []
   },
   "skyListings": {
@@ -236,7 +236,7 @@
    "title": "Las Vegas Grand Prix",
    "session": "Qualifying",
    "venue": "Las Vegas",
-   "status": "live",
+   "status": "finished",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

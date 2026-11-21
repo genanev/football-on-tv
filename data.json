@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T04:00:23.072Z",
+ "generatedAt": "2026-11-21T04:30:21.573Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -20,7 +20,7 @@
   },
   "tntSchedule": {
    "ok": true,
-   "programmes": 1126,
+   "programmes": 1125,
    "errors": []
   },
   "primeVideo": {
@@ -236,7 +236,7 @@
    "title": "Las Vegas Grand Prix",
    "session": "Qualifying",
    "venue": "Las Vegas",
-   "status": "upcoming",
+   "status": "live",
    "timeTbc": false,
    "source": "formula1.com",
    "tv": {

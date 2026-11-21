@@ -7,7 +7,9 @@
 //
 // It stops first if anything would make Play refuse the upload or leave it without notes: no upload
 // key, no CHANGELOG.md section for the version, or a version already uploaded (its git tag
-// app-v<version> exists: Play never takes the same version number twice).
+// app-v<version> exists: Play never takes the same version number twice). It also stops if a package
+// in package.json isn't downloaded into node_modules (run `npm ci`): Gradle then builds without that
+// plugin and says nothing, which on 21 Nov 2026 made a 1.0.12 with no RevenueCat and no billing.
 
 import { execSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
@@ -18,7 +20,16 @@ import { fileURLToPath } from 'node:url';
 const here = dirname(fileURLToPath(import.meta.url));
 const stop = (msg) => { console.error(`\n${msg}\n`); process.exit(1); };
 
-const { version } = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8'));
+const pkg = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8'));
+const { version } = pkg;
+
+// Every package downloaded, at the version package.json names when it names an exact one
+const missing = Object.entries({ ...pkg.dependencies, ...pkg.devDependencies }).filter(([name, want]) => {
+  const file = join(here, 'node_modules', name, 'package.json');
+  if (!existsSync(file)) return true;
+  return /^\d/.test(want) && JSON.parse(readFileSync(file, 'utf8')).version !== want;
+}).map(([name, want]) => `${name} ${want}`);
+if (missing.length) stop(`Not downloaded (or the wrong version): ${missing.join(', ')}. Run "npm ci" in the app folder first.`);
 if (!/^\d+\.\d{1,2}\.\d{1,2}$/.test(version)) {
   stop(`package.json's version "${version}" must look like 1.2.3 (the last two numbers up to 99: build.gradle turns it into Play's version code).`);
 }

@@ -4,11 +4,14 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `package.json`; the lines under it are the store's "What's new" text (500 characters at most), which
 `npm run release` prints ready to paste.
 
-## 1.0.12
+## 1.0.13
 - Subscriptions, for testing: a free month with everything, then one sport for free each week, or everything for £3.65 a year.
 - My Account in Settings: your free month or subscription, Restore purchase and the app's version. For Testers jumps ahead to each stage.
 - A tidier front page: the list of where the listings come from is gone.
 - Settings: clearer section headings, and a shorter note on fixtures reminders.
+
+## 1.0.12
+- Uploaded to internal testing on 21 Nov 2026 but never released: it was built without the subscriptions code (RevenueCat wasn't downloaded on that PC). 1.0.13 is the same app with it.
 
 ## 1.0.11
 - For internal testing: subscriptions switched on. A free month, then one sport for free or £3.65 a year; My account is in Settings.

@@ -1,61 +1,39 @@
 #!/usr/bin/env bash
 # The update that runs on Google Cloud (Cloud Run Job in London, started every 30 minutes by Cloud
-# Scheduler). It does what .github/workflows/update.yml does, but from a UK address: rebuild
-# data.json from every source, upload it to Cloudflare R2 (data.tellyfixtures.co.uk) once that's
-# set up, then save it to GitHub's main branch. See cloud/SETUP.md.
+# Scheduler): rebuild data.json from every source and save it to Cloudflare R2, where the app reads
+# it (data.tellyfixtures.co.uk). See cloud/SETUP.md.
 #
-# The job's container is Google's stock Node image; its start command clones this repo and runs
-# this file, so a change merged to main takes effect on the next run with nothing to rebuild.
+# Since 21 Nov 2026 R2 is the only copy: data.json is no longer saved to GitHub, so the repository
+# can be private. The previous update, which the build reads (keep rule, daily checks, sources
+# failing since when), is downloaded from R2 first.
 #
-# Needs: GITHUB_TOKEN (a token that may write to this repository; the job gets it from Secret Manager).
-# Optional: R2_URL and R2_UPLOAD_KEY (scripts/upload-r2.mjs); without them the upload is skipped.
-# For testing in a throwaway clone: ALLOW_RESET=1 (this script resets the checkout to GitHub's main)
-# and DRY_RUN=1 (commit locally, don't push).
+# The job's container is Google's stock Node image; its start command clones this repo (with the
+# GitHub key, as the repository is private) and runs this file, so a change merged to main takes
+# effect on the next run with nothing to rebuild.
+#
+# Needs: R2_URL and R2_UPLOAD_KEY (scripts/upload-r2.mjs). For trying it out: DRY_RUN=1 builds from
+# the checkout's own data.json and uploads nothing.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# Cloud Run sets CLOUD_RUN_JOB inside a job. Anywhere else this would throw away local changes.
-if [ -z "${CLOUD_RUN_JOB:-}" ] && [ -z "${ALLOW_RESET:-}" ]; then
-  echo "Refusing to run: this script resets the checkout to GitHub's main. Run it only in the Cloud Run job, or in a throwaway clone with ALLOW_RESET=1." >&2
+# Cloud Run sets CLOUD_RUN_JOB inside a job. Anywhere else this would replace the listings everyone sees.
+if [ -z "${CLOUD_RUN_JOB:-}" ] && [ -z "${DRY_RUN:-}" ]; then
+  echo "Refusing to run: this script replaces the live listings. Run it only in the Cloud Run job, or with DRY_RUN=1 to try it." >&2
   exit 2
 fi
 
-git config user.name "Football on TV bot"
-git config user.email "football-on-tv-bot@users.noreply.github.com"
-
-# The token goes in a request header, so it never appears in a URL or in the logs.
-AUTH=()
-if [ -n "${GITHUB_TOKEN:-}" ]; then
-  AUTH=(-c "http.https://github.com/.extraheader=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)")
+if [ -n "${DRY_RUN:-}" ]; then
+  echo "Dry run: building from this checkout's data.json; nothing is uploaded."
+else
+  # Without the previous update the keep rule would drop channels and events whose sources failed
+  # this time, so a failed download stops the update and the last listings stay as they are. (The
+  # hourly alert emails if that lasts two hours.)
+  node scripts/upload-r2.mjs --download data.json
 fi
 
-for attempt in 1 2 3; do
-  # Start every attempt from the newest main, so the previous update (which the keep rule reads) is
-  # the latest one saved.
-  git ${AUTH[@]+"${AUTH[@]}"} fetch --quiet --depth 1 origin main
-  git reset --quiet --hard FETCH_HEAD
+# Exits 1 (and leaves data.json alone) only when every fixture source failed: then nothing is
+# saved and the job shows as failed in Cloud Run.
+node scripts/build.mjs data.json
 
-  # Exits 1 (and leaves data.json alone) only when every fixture source failed: then nothing is
-  # saved and the job shows as failed in Cloud Run.
-  node scripts/build.mjs data.json
-
-  # The own domain first. A failed upload doesn't stop the GitHub save: the app reads both and
-  # shows whichever is newer, so it just falls back to GitHub's copy.
-  if [ -z "${DRY_RUN:-}" ]; then
-    node scripts/upload-r2.mjs data.json || echo "Warning: data.json was not uploaded to R2 this time; GitHub's copy is still saved."
-  fi
-
-  git add data.json
-  if git diff --cached --quiet; then echo "No changes to save."; exit 0; fi
-  git commit --quiet -m "Update fixtures"
-
-  if [ -n "${DRY_RUN:-}" ]; then echo "Dry run: committed locally, not pushed."; exit 0; fi
-  if git ${AUTH[@]+"${AUTH[@]}"} push --quiet origin HEAD:main; then echo "Saved data.json to GitHub."; exit 0; fi
-
-  # Something else was saved at the same moment (a code change, a manual run): start again on top of it.
-  echo "Save was refused (attempt $attempt of 3); trying again."
-  sleep $((attempt * 5))
-done
-
-echo "Gave up after 3 attempts: could not save data.json." >&2
-exit 1
+if [ -n "${DRY_RUN:-}" ]; then echo "Dry run: built, not uploaded."; exit 0; fi
+node scripts/upload-r2.mjs data.json

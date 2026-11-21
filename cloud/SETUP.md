@@ -16,10 +16,10 @@ the last step, and every step can be undone (see "Stopping it").
 
 | Piece | What it does |
 |---|---|
-| **Cloud Run Job** `football-update` | A tiny computer that starts, runs the update (about 6 seconds of work), saves `data.json` to GitHub and switches off. |
+| **Cloud Run Job** `football-update` | A tiny computer that starts, runs the update (about 6 seconds of work), saves `data.json` to your own domain (to GitHub until 21 Nov 2026) and switches off. |
 | **Cloud Scheduler** `football-update-trigger` | The alarm clock: starts the job every 15 minutes (30 once changed). |
-| **Secret Manager** `github-token` | A locked box for the key that lets the job save to GitHub. |
-| **Cloudflare R2** `tellyfixtures-data` (added later) | Storage on your own domain: the job also uploads `data.json` there (see "Saving data.json to your own domain"). |
+| **Secret Manager** `github-token` | A locked box for the key that lets the job download the code from GitHub (until 21 Nov 2026 it also saved `data.json` there). |
+| **Cloudflare R2** `tellyfixtures-data` (added later) | Storage on your own domain, where the job saves `data.json` (see "Saving data.json to your own domain"); since 21 Nov 2026 the only copy. |
 
 The job downloads the newest code from GitHub every time it runs, so changes you merge to `main`
 take effect on the next run with nothing to redeploy. The script it runs is `cloud/update.sh`.
@@ -56,14 +56,14 @@ You need:
 
 ## Step 3 – A GitHub key for the job
 
-The job needs permission to save `data.json` to your repository, and nothing else.
+The job needs permission to read your repository (to download the code), and nothing else. (Until 21 Nov 2026 it also saved `data.json` there and needed **Read and write**.)
 
 1. On GitHub: your profile picture → **Settings** → **Developer settings** (bottom of the left
    menu) → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
 2. Name: `football-on-tv London job`. Expiration: **1 year** (put a reminder in your calendar for
    then; see "When the key expires").
 3. **Repository access** → **Only select repositories** → `football-on-tv`.
-4. **Permissions** → **Repository permissions** → **Contents** → **Read and write**. Leave
+4. **Permissions** → **Repository permissions** → **Contents** → **Read-only**. Leave
    everything else as it is.
 5. **Generate token** and **copy it now** (GitHub shows it once). Keep the page open until step 6.
 
@@ -131,11 +131,13 @@ gcloud run jobs create football-update \
   --service-account="football-job@${PROJECT_ID}.iam.gserviceaccount.com" \
   --set-secrets="GITHUB_TOKEN=github-token:latest" \
   --command="bash" \
-  --args="^@^-c@git clone --quiet --depth 1 https://github.com/genanev/football-on-tv.git /work && bash /work/cloud/update.sh"
+  --args='^@^-c@git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $(printf "x-access-token:%s" "$GITHUB_TOKEN" | base64 -w0)" clone --quiet --depth 1 https://github.com/genanev/football-on-tv.git /work && bash /work/cloud/update.sh'
 ```
 
 That's Google's standard Node 24 image: nothing of yours to build. (The odd `^@^` just tells
-Google to split the start command at `@` instead of at commas.)
+Google to split the start command at `@` instead of at commas. The key is used to download the
+code, as the repository is private; it goes in a request header, so it never shows in the logs.
+The job needs the R2 settings too: "Saving data.json to your own domain", step E.)
 
 ## Step 8 – Run it once by hand and check
 
@@ -147,14 +149,14 @@ It takes about a minute. You want to see it finish with a green tick or "complet
 
 Then check three things:
 
-1. **The save.** On GitHub, open the repository: the newest commit should be **"Update fixtures"**
-   by **Football on TV bot**, a minute or so old.
+1. **The save.** Open https://data.tellyfixtures.co.uk/data.json: `generatedAt` near the start
+   should be a minute or so old (in UTC).
 2. **The log.** Cloud Run → **Jobs** → `football-update` → the latest execution → **Logs**. It should
-   end with "Saved data.json to GitHub." and show the source report above it.
+   end with "Uploaded data.json" and show the source report above it.
 3. **The UK address worked.** Run this; Prime Video should *not* say it got the wrong country:
 
 ```bash
-curl -s https://raw.githubusercontent.com/genanev/football-on-tv/main/data.json | grep -A6 '"primeVideo"'
+curl -s https://data.tellyfixtures.co.uk/data.json | grep -A6 '"primeVideo"'
 ```
 
 You want `"ok": true`. If you see `"wrongRegion": true`, tell Claude: it means Prime Video still
@@ -183,7 +185,7 @@ gcloud scheduler jobs create http football-update-trigger \
 
 (If Cloud Shell asks to enable another service, say yes and run the command again.) To check it
 without waiting, click **Cloud Scheduler** in the console and press **Force run** on
-`football-update-trigger`; or wait 15 minutes and look at GitHub for a new "Update fixtures" commit.
+`football-update-trigger`; or wait 15 minutes and check `generatedAt` at https://data.tellyfixtures.co.uk/data.json.
 
 ## Step 10 – Hand over from GitHub (done on 18 Oct 2026)
 
@@ -198,8 +200,8 @@ You can then stop the weekly UK run from your own computer. This was done on 18 
 
 ## Watching it
 
-- **Is it running?** The newest "Update fixtures" commit on GitHub should never be more than about
-  20 minutes old. The app also shows "updated … ago" at the top, and a yellow warning appears if
+- **Is it running?** `generatedAt` at https://data.tellyfixtures.co.uk/data.json should never be
+  more than about 30 minutes old, and the hourly alert emails you if it's over 2 hours. The app also shows "updated … ago" at the top, and a yellow warning appears if
   the listings are over 12 hours old.
 - **Did a run fail?** Cloud Run → Jobs → `football-update` → **Executions** (failed ones are red).
   A single failed run doesn't matter: the next one is 15 or 30 minutes later and the app keeps the last
@@ -214,8 +216,8 @@ gcloud scheduler jobs update http football-update-trigger --location="$REGION" -
 ```
 
 Every 15 minutes: use `*/15 * * * *` in the same command. Every hour: `0 * * * *`. It takes
-effect straight away. Faster than every 10 minutes isn't recommended: GitHub Pages rebuilds on
-every save and starts dropping builds above about 10 an hour.
+effect straight away. Since the GitHub saves stopped (21 Nov 2026) there's no GitHub limit, but
+each run makes about 11 of API-Football's 7,500 requests a day.
 
 ## When the key expires
 
@@ -277,13 +279,68 @@ gcloud run jobs update football-update --region="$REGION" --update-env-vars="SHO
 
 Undo it with `--remove-env-vars="SHOW_SCORES"`. Both take effect on the next run.
 
+## Making the repository private (21 Nov 2026)
+
+Since 21 Nov 2026 the job saves `data.json` **only** to your own domain (Cloudflare R2, below): it
+first downloads the last update from there (the build needs it), then uploads the new one. Nothing
+is saved to GitHub any more, so the "Update fixtures" commits stop. The phone app already reads
+only the domain.
+
+That leaves one thing the job still needs from GitHub: the code. A public repository can be
+downloaded by anyone; a private one needs the job's GitHub key. So do A before C.
+
+### A. Let the job download the code with its key (Cloud Shell)
+
+After the two `export` lines from step 4, paste this **as it is** (the single quotes matter: the key
+is filled in inside the job, never on screen):
+
+```bash
+gcloud run jobs update football-update --region="$REGION" \
+  --args='^@^-c@git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $(printf "x-access-token:%s" "$GITHUB_TOKEN" | base64 -w0)" clone --quiet --depth 1 https://github.com/genanev/football-on-tv.git /work && bash /work/cloud/update.sh'
+```
+
+Then run it once and check it:
+
+```bash
+gcloud run jobs execute football-update --region="$REGION" --wait
+```
+
+It should finish with "completed successfully". Its log (Cloud Run → Jobs → `football-update` → the
+latest execution → **Logs**) should show "Downloaded the previous update" near the top and
+"Uploaded data.json" at the end.
+
+### B. Make the GitHub key read-only (GitHub)
+
+The job no longer saves anything to GitHub, so its key only needs to read. On GitHub: your profile
+picture → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained
+tokens** → **football-on-tv London job** → **Edit** → **Repository permissions** → **Contents** →
+**Read-only** → **Update**. It still expires in Oct 2027 ("When the key expires").
+
+### C. Make the repository private (GitHub)
+
+The repository → **Settings** → **General** → at the bottom, **Danger Zone** → **Change
+visibility** → **Make private**, and confirm.
+
+- **What stops:** the old web address, genanev.github.io/football-on-tv (GitHub's free plan has no
+  websites for private repositories). Remove its shortcut from your phone's home screen: the
+  Telly Fixtures app replaces it.
+- **What carries on:** the phone app, the website tellyfixtures.co.uk (Cloudflare reads the
+  repository through its GitHub connection, which works for private ones), the hourly listings
+  alert, the promo code server, and Claude's work on your PC (it uses your own GitHub login).
+- **GitHub's own checks** (the tests on each branch, and the back-up alert every hour) now count
+  against the free plan's 2,000 minutes a month: about 750 a month, well within it.
+
+### D. Check
+
+Tell Claude: it checks that the next update reached data.tellyfixtures.co.uk and that the website
+still rebuilds.
+
 ## Saving data.json to your own domain (Cloudflare R2)
 
-Step 1 of the paid-app work (`playStorePlan.md`, Phase 1). The job keeps saving `data.json` to
-GitHub as before, and **also** uploads it to Cloudflare's storage (**R2**), where it's served at
-**https://data.tellyfixtures.co.uk/data.json**. The app reads both and shows whichever is newer, so
-nothing changes for you if one of them fails. Later the phone app reads only the domain, and the
-GitHub saves can stop.
+Step 1 of the paid-app work (`playStorePlan.md`, Phase 1). The job uploads `data.json` to
+Cloudflare's storage (**R2**), where it's served at **https://data.tellyfixtures.co.uk/data.json**.
+Until 21 Nov 2026 it also saved it to GitHub; since then R2 is the only copy (see "Making the
+repository private").
 
 It takes about 20 minutes. Until you've done it, the job just prints "R2 is not set up" and carries on.
 
@@ -390,7 +447,6 @@ gcloud run jobs update football-update --region="$REGION" \
 1. `gcloud run jobs execute football-update --region="$REGION" --wait`
 2. In the log (Cloud Run → Jobs → `football-update` → the latest execution → **Logs**), look for
    **"Uploaded data.json (… bytes) to https://….r2.cloudflarestorage.com/tellyfixtures-data/data.json."**
-   followed by "Saved data.json to GitHub."
 3. Open **https://data.tellyfixtures.co.uk/data.json** in your browser. You should see the data
    (a page of text starting `{"generatedAt":`), with today's time in `generatedAt`.
 4. Tell Claude it's done.
@@ -403,8 +459,7 @@ Cloudflare:
 read -s -p "Paste the Access Key ID, then press Enter: " A; echo; read -s -p "Paste the Secret Access Key, then press Enter: " S; echo; printf '%s:%s' "$A" "$S" | gcloud secrets versions add r2-upload-key --data-file=-; unset A S
 ```
 
-**Stopping the upload** (it carries on saving to GitHub):
-`gcloud run jobs update football-update --region="$REGION" --remove-env-vars="R2_URL" --remove-secrets="R2_UPLOAD_KEY"`.
+**Don't remove the R2 settings:** since 21 Nov 2026 they're the only place the listings are saved, and without them every run fails.
 
 ## Putting the website on your own domain (Cloudflare Pages)
 
@@ -562,12 +617,12 @@ then test purchases: nobody is charged, and a "year" renews every few minutes.
 | What you see | Likely cause and fix |
 |---|---|
 | Step 7 or 8 says it **can't pull the image** `docker.io/library/node:24` | Google's Docker Hub link is busy or blocked. Replace the image with Google's own copy and try again: `gcloud run jobs update football-update --region="$REGION" --image="mirror.gcr.io/library/node:24"` |
-| Log says **Permission denied**, **403** or **Authentication failed** when saving | The GitHub key is wrong, expired, or lacks **Contents: Read and write** on `football-on-tv`. Redo step 3, then the "When the key expires" commands. |
+| Log says **Permission denied**, **403**, **Authentication failed** or **Repository not found** when cloning | The GitHub key is wrong, expired, or lacks **Contents** access on `football-on-tv`. Redo step 3, then the "When the key expires" commands. |
 | Step 6 or later says **Invalid service account (`football-job@.iam.gserviceaccount.com`)**, with the project name missing | Cloud Shell forgot the two `export` lines from step 4. Paste them again with your project ID, then rerun only the command that failed (the service account itself was already created; don't create it twice). |
 | Step 5 says the secret **already exists** | You did step 5 twice. Use the "When the key expires" commands to add the key instead. |
 | You **typed or pasted the key into a command** (or it showed on screen or in a screenshot) | Press **Ctrl+C** to cancel. Treat that key as used up: on GitHub, delete it (Settings → Developer settings → Fine-grained tokens), make a new one (step 3), and redo step 5. If `gcloud secrets list` shows `github-token` already, add the new key with the "When the key expires" command instead of creating it again. |
 | Step 9: **PERMISSION_DENIED** on the scheduler | Repeat the first command of step 9 (the `run.invoker` one), then the `scheduler` command. |
-| The run ends with **"Gave up after 3 attempts"** | Something else kept saving to `main` at the same moment, or GitHub was down. The next run in 15 minutes will usually work. If it keeps happening, tell Claude. |
+| Log says **Download from R2 failed** | The job couldn't read the last update, so it stopped without changing the listings. A one-off doesn't matter (the next run is 30 minutes later). `HTTP 403` means the R2 key is wrong ("Replacing the R2 key"); anything else that lasts, tell Claude. |
 | The execution is red and the log says **every fixture source failed** | The London computer couldn't reach any source (for example a Google network problem). It will retry in 15 minutes; the app keeps the old data meanwhile. |
 | The log shows **Prime Video `wrongRegion`** | Prime Video still isn't seeing a UK address. Tell Claude. |
 | R2 step E, part 2 says **Service account football-job@football-on-tv-123456… does not exist** | Cloud Shell used the example project name. Paste the three lines at the top of R2 step E, check they print your project's name, and rerun part 2. The key from part 1 is already saved: don't create it again. |

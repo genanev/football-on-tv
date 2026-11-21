@@ -17,7 +17,7 @@ You pick a sport with a 3D icon at the top, and every game shows its sport's ico
 
 The gear at the top right opens **Settings**: About Telly Fixtures, Light or Dark, and the Privacy policy and Terms of use (in the phone app these pages open inside the app). In the phone app, tap a fixture to set a **fixtures reminder**: your phone reminds you 1 hour, 30 or 15 minutes before it starts, or when it starts, even with the app closed, and a small bell shows which ones you've set. A special event appears from a week before it starts and goes once it's over.
 
-It's a single web page hosted free on GitHub Pages. You can add it to a phone's home screen, where it opens full-screen like an app: <https://genanev.github.io/football-on-tv/>.
+It's a single web page, built into the Android app (`app/`). Until 21 Nov 2026 it was also on GitHub Pages (genanev.github.io/football-on-tv), which ends when the repository goes private.
 
 The plan is to turn it into a paid app called **Telly Fixtures** on Google Play: see `playStorePlan.md`.
 
@@ -55,7 +55,7 @@ The plan is to turn it into a paid app called **Telly Fixtures** on Google Play:
 ```
 
 1. **Update:** `scripts/build.mjs` fetches fixtures and TV listings from every source, matches each event to its channel, and writes **`data.json`**.
-2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to GitHub, and also uploads it to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2; live since 31 Oct 2026, set up in `cloud/SETUP.md`, "Saving data.json to your own domain"). Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. GitHub's own Action (`.github/workflows/update.yml`) is now only a manual backup button.
+2. **Automation:** a Google Cloud job in London (`cloud/update.sh`, started every 30 minutes by Cloud Scheduler) runs the update from a UK address and saves `data.json` to our own domain (https://data.tellyfixtures.co.uk/data.json, Cloudflare R2; live since 31 Oct 2026, set up in `cloud/SETUP.md`, "Saving data.json to your own domain"). Until 21 Nov 2026 it also saved it to GitHub. Prime Video's and Premier Sports' pages need the UK address, and the job holds the API-Football key. `cloud/SETUP.md` is the setup guide. To run it at once: Google Cloud → Cloud Run → Jobs → `football-update` → **Execute**.
 3. **The app:** `index.html` is the whole app (HTML, CSS and JavaScript in one file). It reads `data.json` from our own domain and straight from GitHub at the same time and shows the newer copy, so a new update shows within minutes even if one of them fails, and it reloads whenever you open it or switch back to it. It works offline too: the phone keeps a copy of the app and of the last listings, and says how old they are when it can't get new ones (`sw.js`).
 4. **The phone app:** `app/` packages the same `index.html` into a real Android app with Capacitor (an iPhone version can follow). It reads `data.json` from our own domain only. The few things that differ between the website and the app (the back button, the status bar's colours) are in `platform.js` and `app/platform/android.js`. How to build it: `app/README.md`.
 
@@ -108,7 +108,6 @@ Apart from API-Football, none of these is a published, documented API. They are 
 | `business/` | Permission emails and research for the paid app, on your PC only (not in GitHub while the repository is public) |
 | `scripts/lib/util.mjs` | Shared helpers (UK time, fetching) |
 | `test/*.mjs`, `test/fixtures/` | Offline tests and the real data they replay |
-| `.github/workflows/update.yml` | Manual backup update (the "Run workflow" button on the Actions tab; no schedule) |
 | `cloud/update.sh`, `cloud/SETUP.md` | The regular update that runs on Google Cloud in London, and the guide to set it up |
 | `.github/workflows/check.yml` | Runs the tests and a live check on every branch except `main` |
 | `designA.md` | How the app's navigation works (sports, competition chips, My TV, day picker) |
@@ -137,9 +136,9 @@ The "Run workflow" button on GitHub's Actions tab still works as a manual backup
 
 ## Working on it
 
-- **Branches:** new work goes on a branch. Pushing it runs the tests and a live check on GitHub (`check.yml`). Changes reach the live app only when the branch is merged into `main`, because GitHub Pages publishes `main`.
+- **Branches:** new work goes on a branch. Pushing it runs the tests and a live check on GitHub (`check.yml`). Changes reach the live app only when the branch is merged into `main`, because the London job runs `main`'s code.
 - **Tests:** they replay real data captured from each source, so they run offline. Run all five after any change to `scripts/`.
-- **Running an update by hand on GitHub:** **Actions** tab → **Update fixtures** → **Run workflow**. That button always uses the latest version. "Re-run" on an old run repeats that old run; since 17 Oct 2026 it also uses the latest version, but "Run workflow" is the right button.
+- **Running an update by hand:** Google Cloud → Cloud Run → **Jobs** → `football-update` → **Execute** (or `gcloud run jobs execute football-update --region=europe-west2` in Cloud Shell). It always uses the latest code on `main`.
 
 ## If something looks wrong
 
@@ -147,11 +146,10 @@ The "Run workflow" button on GitHub's Actions tab still works as a manual backup
 - **Finding out what happened:** in Google Cloud, open Cloud Run → **Jobs** → `football-update` → **Executions** → a run → **Logs**; it prints the report for each source. The same report is saved in `data.json` under `report`.
 - **A channel says "TV channel to be confirmed"** when no broadcaster's listing has confirmed it yet. Broadcasters publish their picks a few days ahead.
 - **Football looks wrong** (wrong times, missing games): the report's `apiFootball` entry says whether API-Football answered, and `goldenCheck` says when the official feeds last checked it and which games they corrected (`changed`). `scripts/compare-api-football.mjs` compares it with the official feeds, and `cloud/SETUP.md` explains how to switch back to them.
-- **Updates stopped:** the newest "Update fixtures" commit on GitHub should be under about 40 minutes old. If not, check in Google Cloud that the Cloud Scheduler job `football-update-trigger` is enabled and that the latest job execution didn't fail with a GitHub permission error (the key expires after a year; see `cloud/SETUP.md`).
+- **Updates stopped:** `generatedAt` at https://data.tellyfixtures.co.uk/data.json should be under about 40 minutes old (the hourly alert emails George if it's over 2 hours). If not, check in Google Cloud that the Cloud Scheduler job `football-update-trigger` is enabled and that the latest job execution didn't fail with a GitHub permission error (the key expires after a year; see `cloud/SETUP.md`).
 
 ## One-off setup (for a new copy)
 
-1. Create a **public** GitHub repository and upload this folder, including `.github`.
-2. **Settings → Pages:** deploy from branch `main`, folder `/ (root)`.
-3. **First data:** **Actions** → enable workflows → open **Update fixtures** and click **Run workflow**. That fills `data.json` once, from GitHub's US servers. For regular updates from a UK address, set up the Google Cloud job with `cloud/SETUP.md`, including the API-Football key ("Switching football to API-Football").
-4. On a phone, open `https://<username>.github.io/<repository>/` in Chrome, then **⋮ → Add to home screen**.
+1. Create a private GitHub repository and upload this folder, including `.github`.
+2. Set up the Google Cloud job with `cloud/SETUP.md`, including Cloudflare R2 ("Saving data.json to your own domain") and the API-Football key ("Switching football to API-Football").
+3. Build the phone app: `app/README.md`.

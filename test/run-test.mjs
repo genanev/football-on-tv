@@ -312,6 +312,37 @@ assert.ok(lv(fromUSafterUK).tv.sources.includes('previous-update'));
   // A refused upload names R2's error code, never the key
   await assert.rejects(uploadToR2(file, r2), (e) => e.message === 'HTTP 403 SignatureDoesNotMatch' && !/SECRETVALUE/.test(e.message));
   await assert.rejects(uploadToR2(file, { ...r2, key: 'KEYID' }), /R2_UPLOAD_KEY is missing or incomplete/);
+
+  // Downloading the previous update (since 21 Nov 2026 R2 is the only copy): a signed GET of the same
+  // name; a busy answer or a broken file is asked again, a wrong key or address isn't
+  const { downloadFromR2 } = await import('../scripts/upload-r2.mjs');
+  const { readFile } = await import('node:fs/promises');
+  const answers = [];
+  const got = [];
+  globalThis.fetch = async (url, opts) => { got.push({ url, ...opts }); return answers.shift(); };
+  const ok = (text) => ({ ok: true, status: 200, text: async () => text });
+  const err = (status, code) => ({ ok: false, status, text: async () => `<Error><Code>${code}</Code></Error>` });
+  const prev = join(await mkdtemp(join(tmpdir(), 'r2-')), 'data.json');
+  answers.push(ok('{"generatedAt":"2026-11-21T09:00:00Z"}'));
+  const down = await downloadFromR2(prev, { ...r2, waits: [0, 0] });
+  assert.equal(down.url, 'https://acc123.r2.cloudflarestorage.com/tellyfixtures-data/data.json');
+  assert.equal(got[0].method, 'GET');
+  assert.equal(got[0].headers.host, undefined);
+  assert.match(got[0].headers.authorization, /^AWS4-HMAC-SHA256 Credential=KEYID\/20261030\/auto\/s3\/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=[0-9a-f]{64}$/);
+  assert.equal(got[0].headers['x-amz-content-sha256'], 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'); // an empty body
+  assert.equal(await readFile(prev, 'utf8'), '{"generatedAt":"2026-11-21T09:00:00Z"}');
+  got.length = 0;
+  answers.push(err(503, 'ServiceUnavailable'), ok('{"generatedAt":"2026-11-21T0'), ok('{"generatedAt":"2026-11-21T09:30:00Z"}'));
+  await downloadFromR2(prev, { ...r2, waits: [0, 0] });
+  assert.equal(got.length, 3);
+  assert.equal(await readFile(prev, 'utf8'), '{"generatedAt":"2026-11-21T09:30:00Z"}');
+  got.length = 0;
+  answers.push(err(403, 'AccessDenied'));
+  await assert.rejects(downloadFromR2(prev, { ...r2, waits: [0, 0] }), (e) => e.message === 'HTTP 403 AccessDenied' && !/SECRETVALUE/.test(e.message));
+  assert.equal(got.length, 1);
+  answers.push(err(500, 'InternalError'), err(500, 'InternalError'), err(500, 'InternalError'));
+  await assert.rejects(downloadFromR2(prev, { ...r2, waits: [0, 0] }), /HTTP 500 InternalError/);
+  assert.equal(await readFile(prev, 'utf8'), '{"generatedAt":"2026-11-21T09:30:00Z"}'); // a failed download leaves the file alone
   globalThis.fetch = realFetch;
 }
 

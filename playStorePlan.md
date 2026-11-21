@@ -135,7 +135,7 @@ The project only moves past a gate when its question has a clear answer. Write t
 | The new UK subscription rules (expected January 2027) apply around launch | High | Medium | On the list in "Legal review before launch" (Phase 5) |
 | The name clashes with an existing app or trademark | Medium | Medium | Check before the first upload (the Android package name can't change afterwards) |
 | Losing the app's upload key or account access | Low | High | Play App Signing; keys and passwords in a password manager with a backup; two-step sign-in on every account |
-| A key or token expires unnoticed (e.g. the GitHub key, Oct 2027) | Medium | Medium | Expiry dates in a calendar; moving the data file off GitHub (Phase 1) removes the GitHub key |
+| A key or token expires unnoticed (e.g. the GitHub key, Oct 2027) | Medium | Medium | Expiry dates in a calendar. The GitHub key stays after the data file moved off GitHub (21 Nov 2026): the job uses it, read-only, to download the code from the private repository |
 | Icon licence unclear | Closed | – | George confirmed on 4 Nov 2026 that all the icons are generic and created from scratch (Phase 1) |
 | Costs grow with users | Low | Low | `data.json` is ≈ 10 KB compressed; free tiers cover many thousands of users |
 | Personal workload (support, fixes) | Medium | Medium | Feedback via a form and sheet, a FAQ, a 3-day reply target, store refunds handled by the stores |
@@ -220,13 +220,13 @@ The project only moves past a gate when its question has a clear answer. Write t
   - A small scores-only update every 5 minutes, only while a game is on: one request covers all nine competitions.
   - The full update stays every 30 minutes.
   - One switch turns scores off everywhere, in case they have to be removed.
-- [ ] Change the update job to **upload `data.json` to storage** (Cloudflare R2 or Google Cloud Storage) on the domain, instead of committing it to GitHub every 30 minutes.
+- [x] Change the update job to **upload `data.json` to storage** (Cloudflare R2 or Google Cloud Storage) on the domain, instead of committing it to GitHub every 30 minutes.
   - [x] Code (30 Oct 2026): the job uploads to **Cloudflare R2** (bucket `tellyfixtures-data`, served at https://data.tellyfixtures.co.uk/data.json), and the web app reads the domain and GitHub together, showing the newer copy.
   - [x] George: created the bucket, the domain and the key (`cloud/SETUP.md` → "Saving data.json to your own domain"); the first upload ran on 31 Oct 2026 at 23:00 and the live app reads both copies.
-  - Keep the GitHub commit for a few weeks as a fallback, then stop it.
-  - This also removes the GitHub key that expires in Oct 2027.
+  - [x] The GitHub commit stopped on 21 Nov 2026: R2 is the only copy, and the job reads the previous update from it.
+  - The GitHub key stays, read-only: the job uses it to download the code once the repository is private. It still expires in Oct 2027.
 - [x] Host the website on **Cloudflare Pages** (free, commercial use allowed; GitHub Pages' terms don't allow a business). The public website becomes a **landing page** ("Get it on Google Play", screenshots, FAQ, contact, privacy, terms). The full web app stays available to you for previews. **Live since 7 Nov 2026 at https://tellyfixtures.co.uk and www.tellyfixtures.co.uk,** built from `site/`; the steps are in `cloud/SETUP.md`. The old GitHub web address still works: it moves or closes when the repository goes private (below).
-- [ ] Make the GitHub repository **private**.
+- [ ] Make the GitHub repository **private**. George's steps: `cloud/SETUP.md` → "Making the repository private" (21 Nov 2026).
 - [x] **Privacy policy** (Google needs its web address before the closed test): **live since 7 Nov 2026 at https://tellyfixtures.co.uk/privacy, George's own wording in `site/privacy.html` (6 Nov 2026), short and generic on purpose, with no draft label.** He amends it, and its date, if he's advised to change it.
 - [x] **Terms of use:** live since 7 Nov 2026 at https://tellyfixtures.co.uk/terms, George's wording in `site/terms.html` (6 Nov 2026), with no draft label. He amends it, and its date, if he's advised to change it. The postal address appears only on the live page, never on GitHub: Cloudflare adds it from a setting as it builds the site (`cloud/SETUP.md`). Apple's standard licence terms, if used later.
 - **ICO:** moved to the legal review in Phase 5 (George, 5 Nov 2026).

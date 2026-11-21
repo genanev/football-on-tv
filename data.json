@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T09:30:17.579Z",
+ "generatedAt": "2026-11-21T10:00:20.960Z",
  "windowDays": 8,
  "app": {
   "freeDays": 30,
@@ -98,8 +98,9 @@
    "televisedTies": 0
   },
   "premierLeagueTv": {
-   "ok": true,
-   "matches": 13
+   "ok": false,
+   "error": "HTTP 429 for https://api.premierleague.com/broadcasting/match-events?sportDataId=2645302,2645295,2645304,2645298,2645296,2645299,2645303,2645300,2645301,2645297,2645313,2645312,2645311,2645310,2645308,2645309,2645306,2645307,2645314,2645305&pageSize=50",
+   "failingSince": "2026-11-21T10:00:20.960Z"
   },
   "footballChannels": "28/38 PL+UCL matches with a confirmed channel",
   "conferenceLeague": {
@@ -148,8 +149,10 @@
    "weekends": []
   },
   "motogp": {
-   "ok": true,
-   "sessions": 6
+   "ok": false,
+   "error": "HTTP 429 for https://api.motogp.pulselive.com/motogp/v1/events?seasonYear=2026",
+   "keptEvents": 6,
+   "failingSince": "2026-11-21T10:00:20.960Z"
   },
   "darts": {
    "ok": true,
@@ -190,7 +193,9 @@
     "ATP Finals"
    ],
    "days": 3,
-   "errors": []
+   "errors": [
+    "HTTP 429 for https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-11-21&to=2026-11-29"
+   ]
   },
   "tennisSchedule": {
    "ok": true,
@@ -5615,15 +5620,13 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -5644,15 +5647,13 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {
@@ -5704,15 +5705,13 @@
    "round": "Regular Season - 12",
    "source": "api-football.com",
    "tv": {
-    "broadcaster": "Sky Sports",
+    "broadcaster": null,
     "channels": [],
     "alsoOn": [],
     "confirmed": false,
-    "note": "Exact channel to be confirmed",
+    "note": "TV channel to be confirmed",
     "conflict": false,
-    "sources": [
-     "premierleague.com"
-    ]
+    "sources": []
    }
   },
   {

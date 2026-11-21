@@ -111,4 +111,5 @@ decided it was ready. Note things here as they happen.
 |---|---|
 | 8 Nov 2026 | Closed testing (Alpha) with 1.0.8, the store listing and App content sent for Google's first review at 13:02; status Published (seen 10 Nov). Recruiting starts. |
 | 10 Nov 2026 | 1.0.9 (About in Settings; the website's pages open inside the app) uploaded to closed testing, sent for review at 02:27 and Published. |
+| 21 Nov 2026 | 1.0.13 (subscriptions: free month, free version, £3.65 a year, promo codes; tidier front page and Settings headings) on internal testing and sent for review on closed testing. 1.0.12 had been built without the subscriptions code and was never released. |
 | | |

@@ -5,6 +5,8 @@ One section per version uploaded to Google Play, newest first. The heading's num
 `npm run release` prints ready to paste.
 
 ## 1.0.12
+- Subscriptions, for testing: a free month with everything, then one sport for free each week, or everything for £3.65 a year.
+- My Account in Settings: your free month or subscription, Restore purchase and the app's version. For Testers jumps ahead to each stage.
 - A tidier front page: the list of where the listings come from is gone.
 - Settings: clearer section headings, and a shorter note on fixtures reminders.
 
